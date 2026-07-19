@@ -374,7 +374,7 @@ a {
   gap: 3px;
   padding-bottom: 4px;
   border-bottom: 1px solid rgba(23, 22, 20, 0.65);
-  font-size: clamp(0.58rem, 0.66vw, 0.66rem);
+  font-size: clamp(0.72rem, 0.78vw, 0.8rem);
   font-weight: 700;
   letter-spacing: 0.15em;
   line-height: 1.2;
@@ -384,7 +384,7 @@ a {
 
 .brand-handle {
   color: var(--gold);
-  font-size: clamp(0.55rem, 0.6vw, 0.6rem);
+  font-size: clamp(0.66rem, 0.7vw, 0.72rem);
   letter-spacing: 0.08em;
   text-transform: none;
 }
@@ -445,9 +445,9 @@ a {
     min-height: 100svh;
     padding: 72px 22px 32px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto 1fr;
-    column-gap: 14px;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    row-gap: clamp(16px, 2.6vh, 26px);
     align-content: center;
   }
 
@@ -472,10 +472,11 @@ a {
     position: relative;
     top: auto;
     left: auto;
-    grid-column: 1 / -1;
+    grid-column: 1;
+    grid-row: 1;
     width: auto;
     min-width: 0;
-    margin-bottom: clamp(30px, 7vh, 56px);
+    margin-bottom: clamp(16px, 3vh, 28px);
     transform: none;
   }
 
@@ -509,27 +510,28 @@ a {
     left: auto;
     grid-template-columns: 58px minmax(0, 1fr);
     gap: 13px;
-    width: auto;
+    width: min(82%, 340px);
     align-self: center;
   }
 
   .brand-coffee {
     grid-column: 1;
     grid-row: 2;
-  }
-
-  .brand-seating {
-    grid-column: 2;
-    grid-row: 2;
+    justify-self: start;
   }
 
   .brand-sweet {
-    grid-column: 1 / -1;
+    grid-column: 1;
     grid-row: 3;
-    width: min(100%, 280px);
-    margin-top: clamp(16px, 3vh, 30px);
+    margin-top: 0;
     justify-self: center;
     transform: none;
+  }
+
+  .brand-seating {
+    grid-column: 1;
+    grid-row: 4;
+    justify-self: end;
   }
 
   .brand-copy h2 {
@@ -542,11 +544,11 @@ a {
 
   .brand-copy a {
     margin-top: 8px;
-    font-size: 0.58rem;
+    font-size: 0.7rem;
   }
 
   .brand-handle {
-    display: none;
+    font-size: 0.64rem;
   }
 
   .stage-footer {
@@ -574,9 +576,6 @@ a {
     font-size: clamp(4.4rem, 22vw, 6.8rem);
   }
 
-  .brand-sweet {
-    margin-top: 18px;
-  }
 }
 
 @media (orientation: landscape) and (max-width: 900px) and (max-height: 560px) {
