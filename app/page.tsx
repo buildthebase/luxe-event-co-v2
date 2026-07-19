@@ -35,8 +35,7 @@ export default function Home() {
 
         <header className="masthead">
           <p>Toronto, Canada</p>
-          <p className="masthead-center">One house. Three gestures.</p>
-          <p>Est. 2025</p>
+          <p className="masthead-center">One brand. Every event need.</p>
         </header>
 
         <div className="orbit" aria-hidden="true">
@@ -84,7 +83,6 @@ export default function Home() {
 
         <footer className="stage-footer">
           <p>For the host with an eye for the whole picture.</p>
-          <p>Scroll to enter <span aria-hidden="true">↓</span></p>
         </footer>
       </section>
 

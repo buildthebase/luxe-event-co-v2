@@ -34,7 +34,7 @@ test("server-renders the Luxe Event Co. launch page", async () => {
   assert.match(html, /Luxe Sweet Cart/);
   assert.match(html, /Luxe Seating Rentals/);
   assert.match(html, /Full experience in formation/);
-  assert.match(html, /One house\. Three gestures\./);
+  assert.match(html, /One brand\. Every event need\./);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
 });
 
