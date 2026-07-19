@@ -156,7 +156,7 @@ a {
 
 .identity {
   position: absolute;
-  top: 34%;
+  top: 29%;
   left: 50%;
   z-index: 3;
   width: min(34vw, 500px);
@@ -242,18 +242,18 @@ a {
 }
 
 .brand-coffee {
-  top: 61%;
+  top: 56%;
   left: clamp(24px, 17vw, 360px);
 }
 
 .brand-sweet {
-  top: 79%;
+  top: 74%;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .brand-seating {
-  top: 61%;
+  top: 56%;
   right: clamp(24px, 17vw, 360px);
 }
 
@@ -529,6 +529,7 @@ a {
     width: min(100%, 280px);
     margin-top: clamp(16px, 3vh, 30px);
     justify-self: center;
+    transform: none;
   }
 
   .brand-copy h2 {
