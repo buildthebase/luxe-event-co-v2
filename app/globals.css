@@ -88,7 +88,7 @@ a {
   justify-content: space-between;
   gap: 20px;
   color: rgba(23, 22, 20, 0.66);
-  font-size: clamp(0.62rem, 0.7vw, 0.72rem);
+  font-size: clamp(0.74rem, 0.78vw, 0.84rem);
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -169,7 +169,7 @@ a {
 .identity-coming,
 .brand-index {
   margin: 0;
-  font-size: clamp(0.64rem, 0.7vw, 0.72rem);
+  font-size: clamp(0.74rem, 0.8vw, 0.86rem);
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -354,7 +354,7 @@ a {
 
 .brand-copy h2 {
   margin: 0;
-  font-size: clamp(1.1rem, 1.35vw, 1.4rem);
+  font-size: clamp(1.25rem, 1.48vw, 1.55rem);
   font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 1.05;
@@ -364,7 +364,7 @@ a {
   max-width: 190px;
   margin: 8px 0 13px;
   color: rgba(23, 22, 20, 0.65);
-  font-size: clamp(0.82rem, 0.92vw, 0.92rem);
+  font-size: clamp(0.94rem, 1vw, 1.04rem);
   line-height: 1.5;
 }
 
@@ -374,7 +374,7 @@ a {
   gap: 3px;
   padding-bottom: 4px;
   border-bottom: 1px solid rgba(23, 22, 20, 0.65);
-  font-size: clamp(0.72rem, 0.78vw, 0.8rem);
+  font-size: clamp(0.82rem, 0.87vw, 0.92rem);
   font-weight: 700;
   letter-spacing: 0.15em;
   line-height: 1.2;
@@ -384,7 +384,7 @@ a {
 
 .brand-handle {
   color: var(--gold);
-  font-size: clamp(0.66rem, 0.7vw, 0.72rem);
+  font-size: clamp(0.74rem, 0.78vw, 0.82rem);
   letter-spacing: 0.08em;
   text-transform: none;
 }
@@ -455,7 +455,7 @@ a {
   .stage-footer {
     right: 22px;
     left: 22px;
-    font-size: 0.48rem;
+    font-size: 0.65rem;
   }
 
   .masthead-center,
@@ -508,10 +508,15 @@ a {
     right: auto;
     bottom: auto;
     left: auto;
-    grid-template-columns: 58px minmax(0, 1fr);
+    grid-template-columns: 62px minmax(0, max-content);
     gap: 13px;
-    width: min(82%, 340px);
+    width: fit-content;
+    max-width: 100%;
     align-self: center;
+  }
+
+  .brand-copy {
+    max-width: calc(100vw - 119px);
   }
 
   .brand-coffee {
@@ -535,7 +540,7 @@ a {
   }
 
   .brand-copy h2 {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   .brand-description {
@@ -544,11 +549,11 @@ a {
 
   .brand-copy a {
     margin-top: 8px;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
 
   .brand-handle {
-    font-size: 0.64rem;
+    font-size: 0.72rem;
   }
 
   .stage-footer {
