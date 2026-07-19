@@ -35,7 +35,6 @@ export default function Home() {
 
         <header className="masthead">
           <p>Toronto, Canada</p>
-          <p className="masthead-center">One brand. Every event need.</p>
         </header>
 
         <div className="orbit" aria-hidden="true">
@@ -45,16 +44,14 @@ export default function Home() {
         </div>
 
         <div className="identity">
-          <p className="identity-kicker">A new event language</p>
           <h1 id="luxe-title">
             <span className="identity-luxe">Luxe</span>
             <span className="identity-event">Event Co.</span>
           </h1>
           <p className="identity-copy">
-            Coffee, confections, and considered spaces for gatherings that live
-            beyond the moment.
+            Crafted coffee, elevated desserts, and considered seating for
+            gatherings that live beyond the moment and linger.
           </p>
-          <p className="identity-coming">Full experience in formation</p>
         </div>
 
         {brands.map((brand) => (
@@ -81,9 +78,6 @@ export default function Home() {
           </article>
         ))}
 
-        <footer className="stage-footer">
-          <p>For the host with an eye for the whole picture.</p>
-        </footer>
       </section>
 
       <section className="afterword" aria-label="Coming soon">

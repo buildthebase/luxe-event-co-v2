@@ -29,12 +29,17 @@ test("server-renders the Luxe Event Co. launch page", async () => {
 
   const html = await response.text();
   assert.match(html, /<title>Luxe Event Co\. \| Elevated Event Experiences<\/title>/i);
-  assert.match(html, /A new event language/);
+  assert.match(
+    html,
+    /Crafted coffee, elevated desserts, and considered seating for gatherings that live beyond the moment and linger\./,
+  );
   assert.match(html, /Luxe Coffee Bar/);
   assert.match(html, /Luxe Sweet Cart/);
   assert.match(html, /Luxe Seating Rentals/);
-  assert.match(html, /Full experience in formation/);
-  assert.match(html, /One brand\. Every event need\./);
+  assert.doesNotMatch(
+    html,
+    /A new event language|Full experience in formation|One brand\. Every event need\.|For the host with an eye for the whole picture\./,
+  );
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
 });
 
