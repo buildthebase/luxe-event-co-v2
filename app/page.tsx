@@ -1,189 +1,97 @@
-const experiences = [
+const brands = [
   {
-    number: "01",
+    id: "coffee",
+    index: "01",
     name: "Luxe Coffee Bar",
-    category: "Coffee experiences",
-    description:
-      "A polished mobile coffee bar serving beautifully crafted drinks and an effortlessly elevated guest experience.",
+    descriptor: "Warm pours. Considered rituals.",
     handle: "@luxecoffeebar.to",
     href: "https://www.instagram.com/luxecoffeebar.to/",
-    tone: "coffee",
   },
   {
-    number: "02",
+    id: "sweet",
+    index: "02",
     name: "Luxe Sweet Cart",
-    category: "Dessert experiences",
-    description:
-      "A refined dessert cart designed to turn a sweet moment into a memorable part of the celebration.",
+    descriptor: "Small indulgences, beautifully staged.",
     handle: "@luxesweet.cart",
     href: "https://www.instagram.com/luxesweet.cart/",
-    tone: "sweet",
   },
   {
-    number: "03",
+    id: "seating",
+    index: "03",
     name: "Luxe Seating Rentals",
-    category: "Event rentals",
-    description:
-      "Considered seating and statement pieces that bring comfort, character, and cohesion to any setting.",
+    descriptor: "Form, function, and room to gather.",
     handle: "@luxeseatingrentals",
     href: "https://www.instagram.com/luxeseatingrentals",
-    tone: "seating",
   },
 ] as const;
 
-function InstagramMark() {
-  return (
-    <svg
-      aria-hidden="true"
-      className="instagram-mark"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    >
-      <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
-      <circle cx="12" cy="12" r="4" />
-      <circle cx="17.7" cy="6.4" r="0.7" fill="currentColor" stroke="none" />
-    </svg>
-  );
-}
-
-function Arrow() {
-  return (
-    <svg
-      aria-hidden="true"
-      className="arrow"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    >
-      <path d="M5 12h13M13.5 6.5 19 12l-5.5 5.5" />
-    </svg>
-  );
-}
-
 export default function Home() {
   return (
-    <main>
-      <section className="hero" aria-labelledby="hero-title">
-        <nav className="nav shell" aria-label="Primary navigation">
-          <a className="wordmark" href="#top" aria-label="Luxe Event Co. home">
-            <span>Luxe</span>
-            <span className="wordmark-sub">Event Co.</span>
-          </a>
-          <a className="nav-link" href="#experiences">
-            Discover the family <span aria-hidden="true">↓</span>
-          </a>
-        </nav>
+    <main className="site-stage">
+      <section className="constellation" aria-labelledby="luxe-title">
+        <div className="ambient ambient-one" aria-hidden="true" />
+        <div className="ambient ambient-two" aria-hidden="true" />
+        <div className="grain" aria-hidden="true" />
 
-        <div className="hero-body shell" id="top">
-          <div className="hero-copy">
-            <p className="eyebrow reveal reveal-one">Toronto · Elevated event experiences</p>
-            <h1 id="hero-title" className="reveal reveal-two">
-              Made for moments
-              <span>worth lingering over.</span>
-            </h1>
-            <p className="hero-intro reveal reveal-three">
-              Luxe Event Co. brings together premium coffee, dessert, and event
-              rental experiences under one thoughtfully curated family.
-            </p>
-          </div>
+        <header className="masthead">
+          <p>Toronto, Canada</p>
+          <p className="masthead-center">One house. Three gestures.</p>
+          <p>Est. 2025</p>
+        </header>
 
-          <div className="brand-composition reveal reveal-four" aria-hidden="true">
-            <div className="composition-orbit" />
-            <div className="composition-card card-coffee">
-              <span>01</span>
-              <strong>Coffee</strong>
-            </div>
-            <div className="composition-card card-sweet">
-              <span>02</span>
-              <strong>Sweet</strong>
-            </div>
-            <div className="composition-card card-seating">
-              <span>03</span>
-              <strong>Seating</strong>
-            </div>
-            <p className="composition-note">One family, beautifully considered.</p>
-          </div>
+        <div className="orbit" aria-hidden="true">
+          <span className="orbit-dot orbit-dot-one" />
+          <span className="orbit-dot orbit-dot-two" />
+          <span className="orbit-dot orbit-dot-three" />
         </div>
 
-        <div className="hero-foot shell">
-          <span>Designed for celebrations of every kind</span>
-          <span aria-hidden="true">L · E · C</span>
-        </div>
-      </section>
-
-      <section className="intro shell" aria-labelledby="intro-title">
-        <div>
-          <p className="section-label">The Luxe family</p>
-          <span className="fine-line" />
-        </div>
-        <div className="intro-copy">
-          <h2 id="intro-title">
-            Three distinct experiences.
-            <span>One elevated point of view.</span>
-          </h2>
-          <p>
-            From the first pour to the final detail, every Luxe experience is
-            created to feel warm, seamless, and unmistakably special.
+        <div className="identity">
+          <p className="identity-kicker">A new event language</p>
+          <h1 id="luxe-title">
+            <span className="identity-luxe">Luxe</span>
+            <span className="identity-event">Event Co.</span>
+          </h1>
+          <p className="identity-copy">
+            Coffee, confections, and considered spaces for gatherings that live
+            beyond the moment.
           </p>
+          <p className="identity-coming">Full experience in formation</p>
         </div>
-      </section>
 
-      <section className="experiences" id="experiences" aria-label="Our brands">
-        {experiences.map((experience) => (
-          <article className={`experience ${experience.tone}`} key={experience.name}>
-            <div className="experience-inner shell">
-              <div className="experience-index">
-                <span>{experience.number}</span>
-                <span className="experience-dot" />
-              </div>
-              <div className="experience-title">
-                <p>{experience.category}</p>
-                <h3>{experience.name}</h3>
-              </div>
-              <p className="experience-description">{experience.description}</p>
+        {brands.map((brand) => (
+          <article className={`brand-object brand-${brand.id}`} key={brand.id}>
+            <div className="object-art" aria-hidden="true">
+              <span className="art-layer art-layer-one" />
+              <span className="art-layer art-layer-two" />
+              <span className="art-layer art-layer-three" />
+            </div>
+            <div className="brand-copy">
+              <p className="brand-index">{brand.index}</p>
+              <h2>{brand.name}</h2>
+              <p className="brand-description">{brand.descriptor}</p>
               <a
-                className="social-link"
-                href={experience.href}
+                href={brand.href}
                 target="_blank"
                 rel="noreferrer"
-                aria-label={`Follow ${experience.name} on Instagram`}
+                aria-label={`Follow ${brand.name} on Instagram`}
               >
-                <InstagramMark />
-                <span>{experience.handle}</span>
-                <Arrow />
+                <span>Follow on Instagram</span>
+                <span className="brand-handle">{brand.handle}</span>
               </a>
             </div>
           </article>
         ))}
+
+        <footer className="stage-footer">
+          <p>For the host with an eye for the whole picture.</p>
+          <p>Scroll to enter <span aria-hidden="true">↓</span></p>
+        </footer>
       </section>
 
-      <section className="coming-soon" aria-labelledby="coming-soon-title">
-        <div className="coming-soon-inner shell">
-          <p className="section-label light">Coming soon</p>
-          <div className="coming-copy">
-            <h2 id="coming-soon-title">
-              The full Luxe experience is taking shape.
-            </h2>
-            <p>
-              Our new online home is coming soon. Until then, follow each brand
-              for our latest events, offerings, and booking details.
-            </p>
-          </div>
-          <span className="monogram" aria-hidden="true">L</span>
-        </div>
+      <section className="afterword" aria-label="Coming soon">
+        <p>Luxe Event Co. is coming together. Follow the orbit for what&apos;s next.</p>
+        <span>LEC</span>
       </section>
-
-      <footer className="footer shell">
-        <a className="wordmark footer-mark" href="#top" aria-label="Back to top">
-          <span>Luxe</span>
-          <span className="wordmark-sub">Event Co.</span>
-        </a>
-        <p>Premium experiences for beautifully hosted moments.</p>
-        <p>Toronto, Ontario · © {new Date().getFullYear()} Luxe Event Co.</p>
-      </footer>
     </main>
   );
 }
