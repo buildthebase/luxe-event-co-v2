@@ -88,7 +88,7 @@ a {
   justify-content: space-between;
   gap: 20px;
   color: rgba(23, 22, 20, 0.66);
-  font-size: 0.55rem;
+  font-size: clamp(0.62rem, 0.7vw, 0.72rem);
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -156,7 +156,7 @@ a {
 
 .identity {
   position: absolute;
-  top: 50%;
+  top: 34%;
   left: 50%;
   z-index: 3;
   width: min(34vw, 500px);
@@ -169,7 +169,7 @@ a {
 .identity-coming,
 .brand-index {
   margin: 0;
-  font-size: 0.56rem;
+  font-size: clamp(0.64rem, 0.7vw, 0.72rem);
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -212,8 +212,8 @@ a {
   max-width: 310px;
   margin: clamp(18px, 3vh, 29px) auto 0;
   color: rgba(23, 22, 20, 0.72);
-  font-size: clamp(0.68rem, 0.9vw, 0.8rem);
-  line-height: 1.65;
+  font-size: clamp(0.92rem, 1.05vw, 1.08rem);
+  line-height: 1.55;
 }
 
 .identity-coming {
@@ -242,18 +242,19 @@ a {
 }
 
 .brand-coffee {
-  top: clamp(82px, 15vh, 160px);
-  left: clamp(20px, 7.5vw, 150px);
+  top: 61%;
+  left: clamp(24px, 17vw, 360px);
 }
 
 .brand-sweet {
-  bottom: clamp(66px, 13vh, 130px);
-  left: clamp(20px, 10vw, 200px);
+  top: 79%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .brand-seating {
-  top: clamp(94px, 18vh, 178px);
-  right: clamp(20px, 7.5vw, 150px);
+  top: 61%;
+  right: clamp(24px, 17vw, 360px);
 }
 
 .object-art {
@@ -353,7 +354,7 @@ a {
 
 .brand-copy h2 {
   margin: 0;
-  font-size: clamp(0.95rem, 1.2vw, 1.22rem);
+  font-size: clamp(1.1rem, 1.35vw, 1.4rem);
   font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 1.05;
@@ -363,8 +364,8 @@ a {
   max-width: 190px;
   margin: 8px 0 13px;
   color: rgba(23, 22, 20, 0.65);
-  font-size: clamp(0.62rem, 0.74vw, 0.7rem);
-  line-height: 1.45;
+  font-size: clamp(0.82rem, 0.92vw, 0.92rem);
+  line-height: 1.5;
 }
 
 .brand-copy a {
@@ -373,7 +374,7 @@ a {
   gap: 3px;
   padding-bottom: 4px;
   border-bottom: 1px solid rgba(23, 22, 20, 0.65);
-  font-size: 0.52rem;
+  font-size: clamp(0.58rem, 0.66vw, 0.66rem);
   font-weight: 700;
   letter-spacing: 0.15em;
   line-height: 1.2;
@@ -383,7 +384,7 @@ a {
 
 .brand-handle {
   color: var(--gold);
-  font-size: 0.47rem;
+  font-size: clamp(0.55rem, 0.6vw, 0.6rem);
   letter-spacing: 0.08em;
   text-transform: none;
 }
@@ -445,9 +446,9 @@ a {
     grid-template-columns: clamp(52px, 6vw, 80px) minmax(145px, 1fr);
   }
 
-  .brand-coffee { left: clamp(18px, 4vw, 72px); }
-  .brand-sweet { left: clamp(18px, 6vw, 100px); }
-  .brand-seating { right: clamp(18px, 4vw, 72px); }
+  .brand-coffee { left: clamp(18px, 12vw, 140px); }
+  .brand-sweet { left: 50%; }
+  .brand-seating { right: clamp(18px, 12vw, 140px); }
 
   .brand-description {
     display: none;
@@ -508,7 +509,7 @@ a {
   .identity-copy {
     max-width: 280px;
     margin-top: 18px;
-    font-size: 0.68rem;
+    font-size: 0.9rem;
   }
 
   .identity-coming {
@@ -546,7 +547,7 @@ a {
   }
 
   .brand-copy h2 {
-    font-size: 0.86rem;
+    font-size: 1rem;
   }
 
   .brand-description {
@@ -555,7 +556,7 @@ a {
 
   .brand-copy a {
     margin-top: 8px;
-    font-size: 0.46rem;
+    font-size: 0.58rem;
   }
 
   .brand-handle {
