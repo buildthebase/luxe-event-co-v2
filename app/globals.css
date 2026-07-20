@@ -242,14 +242,14 @@ a {
 }
 
 .brand-coffee {
-  top: 60%;
+  top: 62%;
   left: clamp(24px, 17vw, 360px);
   opacity: 0;
   animation: fade-in 750ms ease-out 540ms forwards;
 }
 
 .brand-sweet {
-  top: 60%;
+  top: 62%;
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
@@ -257,7 +257,7 @@ a {
 }
 
 .brand-seating {
-  top: 60%;
+  top: 62%;
   right: clamp(24px, 17vw, 360px);
   opacity: 0;
   animation: fade-in 750ms ease-out 540ms forwards;
@@ -470,6 +470,7 @@ a {
   .masthead {
     right: 22px;
     left: 22px;
+    align-items: flex-start;
     font-size: 0.65rem;
   }
 
@@ -524,7 +525,7 @@ a {
 
   .brand-object {
     position: relative;
-    top: auto;
+    top: clamp(6px, 1vh, 10px);
     right: auto;
     bottom: auto;
     left: auto;
