@@ -157,7 +157,7 @@ a {
 
 .identity {
   position: absolute;
-  top: 25%;
+  top: 28%;
   left: 50%;
   z-index: 3;
   width: min(34vw, 500px);
@@ -223,14 +223,14 @@ a {
 }
 
 .brand-coffee {
-  top: 51%;
+  top: 60%;
   left: clamp(24px, 17vw, 360px);
   opacity: 0;
   animation: fade-in 750ms ease-out 540ms forwards;
 }
 
 .brand-sweet {
-  top: 51%;
+  top: 60%;
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
@@ -238,7 +238,7 @@ a {
 }
 
 .brand-seating {
-  top: 51%;
+  top: 60%;
   right: clamp(24px, 17vw, 360px);
   opacity: 0;
   animation: fade-in 750ms ease-out 540ms forwards;
@@ -429,7 +429,7 @@ a {
 
 @media (min-width: 761px) {
   .identity {
-    top: calc(25% + 8px);
+    top: calc(28% + 8px);
   }
 
   .identity-copy {
