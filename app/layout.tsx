@@ -24,7 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: "Luxe Event Co.",
       description: "Made for moments worth lingering over.",
       type: "website",
-      images: [{ url: "/og.png", width: 1733, height: 909, alt: "Luxe Event Co." }],
+      images: [{ url: "/og.png", width: 1732, height: 908, alt: "Luxe Event Co." }],
     },
     twitter: {
       card: "summary_large_image",
