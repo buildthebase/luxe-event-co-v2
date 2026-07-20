@@ -35,7 +35,17 @@ export default function Home() {
 
         <header className="masthead">
           <p>Toronto, Canada</p>
-          <p className="site-status">Full website coming soon</p>
+          <div className="site-status">
+            <img
+              className="site-status-icon"
+              src="/icon.png"
+              alt=""
+              aria-hidden="true"
+              width="30"
+              height="30"
+            />
+            <p>Full website coming soon</p>
+          </div>
         </header>
 
         <div className="identity">

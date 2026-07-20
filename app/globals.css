@@ -107,8 +107,18 @@ a {
 }
 
 .site-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   color: var(--gold);
   text-align: right;
+}
+
+.site-status-icon {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  object-fit: contain;
 }
 
 .orbit {
@@ -460,9 +470,17 @@ a {
   }
 
   .site-status {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
     max-width: 138px;
     letter-spacing: 0.12em;
     line-height: 1.45;
+  }
+
+  .site-status-icon {
+    width: 30px;
+    height: 30px;
   }
 
   .orbit {

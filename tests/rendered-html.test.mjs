@@ -37,6 +37,7 @@ test("server-renders the Luxe Event Co. launch page", async () => {
   assert.match(html, /Luxe Sweet Cart/);
   assert.match(html, /Luxe Seating Rentals/);
   assert.match(html, /Full website coming soon/);
+  assert.match(html, /src="\/icon\.png"/);
   assert.doesNotMatch(
     html,
     /A new event language|Full experience in formation|One brand\. Every event need\.|For the host with an eye for the whole picture\./,
