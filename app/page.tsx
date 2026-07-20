@@ -35,6 +35,7 @@ export default function Home() {
 
         <header className="masthead">
           <p>Toronto, Canada</p>
+          <p className="site-status">Full website coming soon</p>
         </header>
 
         <div className="identity">
@@ -47,7 +48,7 @@ export default function Home() {
           </p>
         </div>
 
-        {brands.map((brand) => (
+{brands.map((brand) => (
           <article className={`brand-object brand-${brand.id}`} key={brand.id}>
             <div className="object-art" aria-hidden="true">
               <span className="art-layer art-layer-one" />
