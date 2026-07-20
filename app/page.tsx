@@ -44,7 +44,10 @@ export default function Home() {
               width="30"
               height="30"
             />
-            <p>Full website coming soon</p>
+            <p className="site-status-copy" aria-label="Full website coming soon">
+              <span>Full website</span>{" "}
+              <span>coming soon</span>
+            </p>
           </div>
         </header>
 

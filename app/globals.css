@@ -121,6 +121,10 @@ a {
   object-fit: contain;
 }
 
+.site-status-copy {
+  white-space: nowrap;
+}
+
 .orbit {
   position: absolute;
   top: 50%;
@@ -172,7 +176,7 @@ a {
 
 .identity {
   position: absolute;
-  top: 28%;
+  top: 29%;
   left: 50%;
   z-index: 3;
   width: min(34vw, 500px);
@@ -444,7 +448,7 @@ a {
 
 @media (min-width: 761px) {
   .identity {
-    top: calc(28% + 8px);
+    top: calc(29% + 8px);
   }
 
   .identity-copy {
@@ -483,6 +487,10 @@ a {
     height: 30px;
   }
 
+  .site-status-copy span {
+    display: block;
+  }
+
   .orbit {
     width: 105vw;
     --fade-opacity: 0.73;
@@ -497,7 +505,7 @@ a {
     width: auto;
     min-width: 0;
     margin-bottom: clamp(4px, 1.2vh, 12px);
-    transform: none;
+    transform: translateY(clamp(6px, 1vh, 10px));
   }
 
   .identity-luxe {
