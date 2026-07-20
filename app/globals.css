@@ -475,7 +475,7 @@ a {
   }
 
   .site-status {
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: flex-end;
     gap: 4px;
     max-width: 138px;
