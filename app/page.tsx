@@ -37,20 +37,13 @@ export default function Home() {
           <p>Toronto, Canada</p>
         </header>
 
-        <div className="orbit" aria-hidden="true">
-          <span className="orbit-dot orbit-dot-one" />
-          <span className="orbit-dot orbit-dot-two" />
-          <span className="orbit-dot orbit-dot-three" />
-        </div>
-
         <div className="identity">
           <h1 id="luxe-title">
             <span className="identity-luxe">Luxe</span>
             <span className="identity-event">Event Co.</span>
           </h1>
           <p className="identity-copy">
-            Crafted coffee, elevated desserts, and considered seating for
-            gatherings that live beyond the moment and linger.
+            Crafted coffee, elevated desserts, and elegant seating for moments made to be remembered.
           </p>
         </div>
 

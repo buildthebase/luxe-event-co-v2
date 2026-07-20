@@ -31,7 +31,7 @@ test("server-renders the Luxe Event Co. launch page", async () => {
   assert.match(html, /<title>Luxe Event Co\. \| Elevated Event Experiences<\/title>/i);
   assert.match(
     html,
-    /Crafted coffee, elevated desserts, and considered seating for gatherings that live beyond the moment and linger\./,
+    /Crafted coffee, elevated desserts, and elegant seating for moments made to be remembered\./,
   );
   assert.match(html, /Luxe Coffee Bar/);
   assert.match(html, /Luxe Sweet Cart/);

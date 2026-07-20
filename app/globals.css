@@ -157,7 +157,7 @@ a {
 
 .identity {
   position: absolute;
-  top: 29%;
+  top: 25%;
   left: 50%;
   z-index: 3;
   width: min(34vw, 500px);
@@ -206,7 +206,7 @@ a {
 
 .identity-copy {
   max-width: 310px;
-  margin: clamp(18px, 3vh, 29px) auto 0;
+  margin: clamp(26px, 3.6vh, 36px) auto 0;
   color: rgba(23, 22, 20, 0.72);
   font-size: clamp(0.92rem, 1.05vw, 1.08rem);
   line-height: 1.55;
@@ -223,14 +223,14 @@ a {
 }
 
 .brand-coffee {
-  top: 56%;
+  top: 51%;
   left: clamp(24px, 17vw, 360px);
   opacity: 0;
   animation: fade-in 750ms ease-out 540ms forwards;
 }
 
 .brand-sweet {
-  top: 74%;
+  top: 69%;
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
@@ -238,7 +238,7 @@ a {
 }
 
 .brand-seating {
-  top: 56%;
+  top: 51%;
   right: clamp(24px, 17vw, 360px);
   opacity: 0;
   animation: fade-in 750ms ease-out 540ms forwards;
@@ -427,14 +427,24 @@ a {
   }
 }
 
+@media (min-width: 761px) {
+  .identity {
+    top: calc(25% + 8px);
+  }
+
+  .identity-copy {
+    margin-top: clamp(44px, 5vh, 56px);
+  }
+}
+
 @media (max-width: 760px) {
   .constellation {
     min-height: 100svh;
-    padding: 72px 22px 32px;
+    padding: 56px 22px 72px;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto auto;
-    row-gap: clamp(16px, 2.6vh, 26px);
+    row-gap: clamp(10px, 1.8vh, 18px);
     align-content: center;
   }
 
@@ -457,7 +467,7 @@ a {
     grid-row: 1;
     width: auto;
     min-width: 0;
-    margin-bottom: clamp(16px, 3vh, 28px);
+    margin-bottom: clamp(4px, 1.2vh, 12px);
     transform: none;
   }
 
@@ -471,7 +481,7 @@ a {
 
   .identity-copy {
     max-width: 280px;
-    margin-top: 18px;
+    margin-top: clamp(24px, 4vh, 30px);
     font-size: 0.9rem;
   }
 
@@ -536,11 +546,12 @@ a {
 @media (max-width: 430px) and (max-height: 760px) {
   .constellation {
     min-height: 720px;
-    padding-top: 60px;
+    padding-top: 52px;
+    padding-bottom: 64px;
   }
 
   .identity {
-    margin-bottom: 24px;
+    margin-bottom: 8px;
   }
 
   .identity-copy {
@@ -556,11 +567,12 @@ a {
 @media (orientation: landscape) and (max-width: 900px) and (max-height: 560px) {
   .constellation {
     min-height: 100svh;
-    padding-top: 48px;
+    padding-top: 40px;
+    padding-bottom: 48px;
   }
 
   .identity {
-    margin-bottom: 22px;
+    margin-bottom: 6px;
   }
 
   .identity-copy,
