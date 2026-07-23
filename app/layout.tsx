@@ -3,6 +3,7 @@ import { Manrope } from "next/font/google";
 import "./globals.css";
 
 const siteUrl = "https://luxeeventco.ca";
+const googleThumbnailUrl = `${siteUrl}/google-thumbnail.png`;
 const title = "Luxe Event Co. | Coffee, Desserts & Seating Rentals Toronto";
 const description =
   "Luxe Event Co. brings crafted coffee, elevated desserts, and elegant seating rentals to memorable events and celebrations across Toronto.";
@@ -19,6 +20,9 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: "/" },
+  other: {
+    thumbnail: googleThumbnailUrl,
+  },
   robots: {
     index: true,
     follow: true,
@@ -55,6 +59,7 @@ const structuredData = {
       "@id": `${siteUrl}/#organization`,
       name: "Luxe Event Co.",
       url: siteUrl,
+      image: { "@id": `${siteUrl}/#primaryimage` },
       description,
       sameAs: [
         "https://www.instagram.com/luxecoffeebar.to/",
@@ -70,6 +75,26 @@ const structuredData = {
       description,
       inLanguage: "en-CA",
       publisher: { "@id": `${siteUrl}/#organization` },
+    },
+    {
+      "@type": "ImageObject",
+      "@id": `${siteUrl}/#primaryimage`,
+      url: googleThumbnailUrl,
+      contentUrl: googleThumbnailUrl,
+      width: 1200,
+      height: 1200,
+      caption: "Luxe Event Co. - Coffee, Desserts and Seating",
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${siteUrl}/#webpage`,
+      url: siteUrl,
+      name: title,
+      description,
+      isPartOf: { "@id": `${siteUrl}/#website` },
+      about: { "@id": `${siteUrl}/#organization` },
+      primaryImageOfPage: { "@id": `${siteUrl}/#primaryimage` },
+      inLanguage: "en-CA",
     },
   ],
 };
