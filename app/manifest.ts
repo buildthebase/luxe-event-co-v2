@@ -1,19 +1,19 @@
 import type { MetadataRoute } from "next";
+import { siteConfig } from "./site-config";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Luxe Event Co.",
-    short_name: "Luxe Event Co.",
-    description:
-      "Crafted coffee, elevated desserts, and elegant seating for memorable events in Toronto.",
+    name: siteConfig.name,
+    short_name: siteConfig.name,
+    description: siteConfig.description,
     start_url: "/",
     display: "standalone",
     background_color: "#efebe3",
     theme_color: "#efebe3",
     icons: [
       {
-        src: "/icon.png",
-        sizes: "1254x1254",
+        src: siteConfig.brandAssets.favicon.src,
+        sizes: `${siteConfig.brandAssets.favicon.width}x${siteConfig.brandAssets.favicon.height}`,
         type: "image/png",
       },
     ],

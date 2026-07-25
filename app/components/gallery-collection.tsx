@@ -1,0 +1,137 @@
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
+import {
+  galleryFilters,
+  galleryGroups,
+  type GalleryFilter,
+  type GalleryGroup,
+  type GalleryMedia,
+} from "../gallery/gallery-content";
+import { ResponsiveImage } from "./responsive-image";
+
+function GalleryMediaFrame({
+  item,
+  tone,
+}: {
+  item: GalleryMedia;
+  tone: GalleryGroup["tone"];
+}) {
+  return (
+    <figure
+      className={`gallery-media gallery-media-${tone}`}
+      data-asset-status={item.status}
+    >
+      <div className="gallery-media-frame">
+        <ResponsiveImage
+          asset={item}
+          fill
+          fallback={(
+            <div className="gallery-media-reserved" aria-hidden="true">
+              <i /><i /><i />
+              <span>Luxe event study</span>
+            </div>
+          )}
+        />
+      </div>
+      <figcaption>
+        <span>{item.caption}</span>
+      </figcaption>
+    </figure>
+  );
+}
+
+export function GalleryCollection() {
+  const [activeFilter, setActiveFilter] = useState<GalleryFilter>("all");
+  const visibleGroups = galleryGroups.filter(
+    (group) => activeFilter === "all" || group.tags.includes(activeFilter),
+  );
+
+  return (
+    <>
+      <section className="gallery-filter-panel" aria-labelledby="gallery-filter-title">
+        <div>
+          <h2 id="gallery-filter-title">Move through the work by experience or occasion.</h2>
+          <p role="status" aria-live="polite" aria-atomic="true">
+            Showing {visibleGroups.length} {visibleGroups.length === 1 ? "group" : "groups"}.
+          </p>
+        </div>
+        <div className="gallery-filters" role="group" aria-label="Filter gallery groups">
+          {galleryFilters.map((filter) => (
+            <button
+              type="button"
+              aria-pressed={activeFilter === filter.value}
+              aria-controls="gallery-groups"
+              data-event-name="gallery_filter"
+              data-filter-type={
+                ["coffee-bar", "sweet-cart", "seating-rentals"].includes(filter.value)
+                  ? "experience"
+                  : filter.value === "all"
+                    ? "all"
+                    : "event"
+              }
+              data-filter-value={filter.value}
+              key={filter.value}
+              onClick={() => setActiveFilter(filter.value)}
+            >
+              {filter.label}
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section
+        className="gallery-groups"
+        id="gallery-groups"
+        aria-label="Luxe event gallery groups"
+      >
+        {visibleGroups.length === 0 && (
+          <div className="gallery-empty-state" role="status">
+            <h2>No gallery groups match this view.</h2>
+            <p>Return to the complete gallery to continue exploring Luxe events.</p>
+            <button type="button" onClick={() => setActiveFilter("all")}>
+              Show all gallery groups
+            </button>
+          </div>
+        )}
+        {galleryGroups.map((group) => {
+          const visible = visibleGroups.some((item) => item.id === group.id);
+
+          return (
+            <article
+              className={`gallery-group gallery-group-${group.tone}`}
+              data-gallery-group={group.id}
+              hidden={!visible}
+              key={group.id}
+            >
+              <header>
+                <span>{group.number}</span>
+                <p>{group.context}</p>
+                <h2>{group.title}</h2>
+                <p>{group.description}</p>
+              </header>
+              <div className="gallery-group-media">
+                {group.media.map((item) => (
+                  <GalleryMediaFrame item={item} tone={group.tone} key={item.id} />
+                ))}
+              </div>
+              <nav aria-label={`Related pages for ${group.title}`}>
+                {group.links.map((link) => (
+                  <Link
+                    href={link.href}
+                    data-event-name="gallery_item_open"
+                    data-gallery-item-id={group.id}
+                    key={link.href}
+                  >
+                    {link.label} <span aria-hidden="true">↗</span>
+                  </Link>
+                ))}
+              </nav>
+            </article>
+          );
+        })}
+      </section>
+    </>
+  );
+}

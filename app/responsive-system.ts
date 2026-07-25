@@ -1,0 +1,61 @@
+export const permanentRoutes = [
+  "/",
+  "/experiences",
+  "/experiences/coffee-bar",
+  "/experiences/sweet-cart",
+  "/experiences/seating-rentals",
+  "/events",
+  "/events/weddings",
+  "/events/corporate-events",
+  "/events/brand-activations",
+  "/events/baby-showers",
+  "/events/bridal-showers",
+  "/events/birthdays",
+  "/events/private-events",
+  "/gallery",
+  "/faq",
+  "/inquire",
+] as const;
+
+export const responsiveSystem = {
+  status: "established",
+  governingSources: [
+    "Luxe Event Co. Website Strategy, Design, Development, SEO and AEO Implementation Master Specification",
+    "Luxe Event Co. Complete Intake, July 2026",
+  ],
+  viewportClasses: [
+    { name: "small-mobile", testViewport: "320x700", composition: "single-column, priority-led" },
+    { name: "standard-mobile", testViewport: "390x844", composition: "single-column, priority-led" },
+    { name: "large-mobile", testViewport: "430x932", composition: "single-column, priority-led" },
+    { name: "tablet-portrait", testViewport: "768x1024", composition: "four-to-eight-column transition" },
+    { name: "tablet-landscape", testViewport: "1024x768", composition: "reduced desktop composition" },
+    { name: "standard-laptop", testViewport: "1366x768", composition: "twelve-column, short-height aware" },
+    { name: "large-desktop", testViewport: "1440x900", composition: "twelve-column editorial" },
+    { name: "ultrawide", testViewport: "2560x1440", composition: "capped content with selective media bleed" },
+  ],
+  invariants: [
+    "Every permanent route serves the same primary content, headings, links, metadata, and structured data at every viewport.",
+    "Responsive changes are CSS composition changes and never user-agent-specific content variants.",
+    "The complete primary navigation remains available to keyboard, touch, and screen-reader users.",
+    "Primary and contextual inquiry actions remain visible without hover.",
+    "Pages do not create horizontal viewport overflow at 200 percent zoom or supported viewport sizes.",
+    "Interactive targets are designed to reach at least 44 by 44 CSS pixels.",
+    "Important copy is not removed to make a narrow layout fit.",
+    "Source order remains the logical reading and keyboard order after visual recomposition.",
+  ],
+  gallery: {
+    primaryImage: "eager loading with high fetch priority",
+    subsequentImages: "native lazy loading",
+    responsiveSources: "sizes supplied for mobile, tablet, and desktop image selection",
+    filtering: "client-side state only; no duplicate indexable filter URLs",
+    mobileControls: "horizontally scrollable filter rail with full-size touch controls",
+  },
+  motionAndMedia: {
+    reducedMotion: "non-essential animation and smooth scrolling are removed",
+    dataSaving: "Home intro resolves to the cohesive poster and exposed actions",
+    highDensity: "responsive source selection is used instead of fixed-resolution CSS backgrounds for meaningful media",
+  },
+  intentionalExceptions: [
+    "Home hero actions are present in server-rendered HTML but reveal with the approved intro timeline; Skip intro and reduced-motion modes expose them immediately.",
+  ],
+} as const;

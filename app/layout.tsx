@@ -1,27 +1,56 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
+import { siteConfig } from "./site-config";
 
-const siteUrl = "https://luxeeventco.ca";
-const googleThumbnailUrl = `${siteUrl}/google-thumbnail.png`;
-const title = "Luxe Event Co. | Coffee, Desserts & Seating Rentals Toronto";
-const description =
-  "Luxe Event Co. brings crafted coffee, elevated desserts, and elegant seating rentals to memorable events and celebrations across Toronto.";
-
+const siteUrl = siteConfig.url;
+const googleThumbnailUrl = `${siteUrl}${siteConfig.brandAssets.googleThumbnail.src}`;
+const title = siteConfig.defaultMetadata.title;
+const description = siteConfig.defaultMetadata.description;
+const defaultSocialImage = {
+  url: siteConfig.brandAssets.defaultSocialImage.src,
+  width: siteConfig.brandAssets.defaultSocialImage.width,
+  height: siteConfig.brandAssets.defaultSocialImage.height,
+  alt: siteConfig.brandAssets.defaultSocialImage.alt,
+};
 const sans = Manrope({
   variable: "--font-sans",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
+  display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  applicationName: "Luxe Event Co.",
+  applicationName: siteConfig.name,
   title,
   description,
   alternates: { canonical: "/" },
+  icons: {
+    icon: [
+      {
+        url: siteConfig.brandAssets.favicon.src,
+        type: "image/png",
+        sizes: `${siteConfig.brandAssets.favicon.width}x${siteConfig.brandAssets.favicon.height}`,
+      },
+    ],
+    apple: [
+      {
+        url: "/apple-icon.png",
+        type: "image/png",
+        sizes: "180x180",
+      },
+    ],
+  },
+  verification: siteConfig.searchConsole.googleVerificationToken
+    ? { google: siteConfig.searchConsole.googleVerificationToken }
+    : undefined,
   other: {
     thumbnail: googleThumbnailUrl,
+    ...(siteConfig.searchConsole.bingVerificationToken
+      ? { "msvalidate.01": siteConfig.searchConsole.bingVerificationToken }
+      : {}),
   },
   robots: {
     index: true,
@@ -38,65 +67,17 @@ export const metadata: Metadata = {
     title,
     description,
     url: "/",
-    siteName: "Luxe Event Co.",
-    locale: "en_CA",
+    siteName: siteConfig.name,
+    locale: siteConfig.openGraphLocale,
     type: "website",
-    images: [{ url: "/og.png", width: 1731, height: 908, alt: "Luxe Event Co." }],
+    images: [defaultSocialImage],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
-    images: ["/og.png"],
+    images: [siteConfig.brandAssets.defaultSocialImage.src],
   },
-};
-
-const structuredData = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": `${siteUrl}/#organization`,
-      name: "Luxe Event Co.",
-      url: siteUrl,
-      image: { "@id": `${siteUrl}/#primaryimage` },
-      description,
-      sameAs: [
-        "https://www.instagram.com/luxecoffeebar.to/",
-        "https://www.instagram.com/luxesweet.cart/",
-        "https://www.instagram.com/luxeseatingrentals",
-      ],
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${siteUrl}/#website`,
-      url: siteUrl,
-      name: "Luxe Event Co.",
-      description,
-      inLanguage: "en-CA",
-      publisher: { "@id": `${siteUrl}/#organization` },
-    },
-    {
-      "@type": "ImageObject",
-      "@id": `${siteUrl}/#primaryimage`,
-      url: googleThumbnailUrl,
-      contentUrl: googleThumbnailUrl,
-      width: 1200,
-      height: 1200,
-      caption: "Luxe Event Co. - Coffee, Desserts and Seating",
-    },
-    {
-      "@type": "WebPage",
-      "@id": `${siteUrl}/#webpage`,
-      url: siteUrl,
-      name: title,
-      description,
-      isPartOf: { "@id": `${siteUrl}/#website` },
-      about: { "@id": `${siteUrl}/#organization` },
-      primaryImageOfPage: { "@id": `${siteUrl}/#primaryimage` },
-      inLanguage: "en-CA",
-    },
-  ],
 };
 
 export default function RootLayout({
@@ -105,15 +86,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={sans.variable}>
+    <html lang={siteConfig.language} className={sans.variable}>
       <body>
         {children}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
-          }}
-        />
       </body>
     </html>
   );
