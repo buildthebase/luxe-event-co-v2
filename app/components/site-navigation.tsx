@@ -243,7 +243,6 @@ export function PrimaryNavigation({
           </li>
         ))}
       </ul>
-      <InstagramLinks className="foundation-mobile-nav-socials" />
     </nav>
   );
 }
@@ -291,20 +290,23 @@ export function MobileNavigation() {
   }
 
   return (
-    <details
-      ref={disclosureRef}
-      className="foundation-mobile-nav"
-      onKeyDown={handleKeyDown}
-      onToggle={(event) => setIsOpen(event.currentTarget.open)}
-    >
-      <summary aria-expanded={isOpen}>
-        <span>{isOpen ? "Close" : "Menu"}</span>
-        <i aria-hidden="true" />
-      </summary>
-      <PrimaryNavigation
-        variant="mobile"
-        onNavigate={() => closeMobileMenu()}
-      />
-    </details>
+    <div className="foundation-mobile-nav-control">
+      <InstagramLinks className="foundation-mobile-nav-socials" />
+      <details
+        ref={disclosureRef}
+        className="foundation-mobile-nav"
+        onKeyDown={handleKeyDown}
+        onToggle={(event) => setIsOpen(event.currentTarget.open)}
+      >
+        <summary aria-expanded={isOpen}>
+          <span>{isOpen ? "Close" : "Menu"}</span>
+          <i aria-hidden="true" />
+        </summary>
+        <PrimaryNavigation
+          variant="mobile"
+          onNavigate={() => closeMobileMenu()}
+        />
+      </details>
+    </div>
   );
 }
