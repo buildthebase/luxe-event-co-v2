@@ -66,7 +66,7 @@ export function HomeTestimonialCarousel() {
       }}
     >
       <header>
-        <h2 id="home-reviews-title">Luxe Event Co. Reviews</h2>
+        <h2 id="home-reviews-title">Client Reviews</h2>
         <div aria-label="Testimonial controls" role="group">
           <button
             aria-label="Previous sample testimonial"
@@ -97,7 +97,6 @@ export function HomeTestimonialCarousel() {
             aria-roledescription="slide"
             aria-label={`Review placeholder ${index + 1} of ${homeTestimonialPlaceholders.length}`}
           >
-            <span>{String(index + 1).padStart(2, "0")}</span>
             <p>“{testimonial.quote}”</p>
             <footer><cite>Sample — {testimonial.context}</cite></footer>
           </blockquote>
