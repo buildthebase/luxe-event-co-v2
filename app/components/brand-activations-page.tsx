@@ -44,10 +44,10 @@ function ActivationHero() {
         </p>
         <div className="activation-hero-actions">
           <Link href="/inquire" data-event-name="inquiry_start">
-            Create a Branded Experience <span aria-hidden="true">↗</span>
+            Create a Branded Experience <span aria-hidden="true">↗︎</span>
           </Link>
           <a href="#activation-system">
-            Explore Brand Possibilities <span aria-hidden="true">↓</span>
+            Explore Brand Possibilities <span aria-hidden="true">↓︎</span>
           </a>
         </div>
       </div>
@@ -177,7 +177,7 @@ function ActivationServices() {
             <h3>{service.statement}</h3>
             <p>{service.description}</p>
             <Link href={service.href}>
-              Explore {service.name} <span aria-hidden="true">↗</span>
+              Explore {service.name} <span aria-hidden="true">↗︎</span>
             </Link>
           </article>
         ))}
@@ -265,7 +265,7 @@ function ActivationGallery() {
         ))}
       </div>
       <Link href="/gallery">
-        Explore the Luxe event gallery <span aria-hidden="true">↗</span>
+        Explore the Luxe event gallery <span aria-hidden="true">↗︎</span>
       </Link>
     </section>
   );
@@ -287,7 +287,7 @@ function ActivationPlanning() {
         ))}
       </ol>
       <Link href="/events/corporate-events">
-        Explore corporate event capability <span aria-hidden="true">↗</span>
+        Explore corporate event capability <span aria-hidden="true">↗︎</span>
       </Link>
     </section>
   );
@@ -301,7 +301,7 @@ function ActivationFaq() {
       </header>
       <FaqAccordion items={activationFaqs} />
       <Link href="/faq">
-        Review all Luxe booking questions <span aria-hidden="true">↗</span>
+        Review all Luxe booking questions <span aria-hidden="true">↗︎</span>
       </Link>
     </section>
   );

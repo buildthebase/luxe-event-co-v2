@@ -58,10 +58,10 @@ function FaqHero() {
         </p>
         <div className="faq-hub-hero-actions">
           <Link href="/inquire" data-event-name="inquiry_start">
-            Ask About Your Event <span aria-hidden="true">↗</span>
+            Ask About Your Event <span aria-hidden="true">↗︎</span>
           </Link>
           <a href="#faq-categories">
-            Find an Answer <span aria-hidden="true">↓</span>
+            Find an Answer <span aria-hidden="true">↓︎</span>
           </a>
         </div>
       </div>
@@ -140,7 +140,7 @@ function FaqInquiry() {
         </p>
       </div>
       <Link href="/inquire" data-event-name="inquiry_start">
-        Ask About Your Event <span aria-hidden="true">↗</span>
+        Ask About Your Event <span aria-hidden="true">↗︎</span>
       </Link>
     </section>
   );

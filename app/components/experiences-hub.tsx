@@ -31,10 +31,10 @@ export function ExperiencesHero({
         </p>
         <div className="experiences-hero-actions">
           <a href="#experience-selector" data-event-name="experience_select">
-            Explore an Experience <span aria-hidden="true">↓</span>
+            Explore an Experience <span aria-hidden="true">↓︎</span>
           </a>
           <Link href="/inquire" data-event-name="inquiry_start">
-            Plan Your Event <span aria-hidden="true">↗</span>
+            Plan Your Event <span aria-hidden="true">↗︎</span>
           </Link>
         </div>
       </div>
@@ -98,7 +98,7 @@ export function ExperiencesBookingClarity() {
         </div>
       </dl>
       <Link href="/inquire">
-        Plan one or more Luxe experiences <span aria-hidden="true">↗</span>
+        Plan one or more Luxe experiences <span aria-hidden="true">↗︎</span>
       </Link>
     </section>
   );
@@ -136,7 +136,7 @@ function ExperienceFeature({ feature }: { feature: ExperienceHubFeature }) {
             data-event-name="experience_select"
             data-experience={feature.id}
           >
-            {feature.cta} <span aria-hidden="true">↗</span>
+            {feature.cta} <span aria-hidden="true">↗︎</span>
           </Link>
         </div>
       </div>
@@ -181,7 +181,7 @@ export function ExperienceNeedComparison() {
             <strong>{item.need}</strong>
             <small>{item.atmosphere}</small>
             <b>{item.experience}</b>
-            <i aria-hidden="true">↗</i>
+            <i aria-hidden="true">↗︎</i>
           </Link>
         ))}
       </div>
@@ -204,7 +204,7 @@ export function ExperiencesEventTypes() {
             <span>{String(index + 1).padStart(2, "0")}</span>
             <strong>{event.name}</strong>
             <small>{event.summary}</small>
-            <b aria-hidden="true">↗</b>
+            <b aria-hidden="true">↗︎</b>
           </Link>
         ))}
       </div>
@@ -249,7 +249,7 @@ export function ExperiencesGalleryPreview() {
         ))}
       </div>
       <Link href="/gallery" className="experiences-text-link">
-        Explore the Luxe event gallery <span aria-hidden="true">↗</span>
+        Explore the Luxe event gallery <span aria-hidden="true">↗︎</span>
       </Link>
     </section>
   );

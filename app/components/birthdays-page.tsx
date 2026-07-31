@@ -41,9 +41,9 @@ function BirthdayHero() {
         </p>
         <div className="birthday-hero-actions">
           <Link href="/inquire" data-event-name="inquiry_start">
-            Plan a Birthday Experience <span aria-hidden="true">↗</span>
+            Plan a Birthday Experience <span aria-hidden="true">↗︎</span>
           </Link>
-          <a href="#birthday-contexts">Explore the Occasion <span aria-hidden="true">↓</span></a>
+          <a href="#birthday-contexts">Explore the Occasion <span aria-hidden="true">↓︎</span></a>
         </div>
       </div>
       <div className="birthday-hero-art" aria-hidden="true">
@@ -107,7 +107,7 @@ function BirthdayExperiences() {
             <h3>{experience.name}</h3>
             <p>{experience.description}</p>
             <small>{experience.note}</small>
-            <Link href={experience.href}>Explore {experience.name} <span aria-hidden="true">↗</span></Link>
+            <Link href={experience.href}>Explore {experience.name} <span aria-hidden="true">↗︎</span></Link>
           </article>
         ))}
       </div>
@@ -163,7 +163,7 @@ function BirthdayGallery() {
           </figure>
         ))}
       </div>
-      <Link href="/gallery">Explore the Luxe Event Gallery <span aria-hidden="true">↗</span></Link>
+      <Link href="/gallery">Explore the Luxe Event Gallery <span aria-hidden="true">↗︎</span></Link>
     </section>
   );
 }
@@ -173,7 +173,7 @@ function BirthdayFaq() {
     <section className="birthday-faq" aria-labelledby="birthday-faq-title">
       <header><h2 id="birthday-faq-title">Birthday planning questions.</h2></header>
       <FaqAccordion items={birthdayFaqs} indicatorElement="i" />
-      <Link href="/faq">Review Luxe Booking FAQs <span aria-hidden="true">↗</span></Link>
+      <Link href="/faq">Review Luxe Booking FAQs <span aria-hidden="true">↗︎</span></Link>
     </section>
   );
 }

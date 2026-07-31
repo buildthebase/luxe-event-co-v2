@@ -41,10 +41,10 @@ function PrivateEventsHero() {
         </p>
         <div className="private-hero-actions">
           <Link href="/inquire" data-event-name="inquiry_start">
-            Discuss Your Event <span aria-hidden="true">↗</span>
+            Discuss Your Event <span aria-hidden="true">↗︎</span>
           </Link>
           <a href="#private-occasions">
-            Explore the Occasions <span aria-hidden="true">↓</span>
+            Explore the Occasions <span aria-hidden="true">↓︎</span>
           </a>
         </div>
       </div>
@@ -114,7 +114,7 @@ function PrivateEventExperiences() {
             <p>{experience.description}</p>
             <small>{experience.note}</small>
             <Link href={experience.href}>
-              Explore {experience.name} <span aria-hidden="true">↗</span>
+              Explore {experience.name} <span aria-hidden="true">↗︎</span>
             </Link>
           </article>
         ))}
@@ -163,7 +163,7 @@ function PrivateEventGallery() {
           </figure>
         ))}
       </div>
-      <Link href="/gallery">Explore the Luxe Event Gallery <span aria-hidden="true">↗</span></Link>
+      <Link href="/gallery">Explore the Luxe Event Gallery <span aria-hidden="true">↗︎</span></Link>
     </section>
   );
 }
@@ -196,7 +196,7 @@ function PrivateEventFaq() {
     <section className="private-faq" aria-labelledby="private-faq-title">
       <header><h2 id="private-faq-title">Private-event planning questions.</h2></header>
       <FaqAccordion items={privateEventFaqs} indicatorElement="i" />
-      <Link href="/faq">Review Luxe Booking FAQs <span aria-hidden="true">↗</span></Link>
+      <Link href="/faq">Review Luxe Booking FAQs <span aria-hidden="true">↗︎</span></Link>
     </section>
   );
 }

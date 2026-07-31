@@ -22,7 +22,7 @@ export function PriorityAnswer({
       <div>
         <p>{answer}</p>
         <Link href={href} data-event-name="inquiry_start">
-          {linkLabel} <span aria-hidden="true">↗</span>
+          {linkLabel} <span aria-hidden="true">↗︎</span>
         </Link>
       </div>
     </article>

@@ -203,7 +203,7 @@ export function PageSectionNavigation({
                 >
                   <span>
                     {item.label === "Back to top"
-                      ? "↑"
+                      ? "↑︎"
                       : String(
                           index +
                             (items[0]?.label === "Back to top" ? 0 : 1),

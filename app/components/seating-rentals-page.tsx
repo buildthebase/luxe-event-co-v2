@@ -51,10 +51,10 @@ function SeatingHero() {
         </p>
         <div className="seating-hero-actions">
           <Link href="/inquire" data-event-name="inquiry_start">
-            Discuss Your Rental Requirements <span aria-hidden="true">↗</span>
+            Discuss Your Rental Requirements <span aria-hidden="true">↗︎</span>
           </Link>
           <a href="#rental-categories">
-            Review Rental Categories <span aria-hidden="true">↓</span>
+            Review Rental Categories <span aria-hidden="true">↓︎</span>
           </a>
         </div>
       </div>
@@ -278,7 +278,7 @@ function RentalEvents() {
             <span>{String(index + 1).padStart(2, "0")}</span>
             <strong>{event.label}</strong>
             <small>{event.context}</small>
-            <b aria-hidden="true">↗</b>
+            <b aria-hidden="true">↗︎</b>
           </Link>
         ))}
       </div>
@@ -309,7 +309,7 @@ function RentalGallery() {
           </figure>
         ))}
       </div>
-      <Link href="/gallery">Explore the Luxe event gallery <span aria-hidden="true">↗</span></Link>
+      <Link href="/gallery">Explore the Luxe event gallery <span aria-hidden="true">↗︎</span></Link>
     </section>
   );
 }
@@ -329,7 +329,7 @@ function RentalCombinations() {
             Consider cocktail tables, guest circulation, seating, and service zones
             alongside a crafted Coffee Bar experience.
           </p>
-          <b aria-hidden="true">Explore Luxe Coffee Bar ↗</b>
+          <b aria-hidden="true">Explore Luxe Coffee Bar ↗︎</b>
         </Link>
         <Link href="/experiences/sweet-cart">
           <span>Setting + Dessert</span>
@@ -338,7 +338,7 @@ function RentalCombinations() {
             Connect tables, seating, tents, linens, or lighting to the placement and
             guest flow around Luxe Sweet Cart.
           </p>
-          <b aria-hidden="true">Explore Luxe Sweet Cart ↗</b>
+          <b aria-hidden="true">Explore Luxe Sweet Cart ↗︎</b>
         </Link>
       </div>
     </section>
@@ -372,7 +372,7 @@ function RentalFaq() {
       </header>
       <FaqAccordion items={rentalContextualFaqs} />
       <Link href="/faq">
-        Review all Luxe booking questions <span aria-hidden="true">↗</span>
+        Review all Luxe booking questions <span aria-hidden="true">↗︎</span>
       </Link>
     </section>
   );

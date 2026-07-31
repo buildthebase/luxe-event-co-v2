@@ -42,10 +42,10 @@ function BabyShowerHero() {
         </p>
         <div className="baby-hero-actions">
           <Link href="/inquire" data-event-name="inquiry_start">
-            Plan a Baby Shower <span aria-hidden="true">↗</span>
+            Plan a Baby Shower <span aria-hidden="true">↗︎</span>
           </Link>
           <a href="#baby-experiences">
-            Explore the Possibilities <span aria-hidden="true">↓</span>
+            Explore the Possibilities <span aria-hidden="true">↓︎</span>
           </a>
         </div>
       </div>
@@ -99,7 +99,7 @@ function BabyShowerExperiences() {
             <h3>{experience.statement}</h3>
             <p>{experience.description}</p>
             <small>{experience.detail}</small>
-            <Link href={experience.href}>Explore {experience.name} <span aria-hidden="true">↗</span></Link>
+            <Link href={experience.href}>Explore {experience.name} <span aria-hidden="true">↗︎</span></Link>
           </article>
         ))}
       </div>
@@ -185,7 +185,7 @@ function BabyShowerGallery() {
           </figure>
         ))}
       </div>
-      <Link href="/gallery">Explore the Luxe Event Gallery <span aria-hidden="true">↗</span></Link>
+      <Link href="/gallery">Explore the Luxe Event Gallery <span aria-hidden="true">↗︎</span></Link>
     </section>
   );
 }
@@ -212,7 +212,7 @@ function BabyShowerFaq() {
     <section className="baby-faq" aria-labelledby="baby-faq-title">
       <header><h2 id="baby-faq-title">Baby shower planning questions.</h2></header>
       <FaqAccordion items={babyShowerFaqs} indicatorElement="i" />
-      <Link href="/faq">Review Luxe Booking FAQs <span aria-hidden="true">↗</span></Link>
+      <Link href="/faq">Review Luxe Booking FAQs <span aria-hidden="true">↗︎</span></Link>
     </section>
   );
 }

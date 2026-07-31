@@ -116,7 +116,7 @@ function InquiryAction({
       className={className}
       context={{ sourcePath: "/inquire" }}
     >
-      Begin Your Inquiry <span aria-hidden="true">↗</span>
+      Begin Your Inquiry <span aria-hidden="true">↗︎</span>
     </InquiryHandoffLink>
   );
 }
@@ -138,7 +138,7 @@ function InquireHero() {
         <div className="inquire-hero-actions">
           <InquiryAction />
           <a href="#prepare-your-brief">
-            Prepare Your Details <span aria-hidden="true">↓</span>
+            Prepare Your Details <span aria-hidden="true">↓︎</span>
           </a>
         </div>
       </div>
@@ -202,7 +202,7 @@ function ExperienceScope() {
             <h3>{experience.title}</h3>
             <p>{experience.detail}</p>
             <Link href={experience.href}>
-              Explore {experience.title} <span aria-hidden="true">↗</span>
+              Explore {experience.title} <span aria-hidden="true">↗︎</span>
             </Link>
           </article>
         ))}

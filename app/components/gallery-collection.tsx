@@ -182,7 +182,7 @@ export function GalleryCollection() {
                     data-gallery-item-id={group.id}
                     key={link.href}
                   >
-                    {link.label} <span aria-hidden="true">↗</span>
+                    {link.label} <span aria-hidden="true">↗︎</span>
                   </Link>
                 ))}
               </nav>

@@ -66,7 +66,7 @@ export function ExperienceSelector({
               <strong>{experience.name}</strong>
               <span>{experience.description}</span>
               <b aria-hidden="true">
-                {experienceSelectorActions[experience.id] ?? "Explore"} ↗
+                {experienceSelectorActions[experience.id] ?? "Explore"} ↗︎
               </b>
             </span>
           </Link>
@@ -144,7 +144,7 @@ export function EventPlanningPathway({
               <span>{step.number}</span>
               <strong>{step.title}</strong>
               <p>{step.description}</p>
-              <b aria-hidden="true">↗</b>
+              <b aria-hidden="true">↗︎</b>
             </Link>
           </li>
         ))}
@@ -183,7 +183,7 @@ export function CombinedExperienceFeature({
                 <i className={`signature-node-${experienceId}`} key={experienceId} />
               ))}
             </span>
-            <b aria-hidden="true">↗</b>
+            <b aria-hidden="true">↗︎</b>
           </Link>
         ))}
       </div>
@@ -276,7 +276,7 @@ export function ContextualInquiryPanel({
       </div>
       <Link href={resolvedContext.href}>
         {resolvedContext.cta}
-        <span aria-hidden="true">↗</span>
+        <span aria-hidden="true">↗︎</span>
       </Link>
     </section>
   );

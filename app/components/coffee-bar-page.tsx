@@ -50,10 +50,10 @@ function CoffeeHero() {
         </p>
         <div className="coffee-hero-actions">
           <Link href="/inquire" data-event-name="inquiry_start">
-            Inquire About Coffee Service <span aria-hidden="true">↗</span>
+            Inquire About Coffee Service <span aria-hidden="true">↗︎</span>
           </Link>
           <a href="#coffee-formats">
-            Compare Coffee Experiences <span aria-hidden="true">↓</span>
+            Compare Coffee Experiences <span aria-hidden="true">↓︎</span>
           </a>
         </div>
       </div>
@@ -330,7 +330,7 @@ function CoffeeOperations() {
           events throughout Southern Ontario. Travel fees may apply outside the
           standard service area.
         </p>
-        <Link href="/faq">Review booking and logistics questions <span aria-hidden="true">↗</span></Link>
+        <Link href="/faq">Review booking and logistics questions <span aria-hidden="true">↗︎</span></Link>
       </aside>
     </section>
   );
@@ -354,7 +354,7 @@ function CoffeeEvents() {
             <span>{String(index + 1).padStart(2, "0")}</span>
             <strong>{event.label}</strong>
             <small>{event.context}</small>
-            <b aria-hidden="true">↗</b>
+            <b aria-hidden="true">↗︎</b>
           </Link>
         ))}
       </div>
@@ -384,7 +384,7 @@ function CoffeeGallery() {
           </figure>
         ))}
       </div>
-      <Link href="/gallery">Explore the Luxe event gallery <span aria-hidden="true">↗</span></Link>
+      <Link href="/gallery">Explore the Luxe event gallery <span aria-hidden="true">↗︎</span></Link>
     </section>
   );
 }
@@ -401,13 +401,13 @@ function CoffeeRelated() {
           <span>02 / Dessert</span>
           <strong>Luxe Sweet Cart</strong>
           <p>Pair crafted drinks with a live, made-to-order dessert experience.</p>
-          <b aria-hidden="true">Explore Sweet Cart ↗</b>
+          <b aria-hidden="true">Explore Sweet Cart ↗︎</b>
         </Link>
         <Link href="/experiences/seating-rentals">
           <span>03 / Seating</span>
           <strong>Luxe Seating Rentals</strong>
           <p>Connect café hospitality with the structure and setting around it.</p>
-          <b aria-hidden="true">Explore Seating Rentals ↗</b>
+          <b aria-hidden="true">Explore Seating Rentals ↗︎</b>
         </Link>
       </div>
     </section>
@@ -423,7 +423,7 @@ function CoffeeFaq() {
       </header>
       <FaqAccordion items={coffeeContextualFaqs} />
       <Link href="/faq">
-        Review all Luxe booking questions <span aria-hidden="true">↗</span>
+        Review all Luxe booking questions <span aria-hidden="true">↗︎</span>
       </Link>
     </section>
   );

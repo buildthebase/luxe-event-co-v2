@@ -50,10 +50,10 @@ function SweetHero() {
         </p>
         <div className="sweet-hero-actions">
           <Link href="/inquire" data-event-name="inquiry_start">
-            Inquire About a Dessert Experience <span aria-hidden="true">↗</span>
+            Inquire About a Dessert Experience <span aria-hidden="true">↗︎</span>
           </Link>
           <a href="#dessert-experiences">
-            Explore the Dessert Menu <span aria-hidden="true">↓</span>
+            Explore the Dessert Menu <span aria-hidden="true">↓︎</span>
           </a>
         </div>
       </div>
@@ -315,7 +315,7 @@ function SweetOperations() {
           Luxe serves Toronto and the GTA, with select destination events available
           throughout Southern Ontario. Travel fees may apply.
         </p>
-        <Link href="/faq">Review booking and logistics questions <span aria-hidden="true">↗</span></Link>
+        <Link href="/faq">Review booking and logistics questions <span aria-hidden="true">↗︎</span></Link>
       </aside>
     </section>
   );
@@ -332,7 +332,7 @@ function SweetEvents() {
         {sweetEventLinks.map((event, index) => (
           <Link href={event.href} key={event.href}>
             <span>{String(index + 1).padStart(2, "0")}</span>
-            <strong>{event.label}</strong><small>{event.context}</small><b aria-hidden="true">↗</b>
+            <strong>{event.label}</strong><small>{event.context}</small><b aria-hidden="true">↗︎</b>
           </Link>
         ))}
       </div>
@@ -361,7 +361,7 @@ function SweetGallery() {
           </figure>
         ))}
       </div>
-      <Link href="/gallery">Explore the Luxe event gallery <span aria-hidden="true">↗</span></Link>
+      <Link href="/gallery">Explore the Luxe event gallery <span aria-hidden="true">↗︎</span></Link>
     </section>
   );
 }
@@ -378,13 +378,13 @@ function SweetCombinations() {
           <span>Coffee + Dessert</span>
           <strong>A café and dessert experience</strong>
           <p>Pair crafted beverages with live dessert preparation through one coordinated inquiry.</p>
-          <b aria-hidden="true">Explore Luxe Coffee Bar ↗</b>
+          <b aria-hidden="true">Explore Luxe Coffee Bar ↗︎</b>
         </Link>
         <Link href="/experiences/seating-rentals">
           <span>Dessert + Setting</span>
           <strong>A cart styled with the room</strong>
           <p>Connect the dessert moment with seating, tables, tents, linens, or lighting.</p>
-          <b aria-hidden="true">Explore Seating Rentals ↗</b>
+          <b aria-hidden="true">Explore Seating Rentals ↗︎</b>
         </Link>
       </div>
     </section>
@@ -400,7 +400,7 @@ function SweetFaq() {
       </header>
       <FaqAccordion items={sweetContextualFaqs} />
       <Link href="/faq">
-        Review all Luxe booking questions <span aria-hidden="true">↗</span>
+        Review all Luxe booking questions <span aria-hidden="true">↗︎</span>
       </Link>
     </section>
   );

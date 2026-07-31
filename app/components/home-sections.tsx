@@ -136,7 +136,7 @@ export function HomeEventCategories() {
                     <Link href={`/events/${event.slug}`} key={event.slug}>
                       <strong>{event.name}</strong>
                       <small>{event.summary}</small>
-                      <b aria-hidden="true">↗</b>
+                      <b aria-hidden="true">↗︎</b>
                     </Link>
                   );
                 })}
@@ -177,7 +177,7 @@ export function HomeSelectedImagery() {
         ))}
       </div>
       <Link href="/gallery" className="home-text-link">
-        Visit the Luxe event gallery <span aria-hidden="true">↗</span>
+        Visit the Luxe event gallery <span aria-hidden="true">↗︎</span>
       </Link>
     </section>
   );

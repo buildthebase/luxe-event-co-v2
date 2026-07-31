@@ -317,7 +317,7 @@ export function HomeHero() {
             aria-haspopup="dialog"
           >
             Plan Your Event
-            <span aria-hidden="true">↗</span>
+            <span aria-hidden="true">↗︎</span>
           </button>
         </div>
 
@@ -357,7 +357,7 @@ export function HomeHero() {
             platform, once the final provider is selected and connected.
           </p>
           <div className="home-quote-modal-placeholder">
-            <span aria-hidden="true">↗</span>
+            <span aria-hidden="true">↗︎</span>
             <strong>Quote form integration placeholder</strong>
             <small>No information is collected or submitted yet.</small>
           </div>

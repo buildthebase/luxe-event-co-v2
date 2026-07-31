@@ -29,10 +29,10 @@ export function EventsHero({
         </p>
         <div className="events-hero-actions">
           <a href="#event-pathways" data-event-name="event_type_select">
-            Find Your Event Experience <span aria-hidden="true">↓</span>
+            Find Your Event Experience <span aria-hidden="true">↓︎</span>
           </a>
           <Link href="/experiences">
-            Explore Experiences <span aria-hidden="true">↗</span>
+            Explore Experiences <span aria-hidden="true">↗︎</span>
           </Link>
         </div>
       </div>
@@ -133,7 +133,7 @@ export function EventsDirectory() {
               data-event-name="event_type_select"
               data-event-type={event.slug}
             >
-              Explore {event.name} <span aria-hidden="true">↗</span>
+              Explore {event.name} <span aria-hidden="true">↗︎</span>
             </Link>
           </article>
         ))}
@@ -173,7 +173,7 @@ export function EventsGalleryPreview() {
         ))}
       </div>
       <Link href="/gallery" className="events-text-link">
-        Explore the Luxe event gallery <span aria-hidden="true">↗</span>
+        Explore the Luxe event gallery <span aria-hidden="true">↗︎</span>
       </Link>
     </section>
   );

@@ -43,10 +43,10 @@ function CorporateHero() {
         </p>
         <div className="corporate-hero-actions">
           <Link href="/inquire" data-event-name="inquiry_start">
-            Discuss a Corporate Event <span aria-hidden="true">↗</span>
+            Discuss a Corporate Event <span aria-hidden="true">↗︎</span>
           </Link>
           <a href="#corporate-capabilities">
-            Review Capabilities <span aria-hidden="true">↓</span>
+            Review Capabilities <span aria-hidden="true">↓︎</span>
           </a>
         </div>
       </div>
@@ -155,7 +155,7 @@ function CorporateExperiences() {
             <p>{experience.description}</p>
             <small>{experience.fact}</small>
             <Link href={experience.href}>
-              Explore {experience.label} <span aria-hidden="true">↗</span>
+              Explore {experience.label} <span aria-hidden="true">↗︎</span>
             </Link>
           </article>
         ))}
@@ -185,7 +185,7 @@ function CorporateBranding() {
         ))}
       </div>
       <Link href="/events/brand-activations">
-        Explore brand activation capabilities <span aria-hidden="true">↗</span>
+        Explore brand activation capabilities <span aria-hidden="true">↗︎</span>
       </Link>
     </section>
   );
@@ -260,7 +260,7 @@ function CorporateGallery() {
         ))}
       </div>
       <Link href="/gallery">
-        Explore the Luxe event gallery <span aria-hidden="true">↗</span>
+        Explore the Luxe event gallery <span aria-hidden="true">↗︎</span>
       </Link>
     </section>
   );
@@ -284,7 +284,7 @@ function CorporatePlanning() {
         ))}
       </ol>
       <Link className="corporate-planning-events-link" href="/events">
-        Explore every Luxe event pathway <span aria-hidden="true">↗</span>
+        Explore every Luxe event pathway <span aria-hidden="true">↗︎</span>
       </Link>
     </section>
   );
@@ -298,7 +298,7 @@ function CorporateFaq() {
       </header>
       <FaqAccordion items={corporateFaqs} />
       <Link href="/faq">
-        Review all Luxe booking questions <span aria-hidden="true">↗</span>
+        Review all Luxe booking questions <span aria-hidden="true">↗︎</span>
       </Link>
     </section>
   );

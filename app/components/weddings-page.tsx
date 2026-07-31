@@ -44,10 +44,10 @@ function WeddingHero() {
         </p>
         <div className="wedding-hero-actions">
           <Link href="/inquire" data-event-name="inquiry_start">
-            Plan Your Wedding Experience <span aria-hidden="true">↗</span>
+            Plan Your Wedding Experience <span aria-hidden="true">↗︎</span>
           </Link>
           <a href="#wedding-day">
-            Explore the Wedding Day <span aria-hidden="true">↓</span>
+            Explore the Wedding Day <span aria-hidden="true">↓︎</span>
           </a>
         </div>
       </div>
@@ -151,7 +151,7 @@ function WeddingExperiences() {
             <strong>{experience.name}</strong>
             <h3>{experience.statement}</h3>
             <p>{experience.description}</p>
-            <b>Explore {experience.label} <span aria-hidden="true">↗</span></b>
+            <b>Explore {experience.label} <span aria-hidden="true">↗︎</span></b>
           </Link>
         ))}
       </div>
@@ -268,7 +268,7 @@ function WeddingGallery() {
         ))}
       </div>
       <Link href="/gallery">
-        Explore the Luxe event gallery <span aria-hidden="true">↗</span>
+        Explore the Luxe event gallery <span aria-hidden="true">↗︎</span>
       </Link>
     </section>
   );
@@ -283,7 +283,7 @@ function WeddingFaq() {
       </header>
       <FaqAccordion items={weddingFaqs} />
       <Link href="/faq">
-        Review all Luxe booking questions <span aria-hidden="true">↗</span>
+        Review all Luxe booking questions <span aria-hidden="true">↗︎</span>
       </Link>
     </section>
   );

@@ -8338,7 +8338,7 @@ a {
 
 .home-positioning-services a::after {
   color: var(--gold-text);
-  content: "↓";
+  content: "↓︎";
 }
 
 .home-positioning-services a:hover,
