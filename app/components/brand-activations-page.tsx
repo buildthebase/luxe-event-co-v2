@@ -12,6 +12,7 @@ import { pageMetadata } from "../metadata-config";
 import { createServicePageSchema } from "../schema-builders";
 import { FaqAccordion } from "./faq-accordion";
 import { JsonLd } from "./json-ld";
+import { QuoteModalTrigger } from "./quote-modal-trigger";
 import { ContextualInquiryPanel, CredibilityStrip } from "./signature-elements";
 import { SiteShell } from "./site-shell";
 
@@ -43,9 +44,9 @@ function ActivationHero() {
           campaign audiences.
         </p>
         <div className="activation-hero-actions">
-          <Link href="/inquire" data-event-name="inquiry_start">
+          <QuoteModalTrigger data-event-name="inquiry_start">
             Create a Branded Experience <span aria-hidden="true">↗︎</span>
-          </Link>
+          </QuoteModalTrigger>
           <a href="#activation-system">
             Explore Brand Possibilities <span aria-hidden="true">↓︎</span>
           </a>
@@ -53,18 +54,18 @@ function ActivationHero() {
       </div>
       <div className="activation-hero-canvas" aria-hidden="true">
         <div>
-          <span>01 / Taste</span>
+          <span>Taste</span>
           <strong>Your<br />campaign,<br />served.</strong>
           <i />
         </div>
         <div>
-          <span>02 / Share</span>
+          <span>Share</span>
           <i />
           <i />
           <i />
         </div>
         <div>
-          <span>03 / Remember</span>
+          <span>Remember</span>
           <b>Brand<br />moment</b>
         </div>
       </div>
@@ -133,7 +134,6 @@ function ActivationBrandSystem() {
       <ol>
         {activationBrandTouchpoints.map((touchpoint) => (
           <li key={touchpoint.number}>
-            <span>{touchpoint.number}</span>
             <div aria-hidden="true"><i /><i /><i /></div>
             <h3>{touchpoint.title}</h3>
             <p>{touchpoint.description}</p>
@@ -153,7 +153,6 @@ function ActivationContexts() {
       <ol>
         {activationContexts.map((context) => (
           <li key={context.number}>
-            <span>{context.number}</span>
             <h3>{context.title}</h3>
             <p>{context.description}</p>
           </li>
@@ -172,7 +171,6 @@ function ActivationServices() {
       <div>
         {activationServiceMedia.map((service) => (
           <article key={service.number}>
-            <span>{service.number}</span>
             <Link href={service.href}>{service.name}</Link>
             <h3>{service.statement}</h3>
             <p>{service.description}</p>
@@ -195,7 +193,6 @@ function ActivationScale() {
       <div>
         {activationScaleCapabilities.map((capability) => (
           <article key={capability.number}>
-            <span>{capability.number}</span>
             <h3>{capability.title}</h3>
             <strong>{capability.fact}</strong>
             <p>{capability.qualification}</p>
@@ -211,7 +208,7 @@ function ActivationContentMoment() {
     <section className="activation-content" aria-labelledby="activation-content-title">
       <div className="activation-content-art" aria-hidden="true">
         <i /><i /><i />
-        <span>Frame / 01</span>
+        <span>Frame</span>
       </div>
       <div>
         <h2 id="activation-content-title">Designed to work in the room and in the frame.</h2>
@@ -257,7 +254,6 @@ function ActivationGallery() {
           <figure className={`activation-gallery-${item.tone}`} key={item.number}>
             <div aria-hidden="true"><i /><i /><i /></div>
             <figcaption>
-              <span>{item.number}</span>
               <strong>{item.label}</strong>
               <small>{item.note}</small>
             </figcaption>
@@ -280,7 +276,6 @@ function ActivationPlanning() {
       <ol>
         {activationPlanningRequirements.map((requirement) => (
           <li key={requirement.number}>
-            <span>{requirement.number}</span>
             <h3>{requirement.title}</h3>
             <p>{requirement.description}</p>
           </li>
@@ -299,7 +294,7 @@ function ActivationFaq() {
       <header>
         <h2 id="activation-faq-title">Answers before the creative and operational review.</h2>
       </header>
-      <FaqAccordion items={activationFaqs} />
+      <FaqAccordion items={activationFaqs} showNumbers={false} />
       <Link href="/faq">
         Review all Luxe booking questions <span aria-hidden="true">↗︎</span>
       </Link>

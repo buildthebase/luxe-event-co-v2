@@ -15,6 +15,7 @@ import {
   type SignatureExperience,
 } from "../signature-elements";
 import { ResponsiveImage } from "./responsive-image";
+import { QuoteModalTrigger } from "./quote-modal-trigger";
 
 const experienceSelectorActions: Record<string, string> = {
   coffee: "Sip",
@@ -274,10 +275,10 @@ export function ContextualInquiryPanel({
         <h2 id={`signature-inquiry-${contextKey}`}>{resolvedContext.heading}</h2>
         <p>{resolvedContext.description}</p>
       </div>
-      <Link href={resolvedContext.href}>
+      <QuoteModalTrigger>
         {resolvedContext.cta}
         <span aria-hidden="true">↗︎</span>
-      </Link>
+      </QuoteModalTrigger>
     </section>
   );
 }

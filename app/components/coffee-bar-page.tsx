@@ -16,6 +16,7 @@ import { createServicePageSchema, divisionServiceIds } from "../schema-builders"
 import { FaqAccordion } from "./faq-accordion";
 import { JsonLd } from "./json-ld";
 import { PriorityAnswer } from "./priority-answer";
+import { QuoteModalTrigger } from "./quote-modal-trigger";
 import { ContextualInquiryPanel, CredibilityStrip } from "./signature-elements";
 import { SiteShell } from "./site-shell";
 
@@ -49,9 +50,9 @@ function CoffeeHero() {
           that becomes part of the room.
         </p>
         <div className="coffee-hero-actions">
-          <Link href="/inquire" data-event-name="inquiry_start">
+          <QuoteModalTrigger data-event-name="inquiry_start">
             Inquire About Coffee Service <span aria-hidden="true">↗︎</span>
-          </Link>
+          </QuoteModalTrigger>
           <a href="#coffee-formats">
             Compare Coffee Experiences <span aria-hidden="true">↓︎</span>
           </a>

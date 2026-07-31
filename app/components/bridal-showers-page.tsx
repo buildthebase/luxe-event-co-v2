@@ -10,6 +10,7 @@ import { pageMetadata } from "../metadata-config";
 import { createServicePageSchema } from "../schema-builders";
 import { FaqAccordion } from "./faq-accordion";
 import { JsonLd } from "./json-ld";
+import { QuoteModalTrigger } from "./quote-modal-trigger";
 import { ContextualInquiryPanel } from "./signature-elements";
 import { SiteShell } from "./site-shell";
 
@@ -38,18 +39,18 @@ function BridalHero() {
           turn the shower into a visual, guest-centred experience of its own.
         </p>
         <div className="bridal-hero-actions">
-          <Link href="/inquire" data-event-name="inquiry_start">
+          <QuoteModalTrigger data-event-name="inquiry_start">
             Plan a Bridal Shower <span aria-hidden="true">↗︎</span>
-          </Link>
+          </QuoteModalTrigger>
           <a href="#bridal-experiences">
             Explore the Composition <span aria-hidden="true">↓︎</span>
           </a>
         </div>
       </div>
       <div className="bridal-hero-art" aria-hidden="true">
-        <div><span>01</span><b>Café</b></div>
-        <div><span>02</span><b>Sweet</b></div>
-        <div><span>03</span><b>Setting</b></div>
+        <div><b>Café</b></div>
+        <div><b>Sweet</b></div>
+        <div><b>Setting</b></div>
         <i /><i />
       </div>
       <dl className="bridal-hero-proof">
@@ -88,7 +89,6 @@ function BridalExperiences() {
       <div>
         {bridalShowerExperiences.map((experience) => (
           <article className={`bridal-experience-${experience.tone}`} key={experience.number}>
-            <span>{experience.number}</span>
             <div aria-hidden="true"><i /><i /><i /></div>
             <p>{experience.label}</p>
             <h3>{experience.title}</h3>
@@ -114,7 +114,6 @@ function BridalDetails() {
       <ol>
         {bridalShowerDetails.map((detail) => (
           <li key={detail.number}>
-            <span>{detail.number}</span>
             <h3>{detail.title}</h3>
             <p>{detail.description}</p>
           </li>
@@ -134,7 +133,6 @@ function BridalCombinations() {
       <div>
         {bridalShowerCombinations.map((combination) => (
           <article key={combination.number}>
-            <span>{combination.number}</span>
             <p>{combination.title}</p>
             <h3>{combination.experiences}</h3>
             <p>{combination.description}</p>
@@ -156,7 +154,7 @@ function BridalGallery() {
         {bridalShowerGallery.map((item) => (
           <figure className={`bridal-gallery-${item.tone}`} key={item.number}>
             <div aria-hidden="true"><i /><i /><i /></div>
-            <figcaption><span>{item.number}</span><strong>{item.label}</strong><small>{item.note}</small></figcaption>
+            <figcaption><strong>{item.label}</strong><small>{item.note}</small></figcaption>
           </figure>
         ))}
       </div>
@@ -169,7 +167,7 @@ function BridalFaq() {
   return (
     <section className="bridal-faq" aria-labelledby="bridal-faq-title">
       <header><h2 id="bridal-faq-title">For hosts and planners.</h2></header>
-      <FaqAccordion items={bridalShowerFaqs} indicatorElement="i" />
+      <FaqAccordion items={bridalShowerFaqs} indicatorElement="i" showNumbers={false} />
       <Link href="/faq">Review Luxe Booking FAQs <span aria-hidden="true">↗︎</span></Link>
     </section>
   );

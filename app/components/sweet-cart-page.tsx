@@ -16,6 +16,7 @@ import { createServicePageSchema, divisionServiceIds } from "../schema-builders"
 import { FaqAccordion } from "./faq-accordion";
 import { JsonLd } from "./json-ld";
 import { PriorityAnswer } from "./priority-answer";
+import { QuoteModalTrigger } from "./quote-modal-trigger";
 import { ContextualInquiryPanel } from "./signature-elements";
 import { SiteShell } from "./site-shell";
 
@@ -49,9 +50,9 @@ function SweetHero() {
           final presentation become part of the event atmosphere.
         </p>
         <div className="sweet-hero-actions">
-          <Link href="/inquire" data-event-name="inquiry_start">
+          <QuoteModalTrigger data-event-name="inquiry_start">
             Inquire About a Dessert Experience <span aria-hidden="true">↗︎</span>
-          </Link>
+          </QuoteModalTrigger>
           <a href="#dessert-experiences">
             Explore the Dessert Menu <span aria-hidden="true">↓︎</span>
           </a>

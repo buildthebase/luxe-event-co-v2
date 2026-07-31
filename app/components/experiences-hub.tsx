@@ -6,6 +6,7 @@ import {
   type ExperienceHubFeature,
 } from "../experiences/content";
 import { eventTypes } from "../site-config";
+import { QuoteModalTrigger } from "./quote-modal-trigger";
 
 export function ExperiencesHero({
   titleLines,
@@ -33,9 +34,9 @@ export function ExperiencesHero({
           <a href="#experience-selector" data-event-name="experience_select">
             Explore an Experience <span aria-hidden="true">↓︎</span>
           </a>
-          <Link href="/inquire" data-event-name="inquiry_start">
+          <QuoteModalTrigger data-event-name="inquiry_start">
             Plan Your Event <span aria-hidden="true">↗︎</span>
-          </Link>
+          </QuoteModalTrigger>
         </div>
       </div>
       <div className="experiences-hero-world" aria-hidden="true">

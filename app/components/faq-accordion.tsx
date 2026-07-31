@@ -15,18 +15,20 @@ export type FaqAccordionItem = {
 export function FaqAccordion({
   items,
   indicatorElement = "b",
+  showNumbers = true,
 }: {
   items: readonly FaqAccordionItem[];
   indicatorElement?: "b" | "i";
+  showNumbers?: boolean;
 }) {
   const Indicator = indicatorElement;
 
   return (
-    <div>
+    <div className={showNumbers ? undefined : "faq-accordion-numberless"}>
       {items.map((item, index) => (
         <details id={item.id} key={item.id ?? item.question}>
           <summary>
-            <span>{String(index + 1).padStart(2, "0")}</span>
+            {showNumbers ? <span>{String(index + 1).padStart(2, "0")}</span> : null}
             <h3>{item.question}</h3>
             <Indicator aria-hidden="true">+</Indicator>
           </summary>

@@ -18,6 +18,7 @@ import {
 import { FaqAccordion } from "./faq-accordion";
 import { JsonLd } from "./json-ld";
 import { PriorityAnswer } from "./priority-answer";
+import { QuoteModalTrigger } from "./quote-modal-trigger";
 import { ContextualInquiryPanel } from "./signature-elements";
 import { SiteShell } from "./site-shell";
 
@@ -50,9 +51,9 @@ function SeatingHero() {
           comfort, and way guests move through the gathering.
         </p>
         <div className="seating-hero-actions">
-          <Link href="/inquire" data-event-name="inquiry_start">
+          <QuoteModalTrigger data-event-name="inquiry_start">
             Discuss Your Rental Requirements <span aria-hidden="true">↗︎</span>
-          </Link>
+          </QuoteModalTrigger>
           <a href="#rental-categories">
             Review Rental Categories <span aria-hidden="true">↓︎</span>
           </a>

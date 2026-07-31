@@ -44,11 +44,6 @@ export function EventsHero({
           <i />
           <i />
         </span>
-        <ol>
-          {eventHubEntries.map((event) => (
-            <li key={event.slug}>{event.number}</li>
-          ))}
-        </ol>
       </div>
     </header>
   );
@@ -92,7 +87,6 @@ export function EventsApproach() {
       <ol className="events-approach-principles">
         {eventLedPrinciples.map((principle) => (
           <li key={principle.number}>
-            <span>{principle.number}</span>
             <strong>{principle.label}</strong>
             <p>{principle.description}</p>
           </li>
@@ -120,7 +114,6 @@ export function EventsDirectory() {
       <div className="events-directory-list">
         {eventHubEntries.map((event) => (
           <article className={`events-directory-${event.slug}`} key={event.slug}>
-            <span>{event.number}</span>
             <div>
               <h3>{event.name}</h3>
             </div>
@@ -165,7 +158,6 @@ export function EventsGalleryPreview() {
               <i />
             </div>
             <figcaption>
-              <span>{item.number}</span>
               <strong>{item.label}</strong>
               <small>{item.context}</small>
             </figcaption>

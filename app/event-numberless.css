@@ -1,0 +1,130 @@
+/* Event pages use content hierarchy rather than decorative sequence numbers. */
+
+/* Match the editorial section-heading scale used by the homepage. Hero h1s
+   remain untouched; these rules only normalize the content chapters below. */
+.events-page h2,
+.wedding-page h2,
+.corporate-page h2,
+.activation-page h2,
+.baby-page h2,
+.bridal-page h2,
+.birthday-page h2,
+.private-page h2 {
+  font-size: var(--type-heading-lg) !important;
+  line-height: .98 !important;
+  letter-spacing: var(--tracking-heading-lg) !important;
+}
+
+.faq-accordion-numberless summary {
+  grid-template-columns: minmax(0, 1fr) 2rem !important;
+}
+
+.wedding-combinations article > p:first-of-type,
+.bridal-combinations article > p:first-of-type {
+  margin-top: var(--space-4);
+}
+
+.wedding-customization article h3,
+.wedding-coordination h3,
+.corporate-capabilities h3,
+.corporate-branding h3,
+.corporate-planning h3,
+.activation-scale h3,
+.activation-planning h3,
+.baby-styling h3,
+.baby-planning h3,
+.birthday-experiences h3,
+.birthday-personalization h3,
+.private-experiences h3 {
+  margin-top: var(--space-4);
+}
+
+.private-combinations article {
+  grid-template-columns: 1fr;
+}
+
+.private-combinations article > p,
+.private-combinations h3 {
+  grid-column: 1;
+}
+
+.wedding-gallery figcaption,
+.corporate-gallery figcaption,
+.activation-gallery figcaption,
+.bridal-gallery figcaption,
+.baby-gallery figcaption,
+.birthday-gallery figcaption,
+.private-gallery figcaption {
+  grid-template-columns: 1fr;
+}
+
+.corporate-hero-screen {
+  grid-template-columns: 1fr;
+}
+
+.corporate-hero-screen span:first-child {
+  text-align: right;
+}
+
+@media (min-width: 901px) {
+  .wedding-day li {
+    grid-template-columns: minmax(10rem, .5fr) minmax(0, 1.5fr);
+  }
+
+  .bridal-details li {
+    grid-template-columns: minmax(10rem, .45fr) minmax(0, 1fr);
+  }
+
+  .activation-contexts li {
+    grid-template-columns: minmax(10rem, .75fr) minmax(0, 1.25fr);
+  }
+
+  .corporate-scale article {
+    grid-template-columns: minmax(12rem, .55fr) minmax(15rem, .9fr) minmax(18rem, 1.25fr);
+  }
+
+  .baby-combinations article,
+  .birthday-combinations article {
+    grid-template-columns: minmax(10rem, .65fr) minmax(0, 1fr);
+  }
+
+  .baby-combinations h3,
+  .baby-combinations article > p:last-child,
+  .birthday-combinations h3,
+  .birthday-combinations article > p:last-child {
+    grid-column: 2;
+  }
+
+  .events-approach-principles li {
+    grid-template-columns: 8rem minmax(0, 1fr);
+  }
+
+  .events-directory-list article {
+    grid-template-columns: minmax(12rem, .62fr) minmax(20rem, 1.1fr) minmax(11rem, .42fr);
+  }
+
+  .events-gallery-grid figcaption {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .wedding-day li,
+  .bridal-details li,
+  .activation-contexts li,
+  .corporate-scale article,
+  .baby-combinations article,
+  .birthday-combinations article,
+  .events-approach-principles li,
+  .events-directory-list article,
+  .events-gallery-grid figcaption {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .baby-combinations h3,
+  .baby-combinations article > p:last-child,
+  .birthday-combinations h3,
+  .birthday-combinations article > p:last-child {
+    grid-column: 1;
+  }
+}

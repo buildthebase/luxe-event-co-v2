@@ -11,6 +11,7 @@ import { pageMetadata } from "../metadata-config";
 import { createServicePageSchema } from "../schema-builders";
 import { FaqAccordion } from "./faq-accordion";
 import { JsonLd } from "./json-ld";
+import { QuoteModalTrigger } from "./quote-modal-trigger";
 import { ContextualInquiryPanel } from "./signature-elements";
 import { SiteShell } from "./site-shell";
 
@@ -40,9 +41,9 @@ function PrivateEventsHero() {
           that deserve their own direction.
         </p>
         <div className="private-hero-actions">
-          <Link href="/inquire" data-event-name="inquiry_start">
+          <QuoteModalTrigger data-event-name="inquiry_start">
             Discuss Your Event <span aria-hidden="true">↗︎</span>
-          </Link>
+          </QuoteModalTrigger>
           <a href="#private-occasions">
             Explore the Occasions <span aria-hidden="true">↓︎</span>
           </a>
@@ -89,7 +90,6 @@ function PrivateEventContexts() {
       <ol>
         {privateEventContexts.map((context) => (
           <li key={context.number}>
-            <span>{context.number}</span>
             <p>{context.title}</p>
             <h3>{context.statement}</h3>
             <p>{context.description}</p>
@@ -109,7 +109,6 @@ function PrivateEventExperiences() {
       <div>
         {privateEventExperiences.map((experience) => (
           <article key={experience.number}>
-            <span>{experience.number}</span>
             <h3>{experience.name}</h3>
             <p>{experience.description}</p>
             <small>{experience.note}</small>
@@ -133,7 +132,6 @@ function PrivateEventCombinations() {
       <div>
         {privateEventCombinations.map((item) => (
           <article key={item.number}>
-            <span>{item.number}</span>
             <p>{item.occasion}</p>
             <h3>{item.experiences}</h3>
             <p>{item.description}</p>
@@ -156,7 +154,6 @@ function PrivateEventGallery() {
           <figure className={`private-gallery-${item.tone}`} key={item.number}>
             <div aria-hidden="true"><i /><i /><i /></div>
             <figcaption>
-              <span>{item.number}</span>
               <strong>{item.label}</strong>
               <small>{item.note}</small>
             </figcaption>
@@ -177,7 +174,6 @@ function PrivateEventPlanning() {
       <ol>
         {privateEventPlanningRequirements.map((item) => (
           <li key={item.number}>
-            <span>{item.number}</span>
             <h3>{item.title}</h3>
             <p>{item.description}</p>
           </li>
@@ -195,7 +191,7 @@ function PrivateEventFaq() {
   return (
     <section className="private-faq" aria-labelledby="private-faq-title">
       <header><h2 id="private-faq-title">Private-event planning questions.</h2></header>
-      <FaqAccordion items={privateEventFaqs} indicatorElement="i" />
+      <FaqAccordion items={privateEventFaqs} indicatorElement="i" showNumbers={false} />
       <Link href="/faq">Review Luxe Booking FAQs <span aria-hidden="true">↗︎</span></Link>
     </section>
   );

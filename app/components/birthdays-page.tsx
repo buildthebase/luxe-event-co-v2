@@ -11,6 +11,7 @@ import { pageMetadata } from "../metadata-config";
 import { createServicePageSchema } from "../schema-builders";
 import { FaqAccordion } from "./faq-accordion";
 import { JsonLd } from "./json-ld";
+import { QuoteModalTrigger } from "./quote-modal-trigger";
 import { ContextualInquiryPanel } from "./signature-elements";
 import { SiteShell } from "./site-shell";
 
@@ -40,14 +41,13 @@ function BirthdayHero() {
           setting for adult, milestone, family, and selected children’s celebrations.
         </p>
         <div className="birthday-hero-actions">
-          <Link href="/inquire" data-event-name="inquiry_start">
+          <QuoteModalTrigger data-event-name="inquiry_start">
             Plan a Birthday Experience <span aria-hidden="true">↗︎</span>
-          </Link>
+          </QuoteModalTrigger>
           <a href="#birthday-contexts">Explore the Occasion <span aria-hidden="true">↓︎</span></a>
         </div>
       </div>
       <div className="birthday-hero-art" aria-hidden="true">
-        <strong>0</strong><strong>1</strong><strong>+</strong>
         <i /><i /><i />
         <span>One person.<br />Their point of view.</span>
       </div>
@@ -85,7 +85,6 @@ function BirthdayContexts() {
       <ol>
         {birthdayContexts.map((context) => (
           <li key={context.number}>
-            <span>{context.number}</span>
             <p>{context.title}</p>
             <h3>{context.statement}</h3>
             <p>{context.description}</p>
@@ -103,7 +102,6 @@ function BirthdayExperiences() {
       <div>
         {birthdayExperienceMenu.map((experience) => (
           <article key={experience.number}>
-            <span>{experience.number}</span>
             <h3>{experience.name}</h3>
             <p>{experience.description}</p>
             <small>{experience.note}</small>
@@ -121,8 +119,7 @@ function BirthdayPersonalization() {
       <header><h2 id="birthday-personalization-title">Make the details recognizable.</h2></header>
       <div>
         {birthdayPersonalization.map((item) => (
-          <article key={item.number}>
-            <span>{item.number}</span><h3>{item.title}</h3><p>{item.description}</p>
+          <article key={item.number}><h3>{item.title}</h3><p>{item.description}</p>
           </article>
         ))}
       </div>
@@ -139,8 +136,7 @@ function BirthdayCombinations() {
       </header>
       <div>
         {birthdayCombinations.map((item) => (
-          <article key={item.number}>
-            <span>{item.number}</span><p>{item.title}</p><h3>{item.experiences}</h3><p>{item.description}</p>
+          <article key={item.number}><p>{item.title}</p><h3>{item.experiences}</h3><p>{item.description}</p>
           </article>
         ))}
       </div>
@@ -159,7 +155,7 @@ function BirthdayGallery() {
         {birthdayGallery.map((item) => (
           <figure className={`birthday-gallery-${item.tone}`} key={item.number}>
             <div aria-hidden="true"><i /><i /><i /></div>
-            <figcaption><span>{item.number}</span><strong>{item.label}</strong><small>{item.note}</small></figcaption>
+            <figcaption><strong>{item.label}</strong><small>{item.note}</small></figcaption>
           </figure>
         ))}
       </div>
@@ -172,7 +168,7 @@ function BirthdayFaq() {
   return (
     <section className="birthday-faq" aria-labelledby="birthday-faq-title">
       <header><h2 id="birthday-faq-title">Birthday planning questions.</h2></header>
-      <FaqAccordion items={birthdayFaqs} indicatorElement="i" />
+      <FaqAccordion items={birthdayFaqs} indicatorElement="i" showNumbers={false} />
       <Link href="/faq">Review Luxe Booking FAQs <span aria-hidden="true">↗︎</span></Link>
     </section>
   );

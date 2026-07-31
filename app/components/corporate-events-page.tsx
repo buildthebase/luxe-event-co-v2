@@ -12,6 +12,7 @@ import { pageMetadata } from "../metadata-config";
 import { createServicePageSchema } from "../schema-builders";
 import { FaqAccordion } from "./faq-accordion";
 import { JsonLd } from "./json-ld";
+import { QuoteModalTrigger } from "./quote-modal-trigger";
 import { ContextualInquiryPanel, CredibilityStrip } from "./signature-elements";
 import { SiteShell } from "./site-shell";
 
@@ -42,9 +43,9 @@ function CorporateHero() {
           clients, conferences, workplaces, institutions, and brand environments.
         </p>
         <div className="corporate-hero-actions">
-          <Link href="/inquire" data-event-name="inquiry_start">
+          <QuoteModalTrigger data-event-name="inquiry_start">
             Discuss a Corporate Event <span aria-hidden="true">↗︎</span>
-          </Link>
+          </QuoteModalTrigger>
           <a href="#corporate-capabilities">
             Review Capabilities <span aria-hidden="true">↓︎</span>
           </a>
@@ -52,17 +53,16 @@ function CorporateHero() {
       </div>
       <div className="corporate-hero-system" aria-hidden="true">
         <div className="corporate-hero-screen">
-          <span>08:00</span>
           <span>Hospitality online</span>
           <i />
           <i />
           <i />
         </div>
         <ol>
-          <li><span>01</span> Brief</li>
-          <li><span>02</span> Brand</li>
-          <li><span>03</span> Service</li>
-          <li><span>04</span> Flow</li>
+          <li>Brief</li>
+          <li>Brand</li>
+          <li>Service</li>
+          <li>Flow</li>
         </ol>
       </div>
       <dl className="corporate-hero-proof">
@@ -128,7 +128,6 @@ function CorporateCapabilities() {
       <ol>
         {corporateEventApplications.map((event) => (
           <li key={event.number}>
-            <span>{event.number}</span>
             <h3>{event.title}</h3>
             <p>{event.description}</p>
           </li>
@@ -149,7 +148,7 @@ function CorporateExperiences() {
       <div>
         {corporateExperienceRoles.map((experience) => (
           <article key={experience.number}>
-            <span>{experience.number} / {experience.label}</span>
+            <span>{experience.label}</span>
             <Link href={experience.href}>{experience.name}</Link>
             <h3>{experience.statement}</h3>
             <p>{experience.description}</p>
@@ -178,7 +177,6 @@ function CorporateBranding() {
       <div>
         {corporateBrandingOptions.map((option) => (
           <article key={option.number}>
-            <span>{option.number}</span>
             <h3>{option.title}</h3>
             <p>{option.description}</p>
           </article>
@@ -202,7 +200,6 @@ function CorporateScale() {
       <div>
         {corporateScaleCapabilities.map((capability) => (
           <article key={capability.number}>
-            <span>{capability.number}</span>
             <h3>{capability.title}</h3>
             <strong>{capability.fact}</strong>
             <p>{capability.note}</p>
@@ -252,7 +249,6 @@ function CorporateGallery() {
           <figure className={`corporate-gallery-${item.tone}`} key={item.number}>
             <div aria-hidden="true"><i /><i /><i /></div>
             <figcaption>
-              <span>{item.number}</span>
               <strong>{item.label}</strong>
               <small>{item.note}</small>
             </figcaption>
@@ -277,7 +273,6 @@ function CorporatePlanning() {
       <ol>
         {corporatePlanningSteps.map((step) => (
           <li key={step.number}>
-            <span>{step.number}</span>
             <h3>{step.title}</h3>
             <p>{step.description}</p>
           </li>
@@ -296,7 +291,7 @@ function CorporateFaq() {
       <header>
         <h2 id="corporate-faq-title">Answers for teams preparing the brief.</h2>
       </header>
-      <FaqAccordion items={corporateFaqs} />
+      <FaqAccordion items={corporateFaqs} showNumbers={false} />
       <Link href="/faq">
         Review all Luxe booking questions <span aria-hidden="true">↗︎</span>
       </Link>

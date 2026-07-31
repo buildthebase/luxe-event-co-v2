@@ -12,6 +12,7 @@ import { pageMetadata } from "../metadata-config";
 import { createServicePageSchema } from "../schema-builders";
 import { FaqAccordion } from "./faq-accordion";
 import { JsonLd } from "./json-ld";
+import { QuoteModalTrigger } from "./quote-modal-trigger";
 import { ContextualInquiryPanel } from "./signature-elements";
 import { SiteShell } from "./site-shell";
 
@@ -43,9 +44,9 @@ function WeddingHero() {
           wedding itself.
         </p>
         <div className="wedding-hero-actions">
-          <Link href="/inquire" data-event-name="inquiry_start">
+          <QuoteModalTrigger data-event-name="inquiry_start">
             Plan Your Wedding Experience <span aria-hidden="true">↗︎</span>
-          </Link>
+          </QuoteModalTrigger>
           <a href="#wedding-day">
             Explore the Wedding Day <span aria-hidden="true">↓︎</span>
           </a>
@@ -55,11 +56,6 @@ function WeddingHero() {
         <i />
         <i />
         <i />
-        <span>
-          <b>01</b>
-          <b>02</b>
-          <b>03</b>
-        </span>
       </div>
       <dl className="wedding-hero-proof">
         <div>
@@ -111,7 +107,11 @@ function WeddingDay() {
     <section className="wedding-day" id="wedding-day" aria-labelledby="wedding-day-title">
       <header>
         <p className="foundation-label">Across the wedding day</p>
-        <h2 id="wedding-day-title">Six moments. Each with its own rhythm.</h2>
+        <h2 id="wedding-day-title">
+          Six moments.
+          <br />
+          Each with its own rhythm.
+        </h2>
         <p>
           These are planning possibilities rather than fixed packages. The
           venue, schedule, guest count, selected experiences, and service
@@ -121,7 +121,6 @@ function WeddingDay() {
       <ol>
         {weddingMoments.map((moment) => (
           <li key={moment.number}>
-            <span>{moment.number}</span>
             <p>{moment.phase}</p>
             <div>
               <h3>{moment.title}</h3>
@@ -147,7 +146,7 @@ function WeddingExperiences() {
       <div>
         {weddingExperienceRoles.map((experience) => (
           <Link href={experience.href} key={experience.number}>
-            <span>{experience.number} / {experience.label}</span>
+            <span>{experience.label}</span>
             <strong>{experience.name}</strong>
             <h3>{experience.statement}</h3>
             <p>{experience.description}</p>
@@ -174,7 +173,6 @@ function WeddingCombinations() {
       <div>
         {weddingCombinations.map((combination) => (
           <article key={combination.number}>
-            <span>{combination.number}</span>
             <p>{combination.title}</p>
             <h3>{combination.experiences}</h3>
             <p>{combination.description}</p>
@@ -197,7 +195,6 @@ function WeddingCustomization() {
       <div>
         {weddingCustomization.map((item) => (
           <article key={item.number}>
-            <span>{item.number}</span>
             <h3>{item.title}</h3>
             <p>{item.description}</p>
           </article>
@@ -229,7 +226,6 @@ function WeddingCoordination() {
       <ol>
         {weddingLogistics.map((item) => (
           <li key={item.number}>
-            <span>{item.number}</span>
             <h3>{item.title}</h3>
             <p>{item.description}</p>
           </li>
@@ -260,7 +256,6 @@ function WeddingGallery() {
           <figure className={`wedding-gallery-${item.tone}`} key={item.number}>
             <div aria-hidden="true"><i /><i /><i /></div>
             <figcaption>
-              <span>{item.number}</span>
               <strong>{item.label}</strong>
               <small>{item.note}</small>
             </figcaption>
@@ -281,7 +276,7 @@ function WeddingFaq() {
         <p className="foundation-label">Wedding planning questions</p>
         <h2 id="wedding-faq-title">Useful answers before the inquiry.</h2>
       </header>
-      <FaqAccordion items={weddingFaqs} />
+      <FaqAccordion items={weddingFaqs} showNumbers={false} />
       <Link href="/faq">
         Review all Luxe booking questions <span aria-hidden="true">↗︎</span>
       </Link>

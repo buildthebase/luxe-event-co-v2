@@ -12,6 +12,7 @@ import { pageMetadata } from "../metadata-config";
 import { createServicePageSchema } from "../schema-builders";
 import { FaqAccordion } from "./faq-accordion";
 import { JsonLd } from "./json-ld";
+import { QuoteModalTrigger } from "./quote-modal-trigger";
 import { ContextualInquiryPanel } from "./signature-elements";
 import { SiteShell } from "./site-shell";
 
@@ -41,9 +42,9 @@ function BabyShowerHero() {
           can create a warm, cohesive celebration for hosts, families, and guests.
         </p>
         <div className="baby-hero-actions">
-          <Link href="/inquire" data-event-name="inquiry_start">
+          <QuoteModalTrigger data-event-name="inquiry_start">
             Plan a Baby Shower <span aria-hidden="true">↗︎</span>
-          </Link>
+          </QuoteModalTrigger>
           <a href="#baby-experiences">
             Explore the Possibilities <span aria-hidden="true">↓︎</span>
           </a>
@@ -94,7 +95,6 @@ function BabyShowerExperiences() {
         {babyShowerExperiences.map((experience) => (
           <article className={`baby-experience-${experience.tone}`} key={experience.number}>
             <div aria-hidden="true"><i /><i /><i /></div>
-            <span>{experience.number}</span>
             <Link href={experience.href}>{experience.name}</Link>
             <h3>{experience.statement}</h3>
             <p>{experience.description}</p>
@@ -116,7 +116,6 @@ function BabyShowerStyling() {
       <div>
         {babyShowerStyling.map((item) => (
           <article key={item.number}>
-            <span>{item.number}</span>
             <h3>{item.title}</h3>
             <p>{item.description}</p>
           </article>
@@ -135,7 +134,6 @@ function BabyShowerSettings() {
       <div>
         {babyShowerSettings.map((setting) => (
           <article key={setting.number}>
-            <span>{setting.number}</span>
             <div aria-hidden="true"><i /><i /></div>
             <h3>{setting.title}</h3>
             <p>{setting.description}</p>
@@ -159,7 +157,6 @@ function BabyShowerCombinations() {
       <div>
         {babyShowerCombinations.map((combination) => (
           <article key={combination.number}>
-            <span>{combination.number}</span>
             <p>{combination.title}</p>
             <h3>{combination.experiences}</h3>
             <p>{combination.description}</p>
@@ -181,7 +178,7 @@ function BabyShowerGallery() {
         {babyShowerGallery.map((item) => (
           <figure className={`baby-gallery-${item.tone}`} key={item.number}>
             <div aria-hidden="true"><i /><i /><i /></div>
-            <figcaption><span>{item.number}</span><strong>{item.label}</strong><small>{item.note}</small></figcaption>
+            <figcaption><strong>{item.label}</strong><small>{item.note}</small></figcaption>
           </figure>
         ))}
       </div>
@@ -197,7 +194,6 @@ function BabyShowerPlanning() {
       <ol>
         {babyShowerPlanning.map((item) => (
           <li key={item.number}>
-            <span>{item.number}</span>
             <h3>{item.title}</h3>
             <p>{item.description}</p>
           </li>
@@ -211,7 +207,7 @@ function BabyShowerFaq() {
   return (
     <section className="baby-faq" aria-labelledby="baby-faq-title">
       <header><h2 id="baby-faq-title">Baby shower planning questions.</h2></header>
-      <FaqAccordion items={babyShowerFaqs} indicatorElement="i" />
+      <FaqAccordion items={babyShowerFaqs} indicatorElement="i" showNumbers={false} />
       <Link href="/faq">Review Luxe Booking FAQs <span aria-hidden="true">↗︎</span></Link>
     </section>
   );
