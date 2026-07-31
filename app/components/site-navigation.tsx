@@ -199,9 +199,34 @@ export function PrimaryNavigation({
             key={item.href}
           >
             {item.children ? (
-              <span className="foundation-mobile-nav-heading">
-                {item.label}
-              </span>
+              <details className="foundation-mobile-nav-group-details">
+                <summary className="foundation-mobile-nav-heading">
+                  <span>{item.label}</span>
+                  <i aria-hidden="true" />
+                </summary>
+                <ul>
+                  <li className="foundation-mobile-nav-hub">
+                    <Link
+                      href={item.href}
+                      aria-current={pathname === item.href ? "page" : undefined}
+                      onClick={onNavigate}
+                    >
+                      View all {item.label}
+                    </Link>
+                  </li>
+                  {item.children.map((child) => (
+                    <li key={child.href}>
+                      <Link
+                        href={child.href}
+                        aria-current={currentState(pathname, child.href)}
+                        onClick={onNavigate}
+                      >
+                        {child.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </details>
             ) : (
               <Link
                 href={item.href}
@@ -216,30 +241,6 @@ export function PrimaryNavigation({
                 {item.label}
               </Link>
             )}
-            {item.children ? (
-              <ul>
-                <li className="foundation-mobile-nav-hub">
-                  <Link
-                    href={item.href}
-                    aria-current={pathname === item.href ? "page" : undefined}
-                    onClick={onNavigate}
-                  >
-                    View all {item.label}
-                  </Link>
-                </li>
-                {item.children.map((child) => (
-                  <li key={child.href}>
-                    <Link
-                      href={child.href}
-                      aria-current={currentState(pathname, child.href)}
-                      onClick={onNavigate}
-                    >
-                      {child.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            ) : null}
           </li>
         ))}
       </ul>

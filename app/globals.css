@@ -83,6 +83,273 @@
   --ease-luxe-standard: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/*
+ * Site-wide tonal grids
+ *
+ * Matte-black chapters use the light editorial dot; taupe and soft-brown
+ * chapters use the dark dot. Full-bleed chapters receive a matching
+ * full-bleed pattern layer so the grid follows their extended surface.
+ */
+:where(
+  .surface-chapter-dark,
+  .wedding-experiences,
+  .wedding-coordination,
+  .bridal-experiences,
+  .bridal-gallery,
+  .baby-experiences,
+  .baby-gallery,
+  .events-approach,
+  .events-page > .signature-pathway,
+  .signature-inquiry,
+  .experiences-booking-clarity,
+  .experiences-comparison,
+  .home-unified,
+  .home-page .home-trust,
+  .coffee-formats,
+  .coffee-menu,
+  .coffee-operations,
+  .coffee-related,
+  .sweet-collections,
+  .sweet-inclusions,
+  .sweet-operations,
+  .sweet-combinations,
+  .sweet-soft-serve,
+  .seating-overview,
+  .seating-operations,
+  .seating-combinations,
+  .activation-system,
+  .activation-scale,
+  .activation-faq,
+  .corporate-capabilities,
+  .corporate-experiences,
+  .corporate-scale,
+  .private-contexts,
+  .private-gallery,
+  .birthday-contexts,
+  .birthday-gallery,
+  .gallery-inquiry,
+  .faq-hub-inquiry,
+  .inquire-guidance,
+  .inquire-contact
+) {
+  background-image: radial-gradient(rgb(248 246 242 / 7%) 0.55px, transparent 0.7px);
+  background-size: 4px 4px;
+}
+
+:where(
+  .surface-chapter-taupe,
+  .surface-chapter-soft,
+  .wedding-overview,
+  .wedding-combinations,
+  .wedding-testimonials,
+  .events-page > .signature-combinations,
+  .experiences-feature-dessert,
+  .experiences-page > .signature-combinations,
+  .experiences-gallery,
+  .home-page .home-positioning,
+  .home-page .home-testimonials,
+  .home-page > .signature-combinations,
+  .home-page > .signature-pathway,
+  .coffee-overview,
+  .coffee-customization,
+  .coffee-gallery,
+  .sweet-positioning,
+  .sweet-customization,
+  .sweet-gallery,
+  .seating-additional,
+  .seating-quote,
+  .seating-gallery,
+  .inquire-handoff
+) {
+  background-image: radial-gradient(rgb(23 22 20 / 5.3%) 0.55px, transparent 0.7px);
+  background-size: 4px 4px;
+}
+
+:where(
+  .surface-chapter-dark,
+  .surface-chapter-taupe,
+  .surface-chapter-soft,
+  .wedding-overview,
+  .wedding-experiences,
+  .wedding-combinations,
+  .wedding-coordination,
+  .wedding-testimonials,
+  .events-approach,
+  .events-page > .signature-combinations,
+  .events-page > .signature-pathway,
+  .experiences-booking-clarity,
+  .experiences-comparison,
+  .experiences-feature-dessert,
+  .experiences-page > .signature-combinations,
+  .experiences-gallery,
+  .home-page .home-positioning,
+  .home-page .home-unified,
+  .home-page .home-trust,
+  .home-page .home-testimonials,
+  .home-page > .signature-combinations,
+  .home-page > .signature-pathway,
+  .coffee-overview,
+  .coffee-formats,
+  .coffee-menu,
+  .coffee-customization,
+  .coffee-operations,
+  .coffee-gallery,
+  .coffee-related,
+  .sweet-positioning,
+  .sweet-collections,
+  .sweet-inclusions,
+  .sweet-operations,
+  .sweet-combinations,
+  .sweet-customization,
+  .sweet-gallery,
+  .seating-overview,
+  .seating-additional,
+  .seating-operations,
+  .seating-combinations,
+  .seating-quote,
+  .seating-gallery,
+  .activation-system,
+  .activation-scale,
+  .activation-faq,
+  .corporate-capabilities,
+  .corporate-experiences,
+  .corporate-scale,
+  .private-contexts,
+  .private-gallery
+) {
+  position: relative;
+  isolation: isolate;
+  background-image: none;
+}
+
+:where(
+  .surface-chapter-dark,
+  .surface-chapter-taupe,
+  .surface-chapter-soft,
+  .wedding-overview,
+  .wedding-experiences,
+  .wedding-combinations,
+  .wedding-coordination,
+  .wedding-testimonials,
+  .events-approach,
+  .events-page > .signature-combinations,
+  .events-page > .signature-pathway,
+  .experiences-booking-clarity,
+  .experiences-comparison,
+  .experiences-feature-dessert,
+  .experiences-page > .signature-combinations,
+  .experiences-gallery,
+  .home-page .home-positioning,
+  .home-page .home-unified,
+  .home-page .home-trust,
+  .home-page .home-testimonials,
+  .home-page > .signature-combinations,
+  .home-page > .signature-pathway,
+  .coffee-overview,
+  .coffee-formats,
+  .coffee-menu,
+  .coffee-customization,
+  .coffee-operations,
+  .coffee-gallery,
+  .coffee-related,
+  .sweet-positioning,
+  .sweet-collections,
+  .sweet-inclusions,
+  .sweet-operations,
+  .sweet-combinations,
+  .sweet-customization,
+  .sweet-gallery,
+  .seating-overview,
+  .seating-additional,
+  .seating-operations,
+  .seating-combinations,
+  .seating-quote,
+  .seating-gallery,
+  .activation-system,
+  .activation-scale,
+  .activation-faq,
+  .corporate-capabilities,
+  .corporate-experiences,
+  .corporate-scale,
+  .private-contexts,
+  .private-gallery
+) > * {
+  position: relative;
+  z-index: 1;
+}
+
+:where(
+  .surface-chapter-dark,
+  .wedding-experiences,
+  .wedding-coordination,
+  .events-approach,
+  .events-page > .signature-pathway,
+  .experiences-booking-clarity,
+  .experiences-comparison,
+  .home-page .home-unified,
+  .home-page .home-trust,
+  .coffee-formats,
+  .coffee-menu,
+  .coffee-operations,
+  .coffee-related,
+  .sweet-collections,
+  .sweet-inclusions,
+  .sweet-operations,
+  .sweet-combinations,
+  .seating-overview,
+  .seating-operations,
+  .seating-combinations,
+  .activation-system,
+  .activation-scale,
+  .activation-faq,
+  .corporate-capabilities,
+  .corporate-experiences,
+  .corporate-scale,
+  .private-contexts,
+  .private-gallery
+)::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0 -100vmax;
+  background-image: radial-gradient(rgb(248 246 242 / 7%) 0.55px, transparent 0.7px);
+  background-size: 4px 4px;
+  content: "";
+  pointer-events: none;
+}
+
+:where(
+  .surface-chapter-taupe,
+  .surface-chapter-soft,
+  .wedding-overview,
+  .wedding-combinations,
+  .wedding-testimonials,
+  .events-page > .signature-combinations,
+  .experiences-feature-dessert,
+  .experiences-page > .signature-combinations,
+  .experiences-gallery,
+  .home-page .home-positioning,
+  .home-page .home-testimonials,
+  .home-page > .signature-combinations,
+  .home-page > .signature-pathway,
+  .coffee-overview,
+  .coffee-customization,
+  .coffee-gallery,
+  .sweet-positioning,
+  .sweet-customization,
+  .sweet-gallery,
+  .seating-additional,
+  .seating-quote,
+  .seating-gallery
+)::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0 -100vmax;
+  background-image: radial-gradient(rgb(23 22 20 / 5.3%) 0.55px, transparent 0.7px);
+  background-size: 4px 4px;
+  content: "";
+  pointer-events: none;
+}
+
 /* In-page chapter navigation */
 [data-page-section-anchor] {
   scroll-margin-top: clamp(6.5rem, 11vh, 8.5rem);
@@ -417,6 +684,20 @@
 
   .page-section-navigation-backdrop {
     background: rgb(27 26 24 / 52%);
+  }
+}
+
+@media (max-width: 760px) {
+  .foundation-shell main .home-cinematic-skip {
+    min-height: 0 !important;
+    border-bottom-color: rgb(31 31 31 / 42%);
+    padding: 0.12rem 0;
+    background: transparent;
+    color: rgb(31 31 31 / 82%);
+    font-size: 0.6rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.1em;
+    line-height: 1.1;
   }
 }
 
@@ -5159,9 +5440,35 @@ a {
 .page-breadcrumbs [aria-current="page"] {
   color: var(--ink);
 }
-.foundation-wordmark { display: inline-flex; flex-direction: column; line-height: .85; }
-.foundation-wordmark span { font-size: clamp(2rem, 3vw, 3rem); font-weight: 500; letter-spacing: -.12em; }
-.foundation-wordmark small { align-self: center; margin-top: 8px; border-block: 1px solid currentColor; padding: 5px 8px 4px; font-size: .52rem; font-weight: 700; letter-spacing: .35em; line-height: 1; text-transform: uppercase; }
+.foundation-wordmark {
+  --foundation-wordmark-size: clamp(2rem, 3vw, 3rem);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(var(--foundation-wordmark-size) * 1.75);
+  line-height: .85;
+}
+.foundation-wordmark span {
+  width: 100%;
+  text-align: center;
+  font-size: var(--foundation-wordmark-size);
+  font-weight: 500;
+  letter-spacing: -.12em;
+}
+.foundation-wordmark small {
+  align-self: center;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: calc(var(--foundation-wordmark-size) / 6);
+  border-block: 1px solid currentColor;
+  padding: calc(var(--foundation-wordmark-size) * .104) 0 calc(var(--foundation-wordmark-size) * .083);
+  font-size: calc(var(--foundation-wordmark-size) * .1733);
+  font-weight: 700;
+  letter-spacing: .35em;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+}
 .foundation-desktop-nav { position: relative; font-size: .875rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 .foundation-desktop-nav > ul { display: flex; align-items: center; gap: clamp(11px, 1.7vw, 24px); margin: 0; padding: 0; list-style: none; }
 .foundation-desktop-nav li { position: relative; }
@@ -5292,7 +5599,7 @@ a {
     font-size: max(.875rem, 1em);
     touch-action: manipulation;
   }
-  .foundation-header { position: relative; align-items: flex-start; }
+  .foundation-header { position: relative; align-items: center; }
   .foundation-desktop-nav { display: none; }
   .foundation-mobile-nav { display: block; }
   .foundation-mobile-nav-control {
@@ -5363,6 +5670,38 @@ a {
     text-transform: uppercase;
   }
   .foundation-mobile-nav-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    cursor: pointer;
+  }
+  .foundation-mobile-nav-heading::-webkit-details-marker {
+    display: none;
+  }
+  .foundation-mobile-nav-heading i {
+    position: relative;
+    width: 14px;
+    height: 14px;
+  }
+  .foundation-mobile-nav-heading i::before,
+  .foundation-mobile-nav-heading i::after {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    content: "";
+  }
+  .foundation-mobile-nav-heading i::after {
+    transform: rotate(90deg);
+    transition: transform .2s ease;
+  }
+  .foundation-mobile-nav-group-details[open] .foundation-mobile-nav-heading i::after {
+    transform: rotate(0);
+  }
+  .foundation-mobile-nav-heading {
     color: var(--ink);
   }
   .foundation-mobile-nav-list > li:last-child > a {
@@ -5371,13 +5710,13 @@ a {
     background: var(--ink);
     color: var(--paper-light);
   }
-  .foundation-mobile-nav-group > ul {
+  .foundation-mobile-nav-group-details > ul {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     border-bottom: 1px solid rgb(23 22 20 / 16%);
     padding: 8px 0 13px 2.25rem;
   }
-  .foundation-mobile-nav-group > ul a {
+  .foundation-mobile-nav-group-details > ul a {
     display: inline-flex;
     align-items: center;
     min-height: 44px;
@@ -5386,10 +5725,10 @@ a {
     font-weight: 600;
     letter-spacing: .05em;
   }
-  .foundation-mobile-nav-group > ul .foundation-mobile-nav-hub {
+  .foundation-mobile-nav-group-details > ul .foundation-mobile-nav-hub {
     grid-column: 1 / -1;
   }
-  .foundation-mobile-nav-group > ul .foundation-mobile-nav-hub a {
+  .foundation-mobile-nav-group-details > ul .foundation-mobile-nav-hub a {
     justify-content: space-between;
     border-bottom: 1px solid var(--color-luxe-gold);
     color: var(--gold-text);
@@ -5397,7 +5736,7 @@ a {
     letter-spacing: .09em;
     text-transform: uppercase;
   }
-  .foundation-mobile-nav-group > ul .foundation-mobile-nav-hub a[aria-current] {
+  .foundation-mobile-nav-group-details > ul .foundation-mobile-nav-hub a[aria-current] {
     border-bottom-color: transparent;
   }
   .foundation-footer {
@@ -5426,7 +5765,6 @@ a {
 @media (max-width: 460px) {
   .foundation-header { padding-inline: 20px; }
   .foundation-page, .foundation-detail { padding-inline: 20px; }
-  .foundation-wordmark span { font-size: 1.8rem; }
   .foundation-footer {
     grid-template-columns: 1fr;
     gap: 0;
@@ -5760,6 +6098,30 @@ a {
   }
 }
 
+/* Keep grids on full-width and contained tonal panels after page-level background shorthands. */
+:where(
+  .bridal-experiences,
+  .bridal-gallery,
+  .baby-experiences,
+  .baby-gallery,
+  .signature-inquiry,
+  .sweet-soft-serve,
+  .birthday-contexts,
+  .birthday-gallery,
+  .gallery-inquiry,
+  .faq-hub-inquiry,
+  .inquire-guidance,
+  .inquire-contact
+) {
+  background-image: radial-gradient(rgb(248 246 242 / 7%) 0.55px, transparent 0.7px);
+  background-size: 4px 4px;
+}
+
+.inquire-handoff {
+  background-image: radial-gradient(rgb(23 22 20 / 5.3%) 0.55px, transparent 0.7px);
+  background-size: 4px 4px;
+}
+
 /* Keep shared card descriptions on one responsive type scale. */
 .signature-selector-copy > span:nth-of-type(2),
 .home-event-list small,
@@ -6067,7 +6429,7 @@ a {
 @media (max-width: 760px) {
   .foundation-header {
     position: sticky;
-    align-items: flex-start;
+    align-items: center;
     backdrop-filter: none;
   }
 
@@ -8563,6 +8925,12 @@ a {
   letter-spacing: 0.14em;
 }
 
+@media (min-width: 961px) {
+  .home-unified {
+    row-gap: 0;
+  }
+}
+
 .home-events,
 .home-imagery,
 .home-trust,
@@ -9623,7 +9991,7 @@ a {
   gap: var(--space-3);
   align-content: stretch;
   align-items: stretch;
-  padding-block: var(--space-2) var(--space-4);
+  padding-block: 0 var(--space-4);
 }
 
 .home-cinematic-hero::before {
@@ -10250,6 +10618,13 @@ a {
   .home-cinematic-skip {
     top: 1.25rem;
     right: 1.25rem;
+    border-bottom-color: rgb(31 31 31 / 42%);
+    padding: 0.12rem 0;
+    background: transparent;
+    color: rgb(31 31 31 / 64%);
+    font-size: 0.46rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
   }
 
   .home-cinematic-hero > .signature-credibility {
@@ -10421,6 +10796,70 @@ a {
 .home-page .home-testimonial-slots,
 .home-page .home-testimonial-slots article {
   border-color: color-mix(in srgb, var(--color-luxe-black) 30%, transparent);
+}
+
+/* Homepage tonal chapters: carry the editorial dot grid across each full-bleed surface. */
+.home-page :is(
+    .home-positioning,
+    .home-unified,
+    .home-trust,
+    .home-testimonials
+  ),
+.home-page > :is(
+    .signature-combinations,
+    .signature-pathway
+  ) {
+  position: relative;
+  isolation: isolate;
+}
+
+.home-page :is(
+    .home-positioning,
+    .home-unified,
+    .home-trust,
+    .home-testimonials
+  ) > *,
+.home-page > :is(
+    .signature-combinations,
+    .signature-pathway
+  ) > * {
+  position: relative;
+  z-index: 1;
+}
+
+.home-page :is(
+    .home-positioning,
+    .home-testimonials
+  )::before,
+.home-page > :is(
+    .signature-combinations,
+    .signature-pathway
+  )::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0 -100vmax;
+  background-image: radial-gradient(rgb(23 22 20 / 5.3%) 0.55px, transparent 0.7px);
+  background-size: 4px 4px;
+  content: "";
+  pointer-events: none;
+}
+
+.home-page :is(
+    .home-unified,
+    .home-trust
+  )::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0 -100vmax;
+  background-image: radial-gradient(rgb(248 246 242 / 7%) 0.55px, transparent 0.7px);
+  background-size: 4px 4px;
+  content: "";
+  pointer-events: none;
+}
+
+.home-page > .signature-inquiry {
+  background-image: radial-gradient(rgb(248 246 242 / 7%) 0.55px, transparent 0.7px);
+  background-size: 4px 4px;
 }
 
 @media (max-width: 700px) {
