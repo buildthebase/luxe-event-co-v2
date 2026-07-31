@@ -42,7 +42,9 @@ export function HomeTestimonialCarousel() {
   return (
     <section
       className="home-testimonial-carousel"
-      aria-label="Sample testimonial carousel"
+      id="reviews"
+      aria-labelledby="home-reviews-title"
+      aria-roledescription="carousel"
       data-content-status="placeholder"
       onBlurCapture={() => {
         pausedRef.current = false;
@@ -64,7 +66,7 @@ export function HomeTestimonialCarousel() {
       }}
     >
       <header>
-        <span>Client words / placeholder</span>
+        <h2 id="home-reviews-title">Luxe Event Co. Reviews</h2>
         <div aria-label="Testimonial controls" role="group">
           <button
             aria-label="Previous sample testimonial"
@@ -82,12 +84,22 @@ export function HomeTestimonialCarousel() {
           </button>
         </div>
       </header>
-      <div className="home-testimonial-track" ref={trackRef}>
+      <div
+        className="home-testimonial-track"
+        ref={trackRef}
+        role="group"
+        aria-label="Luxe Event Co. review placeholders"
+      >
         {homeTestimonialPlaceholders.map((testimonial, index) => (
-          <blockquote key={testimonial.context}>
+          <blockquote
+            key={testimonial.context}
+            role="group"
+            aria-roledescription="slide"
+            aria-label={`Review placeholder ${index + 1} of ${homeTestimonialPlaceholders.length}`}
+          >
             <span>{String(index + 1).padStart(2, "0")}</span>
             <p>“{testimonial.quote}”</p>
-            <footer>Sample — {testimonial.context}</footer>
+            <footer><cite>Sample — {testimonial.context}</cite></footer>
           </blockquote>
         ))}
       </div>

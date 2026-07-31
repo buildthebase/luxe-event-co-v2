@@ -45,9 +45,9 @@ export default function HomePreview() {
         <PageSectionNavigation items={homeSectionNavigation} />
         <HomeHero />
         <HomePositioning />
-        <section className="home-testimonial-placement" aria-label="Client words">
+        <div className="home-testimonial-placement">
           <HomeTestimonialCarousel />
-        </section>
+        </div>
         <ExperienceSelector id="experience-selector" showDescription={false} />
         <HomeUnifiedExperience />
         <HomeEventCategories />

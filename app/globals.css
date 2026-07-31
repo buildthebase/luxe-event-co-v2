@@ -9420,7 +9420,9 @@ a {
 /* The client-word carousel sits between the parent-brand introduction and the
  * service selector, so visitors encounter proof before choosing an offering. */
 .home-testimonial-placement {
-  margin-top: var(--space-section);
+  width: min(100% - (2 * var(--space-page-inline)), var(--layout-max));
+  margin-top: clamp(2.5rem, 4vw, 4rem);
+  margin-inline: auto;
   padding-block: clamp(1.5rem, 3vw, 2.5rem);
 }
 
@@ -9459,7 +9461,8 @@ a {
   gap: var(--space-4);
 }
 
-.home-testimonial-carousel > header > span {
+.home-testimonial-carousel > header > h2 {
+  margin: 0;
   color: var(--color-luxe-gold-ink);
   font-size: var(--type-label);
   font-weight: 700;
@@ -9530,6 +9533,10 @@ a {
   font-size: var(--type-small);
 }
 
+.home-testimonial-track cite {
+  font-style: normal;
+}
+
 @media (min-width: 961px) {
   .home-working-layout {
     align-items: stretch;
@@ -9555,8 +9562,10 @@ a {
     min-width: 50%;
     min-height: 100%;
     align-content: center;
+    justify-items: center;
     border-right: 1px solid var(--color-rule);
     padding: var(--space-7) clamp(2rem, 4vw, 4rem);
+    text-align: center;
   }
 
   .home-testimonial-track blockquote:nth-child(odd) {
