@@ -17,7 +17,7 @@ export function SiteShell({
         Skip to main content
       </a>
       <header className="foundation-header">
-        <Link href="/" className="foundation-wordmark" aria-label="Luxe Event Co. home">
+        <Link href="/preview" className="foundation-wordmark" aria-label="Luxe Event Co. home">
           <span>Luxe</span>
           <small>Event Co.</small>
         </Link>
