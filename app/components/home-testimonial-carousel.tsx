@@ -14,14 +14,14 @@ export function HomeTestimonialCarousel() {
       return;
     }
 
-    const currentIndex = Math.round(track.scrollLeft / track.clientWidth);
-    const nextIndex =
-      (currentIndex + direction + homeTestimonialPlaceholders.length) %
-      homeTestimonialPlaceholders.length;
+    const itemsPerView = window.matchMedia("(min-width: 961px)").matches ? 2 : 1;
+    const pageCount = Math.ceil(homeTestimonialPlaceholders.length / itemsPerView);
+    const currentPage = Math.round(track.scrollLeft / track.clientWidth);
+    const nextPage = (currentPage + direction + pageCount) % pageCount;
 
     track.scrollTo({
       behavior: "smooth",
-      left: nextIndex * track.clientWidth,
+      left: nextPage * track.clientWidth,
     });
   }
 

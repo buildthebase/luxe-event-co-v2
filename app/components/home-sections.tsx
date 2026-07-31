@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Fragment } from "react";
 import { ResponsiveImage } from "./responsive-image";
-import { HomeTestimonialCarousel } from "./home-testimonial-carousel";
 import {
   featuredHomeEvents,
   homeEventImageGroups,
@@ -56,7 +55,10 @@ export function HomePositioning() {
         Coffee, dessert, and seating, together for your event.
       </h2>
       <div>
-        <p>Luxe Event Co. is the parent company behind:</p>
+        <p className="home-positioning-parent">
+          <strong>Luxe Event Co.</strong>
+          <span>is the parent company behind:</span>
+        </p>
         <ul className="home-positioning-services">
           <li><Link href="#experience-selector-coffee">Luxe Coffee Bar</Link></li>
           <li><Link href="#experience-selector-dessert">Luxe Sweet Cart</Link></li>
@@ -223,7 +225,6 @@ export function HomeWorkingExperience() {
       <div className="home-working-layout">
         <div className="home-working-media">
           <HomeEditorialImage slot={homeWorkingImage} />
-          <HomeTestimonialCarousel />
         </div>
         <div className="home-working-grid">
           {homeWorkingPrinciples.map((principle) => (

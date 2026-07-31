@@ -8742,6 +8742,35 @@ a {
   line-height: 1.6;
 }
 
+.home-positioning-parent {
+  display: flex;
+  gap: 0.6rem;
+  align-items: baseline;
+  color: var(--color-luxe-gold-ink) !important;
+  font-size: clamp(1.25rem, 1.7vw, 1.55rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.home-positioning-parent strong {
+  color: inherit;
+  font: inherit;
+}
+
+.home-positioning-parent span {
+  color: inherit;
+  font: inherit;
+}
+
+@media (max-width: 700px) {
+  .home-positioning-parent {
+    gap: 0.4rem;
+    font-size: clamp(0.85rem, 3.6vw, 1rem);
+  }
+}
+
 .home-imagery .home-section-intro > p {
   font-size: var(--type-body-lead);
 }
@@ -9388,6 +9417,41 @@ a {
   padding-block: var(--space-4);
 }
 
+/* The client-word carousel sits between the parent-brand introduction and the
+ * service selector, so visitors encounter proof before choosing an offering. */
+.home-testimonial-placement {
+  margin-top: var(--space-section);
+  padding-block: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.home-positioning:has(+ .home-testimonial-placement) {
+  border-bottom: 0;
+}
+
+@media (min-width: 961px) {
+  .home-testimonial-placement + .signature-selector {
+    margin-top: clamp(3.5rem, 5vw, 5rem);
+  }
+
+  .home-testimonial-placement
+    + .signature-selector
+    .signature-section-heading {
+    width: 100%;
+    place-items: center;
+  }
+
+  .home-testimonial-placement
+    + .signature-selector
+    .signature-selector-world {
+    margin-top: clamp(3.5rem, 5vw, 5rem);
+  }
+}
+
+.home-testimonial-placement .home-testimonial-carousel {
+  border-block: 0;
+  padding-block: 0;
+}
+
 .home-testimonial-carousel > header {
   display: flex;
   align-items: center;
@@ -9487,15 +9551,26 @@ a {
   }
 
   .home-testimonial-track blockquote {
+    box-sizing: border-box;
+    min-width: 50%;
     min-height: 100%;
     align-content: center;
-    padding-block: var(--space-7);
+    border-right: 1px solid var(--color-rule);
+    padding: var(--space-7) clamp(2rem, 4vw, 4rem);
+  }
+
+  .home-testimonial-track blockquote:nth-child(odd) {
+    padding-left: 0;
+  }
+
+  .home-testimonial-track blockquote:nth-child(even) {
+    border-right: 0;
   }
 
   .home-testimonial-track p {
-    max-width: 28ch;
-    font-size: clamp(1.65rem, 2.25vw, 2.35rem);
-    line-height: 1.22;
+    max-width: 30ch;
+    font-size: clamp(1.35rem, 1.65vw, 1.8rem);
+    line-height: 1.28;
   }
 }
 

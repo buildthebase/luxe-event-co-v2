@@ -21,6 +21,7 @@ import { SiteShell } from "../components/site-shell";
 import { pageMetadata } from "../metadata-config";
 import { homeSectionNavigation } from "../page-section-navigation";
 import { createHomePageSchema } from "../schema-builders";
+import { HomeTestimonialCarousel } from "../components/home-testimonial-carousel";
 
 export const metadata: Metadata = {
   title: `Website Preview | ${pageMetadata["/"].title}`,
@@ -44,6 +45,9 @@ export default function HomePreview() {
         <PageSectionNavigation items={homeSectionNavigation} />
         <HomeHero />
         <HomePositioning />
+        <section className="home-testimonial-placement" aria-label="Client words">
+          <HomeTestimonialCarousel />
+        </section>
         <ExperienceSelector id="experience-selector" showDescription={false} />
         <HomeUnifiedExperience />
         <HomeEventCategories />

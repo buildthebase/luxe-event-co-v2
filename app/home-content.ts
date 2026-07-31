@@ -113,6 +113,21 @@ export const homeTestimonialPlaceholders = [
       "Luxe made several moving pieces feel like one calm, cohesive experience.",
     context: "Private event host",
   },
+  {
+    quote:
+      "The team understood the room immediately and shaped the service around how our guests would move through it.",
+    context: "Venue partner",
+  },
+  {
+    quote:
+      "From the first pour to the final detail, the experience felt polished, personal, and easy for our team.",
+    context: "Brand activation client",
+  },
+  {
+    quote:
+      "Coffee, dessert, and the setting each had their own moment, yet everything still felt beautifully connected.",
+    context: "Celebration host",
+  },
 ] as const;
 
 export const homeImageSlots = [
