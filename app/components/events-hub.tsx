@@ -11,7 +11,7 @@ export function EventsHero({
   titleLines: readonly string[];
 }) {
   return (
-    <header className="events-hero">
+    <header id="page-overview" className="events-hero">
       <div className="events-hero-copy">
         <p className="foundation-eyebrow">Luxe Events / Toronto &amp; the GTA</p>
         <h1 aria-label={titleLines.join(" ")}>
@@ -57,6 +57,7 @@ export function EventsHero({
 export function EventsApproach() {
   return (
     <section
+      id="event-led-approach"
       className="events-approach surface-chapter surface-chapter-dark"
       aria-labelledby="events-approach-title"
     >
@@ -73,9 +74,19 @@ export function EventsApproach() {
           a combination makes sense.
         </p>
         <p>
-          Each division remains a distinct experience. When more than one is
-          selected, they can be considered through one parent-brand inquiry and
-          proposal journey.
+          Each service remains a distinct experience. When more than one is
+          selected for a complete event setup, coffee can shape hospitality,
+          dessert can create a live guest moment, and rentals can support seating,
+          gathering, weather protection, and circulation. They can be coordinated
+          through one parent-brand inquiry and proposal journey without turning
+          them into a fixed package.
+        </p>
+        <p>
+          Guest flow around a coffee or dessert station should leave a clear approach,
+          ordering point, waiting area, and exit without blocking doors, aisles,
+          dining, or programmed activity. Luxe reviews placement against expected
+          arrival patterns, menu, service duration, staffing, utilities, and the
+          venue floor plan before the event.
         </p>
       </div>
       <ol className="events-approach-principles">
@@ -111,7 +122,6 @@ export function EventsDirectory() {
           <article className={`events-directory-${event.slug}`} key={event.slug}>
             <span>{event.number}</span>
             <div>
-              <p>{event.cue}</p>
               <h3>{event.name}</h3>
             </div>
             <div>
@@ -134,7 +144,7 @@ export function EventsDirectory() {
 
 export function EventsGalleryPreview() {
   return (
-    <section className="events-gallery" aria-labelledby="events-gallery-title">
+    <section id="gallery" className="events-gallery" aria-labelledby="events-gallery-title">
       <header>
         <p className="foundation-label">Featured gallery</p>
         <h2 id="events-gallery-title">See the experience in the room.</h2>

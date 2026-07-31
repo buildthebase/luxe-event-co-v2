@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { loadWorker, render } from "./test-worker.mjs";
 
 const routes = [
   "/",
@@ -25,12 +26,6 @@ const experienceChildren = routes.filter((route) =>
 );
 const eventChildren = routes.filter((route) => route.startsWith("/events/"));
 
-async function loadWorker() {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("site-structure", `${process.pid}-${Date.now()}`);
-  return (await import(workerUrl.href)).default;
-}
-
 const environment = {
   ASSETS: {
     fetch: async () => new Response("Not found", { status: 404 }),
@@ -42,16 +37,6 @@ const context = {
   passThroughOnException() {},
 };
 
-async function render(worker, path) {
-  return worker.fetch(
-    new Request(new URL(path, "http://localhost/"), {
-      headers: { accept: "text/html" },
-    }),
-    environment,
-    context,
-  );
-}
-
 function internalRouteLinks(html) {
   return new Set(
     [...html.matchAll(/<a\b[^>]*\shref="(\/[^"#?]*)[^"]*"[^>]*>/gi)]
@@ -60,7 +45,7 @@ function internalRouteLinks(html) {
   );
 }
 
-test("all permanent routes form a crawlable, shallow link graph", async () => {
+test("in-progress routes form a crawlable graph behind the isolated launch page", async () => {
   const worker = await loadWorker();
   const graph = new Map();
   const inbound = new Map(routes.map((route) => [route, 0]));
@@ -78,12 +63,17 @@ test("all permanent routes form a crawlable, shallow link graph", async () => {
     }
   }
 
+  assert.equal(graph.get("/")?.size, 0, "Home should not expose the in-progress route graph");
+
   for (const route of routes.filter((route) => route !== "/")) {
     assert.ok(inbound.get(route) > 0, `${route} must not be orphaned`);
   }
 
-  const depths = new Map([["/", 0]]);
-  const queue = ["/"];
+  const depths = new Map([
+    ["/experiences", 0],
+    ["/events", 0],
+  ]);
+  const queue = ["/experiences", "/events"];
 
   while (queue.length) {
     const current = queue.shift();
@@ -97,8 +87,8 @@ test("all permanent routes form a crawlable, shallow link graph", async () => {
     }
   }
 
-  for (const route of routes) {
-    assert.ok(depths.has(route), `${route} must be reachable from Home`);
+  for (const route of routes.filter((route) => route !== "/")) {
+    assert.ok(depths.has(route), `${route} must be reachable from an in-progress hub`);
     assert.ok(depths.get(route) <= 3, `${route} exceeds three meaningful link steps`);
   }
 });

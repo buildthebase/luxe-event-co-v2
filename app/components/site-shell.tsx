@@ -2,6 +2,7 @@ import Link from "next/link";
 import { siteConfig } from "../site-config";
 import { PageBreadcrumbs } from "./breadcrumb-navigation";
 import { MobileNavigation, PrimaryNavigation } from "./site-navigation";
+import { InstagramLinks } from "./social-links";
 
 export function SiteShell({
   breadcrumbPath,
@@ -20,7 +21,10 @@ export function SiteShell({
           <span>Luxe</span>
           <small>Event Co.</small>
         </Link>
-        <PrimaryNavigation variant="desktop" />
+        <div className="foundation-header-actions">
+          <PrimaryNavigation variant="desktop" />
+          <InstagramLinks className="foundation-header-socials" />
+        </div>
         <MobileNavigation />
       </header>
       <div className="foundation-main-target" id="main-content" tabIndex={-1}>
@@ -31,7 +35,7 @@ export function SiteShell({
         <div className="foundation-footer-identity">
           <span className="foundation-footer-wordmark">{siteConfig.name}</span>
           <span className="foundation-footer-location">{siteConfig.location}</span>
-          <p>Coffee, dessert, and considered event settings—planned as one.</p>
+          <p>Coffee, dessert, and refined event settings—planned as one.</p>
         </div>
         <div className="foundation-footer-group">
           <span className="foundation-footer-label">Contact</span>
@@ -41,37 +45,25 @@ export function SiteShell({
           </nav>
         </div>
         <div className="foundation-footer-group">
-          <span className="foundation-footer-label">Follow</span>
-          <nav className="foundation-footer-socials" aria-label="Luxe divisions on Instagram">
-            <a
-              href={siteConfig.socialProfiles.coffeeBar}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Luxe Coffee Bar on Instagram, opens in a new tab"
-            >
+          <span className="foundation-footer-label">Explore our experiences</span>
+          <nav className="foundation-footer-experiences" aria-label="Explore Luxe experiences">
+            <Link href="/experiences/coffee-bar">
               Coffee
-            </a>
-            <a
-              href={siteConfig.socialProfiles.sweetCart}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Luxe Sweet Cart on Instagram, opens in a new tab"
-            >
+            </Link>
+            <Link href="/experiences/sweet-cart">
               Dessert
-            </a>
-            <a
-              href={siteConfig.socialProfiles.seatingRentals}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Luxe Seating Rentals on Instagram, opens in a new tab"
-            >
+            </Link>
+            <Link href="/experiences/seating-rentals">
               Seating
-            </a>
+            </Link>
           </nav>
         </div>
-        <Link className="foundation-footer-cta" href="/inquire">
-          Start a conversation <span aria-hidden="true">↗</span>
-        </Link>
+        <div className="foundation-footer-actions">
+          <Link className="foundation-footer-cta" href="/inquire">
+            Start a conversation <span aria-hidden="true">↗</span>
+          </Link>
+          <InstagramLinks className="foundation-footer-instagram" />
+        </div>
       </footer>
     </div>
   );

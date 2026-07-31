@@ -28,7 +28,7 @@ export const audienceSegments: AudienceSegment[] = [
     relevantEvents: ["weddings", "bridal-showers"],
     primaryCta: "Plan a wedding with Luxe",
     secondaryCta: "Explore wedding experiences",
-    inquiryContext: ["wedding date", "venue or location", "guest count", "services being considered", "planner or coordinator involvement"],
+    inquiryContext: ["wedding date", "venue or location", "guest count", "services being requested", "planner or coordinator involvement"],
   },
   {
     slug: "corporate-clients",
@@ -70,7 +70,7 @@ export const audienceSegments: AudienceSegment[] = [
     relevantEvents: ["baby-showers", "bridal-showers", "birthdays", "private-events"],
     primaryCta: "Plan a private event",
     secondaryCta: "Find an experience for your occasion",
-    inquiryContext: ["occasion", "date and location", "guest count", "desired atmosphere", "planner or decorator involvement", "services being considered"],
+    inquiryContext: ["occasion", "date and location", "guest count", "desired atmosphere", "planner or decorator involvement", "services being requested"],
   },
 ];
 

@@ -32,7 +32,7 @@ export const navigationItems: NavigationItem[] = [
   },
   { href: "/gallery", label: "Gallery" },
   { href: "/faq", label: "FAQ" },
-  { href: "/inquire", label: "Inquire", emphasis: "inquiry" },
+  { href: "/inquire", label: "Plan With Us", emphasis: "inquiry" },
 ];
 
 const homeBreadcrumb = { href: "/", label: "Home" } as const;

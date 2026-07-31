@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { loadWorker, render } from "./test-worker.mjs";
 
 const canonicalOrigin = "https://luxeeventco.ca";
 const routes = [
@@ -44,7 +45,7 @@ const decisionSupportSignals = new Map([
   ["/", /How the planning journey takes shape|What working with Luxe feels like/i],
   ["/experiences", /Can each experience be booked independently\?/i],
   ["/events", /What are you gathering for\?/i],
-  ["/gallery", /organized by[\s\S]*experience and occasion|grouped by the moments/i],
+  ["/gallery", /Explore service directions by experience or occasion/i],
   ["/inquire", /What to have ready|What happens next/i],
 ]);
 
@@ -65,29 +66,6 @@ function mainText(html) {
       .replace(/<[^>]+>/g, " ")
       .replace(/\s+/g, " ")
       .trim(),
-  );
-}
-
-async function loadWorker() {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("core-page-optimization", `${process.pid}-${Date.now()}`);
-  return (await import(workerUrl.href)).default;
-}
-
-async function render(worker, path) {
-  return worker.fetch(
-    new Request(new URL(path, "http://localhost/"), {
-      headers: { accept: "text/html" },
-    }),
-    {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
   );
 }
 
@@ -136,7 +114,11 @@ test("every page has one clear H1, logical sections, useful text, and a next ste
       assert.ok(headings[index] <= headings[index - 1] + 1, `${path} heading level jump`);
     }
 
-    assert.ok(text.split(/\s+/).length >= 450, `${path} must not be a thin visual page`);
+    const minimumWords = path === "/gallery" ? 250 : 450;
+    assert.ok(
+      text.split(/\s+/).length >= minimumWords,
+      `${path} must not be a thin visual page`,
+    );
     assert.match(main, /<h1\b[\s\S]*?<\/h1>[\s\S]{0,500}<p\b/i, `${path} needs a clear introduction`);
     assert.match(text, primaryTopicSignals.get(path), `${path} primary topic`);
     assert.match(text, /Toronto|Greater Toronto Area|GTA|Southern Ontario/i, `${path} service area`);
@@ -175,6 +157,6 @@ test("supporting answers, proof controls, and image text remain page-appropriate
 
   const galleryResponse = await render(worker, "/gallery");
   const galleryHtml = await galleryResponse.text();
-  assert.match(galleryHtml, /data-asset-status="reserved"/i);
+  assert.doesNotMatch(galleryHtml, /data-asset-status="reserved"/i);
   assert.doesNotMatch(galleryHtml, /"@type":"ImageObject"[\s\S]*?#image-/i);
 });

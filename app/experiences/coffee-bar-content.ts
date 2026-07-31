@@ -1,9 +1,11 @@
+import { entityNames } from "../entity-names";
+
 export const coffeeFormats = [
   {
     id: "cafe-cart",
     number: "01",
-    name: "Luxe Café Cart Experience",
-    shortName: "Café Cart",
+    name: entityNames.coffeeExperiences.cafeCart.canonicalName,
+    shortName: entityNames.coffeeExperiences.cafeCart.contextualName,
     statement: "An intimate café point, brought into the gathering.",
     description:
       "A focused mobile café setup for occasions that call for warm hospitality without making the service feel oversized for the room.",
@@ -13,8 +15,8 @@ export const coffeeFormats = [
   {
     id: "signature-bar",
     number: "02",
-    name: "Luxe Signature Coffee Bar Experience",
-    shortName: "Signature Coffee Bar",
+    name: entityNames.coffeeExperiences.signatureCoffeeBar.canonicalName,
+    shortName: entityNames.coffeeExperiences.signatureCoffeeBar.contextualName,
     statement: "A full-service coffee bar with a stronger presence in the room.",
     description:
       "An expanded bar setup for weddings, corporate events, and activations where beverage service is intended to become a visible part of the room.",
@@ -113,7 +115,7 @@ export const coffeeCustomization = [
     number: "03",
     title: "Style the service",
     description:
-      "Floral styling and pastry-display possibilities can be considered as part of the presentation.",
+      "Floral styling and pastry-display possibilities can be planned as part of the presentation.",
   },
 ] as const;
 
@@ -178,6 +180,11 @@ export const coffeeGalleryPreview = [
 
 export const coffeeFaqs = [
   {
+    question: "How much does mobile coffee catering cost, and how is it priced?",
+    answer:
+      "Mobile coffee catering is priced from the Café Cart or Signature Coffee Bar format, guest count, service duration, location and travel, staffing, menu, equipment, setup requirements, indoor or outdoor conditions, branding, multi-day needs, and the number of service stations. Luxe reviews those event requirements and confirms the selected format and operating scope in the proposal. Guest count and duration both matter, but neither determines the quote by itself, so no single fixed coffee-service total is published.",
+  },
+  {
     question: "What is included with a Luxe Coffee Bar booking?",
     answer:
       "Every coffee booking includes the selected Café Cart or Signature Coffee Bar format, professional barista service, premium espresso equipment, four espresso classics, hot and iced service, two signature coffee drinks, one premium non-coffee beverage, dairy and premium milk alternatives, syrups and sauces, a menu display, serving essentials, setup, and takedown.",
@@ -185,7 +192,17 @@ export const coffeeFaqs = [
   {
     question: "What is the difference between the two coffee experiences?",
     answer:
-      "The Café Cart is an intimate, focused café setup, while the Signature Coffee Bar creates a fuller and more prominent service presence. Both are complete Luxe experiences. Guest count, service duration, setting, and the role coffee should play in the event determine the better fit.",
+      "The Café Cart is appropriate when the event needs an intimate, focused café point that sits quietly within the setting. The full-service Signature Coffee Bar is appropriate when coffee should have a larger footprint and a more prominent hospitality role. Both are complete, staffed Luxe experiences; guest count, service duration, venue, menu, available space, and desired visibility determine the better fit.",
+  },
+  {
+    question: "How does a coffee cart compare with traditional coffee catering?",
+    answer:
+      "Traditional coffee catering often prioritizes straightforward batch service or a self-serve beverage point, which can be appropriate when speed and simplicity matter most. A staffed coffee cart prepares made-to-order espresso, matcha, and other selected drinks and makes service part of the guest experience. Compare the required menu, service style, guest-arrival pattern, operating window, space, and budget before choosing.",
+  },
+  {
+    question: "How does outside coffee service compare with venue coffee service?",
+    answer:
+      "Venue coffee service can be the practical choice when it is already integrated with the venue's catering team, schedule, and banquet setup. A dedicated Luxe bar is useful when the event calls for made-to-order specialty drinks, dedicated baristas, a distinct service point, or branded presentation. Review the venue's included menu, outside-vendor rules, service timing, placement, utilities, and guest flow before deciding.",
   },
   {
     question: "Are iced drinks included?",
@@ -205,17 +222,27 @@ export const coffeeFaqs = [
   {
     question: "Can the menu, cups, and signage be customized?",
     answer:
-      "Yes. Clients can personalize signature drinks, seasonal selections, menu displays, custom cups, event signage, and cart branding. Final possibilities are confirmed around the event direction and production requirements.",
+      "Yes. Clients can personalize signature drinks, seasonal selections, matcha or other non-coffee choices, drink names, menu displays, custom cups, event signage, and cart branding. The final menu and visual treatment are confirmed around ingredient availability, equipment, service speed, guest flow, approved artwork, production requirements, and the event timeline.",
   },
   {
     question: "Can pastries be added to the presentation?",
     answer:
-      "Pastry-display possibilities can be considered as part of the coffee presentation. Availability and display details are confirmed during planning.",
+      "Pastry-display possibilities can be planned as part of the coffee presentation. Availability and display details are confirmed during planning.",
   },
   {
     question: "How many guests can Luxe Coffee Bar serve?",
     answer:
-      "Luxe Coffee Bar supports events of up to 500 guests and can support up to three simultaneous setups. Service duration, staffing, venue access, menu complexity, and event flow are considered before confirming the service plan.",
+      "Luxe Coffee Bar supports events of up to 500 guests and can support up to three simultaneous setups. Service duration, staffing, venue access, menu complexity, and event flow are planned before confirming the service plan.",
+  },
+  {
+    question: "How many drinks can be served per hour?",
+    answer:
+      "Luxe has not approved a public drinks-per-hour figure. Throughput changes with the selected coffee format, menu, hot-to-iced mix, equipment, service duration, guest-arrival pattern, staffing, placement, and venue conditions. The proposal confirms the event-specific operating plan instead of promising one universal hourly rate.",
+  },
+  {
+    question: "How many baristas are included?",
+    answer:
+      "Professional barista service is included, but Luxe has not approved one public or universally included headcount. The team is assigned from the guest count, menu complexity, service duration, arrival pattern, equipment, placement, and venue conditions, then confirmed in the proposal.",
   },
   {
     question: "Is setup and teardown included?",
@@ -225,7 +252,7 @@ export const coffeeFaqs = [
   {
     question: "Does Luxe Coffee Bar travel outside Toronto?",
     answer:
-      "Yes. Luxe primarily serves Toronto and the Greater Toronto Area, with select destination events considered throughout Southern Ontario. Travel fees may apply.",
+      "Yes. Luxe primarily serves Toronto and the Greater Toronto Area, with select destination events available throughout Southern Ontario. Travel fees may apply.",
   },
   {
     question: "What space, power, or water access is required?",

@@ -22,6 +22,10 @@ const contentSource = await readFile(
   new URL("../app/experiences/coffee-bar-content.ts", import.meta.url),
   "utf8",
 );
+const entityNamesSource = await readFile(
+  new URL("../app/entity-names.ts", import.meta.url),
+  "utf8",
+);
 const cssSource = await readFile(
   new URL("../app/globals.css", import.meta.url),
   "utf8",
@@ -60,8 +64,8 @@ test("implements every required Coffee Bar content chapter", () => {
 });
 
 test("uses verified coffee formats, inclusions, menus, and capacity", () => {
-  assert.match(contentSource, /Luxe Café Cart Experience/);
-  assert.match(contentSource, /Luxe Signature Coffee Bar Experience/);
+  assert.match(entityNamesSource, /Luxe Café Cart Experience/);
+  assert.match(entityNamesSource, /Luxe Signature Coffee Bar Experience/);
   assert.match(contentSource, /Professional barista service/);
   assert.match(contentSource, /Hot and iced beverages/);
   assert.match(contentSource, /Dairy and premium milk alternatives/);
@@ -88,6 +92,29 @@ test("answers every required Coffee Bar AEO question visibly", () => {
   ]) {
     assert.match(contentSource, new RegExp(answerSignal.replaceAll("?", "\\?")));
   }
+});
+
+test("answers priority mobile coffee discovery questions without another section", () => {
+  assert.match(componentSource, /A mobile coffee bar brings café equipment/);
+  assert.match(componentSource, /Mobile espresso catering begins with the event brief/);
+  assert.match(componentSource, /Baristas prepare drinks on-site/);
+  assert.match(componentSource, /Mobile coffee catering can suit weddings/);
+  assert.match(componentSource, /conferences, brand activations, showers, birthdays/);
+});
+
+test("compares coffee service options neutrally on existing surfaces", () => {
+  assert.match(contentSource, /traditional coffee catering/);
+  assert.match(contentSource, /venue coffee service/);
+  assert.match(contentSource, /speed and simplicity matter most/);
+  assert.match(contentSource, /integrated with the venue's catering team/);
+  assert.match(componentSource, /available space, menu/);
+});
+
+test("answers coffee pricing directly without inventing a fixed rate", () => {
+  assert.match(contentSource, /How much does mobile coffee catering cost/);
+  assert.match(contentSource, /Mobile coffee catering is priced from/);
+  assert.match(contentSource, /Guest count and duration both matter/);
+  assert.doesNotMatch(contentSource, /\$\d+.*(?:per guest|per hour|starting)/i);
 });
 
 test("does not invent deferred utility or service-rate specifications", () => {

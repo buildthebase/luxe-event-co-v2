@@ -14,38 +14,29 @@ const schemaSource = await readFile(
 );
 const cssSource = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
 
-test("implements every required complete Home section", () => {
-  for (const component of [
-    "HomeHero",
-    "HomePositioning",
-    "ExperienceSelector",
-    "HomeUnifiedExperience",
-    "HomeEventCategories",
-    "CombinedExperienceFeature",
-    "HomeSelectedImagery",
-    "HomeTrust",
-    "HomeWorkingExperience",
-    "EventPlanningPathway",
-    "HomeServiceArea",
-    "ContextualInquiryPanel",
-  ]) {
-    assert.match(pageSource, new RegExp(`<${component}`), component);
-  }
+test("keeps the public Home route on the coming-soon experience", () => {
+  assert.match(pageSource, /Full website/);
+  assert.match(pageSource, /coming soon/);
+  assert.match(pageSource, /className="constellation"/);
+  assert.match(pageSource, /Crafted coffee, elevated desserts, and elegant seating/);
+  assert.doesNotMatch(pageSource, /<HomeHero/);
 });
 
 test("withholds testimonial placements until publishable quotations exist", () => {
   assert.doesNotMatch(pageSource, /<HomeTestimonials/);
 });
 
-test("keeps the Home hero focused on the approved two CTA hierarchy", () => {
+test("keeps the Home hero focused on one primary CTA", () => {
   assert.match(heroSource, /Plan Your Event/);
-  assert.match(heroSource, /Explore Experiences/);
+  assert.doesNotMatch(heroSource, /Explore Experiences/);
+  assert.match(heroSource, /<dialog/);
+  assert.match(heroSource, /Flashquotes quote form/);
   assert.equal((heroSource.match(/home-hero-actions/g) ?? []).length, 1);
 });
 
 test("keeps removed explanatory copy and duplicate credibility language off Home", () => {
-  assert.match(pageSource, /<ExperienceSelector showDescription=\{false\} \/>/);
-  assert.match(pageSource, /<EventPlanningPathway showDescription=\{false\} \/>/);
+  assert.doesNotMatch(pageSource, /<ExperienceSelector/);
+  assert.doesNotMatch(pageSource, /<EventPlanningPathway/);
   assert.doesNotMatch(heroSource, /The complete Luxe Event Co\. experience/);
   assert.equal((heroSource.match(/<CredibilityStrip variant="hero" \/>/g) ?? []).length, 1);
 });
@@ -112,7 +103,7 @@ test("recomposes unified-experience notes before desktop columns become cramped"
   );
   assert.match(
     cssSource,
-    /\.home-unified-notes li\s*\{[\s\S]*?grid-template-columns: 2\.5rem minmax\(0, 1fr\)[\s\S]*?font-size: clamp\(1rem, 1\.25vw, 1\.25rem\)/,
+    /\.home-unified-notes li\s*\{[\s\S]*?grid-template-columns: 2\.5rem minmax\(0, 1fr\)[\s\S]*?font-size: clamp\(1\.4rem, 1\.8vw, 1\.75rem\)/,
   );
   assert.match(
     cssSource,

@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFile, readdir } from "node:fs/promises";
 import { join } from "node:path";
 import test from "node:test";
+import { loadWorker, render } from "./test-worker.mjs";
 
 const canonicalOrigin = "https://luxeeventco.ca";
 const routes = [
@@ -23,12 +24,6 @@ const routes = [
   "/inquire",
 ];
 
-async function loadWorker() {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("canonical-clarity", `${process.pid}-${Date.now()}`);
-  return (await import(workerUrl.href)).default;
-}
-
 const environment = {
   ASSETS: {
     fetch: async () => new Response("Not found", { status: 404 }),
@@ -39,17 +34,6 @@ const context = {
   waitUntil() {},
   passThroughOnException() {},
 };
-
-function render(worker, url) {
-  return worker.fetch(
-    new Request(url, {
-      headers: { accept: "text/html" },
-      redirect: "manual",
-    }),
-    environment,
-    context,
-  );
-}
 
 function head(html) {
   return html.match(/<head\b[^>]*>([\s\S]*?)<\/head>/i)?.[1] ?? "";

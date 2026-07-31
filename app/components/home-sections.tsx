@@ -1,25 +1,71 @@
 import Link from "next/link";
+import { Fragment } from "react";
+import { ResponsiveImage } from "./responsive-image";
+import { HomeTestimonialCarousel } from "./home-testimonial-carousel";
 import {
   featuredHomeEvents,
+  homeEventImageGroups,
   homeImageSlots,
   homeProofPoints,
   homeServiceAreaGroups,
+  homeWorkingImage,
   homeWorkingPrinciples,
 } from "../home-content";
-import { siteConfig } from "../site-config";
+
+function HomeEditorialImage({
+  slot,
+  compact = false,
+}: {
+  slot: {
+    id: string;
+    label: string;
+    context: string;
+    tone: string;
+    image: Parameters<typeof ResponsiveImage>[0]["asset"];
+  };
+  compact?: boolean;
+}) {
+  const fallback = (
+    <div className="home-editorial-art" aria-hidden="true">
+      <i />
+      <i />
+      <i />
+    </div>
+  );
+
+  return (
+    <figure
+      className={`home-editorial-image home-image-slot-${slot.tone}${compact ? " home-editorial-image-compact" : ""}`}
+      data-asset-status={slot.image.status}
+    >
+      <div className="home-editorial-frame">
+        <ResponsiveImage asset={slot.image} fallback={fallback} fill />
+      </div>
+      <figcaption>
+        <strong>{slot.label}</strong>
+        <small>{slot.context}</small>
+      </figcaption>
+    </figure>
+  );
+}
 
 export function HomePositioning() {
   return (
-    <section className="home-positioning" aria-labelledby="home-positioning-title">
+    <section id="luxe-family" className="home-positioning" aria-labelledby="home-positioning-title">
       <h2 id="home-positioning-title">
         Coffee, dessert, and seating, together for your event.
       </h2>
       <div>
+        <p>Luxe Event Co. is the parent company behind:</p>
+        <ul className="home-positioning-services">
+          <li><Link href="#experience-selector-coffee">Luxe Coffee Bar</Link></li>
+          <li><Link href="#experience-selector-dessert">Luxe Sweet Cart</Link></li>
+          <li><Link href="#experience-selector-seating">Luxe Seating Rentals</Link></li>
+        </ul>
         <p>
-          Luxe Event Co. is the parent company behind Luxe Coffee Bar, Luxe
-          Sweet Cart, and Luxe Seating Rentals. Each division can be booked
-          independently or coordinated through one inquiry, while retaining
-          its own service identity and role in the event.
+          Each service can be booked independently or brought together within one
+          cohesive event plan, with every experience contributing something distinct
+          to the occasion.
         </p>
       </div>
     </section>
@@ -28,22 +74,36 @@ export function HomePositioning() {
 
 export function HomeUnifiedExperience() {
   return (
-    <section className="home-unified" aria-labelledby="home-unified-title">
+    <section id="unified-experience" className="home-unified" aria-labelledby="home-unified-title">
       <div className="home-unified-heading">
         <p className="foundation-label">The unified Luxe experience</p>
         <h2 id="home-unified-title">Begin with one. Consider the whole occasion.</h2>
       </div>
       <div className="home-unified-copy">
+        <ul className="home-unified-event-list">
+          <li>
+            <span className="home-unified-event-mark home-unified-event-mark-private" aria-hidden="true" />
+            <p>For a wedding, espresso may carry cocktail hour into the evening.</p>
+          </li>
+          <li>
+            <span className="home-unified-event-mark home-unified-event-mark-corporate" aria-hidden="true" />
+            <p>
+              A corporate gathering may pair branded drinks with seating designed
+              for conversation.
+            </p>
+          </li>
+          <li>
+            <span className="home-unified-event-mark home-unified-event-mark-wedding" aria-hidden="true" />
+            <p>
+              A private celebration may bring live dessert service into the setting
+              itself.
+            </p>
+          </li>
+        </ul>
         <p>
-          For a wedding, espresso may carry cocktail hour into the evening. A
-          corporate gathering may pair branded drinks with seating shaped for
-          conversation. A private celebration may bring live dessert into the
-          setting itself.
-        </p>
-        <p>
-          Each experience remains distinct. Luxe Event Co. coordinates the details
-          as one considered event, with the character and expertise of every
-          division intact.
+          Each experience remains distinct. Luxe Event Co. brings the details
+          together as one cohesive event, while preserving the character and
+          expertise of every service.
         </p>
       </div>
       <ol className="home-unified-notes">
@@ -57,24 +117,43 @@ export function HomeUnifiedExperience() {
 
 export function HomeEventCategories() {
   return (
-    <section className="home-events" aria-labelledby="home-events-title">
+    <section id="event-types" className="home-events" aria-labelledby="home-events-title">
       <header className="home-section-intro home-section-intro-single">
         <div>
           <h2 id="home-events-title">Different gatherings ask for different details.</h2>
         </div>
       </header>
-      <div className="home-event-list">
-        {featuredHomeEvents.map((event) => (
-          <Link href={`/events/${event.slug}`} key={event.slug}>
-            <span>{event.number}</span>
-            <strong>{event.name}</strong>
-            <small>{event.summary}</small>
-            <b aria-hidden="true">↗</b>
-          </Link>
+      <div className="home-event-groups">
+        {homeEventImageGroups.map((group, groupIndex) => (
+          <Fragment key={group.id}>
+            <div className="home-event-group">
+              <HomeEditorialImage slot={group} />
+              <div className="home-event-list">
+                {group.eventSlugs.map((slug) => {
+                  const event = featuredHomeEvents.find((item) => item.slug === slug)!;
+
+                  return (
+                    <Link href={`/events/${event.slug}`} key={event.slug}>
+                      <strong>{event.name}</strong>
+                      <small>{event.summary}</small>
+                      <b aria-hidden="true">↗</b>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+            {groupIndex === 0 ? (
+              <div className="home-event-breaker" aria-hidden="true">
+                <i />
+                <i />
+                <i />
+              </div>
+            ) : null}
+          </Fragment>
         ))}
       </div>
       <Link href="/events" className="home-text-link">
-        Explore every event pathway <span aria-hidden="true">↗</span>
+        Explore every event pathway
       </Link>
     </section>
   );
@@ -82,30 +161,19 @@ export function HomeEventCategories() {
 
 export function HomeSelectedImagery() {
   return (
-    <section className="home-imagery" aria-labelledby="home-imagery-title">
+    <section id="contextual-imagery" className="home-imagery" aria-labelledby="home-imagery-title">
       <header className="home-section-intro">
         <div>
           <h2 id="home-imagery-title">The work should be seen in context.</h2>
         </div>
         <p>
-          Guest interaction, fresh preparation, and the room itself reveal how
-          each Luxe experience contributes to the occasion.
+          Guest interaction, fresh preparation, and the surrounding space reveal
+          how each Luxe experience contributes to the occasion.
         </p>
       </header>
-      <div className="home-imagery-grid" data-asset-status="awaiting-approved-photography">
-        {homeImageSlots.map((slot, index) => (
-          <figure className={`home-image-slot home-image-slot-${slot.tone}`} key={slot.id}>
-            <div aria-hidden="true">
-              <i />
-              <i />
-              <i />
-            </div>
-            <figcaption>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <strong>{slot.label}</strong>
-              <small>{slot.context}</small>
-            </figcaption>
-          </figure>
+      <div className="home-imagery-grid">
+        {homeImageSlots.map((slot) => (
+          <HomeEditorialImage compact slot={slot} key={slot.id} />
         ))}
       </div>
       <Link href="/gallery" className="home-text-link">
@@ -117,9 +185,14 @@ export function HomeSelectedImagery() {
 
 export function HomeTrust() {
   return (
-    <section className="home-trust" aria-labelledby="home-trust-title">
+    <section
+      id="operational-proof"
+      className="home-trust"
+      aria-labelledby="home-trust-title"
+      data-evidence-status="confirmed-first-party"
+    >
       <header>
-        <p className="foundation-label">Operational assurance</p>
+        <p className="foundation-label">Confirmed operating facts</p>
         <h2 id="home-trust-title">Prepared for rooms where details matter.</h2>
         <p>
           Luxe supports private hosts, wedding professionals, venues, corporate
@@ -141,20 +214,28 @@ export function HomeTrust() {
 
 export function HomeWorkingExperience() {
   return (
-    <section className="home-working" aria-labelledby="home-working-title">
+    <section id="working-with-luxe" className="home-working" aria-labelledby="home-working-title">
       <header className="home-section-intro home-section-intro-single">
         <div>
           <h2 id="home-working-title">What working with Luxe feels like</h2>
         </div>
       </header>
-      <div className="home-working-grid">
-        {homeWorkingPrinciples.map((principle) => (
-          <article key={principle.number}>
-            <span>{principle.number}</span>
-            <h3>{principle.title}</h3>
-            <p>{principle.description}</p>
-          </article>
-        ))}
+      <div className="home-working-layout">
+        <div className="home-working-media">
+          <HomeEditorialImage slot={homeWorkingImage} />
+          <HomeTestimonialCarousel />
+        </div>
+        <div className="home-working-grid">
+          {homeWorkingPrinciples.map((principle) => (
+            <article key={principle.title}>
+              <span aria-label={principle.markerLabel} role="img">
+                {principle.marker}
+              </span>
+              <h3>{principle.title}</h3>
+              <p>{principle.description}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -162,11 +243,26 @@ export function HomeWorkingExperience() {
 
 export function HomeServiceArea() {
   return (
-    <section className="home-service-area" aria-labelledby="home-service-area-title">
+    <section
+      id="service-area"
+      className="home-service-area"
+      aria-labelledby="home-service-area-title"
+      data-evidence-status="confirmed-first-party"
+    >
       <div>
         <p className="foundation-label">Service area</p>
-        <h2 id="home-service-area-title">
-          Toronto at the centre. The GTA and Southern Ontario within reach.
+        <h2
+          id="home-service-area-title"
+          aria-label="Toronto, GTA, Southern Ontario."
+        >
+          <span className="home-service-area-title-desktop">
+            Toronto at the centre. The GTA and Southern Ontario within reach.
+          </span>
+          <span className="home-service-area-title-mobile" aria-hidden="true">
+            <span>Toronto,</span>
+            <span>GTA,</span>
+            <span>Southern Ontario.</span>
+          </span>
         </h2>
         <p>
           Luxe Event Co. serves weddings, corporate events, brand activations, and
@@ -182,9 +278,6 @@ export function HomeServiceArea() {
           </div>
         ))}
       </dl>
-      <a href={`mailto:${siteConfig.contact.email}`} className="home-text-link" data-event-name="email_click">
-        {siteConfig.contact.email} <span aria-hidden="true">↗</span>
-      </a>
     </section>
   );
 }

@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import {
   combinedExperiences,
   credibilityOrganizations,
@@ -13,10 +16,16 @@ import {
 } from "../signature-elements";
 import { ResponsiveImage } from "./responsive-image";
 
+const experienceSelectorActions: Record<string, string> = {
+  coffee: "Sip",
+  dessert: "Indulge",
+  seating: "Gather",
+};
+
 export function ExperienceSelector({
   experiences = signatureExperiences,
   heading = "Choose where the experience begins.",
-  description = "Each division has its own atmosphere and purpose. Together, they create one considered event language.",
+  description = "Each experience has its own atmosphere and purpose. Together, they create one cohesive event language.",
   id,
   showDescription = true,
 }: {
@@ -44,9 +53,9 @@ export function ExperienceSelector({
           <Link
             className={`signature-selector-choice signature-selector-${experience.id}`}
             href={experience.href}
+            id={`experience-selector-${experience.id}`}
             key={experience.id}
           >
-            <span className="signature-selector-number">{experience.number}</span>
             <span className="signature-selector-art" aria-hidden="true">
               <i />
               <i />
@@ -56,7 +65,9 @@ export function ExperienceSelector({
               <span className="signature-selector-label">{experience.label}</span>
               <strong>{experience.name}</strong>
               <span>{experience.description}</span>
-              <b aria-hidden="true">Explore ↗</b>
+              <b aria-hidden="true">
+                {experienceSelectorActions[experience.id] ?? "Explore"} ↗
+              </b>
             </span>
           </Link>
         ))}
@@ -66,18 +77,53 @@ export function ExperienceSelector({
 }
 
 export function EventPlanningPathway({
+  id,
   steps = eventPlanningPathway,
   heading = "How the planning journey takes shape",
   description = "This sequence explains the planning path. The operational inquiry remains a separate, focused handoff.",
   showDescription = true,
 }: {
+  id?: string;
   steps?: readonly EventPlanningStep[];
   heading?: string;
   description?: string;
   showDescription?: boolean;
 } = {}) {
+  const [activeStep, setActiveStep] = useState<number | null>(null);
+  const stepNodes = useRef<Array<HTMLLIElement | null>>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntry = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (first, second) =>
+              Math.abs(first.boundingClientRect.top - window.innerHeight * 0.44) -
+              Math.abs(second.boundingClientRect.top - window.innerHeight * 0.44),
+          )[0];
+
+        if (visibleEntry) {
+          setActiveStep(Number((visibleEntry.target as HTMLElement).dataset.stepIndex));
+        }
+      },
+      {
+        rootMargin: "-36% 0px -44% 0px",
+        threshold: 0,
+      },
+    );
+
+    stepNodes.current.forEach((node) => {
+      if (node) {
+        observer.observe(node);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="signature-pathway" aria-labelledby="signature-pathway-title">
+    <section id={id} className="signature-pathway" aria-labelledby="signature-pathway-title">
       <header className="signature-section-heading signature-section-heading-compact">
         <h2 id="signature-pathway-title">{heading}</h2>
         {showDescription ? (
@@ -85,8 +131,15 @@ export function EventPlanningPathway({
         ) : null}
       </header>
       <ol className="signature-pathway-list">
-        {steps.map((step) => (
-          <li key={step.number}>
+        {steps.map((step, index) => (
+          <li
+            className={activeStep === index ? "is-scroll-active" : undefined}
+            data-step-index={index}
+            key={step.number}
+            ref={(node) => {
+              stepNodes.current[index] = node;
+            }}
+          >
             <Link href={step.href}>
               <span>{step.number}</span>
               <strong>{step.title}</strong>
@@ -101,26 +154,25 @@ export function EventPlanningPathway({
 }
 
 export function CombinedExperienceFeature({
+  id,
   combinations = combinedExperiences,
   heading = "More than one way to shape the room.",
-  description = "Each composition starts with the occasion, bringing together only the coffee, dessert, and seating experiences that meaningfully support it.",
+  description = "The right combination of coffee, dessert, and seating is shaped around the occasion, the setting, and the way guests will experience it.",
 }: {
+  id?: string;
   combinations?: readonly CombinedExperience[];
   heading?: string;
   description?: string;
 } = {}) {
   return (
-    <section className="signature-combinations" aria-labelledby="signature-combinations-title">
+    <section id={id} className="signature-combinations" aria-labelledby="signature-combinations-title">
       <div className="signature-combinations-intro">
         <h2 id="signature-combinations-title">{heading}</h2>
         <p>{description}</p>
       </div>
       <div className="signature-combinations-list">
-        {combinations.map((combination, index) => (
+        {combinations.map((combination) => (
           <Link href={combination.href} key={combination.id}>
-            <span className="signature-combination-index">
-              {String(index + 1).padStart(2, "0")}
-            </span>
             <span className="signature-combination-main">
               <small>{combination.occasion}</small>
               <strong>{combination.title}</strong>
@@ -158,6 +210,8 @@ export function CredibilityStrip({
     <section
       className={`signature-credibility signature-credibility-${variant}`}
       aria-labelledby={`signature-credibility-title-${variant}`}
+      data-evidence-status="approved-organization-names"
+      data-evidence-boundary="no-testimonial-endorsement-or-case-study-inference"
     >
       <p id={`signature-credibility-title-${variant}`}>
         {variant === "hero"
@@ -193,10 +247,12 @@ export function CredibilityStrip({
 }
 
 export function ContextualInquiryPanel({
+  id,
   context,
   contextKey = "default",
   showEyebrow = true,
 }: {
+  id?: string;
   context?: InquiryContext;
   contextKey?: string;
   showEyebrow?: boolean;
@@ -205,7 +261,7 @@ export function ContextualInquiryPanel({
     context ?? inquiryContexts[contextKey] ?? inquiryContexts.default;
 
   return (
-    <section className="signature-inquiry" aria-labelledby={`signature-inquiry-${contextKey}`}>
+    <section id={id} className="signature-inquiry" aria-labelledby={`signature-inquiry-${contextKey}`}>
       <div className="signature-inquiry-mark" aria-hidden="true">
         <i />
         <i />

@@ -27,7 +27,7 @@ exclusions are documented in `app/schema-architecture.ts`.
 | Events hub | One `CollectionPage` + `WebPage` entity, `ItemList`, and `BreadcrumbList` |
 | Event-type detail | `Service`, `WebPage`, and `BreadcrumbList`; never `Event` |
 | Gallery | One `CollectionPage` + `WebPage` entity, `BreadcrumbList`, and only approved `ImageObject` nodes |
-| FAQ | One `FAQPage` + `WebPage` entity using the same 47 visible question-and-answer records, plus `BreadcrumbList` |
+| FAQ | One `FAQPage` + `WebPage` entity using the same 26 visible question-and-answer records, plus `BreadcrumbList` |
 | Inquire | One `ContactPage` + `WebPage` entity and `BreadcrumbList` |
 
 ## Deliberate deviations from the generalized Step 4.12 plan

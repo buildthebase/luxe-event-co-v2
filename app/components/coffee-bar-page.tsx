@@ -15,10 +15,12 @@ import { pageMetadata } from "../metadata-config";
 import { createServicePageSchema, divisionServiceIds } from "../schema-builders";
 import { FaqAccordion } from "./faq-accordion";
 import { JsonLd } from "./json-ld";
+import { PriorityAnswer } from "./priority-answer";
 import { ContextualInquiryPanel, CredibilityStrip } from "./signature-elements";
 import { SiteShell } from "./site-shell";
 
 const coffeePath = "/experiences/coffee-bar";
+const [coffeePricingAnswer, ...coffeeContextualFaqs] = coffeeFaqs;
 const coffeeBarSchema = createServicePageSchema({
   path: coffeePath,
   serviceId: divisionServiceIds.coffee,
@@ -43,7 +45,7 @@ function CoffeeHero() {
         </h1>
         <p>
           A complete mobile café experience shaped around the event, with professional
-          baristas, handcrafted beverages, considered presentation, and hospitality
+          baristas, handcrafted beverages, intentional presentation, and hospitality
           that becomes part of the room.
         </p>
         <div className="coffee-hero-actions">
@@ -88,15 +90,18 @@ function CoffeeOverview() {
       </h2>
       <div>
         <p>
-          Luxe Coffee Bar brings the craft and feeling of a refined café into
-          weddings, corporate gatherings, brand activations, and private
-          celebrations.
+          A mobile coffee bar brings café equipment, professional baristas, and a
+          made-to-order beverage menu into the event venue. Luxe Coffee Bar brings
+          that service to weddings, corporate gatherings, brand activations, and
+          private celebrations.
         </p>
         <p>
-          The experience is built around quality coffee, efficient service, visual
-          presentation, and a menu that can respond to the occasion. Clients can book
-          Coffee Bar independently or coordinate it with Luxe Sweet Cart and Luxe
-          Seating Rentals through one Luxe Event Co. inquiry.
+          Mobile espresso catering begins with the event brief, then confirms the
+          service format, menu, guest count, operating window, staffing, equipment,
+          setup, and venue requirements. Baristas prepare drinks on-site during the
+          agreed service period. Clients can book Coffee Bar independently or
+          coordinate it with Luxe Sweet Cart and Luxe Seating Rentals through one
+          Luxe Event Co. inquiry.
         </p>
       </div>
     </section>
@@ -111,8 +116,8 @@ function CoffeeFormats() {
         <h2 id="coffee-formats-title">Choose the presence coffee should have.</h2>
         <p>
           Neither format is a lesser tier. The right choice depends on the event,
-          guest count, service duration, setting, and how visible the coffee
-          experience should feel.
+          guest count, service duration, setting, available space, menu, and how
+          visible the coffee experience should feel.
         </p>
       </header>
       <div className="coffee-format-pair">
@@ -151,9 +156,13 @@ function CoffeeFormats() {
 
 function CoffeeInclusions() {
   return (
-    <section className="coffee-inclusions" aria-labelledby="coffee-inclusions-title">
+    <section
+      className="coffee-inclusions"
+      aria-labelledby="coffee-inclusions-title"
+      data-evidence-status="confirmed-first-party"
+    >
       <header>
-        <p className="foundation-label">Included by design</p>
+        <p className="foundation-label">Confirmed inclusions</p>
         <h2 id="coffee-inclusions-title">
           The details that make it a complete coffee experience.
         </h2>
@@ -177,7 +186,11 @@ function CoffeeInclusions() {
 
 function CoffeeMenu() {
   return (
-    <section className="coffee-menu" aria-labelledby="coffee-menu-title">
+    <section
+      className="coffee-menu"
+      aria-labelledby="coffee-menu-title"
+      data-evidence-status="confirmed-menu-selections"
+    >
       <header>
         <p className="foundation-label">The beverage language</p>
         <h2 id="coffee-menu-title">Classic at the foundation. Personal in expression.</h2>
@@ -254,9 +267,15 @@ function CoffeeCustomization() {
 
 function CoffeeOperations() {
   return (
-    <section className="coffee-operations" aria-labelledby="coffee-operations-title">
+    <section
+      className="coffee-operations"
+      aria-labelledby="coffee-operations-title"
+      data-evidence-status="confirmed-with-event-specific-dependencies"
+      data-measurement-section="logistics"
+      data-section-id="coffee-service-planning"
+    >
       <header>
-        <p className="foundation-label">Capacity and service planning</p>
+        <p className="foundation-label">Confirmed capacity and service planning</p>
         <h2 id="coffee-operations-title">
           The service plan follows the room, menu, and guest flow.
         </h2>
@@ -276,7 +295,8 @@ function CoffeeOperations() {
           <h3>Simultaneous setups</h3>
           <p>
             Luxe can support up to three simultaneous setups for suitable multi-site,
-            multi-day, or distributed event requirements.
+            multi-station, or distributed event requirements, subject to date,
+            staffing, equipment, access, travel, and scope.
           </p>
         </article>
         <article>
@@ -297,6 +317,13 @@ function CoffeeOperations() {
           </p>
         </article>
       </div>
+      <PriorityAnswer
+        label="Cost factors"
+        question={coffeePricingAnswer.question}
+        answer={coffeePricingAnswer.answer}
+        href="/inquire"
+        linkLabel="Request a coffee-service proposal"
+      />
       <aside>
         <p>
           Based in Toronto, Luxe serves the GTA and considers select destination
@@ -314,6 +341,12 @@ function CoffeeEvents() {
     <section className="coffee-events" aria-labelledby="coffee-events-title">
       <header>
         <h2 id="coffee-events-title">Different occasions give the café a different role.</h2>
+        <p>
+          Mobile coffee catering can suit weddings, office and corporate events,
+          conferences, brand activations, showers, birthdays, and private
+          celebrations when a staffed beverage experience supports the schedule and
+          guest flow.
+        </p>
       </header>
       <div>
         {coffeeEventLinks.map((event, index) => (
@@ -388,7 +421,10 @@ function CoffeeFaq() {
         <p className="foundation-label">Coffee Bar questions</p>
         <h2 id="coffee-faq-title">The practical details, answered directly.</h2>
       </header>
-      <FaqAccordion items={coffeeFaqs} />
+      <FaqAccordion items={coffeeContextualFaqs} />
+      <Link href="/faq">
+        Review all Luxe booking questions <span aria-hidden="true">↗</span>
+      </Link>
     </section>
   );
 }

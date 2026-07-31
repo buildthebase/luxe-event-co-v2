@@ -14,14 +14,15 @@ const cssSource = await readFile(new URL("../app/globals.css", import.meta.url),
 
 test("defines the approved four-stage Home hero timeline", () => {
   assert.match(mediaSource, /clipDurationMs: 3000/);
+  assert.match(mediaSource, /finalClipDurationMs: 7000/);
   assert.match(mediaSource, /crossfadeMs: 500/);
   assert.match(mediaSource, /phaseStartsMs: \[0, 2500, 5000, 7500\]/);
   assert.match(mediaSource, /finalPhaseIndex: 3/);
 
   for (const [id, placement, word] of [
-    ["coffee", "left", "Luxury"],
-    ["dessert", "center", "events,"],
-    ["seating", "right", "gathered."],
+    ["coffee", "left", "Sip,"],
+    ["dessert", "center", "Indulge,"],
+    ["seating", "right", "Gather."],
     ["together", "full", null],
   ]) {
     assert.match(mediaSource, new RegExp(`id: "${id}"`));
@@ -31,11 +32,15 @@ test("defines the approved four-stage Home hero timeline", () => {
 });
 
 test("keeps essential hero content rendered while controlling its visual reveal", () => {
-  assert.match(heroSource, /Luxe Event Co\. \/ Toronto &amp; the GTA/);
-  assert.match(heroSource, /aria-label="Luxury events, gathered\."/);
+  assert.doesNotMatch(heroSource, /Luxe Event Co\. \/ Toronto &amp; the GTA/);
+  assert.match(heroSource, /aria-label="Sip, Indulge, Gather\."/);
   assert.match(heroSource, /Mobile coffee, live dessert, and event rentals brought together/);
   assert.match(heroSource, /Plan Your Event/);
-  assert.match(heroSource, /Explore Experiences/);
+  assert.doesNotMatch(heroSource, /Explore Experiences/);
+  assert.doesNotMatch(heroSource, /href="\/inquire"/);
+  assert.match(heroSource, /aria-haspopup="dialog"/);
+  assert.match(heroSource, /Quote form integration placeholder/);
+  assert.match(heroSource, /dialog\.showModal\(\)/);
   assert.match(heroSource, /<CredibilityStrip variant="hero" \/>/);
   assert.match(heroSource, /tabIndex=\{finalState \? 0 : -1\}/);
 });
@@ -53,8 +58,19 @@ test("supports skipping, reduced motion, data saving, and resilient video playba
 
 test("recomposes the sequence for mobile and exposes a reduced-motion final state", () => {
   assert.match(cssSource, /\.home-cinematic-media-grid\s*\{[\s\S]*grid-template-columns: repeat\(3/);
+  assert.match(
+    cssSource,
+    /\.home-cinematic-stage\s*\{[\s\S]*width: 100vw;[\s\S]*margin-inline: calc\(50% - 50vw\)/,
+  );
   assert.match(cssSource, /@media \(max-width: 820px\)[\s\S]*\.home-cinematic-media-grid\s*\{[\s\S]*display: block/);
+  assert.match(
+    cssSource,
+    /@media \(max-width: 700px\)[\s\S]*\.home-cinematic-stage\s*\{[\s\S]*min-height: max\(36rem, 100svh\)/,
+  );
   assert.match(cssSource, /@media \(prefers-reduced-motion: reduce\)[\s\S]*\.home-cinematic-panel-together/);
   assert.match(cssSource, /\.home-cinematic-actions\.is-visible/);
+  assert.match(cssSource, /home-mobile-carousel-coffee 21s linear infinite/);
+  assert.match(cssSource, /home-mobile-carousel-dessert 21s linear infinite/);
+  assert.match(cssSource, /home-mobile-carousel-seating 21s linear infinite/);
   assert.match(cssSource, /transition: opacity 500ms/);
 });

@@ -38,7 +38,7 @@ function ActivationHero() {
           <span>the brand tangible.</span>
         </h1>
         <p>
-          Coffee, matcha, live dessert, and considered event details designed
+          Coffee, matcha, live dessert, and refined event details designed
           for agencies, marketers, experiential teams, retail brands, and
           campaign audiences.
         </p>
@@ -75,7 +75,7 @@ function ActivationHero() {
         </div>
         <div>
           <dt>Multi-day</dt>
-          <dd>Confirmed capability</dd>
+          <dd>Operating review required</dd>
         </div>
         <div>
           <dt>Up to 3 + 3</dt>
@@ -98,14 +98,17 @@ function ActivationOverview() {
       </h2>
       <div>
         <p>
-          Luxe translates the brief into a tangible hospitality moment: what
-          guests see, order, hold, taste, photograph, and remember.
+          A branded coffee-cart activation is a staffed mobile beverage experience
+          shaped around a campaign or organization. Luxe Event Co. translates the brief into
+          the menu, cups, signage, cart presentation, and guest interaction so the
+          brand is expressed through what people see, order, hold, taste, and
+          photograph.
         </p>
         <p>
           The activation can begin with <Link href="/experiences/coffee-bar">coffee and matcha</Link>,{" "}
           <Link href="/experiences/sweet-cart">live dessert</Link>, or{" "}
           <Link href="/experiences/seating-rentals">rental and styling support</Link>.
-          Each division remains distinct while the parent company coordinates
+          Each experience remains distinct while Luxe Event Co. coordinates
           the complete event direction.
         </p>
       </div>

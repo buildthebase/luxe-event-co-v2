@@ -109,6 +109,44 @@ export const measurementEvents: MeasurementEvent[] = [
     source: "master-specification",
   },
   {
+    name: "comparison_section_engagement",
+    category: "engagement",
+    required: true,
+    trigger:
+      "A visitor reaches the approved engagement threshold for a comparison section or activates a comparison link.",
+    pages: ["/experiences", ...experiencePages, ...eventPages],
+    parameters: [
+      "section_id",
+      "source_path",
+      "interaction_type",
+      "destination_path",
+      "service_slug",
+      "event_type",
+    ],
+    interpretation:
+      "Shows whether comparison guidance helps visitors evaluate options and continue to a relevant service, event, or inquiry path.",
+    source: "master-specification",
+  },
+  {
+    name: "logistics_section_engagement",
+    category: "engagement",
+    required: true,
+    trigger:
+      "A visitor reaches the approved engagement threshold for a logistics section or opens or activates its planning detail.",
+    pages: ["/faq", ...experiencePages, ...eventPages],
+    parameters: [
+      "section_id",
+      "source_path",
+      "interaction_type",
+      "destination_path",
+      "service_slug",
+      "event_type",
+    ],
+    interpretation:
+      "Shows which operating questions support evaluation, expose uncertainty, or lead visitors toward an inquiry.",
+    source: "master-specification",
+  },
+  {
     name: "testimonial_interaction",
     category: "engagement",
     required: true,
@@ -196,6 +234,8 @@ export const measurementRules = [
   "Use stable slugs for experiences and event types rather than display text that may change.",
   "Track page views through service_page_view and event_page_view rather than inventing a separate event for every URL.",
   "Keep inquiry_handoff and confirmation_return distinct; a handoff is not proof that an inquiry was submitted.",
+  "Attribute inquiry starts and handoffs to the landing page and current source path without attaching personal inquiry details.",
+  "Use the same approved section-engagement threshold for comparisons and logistics; record link or disclosure actions separately from passive visibility.",
   "Only enable PDF/menu tracking after the asset and event purpose are approved.",
   "Choose the analytics provider, consent mechanism, retention settings, and reporting destination before production tracking is installed.",
   "Measure conversion quality with inquiry context and eventual booking data when the approved platform makes that data available lawfully.",

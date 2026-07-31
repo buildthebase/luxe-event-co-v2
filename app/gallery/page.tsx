@@ -56,29 +56,26 @@ function GalleryHero() {
   return (
     <header className="gallery-hero">
       <div className="gallery-hero-copy">
-        <p className="foundation-eyebrow">Gallery / Real Luxe Events</p>
-        <h1 aria-label="Luxe event experiences, grouped by the moments they served.">
+        <p className="foundation-eyebrow">Gallery / Experience Context</p>
+        <h1 aria-label="Luxe event experiences, explored by the moments they can serve.">
           <span>Luxe event</span>
-          <span>experiences, grouped</span>
-          <span>by the moments they served.</span>
+          <span>experiences, explored</span>
+          <span>by the moments they can serve.</span>
         </h1>
         <p>
-          Coffee, dessert, rentals, and complete event compositions organized by
-          the experience and occasion they belonged to, never separated from context.
+          Explore how coffee, dessert, rentals, and coordinated service can
+          contribute to different event settings and guest moments.
         </p>
         <div className="gallery-hero-actions">
           <Link href="/inquire" data-event-name="inquiry_start">
             Start Planning Your Event <span aria-hidden="true">↗</span>
           </Link>
-          <a href="#gallery-groups">
-            Browse Gallery by Experience <span aria-hidden="true">↓</span>
-          </a>
         </div>
       </div>
-      <div className="gallery-hero-media" aria-label="Luxe event composition study">
+      <div className="gallery-hero-media" aria-label="Luxe experience composition">
         <div aria-hidden="true"><i /><i /><i /></div>
-        <strong>Real work.<br />Real context.</strong>
-        <span>Coffee · Dessert · Seating<br />Seen in the room.</span>
+        <strong>Service direction.<br />Event context.</strong>
+        <span>Coffee · Dessert · Seating<br />Planned for the room.</span>
       </div>
     </header>
   );

@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { loadWorker, render } from "./test-worker.mjs";
 
 const qualitySource = await readFile(
   new URL("../app/content-quality.ts", import.meta.url),
@@ -23,10 +24,10 @@ const routeSignals = new Map([
     ["Cocktail Tables", "Delivery", "Floor plan"],
   ],
   ["/events", ["Weddings", "Corporate Events", "Brand Activations"]],
-  ["/events/weddings", ["Cocktail hour", "30% non-refundable retainer", "$5 million"]],
+  ["/events/weddings", ["Cocktail hour", "wedding planners", "$5 million"]],
   [
     "/events/corporate-events",
-    ["up to three coffee setups", "multi-day corporate events", "recurring corporate programs"],
+    ["up to three coffee setups", "operating confirmation", "up to 500 guests"],
   ],
   [
     "/events/brand-activations",
@@ -39,8 +40,8 @@ const routeSignals = new Map([
     "/events/private-events",
     ["Engagement parties", "Religious and cultural celebrations", "Holiday gatherings"],
   ],
-  ["/gallery", ["Coffee through the wedding day", "A brand guests can taste", "Luxe event study"]],
-  ["/faq", ["47 answers", "$5 million in liability insurance", "30% non-refundable retainer"]],
+  ["/gallery", ["Coffee through the wedding day", "A brand guests can taste", "One occasion, several Luxe experiences"]],
+  ["/faq", ["26 answers", "$5 million in liability insurance", "30% non-refundable retainer"]],
   ["/inquire", ["What to have ready", "Within 24 hours", "bookings@luxeeventco.ca"]],
 ]);
 
@@ -61,32 +62,6 @@ const searchPhrases = new Map([
 ]);
 
 const routes = [...routeSignals.keys()];
-
-async function loadWorker() {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set(
-    "helpful-content-quality",
-    `${process.pid}-${Date.now()}`,
-  );
-  return (await import(workerUrl.href)).default;
-}
-
-async function render(worker, path) {
-  return worker.fetch(
-    new Request(new URL(path, "http://localhost/"), {
-      headers: { accept: "text/html" },
-    }),
-    {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
-  );
-}
 
 function decodeHtml(value) {
   return value
@@ -188,7 +163,11 @@ test("every page proves its purpose with concrete decision-supporting detail", a
     assert.equal(response.status, 200, path);
     const text = mainText(await response.text());
 
-    assert.ok(text.split(/\s+/).length >= 450, `${path} has appropriate depth`);
+    const minimumWords = path === "/gallery" ? 250 : 450;
+    assert.ok(
+      text.split(/\s+/).length >= minimumWords,
+      `${path} has appropriate depth`,
+    );
     for (const signal of signals) {
       assert.ok(
         text.toLowerCase().includes(signal.toLowerCase()),

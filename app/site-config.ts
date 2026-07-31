@@ -1,7 +1,8 @@
 import { imageAssets } from "./image-system";
+import { entityNames } from "./entity-names";
 
-const organizationName = "Luxe Event Co.";
-const alternateSiteNames = ["Luxe Event Co", "luxeeventco.ca"] as const;
+const organizationName = entityNames.parentBrand.currentName;
+const alternateSiteNames = entityNames.parentBrand.alternateNames;
 const canonicalBaseUrl = "https://luxeeventco.ca";
 const defaultDescription =
   "Luxe Event Co. brings together mobile coffee, live dessert, and event rentals for weddings, corporate events, activations, and private celebrations across Toronto and the GTA.";
@@ -135,7 +136,7 @@ export const experiences: Division[] = [
   {
     slug: "coffee-bar",
     number: "01",
-    name: "Luxe Coffee Bar",
+    name: entityNames.divisions.coffeeBar,
     label: "Coffee Bar",
     landingPath: "/experiences/coffee-bar",
     summary: "Crafted coffee, professional barista service, and warm hospitality for events.",
@@ -154,8 +155,8 @@ export const experiences: Division[] = [
     complementarySlugs: ["sweet-cart", "seating-rentals"],
     instagram: socialProfiles.coffeeBar,
     offerings: [
-      "Luxe Café Cart Experience",
-      "Luxe Signature Coffee Bar Experience",
+      entityNames.coffeeExperiences.cafeCart.canonicalName,
+      entityNames.coffeeExperiences.signatureCoffeeBar.canonicalName,
       "Espresso classics and signature drinks",
       "Matcha, tea, chai, and hot chocolate",
       "Seasonal drink collections",
@@ -167,7 +168,7 @@ export const experiences: Division[] = [
   {
     slug: "sweet-cart",
     number: "02",
-    name: "Luxe Sweet Cart",
+    name: entityNames.divisions.sweetCart,
     label: "Sweet Cart",
     landingPath: "/experiences/sweet-cart",
     summary: "Mini pancakes, waffles, and donuts prepared and finished on-site.",
@@ -199,11 +200,11 @@ export const experiences: Division[] = [
   {
     slug: "seating-rentals",
     number: "03",
-    name: "Luxe Seating Rentals",
+    name: entityNames.divisions.seatingRentals,
     label: "Seating Rentals",
     landingPath: "/experiences/seating-rentals",
-    summary: "Considered seating and structure for rooms made to gather.",
-    serviceDescription: "A considered seating rental experience within the Luxe Event Co. event platform.",
+    summary: "Refined seating and structure for rooms made to gather.",
+    serviceDescription: "A intentional seating rental experience within the Luxe Event Co. event platform.",
     accent: "seating",
     inclusions: [],
     customization: [],
@@ -233,7 +234,7 @@ export const experiences: Division[] = [
 
 export const eventTypes = [
   { slug: "weddings", name: "Weddings", summary: "Coffee, dessert, and setting for the moments that become part of the story.", audienceSegments: ["wedding-clients"] },
-  { slug: "corporate-events", name: "Corporate Events", summary: "Polished hospitality and considered spaces for teams, clients, and partners.", audienceSegments: ["corporate-clients", "brand-activation-clients"] },
+  { slug: "corporate-events", name: "Corporate Events", summary: "Polished hospitality and refined spaces for teams, clients, and partners.", audienceSegments: ["corporate-clients", "brand-activation-clients"] },
   { slug: "brand-activations", name: "Brand Activations", summary: "Tactile service and atmosphere that make a brand experience tangible.", audienceSegments: ["brand-activation-clients", "corporate-clients"] },
   { slug: "baby-showers", name: "Baby Showers", summary: "Soft details and thoughtful hospitality for a beautiful beginning.", audienceSegments: ["premium-private-event-clients"] },
   { slug: "bridal-showers", name: "Bridal Showers", summary: "A little indulgence before the next chapter.", audienceSegments: ["wedding-clients", "premium-private-event-clients"] },

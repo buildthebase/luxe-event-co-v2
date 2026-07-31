@@ -74,7 +74,7 @@ export const pageQualityEvidence: PageQualityEvidence[] = [
   {
     path: "/events/corporate-events",
     concreteValue:
-      "Covers office events, conferences, appreciation programs, multi-day work, recurring programs, scale, branding, and procurement confidence.",
+      "Covers office events, conferences, appreciation programs, confirmed simultaneous scale, branding, procurement confidence, and the dependency boundary for multi-day or recurring work.",
     firstHandStatus: "partial-first-party-proof",
     evidenceGate:
       "Add approved case-study details, outcomes, photographs, and quotations for the named organizations.",
@@ -130,7 +130,7 @@ export const pageQualityEvidence: PageQualityEvidence[] = [
   {
     path: "/faq",
     concreteValue:
-      "Answers 47 booking, travel, setup, menu, rental, and customization questions from the same records used by visible content and schema.",
+      "Answers 26 booking, travel, setup, menu, rental, and customization questions from the same records used by visible content and schema.",
     firstHandStatus: "supported-by-client-intake",
     evidenceGate:
       "Replace qualified deferrals only after Luxe approves the corresponding operational policy.",

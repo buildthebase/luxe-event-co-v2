@@ -10,6 +10,7 @@ import {
   useState,
 } from "react";
 import { navigationItems, type NavigationItem } from "../navigation-config";
+import { InstagramLinks } from "./social-links";
 
 function currentState(pathname: string, href: string) {
   if (pathname === href) {
@@ -37,9 +38,11 @@ function closeDisclosure(
 function DesktopNavigationItem({
   item,
   pathname,
+  onToggle,
 }: {
   item: NavigationItem;
   pathname: string;
+  onToggle: (event: SyntheticEvent<HTMLDetailsElement>) => void;
 }) {
   if (!item.children) {
     return (
@@ -62,7 +65,10 @@ function DesktopNavigationItem({
 
   return (
     <li className="foundation-nav-group">
-      <details data-current-section={sectionIsCurrent || undefined}>
+      <details
+        data-current-section={sectionIsCurrent || undefined}
+        onToggle={onToggle}
+      >
         <summary>
           <span>{item.label}</span>
           <i aria-hidden="true" />
@@ -70,15 +76,23 @@ function DesktopNavigationItem({
         <div className="foundation-nav-panel">
           <Link
             href={item.href}
-            aria-current={currentState(pathname, item.href)}
+            aria-current={pathname === item.href ? "page" : undefined}
+            onClick={(event) => {
+              const disclosure = event.currentTarget.closest("details");
+              if (disclosure) closeDisclosure(disclosure);
+            }}
           >
-            All {item.label}
+            View all {item.label}
           </Link>
           {item.children.map((child) => (
             <Link
               href={child.href}
               aria-current={currentState(pathname, child.href)}
               key={child.href}
+              onClick={(event) => {
+                const disclosure = event.currentTarget.closest("details");
+                if (disclosure) closeDisclosure(disclosure);
+              }}
             >
               {child.label}
             </Link>
@@ -104,19 +118,27 @@ export function PrimaryNavigation({
       return;
     }
 
-    function dismissFromOutside(event: PointerEvent) {
-      if (navigationRef.current?.contains(event.target as Node)) {
-        return;
-      }
-
+    function dismissAllDisclosures() {
       navigationRef.current
         ?.querySelectorAll<HTMLDetailsElement>("details[open]")
         .forEach((disclosure) => closeDisclosure(disclosure));
     }
 
+    function dismissFromOutside(event: PointerEvent) {
+      if (navigationRef.current?.contains(event.target as Node)) {
+        return;
+      }
+
+      dismissAllDisclosures();
+    }
+
     document.addEventListener("pointerdown", dismissFromOutside);
-    return () => document.removeEventListener("pointerdown", dismissFromOutside);
-  }, [variant]);
+    window.addEventListener("scroll", dismissAllDisclosures, { passive: true });
+    return () => {
+      document.removeEventListener("pointerdown", dismissFromOutside);
+      window.removeEventListener("scroll", dismissAllDisclosures);
+    };
+  }, [pathname, variant]);
 
   function handleDesktopToggle(event: SyntheticEvent<HTMLDetailsElement>) {
     if (!event.currentTarget.open) {
@@ -151,13 +173,13 @@ export function PrimaryNavigation({
         className="foundation-desktop-nav"
         aria-label="Primary navigation"
         onKeyDown={handleDesktopKeyDown}
-        onToggle={handleDesktopToggle}
       >
         <ul>
           {navigationItems.map((item) => (
             <DesktopNavigationItem
               item={item}
               pathname={pathname}
+              onToggle={handleDesktopToggle}
               key={item.href}
             />
           ))}
@@ -169,30 +191,42 @@ export function PrimaryNavigation({
   return (
     <nav aria-label="Mobile primary navigation">
       <ul className="foundation-mobile-nav-list">
-        {navigationItems.map((item, index) => (
+        {navigationItems.map((item) => (
           <li
             className={
               item.children ? "foundation-mobile-nav-group" : undefined
             }
             key={item.href}
           >
-            <Link
-              href={item.href}
-              className={
-                item.emphasis === "inquiry"
-                  ? "foundation-nav-cta"
-                  : undefined
-              }
-              aria-current={currentState(pathname, item.href)}
-              onClick={onNavigate}
-            >
-              <span aria-hidden="true">
-                {String(index + 1).padStart(2, "0")}
+            {item.children ? (
+              <span className="foundation-mobile-nav-heading">
+                {item.label}
               </span>
-              {item.label}
-            </Link>
+            ) : (
+              <Link
+                href={item.href}
+                className={
+                  item.emphasis === "inquiry"
+                    ? "foundation-nav-cta"
+                    : undefined
+                }
+                aria-current={currentState(pathname, item.href)}
+                onClick={onNavigate}
+              >
+                {item.label}
+              </Link>
+            )}
             {item.children ? (
               <ul>
+                <li className="foundation-mobile-nav-hub">
+                  <Link
+                    href={item.href}
+                    aria-current={pathname === item.href ? "page" : undefined}
+                    onClick={onNavigate}
+                  >
+                    View all {item.label}
+                  </Link>
+                </li>
                 {item.children.map((child) => (
                   <li key={child.href}>
                     <Link
@@ -209,13 +243,22 @@ export function PrimaryNavigation({
           </li>
         ))}
       </ul>
+      <InstagramLinks className="foundation-mobile-nav-socials" />
     </nav>
   );
 }
 
 export function MobileNavigation() {
+  const pathname = usePathname();
   const disclosureRef = useRef<HTMLDetailsElement>(null);
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const disclosure = disclosureRef.current;
+    if (disclosure?.open) {
+      disclosure.open = false;
+    }
+  }, [pathname]);
 
   useEffect(() => {
     if (!isOpen) {

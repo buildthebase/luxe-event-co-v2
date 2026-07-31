@@ -22,7 +22,7 @@ export const eventHubEntries: EventHubEntry[] = [
     cue: "The full celebration",
     statement: "Hospitality woven through the day.",
     summary:
-      "Coffee, live dessert, and a considered setting can support the ceremony, cocktail hour, reception, or late-night flow without competing with the celebration.",
+      "Coffee, live dessert, and an intentional setting can support the ceremony, cocktail hour, reception, or late-night flow without competing with the celebration.",
   },
   {
     slug: "corporate-events",
@@ -31,7 +31,7 @@ export const eventHubEntries: EventHubEntry[] = [
     cue: "Purposeful hospitality",
     statement: "Professional in service. Designed around the room and schedule.",
     summary:
-      "For conferences, office events, appreciation programs, and multi-day gatherings, Luxe can shape the service around the schedule, audience, and brand environment.",
+      "For conferences, office events, appreciation programs, and other business gatherings, Luxe can shape the service around the schedule, audience, and brand environment.",
   },
   {
     slug: "brand-activations",
@@ -49,7 +49,7 @@ export const eventHubEntries: EventHubEntry[] = [
     cue: "A beautiful beginning",
     statement: "Soft details with room for people to gather.",
     summary:
-      "Coffee, freshly prepared dessert, and considered rentals can create an inviting setting for hosts, families, and guests.",
+      "Coffee, freshly prepared dessert, and refined rentals can create an inviting setting for hosts, families, and guests.",
   },
   {
     slug: "bridal-showers",

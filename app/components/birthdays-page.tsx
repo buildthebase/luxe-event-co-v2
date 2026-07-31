@@ -36,7 +36,7 @@ function BirthdayHero() {
           <span>for the milestone.</span>
         </h1>
         <p>
-          Personalized drinks, live dessert, custom signage, and a considered
+          Personalized drinks, live dessert, custom signage, and a personalized
           setting for adult, milestone, family, and selected children’s celebrations.
         </p>
         <div className="birthday-hero-actions">

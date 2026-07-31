@@ -21,10 +21,10 @@ const weddingsSchema = createServicePageSchema({
   serviceName: "Luxe wedding coffee, dessert, and rental experiences",
   serviceType: "Wedding coffee bar, dessert cart, and event rental services",
   serviceDescription:
-    "Wedding coffee, live dessert, and considered rental experiences from Luxe Event Co. for celebrations in Toronto, the GTA, and select Southern Ontario destinations.",
+    "Wedding coffee, live dessert, and refined rental experiences from Luxe Event Co. for celebrations in Toronto, the GTA, and select Southern Ontario destinations.",
   pageName: pageMetadata[weddingsPath].title,
   pageDescription:
-    "Plan coffee service, live dessert, and considered wedding rentals with Luxe Event Co. across Toronto and the GTA.",
+    "Plan coffee service, live dessert, and refined wedding rentals with Luxe Event Co. across Toronto and the GTA.",
 });
 
 function WeddingHero() {
@@ -38,7 +38,7 @@ function WeddingHero() {
           <span>woven through the day.</span>
         </h1>
         <p>
-          Coffee, live dessert, and a considered setting can support the
+          Coffee, live dessert, and an intentional setting can support the
           moments between ceremony and celebration without competing with the
           wedding itself.
         </p>
@@ -67,7 +67,7 @@ function WeddingHero() {
           <dd>Coffee, dessert, and rentals</dd>
         </div>
         <div>
-          <dt>Three divisions</dt>
+          <dt>Three experiences</dt>
           <dd>Coffee, dessert, and seating</dd>
         </div>
         <div>
@@ -98,7 +98,7 @@ function WeddingOverview() {
           The <Link href="/experiences/coffee-bar">Coffee Bar</Link>,{" "}
           <Link href="/experiences/sweet-cart">Sweet Cart</Link>, and{" "}
           <Link href="/experiences/seating-rentals">Seating Rentals</Link> can
-          be booked independently or considered together through one Luxe Event
+          be booked independently or planned together through one Luxe Event
           Co. inquiry and proposal journey.
         </p>
       </div>
@@ -209,7 +209,12 @@ function WeddingCustomization() {
 
 function WeddingCoordination() {
   return (
-    <section className="wedding-coordination" aria-labelledby="wedding-coordination-title">
+    <section
+      className="wedding-coordination"
+      aria-labelledby="wedding-coordination-title"
+      data-measurement-section="logistics"
+      data-section-id="wedding-coordination"
+    >
       <header>
         <p className="foundation-label">Coordination and logistics</p>
         <h2 id="wedding-coordination-title">

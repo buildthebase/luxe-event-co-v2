@@ -74,9 +74,12 @@ test("keeps each division operationally and visually differentiated", () => {
 
 test("answers independent and combined booking questions in visible content", () => {
   assert.match(componentSource, /Can each experience be booked independently\?/);
-  assert.match(componentSource, /Yes\. Coffee Bar, Sweet Cart, and Seating Rentals/);
-  assert.match(componentSource, /Can multiple Luxe experiences be combined\?/);
-  assert.match(componentSource, /Coffee and dessert are frequently booked together/);
+  assert.match(componentSource, /Yes\. Luxe Coffee Bar, Luxe Sweet Cart, and Luxe Seating Rentals/);
+  assert.match(
+    componentSource,
+    /Can coffee, dessert, and rentals be coordinated through one provider\?/,
+  );
+  assert.match(componentSource, /planned\s+through one\s+inquiry and proposal journey/);
 });
 
 test("provides the required search entities, links, and schema", () => {
@@ -89,7 +92,7 @@ test("provides the required search entities, links, and schema", () => {
   assert.match(componentSource, /eventTypes\.map/);
   assert.match(componentSource, /href=\{`\/events\/\$\{event\.slug\}`\}/);
   assert.match(componentSource, /href="\/gallery"/);
-  assert.match(pageSource, /ContextualInquiryPanel contextKey="experiences"/);
+  assert.match(pageSource, /ContextualInquiryPanel id="event-planning" contextKey="experiences"/);
 });
 
 test("documents the governing facts, content boundary, and responsive treatment", () => {

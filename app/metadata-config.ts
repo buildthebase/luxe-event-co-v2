@@ -13,7 +13,7 @@ export const pageMetadata = {
   "/": {
     title: "Luxury Event Experiences in Toronto | Luxe Event Co.",
     description:
-      "Discover how Luxe Event Co. combines mobile coffee, live dessert, and considered rentals for weddings, corporate events, and celebrations across Toronto and the GTA.",
+      "Discover how Luxe Event Co. combines mobile coffee, live dessert, and refined rentals for weddings, corporate events, and celebrations across Toronto and the GTA.",
   },
   "/experiences": {
     title: "Coffee, Dessert & Seating Experiences | Luxe Event Co.",
@@ -43,12 +43,12 @@ export const pageMetadata = {
   "/events/weddings": {
     title: "Wedding Coffee, Dessert & Rentals | Luxe Event Co.",
     description:
-      "See where coffee, live dessert, and considered rentals can support a Toronto or GTA wedding, from cocktail hour through the late-night celebration.",
+      "See where coffee, live dessert, and refined rentals can support a Toronto or GTA wedding, from cocktail hour through the late-night celebration.",
   },
   "/events/corporate-events": {
     title: "Corporate Coffee & Event Experiences | Luxe Event Co.",
     description:
-      "Plan scalable coffee, matcha, dessert, and rental support for Toronto and GTA office events, conferences, client hospitality, and recurring programs.",
+      "Plan scalable coffee, matcha, dessert, and rental support for Toronto and GTA office events, conferences, employee appreciation, and client hospitality.",
   },
   "/events/brand-activations": {
     title: "Branded Coffee Carts & Activations | Luxe Event Co.",
@@ -58,7 +58,7 @@ export const pageMetadata = {
   "/events/baby-showers": {
     title: "Baby Shower Coffee, Dessert & Rentals | Luxe Event Co.",
     description:
-      "Shape a Toronto or GTA baby shower with coffee, matcha, live dessert, signage, and considered rentals, with indoor and outdoor planning guidance.",
+      "Shape a Toronto or GTA baby shower with coffee, matcha, live dessert, signage, and refined rentals, with indoor and outdoor planning guidance.",
   },
   "/events/bridal-showers": {
     title: "Bridal Shower Coffee, Dessert & Rentals | Luxe Event Co.",
@@ -78,12 +78,12 @@ export const pageMetadata = {
   "/gallery": {
     title: "Event Experience Gallery | Luxe Event Co.",
     description:
-      "View Luxe Event Co. coffee, dessert, and rental work, grouped by the weddings, activations, celebrations, and guest moments each experience served.",
+      "Explore Luxe Event Co. coffee, dessert, and rental experience directions for weddings, activations, celebrations, and different guest moments.",
   },
   "/faq": {
     title: "Event Planning & Booking FAQs | Luxe Event Co.",
     description:
-      "Get clear answers about Luxe Event Co. booking, retainers, travel, setup, menus, customization, service capacity, and rental planning before you inquire.",
+      "Get clear answers about Luxe Event Co. pricing factors, booking terms, travel, setup, venue requirements, and cross-service customization before you inquire.",
   },
   "/inquire": {
     title: "Plan Your Event Experience | Luxe Event Co.",

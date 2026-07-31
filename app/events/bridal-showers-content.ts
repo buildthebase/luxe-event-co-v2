@@ -5,7 +5,7 @@ export const bridalShowerExperiences = [
     href: "/experiences/coffee-bar",
     title: "A café moment made for the room.",
     description:
-      "The Café Cart offers a focused welcome, while the Signature Coffee Bar creates a more prominent hospitality presence. Both include professional barista service, espresso classics, hot and iced beverages, and a considered presentation.",
+      "The Café Cart offers a focused welcome, while the Signature Coffee Bar creates a more prominent hospitality presence. Both include professional barista service, espresso classics, hot and iced beverages, and an intentional presentation.",
     tone: "cafe",
   },
   {
@@ -54,7 +54,7 @@ export const bridalShowerDetails = [
     number: "03",
     title: "Floral styling",
     description:
-      "Floral styling can be considered around the cart or service presentation. The final direction, sourcing, installation, timing, and responsibilities are confirmed during planning.",
+      "Floral styling can be planned around the cart or service presentation. The final direction, sourcing, installation, timing, and responsibilities are confirmed during planning.",
   },
   {
     number: "04",
@@ -121,9 +121,9 @@ export const bridalShowerFaqs = [
       "Yes. Matcha, two signature coffee drinks, one premium non-coffee beverage, hot and iced service, dairy, and premium milk alternatives are part of the confirmed Coffee Bar offering. Seasonal and custom menu possibilities are reviewed around the event.",
   },
   {
-    question: "Which dessert experiences are available?",
+    question: "Which desserts work well for bridal showers?",
     answer:
-      "Luxe Sweet Cart can prepare mini Dutch pancakes, Belgian waffles on a stick, or mini donuts on-site. Soft serve is an optional enhancement. Final dessert selections, sauces, toppings, quantities, and service format are confirmed in the proposal.",
+      "Mini Dutch pancakes, Belgian waffles on a stick, and mini donuts all work well when the host wants a freshly prepared, guest-facing dessert moment. Soft serve is an optional enhancement. The best choice depends on the shower schedule, guest count, desired presentation, menu around it, and the service flow confirmed in the proposal.",
   },
   {
     question: "Can coffee and dessert be booked together?",
@@ -133,7 +133,7 @@ export const bridalShowerFaqs = [
   {
     question: "Can seating and event rentals be included?",
     answer:
-      "Yes. Chairs, tables, cocktail tables, tents, linens, and lighting can be considered alongside coffee or dessert. Inventory, quantities, delivery, setup, teardown, pickup, access, and fees must be confirmed for the venue and date.",
+      "Yes. Chairs, tables, cocktail tables, tents, linens, and lighting can be planned alongside coffee or dessert. Inventory, quantities, delivery, setup, teardown, pickup, access, and fees must be confirmed for the venue and date.",
   },
   {
     question: "Can menus and signage be customized?",

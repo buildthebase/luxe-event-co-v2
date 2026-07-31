@@ -69,8 +69,8 @@ test("covers the three divisions, customization, and indoor-outdoor planning", (
 });
 
 test("keeps operational statements factual and qualified", () => {
-  assert.match(contentSource, /Setup and takedown are included for confirmed Coffee Bar and Sweet Cart/);
-  assert.match(contentSource, /Rental delivery, setup, teardown, pickup/);
+  assert.doesNotMatch(contentSource, /Is setup and takedown included/);
+  assert.match(componentSource, /href="\/faq"/);
   assert.match(contentSource, /weather exposure, ground conditions, shelter, utilities/);
   assert.doesNotMatch(contentSource, /Hamilton/);
   assert.doesNotMatch(contentSource, /guaranteed|all-weather/i);

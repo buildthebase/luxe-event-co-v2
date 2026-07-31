@@ -108,7 +108,7 @@ export const rentalQuoteRequirements = [
   "Delivery access, loading restrictions, and timing",
   "Setup and teardown requirements",
   "Outdoor surface, weather, and tent considerations",
-  "Coffee or dessert experiences being considered",
+  "Coffee or dessert experiences being requested",
 ] as const;
 
 export const rentalEventLinks = [
@@ -130,7 +130,7 @@ export const rentalEventLinks = [
   {
     href: "/events/baby-showers",
     label: "Baby Showers",
-    context: "Comfortable seating and considered tables for intimate indoor or outdoor gatherings.",
+    context: "Comfortable seating and refined tables for intimate indoor or outdoor gatherings.",
   },
   {
     href: "/events/bridal-showers",
@@ -178,19 +178,24 @@ export const rentalServiceAreas = [
 
 export const seatingRentalFaqs = [
   {
-    question: "Which rental items are available?",
+    question: "How are chairs and tables priced?",
     answer:
-      "The confirmed rental categories are chairs, tables, cocktail tables, tents, linens, and lighting. Specific models, materials, colours, dimensions, quantities, and additional event equipment will be published only after the inventory schedule is approved.",
+      "Chairs and tables are priced from the confirmed item, quantity, event date, location, rental period, availability, delivery access, placement or setup requirements, teardown and pickup responsibilities, labour, and any outdoor or installation conditions. Luxe does not publish one per-item amount without a current inventory and logistics policy; the proposal must identify the selected inventory and every applicable service responsibility.",
+  },
+  {
+    question: "What is included with an event-rental service?",
+    answer:
+      "Luxe begins with the confirmed rental categories: chairs, tables, cocktail tables, tents, linens, and lighting. The proposal then defines the selected inventory and any agreed delivery, placement, setup, takedown, or pickup responsibilities. Specific models, materials, colours, dimensions, quantities, availability, and operating scope are confirmed for the event rather than assumed to be universally included.",
   },
   {
     question: "Does Luxe deliver rentals?",
     answer:
-      "Delivery is part of the required rental-planning scope, but the current approved intake does not define one universal delivery policy. Delivery availability, timing, access requirements, and fees must be confirmed for the venue and requested inventory.",
+      "Delivery may be available within Toronto, the approved GTA service area, and for qualified extended-travel requests, but the current approved intake does not define one universal rental-delivery boundary or policy. Luxe reviews the venue address, requested inventory and quantities, route and travel time, parking or loading access, stairs or elevators, delivery window, placement or setup responsibilities, pickup plan, labour, and fees before confirming delivery.",
   },
   {
     question: "Is rental setup included?",
     answer:
-      "Setup is not presented as universally included until the rental policy is approved. The proposal must confirm what Luxe will install or place based on the inventory, quantity, floor plan, access, and event schedule.",
+      "Delivery-only service transfers the confirmed inventory at the agreed place and time, leaving placement or installation to the responsible event team. Delivery with setup adds agreed placement or installation responsibilities and is more appropriate when the inventory, quantity, floor plan, access, or schedule requires managed execution. Setup is not universally included; the proposal must identify the selected model, responsibilities, labour, timing, and fees.",
   },
   {
     question: "Is rental teardown included?",
@@ -200,26 +205,31 @@ export const seatingRentalFaqs = [
   {
     question: "Can rentals be combined with coffee or dessert?",
     answer:
-      "Yes. Luxe Coffee Bar, Luxe Sweet Cart, and Luxe Seating Rentals can be requested independently or considered together through one inquiry and proposal journey.",
+      "Yes. Luxe Coffee Bar, Luxe Sweet Cart, and Luxe Seating Rentals can be requested independently or planned together through one inquiry and proposal journey.",
+  },
+  {
+    question: "Can rentals be styled to match the event?",
+    answer:
+      "Yes, within the confirmed inventory. Chair, table, cocktail-table, tent, linen, and lighting selections can be planned with the event palette, layout, and other Luxe experiences. Styling still has to support quantities, dimensions, availability, sightlines, accessibility, guest flow, venue rules, surface conditions, delivery access, and any agreed setup responsibilities; exact items and finishes are confirmed in the proposal.",
   },
   {
     question: "Which areas does Luxe serve?",
     answer:
-      "Luxe serves Toronto and the Greater Toronto Area, including Scarborough, Etobicoke, North York, Markham, Vaughan, Richmond Hill, Aurora, Newmarket, King City, Thornhill, Mississauga, Brampton, Oakville, Burlington, Milton, Pickering, Ajax, Whitby, and Oshawa. Select larger events throughout Southern Ontario can also be considered.",
+      "Luxe serves Toronto and the Greater Toronto Area, including Scarborough, Etobicoke, North York, Markham, Vaughan, Richmond Hill, Aurora, Newmarket, King City, Thornhill, Mississauga, Brampton, Oakville, Burlington, Milton, Pickering, Ajax, Whitby, and Oshawa. Select larger events throughout Southern Ontario may also be available.",
   },
   {
     question: "Are travel or delivery fees applicable?",
     answer:
-      "Travel fees may apply outside Luxe's standard service area. The precise standard-area boundary and rental-delivery fee policy remain confirmation-dependent, so the proposal must state any applicable charge.",
+      "Travel fees may apply outside Luxe's standard service area, and rental delivery may carry event-specific transport, labour, access, setup, or pickup costs. Distance thresholds and the universal rental-delivery fee policy remain unapproved, so the proposal must state the available delivery model, responsibilities, and every applicable charge.",
   },
   {
     question: "Can Luxe rentals be used outdoors?",
     answer:
-      "Outdoor applications can be considered, but suitability is event-specific. Surface, access, weather planning, wind, tent requirements, utilities, venue rules, and the selected inventory must be reviewed before confirmation.",
+      "Outdoor applications can be planned, but suitability is event-specific. Surface, access, weather planning, wind, tent requirements, utilities, venue rules, and the selected inventory must be reviewed before confirmation.",
   },
   {
     question: "What information is required for a rental quote?",
     answer:
-      "Share the event date, venue address, event type, guest count, indoor or outdoor setting, requested categories, estimated quantities, floor plan or dimensions where available, delivery access, timing, setup and teardown needs, and any Coffee Bar or Sweet Cart experiences being considered.",
+      "Share the event date, venue address, event type, guest count, indoor or outdoor setting, requested categories, estimated quantities, floor plan or dimensions where available, delivery access, timing, setup and teardown needs, and any Coffee Bar or Sweet Cart experiences being requested.",
   },
 ] as const;

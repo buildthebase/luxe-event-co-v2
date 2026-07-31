@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { render } from "./test-worker.mjs";
 
 const [contract, icon, appleIcon, favicon] = await Promise.all([
   readFile(new URL("../app/brand-identity-signals.ts", import.meta.url), "utf8"),
@@ -8,23 +9,6 @@ const [contract, icon, appleIcon, favicon] = await Promise.all([
   readFile(new URL("../app/apple-icon.png", import.meta.url)),
   readFile(new URL("../app/favicon.ico", import.meta.url)),
 ]);
-
-const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-workerUrl.searchParams.set("brand-identity", `${process.pid}-${Date.now()}`);
-const { default: worker } = await import(workerUrl.href);
-
-function render(path) {
-  return worker.fetch(
-    new Request(`https://luxeeventco.ca${path}`, {
-      headers: { accept: path === "/" ? "text/html" : "*/*" },
-    }),
-    {},
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
-  );
-}
 
 function pngDimensions(file) {
   assert.equal(file.subarray(1, 4).toString("ascii"), "PNG");

@@ -92,11 +92,32 @@ test("answers every required Brand Activations AEO question visibly", () => {
   }
 });
 
+test("defines a branded coffee-cart activation directly", () => {
+  assert.match(
+    componentSource,
+    /A branded coffee-cart activation is a staffed mobile beverage experience/,
+  );
+  assert.match(componentSource, /menu, cups, signage, cart presentation/);
+});
+
+test("compares standard catering with experiential service neutrally", () => {
+  assert.match(contentSource, /standard corporate catering compare with branded/);
+  assert.match(contentSource, /Standard corporate catering is appropriate/);
+  assert.match(contentSource, /Neither is universally better/);
+  assert.match(contentSource, /Luxe Coffee Bar and Sweet Cart can support/);
+});
+
+test("explains how branding can affect the quote", () => {
+  assert.match(contentSource, /Does branding increase the price\?/);
+  assert.match(contentSource, /Branding can increase the quote/);
+  assert.match(contentSource, /rather than applying one universal branding fee/);
+});
+
 test("uses confirmed scale claims while qualifying multiple-location work and lead time", () => {
   assert.match(contentSource, /up to three Coffee Bar setups/i);
   assert.match(contentSource, /up to three Sweet Cart setups/i);
-  assert.match(contentSource, /Multi-day events are a confirmed capability/);
-  assert.match(contentSource, /Multiple-location campaigns can be reviewed/);
+  assert.match(contentSource, /Multi-day campaign requests require operating confirmation/);
+  assert.match(contentSource, /neither is a universally confirmed capability/);
   assert.match(contentSource, /No universal lead time is published/);
   assert.doesNotMatch(contentSource, /Hamilton/);
   assert.doesNotMatch(contentSource, /guaranteed|unlimited locations/i);

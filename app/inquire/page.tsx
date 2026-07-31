@@ -185,7 +185,7 @@ function ExperienceScope() {
         <p>
           Coffee, dessert, and rentals can each be requested independently.
           They can also be coordinated through one Luxe inquiry when the event
-          calls for more than one division.
+          calls for more than one service.
         </p>
         <nav
           className="inquire-context-links"
@@ -267,7 +267,7 @@ function PlanningGuidance() {
             Toronto and the Greater Toronto Area are Luxe&apos;s primary market,
             including events in communities such as Markham, Vaughan, Mississauga,
             Oakville, Pickering, and surrounding municipalities. Select larger
-            events may be considered throughout Southern Ontario, with travel fees
+            events may be available throughout Southern Ontario, with travel fees
             where applicable.
           </p>
         </article>

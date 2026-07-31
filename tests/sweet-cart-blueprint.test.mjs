@@ -86,6 +86,7 @@ test("answers every required Sweet Cart AEO question visibly", () => {
   for (const answerSignal of [
     "Which desserts are available?",
     "Are desserts prepared on-site?",
+    "What is the difference between a dessert cart and a dessert table?",
     "Which sauces and toppings are included?",
     "Are premium toppings available?",
     "Can multiple dessert types be combined?",
@@ -97,6 +98,28 @@ test("answers every required Sweet Cart AEO question visibly", () => {
   ]) {
     assert.match(contentSource, new RegExp(answerSignal.replaceAll("?", "\\?")));
   }
+});
+
+test("answers dessert-cart discovery questions in existing content surfaces", () => {
+  assert.match(componentSource, /Dessert-cart catering is a staffed, mobile dessert service/);
+  assert.match(componentSource, /Unlike a dessert table/);
+  assert.match(componentSource, /prepares the selected dessert at the cart/);
+  assert.match(componentSource, /one universal service rate/);
+});
+
+test("compares dessert service and dessert formats without another section", () => {
+  assert.match(contentSource, /broad selection of pre-arranged sweets/);
+  assert.match(contentSource, /hosted Sweet Cart/);
+  assert.match(componentSource, /Mini pancakes suit a plated or bowl-style/);
+  assert.match(componentSource, /waffles on a\s+stick make the dessert easier to carry/);
+  assert.match(componentSource, /dessert\.decisionFit/);
+});
+
+test("answers dessert pricing directly without inventing a fixed rate", () => {
+  assert.match(contentSource, /How much does Sweet Cart service cost\?/);
+  assert.match(contentSource, /Sweet Cart service is priced from guest count/);
+  assert.match(contentSource, /multiple stations/);
+  assert.doesNotMatch(contentSource, /\$\d+.*(?:per guest|per hour|starting)/i);
 });
 
 test("does not invent unrestricted combinations or deferred venue specifications", () => {

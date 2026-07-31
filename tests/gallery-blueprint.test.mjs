@@ -14,7 +14,7 @@ test("implements the complete Gallery blueprint and exact primary CTA", () => {
     assert.match(pageSource, new RegExp(`<${component}`), component);
   }
   assert.match(pageSource, /Start Planning Your Event/);
-  assert.match(pageSource, /Gallery \/ Real Luxe Events/);
+  assert.match(pageSource, /Gallery \/ Experience Context/);
   assert.doesNotMatch(pageSource, /className="foundation-label"/);
 });
 
@@ -81,8 +81,10 @@ test("supports crawlable responsive images with correct loading priority", () =>
 });
 
 test("does not misrepresent pending assets as approved visual proof", () => {
-  assert.match(collectionSource, /Luxe event study/);
-  assert.doesNotMatch(collectionSource, /Asset and publication permission pending/);
+  assert.match(collectionSource, /group\.media\.filter\(isPublishableImage\)/);
+  assert.match(collectionSource, /publishableMedia\.length > 0/);
+  assert.doesNotMatch(collectionSource, /Luxe event study/);
+  assert.doesNotMatch(collectionSource, /fallback=/);
   assert.match(contentSource, /approvedGalleryImages/);
   assert.doesNotMatch(contentSource, /src: "\/images\/gallery\//);
 });
@@ -97,8 +99,8 @@ test("implements CollectionPage, WebPage, BreadcrumbList, and conditional ImageO
 
 test("uses the shared internal H1 and section-heading scales", () => {
   assert.match(pageSource, /<span>Luxe event<\/span>/);
-  assert.match(pageSource, /<span>experiences, grouped<\/span>/);
-  assert.match(pageSource, /<span>by the moments they served\.<\/span>/);
+  assert.match(pageSource, /<span>experiences, explored<\/span>/);
+  assert.match(pageSource, /<span>by the moments they can serve\.<\/span>/);
   assert.match(cssSource, /\.foundation-shell \.gallery-hero-copy h1/);
   assert.match(cssSource, /\.gallery-filter-panel h2[\s\S]*?font-size: var\(--type-internal-page-h1\)/);
   assert.match(cssSource, /@media \(max-width: 700px\)[\s\S]*?\.gallery-filter-panel h2,[\s\S]*?font-size: var\(--type-internal-page-h1-mobile\)/);

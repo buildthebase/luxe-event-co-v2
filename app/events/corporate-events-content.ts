@@ -3,7 +3,7 @@ export const corporateEventApplications = [
     number: "01",
     title: "Employee appreciation",
     description:
-      "A polished coffee, matcha, or dessert experience can turn an internal thank-you into a guest-facing moment that feels considered.",
+      "For employee appreciation, a coffee or matcha bar works well for arrivals, breaks, or an office pop-up, while live dessert can create a more interactive scheduled moment. The right choice follows the workday, team size, space, and time people can step away.",
   },
   {
     number: "02",
@@ -21,13 +21,13 @@ export const corporateEventApplications = [
     number: "04",
     title: "Office pop-up cafés",
     description:
-      "Bring a complete café experience into the workplace for team programming, recurring hospitality, or a single-day activation.",
+      "Bring a complete café experience into the workplace for team programming, office hospitality, or a single-day activation.",
   },
   {
     number: "05",
     title: "Networking events",
     description:
-      "Coffee, dessert, and considered gathering areas can help the room feel welcoming without interrupting the purpose of the event.",
+      "Coffee, dessert, and well-planned gathering areas can help the room feel welcoming without interrupting the purpose of the event.",
   },
   {
     number: "06",
@@ -83,7 +83,7 @@ export const corporateExperienceRoles = [
     href: "/experiences/seating-rentals",
     statement: "Rental support for comfort, layout, and flow.",
     description:
-      "Chairs, tables, cocktail tables, tents, linens, and lighting can be considered around networking, dining, presentation, or outdoor requirements.",
+      "Chairs, tables, cocktail tables, tents, linens, and lighting can be planned around networking, dining, presentation, or outdoor requirements.",
     fact: "Inventory, quantities, delivery, setup, teardown, access, and fees are confirmed for the event rather than assumed universally.",
   },
 ] as const;
@@ -120,16 +120,16 @@ export const corporateScaleCapabilities = [
   {
     number: "02",
     title: "Multi-day programs",
-    fact: "Luxe can support multi-day corporate events.",
+    fact: "Multi-day requests require operating confirmation.",
     note:
-      "The schedule, reset or storage needs, staffing, menus, replenishment, and site access are scoped before confirmation.",
+      "The approved information does not establish a universal multi-day model. Dates, schedules, reset or storage needs, staffing, menus, replenishment, site access, and travel must be reviewed before capability is confirmed.",
   },
   {
     number: "03",
     title: "Recurring events",
-    fact: "Luxe can support recurring corporate programs.",
+    fact: "Recurring programs require operating confirmation.",
     note:
-      "A repeatable service direction can be developed while allowing menus, timing, branding, and quantities to respond to each event.",
+      "The approved information does not establish a universal recurring-service model. Frequency, dates, quantities, menus, staffing, equipment, storage, branding, and locations must be reviewed before capability is confirmed.",
   },
   {
     number: "04",
@@ -203,7 +203,7 @@ export const corporateFaqs = [
   {
     question: "Can a corporate event be branded?",
     answer:
-      "Yes. Custom-branded cups, signage, menus, cart presentation, event styling, company logos, event themes, and tailored beverage selections can be considered. Final possibilities depend on the approved artwork, production requirements, timeline, and event scope.",
+      "Yes. Custom-branded cups, signage, menus, cart presentation, event styling, company logos, event themes, and tailored beverage selections can be planned. Final possibilities depend on the approved artwork, production requirements, timeline, and event scope.",
   },
   {
     question: "Can Luxe support multiple setups?",
@@ -213,12 +213,12 @@ export const corporateFaqs = [
   {
     question: "Can Luxe support multi-day corporate events?",
     answer:
-      "Yes. Multi-day work is supported. Luxe confirms the daily schedule, menus, staffing, equipment, reset or storage requirements, replenishment, site access, and any travel considerations before the booking is finalized.",
+      "A multi-day request can be reviewed, but Luxe has not yet approved a universal multi-day operating model. Dates, daily schedules, menus, staffing, equipment, reset or storage requirements, replenishment, site access, and travel must be confirmed before Luxe represents the work as available.",
   },
   {
     question: "Can Luxe support recurring corporate programs?",
     answer:
-      "Yes. Luxe can support recurring events and can develop a repeatable service direction for office, appreciation, client, institutional, or campaign programming. Dates, quantities, menus, staffing, and branding are confirmed for the agreed program.",
+      "A recurring program can be reviewed, but Luxe has not yet approved a universal recurring-service model. Frequency, dates, locations, quantities, menus, staffing, equipment, storage, branding, and venue requirements must be confirmed before Luxe represents the program as available.",
   },
   {
     question: "What guest capacities can Luxe handle?",
@@ -231,9 +231,9 @@ export const corporateFaqs = [
       "Yes. Luxe Coffee Bar, Luxe Sweet Cart, and Luxe Seating Rentals can be booked independently or coordinated through one Luxe Event Co. inquiry and proposal journey. The selected services are shaped around the event rather than sold as a fixed package.",
   },
   {
-    question: "How does Luxe coordinate corporate logistics?",
+    question: "How should coffee catering be planned for a corporate event?",
     answer:
-      "Luxe can work directly with office managers, executive assistants, human resources teams, event coordinators, agencies, planners, venues, procurement contacts, and other event partners. Planning reviews the schedule, access, placement, utilities, indoor or outdoor conditions, branding approvals, staffing, setup, service, and teardown requirements.",
+      "Begin with the event purpose, schedule, location, estimated attendance, and the role coffee should play, such as arrivals, a programmed break, networking, or sustained hospitality. Luxe then reviews the menu, service window, guest-arrival pattern, placement, access, utilities, staffing, branding, setup, and teardown with the relevant office, venue, agency, planner, or procurement contacts.",
   },
   {
     question: "Which organizations has Luxe served?",

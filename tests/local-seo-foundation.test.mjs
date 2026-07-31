@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { render } from "./test-worker.mjs";
 
 const localSeoSource = await readFile(
   new URL("../app/local-seo.ts", import.meta.url),
@@ -56,30 +57,6 @@ const approvedCities = [
   "Scarborough",
   "Etobicoke",
 ];
-
-async function render(path) {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set(
-    "local-seo-test",
-    `${process.pid}-${Date.now()}-${encodeURIComponent(path)}`,
-  );
-  const { default: worker } = await import(workerUrl.href);
-
-  return worker.fetch(
-    new Request(new URL(path, "http://localhost/"), {
-      headers: { accept: "text/html" },
-    }),
-    {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
-  );
-}
 
 function parseGraph(html) {
   const json = html.match(

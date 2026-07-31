@@ -42,8 +42,9 @@ was stronger:
 - Birthday and private-event descriptions now identify staffed coffee, live
   dessert, signage, and rentals rather than using “premium” as the primary
   descriptor.
-- The machine-readable public description and `llms.txt` summary now lead with
-  actual services and event applications.
+- The machine-readable public description leads with actual services and event
+  applications. The optional `llms.txt` file mirrors those public facts but is
+  not required for launch, discovery, indexing, or any page-level answer.
 
 ## Selective terminology retained
 
@@ -77,7 +78,7 @@ formats. They are not used as substitutes for service information.
 | Brand Activations | Branding surfaces, retail/launch contexts, setups, campaign constraints | Activation examples and confirmed agency-to-production workflow |
 | Shower, Birthday, Private pages | Occasion-specific menus, service combinations, logistics, and inquiry guidance | Approved event-specific photography and coordination/styling examples |
 | Gallery | Honest grouping and reserved media states without invented image claims | Approved Luxe photography, captions, context, and permissions |
-| FAQ | 47 operational and booking answers with qualified deferrals | Owner approval for policies still marked as unresolved |
+| FAQ | 26 operational and booking answers with qualified deferrals | Owner approval for policies still marked as unresolved |
 | Inquire | Required event details, response expectation, contact paths, service area, handoff boundary | Approved inquiry platform and privacy/confirmation flow |
 
 ## Automated controls

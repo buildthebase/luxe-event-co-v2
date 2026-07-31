@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import test from "node:test";
+import { render } from "./test-worker.mjs";
 
 const routes = [
   "/",
@@ -40,25 +41,8 @@ const primaryCtas = {
   "/inquire": "Begin Your Inquiry",
 };
 
-const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-workerUrl.searchParams.set("content-hierarchy-test", `${process.pid}-${Date.now()}`);
-const { default: worker } = await import(workerUrl.href);
-
-async function render(path) {
-  const response = await worker.fetch(
-    new Request(new URL(path, "http://localhost/"), {
-      headers: { accept: "text/html" },
-    }),
-    {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
-  );
+async function renderPath(path) {
+  const response = await render(path);
 
   assert.equal(response.status, 200, path);
   return response.text();
@@ -111,7 +95,7 @@ test("Step 3.5 hierarchy rules remain centralized", () => {
 
 for (const route of routes) {
   test(`${route} preserves the complete content hierarchy`, async () => {
-    const markup = mainMarkup(await render(route));
+    const markup = mainMarkup(await renderPath(route));
     const headings = headingOutline(markup);
     const h1s = headings.filter((heading) => heading.level === 1);
 

@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readdir, readFile } from "node:fs/promises";
 import test from "node:test";
+import { render } from "./test-worker.mjs";
 
 const canonicalOrigin = "https://luxeeventco.ca";
 const permanentRoutes = [
@@ -47,24 +48,6 @@ const [contract, robotsSource, workerSource, appSources] = await Promise.all([
     Promise.all(files.map((file) => readFile(file, "utf8"))),
   ),
 ]);
-
-const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-workerUrl.searchParams.set("javascript-seo", `${process.pid}-${Date.now()}`);
-const { default: worker } = await import(workerUrl.href);
-
-function render(url) {
-  return worker.fetch(
-    new Request(url, {
-      headers: { accept: "text/html" },
-      redirect: "manual",
-    }),
-    {},
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
-  );
-}
 
 test("records server rendering as the shared JavaScript SEO strategy", () => {
   assert.match(contract, /Use server rendering for every public route/);

@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { render } from "./test-worker.mjs";
 
 const siteUrl = "https://luxeeventco.ca";
 
@@ -36,30 +37,6 @@ const eventRoutes = [
   "/events/birthdays",
   "/events/private-events",
 ];
-
-async function render(path) {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set(
-    "schema-test",
-    `${process.pid}-${Date.now()}-${encodeURIComponent(path)}`,
-  );
-  const { default: worker } = await import(workerUrl.href);
-
-  return worker.fetch(
-    new Request(new URL(path, "http://localhost/"), {
-      headers: { accept: "text/html" },
-    }),
-    {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
-  );
-}
 
 function parseJsonLd(html) {
   return [...html.matchAll(
@@ -223,7 +200,7 @@ test("hub, service, event-type, gallery, FAQ, and inquiry templates use intended
   const faqPage = faqGraph.find(
     (node) => hasType(node, "FAQPage") && hasType(node, "WebPage"),
   );
-  assert.equal(faqPage.mainEntity.length, 47);
+  assert.equal(faqPage.mainEntity.length, 26);
   for (const question of faqPage.mainEntity) {
     assert.ok(faqHtml.includes(question.name), question.name);
     assert.equal(question.acceptedAnswer["@type"], "Answer");

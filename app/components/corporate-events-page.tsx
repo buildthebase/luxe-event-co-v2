@@ -97,7 +97,7 @@ function CorporateOverview() {
       </div>
       <div>
         <p>
-          Luxe Event Co. brings together three distinct divisions for
+          Luxe Event Co. brings together three specialty teams for
           professional events: <Link href="/experiences/coffee-bar">Luxe Coffee Bar</Link>,{" "}
           <Link href="/experiences/sweet-cart">Luxe Sweet Cart</Link>, and{" "}
           <Link href="/experiences/seating-rentals">Luxe Seating Rentals</Link>.

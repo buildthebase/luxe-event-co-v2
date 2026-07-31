@@ -16,36 +16,52 @@ export type HomeHeroMedia = {
 
 export const homeHeroTimeline = {
   clipDurationMs: 3000,
+  finalClipDurationMs: 7000,
   crossfadeMs: 500,
+  loopCrossfadeMs: 750,
   phaseStartsMs: [0, 2500, 5000, 7500] as const,
   finalPhaseIndex: 3,
 } as const;
 
-// Add optimized MP4/WebM sources and matching posters here when final media is approved.
 export const homeHeroMedia: readonly HomeHeroMedia[] = [
   {
     id: "coffee",
     label: "Luxe Coffee Bar",
-    word: "Luxury",
+    word: "Sip,",
     placement: "left",
     poster: null,
-    sources: [],
+    sources: [
+      {
+        src: "/media/home-hero/coffee.mp4",
+        type: "video/mp4",
+      },
+    ],
   },
   {
     id: "dessert",
     label: "Luxe Sweet Cart",
-    word: "events,",
+    word: "Indulge,",
     placement: "center",
     poster: null,
-    sources: [],
+    sources: [
+      {
+        src: "/media/home-hero/dessert.mp4",
+        type: "video/mp4",
+      },
+    ],
   },
   {
     id: "seating",
     label: "Luxe Seating Rentals",
-    word: "gathered.",
+    word: "Gather.",
     placement: "right",
     poster: null,
-    sources: [],
+    sources: [
+      {
+        src: "/media/home-hero/rentals.mp4",
+        type: "video/mp4",
+      },
+    ],
   },
   {
     id: "together",

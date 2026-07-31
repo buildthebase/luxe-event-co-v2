@@ -11,7 +11,7 @@ export const privateEventContexts = [
     title: "Anniversaries",
     statement: "Honour the history without repeating the past.",
     description:
-      "A personalized menu, guest-facing dessert moment, or considered room setting can reflect the couple, the milestone, and the way they want to gather.",
+      "A personalized menu, guest-facing dessert moment, or refined room setting can reflect the couple, the milestone, and the way they want to gather.",
   },
   {
     number: "03",
@@ -37,7 +37,7 @@ export const privateEventContexts = [
   {
     number: "06",
     title: "Family celebrations",
-    statement: "One gathering, considered across generations.",
+    statement: "One gathering, shaped across generations.",
     description:
       "A balanced beverage and dessert direction can create thoughtful choices for adults, younger guests, and family members sharing the same room.",
   },
@@ -107,7 +107,7 @@ export const privateEventCombinations = [
     occasion: "A complete milestone setting",
     experiences: "Coffee + Dessert + Rentals",
     description:
-      "All three divisions can be coordinated through one Luxe Event Co. inquiry while retaining their distinct roles within the occasion.",
+      "All three experiences can be coordinated through one Luxe Event Co. inquiry while retaining their distinct roles within the occasion.",
   },
 ] as const;
 
@@ -161,19 +161,19 @@ export const privateEventGallery = [
 
 export const privateEventFaqs = [
   {
-    question: "Which occasions are considered private events?",
+    question: "Which occasions are planned private events?",
     answer:
       "Private events can include engagement parties, anniversaries, graduations, religious and cultural celebrations, holiday gatherings, family celebrations, retirements, reunions, and other personal milestones that do not fit another Luxe event page.",
   },
   {
     question: "Can one Luxe experience be booked independently?",
     answer:
-      "Yes. Luxe Coffee Bar, Luxe Sweet Cart, and Luxe Seating Rentals can each be considered independently. Minimum booking requirements, availability, and the final scope vary by division, travel, and event logistics.",
+      "Yes. Luxe Coffee Bar, Luxe Sweet Cart, and Luxe Seating Rentals can each be booked independently. Minimum booking requirements, availability, and the final scope vary by service, travel, and event logistics.",
   },
   {
     question: "Can coffee, dessert, and rentals be combined?",
     answer:
-      "Yes. Multiple divisions can be coordinated through one Luxe Event Co. inquiry and proposal journey. Timing, placement, staffing, inventory, access, and venue requirements are confirmed for the specific event.",
+      "Yes. Multiple services can be coordinated through one Luxe Event Co. inquiry and proposal journey. Timing, placement, staffing, inventory, access, and venue requirements are confirmed for the specific event.",
   },
   {
     question: "Can menus, signage, and presentation be personalized?",
@@ -186,23 +186,13 @@ export const privateEventFaqs = [
       "Luxe can discuss these occasions with the host, planner, and venue. Cultural context, dietary considerations, service timing, presentation, venue rules, and any specific operating requirements must be shared before an appropriate scope is confirmed.",
   },
   {
-    question: "Can private events take place outdoors?",
+    question: "Which event rentals are required for outdoor events?",
     answer:
-      "Outdoor service can be considered. Weather protection, ground conditions, tenting, access, power or water requirements, placement, and backup planning depend on the venue and selected experiences.",
+      "There is no universal outdoor-rental list. Depending on the site and event, the plan may require tents, chairs, tables, cocktail tables, linens, or lighting, together with suitable weather protection and a backup plan. Ground conditions, guest count, layout, accessibility, access, anchoring or installation requirements, utilities, venue rules, and forecast planning must be reviewed before any item is confirmed.",
   },
   {
     question: "Does Luxe travel outside Toronto and the GTA?",
     answer:
       "Luxe primarily serves Toronto and the Greater Toronto Area and may consider select larger events elsewhere in Southern Ontario. Travel fees, minimums, availability, and logistics are confirmed for the location and event scope.",
-  },
-  {
-    question: "Is setup and teardown included?",
-    answer:
-      "Setup and takedown are included for confirmed Coffee Bar and Sweet Cart experiences. Rental delivery, setup, teardown, pickup, access, labour, and applicable fees are defined in the proposal.",
-  },
-  {
-    question: "What is required to secure a private-event booking?",
-    answer:
-      "A signed contract and 30% non-refundable retainer are required to secure the booking. Availability is not guaranteed until both are received, and the remaining balance is due seven days before the event date.",
   },
 ] as const;

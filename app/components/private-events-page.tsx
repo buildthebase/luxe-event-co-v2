@@ -35,7 +35,7 @@ function PrivateEventsHero() {
           <span>without a standard format.</span>
         </h1>
         <p>
-          Coffee, live dessert, signage, and considered rentals for engagements,
+          Coffee, live dessert, signage, and refined rentals for engagements,
           anniversaries, graduations, holidays, family gatherings, and milestones
           that deserve their own direction.
         </p>

@@ -4,7 +4,7 @@ export const birthdayContexts = [
     title: "Milestone birthdays",
     statement: "Give the year its own atmosphere.",
     description:
-      "Significant birthdays can be shaped around a dinner, reception, open-house format, or full celebration with hospitality and room details considered together.",
+      "Significant birthdays can be shaped around a dinner, reception, open-house format, or full celebration with hospitality and room details planned together.",
   },
   {
     number: "02",
@@ -16,7 +16,7 @@ export const birthdayContexts = [
   {
     number: "03",
     title: "Family events",
-    statement: "Something considered for every generation.",
+    statement: "Something personal for every generation.",
     description:
       "A balanced beverage and dessert direction can create clear choices for adults, younger guests, and families gathering around the same milestone.",
   },
@@ -70,7 +70,7 @@ export const birthdayPersonalization = [
     number: "02",
     title: "Custom signage",
     description:
-      "Approved names, milestone years, phrases, colours, menu language, and event details can be considered across signage, cups, menu displays, and cart presentation.",
+      "Approved names, milestone years, phrases, colours, menu language, and event details can be planned across signage, cups, menu displays, and cart presentation.",
   },
   {
     number: "03",
@@ -119,7 +119,7 @@ export const birthdayFaqs = [
   {
     question: "Does Luxe provide service for children’s birthdays?",
     answer:
-      "Children’s events can be considered where the occasion fits Luxe’s staffed, presentation-led service. Non-coffee beverages, live dessert, toppings, signage, and selected rentals can be planned around the age group, venue, guest count, and host’s expectations.",
+      "Children’s events can be planned where the occasion fits Luxe’s staffed, presentation-led service. Non-coffee beverages, live dessert, toppings, signage, and selected rentals can be planned around the age group, venue, guest count, and host’s expectations.",
   },
   {
     question: "Which non-coffee beverages are available?",
@@ -134,17 +134,12 @@ export const birthdayFaqs = [
   {
     question: "Can coffee, dessert, and rentals be combined?",
     answer:
-      "Yes. Any one division can be booked independently, and several can be coordinated through one Luxe Event Co. inquiry and proposal journey. Availability, timing, placement, staffing, rental scope, access, and venue requirements must be confirmed.",
+      "Yes. Any one service can be booked independently, and several can be coordinated through one Luxe Event Co. inquiry and proposal journey. Availability, timing, placement, staffing, rental scope, access, and venue requirements must be confirmed.",
   },
   {
     question: "Can birthday signage and menus be customized?",
     answer:
       "Yes. Signature drinks, menu displays, custom cups, event signage, milestone wording, cart details, dessert presentation, and other visual elements can be discussed. Final possibilities depend on the approved direction, timing, production requirements, and selected experiences.",
-  },
-  {
-    question: "Is setup and takedown included?",
-    answer:
-      "Setup and takedown are included for confirmed Coffee Bar and Sweet Cart experiences. Rental delivery, setup, teardown, pickup, access, labour, and fees are defined in the proposal.",
   },
   {
     question: "What information is needed to plan a birthday experience?",

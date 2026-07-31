@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { loadWorker } from "./test-worker.mjs";
 
 const canonicalOrigin = "https://luxeeventco.ca";
 const routes = [
@@ -20,12 +21,6 @@ const routes = [
   "/faq",
   "/inquire",
 ];
-
-async function loadWorker() {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("crawl-indexing", `${process.pid}-${Date.now()}`);
-  return (await import(workerUrl.href)).default;
-}
 
 const environment = {
   ASSETS: {

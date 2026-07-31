@@ -226,7 +226,7 @@ export const pageContentBriefs: PageContentBrief[] = [
   },
   {
     path: "/experiences/sweet-cart",
-    purpose: "Present the Sweet Cart as a freshly prepared, visually considered dessert experience.",
+    purpose: "Present the Sweet Cart as a freshly prepared, visually refined dessert experience.",
     requiredRequirements: ["booking-inclusions", "typical-capacities", "simultaneous-setups", "service-duration", "setup-teardown", "outdoor-events", "power-water", "dessert-preparation", "branding-possibilities", "seasonal-menu-availability", "travel-service-area", "liability-insurance"],
     proofPriority: ["on-site preparation photography", "cart collections", "menu and topping examples"],
     doNotInvent: sharedDoNotInvent,
@@ -275,7 +275,7 @@ export const pageContentBriefs: PageContentBrief[] = [
   },
   {
     path: "/events/bridal-showers",
-    purpose: "Show how coffee, desserts, and considered seating support a styled pre-wedding celebration.",
+    purpose: "Show how coffee, desserts, and intentional seating support a styled pre-wedding celebration.",
     requiredRequirements: ["multi-service-coordination", "dessert-preparation", "setup-teardown", "travel-service-area", "booking-retainer-policy"],
     proofPriority: ["bridal shower photography", "planner and decorator coordination"],
     doNotInvent: sharedDoNotInvent,

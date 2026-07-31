@@ -53,7 +53,7 @@ test("implements every required Corporate Events content chapter", () => {
 
 test("keeps section eyebrows exclusive to the Corporate hero", () => {
   for (const removedEyebrow of [
-    "Corporate hospitality, considered operationally",
+    "Corporate hospitality, planned around the room",
     "Where Luxe can work",
     "Three operational roles",
     "Brand capability",
@@ -97,7 +97,7 @@ test("answers every required Corporate Events AEO question visibly", () => {
     "Can Luxe support recurring corporate programs?",
     "What guest capacities can Luxe handle?",
     "Can coffee, dessert, and rentals be combined?",
-    "How does Luxe coordinate corporate logistics?",
+    "How should coffee catering be planned for a corporate event?",
     "Which organizations has Luxe served?",
   ]) {
     assert.match(contentSource, new RegExp(question.replace(/[?]/g, "\\?")), question);
@@ -109,8 +109,9 @@ test("uses confirmed corporate operating facts with appropriate qualification", 
   assert.match(contentSource, /up to 400 guests/i);
   assert.match(contentSource, /up to three simultaneous Coffee Bar setups/i);
   assert.match(contentSource, /up to three simultaneous Sweet Cart setups/i);
-  assert.match(contentSource, /Multi-day work is supported/);
-  assert.match(contentSource, /support recurring events/);
+  assert.match(contentSource, /Multi-day requests require operating confirmation/);
+  assert.match(contentSource, /Recurring programs require operating confirmation/);
+  assert.doesNotMatch(contentSource, /Multi-day work is supported|support recurring events/);
   assert.match(componentSource, /\$5 million liability insurance/);
   assert.match(contentSource, /subject to date availability/i);
   assert.doesNotMatch(contentSource, /Hamilton/);

@@ -113,8 +113,9 @@ test("gallery placeholders retain complete future-image metadata", () => {
   }
 
   assert.match(galleryContent, /priority: true/);
-  assert.match(galleryCollection, /fallback=/);
-  assert.doesNotMatch(galleryCollection, /Asset and publication permission pending/);
+  assert.match(galleryCollection, /group\.media\.filter\(isPublishableImage\)/);
+  assert.doesNotMatch(galleryCollection, /fallback=/);
+  assert.doesNotMatch(galleryCollection, /Luxe event study/);
 });
 
 test("reserved gallery alt text is concise, factual, and distinct from its caption", () => {

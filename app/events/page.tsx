@@ -10,9 +10,11 @@ import {
   EventsHero,
 } from "../components/events-hub";
 import { JsonLd } from "../components/json-ld";
+import { PageSectionNavigation } from "../components/page-section-navigation";
 import { SiteShell } from "../components/site-shell";
 import { eventHubEntries } from "./content";
 import { createPageMetadata, pageMetadata } from "../metadata-config";
+import { eventsSectionNavigation } from "../page-section-navigation";
 import { createCollectionPageSchema } from "../schema-builders";
 
 export const metadata = createPageMetadata("/events");
@@ -33,13 +35,14 @@ export default function EventsPage() {
     <SiteShell breadcrumbPath="/events">
       <main className="events-page">
         <JsonLd data={eventsSchema} />
+        <PageSectionNavigation items={eventsSectionNavigation} />
         <EventsHero titleLines={["Event experiences,", "shaped by the occasion."]} />
         <EventsApproach />
         <EventsDirectory />
-        <CombinedExperienceFeature />
+        <CombinedExperienceFeature id="combinations" />
         <EventsGalleryPreview />
-        <EventPlanningPathway showDescription={false} />
-        <ContextualInquiryPanel contextKey="events" />
+        <EventPlanningPathway id="planning-journey" showDescription={false} />
+        <ContextualInquiryPanel id="event-planning" contextKey="events" />
       </main>
     </SiteShell>
   );

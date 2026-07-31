@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import test from "node:test";
+import { loadWorker, render } from "./test-worker.mjs";
 
 const routes = [
   "/",
@@ -21,12 +22,6 @@ const routes = [
   "/inquire",
 ];
 
-async function loadWorker() {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("phase-3-closeout", `${process.pid}-${Date.now()}`);
-  return (await import(workerUrl.href)).default;
-}
-
 function createEnvironment() {
   return {
     ASSETS: {
@@ -39,17 +34,6 @@ const context = {
   waitUntil() {},
   passThroughOnException() {},
 };
-
-async function render(worker, path, init = {}) {
-  return worker.fetch(
-    new Request(new URL(path, "http://localhost/"), {
-      headers: { accept: "text/html", ...init.headers },
-      ...init,
-    }),
-    createEnvironment(),
-    context,
-  );
-}
 
 function visibleText(html) {
   return html

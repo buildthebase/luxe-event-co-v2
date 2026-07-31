@@ -74,6 +74,11 @@ test("uses readable shared shell type and touch-sized functional links", () => {
   );
   assert.match(css, /\.gallery-group > nav a\s*\{[^}]*min-height:\s*44px/s);
   assert.match(css, /\.faq-hub-category details nav a\s*\{[^}]*min-height:\s*44px/s);
+  assert.match(css, /\.faq-hub-inquiry p a\s*\{[^}]*min-height:\s*24px/s);
+  assert.match(
+    css,
+    /@media \(hover: none\), \(pointer: coarse\)[\s\S]*?\.faq-hub-inquiry p a\s*\{[^}]*min-height:\s*44px/s,
+  );
 });
 
 test("keeps long editorial heroes and their actions inside narrow mobile viewports", () => {
@@ -97,6 +102,10 @@ test("groups the footer content into aligned identity, contact, social, and inqu
   assert.match(shell, /foundation-footer-label">Follow/);
   assert.match(shell, /className="foundation-footer-cta"/);
   assert.match(css, /\.foundation-footer\s*\{[^}]*grid-template-columns:[^}]*background:\s*var\(--color-luxe-black\)/s);
+  assert.match(
+    css,
+    /@media \(max-width:\s*1100px\)[\s\S]*?\.foundation-footer\s*\{[^}]*grid-template-columns:\s*minmax\(0,\s*1\.15fr\)\s*minmax\(12rem,\s*\.85fr\)/s,
+  );
   assert.match(css, /\.foundation-footer\s*\{\s*margin-top:\s*clamp\(2rem,\s*5vw,\s*5rem\)/s);
 });
 

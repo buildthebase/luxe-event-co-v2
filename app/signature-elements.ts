@@ -42,7 +42,7 @@ export const signatureExperiences: SignatureExperience[] = [
     number: "03",
     label: "Seating",
     name: "Luxe Seating Rentals",
-    description: "Considered structure, material, and room-making for gatherings of every scale.",
+    description: "Refined structure, elevated materials, and intentional space planning for gatherings of every scale.",
     href: "/experiences/seating-rentals",
   },
 ];
@@ -64,7 +64,7 @@ export const eventPlanningPathway: readonly EventPlanningStep[] = [
   {
     number: "02",
     title: "Select the experiences.",
-    description: "Explore coffee, dessert, and seating independently or as one coordinated composition.",
+    description: "Explore coffee, dessert, and seating independently or as one coordinated event experience.",
     href: "/experiences",
   },
   {
@@ -75,7 +75,7 @@ export const eventPlanningPathway: readonly EventPlanningStep[] = [
   },
   {
     number: "04",
-    title: "Begin the inquiry.",
+    title: "Open the conversation.",
     description: "Share the event context Luxe needs to prepare the right next conversation.",
     href: "/inquire",
   },
@@ -86,7 +86,7 @@ export const combinedExperiences: CombinedExperience[] = [
     id: "bridal-shower",
     occasion: "Bridal shower",
     title: "Coffee Bar + Sweet Cart",
-    description: "A warm arrival, a live dessert moment, and one coordinated presentation.",
+    description: "A warm arrival, a live dessert moment, and one unified presentation.",
     href: "/events/bridal-showers",
     experienceIds: ["coffee", "dessert"],
   },
@@ -94,7 +94,7 @@ export const combinedExperiences: CombinedExperience[] = [
     id: "corporate-reception",
     occasion: "Corporate reception",
     title: "Coffee Bar + Seating",
-    description: "Polished hospitality supported by a considered room for conversation.",
+    description: "Polished hospitality supported by a welcoming room designed for conversation.",
     href: "/events/corporate-events",
     experienceIds: ["coffee", "seating"],
   },
@@ -160,7 +160,7 @@ export type InquiryContext = {
 
 export const inquiryContexts: Record<string, InquiryContext> = {
   home: {
-    eyebrow: "Your event, considered in full",
+    eyebrow: "Your event, shaped in full",
     heading: "Plan your event with Luxe.",
     description:
       "Share the occasion, location, guest count, and the experiences you are considering. Luxe will use that context to guide the right next conversation.",
@@ -168,7 +168,7 @@ export const inquiryContexts: Record<string, InquiryContext> = {
     href: "/inquire",
   },
   default: {
-    eyebrow: "Your gathering, considered",
+    eyebrow: "Your gathering, thoughtfully shaped",
     heading: "Plan an experience with Luxe.",
     description:
       "Tell us what you are planning and which details matter most. We will use that context to guide the right next conversation.",
@@ -179,7 +179,7 @@ export const inquiryContexts: Record<string, InquiryContext> = {
     eyebrow: "One coordinated point of view",
     heading: "Bring the experiences together.",
     description:
-      "Begin with one division or describe the complete atmosphere. Luxe will help connect the service, presentation, and setting.",
+      "Begin with one service or describe the complete atmosphere. Luxe will help connect the presentation, hospitality, and setting.",
     cta: "Plan your Luxe experience",
     href: "/inquire",
   },
@@ -219,7 +219,7 @@ export const inquiryContexts: Record<string, InquiryContext> = {
     eyebrow: "Made for the full celebration",
     heading: "Plan your wedding experience.",
     description:
-      "Tell us where coffee, dessert, and considered seating could support the flow, atmosphere, and hospitality of the day.",
+      "Tell us where coffee, dessert, and intentional seating could support the flow, atmosphere, and hospitality of the day.",
     cta: "Begin a wedding inquiry",
     href: "/inquire",
   },
@@ -267,7 +267,7 @@ export const inquiryContexts: Record<string, InquiryContext> = {
     eyebrow: "Gather in your own way",
     heading: "Discuss your private event.",
     description:
-      "Tell us what you are celebrating and how coffee, dessert, or considered rentals could support the occasion.",
+      "Tell us what you are celebrating and how coffee, dessert, or refined rentals could support the occasion.",
     cta: "Discuss Your Event",
     href: "/inquire",
   },
@@ -300,7 +300,7 @@ export const signatureElementPlacements = {
       "event-planning-pathway",
       "contextual-inquiry-panel",
     ],
-    note: "The complete Experiences Hub distinguishes each division while preserving their shared Luxe Event Co. relationship.",
+    note: "The complete Experiences Hub distinguishes each experience while preserving its relationship to Luxe Event Co.",
   },
   events: {
     path: "/events",

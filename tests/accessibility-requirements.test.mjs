@@ -4,6 +4,10 @@ import test from "node:test";
 
 const layout = await readFile(new URL("../app/layout.tsx", import.meta.url), "utf8");
 const shell = await readFile(new URL("../app/components/site-shell.tsx", import.meta.url), "utf8");
+const socialLinks = await readFile(
+  new URL("../app/components/social-links.tsx", import.meta.url),
+  "utf8",
+);
 const navigation = await readFile(
   new URL("../app/components/site-navigation.tsx", import.meta.url),
   "utf8",
@@ -48,8 +52,8 @@ test("exposes navigation state and descriptive external-link behavior", () => {
   assert.match(navigation, /aria-current=\{currentState/);
   assert.match(navigation, /return "page"/);
   assert.match(navigation, /return "location"/);
-  assert.match(shell, /aria-label="Luxe divisions on Instagram"/);
-  assert.match(shell, /opens in a new tab/g);
+  assert.match(socialLinks, /aria-label="Luxe experiences on Instagram"/);
+  assert.match(socialLinks, /opens in a new tab/g);
   assert.match(css, /a\[aria-current\][\s\S]*text-decoration:\s*underline/);
 });
 

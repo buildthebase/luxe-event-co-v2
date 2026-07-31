@@ -104,12 +104,12 @@ test("defines contextual inquiry language for every division and event context",
   assert.match(detailSource, /ContextualInquiryPanel contextKey=\{event\.slug\}/);
 });
 
-test("records and implements the required Home and hub placements", () => {
+test("keeps signature modules implemented on the hubs while Home is gated", () => {
   assert.match(dataSource, /implemented-in-full-home-blueprint/);
-  assert.match(homeSource, /<ExperienceSelector showDescription=\{false\} \/>/);
-  assert.match(homeSource, /<CombinedExperienceFeature \/>/);
-  assert.match(homeSource, /<EventPlanningPathway showDescription=\{false\} \/>/);
-  assert.match(homeSource, /<ContextualInquiryPanel contextKey="home" \/>/);
+  assert.doesNotMatch(homeSource, /<ExperienceSelector/);
+  assert.doesNotMatch(homeSource, /<CombinedExperienceFeature/);
+  assert.doesNotMatch(homeSource, /<EventPlanningPathway/);
+  assert.doesNotMatch(homeSource, /<ContextualInquiryPanel/);
   assert.match(experiencesSource, /<ExperienceSelector id="experience-selector" \/>/);
   assert.match(experiencesSource, /<CombinedExperienceFeature \/>/);
   assert.match(experiencesSource, /<EventPlanningPathway \/>/);

@@ -123,7 +123,11 @@ function nonProductionRobotsResponse(): Response {
 // const imageConfig: ImageConfig = { dangerouslyAllowSVG: true };
 
 const worker = {
-  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+  async fetch(
+    request: Request,
+    env: Env = {},
+    ctx: ExecutionContext,
+  ): Promise<Response> {
     const url = new URL(request.url);
     const hostname = url.hostname.toLowerCase();
     const bareHostname = hostname.replace(/^www\./, "");

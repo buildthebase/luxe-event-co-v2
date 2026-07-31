@@ -13,8 +13,10 @@ import {
   ExperiencesHero,
 } from "../components/experiences-hub";
 import { JsonLd } from "../components/json-ld";
+import { PageSectionNavigation } from "../components/page-section-navigation";
 import { SiteShell } from "../components/site-shell";
 import { createPageMetadata, pageMetadata } from "../metadata-config";
+import { experiencesSectionNavigation } from "../page-section-navigation";
 import { createCollectionPageSchema } from "../schema-builders";
 import { experiences } from "../site-config";
 
@@ -36,6 +38,7 @@ export default function ExperiencesPage() {
     <SiteShell breadcrumbPath="/experiences">
       <main className="experiences-page">
         <JsonLd data={experiencesSchema} />
+        <PageSectionNavigation items={experiencesSectionNavigation} />
         <ExperiencesHero
           titleLines={["Coffee, dessert,", "and seating.", "Distinct by design."]}
         />
@@ -43,11 +46,11 @@ export default function ExperiencesPage() {
         <ExperiencesBookingClarity />
         <ExperienceFeatures />
         <ExperienceNeedComparison />
-        <CombinedExperienceFeature />
+        <CombinedExperienceFeature id="combinations" />
         <ExperiencesEventTypes />
         <ExperiencesGalleryPreview />
-        <EventPlanningPathway />
-        <ContextualInquiryPanel contextKey="experiences" />
+        <EventPlanningPathway id="planning-journey" showDescription={false} />
+        <ContextualInquiryPanel id="event-planning" contextKey="experiences" />
       </main>
     </SiteShell>
   );

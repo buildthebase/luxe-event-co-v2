@@ -64,7 +64,7 @@ function BridalHero() {
 function BridalOverview() {
   return (
     <section className="bridal-overview" aria-labelledby="bridal-overview-title">
-      <h2 id="bridal-overview-title">The shower can feel as considered as the celebration ahead.</h2>
+      <h2 id="bridal-overview-title">The shower can feel as thoughtful as the celebration ahead.</h2>
       <div>
         <p>
           The experience can begin with the intimacy of a café, move through a
@@ -72,9 +72,9 @@ function BridalOverview() {
           florals to give the gathering its visual rhythm.
         </p>
         <p>
-          Hosts and planners can select one division or coordinate several
+          Hosts and planners can select one service or coordinate several
           through Luxe Event Co. Each remains recognizable while its timing,
-          placement, and presentation are considered within the whole room.
+          placement, and presentation are planned within the whole room.
         </p>
       </div>
     </section>
@@ -150,7 +150,7 @@ function BridalGallery() {
     <section className="bridal-gallery" aria-labelledby="bridal-gallery-title">
       <header>
         <h2 id="bridal-gallery-title">Details are strongest when seen in the full room.</h2>
-        <p>Dessert, drinks, signage, florals, and seating can be considered as one welcoming composition.</p>
+        <p>Dessert, drinks, signage, florals, and seating can be planned as one welcoming composition.</p>
       </header>
       <div data-asset-status="awaiting-approved-bridal-shower-assets">
         {bridalShowerGallery.map((item) => (

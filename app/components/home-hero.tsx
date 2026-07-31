@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { homeHeroMedia, homeHeroTimeline } from "../home-hero-media";
 import { CredibilityStrip } from "./signature-elements";
@@ -15,9 +14,12 @@ type NavigatorWithConnection = Navigator & {
 export function HomeHero() {
   const [phase, setPhase] = useState(0);
   const [sequenceSkipped, setSequenceSkipped] = useState(false);
+  const [quoteModalOpen, setQuoteModalOpen] = useState(false);
   const [failedMedia, setFailedMedia] = useState<Set<string>>(() => new Set());
   const timers = useRef<number[]>([]);
-  const videos = useRef<Array<HTMLVideoElement | null>>([]);
+  const loopTimers = useRef<number[]>([]);
+  const videos = useRef<Array<Array<HTMLVideoElement | null>>>([]);
+  const quoteDialog = useRef<HTMLDialogElement>(null);
   const finalPhase = homeHeroTimeline.finalPhaseIndex;
   const finalState = phase === finalPhase;
 
@@ -49,20 +51,159 @@ export function HomeHero() {
   }, [finalPhase]);
 
   useEffect(() => {
-    videos.current.forEach((video, index) => {
-      if (!video) {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const connection = (navigator as NavigatorWithConnection).connection;
+    const playbackDisabled =
+      reducedMotion ||
+      connection?.saveData === true ||
+      connection?.effectiveType === "slow-2g" ||
+      connection?.effectiveType === "2g";
+
+    const desktopQuery = window.matchMedia("(min-width: 821px)");
+
+    const clearLoopTimers = () => {
+      loopTimers.current.forEach(window.clearTimeout);
+      loopTimers.current = [];
+    };
+
+    const scheduleLoopTimer = (callback: () => void, delay: number) => {
+      const timer = window.setTimeout(() => {
+        loopTimers.current = loopTimers.current.filter((item) => item !== timer);
+        callback();
+      }, delay);
+
+      loopTimers.current.push(timer);
+    };
+
+    const resetVideoLayers = () => {
+      videos.current.forEach((layers) => {
+        layers.forEach((video, layerIndex) => {
+          if (!video) {
+            return;
+          }
+
+          video.pause();
+          video.style.opacity = layerIndex === 0 ? "1" : "0";
+          video.style.transitionDuration = "";
+        });
+      });
+    };
+
+    const playVideo = (video: HTMLVideoElement, mediaIndex: number) => {
+      void video.play().catch(() => {
+        setFailedMedia((current) =>
+          new Set(current).add(homeHeroMedia[mediaIndex].id),
+        );
+      });
+    };
+
+    const startSeamlessLoop = (mediaIndex: number) => {
+      const layers = videos.current[mediaIndex];
+      const primary = layers?.[0];
+      const secondary = layers?.[1];
+
+      if (!primary || !secondary) {
         return;
       }
 
-      if (index === phase) {
-        void video.play().catch(() => {
-          setFailedMedia((current) => new Set(current).add(homeHeroMedia[index].id));
-        });
-      } else {
-        video.pause();
+      const crossfadeMs = homeHeroTimeline.loopCrossfadeMs;
+
+      primary.currentTime = 0;
+      secondary.currentTime = 0;
+      primary.style.opacity = "1";
+      secondary.style.opacity = "0";
+      primary.style.transitionDuration = `${crossfadeMs}ms`;
+      secondary.style.transitionDuration = `${crossfadeMs}ms`;
+      playVideo(primary, mediaIndex);
+
+      const scheduleCrossfade = (
+        outgoing: HTMLVideoElement,
+        incoming: HTMLVideoElement,
+      ) => {
+        const outgoingDuration =
+          Number.isFinite(outgoing.duration) && outgoing.duration > 0
+            ? outgoing.duration
+            : homeHeroTimeline.finalClipDurationMs / 1000;
+        const timeUntilFade = Math.max(
+          250,
+          (outgoingDuration - outgoing.currentTime) * 1000 - crossfadeMs,
+        );
+
+        scheduleLoopTimer(() => {
+          incoming.currentTime = 0;
+          incoming.style.opacity = "0";
+          playVideo(incoming, mediaIndex);
+
+          window.requestAnimationFrame(() => {
+            incoming.style.opacity = "1";
+            outgoing.style.opacity = "0";
+          });
+
+          scheduleLoopTimer(() => {
+            outgoing.pause();
+            outgoing.currentTime = 0;
+            scheduleCrossfade(incoming, outgoing);
+          }, crossfadeMs);
+        }, timeUntilFade);
+      };
+
+      scheduleCrossfade(primary, secondary);
+    };
+
+    const configurePlayback = () => {
+      clearLoopTimers();
+      resetVideoLayers();
+
+      if (playbackDisabled) {
+        return;
       }
-    });
-  }, [phase]);
+
+      if (phase === finalPhase && desktopQuery.matches) {
+        for (let index = 0; index < finalPhase; index += 1) {
+          startSeamlessLoop(index);
+        }
+        return;
+      }
+
+      videos.current.forEach((layers, index) => {
+        const primary = layers[0];
+        if (!primary) {
+          return;
+        }
+
+        const shouldPlay =
+          index === phase || (phase === finalPhase && index < finalPhase);
+
+        if (shouldPlay) {
+          primary.currentTime = 0;
+          playVideo(primary, index);
+        }
+      });
+    };
+
+    configurePlayback();
+    desktopQuery.addEventListener("change", configurePlayback);
+
+    return () => {
+      desktopQuery.removeEventListener("change", configurePlayback);
+      clearLoopTimers();
+      resetVideoLayers();
+    };
+  }, [finalPhase, phase]);
+
+  useEffect(() => {
+    const dialog = quoteDialog.current;
+
+    if (!dialog) {
+      return;
+    }
+
+    if (quoteModalOpen && !dialog.open) {
+      dialog.showModal();
+    } else if (!quoteModalOpen && dialog.open) {
+      dialog.close();
+    }
+  }, [quoteModalOpen]);
 
   function skipIntro() {
     timers.current.forEach(window.clearTimeout);
@@ -77,6 +218,7 @@ export function HomeHero() {
 
   return (
     <section
+      id="page-overview"
       className="home-hero home-cinematic-hero"
       aria-labelledby="home-title"
       data-phase={homeHeroMedia[phase].id}
@@ -84,7 +226,7 @@ export function HomeHero() {
     >
       <p className="home-cinematic-media-alternative">
         Luxe Event Co. brings together crafted coffee service, a live dessert
-        experience, and considered seating and event rentals. The muted hero films
+        experience, and intentional seating and event rentals. The muted hero films
         provide atmosphere only; this page contains the complete service information.
       </p>
       <div className="home-cinematic-stage">
@@ -103,27 +245,33 @@ export function HomeHero() {
               >
                 <div className="home-cinematic-placeholder">
                   {media.label ? <span>{media.label}</span> : null}
-                  {media.id === "together" ? <small>Cohesive film</small> : null}
                   <i />
                   <i />
                   <i />
                 </div>
                 {hasVideo ? (
-                  <video
-                    ref={(node) => {
-                      videos.current[index] = node;
-                    }}
-                    muted
-                    loop
-                    playsInline
-                    preload={index === 0 ? "metadata" : "none"}
-                    poster={media.poster ?? undefined}
-                    onError={() => markMediaFailed(media.id)}
-                  >
-                    {media.sources.map((source) => (
-                      <source src={source.src} type={source.type} key={source.src} />
-                    ))}
-                  </video>
+                  [0, 1].map((layerIndex) => (
+                    <video
+                      className={`home-cinematic-video home-cinematic-video-${
+                        layerIndex === 0 ? "primary" : "secondary"
+                      }`}
+                      ref={(node) => {
+                        videos.current[index] ??= [];
+                        videos.current[index][layerIndex] = node;
+                      }}
+                      muted
+                      loop
+                      playsInline
+                      preload={index < 3 ? "auto" : "none"}
+                      poster={media.poster ?? undefined}
+                      onError={() => markMediaFailed(media.id)}
+                      key={`${media.id}-${layerIndex}`}
+                    >
+                      {media.sources.map((source) => (
+                        <source src={source.src} type={source.type} key={source.src} />
+                      ))}
+                    </video>
+                  ))
                 ) : null}
               </div>
             );
@@ -131,9 +279,8 @@ export function HomeHero() {
         </div>
 
         <div className="home-cinematic-copy">
-          <p className="foundation-label">Luxe Event Co. / Toronto &amp; the GTA</p>
-          <h1 id="home-title" aria-label="Luxury events, gathered.">
-            <span className="home-cinematic-title-accessible">Luxury events, gathered.</span>
+          <h1 id="home-title" aria-label="Sip, Indulge, Gather.">
+            <span className="home-cinematic-title-accessible">Sip, Indulge, Gather.</span>
             {homeHeroMedia.slice(0, 3).map((media, index) => (
               <span
                 className={`home-cinematic-word home-cinematic-word-${media.id}${
@@ -151,7 +298,7 @@ export function HomeHero() {
             aria-hidden={finalState ? undefined : "true"}
           >
             Mobile coffee, live dessert, and event rentals brought together through
-            one planning and inquiry journey.
+            one thoughtfully composed planning journey.
           </p>
         </div>
 
@@ -161,24 +308,17 @@ export function HomeHero() {
           }`}
           aria-hidden={finalState ? undefined : "true"}
         >
-          <Link
-            href="/inquire"
+          <button
+            type="button"
             className="home-button home-button-primary"
             data-event-name="inquiry_start"
             tabIndex={finalState ? 0 : -1}
+            onClick={() => setQuoteModalOpen(true)}
+            aria-haspopup="dialog"
           >
             Plan Your Event
             <span aria-hidden="true">↗</span>
-          </Link>
-          <Link
-            href="/experiences"
-            className="home-button home-button-secondary"
-            data-event-name="experience_select"
-            tabIndex={finalState ? 0 : -1}
-          >
-            Explore Experiences
-            <span aria-hidden="true">↗</span>
-          </Link>
+          </button>
         </div>
 
         {!finalState ? (
@@ -189,6 +329,40 @@ export function HomeHero() {
       </div>
 
       <CredibilityStrip variant="hero" />
+
+      <dialog
+        className="home-quote-modal"
+        ref={quoteDialog}
+        aria-labelledby="home-quote-modal-title"
+        onClose={() => setQuoteModalOpen(false)}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) {
+            setQuoteModalOpen(false);
+          }
+        }}
+      >
+        <div className="home-quote-modal-inner">
+          <button
+            className="home-quote-modal-close"
+            type="button"
+            aria-label="Close quote form placeholder"
+            onClick={() => setQuoteModalOpen(false)}
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+          <p className="foundation-label">Plan your event</p>
+          <h2 id="home-quote-modal-title">Your quote will begin here.</h2>
+          <p>
+            This popup will contain the Flashquotes quote form, or a similar quote
+            platform, once the final provider is selected and connected.
+          </p>
+          <div className="home-quote-modal-placeholder">
+            <span aria-hidden="true">↗</span>
+            <strong>Quote form integration placeholder</strong>
+            <small>No information is collected or submitted yet.</small>
+          </div>
+        </div>
+      </dialog>
     </section>
   );
 }

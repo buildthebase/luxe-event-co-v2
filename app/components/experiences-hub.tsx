@@ -13,7 +13,7 @@ export function ExperiencesHero({
   titleLines: readonly string[];
 }) {
   return (
-    <header className="experiences-hero">
+    <header id="page-overview" className="experiences-hero">
       <div className="experiences-hero-copy">
         <p className="foundation-eyebrow">Luxe Experiences / Toronto &amp; the GTA</p>
         <h1 aria-label={titleLines.join(" ")}>
@@ -57,6 +57,7 @@ export function ExperiencesHero({
 export function ExperiencesBookingClarity() {
   return (
     <section
+      id="booking-approach"
       className="experiences-booking-clarity surface-chapter surface-chapter-dark"
       aria-labelledby="experiences-booking-title"
     >
@@ -68,19 +69,37 @@ export function ExperiencesBookingClarity() {
         <div>
           <dt>Can each experience be booked independently?</dt>
           <dd>
-            Yes. Coffee Bar, Sweet Cart, and Seating Rentals each maintain their own
-            identity, service direction, and dedicated inquiry path.
+            Yes. Luxe Coffee Bar, Luxe Sweet Cart, and Luxe Seating Rentals each
+            maintain their own identity, service direction, and dedicated inquiry
+            path. Separate specialist vendors can also be appropriate when the client
+            already has a coordination plan and wants to select every category
+            independently.
           </dd>
         </div>
         <div>
-          <dt>Can multiple Luxe experiences be combined?</dt>
-          <dd>
-            Yes. Coffee and dessert are frequently booked together, and coffee,
-            dessert, and rentals can be considered within one coordinated event
-            inquiry.
+          <dt>Can coffee, dessert, and rentals be coordinated through one provider?</dt>
+          <dd className="experiences-booking-answer">
+            <p>
+              Yes. Luxe Event Co. is the parent company behind all three experiences, so
+              Luxe Coffee Bar, Luxe Sweet Cart, and Luxe Seating Rentals can be planned
+              through one inquiry and proposal journey while each service keeps its
+              own specialist scope. One coordinated provider is useful when timing,
+              placement, presentation, access, and responsibilities need to be reviewed
+              together.
+            </p>
+            <p>
+              The right model depends on the services required, who will manage vendor
+              handoffs, and how much operational overlap the event contains. Combining
+              services can affect the overall quote because staffing, equipment,
+              delivery, setup, travel, timing, and shared logistics are scoped together;
+              it does not create an automatic discount or surcharge.
+            </p>
           </dd>
         </div>
       </dl>
+      <Link href="/inquire">
+        Plan one or more Luxe experiences <span aria-hidden="true">↗</span>
+      </Link>
     </section>
   );
 }
@@ -138,8 +157,11 @@ export function ExperienceFeatures() {
 export function ExperienceNeedComparison() {
   return (
     <section
+      id="experience-comparison"
       className="experiences-comparison surface-chapter surface-chapter-dark"
       aria-labelledby="experiences-comparison-title"
+      data-measurement-section="comparison"
+      data-section-id="experience-need-comparison"
     >
       <header>
         <p className="foundation-label">Compare by event need</p>
@@ -149,7 +171,12 @@ export function ExperienceNeedComparison() {
       </header>
       <div className="experiences-comparison-list">
         {experienceNeedComparison.map((item, index) => (
-          <Link href={item.href} key={item.need}>
+          <Link
+            href={item.href}
+            key={item.need}
+            data-event-name="comparison_section_engagement"
+            data-section-id="experience-need-comparison"
+          >
             <span>{String(index + 1).padStart(2, "0")}</span>
             <strong>{item.need}</strong>
             <small>{item.atmosphere}</small>
@@ -164,7 +191,7 @@ export function ExperienceNeedComparison() {
 
 export function ExperiencesEventTypes() {
   return (
-    <section className="experiences-events" aria-labelledby="experiences-events-title">
+    <section id="event-types" className="experiences-events" aria-labelledby="experiences-events-title">
       <header>
         <p className="foundation-label">Explore by occasion</p>
         <h2 id="experiences-events-title">
@@ -188,6 +215,7 @@ export function ExperiencesEventTypes() {
 export function ExperiencesGalleryPreview() {
   return (
     <section
+      id="gallery"
       className="experiences-gallery surface-chapter surface-chapter-taupe"
       aria-labelledby="experiences-gallery-title"
     >

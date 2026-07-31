@@ -53,8 +53,8 @@ function FaqHero() {
           <span>before the proposal begins.</span>
         </h1>
         <p>
-          Booking terms, service boundaries, menus, travel, venue requirements,
-          rentals, and customization explained with the detail currently confirmed.
+          Booking terms, travel, shared operating requirements, and cross-service
+          customization explained with the detail currently confirmed.
         </p>
         <div className="faq-hub-hero-actions">
           <Link href="/inquire" data-event-name="inquiry_start">
@@ -72,7 +72,7 @@ function FaqHero() {
         <strong>Useful before<br />the quote.</strong>
       </div>
       <dl className="faq-hub-proof">
-        <div><dt>47 answers</dt><dd>Grouped by planning concern</dd></div>
+        <div><dt>{allFaqItems.length} answers</dt><dd>Grouped by planning concern</dd></div>
         <div><dt>One source</dt><dd>Visible copy and schema stay aligned</dd></div>
         <div><dt>$5 million</dt><dd>Liability insurance</dd></div>
       </dl>
@@ -108,6 +108,13 @@ function FaqCategory({
       className="faq-hub-category"
       id={category.id}
       aria-labelledby={`${category.id}-title`}
+      data-evidence-source="client-intake-and-approved-policy"
+      {...(category.id === "setup-logistics"
+        ? {
+            "data-measurement-section": "logistics",
+            "data-section-id": "shared-setup-logistics",
+          }
+        : {})}
     >
       <header>
         <span>{category.number}</span>
@@ -126,7 +133,10 @@ function FaqInquiry() {
         <h2 id="faq-inquiry-title">Still specific to your event? Ask us directly.</h2>
         <p>
           Share the date, venue, guest count, experiences under consideration,
-          and the operating detail you need clarified.
+          and the operating detail you need clarified. For complete service
+          mechanics, review the <Link href="/experiences/coffee-bar">Coffee Bar</Link>,
+          {" "}<Link href="/experiences/sweet-cart">Sweet Cart</Link>, or{" "}
+          <Link href="/experiences/seating-rentals">Seating Rentals</Link>.
         </p>
       </div>
       <Link href="/inquire" data-event-name="inquiry_start">

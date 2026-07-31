@@ -24,6 +24,8 @@ export const dessertExperiences = [
     name: "Mini Dutch Pancakes",
     description:
       "Freshly prepared mini pancakes finished with selected sauces and toppings while guests watch.",
+    decisionFit:
+      "Consider when a plated or bowl-style dessert and a highly customizable topping moment suit the event.",
   },
   {
     id: "waffles",
@@ -31,6 +33,8 @@ export const dessertExperiences = [
     name: "Belgian Waffles on a Stick",
     description:
       "A handheld Belgian waffle experience designed for live finishing and easy guest interaction.",
+    decisionFit:
+      "Consider when portability and a handheld format support standing, mingling, or higher guest movement.",
   },
   {
     id: "donuts",
@@ -38,11 +42,13 @@ export const dessertExperiences = [
     name: "Mini Donuts",
     description:
       "Warm mini donuts prepared on-site, finished to order, and served while guests gather around the cart.",
+    decisionFit:
+      "Consider when a familiar, warm dessert and compact serving format fit the surrounding menu and schedule.",
   },
 ] as const;
 
 export const dessertBookingIncludes = [
-  "Choice of Classic or Signature dessert cart",
+  "Choice of Classic or Signature cart",
   "Fresh desserts prepared on-site",
   "Premium sauces",
   "Selection of standard toppings",
@@ -90,7 +96,7 @@ export const sweetCustomization = [
     number: "01",
     title: "Choose the dessert direction",
     description:
-      "Select the dessert experience, sauces, standard toppings, premium toppings, and optional soft serve around the event.",
+      "Select the dessert experience, sauces, standard toppings, premium toppings, and optional soft serve around the event, then confirm a combination that remains practical for preparation and guest choice.",
   },
   {
     number: "02",
@@ -167,6 +173,11 @@ export const sweetGalleryPreview = [
 
 export const sweetCartFaqs = [
   {
+    question: "How much does Sweet Cart service cost?",
+    answer:
+      "Sweet Cart service is priced from guest count, selected dessert, cart collection, service duration, staffing, sauces and toppings, optional soft serve, equipment, setup, venue access, indoor or outdoor conditions, travel, branding, multi-day needs, and multiple stations. Luxe reviews those event requirements and confirms the selected service plan and enhancements in the proposal, so no single fixed Sweet Cart total is published.",
+  },
+  {
     question: "Which desserts are available?",
     answer:
       "Luxe Sweet Cart offers Mini Dutch Pancakes, Belgian Waffles on a Stick, and Mini Donuts. Soft Serve Ice Cream is available as an optional enhancement.",
@@ -174,7 +185,22 @@ export const sweetCartFaqs = [
   {
     question: "Are desserts prepared on-site?",
     answer:
-      "Yes. The core dessert experiences are freshly prepared on-site and finished for guests with the selected sauces and toppings.",
+      "Yes. The selected dessert is prepared at the cart, finished for each guest with the confirmed sauces and toppings, and served during the agreed operating window. Equipment, staffing, quantities, placement, and guest flow are confirmed for the event.",
+  },
+  {
+    question: "How many attendants are included?",
+    answer:
+      "Professional attendants are included, but Luxe has not approved one public or universally included headcount. The assigned team depends on guest count, dessert selection, service duration, equipment, quantities, guest-arrival pattern, placement, and venue conditions, then appears in the proposal.",
+  },
+  {
+    question: "How long does dessert service last?",
+    answer:
+      "Luxe has not approved one standard dessert-service duration. The operating window is confirmed from guest count, selected dessert, quantities, staffing, equipment, when guests are expected to arrive, the wider event schedule, and venue access.",
+  },
+  {
+    question: "What is the difference between a dessert cart and a dessert table?",
+    answer:
+      "A dessert table usually presents a broad selection of pre-arranged sweets for self-service, which can work well when guests need quick, flexible access. A hosted Sweet Cart is appropriate when live preparation, attendant-led service, and guest interaction should become part of the event. Compare the desired selection, preparation style, timing, staffing, space, presentation, and guest flow before choosing.",
   },
   {
     question: "Which sauces and toppings are included?",
@@ -185,6 +211,11 @@ export const sweetCartFaqs = [
     question: "Are premium toppings available?",
     answer:
       "Yes. Premium toppings such as fresh strawberries, blueberries, KitKat Bites, Kinder Bueno, crushed pistachios, and crushed pecans are available as enhancements.",
+  },
+  {
+    question: "Can toppings be customized?",
+    answer:
+      "Yes. Sauces, standard toppings, and available premium toppings can be selected around the dessert experience. Requests outside the confirmed menu require review for sourcing, preparation, allergies, service speed, and presentation.",
   },
   {
     question: "Can multiple dessert types be combined?",
@@ -199,7 +230,7 @@ export const sweetCartFaqs = [
   {
     question: "Can the Sweet Cart setup be branded?",
     answer:
-      "Yes. Custom signage and branding can be considered alongside the selected cart, menu display, dessert direction, and event styling.",
+      "Yes. The selected dessert, sauces, toppings, cart collection, menu display, custom signage, colour direction, and approved branding can be planned together. The final treatment must remain practical for on-site preparation, clear guest choices, service speed, and the confirmed event setting.",
   },
   {
     question: "How many guests can Luxe Sweet Cart serve?",
@@ -214,6 +245,6 @@ export const sweetCartFaqs = [
   {
     question: "Which events are best suited to Luxe Sweet Cart?",
     answer:
-      "Sweet Cart is suited to weddings, bridal and baby showers, birthdays, corporate events, brand activations, and private celebrations where live preparation and a visually considered dessert moment add to the atmosphere.",
+      "Sweet Cart is suited to weddings, bridal and baby showers, birthdays, corporate events, brand activations, and private celebrations where live preparation and a visually refined dessert moment add to the atmosphere.",
   },
 ] as const;

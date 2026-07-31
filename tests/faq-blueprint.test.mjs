@@ -19,32 +19,34 @@ test("implements the complete FAQ blueprint and exact primary CTA", () => {
   assert.doesNotMatch(pageSource, /className="foundation-label"/);
 });
 
-test("defines all seven required FAQ categories", () => {
+test("keeps the FAQ focused on four shared-policy categories", () => {
   for (const category of [
     "General Booking",
     "Travel and Service Area",
     "Setup and Logistics",
-    "Coffee Bar",
-    "Sweet Cart",
-    "Seating Rentals",
     "Customization",
   ]) assert.match(contentSource, new RegExp(`title: "${category}"`), category);
+  for (const serviceCategory of ["coffee-bar", "sweet-cart", "seating-rentals"]) {
+    assert.doesNotMatch(contentSource, new RegExp(`id: "${serviceCategory}"`));
+  }
 });
 
-test("answers all 47 specified questions", () => {
-  assert.equal((contentSource.match(/question: "/g) ?? []).length, 47);
+test("answers 26 shared questions without republishing service mechanics", () => {
+  assert.equal((contentSource.match(/question: "/g) ?? []).length, 26);
   for (const question of [
     "What packages are available?",
     "Which payment methods are accepted?",
     "Is Luxe insured?",
     "Does Luxe travel outside the GTA?",
     "Can Luxe operate without direct access to power?",
+    "Can corporate branding be incorporated?",
+  ]) assert.ok(contentSource.includes(`question: "${question}"`), question);
+  for (const serviceQuestion of [
     "How many drinks can be served per hour?",
     "How many baristas are included?",
     "Can pancakes, waffles, and donuts be combined?",
-    "Is delivery available?",
-    "Can corporate branding be incorporated?",
-  ]) assert.ok(contentSource.includes(`question: "${question}"`), question);
+    "Which rental items are available?",
+  ]) assert.ok(!contentSource.includes(`question: "${serviceQuestion}"`), serviceQuestion);
 });
 
 test("uses confirmed policies while clearly qualifying deferred operational details", () => {
@@ -52,11 +54,8 @@ test("uses confirmed policies while clearly qualifying deferred operational deta
     "30% non-refundable retainer",
     "seven days before the event date",
     "$5 million in liability insurance",
-    "up to 500 guests",
     "Luxe has not approved a public list of payment methods",
-    "There is no one published footprint",
-    "Luxe does not publish one hourly rate",
-    "The number of baristas is assigned",
+    "Luxe has not approved one public floor-space figure",
   ]) assert.match(contentSource, new RegExp(phrase.replace("$", "\\$")), phrase);
   assert.doesNotMatch(contentSource, /Hamilton/);
 });
@@ -90,13 +89,15 @@ test("includes every approved service-area location", () => {
 test("links answers to relevant pages instead of using generic link text", () => {
   for (const href of [
     "/experiences",
-    "/experiences/coffee-bar",
-    "/experiences/sweet-cart",
-    "/experiences/seating-rentals",
     "/events",
     "/events/brand-activations",
     "/inquire",
   ]) assert.match(contentSource, new RegExp(`href: "${href}"`), href);
+  for (const href of [
+    "/experiences/coffee-bar",
+    "/experiences/sweet-cart",
+    "/experiences/seating-rentals",
+  ]) assert.match(pageSource, new RegExp(`href="${href}"`), href);
   assert.doesNotMatch(contentSource, /label: "Click here"/i);
 });
 

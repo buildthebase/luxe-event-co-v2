@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 
 const playwrightPath = process.env.PLAYWRIGHT_MODULE_PATH;
 const chromePath = process.env.CHROME_EXECUTABLE_PATH;
@@ -87,8 +88,25 @@ try {
     for (const route of routes) {
       const page = await context.newPage();
       const runtimeErrors = [];
+      const isLocalCanonicalFaviconRequest = (url) =>
+        /^https?:\/\/localhost(?::\d+)?/.test(baseUrl) &&
+        url.startsWith("https://luxeeventco.ca/favicon.ico");
       page.on("console", (message) => {
-        if (message.type() === "error") runtimeErrors.push(message.text());
+        if (message.type() === "error") {
+          const location = message.location();
+          if (isLocalCanonicalFaviconRequest(location.url)) return;
+          runtimeErrors.push(
+            location.url ? `${message.text()} (${location.url})` : message.text(),
+          );
+        }
+      });
+      page.on("response", (response) => {
+        if (
+          response.status() >= 400 &&
+          !isLocalCanonicalFaviconRequest(response.url())
+        ) {
+          runtimeErrors.push(`${response.status()} ${response.url()}`);
+        }
       });
       page.on("pageerror", (error) => runtimeErrors.push(error.message));
       await page.addInitScript(() => {
@@ -108,6 +126,27 @@ try {
       await page.waitForTimeout(150);
 
       const audit = await page.evaluate((ctaLabel) => {
+        const isVisible = (element) => {
+          const style = getComputedStyle(element);
+          const rect = element.getBoundingClientRect();
+          const closedDisclosure = element.closest("details:not([open])");
+          const hiddenDisclosureContent =
+            closedDisclosure && element !== closedDisclosure.querySelector("summary");
+          const visuallyHidden =
+            ["absolute", "fixed"].includes(style.position) &&
+            rect.width <= 1 &&
+            rect.height <= 1 &&
+            style.clipPath !== "none";
+          return (
+            !hiddenDisclosureContent &&
+            !visuallyHidden &&
+            style.display !== "none" &&
+            style.visibility !== "hidden" &&
+            Number(style.opacity) !== 0 &&
+            rect.width > 0 &&
+            rect.height > 0
+          );
+        };
         const allIds = [...document.querySelectorAll("[id]")].map((element) => element.id);
         const duplicateIds = [...new Set(allIds.filter((id, index) => allIds.indexOf(id) !== index))];
         const headings = [...document.querySelectorAll("h1,h2,h3,h4,h5,h6")];
@@ -122,11 +161,7 @@ try {
         const missingAlt = images
           .filter((image) => !image.hasAttribute("alt"))
           .map((image) => image.currentSrc || image.src);
-        const visibleControls = [...document.querySelectorAll("a,button,summary")].filter((element) => {
-          const style = getComputedStyle(element);
-          const rect = element.getBoundingClientRect();
-          return style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0;
-        });
+        const visibleControls = [...document.querySelectorAll("a,button,summary")].filter(isVisible);
         const tinyTargets = visibleControls
           .filter((element) => {
             const rect = element.getBoundingClientRect();
@@ -169,6 +204,134 @@ try {
           (element) => (element.textContent ?? "").replace(/\s+/g, " ").trim().includes(ctaLabel),
         );
         const h1 = document.querySelector("h1");
+        const h1Rect = h1?.getBoundingClientRect();
+        const main = document.querySelector("main");
+        const mainText = (main?.textContent ?? "")
+          .replace(/\bSkip intro\b/g, " ")
+          .replace(/\s+/g, " ")
+          .trim();
+        const visibleMainText = (main?.innerText ?? "")
+          .replace(/\bSkip intro\b/g, " ")
+          .replace(/\s+/g, " ")
+          .trim();
+        const mainLinks = [...(main?.querySelectorAll("a[href]") ?? [])]
+          .map((link) => link.getAttribute("href"))
+          .filter(Boolean)
+          .sort();
+        const clippedText = [
+          ...document.querySelectorAll(
+            "h1,h2,h3,h4,h5,h6,p,li,dt,dd,figcaption,a,button,summary",
+          ),
+        ]
+          .filter(
+            (element) =>
+              isVisible(element) &&
+              (element.textContent ?? "").replace(/\s+/g, " ").trim().length > 0,
+          )
+          .filter((element) => {
+            const style = getComputedStyle(element);
+            const horizontallyClipped =
+              element.scrollWidth > element.clientWidth + 1 &&
+              style.overflowX !== "visible";
+            const verticallyClipped =
+              element.scrollHeight > element.clientHeight + 1 &&
+              style.overflowY !== "visible";
+            return horizontallyClipped || verticallyClipped;
+          })
+          .map((element) => ({
+            tag: element.tagName,
+            className:
+              typeof element.className === "string"
+                ? element.className.slice(0, 100)
+                : "",
+            text: (element.textContent ?? "").replace(/\s+/g, " ").trim().slice(0, 100),
+          }));
+        const narrowTextColumns = [...document.querySelectorAll("main p,main li,main dd")]
+          .filter(
+            (element) =>
+              isVisible(element) &&
+              (element.textContent ?? "").replace(/\s+/g, " ").trim().length >= 120 &&
+              element.getBoundingClientRect().width < 160,
+          )
+          .map((element) => ({
+            width: Number(element.getBoundingClientRect().width.toFixed(2)),
+            className:
+              typeof element.className === "string"
+                ? element.className.slice(0, 100)
+                : "",
+            parentClass:
+              typeof element.parentElement?.className === "string"
+                ? element.parentElement.className.slice(0, 100)
+                : "",
+            text: (element.textContent ?? "").replace(/\s+/g, " ").trim().slice(0, 100),
+          }));
+        const topLevelBlocks = [...(main?.children ?? [])].filter(
+          (element) =>
+            isVisible(element) &&
+            ["static", "relative"].includes(getComputedStyle(element).position),
+        );
+        const overlappingSections = topLevelBlocks
+          .slice(1)
+          .map((element, index) => {
+            const previous = topLevelBlocks[index];
+            const previousRect = previous.getBoundingClientRect();
+            const currentRect = element.getBoundingClientRect();
+            const horizontalOverlap =
+              Math.min(previousRect.right, currentRect.right) -
+              Math.max(previousRect.left, currentRect.left);
+            const verticalOverlap =
+              Math.min(previousRect.bottom, currentRect.bottom) -
+              Math.max(previousRect.top, currentRect.top);
+            return {
+              previous:
+                typeof previous.className === "string"
+                  ? previous.className.slice(0, 100)
+                  : previous.tagName,
+              current:
+                typeof element.className === "string"
+                  ? element.className.slice(0, 100)
+                  : element.tagName,
+              horizontalOverlap,
+              verticalOverlap,
+            };
+          })
+          .filter(
+            (overlap) =>
+              overlap.horizontalOverlap > 8 && overlap.verticalOverlap > 8,
+          );
+        const coarsePointer = matchMedia("(pointer: coarse)").matches;
+        const undersizedTapTargets = coarsePointer
+          ? visibleControls
+              .filter(
+                (element) =>
+                  !element.closest(".page-breadcrumbs") &&
+                  ["BUTTON", "SUMMARY"].includes(element.tagName) ||
+                  Boolean(
+                    (!element.closest(".page-breadcrumbs") &&
+                      element.closest("nav")) ||
+                      element.getAttribute("data-event-name") ||
+                      (typeof element.className === "string" &&
+                        /(?:button|cta)/i.test(element.className)),
+                  ),
+              )
+              .filter((element) => {
+                const rect = element.getBoundingClientRect();
+                return ["BUTTON", "SUMMARY"].includes(element.tagName)
+                  ? rect.width < 44 || rect.height < 44
+                  : rect.width < 24 || rect.height < 44;
+              })
+              .map((element) => {
+                const rect = element.getBoundingClientRect();
+                return {
+                  label: (element.textContent ?? element.getAttribute("aria-label") ?? "")
+                    .replace(/\s+/g, " ")
+                    .trim()
+                    .slice(0, 80),
+                  width: Number(rect.width.toFixed(2)),
+                  height: Number(rect.height.toFixed(2)),
+                };
+              })
+          : [];
 
         return {
           title: document.title,
@@ -178,6 +341,7 @@ try {
           skipLinkExists: Boolean(document.querySelector('a[href="#main-content"]')),
           inquiryPathExists: Boolean(document.querySelector('a[href="/inquire"]')),
           ctaExists: Boolean(cta),
+          ctaVisible: Boolean(cta && isVisible(cta)),
           overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
           scrollWidth: document.documentElement.scrollWidth,
           clientWidth: document.documentElement.clientWidth,
@@ -186,16 +350,45 @@ try {
           brokenImages,
           missingAlt,
           tinyTargets,
+          undersizedTapTargets,
           emptyLinks,
+          clippedText,
+          narrowTextColumns,
+          overlappingSections,
+          oversizedHeading: Boolean(
+            h1 &&
+              h1Rect &&
+              ((innerWidth <= 700 &&
+                Number.parseFloat(getComputedStyle(h1).fontSize) > 72) ||
+                h1Rect.height > innerHeight * 0.8),
+          ),
+          mainText,
+          visibleMainText,
+          mainLinks,
           cls: window.__luxeCls ?? 0,
         };
       }, primaryCtas[route]);
 
+      const contentHash = createHash("sha256")
+        .update(audit.mainText)
+        .digest("hex");
+      const linkHash = createHash("sha256")
+        .update(JSON.stringify(audit.mainLinks))
+        .digest("hex");
+      const visibleContentHash = createHash("sha256")
+        .update(audit.visibleMainText)
+        .digest("hex");
+      delete audit.mainText;
+      delete audit.visibleMainText;
+      delete audit.mainLinks;
       const record = {
         viewport: viewport.name,
         route,
         status: response?.status() ?? null,
         runtimeErrors,
+        contentHash,
+        visibleContentHash,
+        linkHash,
         ...audit,
       };
       results.push(record);
@@ -209,13 +402,19 @@ try {
         !record.skipLinkExists ||
         !record.inquiryPathExists ||
         !record.ctaExists ||
+        !record.ctaVisible ||
         record.overflow ||
         record.duplicateIds.length ||
         record.headingSkips.length ||
         record.brokenImages.length ||
         record.missingAlt.length ||
         record.tinyTargets.length ||
+        record.undersizedTapTargets.length ||
         record.emptyLinks ||
+        record.clippedText.length ||
+        record.narrowTextColumns.length ||
+        record.overlappingSections.length ||
+        record.oversizedHeading ||
         record.cls > 0.1
       ) {
         failures.push(record);
@@ -225,6 +424,31 @@ try {
     }
 
     await context.close();
+  }
+
+  for (const route of routes) {
+    const routeResults = results.filter((result) => result.route === route);
+    const baseline = routeResults[0];
+    const mismatch = routeResults.find(
+      (result) =>
+        result.contentHash !== baseline.contentHash ||
+        result.linkHash !== baseline.linkHash,
+    );
+
+    if (mismatch) {
+      failures.push({
+        route,
+        viewport: mismatch.viewport,
+        type: "responsive-content-parity",
+        baselineViewport: baseline.viewport,
+        contentHashMatches: mismatch.contentHash === baseline.contentHash,
+        linkHashMatches: mismatch.linkHash === baseline.linkHash,
+        baselineContentHash: baseline.contentHash,
+        mismatchContentHash: mismatch.contentHash,
+        baselineLinkHash: baseline.linkHash,
+        mismatchLinkHash: mismatch.linkHash,
+      });
+    }
   }
 
   const desktop = await browser.newContext({
@@ -304,10 +528,18 @@ try {
   await motionPage.waitForTimeout(8_200);
   assert.equal(await motionPage.locator(".home-cinematic-hero").getAttribute("data-phase"), "together");
   assert.ok(
-    await motionPage.locator(".home-cinematic-actions").getByRole("link", { name: /Plan Your Event/i }).isVisible(),
+    await motionPage.locator(".home-cinematic-actions").getByRole("button", { name: /Plan Your Event/i }).isVisible(),
   );
+  await motionPage
+    .locator(".home-cinematic-actions")
+    .getByRole("button", { name: /Plan Your Event/i })
+    .click();
   assert.ok(
-    await motionPage.locator(".home-cinematic-actions").getByRole("link", { name: /Explore Experiences/i }).isVisible(),
+    await motionPage.getByRole("dialog", { name: /Your quote will begin here/i }).isVisible(),
+  );
+  assert.match(
+    await motionPage.getByRole("dialog").innerText(),
+    /Flashquotes quote form|similar quote platform/i,
   );
   assert.ok((await motionPage.evaluate(() => window.__luxeCls ?? 0)) <= 0.1);
   await motion.close();

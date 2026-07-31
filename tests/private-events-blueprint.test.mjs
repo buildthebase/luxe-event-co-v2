@@ -63,10 +63,10 @@ test("keeps the eyebrow in the hero and uses the exact primary CTA", () => {
   assert.match(signatureSource, /"private-events":[\s\S]*?cta: "Discuss Your Event"/);
 });
 
-test("publishes approved policy and trust facts without inventing scope", () => {
-  assert.match(contentSource, /30% non-refundable retainer/);
+test("publishes trust facts and links shared policy without duplicating it", () => {
+  assert.doesNotMatch(contentSource, /30% non-refundable retainer/);
+  assert.match(componentSource, /href="\/faq"/);
   assert.match(componentSource, /\$5 million/);
-  assert.match(contentSource, /Rental delivery, setup, teardown, pickup/);
   assert.match(contentSource, /select larger events elsewhere in Southern Ontario/);
   assert.doesNotMatch(contentSource, /Hamilton/);
   assert.doesNotMatch(contentSource, /unlimited|guaranteed capacity|all cultural/i);

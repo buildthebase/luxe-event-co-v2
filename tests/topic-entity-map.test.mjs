@@ -4,9 +4,10 @@ import test from "node:test";
 
 const source = await readFile(new URL("../app/topic-entity-map.ts", import.meta.url), "utf8");
 const siteConfigSource = await readFile(new URL("../app/site-config.ts", import.meta.url), "utf8");
+const entityNamesSource = await readFile(new URL("../app/entity-names.ts", import.meta.url), "utf8");
 
 function includesEntity(name) {
-  return source.includes(`"${name}"`) || siteConfigSource.includes(`"${name}"`);
+  return source.includes(`"${name}"`) || siteConfigSource.includes(`"${name}"`) || entityNamesSource.includes(`"${name}"`);
 }
 
 test("contains the complete parent brand and division model", () => {
@@ -36,7 +37,7 @@ test("contains every required core service and geographic context", () => {
     "Event setup and teardown",
     "Custom branding",
     "Signage",
-    "Multi-service packages",
+    "Coordinated multi-service experiences",
     "Toronto",
     "Greater Toronto Area",
     "Southern Ontario",

@@ -1,29 +1,9 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { render } from "./test-worker.mjs";
 
-async function render(path = "/") {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
-  const { default: worker } = await import(workerUrl.href);
-
-  return worker.fetch(
-    new Request(new URL(path, "http://localhost/"), {
-      headers: { accept: "text/html" },
-    }),
-    {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
-  );
-}
-
-test("server-renders the complete Luxe Event Co. Home blueprint", async () => {
+test("server-renders the Luxe Event Co. coming-soon Home page", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
@@ -35,82 +15,37 @@ test("server-renders the complete Luxe Event Co. Home blueprint", async () => {
   );
   assert.match(html, /rel="canonical" href="https:\/\/luxeeventco\.ca\/?"/);
   assert.match(html, /name="robots" content="index, follow"/);
-  assert.match(html, /application\/ld\+json/);
-  assert.match(html, /https:\/\/luxeeventco\.ca\/#organization/);
-  assert.match(html, /"@type":"Service"/);
-  assert.match(html, /"department":\[/);
-  assert.match(html, /#coffee-bar-division/);
-  assert.match(html, /"parentOrganization":\{"@id":"https:\/\/luxeeventco\.ca\/#organization"\}/);
-  assert.match(html, /"logo":\{"@id":"https:\/\/luxeeventco\.ca\/#logo"\}/);
-  assert.match(html, /"name":"Luxe Coffee Bar"/);
-  assert.match(html, /"name":"Luxe Sweet Cart"/);
-  assert.match(html, /"name":"Luxe Seating Rentals"/);
-  assert.match(html, /"provider":\{"@id":"https:\/\/luxeeventco\.ca\/#organization"\}/);
-  assert.doesNotMatch(html, /"name":"Hamilton"/);
-  assert.match(html, /"name":"Greater Toronto Area"/);
-  assert.match(html, /"name":"Southern Ontario"/);
-  assert.match(html, /Luxury events, gathered\./);
+  assert.match(html, /Full website/);
+  assert.match(html, /coming soon/);
+  assert.match(html, /Toronto, Canada/);
+  assert.match(html, /Crafted coffee, elevated desserts, and elegant seating/);
   assert.match(html, /Luxe Coffee Bar/);
   assert.match(html, /Luxe Sweet Cart/);
   assert.match(html, /Luxe Seating Rentals/);
-  assert.match(html, /Plan Your Event/);
-  assert.match(html, /Explore Experiences/);
-  assert.match(html, /Choose where the experience begins\./);
-  assert.match(html, /Different gatherings ask for different details\./);
-  assert.match(html, /Coffee Bar \+ Sweet Cart/);
-  assert.match(html, /The work should be seen in context\./);
-  assert.match(html, /Prepared for rooms where details matter\./);
-  assert.match(html, /\$5M/);
-  assert.match(html, /What working with Luxe feels like/);
-  assert.match(html, /How the planning journey takes shape/);
-  assert.doesNotMatch(html, /Clear in planning\. Composed in the room\./);
-  assert.doesNotMatch(html, /The experience is shaped around the event rather than forcing every client through the same generic package\./);
-  assert.match(html, /Choose the occasion\./);
-  assert.doesNotMatch(html, /Client words belong beside the event that earned them\./);
-  assert.match(html, /Toronto at the centre\. The GTA and Southern Ontario within reach\./);
-  assert.match(html, /Plan your event with Luxe\./);
-  assert.doesNotMatch(html, /Full website coming soon/);
-  assert.doesNotMatch(
-    html,
-    /A new event language|Full experience in formation|One brand\. Every event need\.|For the host with an eye for the whole picture\./,
-  );
+  assert.doesNotMatch(html, /Plan Your Event/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
 });
 
-test("Home links directly to every critical journey", async () => {
+test("coming-soon Home links only to the three public Instagram destinations", async () => {
   const html = await (await render()).text();
 
   for (const href of [
-    "/experiences",
-    "/experiences/coffee-bar",
-    "/experiences/sweet-cart",
-    "/experiences/seating-rentals",
-    "/events",
-    "/events/weddings",
-    "/events/corporate-events",
-    "/events/brand-activations",
-    "/events/private-events",
-    "/gallery",
-    "/faq",
-    "/inquire",
+    "https://www.instagram.com/luxecoffeebar.to/",
+    "https://www.instagram.com/luxesweet.cart/",
+    "https://www.instagram.com/luxeseatingrentals",
   ]) {
     assert.match(html, new RegExp(`href="${href}"`), href);
   }
+
+  assert.doesNotMatch(html, /href="\/experiences"/);
+  assert.doesNotMatch(html, /href="\/events"/);
 });
 
-test("Home renders confirmed organization proof without unapproved testimonials", async () => {
+test("coming-soon Home withholds in-progress proof and testimonials", async () => {
   const html = await (await render()).text();
 
   assert.doesNotMatch(html, /Approved client quotation|Final quotations will be published/);
-  for (const organization of [
-    "OPTrust",
-    "CST Savings",
-    "Convergint",
-    "ICNA Canada",
-    "Waste Connections of Canada",
-  ]) {
-    assert.match(html, new RegExp(organization));
-  }
+  assert.doesNotMatch(html, /OPTrust|CST Savings|Convergint|ICNA Canada|Waste Connections of Canada/);
 });
 
 test("includes each brand's Instagram destination", async () => {
@@ -185,6 +120,35 @@ test("server-renders the Phase 2 signature modules without unapproved proof", as
   assert.match(activationHtml, /OPTrust|CST Savings|Convergint|ICNA Canada|Waste Connections/);
 });
 
+test("keeps customer-facing pages free of internal division terminology", async () => {
+  const routes = [
+    "/",
+    "/experiences",
+    "/experiences/coffee-bar",
+    "/experiences/sweet-cart",
+    "/experiences/seating-rentals",
+    "/events",
+    "/events/weddings",
+    "/events/corporate-events",
+    "/events/brand-activations",
+    "/events/baby-showers",
+    "/events/bridal-showers",
+    "/events/birthdays",
+    "/events/private-events",
+    "/gallery",
+    "/faq",
+    "/inquire",
+  ];
+
+  for (const route of routes) {
+    const html = await (await render(route)).text();
+    const main = html.match(/<main\b[\s\S]*?<\/main>/i)?.[0] ?? "";
+    const visibleMain = main.replace(/<script\b[\s\S]*?<\/script>/gi, "");
+
+    assert.doesNotMatch(visibleMain, /\bdivisions?\b/i, route);
+  }
+});
+
 test("server-renders the complete Events Hub blueprint and structured list", async () => {
   const response = await render("/events");
   const html = await response.text();
@@ -244,7 +208,8 @@ test("server-renders the complete Weddings blueprint without Event schema", asyn
   assert.match(html, /Plan Your Wedding Experience/);
   assert.match(html, /Cocktail hour/);
   assert.match(html, /The morning after/);
-  assert.match(html, /30% non-refundable retainer/);
+  assert.doesNotMatch(html, /30% non-refundable retainer/);
+  assert.match(html, /href="\/faq"/);
   assert.match(html, /\$5 million liability insurance/);
   assert.match(html, /"@type":"Service"/);
   assert.match(html, /"@type":"WebPage"/);
@@ -264,8 +229,8 @@ test("server-renders the complete Corporate Events blueprint and approved proof"
   assert.match(html, /Real estate and developer events/);
   assert.match(html, /Institutional and university events/);
   assert.match(html, /Up to three coffee setups and up to three dessert setups/);
-  assert.match(html, /Luxe can support multi-day corporate events/);
-  assert.match(html, /Luxe can support recurring corporate programs/);
+  assert.match(html, /Multi-day requests require operating confirmation/);
+  assert.match(html, /Recurring programs require operating confirmation/);
   assert.match(html, /Coffee can typically support up to 500 guests and dessert up to 400 guests/);
   assert.match(html, /\$5 million liability insurance/);
 
@@ -298,8 +263,8 @@ test("server-renders the complete Brand Activations blueprint with qualified sca
   assert.match(html, /Brand-colour alignment/);
   assert.match(html, /Retail activations/);
   assert.match(html, /Designed to work in the room and in the frame/);
-  assert.match(html, /Multi-day events are a confirmed capability/);
-  assert.match(html, /Multiple-location campaigns can be reviewed/);
+  assert.match(html, /Multi-day campaign requests require operating confirmation/);
+  assert.match(html, /Multi-day and multiple-location campaigns can be reviewed/);
   assert.match(html, /No universal lead time is published/);
   assert.match(html, /"@type":"Service"/);
   assert.match(html, /"@type":"WebPage"/);
@@ -400,14 +365,15 @@ test("server-renders the grouped Gallery blueprint with canonical-safe filters",
   assert.equal(response.status, 200);
   assert.match(html, /<title>Event Experience Gallery \| Luxe Event Co\.<\/title>/i);
   assert.match(html, /Luxe event experiences,/);
-  assert.match(html, /grouped by the moments they served\./);
+  assert.match(html, /explored by the moments they can serve\./);
   assert.match(html, /Start Planning Your Event/);
   assert.match(html, /Coffee through the wedding day/);
   assert.match(html, /A brand guests can taste/);
   assert.match(html, /Dessert as part of the setting/);
   assert.match(html, /The room before guests arrive/);
   assert.match(html, /One occasion, several Luxe experiences/);
-  assert.match(html, /Luxe event study/);
+  assert.doesNotMatch(html, /Luxe event study/);
+  assert.doesNotMatch(html, /class="gallery-group-media"/);
   assert.match(html, /aria-label="Filter gallery groups"/);
   assert.match(html, /"@type":\["CollectionPage","WebPage"\]/);
   assert.match(html, /"@type":"BreadcrumbList"/);
@@ -432,7 +398,8 @@ test("server-renders the complete factual FAQ and matching FAQPage schema", asyn
   assert.match(html, /Travel and Service Area/);
   assert.match(html, /Setup and Logistics/);
   assert.match(html, /Which payment methods are accepted\?/);
-  assert.match(html, /How many drinks can be served per hour\?/);
+  assert.doesNotMatch(html, /How many drinks can be served per hour\?/);
+  assert.match(html, /26(?:<!-- -->)? answers/);
   assert.match(html, /\$5 million in liability insurance/);
   assert.doesNotMatch(html, /Hamilton/);
 
@@ -445,7 +412,7 @@ test("server-renders the complete factual FAQ and matching FAQPage schema", asyn
     (item) => Array.isArray(item["@type"]) && item["@type"].includes("FAQPage"),
   );
   assert.ok(faqPage);
-  assert.equal(faqPage.mainEntity.length, 47);
+  assert.equal(faqPage.mainEntity.length, 26);
   assert.equal(faqPage.mainEntity[0].name, "What packages are available?");
   assert.match(faqPage.mainEntity[0].acceptedAnswer.text, /Café Cart Experience/);
   assert.ok(
@@ -491,7 +458,10 @@ test("server-renders the complete Experiences Hub blueprint and structured list"
   assert.match(html, /Distinct by design\./);
   assert.match(html, /Explore an Experience/);
   assert.match(html, /Can each experience be booked independently\?/);
-  assert.match(html, /Can multiple Luxe experiences be combined\?/);
+  assert.match(
+    html,
+    /Can coffee, dessert, and rentals be coordinated through one provider\?/,
+  );
   assert.match(html, /A café experience, composed for the event\./);
   assert.match(html, /Dessert prepared in the room, not delivered to the edge of it\./);
   assert.match(html, /The setting that gives the gathering its shape\./);
@@ -616,7 +586,7 @@ test("server-renders the complete Seating Rentals blueprint without commerce sch
   assert.equal(response.status, 200);
   assert.match(html, /<title>Event &amp; Seating Rentals in Toronto \| Luxe Seating Rentals<\/title>/i);
   assert.match(html, /Event and seating rentals,/);
-  assert.match(html, /considered\./);
+  assert.match(html, /shaped around the occasion\./);
   assert.match(html, /Discuss Your Rental Requirements/);
   assert.match(html, /Chairs/);
   assert.match(html, /Tables/);
@@ -657,7 +627,7 @@ test("server-renders the complete Seating Rentals blueprint without commerce sch
   assert.doesNotMatch(html, /Future content for this division/);
 });
 
-test("publishes an LLM-readable brand summary", async () => {
+test("keeps the optional llms.txt summary factual and nonessential", async () => {
   const llms = await readFile(new URL("../public/llms.txt", import.meta.url), "utf8");
   assert.match(llms, /^# Luxe Event Co\./);
   assert.match(llms, /https:\/\/luxeeventco\.ca/);

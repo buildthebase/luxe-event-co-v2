@@ -27,7 +27,7 @@ export const babyShowerExperiences = [
     href: "/experiences/seating-rentals",
     statement: "Comfort and structure around the celebration.",
     description:
-      "Chairs, tables, cocktail tables, tents, linens, and lighting can be considered around dining, conversation, gifts, dessert, and outdoor requirements.",
+      "Chairs, tables, cocktail tables, tents, linens, and lighting can be planned around dining, conversation, gifts, dessert, and outdoor requirements.",
     detail:
       "Inventory, quantities, delivery, setup, teardown, access, and fees are confirmed for the venue and date.",
     tone: "seating",
@@ -51,7 +51,7 @@ export const babyShowerStyling = [
     number: "03",
     title: "The setting around service",
     description:
-      "Rental choices, linens, lighting, cart placement, and guest flow can be considered alongside the coffee or dessert experience rather than as separate afterthoughts.",
+      "Rental choices, linens, lighting, cart placement, and guest flow can be planned alongside the coffee or dessert experience rather than as separate afterthoughts.",
   },
 ] as const;
 
@@ -66,7 +66,7 @@ export const babyShowerSettings = [
     number: "02",
     title: "Outdoor gatherings",
     description:
-      "Coffee, dessert, tents, seating, tables, linens, and lighting can be considered outdoors when weather planning, ground conditions, access, utilities, and a suitable contingency plan are confirmed.",
+      "Coffee, dessert, tents, seating, tables, linens, and lighting can be planned outdoors when weather planning, ground conditions, access, utilities, and a suitable contingency plan are confirmed.",
   },
 ] as const;
 
@@ -144,9 +144,9 @@ export const babyShowerPlanning = [
 
 export const babyShowerFaqs = [
   {
-    question: "Can coffee and matcha be served at a baby shower?",
+    question: "What services work well for baby showers?",
     answer:
-      "Yes. Luxe Coffee Bar can provide espresso classics, signature coffee drinks, matcha, premium non-coffee beverages, hot and iced service, and milk alternatives. The Café Cart or Signature Coffee Bar is selected around the venue, guest count, service duration, and desired presence in the room.",
+      "Coffee and matcha work well as a welcome or conversation point, live dessert creates an interactive sweet moment, and chairs, tables, cocktail tables, tents, linens, or lighting can shape the setting. Hosts can choose one service or coordinate several. The right combination depends on the venue, guest count, indoor or outdoor conditions, schedule, and desired atmosphere.",
   },
   {
     question: "Which desserts are available for baby showers?",
@@ -161,7 +161,7 @@ export const babyShowerFaqs = [
   {
     question: "Can seating and rentals be included?",
     answer:
-      "Yes. Chairs, tables, cocktail tables, tents, linens, and lighting can be considered alongside coffee or dessert. Confirmed inventory, quantities, delivery, setup, teardown, pickup, access, and fees depend on the date, venue, and event requirements.",
+      "Yes. Chairs, tables, cocktail tables, tents, linens, and lighting can be planned alongside coffee or dessert. Confirmed inventory, quantities, delivery, setup, teardown, pickup, access, and fees depend on the date, venue, and event requirements.",
   },
   {
     question: "Can the menus, cups, and signage be personalized?",
@@ -171,12 +171,7 @@ export const babyShowerFaqs = [
   {
     question: "Can Luxe support an outdoor baby shower?",
     answer:
-      "Outdoor service can be considered. Luxe reviews weather exposure, ground conditions, shelter, utilities, access, equipment protection, guest comfort, and a suitable contingency plan before confirming the setup.",
-  },
-  {
-    question: "Is setup and takedown included?",
-    answer:
-      "Setup and takedown are included for confirmed Coffee Bar and Sweet Cart experiences. Rental delivery, setup, teardown, pickup, and any additional labour requirements are defined in the proposal.",
+      "Outdoor service can be planned. Luxe reviews weather exposure, ground conditions, shelter, utilities, access, equipment protection, guest comfort, and a suitable contingency plan before confirming the setup.",
   },
   {
     question: "What does Luxe need to prepare a baby shower proposal?",

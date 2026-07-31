@@ -251,7 +251,7 @@ export const galleryGroups: readonly GalleryGroup[] = [
     title: "One occasion, several Luxe experiences",
     context: "Coffee / Dessert / Seating / Private Events",
     description:
-      "Hospitality, dessert, signage, and the surrounding room can be coordinated as one composition while each Luxe division keeps its own role.",
+      "Hospitality, dessert, signage, and the surrounding room can be coordinated as one composition while each Luxe experience keeps its own role.",
     tags: ["coffee-bar", "sweet-cart", "seating-rentals", "private-events"],
     tone: "combined",
     links: [

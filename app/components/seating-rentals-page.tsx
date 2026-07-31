@@ -17,17 +17,19 @@ import {
 } from "../schema-builders";
 import { FaqAccordion } from "./faq-accordion";
 import { JsonLd } from "./json-ld";
+import { PriorityAnswer } from "./priority-answer";
 import { ContextualInquiryPanel } from "./signature-elements";
 import { SiteShell } from "./site-shell";
 
 const seatingRentalsPath = "/experiences/seating-rentals";
+const [rentalPricingAnswer, ...rentalContextualFaqs] = seatingRentalFaqs;
 const seatingRentalsSchema = createServicePageSchema({
   path: seatingRentalsPath,
   serviceId: divisionServiceIds.seating,
   serviceName: "Luxe Seating Rentals",
   serviceType: "Event seating and rental service",
   serviceDescription:
-    "A considered event rental service connecting chairs, tables, cocktail tables, tents, linens, and lighting to event layout, comfort, and guest experience.",
+    "A refined event rental service connecting chairs, tables, cocktail tables, tents, linens, and lighting to event layout, comfort, and guest experience.",
   pageName: pageMetadata[seatingRentalsPath].title,
   pageDescription:
     "Explore confirmed Luxe Seating Rentals categories, indoor and outdoor applications, layout planning, service areas, quote requirements, and complementary event experiences.",
@@ -39,9 +41,9 @@ function SeatingHero() {
     <header className="seating-hero">
       <div className="seating-hero-copy">
         <p className="foundation-eyebrow">Luxe Seating Rentals / Toronto &amp; the GTA</p>
-        <h1 aria-label="Event and seating rentals, considered.">
+        <h1 aria-label="Event and seating rentals, shaped around the occasion.">
           <span>Event and seating</span>
-          <span>rentals, considered.</span>
+          <span>rentals, shaped around the occasion.</span>
         </h1>
         <p>
           Seating and event rentals planned as part of the layout, atmosphere,
@@ -65,7 +67,7 @@ function SeatingHero() {
       </div>
       <dl className="seating-hero-proof">
         <div><dt>06</dt><dd>Confirmed rental categories</dd></div>
-        <div><dt>Inside + Out</dt><dd>Applications considered</dd></div>
+        <div><dt>Inside + Out</dt><dd>Indoor and outdoor settings</dd></div>
         <div><dt>$5M</dt><dd>Liability insurance</dd></div>
       </dl>
     </header>
@@ -99,6 +101,7 @@ function RentalCategories() {
       className="seating-inventory"
       id="rental-categories"
       aria-labelledby="seating-inventory-title"
+      data-evidence-status="confirmed-categories"
     >
       <header>
         <p className="foundation-label">Confirmed rental categories</p>
@@ -120,6 +123,13 @@ function RentalCategories() {
           </article>
         ))}
       </div>
+      <PriorityAnswer
+        label="Cost factors"
+        question={rentalPricingAnswer.question}
+        answer={rentalPricingAnswer.answer}
+        href="/inquire"
+        linkLabel="Request a rental proposal"
+      />
     </section>
   );
 }
@@ -172,7 +182,11 @@ function LayoutInspiration() {
 
 function RentalOperations() {
   return (
-    <section className="seating-operations" aria-labelledby="seating-operations-title">
+    <section
+      className="seating-operations"
+      aria-labelledby="seating-operations-title"
+      data-evidence-status="confirmed-boundary-policy-pending"
+    >
       <header>
         <p className="foundation-label">Delivery, setup, and teardown</p>
         <h2 id="seating-operations-title">The operational scope belongs in the proposal.</h2>
@@ -181,7 +195,7 @@ function RentalOperations() {
           approves the rental logistics policy.
         </p>
       </header>
-      <div>
+      <div className="seating-operation-grid">
         {rentalOperations.map((operation) => (
           <article key={operation.number}>
             <span>{operation.number}</span>
@@ -336,7 +350,7 @@ function RentalServiceArea() {
     <section className="seating-service-area" aria-labelledby="seating-service-area-title">
       <header>
         <p className="foundation-label">Service-area context</p>
-        <h2 id="seating-service-area-title">Toronto, the GTA, and considered travel beyond.</h2>
+        <h2 id="seating-service-area-title">Toronto, the GTA, and select travel beyond.</h2>
         <p>
           Travel fees may apply outside Luxe&apos;s standard service area. Rental
           delivery availability and fees remain subject to the final logistics policy.
@@ -356,7 +370,10 @@ function RentalFaq() {
         <p className="foundation-label">Rental questions</p>
         <h2 id="seating-faq-title">What is confirmed, and what the proposal must resolve.</h2>
       </header>
-      <FaqAccordion items={seatingRentalFaqs} />
+      <FaqAccordion items={rentalContextualFaqs} />
+      <Link href="/faq">
+        Review all Luxe booking questions <span aria-hidden="true">↗</span>
+      </Link>
     </section>
   );
 }

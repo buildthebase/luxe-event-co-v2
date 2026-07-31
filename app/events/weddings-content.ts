@@ -2,7 +2,7 @@ export const weddingMoments = [
   {
     number: "01",
     phase: "Before the ceremony",
-    title: "A considered welcome.",
+    title: "A thoughtful welcome.",
     description:
       "A Café Cart can greet the wedding party or arriving guests with espresso, matcha, and specialty beverages before the ceremony begins.",
     note: "Best fit is confirmed around arrival flow, venue access, and timing.",
@@ -44,7 +44,7 @@ export const weddingMoments = [
     phase: "The morning after",
     title: "Hospitality can continue.",
     description:
-      "Where the venue, schedule, and availability allow, a focused coffee experience can be considered for a farewell breakfast or next-day gathering.",
+      "Where the venue, schedule, and availability allow, a focused coffee experience can be planned for a farewell breakfast or next-day gathering.",
     note: "Morning-after service is planned as a separate event requirement, not assumed within the wedding-day booking.",
   },
 ] as const;
@@ -75,7 +75,7 @@ export const weddingExperienceRoles = [
     href: "/experiences/seating-rentals",
     statement: "Comfort, structure, and the shape of the room.",
     description:
-      "Chairs, tables, cocktail tables, tents, linens, and lighting can be considered around ceremony, reception, lounge, or outdoor requirements.",
+      "Chairs, tables, cocktail tables, tents, linens, and lighting can be planned around ceremony, reception, lounge, or outdoor requirements.",
   },
 ] as const;
 
@@ -99,7 +99,7 @@ export const weddingCombinations = [
     title: "The setting and service together",
     experiences: "Coffee + Dessert + Rentals",
     description:
-      "The beverage experience, sweet service, and room requirements are considered through one Luxe Event Co. inquiry and proposal journey.",
+      "The beverage experience, sweet service, and room requirements are planned through one Luxe Event Co. inquiry and proposal journey.",
   },
 ] as const;
 
@@ -179,9 +179,14 @@ export const weddingFaqs = [
       "Yes. Luxe Coffee Bar provides professional barista service, espresso classics, signature drinks, matcha and premium non-coffee options, hot and iced service, milk alternatives, serving essentials, setup, and takedown. The Café Cart or Signature Coffee Bar is selected around the wedding format and guest experience.",
   },
   {
-    question: "Which stages of a wedding can Luxe serve?",
+    question: "When should coffee be served at a wedding?",
     answer:
-      "Coffee can be considered for pre-ceremony hospitality, guest arrival, cocktail hour, reception service, or a late-night moment. Dessert can support cocktail hour, reception, or late-night service. A separate morning-after coffee experience may also be considered where schedule, access, travel, and availability allow.",
+      "Coffee can be served before the ceremony, during guest arrival or cocktail hour, with dessert, during the reception, or as a late-night moment. The best window depends on when guests will welcome a beverage, how coffee fits the food and bar plan, and whether the venue can support setup and service without interrupting another transition.",
+  },
+  {
+    question: "Is a coffee bar appropriate for cocktail hour?",
+    answer:
+      "Yes, when it supports the transition between ceremony and reception. A coffee bar can give guests a staffed hospitality point with hot, iced, matcha, and non-coffee choices while they gather. Placement, menu breadth, service duration, guest count, and coordination with the venue, planner, caterer, and beverage program determine whether cocktail hour is the right window.",
   },
   {
     question: "Can coffee and dessert be booked together?",
@@ -191,7 +196,7 @@ export const weddingFaqs = [
   {
     question: "Can seating and rentals be included?",
     answer:
-      "Yes. Chairs, tables, cocktail tables, tents, linens, and lighting can be considered alongside Coffee Bar or Sweet Cart. Inventory, quantities, delivery, setup, teardown, access, and fees must be confirmed for the venue and date.",
+      "Yes. Chairs, tables, cocktail tables, tents, linens, and lighting can be planned alongside Coffee Bar or Sweet Cart. Inventory, quantities, delivery, setup, teardown, access, and fees must be confirmed for the venue and date.",
   },
   {
     question: "Can wedding menus, cups, and signage be customized?",
@@ -202,11 +207,6 @@ export const weddingFaqs = [
     question: "How early should couples book?",
     answer:
       "Luxe recommends booking early for weddings and peak-season dates, especially from April through October. No universal lead time is promised because availability depends on the date, requested experiences, staffing, travel, and logistics.",
-  },
-  {
-    question: "Is a retainer required?",
-    answer:
-      "Yes. A 30% non-refundable retainer and signed contract are required to secure the booking. Availability is not guaranteed until both are received. The remaining balance is due seven days before the event.",
   },
   {
     question: "Does Luxe coordinate with wedding planners and venues?",

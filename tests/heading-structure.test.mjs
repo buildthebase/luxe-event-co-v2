@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { loadWorker, render } from "./test-worker.mjs";
 
 const routes = [
   "/",
@@ -26,29 +27,6 @@ function stripTags(value) {
     .replace(/&amp;/g, "&")
     .replace(/\s+/g, " ")
     .trim();
-}
-
-async function loadWorker() {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("heading-structure", `${process.pid}-${Date.now()}`);
-  return (await import(workerUrl.href)).default;
-}
-
-async function render(worker, path) {
-  return worker.fetch(
-    new Request(new URL(path, "http://localhost/"), {
-      headers: { accept: "text/html" },
-    }),
-    {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
-  );
 }
 
 test("every page exposes one descriptive H1 inside main content only", async () => {
@@ -145,5 +123,5 @@ test("accordion questions use H3 headings beneath their H2 sections", async () =
 
   const faqResponse = await render(worker, "/faq");
   const faqHtml = await faqResponse.text();
-  assert.ok((faqHtml.match(/<summary>[\s\S]*?<h3>/gi) ?? []).length >= 40);
+  assert.ok((faqHtml.match(/<summary>[\s\S]*?<h3>/gi) ?? []).length >= 26);
 });

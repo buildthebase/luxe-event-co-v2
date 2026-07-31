@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { spawnSync } from "node:child_process";
 import test from "node:test";
+import { loadWorker } from "./test-worker.mjs";
 
 const [policy, workerSource, script, siteConfig, packageJson] = await Promise.all([
   readFile(new URL("../app/indexnow.ts", import.meta.url), "utf8"),
@@ -13,6 +14,7 @@ const [policy, workerSource, script, siteConfig, packageJson] = await Promise.al
 
 test("keeps IndexNow optional and inactive by default", () => {
   assert.match(siteConfig, /status: "optional-not-enabled"/);
+  assert.match(workerSource, /env: Env = \{\}/);
   assert.match(policy, /Bing Webmaster Tools/);
   assert.match(policy, /XML sitemap remains required/);
   assert.match(policy, /inert unless --send is explicitly provided/);
@@ -40,9 +42,7 @@ test("validates ownership and canonical submission scope without a committed key
 });
 
 test("serves the configured root key only on the canonical HTTPS host", async () => {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("indexnow", `${process.pid}-${Date.now()}`);
-  const { default: worker } = await import(workerUrl.href);
+  const worker = await loadWorker();
   const key = "LuxeIndexNowKey-2026";
   const context = {
     waitUntil() {},

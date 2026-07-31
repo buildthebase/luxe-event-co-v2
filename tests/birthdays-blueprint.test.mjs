@@ -48,7 +48,8 @@ test("keeps the eyebrow in the hero and uses the exact CTA", () => {
 });
 
 test("uses factual, qualified service language", () => {
-  assert.match(contentSource, /Rental delivery, setup, teardown, pickup/);
+  assert.doesNotMatch(contentSource, /Is setup and takedown included/);
+  assert.match(componentSource, /href="\/faq"/);
   assert.match(contentSource, /One premium non-coffee beverage is included/);
   assert.doesNotMatch(contentSource, /Hamilton/);
   assert.doesNotMatch(contentSource, /all children|guaranteed|unlimited/i);

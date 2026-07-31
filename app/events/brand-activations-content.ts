@@ -9,13 +9,13 @@ export const activationBrandTouchpoints = [
     number: "02",
     title: "Custom signage",
     description:
-      "Service signage and menu displays can reinforce the campaign message while remaining clear and useful at the point of interaction.",
+      "Service signage and menu displays can reinforce the campaign message while remaining legible and useful where guests choose, order, and move through the experience.",
   },
   {
     number: "03",
     title: "Cart branding",
     description:
-      "The Coffee Bar or Sweet Cart can be visually aligned with the activation so the service point feels integrated rather than placed beside the campaign.",
+      "The Coffee Bar or Sweet Cart can be visually aligned with the activation so the service point feels integrated without obscuring equipment, menus, working surfaces, or guest access.",
   },
   {
     number: "04",
@@ -27,7 +27,7 @@ export const activationBrandTouchpoints = [
     number: "05",
     title: "Brand-colour alignment",
     description:
-      "Approved colour references can inform signage, menus, cups, presentation, and styling without compromising legibility or service function.",
+      "Approved colour references can inform signage, menus, cups, presentation, and styling without compromising contrast, legibility, or service function.",
   },
   {
     number: "06",
@@ -99,7 +99,7 @@ export const activationServiceMedia = [
     href: "/experiences/seating-rentals",
     statement: "The setting can extend the visual system beyond the service cart.",
     description:
-      "Chairs, tables, cocktail tables, tents, linens, lighting, and selected styling requirements can be considered around the activation environment.",
+      "Chairs, tables, cocktail tables, tents, linens, lighting, and selected styling requirements can be planned around the activation environment.",
   },
 ] as const;
 
@@ -114,9 +114,9 @@ export const activationScaleCapabilities = [
   {
     number: "02",
     title: "Multi-day campaigns",
-    fact: "Luxe can support multi-day events and campaign programs.",
+    fact: "Multi-day campaign requests require operating confirmation.",
     qualification:
-      "Daily schedules, resets, storage, replenishment, menu changes, staffing, and branded-material handling are planned before confirmation.",
+      "The approved information does not establish a universal multi-day model. Daily schedules, resets, storage, replenishment, menu changes, staffing, branded-material handling, locations, and travel must be reviewed before capability is confirmed.",
   },
   {
     number: "03",
@@ -183,6 +183,17 @@ export const activationPlanningRequirements = [
 
 export const activationFaqs = [
   {
+    question: "Does branding increase the price?",
+    answer:
+      "Branding can increase the quote when it adds artwork preparation, custom cups, signage, cart treatment, special menu development, production quantities, approvals, shipping, installation, or additional lead time. A simple approved menu or naming treatment may require less production than a fully branded service environment. Luxe prices the confirmed branding surfaces and production scope rather than applying one universal branding fee.",
+  },
+  {
+    question:
+      "How does standard corporate catering compare with branded experiential service?",
+    answer:
+      "Standard corporate catering is appropriate when the priority is dependable food or beverage provision with minimal creative production. Branded experiential service is appropriate when the menu, cups, signage, service point, and guest interaction should express a campaign or organization. Neither is universally better; decide from the event objective, audience, desired action, brand requirements, service window, venue, approvals, production scope, and budget. Luxe Coffee Bar and Sweet Cart can support the experiential route when that added role is useful.",
+  },
+  {
     question: "Can the Coffee Bar or Sweet Cart be branded?",
     answer:
       "Yes. Cart branding and event styling are available for activations. Final treatment depends on the approved creative direction, cart format, production method, timeline, quantities, and event requirements.",
@@ -190,12 +201,12 @@ export const activationFaqs = [
   {
     question: "Can cups, signage, and menus include a logo?",
     answer:
-      "Yes. Approved company or campaign logos can be considered for cups, signage, and menu displays. The client must have permission to use the supplied assets, and final artwork, file specifications, production timing, and quantities must be approved.",
+      "Yes. Approved company or campaign logos can be planned for cups, signage, and menu displays. The client must have permission to use the supplied assets, and final artwork, file specifications, production timing, and quantities must be approved.",
   },
   {
     question: "Can custom drinks be created for a campaign?",
     answer:
-      "Yes. Luxe can develop custom drink names and tailor a menu around the product, campaign, audience, season, or event theme. Final recipes and naming depend on menu feasibility, service speed, ingredient availability, and creative approval.",
+      "Yes. Luxe can develop campaign drink names and tailor a menu around the product, campaign, audience, season, or event theme. Final recipes and naming depend on menu feasibility, service speed, ingredient availability, guest ordering clarity, and creative approval.",
   },
   {
     question: "Can Luxe work directly with agencies and experiential teams?",
@@ -205,7 +216,7 @@ export const activationFaqs = [
   {
     question: "Can Luxe support multi-day or multiple-location campaigns?",
     answer:
-      "Multi-day events are a confirmed capability. Multiple-location campaigns can be reviewed, but execution is confirmed only after Luxe assesses the dates, locations, travel, staffing, equipment, setup requirements, production plan, and handoffs for the complete brief.",
+      "Multi-day and multiple-location campaigns can be reviewed, but neither is a universally confirmed capability. Luxe must assess the dates, locations, travel, staffing, equipment, reset or storage needs, setup requirements, production plan, and handoffs before representing the complete brief as available.",
   },
   {
     question: "Which assets are required from the client?",

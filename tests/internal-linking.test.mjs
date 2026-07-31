@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { loadWorker, render } from "./test-worker.mjs";
 
 const source = await readFile(new URL("../app/internal-linking.ts", import.meta.url), "utf8");
 
@@ -52,29 +53,6 @@ test("uses contextual anchor rules instead of generic link language", () => {
   assert.match(source, /Use crawlable HTML anchor elements with resolvable href values/);
   assert.doesNotMatch(source, /anchor: "Click here"|anchor: "Learn more"|anchor: "Read more"/i);
 });
-
-async function loadWorker() {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("internal-linking", `${process.pid}-${Date.now()}`);
-  return (await import(workerUrl.href)).default;
-}
-
-async function render(worker, path) {
-  return worker.fetch(
-    new Request(new URL(path, "http://localhost/"), {
-      headers: { accept: "text/html" },
-    }),
-    {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
-  );
-}
 
 function region(html, element) {
   return html.match(new RegExp(`<${element}\\b[^>]*>([\\s\\S]*?)<\\/${element}>`, "i"))?.[1] ?? "";

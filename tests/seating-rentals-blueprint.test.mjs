@@ -92,7 +92,7 @@ test("publishes only the six confirmed rental categories", () => {
 
 test("answers every required Seating Rentals AEO question visibly", () => {
   for (const answerSignal of [
-    "Which rental items are available?",
+    "What is included with an event-rental service?",
     "Does Luxe deliver rentals?",
     "Is rental setup included?",
     "Is rental teardown included?",
@@ -104,6 +104,18 @@ test("answers every required Seating Rentals AEO question visibly", () => {
   ]) {
     assert.match(contentSource, new RegExp(answerSignal.replaceAll("?", "\\?")));
   }
+});
+
+test("defines event-rental inclusions without promising universal logistics", () => {
+  assert.match(contentSource, /proposal then defines the selected inventory/);
+  assert.match(contentSource, /delivery, placement, setup, takedown, or pickup responsibilities/);
+  assert.match(contentSource, /rather than assumed to be universally included/);
+});
+
+test("answers chair and table pricing with actual quote factors", () => {
+  assert.match(contentSource, /How are chairs and tables priced\?/);
+  assert.match(contentSource, /confirmed item, quantity, event date, location/);
+  assert.match(contentSource, /does not publish one per-item amount/);
 });
 
 test("preserves all approved geographic references", () => {
@@ -140,7 +152,7 @@ test("preserves all approved geographic references", () => {
 });
 
 test("does not invent inventory quantities or universal rental logistics", () => {
-  assert.match(contentSource, /does not define one universal delivery policy/);
+  assert.match(contentSource, /does not define one universal rental-delivery boundary or policy/);
   assert.match(contentSource, /not presented as universally included/);
   assert.match(
     componentSource,

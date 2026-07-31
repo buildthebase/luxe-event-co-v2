@@ -73,12 +73,12 @@ test("covers the complete wedding timeline and all three Luxe divisions", () => 
 test("answers every required Weddings AEO question visibly", () => {
   for (const question of [
     "Can Luxe provide coffee service for weddings?",
-    "Which stages of a wedding can Luxe serve?",
+    "When should coffee be served at a wedding?",
+    "Is a coffee bar appropriate for cocktail hour?",
     "Can coffee and dessert be booked together?",
     "Can seating and rentals be included?",
     "Can wedding menus, cups, and signage be customized?",
     "How early should couples book?",
-    "Is a retainer required?",
     "Does Luxe coordinate with wedding planners and venues?",
     "Does Luxe travel outside Toronto?",
   ]) {
@@ -86,10 +86,10 @@ test("answers every required Weddings AEO question visibly", () => {
   }
 });
 
-test("uses confirmed policy and trust facts without inventing deferred details", () => {
-  assert.match(contentSource, /30% non-refundable retainer/);
-  assert.match(contentSource, /remaining balance is due seven days before the event/);
-  assert.match(componentSource, /Three divisions/);
+test("uses confirmed trust facts and links shared policy without duplicating it", () => {
+  assert.doesNotMatch(contentSource, /30% non-refundable retainer/);
+  assert.match(componentSource, /href="\/faq"/);
+  assert.match(componentSource, /Three experiences/);
   assert.match(componentSource, /\$5 million liability insurance/);
   assert.match(contentSource, /select destination weddings throughout Southern Ontario/);
   assert.match(contentSource, /No universal lead time is promised/);

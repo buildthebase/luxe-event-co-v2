@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { render } from "./test-worker.mjs";
 
 const canonicalOrigin = "https://luxeeventco.ca";
 const permanentRoutes = [
@@ -31,21 +32,6 @@ const [performanceSystem, interactionSystem, navigation, shell, styles, workerSo
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
     readFile(new URL("../worker/index.ts", import.meta.url), "utf8"),
   ]);
-
-const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-workerUrl.searchParams.set("page-experience", `${process.pid}-${Date.now()}`);
-const { default: worker } = await import(workerUrl.href);
-
-function render(url) {
-  return worker.fetch(
-    new Request(url),
-    {},
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
-  );
-}
 
 test("records a complete, visitor-first page-experience policy", () => {
   assert.match(performanceSystem, /passing diagnostics does not guarantee rankings/i);

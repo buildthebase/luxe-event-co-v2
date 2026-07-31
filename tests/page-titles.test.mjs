@@ -1,12 +1,13 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { loadWorker, render } from "./test-worker.mjs";
 
 const pages = [
   ["/", "Luxury Event Experiences in Toronto | Luxe Event Co.", "Luxury events, gathered."],
   ["/experiences", "Coffee, Dessert & Seating Experiences | Luxe Event Co.", "Coffee, dessert, and seating. Distinct by design."],
   ["/experiences/coffee-bar", "Mobile Coffee Bar in Toronto | Luxe Coffee Bar", "A mobile coffee bar, made for the gathering."],
   ["/experiences/sweet-cart", "Dessert Cart Experiences in Toronto | Luxe Sweet Cart", "A dessert cart experience, made in the moment."],
-  ["/experiences/seating-rentals", "Event & Seating Rentals in Toronto | Luxe Seating Rentals", "Event and seating rentals, considered."],
+  ["/experiences/seating-rentals", "Event & Seating Rentals in Toronto | Luxe Seating Rentals", "Event and seating rentals, shaped around the occasion."],
   ["/events", "Event Experiences by Occasion | Luxe Event Co.", "Event experiences, shaped by the occasion."],
   ["/events/weddings", "Wedding Coffee, Dessert & Rentals | Luxe Event Co.", "Wedding coffee, dessert, and rentals, woven through the day."],
   ["/events/corporate-events", "Corporate Coffee & Event Experiences | Luxe Event Co.", "Corporate coffee and event experiences, ready for business."],
@@ -15,7 +16,7 @@ const pages = [
   ["/events/bridal-showers", "Bridal Shower Coffee, Dessert & Rentals | Luxe Event Co.", "Bridal shower experiences with their own point of view."],
   ["/events/birthdays", "Birthday Dessert & Coffee Experiences | Luxe Event Co.", "Birthday dessert and coffee, made for the milestone."],
   ["/events/private-events", "Private Event Coffee, Dessert & Rentals | Luxe Event Co.", "Private event experiences without a standard format."],
-  ["/gallery", "Event Experience Gallery | Luxe Event Co.", "Luxe event experiences, grouped by the moments they served."],
+  ["/gallery", "Event Experience Gallery | Luxe Event Co.", "Luxe event experiences, explored by the moments they can serve."],
   ["/faq", "Event Planning & Booking FAQs | Luxe Event Co.", "Event planning and booking answers, before the proposal begins."],
   ["/inquire", "Plan Your Event Experience | Luxe Event Co.", "Plan your Luxe event experience."],
 ];
@@ -26,29 +27,6 @@ function decodeHtml(value) {
     .replaceAll("&quot;", "\"")
     .replaceAll("&#x27;", "'")
     .replaceAll("&#39;", "'");
-}
-
-async function loadWorker() {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("page-titles", `${process.pid}-${Date.now()}`);
-  return (await import(workerUrl.href)).default;
-}
-
-async function render(worker, path) {
-  return worker.fetch(
-    new Request(new URL(path, "http://localhost/"), {
-      headers: { accept: "text/html" },
-    }),
-    {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
-  );
 }
 
 test("every approved page has one unique, descriptive, naturally branded title", async () => {

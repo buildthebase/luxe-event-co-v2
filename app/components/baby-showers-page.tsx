@@ -21,7 +21,7 @@ const babyShowersSchema = createServicePageSchema({
   serviceName: "Baby shower coffee, dessert, and rental experiences",
   serviceType: "Baby shower coffee bar, dessert cart, and event rental services",
   serviceDescription:
-    "Coffee, matcha, live dessert, and considered rental experiences for baby showers in Toronto and the Greater Toronto Area.",
+    "Coffee, matcha, live dessert, and refined rental experiences for baby showers in Toronto and the Greater Toronto Area.",
   pageName: pageMetadata[babyShowersPath].title,
   pageDescription: pageMetadata[babyShowersPath].description,
 });
@@ -37,7 +37,7 @@ function BabyShowerHero() {
           <span>thoughtfully gathered.</span>
         </h1>
         <p>
-          Coffee, matcha, freshly prepared dessert, and a considered setting
+          Coffee, matcha, freshly prepared dessert, and an intentional setting
           can create a warm, cohesive celebration for hosts, families, and guests.
         </p>
         <div className="baby-hero-actions">
@@ -75,7 +75,7 @@ function BabyShowerOverview() {
           room around conversation, gifts, and photographs.
         </p>
         <p>
-          Each division can be booked independently. When several are selected,
+          Each service can be booked independently. When several are selected,
           Luxe Event Co. considers their timing, placement, presentation, and
           operational requirements through one inquiry and proposal journey.
         </p>

@@ -1,3 +1,4 @@
+import { entityNames } from "./entity-names";
 import { experiences, eventTypes, primaryRoutes, siteConfig } from "./site-config";
 
 export type TopicEntityKind =
@@ -23,7 +24,7 @@ export type TopicRelationship = {
 };
 
 export const parentEntity: TopicEntity = {
-  slug: "luxe-event-co",
+  slug: entityNames.parentBrand.stableKey,
   name: siteConfig.name,
   kind: "parent",
   canonicalPath: "/",
@@ -39,8 +40,8 @@ export const divisionEntities: TopicEntity[] = experiences.map((experience) => (
 }));
 
 export const serviceEntities: TopicEntity[] = [
-  ["cafe-cart-experience", "Café Cart Experience", "coffee-bar"],
-  ["signature-coffee-bar-experience", "Signature Coffee Bar Experience", "coffee-bar"],
+  ["cafe-cart-experience", entityNames.coffeeExperiences.cafeCart.shortName, "coffee-bar"],
+  ["signature-coffee-bar-experience", entityNames.coffeeExperiences.signatureCoffeeBar.shortName, "coffee-bar"],
   ["espresso-service", "Espresso service", "coffee-bar"],
   ["matcha-service", "Matcha service", "coffee-bar"],
   ["seasonal-beverages", "Seasonal beverages", "coffee-bar"],
@@ -57,7 +58,7 @@ export const serviceEntities: TopicEntity[] = [
   ["event-setup-and-teardown", "Event setup and teardown", "luxe-event-co"],
   ["custom-branding", "Custom branding", "luxe-event-co"],
   ["signage", "Signage", "luxe-event-co"],
-  ["multi-service-packages", "Multi-service packages", "luxe-event-co"],
+  ["coordinated-multi-service-experiences", "Coordinated multi-service experiences", "luxe-event-co"],
 ].map(([slug, name, parentSlug]) => ({
   slug,
   name,
@@ -95,8 +96,8 @@ export const eventEntities: TopicEntity[] = eventDefinitions.map(([slug, name, c
 }));
 
 const geographyDefinitions: [string, string, string | undefined][] = [
-  ["toronto", "Toronto", "greater-toronto-area"],
-  ["greater-toronto-area", "Greater Toronto Area", "southern-ontario"],
+  ["toronto", entityNames.geography.toronto, "greater-toronto-area"],
+  ["greater-toronto-area", entityNames.geography.greaterTorontoArea, "southern-ontario"],
   ["scarborough", "Scarborough", "greater-toronto-area"],
   ["markham", "Markham", "greater-toronto-area"],
   ["vaughan", "Vaughan", "greater-toronto-area"],
@@ -115,7 +116,7 @@ const geographyDefinitions: [string, string, string | undefined][] = [
   ["ajax", "Ajax", "greater-toronto-area"],
   ["whitby", "Whitby", "greater-toronto-area"],
   ["oshawa", "Oshawa", "greater-toronto-area"],
-  ["southern-ontario", "Southern Ontario", undefined],
+  ["southern-ontario", entityNames.geography.southernOntario, undefined],
 ];
 
 export const geographyEntities: TopicEntity[] = geographyDefinitions.map(([slug, name, parentSlug]) => ({
@@ -154,9 +155,9 @@ export const topicRelationships: TopicRelationship[] = [
   ...geographyEntities.filter((geography) => geography.parentSlug).map((geography) => ({ from: geography.parentSlug!, relation: "contains" as const, to: geography.slug })),
   ...divisionEntities.flatMap((division) => geographyEntities.filter((geography) => geography.slug !== "southern-ontario").map((geography) => ({ from: division.slug, relation: "available-in" as const, to: geography.slug }))),
   { from: parentEntity.slug, relation: "available-in", to: "southern-ontario" },
-  { from: "multi-service-packages", relation: "supports", to: "coffee-bar" },
-  { from: "multi-service-packages", relation: "supports", to: "sweet-cart" },
-  { from: "multi-service-packages", relation: "supports", to: "seating-rentals" },
+  { from: "coordinated-multi-service-experiences", relation: "supports", to: "coffee-bar" },
+  { from: "coordinated-multi-service-experiences", relation: "supports", to: "sweet-cart" },
+  { from: "coordinated-multi-service-experiences", relation: "supports", to: "seating-rentals" },
 ];
 
 export const topicMapContentUses = [

@@ -72,6 +72,16 @@ test("keeps the Events Hub concise without the redundant recommendation chapter"
   assert.doesNotMatch(contentSource, /\$\d|guaranteed availability/i);
 });
 
+test("answers cross-event flow and complete-setup planning questions", () => {
+  assert.match(componentSource, /selected for a complete event setup/);
+  assert.match(componentSource, /without turning\s+them into a fixed package/);
+  assert.match(componentSource, /Guest flow around a coffee or dessert station/);
+  assert.match(
+    componentSource,
+    /clear approach,\s+ordering point, waiting area, and exit/,
+  );
+});
+
 test("implements event-specific metadata, schema, links, and conversion language", () => {
   assert.match(pageSource, /createPageMetadata\("\/events"\)/);
   assert.match(metadataSource, /Event Experiences by Occasion \| Luxe Event Co\./);
@@ -79,7 +89,7 @@ test("implements event-specific metadata, schema, links, and conversion language
   assert.match(schemaSource, /"@type": \["CollectionPage", "WebPage"\]/);
   assert.match(schemaSource, /"@type": "ItemList"/);
   assert.match(schemaSource, /"@type": "BreadcrumbList"/);
-  assert.match(pageSource, /ContextualInquiryPanel contextKey="events"/);
+  assert.match(pageSource, /ContextualInquiryPanel id="event-planning" contextKey="events"/);
   assert.match(signatureSource, /heading: "Find your event experience\."/);
   assert.match(componentSource, /href="\/experiences"/);
   assert.match(componentSource, /href="\/gallery"/);
