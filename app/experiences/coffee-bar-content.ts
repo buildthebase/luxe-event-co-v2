@@ -3,7 +3,6 @@ import { entityNames } from "../entity-names";
 export const coffeeFormats = [
   {
     id: "cafe-cart",
-    number: "01",
     name: entityNames.coffeeExperiences.cafeCart.canonicalName,
     shortName: entityNames.coffeeExperiences.cafeCart.contextualName,
     statement: "An intimate café point, brought into the gathering.",
@@ -14,7 +13,6 @@ export const coffeeFormats = [
   },
   {
     id: "signature-bar",
-    number: "02",
     name: entityNames.coffeeExperiences.signatureCoffeeBar.canonicalName,
     shortName: entityNames.coffeeExperiences.signatureCoffeeBar.contextualName,
     statement: "A full-service coffee bar with a stronger presence in the room.",
@@ -26,7 +24,7 @@ export const coffeeFormats = [
 ] as const;
 
 export const coffeeBookingIncludes = [
-  "Choice of Café Cart Experience or Signature Coffee Bar",
+  "Choice of Luxe Café Cart or Luxe Signature Coffee Bar",
   "Professional barista service",
   "Premium espresso equipment",
   "Four handcrafted espresso classics",
@@ -36,7 +34,7 @@ export const coffeeBookingIncludes = [
   "Dairy and premium milk alternatives",
   "Premium syrups and sauces",
   "Luxury menu display",
-  "Setup and takedown",
+  "Complete setup and takedown",
   "Cups, lids, and serving essentials",
 ] as const;
 
@@ -95,27 +93,6 @@ export const seasonalCoffeeCollections = [
       "Toasted Marshmallow Latte",
       "White Chocolate Peppermint",
     ],
-  },
-] as const;
-
-export const coffeeCustomization = [
-  {
-    number: "01",
-    title: "Build the menu",
-    description:
-      "Select signature drinks, seasonal collections, matcha, and premium non-coffee beverages around the event and its guests.",
-  },
-  {
-    number: "02",
-    title: "Carry the identity",
-    description:
-      "Custom cups, event signage, cart branding, and menu displays can extend a wedding aesthetic, company identity, or campaign direction.",
-  },
-  {
-    number: "03",
-    title: "Style the service",
-    description:
-      "Floral styling and pastry-display possibilities can be planned as part of the presentation.",
   },
 ] as const;
 

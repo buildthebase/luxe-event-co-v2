@@ -12,12 +12,12 @@ export const entityNames = {
   },
   coffeeExperiences: {
     cafeCart: {
-      canonicalName: "Luxe Café Cart Experience",
+      canonicalName: "Luxe Café Cart",
       shortName: "Café Cart Experience",
       contextualName: "Café Cart",
     },
     signatureCoffeeBar: {
-      canonicalName: "Luxe Signature Coffee Bar Experience",
+      canonicalName: "Luxe Signature Coffee Bar",
       shortName: "Signature Coffee Bar Experience",
       contextualName: "Signature Coffee Bar",
     },

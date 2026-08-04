@@ -10,6 +10,7 @@ import {
   seatingRentalFaqs,
 } from "../experiences/seating-rentals-content";
 import { pageMetadata } from "../metadata-config";
+import { seatingRentalsSectionNavigation } from "../page-section-navigation";
 import {
   createAreaServed,
   createServicePageSchema,
@@ -17,6 +18,7 @@ import {
 } from "../schema-builders";
 import { FaqAccordion } from "./faq-accordion";
 import { JsonLd } from "./json-ld";
+import { PageSectionNavigation } from "./page-section-navigation";
 import { PriorityAnswer } from "./priority-answer";
 import { QuoteModalTrigger } from "./quote-modal-trigger";
 import { ContextualInquiryPanel } from "./signature-elements";
@@ -24,6 +26,20 @@ import { SiteShell } from "./site-shell";
 
 const seatingRentalsPath = "/experiences/seating-rentals";
 const [rentalPricingAnswer, ...rentalContextualFaqs] = seatingRentalFaqs;
+const rentalRequirementGroups = [
+  {
+    title: "Event context",
+    items: rentalQuoteRequirements.slice(0, 3),
+  },
+  {
+    title: "Inventory and layout",
+    items: rentalQuoteRequirements.slice(3, 6),
+  },
+  {
+    title: "Access and service",
+    items: rentalQuoteRequirements.slice(6),
+  },
+];
 const seatingRentalsSchema = createServicePageSchema({
   path: seatingRentalsPath,
   serviceId: divisionServiceIds.seating,
@@ -39,7 +55,7 @@ const seatingRentalsSchema = createServicePageSchema({
 
 function SeatingHero() {
   return (
-    <header className="seating-hero">
+    <header className="seating-hero" id="page-overview">
       <div className="seating-hero-copy">
         <p className="foundation-eyebrow">Luxe Seating Rentals / Toronto &amp; the GTA</p>
         <h1 aria-label="Event and seating rentals, shaped around the occasion.">
@@ -66,10 +82,18 @@ function SeatingHero() {
         <i />
         <b>Layout / comfort / flow</b>
       </div>
-      <dl className="seating-hero-proof">
-        <div><dt>06</dt><dd>Confirmed rental categories</dd></div>
-        <div><dt>Inside + Out</dt><dd>Indoor and outdoor settings</dd></div>
-        <div><dt>$5M</dt><dd>Liability insurance</dd></div>
+      <div className="coffee-hero-proof-heading">
+        <p className="foundation-label">Confirmed categories and rental planning</p>
+        <h2 id="seating-hero-proof-title">
+          The rental plan follows the room, event, and guest flow.
+        </h2>
+      </div>
+      <dl className="coffee-hero-proof" aria-labelledby="seating-hero-proof-title">
+        <div><dt>Six</dt><dd><strong>Rental categories</strong><span>Six confirmed rental categories can be planned together. Final items, quantities, finishes, and availability are resolved for the event.</span></dd></div>
+        <div><dt>Inside + Out</dt><dd><strong>Flexible settings</strong><span>Indoor and outdoor plans respond to venue dimensions, access, surface conditions, weather, and the way guests move through the setting.</span></dd></div>
+        <div><dt>$5M</dt><dd><strong>Liability insurance</strong><span>Luxe maintains $5 million in liability insurance for venue, planner, and procurement requirements.</span></dd></div>
+        <div><dt>Planned</dt><dd><strong>Layout and quantities</strong><span>Selections respond to guest count, floor plan, sightlines, accessibility, service zones, and the intended flow of the event.</span></dd></div>
+        <div><dt>Confirmed</dt><dd><strong>Delivery and access</strong><span>Delivery timing, loading access, placement, setup, teardown, and pickup responsibilities are confirmed in the proposal.</span></dd></div>
       </dl>
     </header>
   );
@@ -117,45 +141,12 @@ function RentalCategories() {
         {rentalCategories.map((category) => (
           <article className={`seating-item-${category.id}`} key={category.id}>
             <div className="seating-item-plan" aria-hidden="true"><i /><i /><i /></div>
-            <span>{category.number}</span>
             <h3>{category.name}</h3>
             <strong>{category.role}</strong>
             <p>{category.description}</p>
           </article>
         ))}
       </div>
-      <PriorityAnswer
-        label="Cost factors"
-        question={rentalPricingAnswer.question}
-        answer={rentalPricingAnswer.answer}
-        href="/inquire"
-        linkLabel="Request a rental proposal"
-      />
-    </section>
-  );
-}
-
-function AdditionalInventoryBoundary() {
-  return (
-    <section className="seating-additional" aria-labelledby="seating-additional-title">
-      <div>
-        <p className="foundation-label">Additional confirmed inventory</p>
-        <h2 id="seating-additional-title">
-          Inventory enters the page only when the details are ready.
-        </h2>
-      </div>
-      <div>
-        <p>
-          The client intake references additional event equipment but does not yet
-          identify approved item types, models, quantities, dimensions, finishes, or
-          availability.
-        </p>
-        <p>
-          This section is intentionally reserved for confirmed inventory. No generic
-          rental products or assumed stock will be presented in its place.
-        </p>
-      </div>
-      <span>Inventory schedule required before final production copy</span>
     </section>
   );
 }
@@ -171,7 +162,6 @@ function LayoutInspiration() {
         {layoutStudies.map((study) => (
           <article className={`seating-study-${study.tone}`} key={study.number}>
             <div aria-hidden="true"><i /><i /><i /><i /></div>
-            <span>{study.number}</span>
             <h3>{study.title}</h3>
             <p>{study.description}</p>
           </article>
@@ -199,7 +189,6 @@ function RentalOperations() {
       <div className="seating-operation-grid">
         {rentalOperations.map((operation) => (
           <article key={operation.number}>
-            <span>{operation.number}</span>
             <h3>{operation.title}</h3>
             <strong>{operation.status}</strong>
             <p>{operation.description}</p>
@@ -254,14 +243,14 @@ function RentalQuote() {
           complementary service requirements without relying on a generic quote.
         </p>
       </header>
-      <ol>
-        {rentalQuoteRequirements.map((requirement, index) => (
-          <li key={requirement}>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <strong>{requirement}</strong>
-          </li>
+      <div className="seating-quote-folio">
+        {rentalRequirementGroups.map((group) => (
+          <article key={group.title}>
+            <h3>{group.title}</h3>
+            <ul>{group.items.map((item) => <li key={item}>{item}</li>)}</ul>
+          </article>
         ))}
-      </ol>
+      </div>
     </section>
   );
 }
@@ -315,6 +304,24 @@ function RentalGallery() {
   );
 }
 
+function RentalPricing() {
+  return (
+    <section className="seating-pricing" aria-labelledby="seating-pricing-title">
+      <header>
+        <p className="foundation-label">Pricing and service area</p>
+        <h2 id="seating-pricing-title">How are event rentals priced?</h2>
+      </header>
+      <PriorityAnswer
+        label="Cost factors"
+        question={rentalPricingAnswer.question}
+        answer={rentalPricingAnswer.answer}
+        href="/inquire"
+        linkLabel="Request a rental proposal"
+      />
+    </section>
+  );
+}
+
 function RentalCombinations() {
   return (
     <section className="seating-combinations" aria-labelledby="seating-combinations-title">
@@ -346,24 +353,6 @@ function RentalCombinations() {
   );
 }
 
-function RentalServiceArea() {
-  return (
-    <section className="seating-service-area" aria-labelledby="seating-service-area-title">
-      <header>
-        <p className="foundation-label">Service-area context</p>
-        <h2 id="seating-service-area-title">Toronto, the GTA, and select travel beyond.</h2>
-        <p>
-          Travel fees may apply outside Luxe&apos;s standard service area. Rental
-          delivery availability and fees remain subject to the final logistics policy.
-        </p>
-      </header>
-      <ul>
-        {rentalServiceAreas.map((area) => <li key={area}>{area}</li>)}
-      </ul>
-    </section>
-  );
-}
-
 function RentalFaq() {
   return (
     <section className="seating-faq" aria-labelledby="seating-faq-title">
@@ -384,18 +373,18 @@ export function SeatingRentalsPage() {
     <SiteShell breadcrumbPath="/experiences/seating-rentals">
       <main className="seating-page">
         <JsonLd data={seatingRentalsSchema} />
+        <PageSectionNavigation items={seatingRentalsSectionNavigation} />
         <SeatingHero />
         <SeatingOverview />
         <RentalCategories />
-        <AdditionalInventoryBoundary />
         <LayoutInspiration />
-        <RentalOperations />
         <IndoorOutdoorApplications />
-        <RentalQuote />
+        <RentalOperations />
         <RentalEvents />
+        <RentalPricing />
+        <RentalQuote />
         <RentalGallery />
         <RentalCombinations />
-        <RentalServiceArea />
         <RentalFaq />
         <ContextualInquiryPanel contextKey="seating-rentals" />
       </main>

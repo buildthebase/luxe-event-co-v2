@@ -16,78 +16,6 @@ const hasThirdPartyInquiry = Boolean(siteConfig.inquiry.url);
 
 export const metadata = createPageMetadata("/inquire");
 
-const inquiryDetails = [
-  {
-    number: "01",
-    title: "Event date",
-    detail: "Your preferred date, plus an alternate date when flexibility is possible.",
-  },
-  {
-    number: "02",
-    title: "Location",
-    detail: "The venue, city, or best-known location at this stage of planning.",
-  },
-  {
-    number: "03",
-    title: "Guest count",
-    detail: "An estimated attendance range is useful before the final count is known.",
-  },
-  {
-    number: "04",
-    title: "Event type",
-    detail: "Wedding, corporate event, activation, shower, birthday, or another occasion.",
-  },
-  {
-    number: "05",
-    title: "Service duration",
-    detail: "The preferred service window or the part of the event Luxe should support.",
-  },
-  {
-    number: "06",
-    title: "Setting",
-    detail: "Whether service will be indoors or outdoors, with venue access details if known.",
-  },
-  {
-    number: "07",
-    title: "Experience selection",
-    detail: "Coffee Bar, Sweet Cart, Seating Rentals, or a combination of experiences.",
-  },
-  {
-    number: "08",
-    title: "Branding",
-    detail: "Any custom cups, signage, menus, colour direction, or campaign requirements.",
-  },
-  {
-    number: "09",
-    title: "Special requests",
-    detail: "Dietary considerations, rental needs, timing, access, or other event context.",
-  },
-] as const;
-
-const experienceOptions = [
-  {
-    number: "01",
-    title: "Luxe Coffee Bar",
-    detail:
-      "Café Cart or Signature Coffee Bar service, espresso, matcha, seasonal drinks, and branded presentation.",
-    href: "/experiences/coffee-bar",
-  },
-  {
-    number: "02",
-    title: "Luxe Sweet Cart",
-    detail:
-      "Live mini pancakes, waffles on a stick, mini donuts, toppings, and optional soft serve.",
-    href: "/experiences/sweet-cart",
-  },
-  {
-    number: "03",
-    title: "Luxe Seating Rentals",
-    detail:
-      "Confirmed chairs, tables, cocktail tables, tents, linens, and lighting shaped around the setting.",
-    href: "/experiences/seating-rentals",
-  },
-] as const;
-
 const inquirySchema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -157,182 +85,60 @@ function InquireHero() {
         </div>
         <strong>Begin with context.</strong>
       </div>
-      <dl className="inquire-hero-proof">
-        <div>
-          <dt>One inquiry</dt>
-          <dd>One or several experiences</dd>
-        </div>
-        <div>
-          <dt>Within 24 hours</dt>
-          <dd>Normal response expectation</dd>
-        </div>
-        <div>
-          <dt>$5 million</dt>
-          <dd>Liability insurance</dd>
-        </div>
-      </dl>
     </header>
   );
 }
 
-function ExperienceScope() {
-  return (
-    <section className="inquire-scope" aria-labelledby="inquire-scope-title">
-      <header>
-        <h2 id="inquire-scope-title">
-          One experience, or a connected composition.
-        </h2>
-        <p>
-          Coffee, dessert, and rentals can each be requested independently.
-          They can also be coordinated through one Luxe inquiry when the event
-          calls for more than one service.
-        </p>
-        <nav
-          className="inquire-context-links"
-          aria-label="Explore Luxe before inquiring"
-        >
-          <Link href="/experiences">Compare all experiences</Link>
-          <Link href="/events">Browse by occasion</Link>
-        </nav>
-      </header>
-      <div>
-        {experienceOptions.map((experience) => (
-          <article key={experience.number}>
-            <span>{experience.number}</span>
-            <h3>{experience.title}</h3>
-            <p>{experience.detail}</p>
-            <Link href={experience.href}>
-              Explore {experience.title} <span aria-hidden="true">↗︎</span>
-            </Link>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function EventBrief() {
+function InquiryPlanning() {
   return (
     <section
-      className="inquire-brief"
+      className="inquire-planning"
       id="prepare-your-brief"
-      aria-labelledby="inquire-brief-title"
+      aria-labelledby="inquire-planning-title"
     >
       <header>
-        <h2 id="inquire-brief-title">What to have ready.</h2>
+        <p className="foundation-label">Before and after your inquiry</p>
+        <h2 id="inquire-planning-title">
+          A clear path from first details to a confirmed date.
+        </h2>
         <p>
-          Early estimates are welcome. These details help Luxe assess fit,
-          availability, service scope, and the information needed for a
-          personalized proposal.
+          Early estimates are welcome. Share what is known now; Luxe will clarify
+          the operating details before preparing a personalized proposal.
         </p>
       </header>
-      <ol>
-        {inquiryDetails.map((item) => (
-          <li key={item.number}>
-            <span>{item.number}</span>
-            <h3>{item.title}</h3>
-            <p>{item.detail}</p>
-          </li>
-        ))}
-      </ol>
-    </section>
-  );
-}
-
-function PlanningGuidance() {
-  return (
-    <section
-      className="inquire-guidance"
-      aria-labelledby="inquire-guidance-title"
-    >
-      <header>
-        <h2 id="inquire-guidance-title">
-          Useful expectations before you reach out.
-        </h2>
-      </header>
-      <div className="inquire-guidance-grid">
+      <div className="inquire-planning-grid">
         <article>
-          <span>Response</span>
-          <h3>Normally within 24 hours.</h3>
+          <span>What to share</span>
+          <h3>The event at a glance.</h3>
+          <ul>
+            <li>Date, venue, and estimated guest count</li>
+            <li>Event type, service window, and indoor or outdoor setting</li>
+            <li>Experiences, branding, dietary needs, and special requests</li>
+          </ul>
+        </article>
+        <article>
+          <span>What to expect</span>
+          <h3>A considered response.</h3>
           <p>
-            Luxe reviews the submitted event context before responding with
-            the appropriate next step. Peak dates and complex requests may
-            require additional review.
+            Luxe normally responds within 24 hours after reviewing fit and
+            availability. Toronto and the GTA are the primary service area, with
+            select Southern Ontario events available where scope permits.
+          </p>
+          <p>
+            Most coffee bookings begin around 30 guests. Sweet Cart and Seating
+            Rentals minimums depend on the selected experience and operating plan.
           </p>
         </article>
         <article>
-          <span>Service area</span>
-          <h3>Toronto, the GTA, and select larger events beyond.</h3>
-          <p>
-            Toronto and the Greater Toronto Area are Luxe&apos;s primary market,
-            including events in communities such as Markham, Vaughan, Mississauga,
-            Oakville, Pickering, and surrounding municipalities. Select larger
-            events may be available throughout Southern Ontario, with travel fees
-            where applicable.
-          </p>
-        </article>
-        <article>
-          <span>Minimums</span>
-          <h3>Set by the experience and operating context.</h3>
-          <p>
-            Most coffee bookings begin at approximately 30 guests. Sweet Cart
-            and Seating Rentals have their own package minimums, while travel,
-            duration, staffing, and logistics may affect the minimum booking
-            requirement.
-          </p>
+          <span>What happens next</span>
+          <h3>Review, proposal, confirmation.</h3>
+          <ul>
+            <li>Luxe clarifies timing, venue, selections, and quantities</li>
+            <li>A personalized proposal outlines the confirmed scope</li>
+            <li>A signed contract and 30% retainer secure the date</li>
+          </ul>
         </article>
       </div>
-    </section>
-  );
-}
-
-function AfterInquiry() {
-  const steps = [
-    {
-      number: "01",
-      title: "Your context reaches Luxe.",
-      detail:
-        "The event details provide the basis for an initial fit and availability review.",
-    },
-    {
-      number: "02",
-      title: "The scope is clarified.",
-      detail:
-        "Luxe may follow up about the venue, timing, selected experiences, quantities, or customization.",
-    },
-    {
-      number: "03",
-      title: "A personalized proposal follows.",
-      detail:
-        "The approved quoting platform will present the relevant experience, inclusions, and applicable enhancements.",
-    },
-    {
-      number: "04",
-      title: "The date is secured.",
-      detail:
-        "A signed contract and 30% non-refundable retainer are required before availability is confirmed.",
-    },
-  ] as const;
-
-  return (
-    <section className="inquire-after" aria-labelledby="inquire-after-title">
-      <header>
-        <h2 id="inquire-after-title">What happens after submission.</h2>
-        <p>
-          The website prepares the handoff. The selected third-party platform
-          will manage the operational form, confirmation, proposal, agreement,
-          and payment journey once its production connection is approved.
-        </p>
-      </header>
-      <ol>
-        {steps.map((step) => (
-          <li key={step.number}>
-            <span>{step.number}</span>
-            <h3>{step.title}</h3>
-            <p>{step.detail}</p>
-          </li>
-        ))}
-      </ol>
     </section>
   );
 }
@@ -392,10 +198,7 @@ export default function InquirePage() {
     <SiteShell breadcrumbPath="/inquire">
       <main className="inquire-page">
         <InquireHero />
-        <ExperienceScope />
-        <EventBrief />
-        <PlanningGuidance />
-        <AfterInquiry />
+        <InquiryPlanning />
         <InquiryHandoff />
       </main>
       <JsonLd data={inquirySchema} />

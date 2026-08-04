@@ -7,6 +7,7 @@ export type SignatureExperience = {
   name: string;
   description: string;
   href: string;
+  image: ResponsiveImageAsset;
 };
 
 export type CombinedExperienceNode = SignatureExperience["id"] | "signage";
@@ -28,6 +29,7 @@ export const signatureExperiences: SignatureExperience[] = [
     name: "Luxe Coffee Bar",
     description: "Crafted pours, warm hospitality, and a café atmosphere shaped around the occasion.",
     href: "/experiences/coffee-bar",
+    image: imageAssets.experiences.coffeeBar,
   },
   {
     id: "dessert",
@@ -36,6 +38,7 @@ export const signatureExperiences: SignatureExperience[] = [
     name: "Luxe Sweet Cart",
     description: "Mini pancakes, waffles, and donuts prepared on-site, finished to order, and served from the cart.",
     href: "/experiences/sweet-cart",
+    image: imageAssets.experiences.sweetCart,
   },
   {
     id: "seating",
@@ -44,6 +47,7 @@ export const signatureExperiences: SignatureExperience[] = [
     name: "Luxe Seating Rentals",
     description: "Refined structure, elevated materials, and intentional space planning for gatherings of every scale.",
     href: "/experiences/seating-rentals",
+    image: imageAssets.experiences.seatingRentals,
   },
 ];
 
@@ -196,7 +200,7 @@ export const inquiryContexts: Record<string, InquiryContext> = {
     heading: "Inquire about coffee service.",
     description:
       "Share your occasion, guest count, service timing, beverage direction, and any presentation or branding requirements.",
-    cta: "Inquire About Coffee Service",
+    cta: "Plan Your Coffee Bar",
     href: "/inquire",
   },
   "sweet-cart": {

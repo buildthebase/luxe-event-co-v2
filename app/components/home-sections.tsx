@@ -64,11 +64,6 @@ export function HomePositioning() {
           <li><Link href="#experience-selector-dessert">Luxe Sweet Cart</Link></li>
           <li><Link href="#experience-selector-seating">Luxe Seating Rentals</Link></li>
         </ul>
-        <p>
-          Each service can be booked independently or brought together within one
-          cohesive event plan, with every experience contributing something distinct
-          to the occasion.
-        </p>
       </div>
     </section>
   );

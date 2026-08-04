@@ -41,7 +41,7 @@ export const contentHierarchyRequirements = {
 export const hierarchyPrimaryCtas = {
   "/": "Plan Your Event",
   "/experiences": "Explore an Experience",
-  "/experiences/coffee-bar": "Inquire About Coffee Service",
+  "/experiences/coffee-bar": "Plan Your Coffee Bar",
   "/experiences/sweet-cart": "Inquire About a Dessert Experience",
   "/experiences/seating-rentals": "Discuss Your Rental Requirements",
   "/events": "Find Your Event Experience",

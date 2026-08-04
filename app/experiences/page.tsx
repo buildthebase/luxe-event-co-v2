@@ -2,7 +2,6 @@ import {
   CombinedExperienceFeature,
   ContextualInquiryPanel,
   EventPlanningPathway,
-  ExperienceSelector,
 } from "../components/signature-elements";
 import {
   ExperienceFeatures,
@@ -42,7 +41,6 @@ export default function ExperiencesPage() {
         <ExperiencesHero
           titleLines={["Coffee, dessert,", "and seating.", "Distinct by design."]}
         />
-        <ExperienceSelector id="experience-selector" />
         <ExperiencesBookingClarity />
         <ExperienceFeatures />
         <ExperienceNeedComparison />

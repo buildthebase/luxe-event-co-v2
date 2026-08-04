@@ -2,7 +2,6 @@ import Link from "next/link";
 import {
   experienceGalleryPreview,
   experienceHubFeatures,
-  experienceNeedComparison,
   type ExperienceHubFeature,
 } from "../experiences/content";
 import { eventTypes } from "../site-config";
@@ -31,8 +30,8 @@ export function ExperiencesHero({
           event.
         </p>
         <div className="experiences-hero-actions">
-          <a href="#experience-selector" data-event-name="experience_select">
-            Explore an Experience <span aria-hidden="true">↓︎</span>
+          <a href="#experience-coffee" data-event-name="experience_select">
+            Build Your Experience <span aria-hidden="true">↓︎</span>
           </a>
           <QuoteModalTrigger data-event-name="inquiry_start">
             Plan Your Event <span aria-hidden="true">↗︎</span>
@@ -62,10 +61,10 @@ export function ExperiencesBookingClarity() {
       className="experiences-booking-clarity surface-chapter surface-chapter-dark"
       aria-labelledby="experiences-booking-title"
     >
-      <div>
+      <header>
         <p className="foundation-label">Independent or combined</p>
         <h2 id="experiences-booking-title">Begin with what the event needs.</h2>
-      </div>
+      </header>
       <dl>
         <div>
           <dt>Can each experience be booked independently?</dt>
@@ -88,19 +87,21 @@ export function ExperiencesBookingClarity() {
               placement, presentation, access, and responsibilities need to be reviewed
               together.
             </p>
-            <p>
-              The right model depends on the services required, who will manage vendor
-              handoffs, and how much operational overlap the event contains. Combining
-              services can affect the overall quote because staffing, equipment,
-              delivery, setup, travel, timing, and shared logistics are scoped together;
-              it does not create an automatic discount or surcharge.
-            </p>
           </dd>
         </div>
       </dl>
-      <Link href="/inquire">
-        Plan one or more Luxe experiences <span aria-hidden="true">↗︎</span>
-      </Link>
+      <aside
+        className="experiences-booking-shared"
+        aria-label="Shared booking and pricing guidance"
+      >
+        <p>
+          The right model depends on the services required, who will manage vendor
+          handoffs, and how much operational overlap the event contains. Combining
+          services can affect the overall quote because staffing, equipment, delivery,
+          setup, travel, timing, and shared logistics are scoped together; it does not
+          create an automatic discount or surcharge.
+        </p>
+      </aside>
     </section>
   );
 }
@@ -112,7 +113,6 @@ function ExperienceFeature({ feature }: { feature: ExperienceHubFeature }) {
       id={`experience-${feature.id}`}
     >
       <div className="experiences-feature-art" aria-hidden="true">
-        <span>{feature.number}</span>
         <i />
         <i />
         <i />
@@ -159,32 +159,26 @@ export function ExperienceNeedComparison() {
   return (
     <section
       id="experience-comparison"
-      className="experiences-comparison surface-chapter surface-chapter-dark"
+      className="experiences-comparison experiences-comparison-cta surface-chapter surface-chapter-dark"
       aria-labelledby="experiences-comparison-title"
       data-measurement-section="comparison"
       data-section-id="experience-need-comparison"
     >
-      <header>
-        <p className="foundation-label">Compare by event need</p>
-        <h2 id="experiences-comparison-title">
-          Start with the atmosphere you want to create.
-        </h2>
-      </header>
-      <div className="experiences-comparison-list">
-        {experienceNeedComparison.map((item, index) => (
-          <Link
-            href={item.href}
-            key={item.need}
-            data-event-name="comparison_section_engagement"
-            data-section-id="experience-need-comparison"
-          >
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <strong>{item.need}</strong>
-            <small>{item.atmosphere}</small>
-            <b>{item.experience}</b>
-            <i aria-hidden="true">↗︎</i>
-          </Link>
-        ))}
+      <h2 id="experiences-comparison-title">
+        Start with the atmosphere you want to create.
+      </h2>
+      <span className="experiences-comparison-cta-arrow" aria-hidden="true" />
+      <div className="experiences-comparison-cta-copy">
+        <p>
+          <span>Begin with one experience, or bring them together.</span>
+          <span>Create an event your guests will remember.</span>
+        </p>
+        <QuoteModalTrigger
+          className="experiences-comparison-cta-link"
+          data-event-name="inquiry_start"
+        >
+          Begin your proposal <span aria-hidden="true">↗︎</span>
+        </QuoteModalTrigger>
       </div>
     </section>
   );

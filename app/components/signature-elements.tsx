@@ -57,10 +57,12 @@ export function ExperienceSelector({
             id={`experience-selector-${experience.id}`}
             key={experience.id}
           >
-            <span className="signature-selector-art" aria-hidden="true">
-              <i />
-              <i />
-              <i />
+            <span className="signature-selector-art">
+              <ResponsiveImage
+                asset={experience.image}
+                className="signature-selector-image"
+                fill
+              />
             </span>
             <span className="signature-selector-copy">
               <span className="signature-selector-label">{experience.label}</span>

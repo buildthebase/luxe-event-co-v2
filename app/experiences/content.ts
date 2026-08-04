@@ -18,7 +18,7 @@ export const experienceHubFeatures: readonly ExperienceHubFeature[] = [
     number: "01",
     eyebrow: "Craft and hospitality",
     name: "Luxe Coffee Bar",
-    statement: "A café experience, composed for the event.",
+    statement: "Create a warm arrival",
     description:
       "Luxe Coffee Bar brings professional barista service, handcrafted beverages, and a refined café atmosphere into weddings, corporate gatherings, activations, and private celebrations.",
     details: [
@@ -37,7 +37,7 @@ export const experienceHubFeatures: readonly ExperienceHubFeature[] = [
     number: "02",
     eyebrow: "Live preparation and presentation",
     name: "Luxe Sweet Cart",
-    statement: "Dessert prepared in the room, not delivered to the edge of it.",
+    statement: "Build a live guest moment",
     description:
       "Luxe Sweet Cart pairs made-to-order desserts with interactive service and carts designed to become part of the event décor.",
     details: [
@@ -56,7 +56,7 @@ export const experienceHubFeatures: readonly ExperienceHubFeature[] = [
     number: "03",
     eyebrow: "Structure and atmosphere",
     name: "Luxe Seating Rentals",
-    statement: "The setting that gives the gathering its shape.",
+    statement: "Define the room and its flow",
     description:
       "Luxe Seating Rentals considers how guests arrive, gather, dine, and move through the event, with rental elements selected around the room rather than presented as an inventory catalogue.",
     details: [

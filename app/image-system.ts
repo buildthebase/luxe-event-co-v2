@@ -121,9 +121,42 @@ export const imageAssets = {
       format: "png",
     },
   },
+  experiences: {
+    coffeeBar: {
+      id: "experience-selector-coffee-bar",
+      src: "/images/experiences/coffee-bar.webp",
+      alt: "Guests enjoying custom iced drinks from Luxe Coffee Bar",
+      width: 900,
+      height: 1600,
+      sizes: "(max-width: 700px) 90px, 33vw",
+      status: "approved",
+      format: "webp",
+    },
+    sweetCart: {
+      id: "experience-selector-sweet-cart",
+      src: "/images/experiences/sweet-cart.webp",
+      alt: "Luxe Sweet Cart live dessert station at an event",
+      width: 1038,
+      height: 1235,
+      sizes: "(max-width: 700px) 90px, 33vw",
+      status: "approved",
+      format: "webp",
+    },
+    seatingRentals: {
+      id: "experience-selector-seating-rentals",
+      src: "/images/experiences/seating-rentals.webp",
+      alt: "Luxe Seating Rentals arranged for an outdoor wedding reception",
+      width: 1600,
+      height: 899,
+      sizes: "(max-width: 700px) 90px, 33vw",
+      status: "approved",
+      format: "webp",
+    },
+  },
 } as const satisfies {
   brand: Record<string, ResponsiveImageAsset>;
   credibilityLogos: Record<string, ResponsiveImageAsset>;
+  experiences: Record<string, ResponsiveImageAsset>;
 };
 
 export const imageSystemRequirements = {
