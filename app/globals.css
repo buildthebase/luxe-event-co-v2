@@ -8489,9 +8489,6 @@ a {
     gap: var(--space-3);
   }
 
-  .experiences-page > .signature-combinations .signature-combinations-list > a {
-    grid-template-columns: 1.5rem minmax(0, 1fr) 1rem;
-  }
 }
 
 /* Complete Home blueprint */
