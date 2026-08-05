@@ -181,3 +181,57 @@
     gap: 0.45rem;
   }
 }
+
+/* Align the Seating Rentals section introductions with the other service pages. */
+.seating-page .seating-overview > div {
+  align-self: start;
+  max-width: 42rem;
+  padding-top: 0;
+}
+
+.seating-page :is(
+    .seating-overview > div,
+    .seating-operations > header > p:last-child,
+    .seating-quote > header > p:last-child
+  ) {
+  align-self: start;
+  max-width: 42rem;
+  margin: 0;
+}
+
+.seating-page .seating-overview > div p,
+.seating-page .seating-operations > header > p:last-child,
+.seating-page .seating-quote > header > p:last-child {
+  font-size: var(--type-body);
+  line-height: 1.65;
+}
+
+@media (min-width: 961px) {
+  .seating-page .seating-overview,
+  .seating-page .seating-operations > header,
+  .seating-page .seating-quote > header {
+    grid-template-columns:
+      minmax(10rem, 0.52fr)
+      minmax(0, 1.18fr)
+      minmax(18rem, 0.8fr);
+    gap: var(--space-7);
+    align-items: start;
+  }
+}
+
+@media (max-width: 960px) {
+  .seating-page .seating-overview,
+  .seating-page .seating-operations > header,
+  .seating-page .seating-quote > header {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .seating-page :is(
+      .seating-overview h2,
+      .seating-operations > header h2,
+      .seating-quote > header h2
+    ) {
+    max-width: 17ch;
+  }
+}
