@@ -1,16 +1,71 @@
 import Link from "next/link";
+import {
+  Children,
+  cloneElement,
+  isValidElement,
+  type ReactElement,
+  type ReactNode,
+} from "react";
 import { siteConfig } from "../site-config";
 import { PageBreadcrumbs } from "./breadcrumb-navigation";
+import {
+  ExperiencePositioningSection,
+  type ExperiencePositioningVariant,
+} from "./experience-positioning-section";
 import { MobileNavigation, PrimaryNavigation } from "./site-navigation";
 import { InstagramLinks } from "./social-links";
+
+const experiencePositioningByPath: Partial<
+  Record<string, ExperiencePositioningVariant>
+> = {
+  "/experiences/coffee-bar": "coffee",
+  "/experiences/sweet-cart": "sweet",
+  "/experiences/seating-rentals": "seating",
+};
+
+const serviceExperienceSectionIndex = 3;
+
+function useSharedExperiencePositioning(
+  children: ReactNode,
+  breadcrumbPath?: string,
+): ReactNode {
+  const variant = breadcrumbPath
+    ? experiencePositioningByPath[breadcrumbPath]
+    : undefined;
+
+  if (!variant || !isValidElement(children) || children.type !== "main") {
+    return children;
+  }
+
+  const main = children as ReactElement<{ children?: ReactNode }>;
+  const mainChildren = Children.toArray(main.props.children);
+
+  if (mainChildren.length <= serviceExperienceSectionIndex) {
+    return children;
+  }
+
+  mainChildren[serviceExperienceSectionIndex] = (
+    <ExperiencePositioningSection
+      key={`experience-positioning-${variant}`}
+      variant={variant}
+    />
+  );
+
+  return cloneElement(main, undefined, mainChildren);
+}
 
 export function SiteShell({
   breadcrumbPath,
   children,
 }: {
   breadcrumbPath?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
+  const renderedChildren = useSharedExperiencePositioning(
+    children,
+    breadcrumbPath,
+  );
+
   return (
     <div className="foundation-shell">
       <a className="foundation-skip-link" href="#main-content">
@@ -29,7 +84,7 @@ export function SiteShell({
       </header>
       <div className="foundation-main-target" id="main-content" tabIndex={-1}>
         {breadcrumbPath && <PageBreadcrumbs path={breadcrumbPath} />}
-        {children}
+        {renderedChildren}
       </div>
       <footer className="foundation-footer">
         <div className="foundation-footer-identity">
@@ -97,6 +152,6 @@ export function FoundationIntro({ eyebrow, title, titleLines, description }: Fou
   );
 }
 
-export function FoundationLabel({ children }: { children: React.ReactNode }) {
+export function FoundationLabel({ children }: { children: ReactNode }) {
   return <p className="foundation-label">{children}</p>;
 }
