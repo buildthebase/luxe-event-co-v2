@@ -1,0 +1,8 @@
+/* Remove the decorative footer label and its reserved space from the Coffee Bar inclusions folio. */
+.coffee-inclusions-folio {
+  padding-bottom: 0;
+}
+
+.coffee-inclusions-folio::after {
+  content: none;
+}
