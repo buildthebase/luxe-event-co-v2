@@ -500,8 +500,8 @@ export function CoffeeBarPage() {
         <CoffeeFormats />
         <CoffeeInclusions />
         <CoffeeMenu />
-        <CoffeeEvents />
         <CoffeeOperations />
+        <CoffeeEvents />
         <CoffeeGallery />
         <CoffeeRelated />
         <CoffeeFaq />

@@ -48,13 +48,13 @@ export function SiteShell({
           <span className="foundation-footer-label">Explore our experiences</span>
           <nav className="foundation-footer-experiences" aria-label="Explore Luxe experiences">
             <Link href="/experiences/coffee-bar">
-              Coffee
+              COFFEE BAR
             </Link>
             <Link href="/experiences/sweet-cart">
-              Dessert
+              SWEET CART
             </Link>
             <Link href="/experiences/seating-rentals">
-              Seating
+              SEATING RENTALS
             </Link>
           </nav>
         </div>

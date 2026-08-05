@@ -25,15 +25,15 @@ const sweetCartPath = "/experiences/sweet-cart";
 const [sweetPricingAnswer, ...sweetContextualFaqs] = sweetCartFaqs;
 const sweetInclusionGroups = [
   {
-    title: "Cart and service",
+    title: "Cart & service",
     items: dessertBookingIncludes.slice(0, 3),
   },
   {
-    title: "Dessert and finishing",
+    title: "Dessert & finishing",
     items: dessertBookingIncludes.slice(3, 6),
   },
   {
-    title: "Presentation and essentials",
+    title: "Presentation",
     items: dessertBookingIncludes.slice(6),
   },
 ];
@@ -239,8 +239,7 @@ function DessertExperiences() {
           <p className="foundation-label">Optional enhancement</p>
           <h3>Soft Serve Ice Cream</h3>
           <p>
-            Soft serve can be added to a Sweet Cart experience when it suits the menu,
-            event format, and service plan.
+            Add soft serve to your Sweet Cart experience when it feels right for the menu and the way your event comes together.
           </p>
         </div>
       </aside>
@@ -301,11 +300,7 @@ function SweetPantry() {
     >
       <header>
         <p className="foundation-label">Sauces and toppings</p>
-        <h2 id="sweet-pantry-title">The finishing details make each serving personal.</h2>
-        <p>
-          Premium sauces and a selection of standard toppings are included. Premium
-          toppings can extend the menu as enhancements.
-        </p>
+        <h2 id="sweet-pantry-title">Every serving, finished your way.</h2>
       </header>
       <div className="sweet-pantry-grid">
         <article>
@@ -453,8 +448,8 @@ export function SweetCartPage() {
         <DessertExperiences />
         <SweetInclusions />
         <SweetPantry />
-        <SweetEvents />
         <SweetOperations />
+        <SweetEvents />
         <SweetGallery />
         <SweetCombinations />
         <SweetFaq />

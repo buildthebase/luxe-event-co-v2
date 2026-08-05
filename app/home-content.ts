@@ -22,7 +22,7 @@ export const homeEventImageGroups = [
     eventSlugs: ["weddings", "private-events"],
     tone: "dessert",
     label: "Personal celebrations",
-    context: "Weddings and private gatherings shaped around their hosts",
+    context: "Weddings and private events shaped around meaningful moments, guest hospitality, and the overall setting.",
     image: {
       id: "home-personal-gatherings",
       src: "/images/home/personal-celebrations.webp",
@@ -40,7 +40,7 @@ export const homeEventImageGroups = [
     eventSlugs: ["corporate-events", "brand-activations"],
     tone: "coffee",
     label: "Professional occasions",
-    context: "Corporate hospitality and brand experiences in context",
+    context: "Corporate events and brand activations designed around presentation and purposeful hospitality.",
     image: {
       id: "home-professional-gatherings",
       src: "/images/home/professional-occasions.webp",

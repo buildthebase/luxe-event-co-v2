@@ -217,12 +217,12 @@ export function ExperiencesGalleryPreview() {
       <header>
         <p className="foundation-label">Seen in context</p>
         <h2 id="experiences-gallery-title">
-          Three expressions. One record of the event.
+Each experience, in its element.
         </h2>
-        <p>
-          Read each study through the experience and occasion it represents, then
-          move into the full event collection.
-        </p>
+<p>
+  See how Luxe Coffee Bar, Luxe Sweet Cart, and Luxe Seating Rentals take
+  shape across real gatherings, then explore the full event gallery.
+</p>
       </header>
       <div
         className="experiences-gallery-grid"

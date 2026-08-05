@@ -23,27 +23,27 @@ export const dessertExperiences = [
     number: "01",
     name: "Mini Dutch Pancakes",
     description:
-      "Freshly prepared mini pancakes finished with selected sauces and toppings while guests watch.",
+      "Mini pancakes served with a choice of sauces and toppings.",
     decisionFit:
-      "Consider when a plated or bowl-style dessert and a highly customizable topping moment suit the event.",
+      "A great option for guests who want to personalize their dessert and enjoy it in an easy bowl-style serving.",
   },
   {
     id: "waffles",
     number: "02",
     name: "Belgian Waffles on a Stick",
     description:
-      "A handheld Belgian waffle experience designed for live finishing and easy guest interaction.",
+      "Belgian waffles finished to order and served in an easy handheld format.",
     decisionFit:
-      "Consider when portability and a handheld format support standing, mingling, or higher guest movement.",
+      "Perfect for cocktail hours, mingling, and events where guests will be moving around the room.",
   },
   {
     id: "donuts",
     number: "03",
     name: "Mini Donuts",
     description:
-      "Warm mini donuts prepared on-site, finished to order, and served while guests gather around the cart.",
+      "Mini donuts prepared fresh and served straight from the cart.",
     decisionFit:
-      "Consider when a familiar, warm dessert and compact serving format fit the surrounding menu and schedule.",
+      "A familiar crowd-pleaser that works beautifully on its own or alongside the rest of the event menu.",
   },
 ] as const;
 

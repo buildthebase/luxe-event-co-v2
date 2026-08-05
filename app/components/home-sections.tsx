@@ -97,11 +97,6 @@ export function HomeUnifiedExperience() {
             </p>
           </li>
         </ul>
-        <p>
-          Each experience remains distinct. Luxe Event Co. brings the details
-          together as one cohesive event, while preserving the character and
-          expertise of every service.
-        </p>
       </div>
       <ol className="home-unified-notes">
         <li><span>01</span>Book an experience independently.</li>
@@ -163,10 +158,6 @@ export function HomeSelectedImagery() {
         <div>
           <h2 id="home-imagery-title">The work should be seen in context.</h2>
         </div>
-        <p>
-          Guest interaction, fresh preparation, and the surrounding space reveal
-          how each Luxe experience contributes to the occasion.
-        </p>
       </header>
       <div className="home-imagery-grid">
         {homeImageSlots.map((slot) => (
