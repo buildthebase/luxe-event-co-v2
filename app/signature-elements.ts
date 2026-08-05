@@ -213,7 +213,7 @@ export const inquiryContexts: Record<string, InquiryContext> = {
   },
   "seating-rentals": {
     eyebrow: "Shape the room",
-    heading: "Discuss your seating requirements.",
+    heading: "Discuss your seating.",
     description:
       "Share the venue, guest count, event format, desired atmosphere, and the rental elements needed to complete the setting.",
     cta: "Discuss Your Rental Requirements",
