@@ -1,0 +1,102 @@
+/* Keep complementary Luxe experience sections visually consistent. */
+:is(.coffee-related, .related-experiences) {
+  padding-block: var(--space-section);
+  background: var(--surface-chapter-dark);
+  box-shadow: 0 0 0 100vmax var(--surface-chapter-dark);
+  clip-path: inset(0 -100vmax);
+  color: var(--color-luxe-ivory);
+}
+
+.related-experiences > header {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: var(--space-5);
+  margin-bottom: var(--space-9);
+  text-align: center;
+}
+
+:is(.coffee-related, .related-experiences) > header h2 {
+  max-width: 14ch;
+  margin-inline: auto;
+}
+
+:is(.coffee-related, .related-experiences) > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-block: 1px solid var(--surface-dark-rule);
+}
+
+:is(.coffee-related, .related-experiences) > div > a {
+  display: grid;
+  min-width: 0;
+  min-height: 20rem;
+  align-content: space-between;
+  padding: var(--space-6);
+  border-right: 1px solid var(--surface-dark-rule);
+  color: var(--color-luxe-ivory);
+  text-decoration: none;
+  transition: background-color var(--motion-fast) var(--ease-luxe-standard);
+}
+
+:is(.coffee-related, .related-experiences) > div > a:last-child {
+  border-right: 0;
+}
+
+:is(.coffee-related, .related-experiences) a > strong {
+  max-width: none;
+  margin-top: var(--space-8);
+  font-size: clamp(2rem, 3.5vw, 4rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+:is(.coffee-related, .related-experiences) a > p {
+  max-width: 30rem;
+  margin: var(--space-5) 0;
+  color: var(--surface-dark-copy-muted);
+  font-size: var(--type-body);
+  line-height: 1.65;
+}
+
+:is(.coffee-related, .related-experiences) a > b {
+  color: var(--color-luxe-gold-ink);
+  font-size: 0.96rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+:is(.coffee-related, .related-experiences) a:hover,
+:is(.coffee-related, .related-experiences) a:focus-visible {
+  background: rgb(248 246 242 / 6%);
+}
+
+@media (max-width: 700px) {
+  .related-experiences {
+    padding-block: var(--space-9);
+  }
+
+  .related-experiences > header {
+    margin-bottom: var(--space-7);
+  }
+
+  :is(.coffee-related, .related-experiences) > div {
+    grid-template-columns: 1fr;
+  }
+
+  :is(.coffee-related, .related-experiences) > div > a {
+    min-height: 20rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--surface-dark-rule);
+  }
+
+  :is(.coffee-related, .related-experiences) > div > a:last-child {
+    border-bottom: 0;
+  }
+
+  :is(.coffee-related, .related-experiences) a > strong {
+    font-size: clamp(2.2rem, 11vw, 3.4rem);
+  }
+}
