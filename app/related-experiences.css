@@ -1,18 +1,18 @@
 /* Keep complementary Luxe experience sections visually consistent. */
 :is(.coffee-related, .related-experiences) {
-  padding-block: var(--space-section);
+  padding-block: clamp(2.75rem, 4.5vw, 4.5rem);
   background: var(--surface-chapter-dark);
   box-shadow: 0 0 0 100vmax var(--surface-chapter-dark);
   clip-path: inset(0 -100vmax);
   color: var(--color-luxe-ivory);
 }
 
-.related-experiences > header {
+:is(.coffee-related, .related-experiences) > header {
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
-  gap: var(--space-5);
-  margin-bottom: var(--space-9);
+  gap: var(--space-3);
+  margin-bottom: clamp(1.75rem, 3vw, 2.75rem);
   text-align: center;
 }
 
@@ -29,10 +29,11 @@
 
 :is(.coffee-related, .related-experiences) > div > a {
   display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: var(--space-4);
   min-width: 0;
-  min-height: 20rem;
-  align-content: space-between;
-  padding: var(--space-6);
+  min-height: clamp(12.75rem, 15vw, 14.5rem);
+  padding: clamp(1.5rem, 2.2vw, 2rem);
   border-right: 1px solid var(--surface-dark-rule);
   color: var(--color-luxe-ivory);
   text-decoration: none;
@@ -45,7 +46,7 @@
 
 :is(.coffee-related, .related-experiences) a > strong {
   max-width: none;
-  margin-top: var(--space-8);
+  margin: 0;
   font-size: clamp(2rem, 3.5vw, 4rem);
   font-weight: 400;
   line-height: 1;
@@ -53,14 +54,17 @@
 }
 
 :is(.coffee-related, .related-experiences) a > p {
+  align-self: start;
   max-width: 30rem;
-  margin: var(--space-5) 0;
+  margin: 0;
   color: var(--surface-dark-copy-muted);
   font-size: var(--type-body);
   line-height: 1.65;
 }
 
 :is(.coffee-related, .related-experiences) a > b {
+  align-self: end;
+  margin-top: var(--space-2);
   color: var(--color-luxe-gold-ink);
   font-size: 0.96rem;
   font-weight: 600;
@@ -74,12 +78,12 @@
 }
 
 @media (max-width: 700px) {
-  .related-experiences {
-    padding-block: var(--space-9);
+  :is(.coffee-related, .related-experiences) {
+    padding-block: clamp(3rem, 9vw, 4rem);
   }
 
-  .related-experiences > header {
-    margin-bottom: var(--space-7);
+  :is(.coffee-related, .related-experiences) > header {
+    margin-bottom: var(--space-6);
   }
 
   :is(.coffee-related, .related-experiences) > div {
@@ -87,7 +91,9 @@
   }
 
   :is(.coffee-related, .related-experiences) > div > a {
-    min-height: 20rem;
+    grid-template-rows: auto auto auto;
+    min-height: 0;
+    padding: var(--space-6) var(--space-4);
     border-right: 0;
     border-bottom: 1px solid var(--surface-dark-rule);
   }
