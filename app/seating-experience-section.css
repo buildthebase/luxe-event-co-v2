@@ -121,6 +121,49 @@
   border-top: 1px solid color-mix(in srgb, var(--color-luxe-black) 20%, transparent);
 }
 
+/* Simplify the rental-category introduction to a centered two-line statement. */
+.seating-page .seating-inventory > header {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+.seating-page .seating-inventory > header .foundation-label {
+  margin: 0;
+}
+
+.seating-page .seating-inventory > header > p:last-child {
+  display: none;
+}
+
+.seating-page .seating-inventory > header h2 {
+  max-width: none;
+  margin: 0;
+  font-size: 0 !important;
+  line-height: 1 !important;
+  text-align: center;
+}
+
+.seating-page .seating-inventory > header h2::before,
+.seating-page .seating-inventory > header h2::after {
+  display: block;
+  color: var(--color-luxe-black);
+  font-size: var(--luxe-type-section-display);
+  font-weight: 400;
+  line-height: 0.96;
+  letter-spacing: -0.055em;
+  white-space: nowrap;
+}
+
+.seating-page .seating-inventory > header h2::before {
+  content: "Six elements.";
+}
+
+.seating-page .seating-inventory > header h2::after {
+  content: "One spatial conversation.";
+}
+
 @media (max-width: 960px) {
   .seating-page .seating-overview {
     grid-template-columns: minmax(0, 0.9fr) minmax(15rem, 0.7fr);
@@ -191,5 +234,11 @@
   .seating-page .seating-overview > div p + p {
     margin-top: var(--space-7);
     padding-top: var(--space-6);
+  }
+
+  .seating-page .seating-inventory > header h2::before,
+  .seating-page .seating-inventory > header h2::after {
+    font-size: clamp(1.4rem, 6.6vw, 2.4rem);
+    line-height: 1;
   }
 }
