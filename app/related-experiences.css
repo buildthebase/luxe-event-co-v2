@@ -56,8 +56,8 @@
   max-width: 30rem;
   margin: var(--space-5) 0;
   color: var(--surface-dark-copy-muted);
-  font-size: 0.96rem;
-  line-height: 1.6;
+  font-size: var(--type-body);
+  line-height: 1.65;
 }
 
 :is(.coffee-related, .related-experiences) a > b {
