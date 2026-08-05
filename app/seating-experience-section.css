@@ -17,7 +17,7 @@
   grid-column: 1;
   grid-row: 1;
   margin: 0 0 var(--space-5);
-  color: var(--color-luxe-gold-ink) !important;
+  color: var(--color-luxe-gold-ink);
 }
 
 .seating-page .seating-overview > h2 {
@@ -121,16 +121,16 @@
   border-top: 1px solid var(--surface-dark-rule);
 }
 
-/* Simplify the rental-category introduction to a centered two-line statement. */
+/* Match the rental-category title to the centered Coffee Bar section-heading style. */
 .seating-page .seating-inventory > header {
-  grid-template-columns: 1fr;
-  justify-items: center;
-  gap: var(--space-4);
+  display: block;
+  margin-bottom: var(--space-9);
   text-align: center;
 }
 
 .seating-page .seating-inventory > header .foundation-label {
-  margin: 0;
+  display: block;
+  margin: 0 0 var(--space-5);
 }
 
 .seating-page .seating-inventory > header > p:last-child {
@@ -138,16 +138,12 @@
 }
 
 #seating-inventory-title {
-  display: flex !important;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 0.04em;
-  width: 100%;
+  display: block;
+  width: min(100%, 70rem);
   max-width: none;
-  min-height: 0 !important;
-  height: auto !important;
-  margin: 0;
+  height: auto;
+  min-height: 0;
+  margin: 0 auto;
   padding: 0;
   overflow: visible;
   color: transparent !important;
@@ -156,28 +152,19 @@
   text-align: center;
 }
 
-#seating-inventory-title::before,
-#seating-inventory-title::after {
-  position: static;
+#seating-inventory-title::before {
   display: block;
-  flex: none;
-  margin: 0;
-  padding: 0;
   color: var(--color-luxe-black);
+  content: "Six elements.\A One spatial conversation.";
   font-size: var(--luxe-type-section-display);
   font-weight: 400;
   line-height: 0.96;
   letter-spacing: -0.055em;
-  text-indent: 0;
-  white-space: nowrap;
-}
-
-#seating-inventory-title::before {
-  content: "Six elements.";
+  white-space: pre-line;
 }
 
 #seating-inventory-title::after {
-  content: "One spatial conversation.";
+  content: none;
 }
 
 @media (max-width: 960px) {
@@ -252,13 +239,13 @@
     padding-top: var(--space-6);
   }
 
-  #seating-inventory-title {
-    gap: 0.08em;
+  .seating-page .seating-inventory > header {
+    margin-bottom: var(--space-7);
   }
 
-  #seating-inventory-title::before,
-  #seating-inventory-title::after {
-    font-size: clamp(1.3rem, 6.2vw, 2.4rem);
+  #seating-inventory-title::before {
+    font-size: clamp(1.55rem, 7vw, 2.4rem);
     line-height: 1;
+    white-space: pre;
   }
 }
