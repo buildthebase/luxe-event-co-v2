@@ -11,6 +11,7 @@ import "./faq-section-actions.css";
 import "./contextual-inquiry-panels.css";
 import "./site-typography-system.css";
 import "./seating-experience-section.css";
+import "./experience-positioning-alignment.css";
 import { siteConfig } from "./site-config";
 
 const siteUrl = siteConfig.url;
