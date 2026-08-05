@@ -167,6 +167,16 @@
   content: none;
 }
 
+/* Match Sweet Cart's emphasized collection-character typography. */
+.seating-page .seating-inventory-grid article > strong {
+  color: var(--color-luxe-gold-ink);
+  font-size: var(--luxe-type-supporting) !important;
+  font-weight: 600;
+  line-height: 1.65;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
 @media (max-width: 960px) {
   .seating-page .seating-overview {
     grid-template-columns: minmax(0, 0.9fr) minmax(15rem, 0.7fr);
