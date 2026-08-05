@@ -3,6 +3,7 @@ import { Manrope } from "next/font/google";
 import "./globals.css";
 import "./event-numberless.css";
 import "./service-pricing-panels.css";
+import "./contextual-inquiry-panels.css";
 import { siteConfig } from "./site-config";
 
 const siteUrl = siteConfig.url;
