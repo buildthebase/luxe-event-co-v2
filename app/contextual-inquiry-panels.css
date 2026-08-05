@@ -3,7 +3,8 @@
   display: grid !important;
   grid-template-columns: 140px minmax(0, 1fr) auto !important;
   grid-template-rows: auto auto;
-  gap: clamp(28px, 5vw, 76px) !important;
+  column-gap: clamp(28px, 5vw, 76px) !important;
+  row-gap: var(--space-6) !important;
   align-items: start !important;
   width: min(
     calc(100% - (2 * var(--space-page-inline))),
@@ -62,7 +63,6 @@
   grid-row: 2;
   align-self: end;
   justify-self: end;
-  margin-top: var(--space-6);
 }
 
 @media (max-width: 960px) {
@@ -83,7 +83,8 @@
 @media (max-width: 700px) {
   .foundation-shell main > .signature-inquiry {
     grid-template-columns: 64px minmax(0, 1fr) !important;
-    gap: var(--space-5) !important;
+    column-gap: var(--space-5) !important;
+    row-gap: var(--space-5) !important;
     width: min(
       calc(100% - (2 * var(--space-4))),
       var(--layout-max)
@@ -111,7 +112,6 @@
     grid-column: 1 / -1;
     grid-row: 2;
     justify-self: end;
-    margin-top: 0;
   }
 }
 
