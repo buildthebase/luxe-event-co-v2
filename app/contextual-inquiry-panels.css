@@ -2,8 +2,9 @@
 .foundation-shell main > .signature-inquiry {
   display: grid !important;
   grid-template-columns: 140px minmax(0, 1fr) auto !important;
+  grid-template-rows: auto auto;
   gap: clamp(28px, 5vw, 76px) !important;
-  align-items: center !important;
+  align-items: start !important;
   width: min(
     calc(100% - (2 * var(--space-page-inline))),
     var(--layout-max)
@@ -27,7 +28,15 @@
   content: none !important;
 }
 
+.foundation-shell main > .signature-inquiry .signature-inquiry-mark {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  align-self: center;
+}
+
 .foundation-shell main > .signature-inquiry .signature-inquiry-copy {
+  grid-column: 2 / -1;
+  grid-row: 1;
   min-width: 0;
 }
 
@@ -47,14 +56,27 @@
   max-width: 58ch;
 }
 
+/* Keep the action on its own row so it cannot overlap the heading or copy. */
+.foundation-shell main > .signature-inquiry > a {
+  grid-column: 3;
+  grid-row: 2;
+  align-self: end;
+  justify-self: end;
+  margin-top: var(--space-6);
+}
+
 @media (max-width: 960px) {
   .foundation-shell main > .signature-inquiry {
     grid-template-columns: 100px minmax(0, 1fr) !important;
   }
 
+  .foundation-shell main > .signature-inquiry .signature-inquiry-copy {
+    grid-column: 2;
+  }
+
   .foundation-shell main > .signature-inquiry > a {
     grid-column: 2;
-    justify-self: start;
+    justify-self: end;
   }
 }
 
@@ -70,8 +92,14 @@
   }
 
   .foundation-shell main > .signature-inquiry .signature-inquiry-mark {
+    grid-row: 1;
     width: 64px;
     align-self: start;
+  }
+
+  .foundation-shell main > .signature-inquiry .signature-inquiry-copy {
+    grid-column: 2;
+    grid-row: 1;
   }
 
   .foundation-shell main > .signature-inquiry .signature-inquiry-copy h2 {
@@ -81,6 +109,9 @@
 
   .foundation-shell main > .signature-inquiry > a {
     grid-column: 1 / -1;
+    grid-row: 2;
+    justify-self: end;
+    margin-top: 0;
   }
 }
 
@@ -90,10 +121,19 @@
   }
 
   .foundation-shell main > .signature-inquiry .signature-inquiry-mark {
+    grid-column: 1;
+    grid-row: 1;
     width: 52px;
   }
 
+  .foundation-shell main > .signature-inquiry .signature-inquiry-copy {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
   .foundation-shell main > .signature-inquiry > a {
+    grid-column: 1;
+    grid-row: 3;
     width: 100%;
     justify-content: space-between;
   }
