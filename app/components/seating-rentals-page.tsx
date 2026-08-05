@@ -324,29 +324,30 @@ function RentalPricing() {
 
 function RentalCombinations() {
   return (
-    <section className="seating-combinations" aria-labelledby="seating-combinations-title">
+    <section
+      className="seating-combinations related-experiences"
+      aria-labelledby="seating-combinations-title"
+    >
       <header>
         <p className="foundation-label">Within the Luxe family</p>
         <h2 id="seating-combinations-title">The room can support the hospitality within it.</h2>
       </header>
       <div>
         <Link href="/experiences/coffee-bar">
-          <span>Setting + Coffee</span>
-          <strong>Plan the reception around the café moment.</strong>
+          <strong>Luxe Coffee Bar</strong>
           <p>
             Consider cocktail tables, guest circulation, seating, and service zones
             alongside a crafted Coffee Bar experience.
           </p>
-          <b aria-hidden="true">Explore Luxe Coffee Bar ↗︎</b>
+          <b aria-hidden="true">Explore Coffee Bar ↗︎</b>
         </Link>
         <Link href="/experiences/sweet-cart">
-          <span>Setting + Dessert</span>
-          <strong>Give the live dessert experience room to gather.</strong>
+          <strong>Luxe Sweet Cart</strong>
           <p>
             Connect tables, seating, tents, linens, or lighting to the placement and
             guest flow around Luxe Sweet Cart.
           </p>
-          <b aria-hidden="true">Explore Luxe Sweet Cart ↗︎</b>
+          <b aria-hidden="true">Explore Sweet Cart ↗︎</b>
         </Link>
       </div>
     </section>
