@@ -1,15 +1,48 @@
 /* Match the FAQ hub's mobile accordion rhythm across service and event pages. */
 @media (max-width: 700px) {
-  .faq-accordion {
+  :is(
+      .coffee-page,
+      .sweet-page,
+      .seating-page,
+      .wedding-page,
+      .corporate-page,
+      .activation-page,
+      .baby-page,
+      .bridal-page,
+      .birthday-page,
+      .private-page
+    ) .faq-accordion {
     --mobile-faq-rule: color-mix(in srgb, currentColor 25%, transparent);
     border-top: 1px solid var(--mobile-faq-rule);
   }
 
-  .faq-accordion details {
+  :is(
+      .coffee-page,
+      .sweet-page,
+      .seating-page,
+      .wedding-page,
+      .corporate-page,
+      .activation-page,
+      .baby-page,
+      .bridal-page,
+      .birthday-page,
+      .private-page
+    ) .faq-accordion details {
     border-bottom: 1px solid var(--mobile-faq-rule);
   }
 
-  .faq-accordion summary {
+  :is(
+      .coffee-page,
+      .sweet-page,
+      .seating-page,
+      .wedding-page,
+      .corporate-page,
+      .activation-page,
+      .baby-page,
+      .bridal-page,
+      .birthday-page,
+      .private-page
+    ) .faq-accordion summary {
     display: grid;
     grid-template-columns: 2.25rem minmax(0, 1fr) 1.25rem;
     gap: var(--space-3);
@@ -22,25 +55,69 @@
     list-style: none;
   }
 
-  .faq-accordion summary::-webkit-details-marker {
+  :is(
+      .coffee-page,
+      .sweet-page,
+      .seating-page,
+      .wedding-page,
+      .corporate-page,
+      .activation-page,
+      .baby-page,
+      .bridal-page,
+      .birthday-page,
+      .private-page
+    ) .faq-accordion summary::-webkit-details-marker {
     display: none;
   }
 
-  .faq-accordion summary > h3 {
+  :is(
+      .coffee-page,
+      .sweet-page,
+      .seating-page,
+      .wedding-page,
+      .corporate-page,
+      .activation-page,
+      .baby-page,
+      .bridal-page,
+      .birthday-page,
+      .private-page
+    ) .faq-accordion summary > h3 {
     min-width: 0;
     margin: 0;
-    font-size: inherit;
+    font-size: 1.17em;
     font-weight: inherit;
     letter-spacing: normal;
     line-height: 1.35;
   }
 
-  .faq-accordion summary > span {
+  :is(
+      .coffee-page,
+      .sweet-page,
+      .seating-page,
+      .wedding-page,
+      .corporate-page,
+      .activation-page,
+      .baby-page,
+      .bridal-page,
+      .birthday-page,
+      .private-page
+    ) .faq-accordion summary > span {
     font-size: 0.72rem;
     letter-spacing: 0.12em;
   }
 
-  .faq-accordion summary > :is(b, i) {
+  :is(
+      .coffee-page,
+      .sweet-page,
+      .seating-page,
+      .wedding-page,
+      .corporate-page,
+      .activation-page,
+      .baby-page,
+      .bridal-page,
+      .birthday-page,
+      .private-page
+    ) .faq-accordion summary > :is(b, i) {
     justify-self: end;
     font-size: 1rem;
     font-style: normal;
@@ -49,39 +126,127 @@
     transition: transform 0.2s ease;
   }
 
-  .faq-accordion details[open] summary > :is(b, i) {
+  :is(
+      .coffee-page,
+      .sweet-page,
+      .seating-page,
+      .wedding-page,
+      .corporate-page,
+      .activation-page,
+      .baby-page,
+      .bridal-page,
+      .birthday-page,
+      .private-page
+    ) .faq-accordion details[open] summary > :is(b, i) {
     transform: rotate(45deg);
   }
 
-  .faq-accordion-numberless summary {
+  :is(
+      .coffee-page,
+      .sweet-page,
+      .seating-page,
+      .wedding-page,
+      .corporate-page,
+      .activation-page,
+      .baby-page,
+      .bridal-page,
+      .birthday-page,
+      .private-page
+    ) .faq-accordion-numberless summary {
     grid-template-columns: minmax(0, 1fr) 1.25rem !important;
   }
 
-  .faq-accordion:not(.faq-accordion-numberless)
+  :is(
+      .coffee-page,
+      .sweet-page,
+      .seating-page,
+      .wedding-page,
+      .corporate-page,
+      .activation-page,
+      .baby-page,
+      .bridal-page,
+      .birthday-page,
+      .private-page
+    ) .faq-accordion:not(.faq-accordion-numberless)
     > details
     > :is(p, div) {
     max-width: 58rem;
     margin: 0 0 var(--space-5) calc(2.25rem + var(--space-3));
   }
 
-  .faq-accordion-numberless > details > :is(p, div) {
+  :is(
+      .coffee-page,
+      .sweet-page,
+      .seating-page,
+      .wedding-page,
+      .corporate-page,
+      .activation-page,
+      .baby-page,
+      .bridal-page,
+      .birthday-page,
+      .private-page
+    ) .faq-accordion-numberless > details > :is(p, div) {
     max-width: 58rem;
     margin: 0 0 var(--space-5);
   }
 
-  .faq-accordion details > p,
-  .faq-accordion details > div > p {
+  :is(
+      .coffee-page,
+      .sweet-page,
+      .seating-page,
+      .wedding-page,
+      .corporate-page,
+      .activation-page,
+      .baby-page,
+      .bridal-page,
+      .birthday-page,
+      .private-page
+    ) .faq-accordion details > p,
+  :is(
+      .coffee-page,
+      .sweet-page,
+      .seating-page,
+      .wedding-page,
+      .corporate-page,
+      .activation-page,
+      .baby-page,
+      .bridal-page,
+      .birthday-page,
+      .private-page
+    ) .faq-accordion details > div > p {
     font-size: 1rem;
     line-height: 1.65;
   }
 
-  .faq-accordion details > div > p {
+  :is(
+      .coffee-page,
+      .sweet-page,
+      .seating-page,
+      .wedding-page,
+      .corporate-page,
+      .activation-page,
+      .baby-page,
+      .bridal-page,
+      .birthday-page,
+      .private-page
+    ) .faq-accordion details > div > p {
     margin: 0;
   }
 }
 
 @media (max-width: 700px) and (prefers-reduced-motion: reduce) {
-  .faq-accordion summary > :is(b, i) {
+  :is(
+      .coffee-page,
+      .sweet-page,
+      .seating-page,
+      .wedding-page,
+      .corporate-page,
+      .activation-page,
+      .baby-page,
+      .bridal-page,
+      .birthday-page,
+      .private-page
+    ) .faq-accordion summary > :is(b, i) {
     transition: none;
   }
 }
