@@ -128,3 +128,70 @@
     grid-column: 1;
   }
 }
+
+/* Match the Experiences hub event directory across each service page on mobile. */
+@media (max-width: 700px) {
+  :is(.coffee-events, .sweet-events, .seating-events) {
+    padding-block: var(--space-9);
+  }
+
+  :is(.coffee-events, .sweet-events, .seating-events) > header {
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
+  }
+
+  :is(.coffee-events, .sweet-events, .seating-events) > header h2 {
+    max-width: 17ch;
+    font-size: clamp(3rem, 5.5vw, 6rem);
+    line-height: .98;
+    letter-spacing: -.05em;
+  }
+
+  :is(.coffee-events, .sweet-events, .seating-events) > div {
+    border-top: 1px solid color-mix(in srgb, var(--color-luxe-black) 35%, transparent);
+    border-bottom: 0;
+  }
+
+  :is(.coffee-events, .sweet-events, .seating-events) > div a {
+    grid-template-columns: 2.6rem minmax(0, 1fr) 1.5rem;
+    gap: var(--space-3);
+    min-height: 6rem;
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-luxe-black) 25%, transparent);
+    background: transparent;
+    box-shadow: none;
+  }
+
+  :is(.coffee-events, .sweet-events, .seating-events) > div a:last-child {
+    border-bottom: 1px solid color-mix(in srgb, var(--color-luxe-black) 25%, transparent);
+  }
+
+  :is(.coffee-events, .sweet-events, .seating-events) a > span {
+    font-size: .68rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+  }
+
+  :is(.coffee-events, .sweet-events, .seating-events) a > strong {
+    padding-left: 0;
+    font-size: 1.15rem;
+    font-weight: 500;
+    letter-spacing: normal;
+  }
+
+  :is(.coffee-events, .sweet-events, .seating-events) a > strong::before {
+    content: none;
+  }
+
+  :is(.coffee-events, .sweet-events, .seating-events) a > small {
+    font-size: .92rem;
+    line-height: 1.45;
+  }
+
+  :is(.coffee-events, .sweet-events, .seating-events) a:hover,
+  :is(.coffee-events, .sweet-events, .seating-events) a:focus-visible {
+    padding-inline: var(--space-3);
+    background: var(--surface-chapter-taupe);
+    box-shadow: none;
+  }
+}
