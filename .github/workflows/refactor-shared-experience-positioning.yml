@@ -1,0 +1,788 @@
+name: Refactor shared experience positioning
+
+on:
+  push:
+    branches:
+      - agent/shared-experience-positioning-component
+    paths:
+      - .github/workflows/refactor-shared-experience-positioning.yml
+
+permissions:
+  contents: write
+
+jobs:
+  refactor:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out refactor branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/shared-experience-positioning-component
+          fetch-depth: 0
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Replace page-specific implementations with one shared component
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+
+          const sharedImport = 'import { ExperiencePositioningSection } from "./experience-positioning-section";';
+          const importAnchor = 'import { ContextualInquiryPanel } from "./signature-elements";';
+
+          function addSharedImport(path) {
+            const source = fs.readFileSync(path, 'utf8');
+            if (source.includes(sharedImport)) return;
+            if (!source.includes(importAnchor)) {
+              throw new Error(`Import anchor not found in ${path}`);
+            }
+            fs.writeFileSync(
+              path,
+              source.replace(importAnchor, `${sharedImport}\n${importAnchor}`),
+            );
+          }
+
+          function replaceFunction(path, functionName, replacement) {
+            const source = fs.readFileSync(path, 'utf8');
+            const marker = `function ${functionName}() {`;
+            const start = source.indexOf(marker);
+            if (start === -1) {
+              throw new Error(`${marker} not found in ${path}`);
+            }
+            const end = source.indexOf('\nfunction ', start + marker.length);
+            if (end === -1) {
+              throw new Error(`Next function boundary not found after ${functionName} in ${path}`);
+            }
+            const updated = `${source.slice(0, start)}${replacement.trim()}\n${source.slice(end)}`;
+            fs.writeFileSync(path, updated);
+          }
+
+          fs.writeFileSync(
+            'app/components/experience-positioning-section.tsx',
+            String.raw`import type { ReactNode } from "react";
+
+type ExperiencePositioningVariant = "coffee" | "sweet" | "seating";
+
+type ExperiencePositioningSectionProps = {
+  className: string;
+  variant: ExperiencePositioningVariant;
+  titleId: string;
+  eyebrow?: ReactNode;
+  titleLines: readonly string[];
+  titleBreakBefore?: readonly number[];
+  lead: ReactNode;
+  body: readonly ReactNode[];
+  handoff: ReactNode;
+};
+
+export function ExperiencePositioningSection({
+  className,
+  variant,
+  titleId,
+  eyebrow,
+  titleLines,
+  titleBreakBefore = [],
+  lead,
+  body,
+  handoff,
+}: ExperiencePositioningSectionProps) {
+  return (
+    <section
+      className={`experience-positioning ${className}`}
+      aria-labelledby={titleId}
+      data-experience-positioning={variant}
+    >
+      <div className="experience-positioning-intro">
+        {eyebrow ? (
+          <p className="foundation-label experience-positioning-eyebrow">
+            {eyebrow}
+          </p>
+        ) : null}
+
+        <h2 id={titleId}>
+          {titleLines.map((line, index) => (
+            <span
+              className="experience-positioning-title-line"
+              data-break-before={
+                titleBreakBefore.includes(index) ? "true" : undefined
+              }
+              key={index}
+            >
+              {line}
+            </span>
+          ))}
+        </h2>
+
+        <div className="experience-positioning-art" aria-hidden="true">
+          <i />
+          <i />
+          <i />
+        </div>
+      </div>
+
+      <div className="experience-positioning-content">
+        <p className="experience-positioning-lead">{lead}</p>
+
+        <div className="experience-positioning-rule" aria-hidden="true" />
+
+        <div className="experience-positioning-copy">
+          {body.map((column, index) => (
+            <p key={index}>{column}</p>
+          ))}
+
+          <p className="experience-positioning-handoff">{handoff}</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+`,
+          );
+
+          const coffeePath = 'app/components/coffee-bar-page.tsx';
+          addSharedImport(coffeePath);
+          replaceFunction(
+            coffeePath,
+            'CoffeeOverview',
+            String.raw`function CoffeeOverview() {
+  return (
+    <ExperiencePositioningSection
+      className="coffee-overview"
+      variant="coffee"
+      titleId="coffee-overview-title"
+      eyebrow="A café experience, not simply a cart"
+      titleLines={["Coffee hospitality,", "shaped around the event."]}
+      lead={
+        <>
+          Coffee is woven into the event as hospitality, atmosphere, and an
+          experience guests can gather around.
+        </>
+      }
+      body={[
+        <>
+          A mobile coffee bar brings professional café equipment, skilled baristas,
+          and a made-to-order beverage menu directly into the event setting. Luxe
+          Coffee Bar provides mobile coffee catering for{" "}
+          <Link href="/events/weddings">weddings</Link>,{" "}
+          <Link href="/events/corporate-events">corporate events</Link>,{" "}
+          <Link href="/events/brand-activations">brand activations</Link>, bridal
+          showers, baby showers, birthdays, and{" "}
+          <Link href="/events/private-events">private celebrations</Link> across
+          Toronto and the GTA.
+        </>,
+        <>
+          Each booking is planned around the occasion, guest count, venue, service
+          window, and preferred menu. Drinks are prepared fresh on-site throughout
+          the agreed service period, creating a polished and welcoming experience
+          for guests.
+        </>,
+      ]}
+      handoff={
+        <>
+          Luxe Coffee Bar can be booked independently or coordinated with{" "}
+          <Link href="/experiences/sweet-cart">Luxe Sweet Cart</Link> and{" "}
+          <Link href="/experiences/seating-rentals">Luxe Seating Rentals</Link>
+          {" "}through one{" "}
+          <QuoteModalTrigger className="experience-positioning-inquiry">
+            Luxe Event Co. inquiry
+          </QuoteModalTrigger>
+          .
+        </>
+      }
+    />
+  );
+}`,
+          );
+
+          const sweetPath = 'app/components/sweet-cart-page.tsx';
+          addSharedImport(sweetPath);
+          replaceFunction(
+            sweetPath,
+            'SweetPositioning',
+            String.raw`function SweetPositioning() {
+  return (
+    <ExperiencePositioningSection
+      className="sweet-positioning"
+      variant="sweet"
+      titleId="sweet-positioning-title"
+      titleLines={[
+        "The cart becomes",
+        "part of the room.",
+        "Preparation becomes",
+        "part of the moment.",
+      ]}
+      titleBreakBefore={[2]}
+      lead={
+        <>
+          Dessert is prepared in view, finished to order, and presented as part
+          of the gathering.
+        </>
+      }
+      body={[
+        <>
+          Dessert-cart catering is a staffed mobile dessert service where mini
+          pancakes, Belgian waffles, mini donuts, and other selected sweets are
+          prepared, finished, and served for guests on-site. Luxe Sweet Cart
+          provides luxury dessert cart catering for{" "}
+          <Link href="/events/weddings">weddings</Link>,{" "}
+          <Link href="/events/corporate-events">corporate events</Link>,{" "}
+          <Link href="/events/brand-activations">brand activations</Link>, bridal
+          showers, baby showers, birthdays, and{" "}
+          <Link href="/events/private-events">private celebrations</Link>{" "}
+          across Toronto and the GTA.
+        </>,
+        <>
+          Unlike a dessert table, which typically presents pre-arranged sweets
+          for self-service, the cart centres live preparation and attendant-led
+          service. Each booking is planned around the cart style, dessert selection,
+          guest count, venue, service window, footprint, power, access, and styling
+          requirements.
+        </>,
+      ]}
+      handoff={
+        <>
+          Luxe Sweet Cart can be booked independently or coordinated with{" "}
+          <Link href="/experiences/coffee-bar">Luxe Coffee Bar</Link> and{" "}
+          <Link href="/experiences/seating-rentals">Luxe Seating Rentals</Link>{" "}
+          through one{" "}
+          <QuoteModalTrigger className="experience-positioning-inquiry">
+            Luxe Event Co. inquiry
+          </QuoteModalTrigger>
+          .
+        </>
+      }
+    />
+  );
+}`,
+          );
+
+          const seatingPath = 'app/components/seating-rentals-page.tsx';
+          addSharedImport(seatingPath);
+          replaceFunction(
+            seatingPath,
+            'SeatingOverview',
+            String.raw`function SeatingOverview() {
+  return (
+    <ExperiencePositioningSection
+      className="seating-overview"
+      variant="seating"
+      titleId="seating-overview-title"
+      titleLines={[
+        "Seating should resolve the room.",
+        "The layout should support the gathering.",
+      ]}
+      titleBreakBefore={[1]}
+      lead={
+        <>
+          Seating is planned around how guests gather, move through the space,
+          and experience the event.
+        </>
+      }
+      body={[
+        <>
+          Event seating rentals bring the furniture, layout planning, and on-site
+          setup needed to shape a functional and considered gathering. Luxe Seating
+          Rentals provides seating solutions for{" "}
+          <Link href="/events/weddings">weddings</Link>,{" "}
+          <Link href="/events/corporate-events">corporate events</Link>,{" "}
+          <Link href="/events/brand-activations">brand activations</Link>,{" "}
+          <Link href="/events/bridal-showers">bridal showers</Link>,{" "}
+          <Link href="/events/baby-showers">baby showers</Link>,{" "}
+          <Link href="/events/birthdays">birthdays</Link>, and{" "}
+          <Link href="/events/private-events">private celebrations</Link> across
+          Toronto and the GTA.
+        </>,
+        <>
+          Rather than beginning with a catalogue of individual pieces, each booking
+          begins with the room and how it needs to work. The seating plan is shaped
+          around the guest count, venue, event flow, service areas, visual direction,
+          access, delivery, and setup requirements.
+        </>,
+      ]}
+      handoff={
+        <>
+          Luxe Seating Rentals can be booked independently or coordinated with{" "}
+          <Link href="/experiences/coffee-bar">Luxe Coffee Bar</Link> and{" "}
+          <Link href="/experiences/sweet-cart">Luxe Sweet Cart</Link> through one{" "}
+          <Link href="/inquire">Luxe Event Co. inquiry</Link>.
+        </>
+      }
+    />
+  );
+}`,
+          );
+
+          fs.writeFileSync(
+            'app/experience-positioning-alignment.css',
+            String.raw`/*
+ * One canonical experience-positioning component shared by Coffee Bar,
+ * Sweet Cart, and Seating Rentals. Page-specific classes only preserve the
+ * existing page-width contracts; all internal layout and responsive behaviour
+ * comes from the shared component classes below.
+ */
+
+.foundation-shell .experience-positioning {
+  display: grid;
+  grid-template-columns: minmax(20rem, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(4rem, 8vw, 9rem);
+  align-items: start;
+  padding-block: clamp(5.5rem, 8vw, 8rem);
+  border-block: 0;
+  background: transparent;
+  box-shadow: none;
+  clip-path: none;
+  color: var(--color-luxe-black);
+}
+
+.foundation-shell .experience-positioning-intro {
+  min-width: 0;
+}
+
+.foundation-shell .experience-positioning-eyebrow {
+  margin: 0 0 var(--space-5);
+  color: var(--color-luxe-gold-ink);
+}
+
+.foundation-shell .experience-positioning h2 {
+  max-width: none;
+  margin: 0;
+  color: var(--color-luxe-black) !important;
+  font-size: clamp(2.45rem, 3.1vw, 3.7rem) !important;
+  font-weight: 400 !important;
+  line-height: 0.96 !important;
+  letter-spacing: -0.055em !important;
+}
+
+.foundation-shell .experience-positioning-title-line {
+  display: block;
+  white-space: nowrap;
+}
+
+.foundation-shell
+  .experience-positioning-title-line[data-break-before="true"] {
+  margin-top: 0.45em;
+}
+
+.foundation-shell .experience-positioning-art {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 31rem);
+  min-height: clamp(14rem, 19vw, 19rem);
+  margin-top: clamp(3rem, 5vw, 5rem);
+  overflow: hidden;
+  border: 1px solid
+    color-mix(in srgb, var(--color-luxe-black) 18%, transparent);
+  background: color-mix(
+    in srgb,
+    var(--color-luxe-ivory) 55%,
+    var(--surface-chapter-taupe)
+  );
+}
+
+.foundation-shell .experience-positioning-art i {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+}
+
+.foundation-shell .experience-positioning-content {
+  display: grid;
+  min-width: 0;
+  align-content: start;
+  padding-left: clamp(2rem, 4vw, 4rem);
+  border-left: 1px solid
+    color-mix(in srgb, var(--color-luxe-gold) 55%, transparent);
+}
+
+.foundation-shell .experience-positioning-lead {
+  max-width: 36ch;
+  margin: 0;
+  color: var(--color-luxe-black) !important;
+  font-size: clamp(1.65rem, 2.1vw, 2.35rem) !important;
+  font-weight: 400;
+  line-height: 1.12 !important;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+.foundation-shell .experience-positioning-rule {
+  width: 100%;
+  height: 1px;
+  margin: clamp(3rem, 5vw, 5rem) 0 clamp(2rem, 3vw, 3rem);
+  background: color-mix(
+    in srgb,
+    var(--color-luxe-black) 20%,
+    transparent
+  );
+}
+
+.foundation-shell .experience-positioning-copy {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 4vw, 4rem);
+  row-gap: 0;
+}
+
+.foundation-shell .experience-positioning-copy p {
+  margin: 0;
+  color: var(--color-text-muted) !important;
+  font-size: clamp(0.98rem, 1.05vw, 1.08rem) !important;
+  line-height: 1.7 !important;
+}
+
+.foundation-shell .experience-positioning-handoff {
+  grid-column: 1 / -1;
+  margin-top: clamp(1rem, 1.5vw, 1.5rem) !important;
+  padding-top: clamp(1rem, 1.5vw, 1.5rem);
+  border-top: 1px solid
+    color-mix(in srgb, var(--color-luxe-black) 20%, transparent);
+}
+
+.foundation-shell .experience-positioning-copy a,
+.foundation-shell .experience-positioning-inquiry {
+  display: inline;
+  min-height: 0;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--color-luxe-black);
+  font: inherit;
+  font-weight: 600;
+  line-height: inherit;
+  text-decoration-line: underline;
+  text-decoration-color: var(--color-luxe-gold);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.24em;
+  white-space: normal;
+  cursor: pointer;
+  transition:
+    color var(--motion-fast) var(--ease-luxe-out),
+    text-decoration-thickness var(--motion-fast) var(--ease-luxe-out);
+}
+
+.foundation-shell .experience-positioning-copy a:hover,
+.foundation-shell .experience-positioning-copy a:focus-visible,
+.foundation-shell .experience-positioning-inquiry:hover,
+.foundation-shell .experience-positioning-inquiry:focus-visible {
+  color: var(--color-luxe-gold-ink);
+  text-decoration-thickness: 2px;
+}
+
+.foundation-shell .experience-positioning-copy a:focus-visible,
+.foundation-shell .experience-positioning-inquiry:focus-visible {
+  outline: 2px solid var(--color-luxe-gold);
+  outline-offset: 0.2em;
+}
+
+/* Sweet Cart artwork */
+.foundation-shell
+  [data-experience-positioning="sweet"]
+  .experience-positioning-art
+  i:first-child {
+  z-index: 2;
+  top: 16%;
+  left: 9%;
+  width: 44%;
+  aspect-ratio: 1;
+  border-radius: 48% 52% 44% 56% / 56% 46% 54% 44%;
+  background: var(--color-luxe-black);
+  transform: rotate(-8deg);
+}
+
+.foundation-shell
+  [data-experience-positioning="sweet"]
+  .experience-positioning-art
+  i:nth-child(2) {
+  z-index: 3;
+  top: 8%;
+  right: 9%;
+  width: 46%;
+  aspect-ratio: 1;
+  border: 1px solid var(--color-luxe-gold);
+  border-radius: 50%;
+}
+
+.foundation-shell
+  [data-experience-positioning="sweet"]
+  .experience-positioning-art
+  i:last-child {
+  z-index: 4;
+  right: 5%;
+  bottom: 10%;
+  width: 60%;
+  height: 29%;
+  border: 1px solid
+    color-mix(in srgb, var(--color-luxe-black) 20%, transparent);
+  border-radius: 50%;
+  background: var(--color-luxe-ivory);
+  transform: rotate(-9deg);
+}
+
+/* Coffee Bar artwork */
+.foundation-shell
+  [data-experience-positioning="coffee"]
+  .experience-positioning-art
+  i:first-child {
+  z-index: 2;
+  top: 20%;
+  left: 10%;
+  width: 48%;
+  height: 48%;
+  border-radius: 58% 42% 54% 46% / 45% 58% 42% 55%;
+  background: var(--color-luxe-black);
+  transform: rotate(-17deg);
+}
+
+.foundation-shell
+  [data-experience-positioning="coffee"]
+  .experience-positioning-art
+  i:nth-child(2) {
+  z-index: 3;
+  top: 8%;
+  right: 9%;
+  width: 46%;
+  aspect-ratio: 1;
+  border: 1px solid var(--color-luxe-gold);
+  border-radius: 50%;
+}
+
+.foundation-shell
+  [data-experience-positioning="coffee"]
+  .experience-positioning-art
+  i:last-child {
+  z-index: 4;
+  right: 5%;
+  bottom: 10%;
+  width: 60%;
+  height: 29%;
+  border: 1px solid
+    color-mix(in srgb, var(--color-luxe-black) 20%, transparent);
+  border-radius: 50%;
+  background: var(--color-luxe-ivory);
+  transform: rotate(-9deg);
+}
+
+/* Seating Rentals artwork */
+.foundation-shell
+  [data-experience-positioning="seating"]
+  .experience-positioning-art
+  i:first-child {
+  z-index: 2;
+  top: 17%;
+  left: 10%;
+  width: 58%;
+  height: 54%;
+  border: 1px solid var(--color-luxe-black);
+  transform: rotate(-4deg);
+}
+
+.foundation-shell
+  [data-experience-positioning="seating"]
+  .experience-positioning-art
+  i:nth-child(2) {
+  z-index: 3;
+  top: 30%;
+  left: 24%;
+  width: 61%;
+  height: 49%;
+  background: var(--color-luxe-black);
+  transform: rotate(4deg);
+}
+
+.foundation-shell
+  [data-experience-positioning="seating"]
+  .experience-positioning-art
+  i:last-child {
+  z-index: 4;
+  top: 8%;
+  right: 8%;
+  width: 35%;
+  aspect-ratio: 1;
+  border: 1px solid var(--color-luxe-gold);
+  border-radius: 50%;
+}
+
+@media (max-width: 960px) {
+  .foundation-shell .experience-positioning {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .foundation-shell .experience-positioning-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(15rem, 0.7fr);
+    gap: var(--space-7);
+    align-items: end;
+  }
+
+  .foundation-shell .experience-positioning-eyebrow {
+    grid-column: 1 / -1;
+    margin-bottom: 0;
+  }
+
+  .foundation-shell .experience-positioning h2 {
+    grid-column: 1;
+  }
+
+  .foundation-shell .experience-positioning-title-line {
+    white-space: normal;
+  }
+
+  .foundation-shell .experience-positioning-art {
+    grid-column: 2;
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .foundation-shell .experience-positioning-content {
+    padding: var(--space-8) 0 0;
+    border-top: 1px solid
+      color-mix(in srgb, var(--color-luxe-gold) 55%, transparent);
+    border-left: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .foundation-shell .experience-positioning {
+    grid-template-columns: 1fr;
+    gap: var(--space-7);
+    padding-block: var(--space-9);
+  }
+
+  .foundation-shell .experience-positioning-intro {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .foundation-shell .experience-positioning-eyebrow {
+    margin-bottom: var(--space-5);
+  }
+
+  .foundation-shell .experience-positioning h2 {
+    grid-column: 1;
+    font-size: clamp(2.35rem, 10.5vw, 3.65rem) !important;
+    line-height: 0.97 !important;
+  }
+
+  .foundation-shell .experience-positioning-art {
+    grid-column: 1;
+    width: 100%;
+    min-height: min(72vw, 18rem);
+    margin-top: var(--space-7);
+  }
+
+  .foundation-shell .experience-positioning-content {
+    padding-top: var(--space-7);
+  }
+
+  .foundation-shell .experience-positioning-lead {
+    max-width: 24ch;
+    font-size: clamp(1.75rem, 7.5vw, 2.4rem) !important;
+  }
+
+  .foundation-shell .experience-positioning-rule {
+    margin-block: var(--space-7) var(--space-6);
+  }
+
+  .foundation-shell .experience-positioning-copy {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .foundation-shell .experience-positioning-handoff {
+    grid-column: 1;
+    margin-top: var(--space-2) !important;
+    padding-top: var(--space-5);
+  }
+}
+`,
+          );
+
+          fs.writeFileSync(
+            'app/seating-experience-section.css',
+            String.raw`/* Seating Rentals inventory refinements that are independent of the shared experience section. */
+.seating-page .seating-inventory > header .foundation-label,
+.seating-page .seating-inventory > header > p:last-child {
+  display: none;
+}
+
+#seating-inventory-title {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: max-content;
+  max-width: none;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  color: transparent !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  text-align: center;
+}
+
+#seating-inventory-title::before {
+  display: block;
+  color: var(--color-luxe-black);
+  content: "Six elements.\A One spatial conversation.";
+  font-size: var(--luxe-type-section-display);
+  font-weight: 400;
+  line-height: 0.96;
+  letter-spacing: -0.055em;
+  white-space: pre;
+}
+
+#seating-inventory-title::after {
+  content: none;
+}
+
+.seating-page .seating-inventory-grid article > strong {
+  color: var(--color-luxe-gold-ink);
+  font-size: var(--luxe-type-supporting) !important;
+  font-weight: 600;
+  line-height: 1.65;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+@media (max-width: 700px) {
+  #seating-inventory-title {
+    grid-column: 1;
+    width: max-content;
+  }
+
+  #seating-inventory-title::before {
+    font-size: clamp(1.55rem, 7vw, 2.4rem);
+    line-height: 1;
+    white-space: pre;
+  }
+}
+`,
+          );
+
+          fs.rmSync('.github/workflows/refactor-shared-experience-positioning.yml');
+          NODE
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate production build
+        run: npm run build
+
+      - name: Commit the completed refactor
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Use shared experience positioning component"
+          git push origin HEAD:agent/shared-experience-positioning-component
