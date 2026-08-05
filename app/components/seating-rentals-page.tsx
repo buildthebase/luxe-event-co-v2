@@ -102,19 +102,55 @@ function SeatingHero() {
 function SeatingOverview() {
   return (
     <section className="seating-overview" aria-labelledby="seating-overview-title">
-      <p className="foundation-label">The setting is part of the experience</p>
-      <h2 id="seating-overview-title">
-        Rentals should resolve the room, not simply occupy it.
-      </h2>
-      <div>
-        <p>
-          Luxe Seating Rentals is positioned around design, layout, comfort, and
-          guest experience rather than a catalogue-first selection process.
+      <div className="seating-overview-intro">
+        <h2 id="seating-overview-title">
+          <span>Seating should resolve the room.</span>
+          <span>The layout should support the gathering.</span>
+        </h2>
+        <div className="seating-overview-art" aria-hidden="true">
+          <i />
+          <i />
+          <i />
+        </div>
+      </div>
+
+      <div className="seating-overview-content">
+        <p className="seating-overview-lead">
+          Seating is planned around how guests gather, move through the space,
+          and experience the event.
         </p>
-        <p>
-          The starting point is the event: who is gathering, how the room will be
-          used, where service happens, and which elements are needed to support it.
-        </p>
+
+        <div className="seating-overview-rule" aria-hidden="true" />
+
+        <div className="seating-overview-copy">
+          <p>
+            Event seating rentals bring the furniture, layout planning, and on-site
+            setup needed to shape a functional and considered gathering. Luxe Seating
+            Rentals provides seating solutions for{" "}
+            <Link href="/events/weddings">weddings</Link>,{" "}
+            <Link href="/events/corporate-events">corporate events</Link>,{" "}
+            <Link href="/events/brand-activations">brand activations</Link>,{" "}
+            <Link href="/events/bridal-showers">bridal showers</Link>,{" "}
+            <Link href="/events/baby-showers">baby showers</Link>,{" "}
+            <Link href="/events/birthdays">birthdays</Link>, and{" "}
+            <Link href="/events/private-events">private celebrations</Link> across
+            Toronto and the GTA.
+          </p>
+
+          <p>
+            Rather than beginning with a catalogue of individual pieces, each booking
+            begins with the room and how it needs to work. The seating plan is shaped
+            around the guest count, venue, event flow, service areas, visual direction,
+            access, delivery, and setup requirements.
+          </p>
+
+          <p className="seating-overview-handoff">
+            Luxe Seating Rentals can be booked independently or coordinated with{" "}
+            <Link href="/experiences/coffee-bar">Luxe Coffee Bar</Link> and{" "}
+            <Link href="/experiences/sweet-cart">Luxe Sweet Cart</Link> through one{" "}
+            <Link href="/inquire">Luxe Event Co. inquiry</Link>.
+          </p>
+        </div>
       </div>
     </section>
   );
