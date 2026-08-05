@@ -1,0 +1,100 @@
+/* Use the /preview contextual inquiry composition across every page. */
+.foundation-shell main > .signature-inquiry {
+  display: grid !important;
+  grid-template-columns: 140px minmax(0, 1fr) auto !important;
+  gap: clamp(28px, 5vw, 76px) !important;
+  align-items: center !important;
+  width: min(
+    calc(100% - (2 * var(--space-page-inline))),
+    var(--layout-max)
+  ) !important;
+  margin-inline: auto !important;
+  padding: clamp(36px, 6vw, 84px) !important;
+  background-color: var(--color-luxe-black) !important;
+  background-image: radial-gradient(
+    rgb(248 246 242 / 7%) 0.55px,
+    transparent 0.7px
+  ) !important;
+  background-size: 4px 4px !important;
+  color: var(--color-luxe-ivory) !important;
+  box-shadow: none !important;
+  clip-path: none !important;
+}
+
+.foundation-shell main > .signature-inquiry::before,
+.foundation-shell main > .signature-inquiry::after {
+  display: none !important;
+  content: none !important;
+}
+
+.foundation-shell main > .signature-inquiry .signature-inquiry-copy {
+  min-width: 0;
+}
+
+.foundation-shell main > .signature-inquiry .signature-inquiry-copy h2 {
+  width: auto;
+  max-width: none !important;
+  margin: var(--space-4) 0 0;
+  font-size: var(--type-heading-md) !important;
+  font-weight: 500;
+  line-height: 1.02 !important;
+  letter-spacing: var(--tracking-heading-md) !important;
+  text-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.foundation-shell main > .signature-inquiry .signature-inquiry-copy > p:last-child {
+  max-width: 58ch;
+}
+
+@media (max-width: 960px) {
+  .foundation-shell main > .signature-inquiry {
+    grid-template-columns: 100px minmax(0, 1fr) !important;
+  }
+
+  .foundation-shell main > .signature-inquiry > a {
+    grid-column: 2;
+    justify-self: start;
+  }
+}
+
+@media (max-width: 700px) {
+  .foundation-shell main > .signature-inquiry {
+    grid-template-columns: 64px minmax(0, 1fr) !important;
+    gap: var(--space-5) !important;
+    width: min(
+      calc(100% - (2 * var(--space-4))),
+      var(--layout-max)
+    ) !important;
+    padding: var(--space-6) !important;
+  }
+
+  .foundation-shell main > .signature-inquiry .signature-inquiry-mark {
+    width: 64px;
+    align-self: start;
+  }
+
+  .foundation-shell main > .signature-inquiry .signature-inquiry-copy h2 {
+    text-wrap: pretty;
+    white-space: normal;
+  }
+
+  .foundation-shell main > .signature-inquiry > a {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 460px) {
+  .foundation-shell main > .signature-inquiry {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .foundation-shell main > .signature-inquiry .signature-inquiry-mark {
+    width: 52px;
+  }
+
+  .foundation-shell main > .signature-inquiry > a {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

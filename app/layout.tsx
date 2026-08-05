@@ -8,6 +8,7 @@ import "./related-experiences.css";
 import "./coffee-inclusions-cleanup.css";
 import "./mobile-faq-accordions.css";
 import "./faq-section-actions.css";
+import "./contextual-inquiry-panels.css";
 import { siteConfig } from "./site-config";
 
 const siteUrl = siteConfig.url;
