@@ -4,6 +4,7 @@ import "./globals.css";
 import "./event-numberless.css";
 import "./service-pricing-panels.css";
 import "./mobile-faq-accordions.css";
+import "./faq-section-actions.css";
 import { siteConfig } from "./site-config";
 
 const siteUrl = siteConfig.url;
