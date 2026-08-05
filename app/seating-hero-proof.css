@@ -1,0 +1,183 @@
+/* Seating Rentals uses a restrained specification ledger beneath the hero. */
+.seating-page .seating-hero > .coffee-hero-proof-heading {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(11rem, 0.34fr) minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: baseline;
+  align-self: auto;
+  padding: clamp(1.75rem, 3vw, 2.75rem) 0;
+  border-top: 1px solid color-mix(in srgb, var(--color-luxe-black) 30%, transparent);
+  border-bottom: 0;
+  background: transparent;
+  isolation: auto;
+  overflow: visible;
+}
+
+.seating-page .seating-hero > .coffee-hero-proof-heading::before,
+.seating-page .seating-hero > .coffee-hero-proof-heading::after {
+  content: none;
+}
+
+.seating-page .seating-hero > .coffee-hero-proof-heading p,
+.seating-page .seating-hero > .coffee-hero-proof-heading h2 {
+  margin: 0;
+}
+
+.seating-page
+  .seating-hero
+  > .coffee-hero-proof-heading
+  .foundation-label {
+  color: var(--color-luxe-gold-ink);
+}
+
+.seating-page .seating-hero > .coffee-hero-proof-heading h2 {
+  max-width: 44ch;
+  font-size: clamp(1.15rem, 1.25vw, 1.4rem);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+
+.seating-page .seating-hero > .coffee-hero-proof {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-self: auto;
+  margin: 0;
+  padding: 0;
+  border-block: 1px solid color-mix(in srgb, var(--color-luxe-black) 30%, transparent);
+  background: transparent;
+  color: var(--color-luxe-black);
+}
+
+.seating-page .seating-hero > .coffee-hero-proof > div {
+  grid-column: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: start;
+  align-items: start;
+  gap: var(--space-4);
+  min-width: 0;
+  min-height: 11rem;
+  padding: clamp(1.5rem, 2.4vw, 2.4rem) clamp(1rem, 1.8vw, 1.75rem);
+  border-right: 1px solid color-mix(in srgb, var(--color-luxe-black) 22%, transparent);
+  border-bottom: 0;
+}
+
+.seating-page .seating-hero > .coffee-hero-proof > div:first-child {
+  padding-left: 0;
+}
+
+.seating-page .seating-hero > .coffee-hero-proof > div:last-child {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.seating-page .seating-hero > .coffee-hero-proof dt {
+  color: var(--color-luxe-black);
+  font-size: clamp(1.1rem, 1.2vw, 1.3rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.seating-page .seating-hero > .coffee-hero-proof dd {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin: 0;
+}
+
+.seating-page .seating-hero > .coffee-hero-proof dd strong {
+  color: var(--color-luxe-gold-ink);
+  font-size: 0.64rem;
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.seating-page .seating-hero > .coffee-hero-proof dd span {
+  max-width: 30ch;
+  color: var(--color-text-muted);
+  font-size: clamp(0.78rem, 0.74rem + 0.08vw, 0.84rem);
+  line-height: 1.55;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+@media (max-width: 960px) {
+  .seating-page .seating-hero > .coffee-hero-proof-heading {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .seating-page .seating-hero > .coffee-hero-proof-heading h2 {
+    max-width: 36rem;
+  }
+
+  .seating-page .seating-hero > .coffee-hero-proof {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .seating-page .seating-hero > .coffee-hero-proof > div,
+  .seating-page .seating-hero > .coffee-hero-proof > div:first-child,
+  .seating-page .seating-hero > .coffee-hero-proof > div:last-child {
+    padding: var(--space-5);
+    border-right: 1px solid color-mix(in srgb, var(--color-luxe-black) 22%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-luxe-black) 22%, transparent);
+  }
+
+  .seating-page .seating-hero > .coffee-hero-proof > div:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .seating-page .seating-hero > .coffee-hero-proof > div:last-child {
+    grid-column: 1 / -1;
+    min-height: 0;
+    border-right: 0;
+    border-bottom: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .seating-page .seating-hero > .coffee-hero-proof-heading {
+    padding: var(--space-6) 0 var(--space-5);
+  }
+
+  .seating-page .seating-hero > .coffee-hero-proof-heading h2 {
+    font-size: 1.08rem;
+    line-height: 1.5;
+  }
+
+  .seating-page .seating-hero > .coffee-hero-proof {
+    grid-template-columns: 1fr;
+  }
+
+  .seating-page .seating-hero > .coffee-hero-proof > div,
+  .seating-page .seating-hero > .coffee-hero-proof > div:first-child,
+  .seating-page .seating-hero > .coffee-hero-proof > div:last-child {
+    grid-column: auto;
+    display: grid;
+    grid-template-columns: minmax(5.75rem, 0.34fr) minmax(0, 1fr);
+    gap: var(--space-4);
+    min-height: 0;
+    padding: var(--space-5) 0;
+    border-right: 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-luxe-black) 22%, transparent);
+  }
+
+  .seating-page .seating-hero > .coffee-hero-proof > div:last-child {
+    border-bottom: 0;
+  }
+
+  .seating-page .seating-hero > .coffee-hero-proof dt {
+    font-size: 1rem;
+  }
+
+  .seating-page .seating-hero > .coffee-hero-proof dd {
+    gap: 0.45rem;
+  }
+}
