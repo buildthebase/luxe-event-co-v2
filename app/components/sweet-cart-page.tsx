@@ -398,21 +398,22 @@ function SweetGallery() {
 
 function SweetCombinations() {
   return (
-    <section className="sweet-combinations" aria-labelledby="sweet-combinations-title">
+    <section
+      className="sweet-combinations related-experiences"
+      aria-labelledby="sweet-combinations-title"
+    >
       <header>
         <p className="foundation-label">Within the Luxe family</p>
         <h2 id="sweet-combinations-title">Dessert can meet the arrival and the room around it.</h2>
       </header>
       <div>
         <Link href="/experiences/coffee-bar">
-          <span>Coffee + Dessert</span>
-          <strong>A café and dessert experience</strong>
+          <strong>Luxe Coffee Bar</strong>
           <p>Pair crafted beverages with live dessert preparation through one coordinated inquiry.</p>
-          <b aria-hidden="true">Explore Luxe Coffee Bar ↗︎</b>
+          <b aria-hidden="true">Explore Coffee Bar ↗︎</b>
         </Link>
         <Link href="/experiences/seating-rentals">
-          <span>Dessert + Setting</span>
-          <strong>A cart styled with the room</strong>
+          <strong>Luxe Seating Rentals</strong>
           <p>Connect the dessert moment with seating, tables, tents, linens, or lighting.</p>
           <b aria-hidden="true">Explore Seating Rentals ↗︎</b>
         </Link>

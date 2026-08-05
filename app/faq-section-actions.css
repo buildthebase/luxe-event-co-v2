@@ -1,0 +1,80 @@
+/* Shared review action for service and event FAQ sections. */
+:is(
+    .coffee-faq,
+    .sweet-faq,
+    .seating-faq,
+    .wedding-faq,
+    .corporate-faq,
+    .activation-faq,
+    .baby-faq,
+    .bridal-faq,
+    .birthday-faq,
+    .private-faq
+  ) > a {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 3.75rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-top: var(--space-8);
+  padding: 0.9rem 1.25rem;
+  border: 1px solid color-mix(in srgb, currentColor 38%, transparent);
+  background: transparent;
+  color: inherit;
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 1.35;
+  text-decoration: none;
+  text-transform: none;
+  transition:
+    background-color var(--motion-fast) var(--ease-luxe-out),
+    border-color var(--motion-fast) var(--ease-luxe-out),
+    color var(--motion-fast) var(--ease-luxe-out);
+}
+
+:is(
+    .coffee-faq,
+    .sweet-faq,
+    .seating-faq,
+    .wedding-faq,
+    .corporate-faq,
+    .activation-faq,
+    .baby-faq,
+    .bridal-faq,
+    .birthday-faq,
+    .private-faq
+  ) > a:hover,
+:is(
+    .coffee-faq,
+    .sweet-faq,
+    .seating-faq,
+    .wedding-faq,
+    .corporate-faq,
+    .activation-faq,
+    .baby-faq,
+    .bridal-faq,
+    .birthday-faq,
+    .private-faq
+  ) > a:focus-visible {
+  border-color: currentColor;
+  background: color-mix(in srgb, currentColor 5%, transparent);
+}
+
+:is(
+    .coffee-faq,
+    .sweet-faq,
+    .seating-faq,
+    .wedding-faq,
+    .corporate-faq,
+    .activation-faq,
+    .baby-faq,
+    .bridal-faq,
+    .birthday-faq,
+    .private-faq
+  ) > a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}

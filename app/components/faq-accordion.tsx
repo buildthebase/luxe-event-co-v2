@@ -22,9 +22,12 @@ export function FaqAccordion({
   showNumbers?: boolean;
 }) {
   const Indicator = indicatorElement;
+  const accordionClassName = showNumbers
+    ? "faq-accordion"
+    : "faq-accordion faq-accordion-numberless";
 
   return (
-    <div className={showNumbers ? undefined : "faq-accordion-numberless"}>
+    <div className={accordionClassName}>
       {items.map((item, index) => (
         <details id={item.id} key={item.id ?? item.question}>
           <summary>
