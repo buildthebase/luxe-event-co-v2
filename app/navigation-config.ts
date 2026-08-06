@@ -13,7 +13,7 @@ export type BreadcrumbItem = {
 };
 
 export const navigationItems: NavigationItem[] = [
-  { href: "/preview", label: "Home" },
+  { href: "/", label: "Home" },
   {
     href: "/experiences",
     label: "Experiences",

@@ -1,4 +1,4 @@
-/* Use the /preview contextual inquiry composition across every page. */
+/* Use the home contextual inquiry composition across every page. */
 .foundation-shell main > .signature-inquiry {
   display: grid !important;
   grid-template-columns: 140px minmax(0, 1fr) auto !important;

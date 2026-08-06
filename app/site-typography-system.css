@@ -1,7 +1,7 @@
 /*
  * Canonical internal-page typography
  *
- * /preview defines the shared hub and utility-page hierarchy.
+ * The homepage defines the shared hub and utility-page hierarchy.
  * /experiences/coffee-bar defines the service and event-detail hierarchy.
  * Decorative artwork, proof values, and numerical statistics remain page-owned.
  */
@@ -69,7 +69,7 @@
   letter-spacing: -0.055em !important;
 }
 
-/* Shared hubs and utility pages follow the /preview heading hierarchy. */
+/* Shared hubs and utility pages follow the homepage heading hierarchy. */
 .foundation-shell :is(.experiences-page, .events-page)
   > section:not(.signature-inquiry):not(.signature-credibility)
   > header h2,
@@ -234,7 +234,7 @@
   line-height: 1.4 !important;
 }
 
-/* Labels and text actions follow the same tokens used on /preview and Coffee Bar. */
+/* Labels and text actions follow the same tokens used on the homepage and Coffee Bar. */
 .foundation-shell :is(
     .experiences-page,
     .events-page,
