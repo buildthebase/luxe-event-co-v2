@@ -33,15 +33,15 @@ function WeddingHero() {
     <header className="wedding-hero">
       <div className="wedding-hero-copy">
         <p className="foundation-eyebrow">Weddings / Toronto &amp; the GTA</p>
-        <h1 aria-label="Wedding coffee, dessert, and rentals, woven through the day.">
+        <h1 aria-label="Wedding coffee, dessert, and rentals planned around the big day.">
           <span>Wedding coffee,</span>
-          <span>dessert, and rentals,</span>
-          <span>woven through the day.</span>
+          <span>dessert, and rentals</span>
+          <span>planned around the big day.</span>
         </h1>
         <p>
-          Coffee, live dessert, and an intentional setting can support the
-          moments between ceremony and celebration without competing with the
-          wedding itself.
+          Mobile coffee service, live dessert, seating, and event rentals
+          coordinated around the venue, schedule, guest flow, and atmosphere
+          of the celebration.
         </p>
         <div className="wedding-hero-actions">
           <QuoteModalTrigger data-event-name="inquiry_start">
@@ -79,23 +79,23 @@ function WeddingOverview() {
   return (
     <section className="wedding-overview" aria-labelledby="wedding-overview-title">
       <div>
-        <p className="foundation-label">The full celebration in view</p>
+        <p className="foundation-label">The wedding experience</p>
         <h2 id="wedding-overview-title">
-          Begin with the wedding flow, then place each experience where it belongs.
+          A coordinated guest experience, tailored to the most special day.
         </h2>
       </div>
       <div>
         <p>
-          Luxe supports couples, planners, coordinators, venues, and families
-          with guest-facing experiences that can move through different stages
-          of the day.
+          Luxe works with couples, planners, venues, and vendor teams to place
+          each experience where it best supports the wedding.
         </p>
         <p>
-          The <Link href="/experiences/coffee-bar">Coffee Bar</Link>,{" "}
-          <Link href="/experiences/sweet-cart">Sweet Cart</Link>, and{" "}
-          <Link href="/experiences/seating-rentals">Seating Rentals</Link> can
-          be booked independently or planned together through one Luxe Event
-          Co. inquiry and proposal journey.
+          <Link href="/experiences/coffee-bar">Luxe Coffee Bar</Link>,{" "}
+          <Link href="/experiences/sweet-cart">Luxe Sweet Cart</Link>, and{" "}
+          <Link href="/experiences/seating-rentals">Luxe Seating Rentals</Link>{" "}
+          can be booked independently or coordinated through one inquiry. The
+          venue, schedule, guest count, service requirements, and desired
+          atmosphere shape the final plan.
         </p>
       </div>
     </section>

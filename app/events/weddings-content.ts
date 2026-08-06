@@ -99,7 +99,7 @@ export const weddingCombinations = [
     title: "The setting and service together",
     experiences: "Coffee + Dessert + Rentals",
     description:
-      "The beverage experience, sweet service, and room requirements are planned through one Luxe Event Co. inquiry and proposal journey.",
+      "The beverage experience, sweet service, and room requirements are brought together around the event plan.",
   },
 ] as const;
 
@@ -191,7 +191,7 @@ export const weddingFaqs = [
   {
     question: "Can coffee and dessert be booked together?",
     answer:
-      "Yes. Luxe Coffee Bar and Luxe Sweet Cart can be selected together through one Luxe Event Co. inquiry and proposal journey. The service timeline, placement, menus, staffing, and setup requirements are coordinated around the wedding.",
+      "Yes. Luxe Coffee Bar and Luxe Sweet Cart can be selected together. Their service timeline, placement, menus, staffing, and setup requirements are coordinated around the wedding.",
   },
   {
     question: "Can seating and rentals be included?",
