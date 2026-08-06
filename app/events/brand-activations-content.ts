@@ -1,39 +1,27 @@
 export const activationBrandTouchpoints = [
   {
     number: "01",
-    title: "Custom-branded cups",
+    title: "Branded cups and vessels",
     description:
-      "Approved logos, campaign marks, or event language can carry through the vessels guests hold, photograph, and take into the room.",
+      "Approved logos, campaign marks, names, or event language can be carried through selected cups and guest-facing service items.",
   },
   {
     number: "02",
-    title: "Custom signage",
+    title: "Menus, signage, and drink names",
     description:
-      "Service signage and menu displays can reinforce the campaign message while remaining legible and useful where guests choose, order, and move through the experience.",
+      "Menu displays, service signage, beverage names, and campaign wording can reinforce the message while remaining clear and functional.",
   },
   {
     number: "03",
-    title: "Cart branding",
+    title: "Colour and visual alignment",
     description:
-      "The Coffee Bar or Sweet Cart can be visually aligned with the activation so the service point feels integrated without obscuring equipment, menus, working surfaces, or guest access.",
+      "Approved colour references can inform menus, signage, presentation, and selected styling elements without compromising contrast, legibility, or service requirements.",
   },
   {
     number: "04",
-    title: "Custom drink names",
+    title: "Cart branding and presentation",
     description:
-      "Beverage names can respond to a product, launch, audience, theme, or campaign line after creative and menu feasibility are reviewed.",
-  },
-  {
-    number: "05",
-    title: "Brand-colour alignment",
-    description:
-      "Approved colour references can inform signage, menus, cups, presentation, and styling without compromising contrast, legibility, or service function.",
-  },
-  {
-    number: "06",
-    title: "Tailored beverage menus",
-    description:
-      "Espresso, matcha, seasonal drinks, and premium non-coffee options can be edited into a focused menu built around the activation.",
+      "Coffee Bar and Sweet Cart presentation can be visually aligned with the campaign through approved cart treatments, signage, florals, and styling details.",
   },
 ] as const;
 
@@ -42,37 +30,37 @@ export const activationContexts = [
     number: "01",
     title: "Product launches",
     description:
-      "Create a guest-facing hospitality moment that supports the product story, launch schedule, and invited audience.",
+      "Create a guest-facing hospitality experience that supports the product story, launch schedule, and invited audience.",
   },
   {
     number: "02",
     title: "Retail activations",
     description:
-      "Bring branded coffee, matcha, or dessert into stores, shopping environments, pop-ups, and luxury retail programming.",
+      "Bring branded coffee, matcha, or live dessert into stores, shopping environments, pop-ups, and retail programming.",
   },
   {
     number: "03",
     title: "Grand openings",
     description:
-      "Mark an opening with a service experience designed for visitors, partners, media, clients, and internal teams.",
+      "Mark an opening with a service experience designed for customers, partners, media, internal teams, and invited guests.",
   },
   {
     number: "04",
     title: "Trade shows",
     description:
-      "Use hospitality to create a reason to pause, engage, and return within a high-traffic exhibition environment.",
+      "Use mobile coffee or dessert service to create a natural reason for attendees to pause, engage, and return to the booth or activation space.",
   },
   {
     number: "05",
     title: "Conferences",
     description:
-      "Align service with arrivals, breaks, networking windows, sponsor moments, or a longer programmed agenda.",
+      "Coordinate service around arrivals, programmed breaks, networking periods, sponsor moments, and sustained event traffic.",
   },
   {
     number: "06",
     title: "Campaign events",
     description:
-      "Translate campaign language into a tangible interaction for guests, creators, partners, press, or community audiences.",
+      "Translate campaign language and visual direction into a tangible guest interaction for customers, creators, media, partners, or community audiences.",
   },
 ] as const;
 
@@ -107,23 +95,20 @@ export const activationScaleCapabilities = [
   {
     number: "01",
     title: "Multiple branded setups",
-    fact: "Up to three Coffee Bar setups and up to three Sweet Cart setups can be operated simultaneously.",
-    qualification:
-      "Date availability, staffing, equipment, venue access, travel, service duration, and campaign complexity determine the confirmed scope.",
+    description:
+      "Up to three Coffee Bar setups and three Sweet Cart setups may operate simultaneously, subject to date availability, staffing, equipment, venue access, travel, and the confirmed service plan.",
   },
   {
     number: "02",
     title: "Multi-day campaigns",
-    fact: "Multi-day campaign requests require operating confirmation.",
-    qualification:
-      "The approved information does not establish a universal multi-day model. Daily schedules, resets, storage, replenishment, menu changes, staffing, branded-material handling, locations, and travel must be reviewed before capability is confirmed.",
+    description:
+      "Coffee and dessert service can be planned across multiple campaign days, with schedules, staffing, replenishment, storage, branding materials, venue requirements, and travel confirmed in advance.",
   },
   {
     number: "03",
     title: "Multiple-location campaigns",
-    fact: "A multiple-location brief can be reviewed and scoped campaign by campaign.",
-    qualification:
-      "Multiple-location execution is not assumed universally. Locations, dates, travel, staffing, equipment, production, and handoffs must be confirmed in the proposal.",
+    description:
+      "Campaigns involving more than one location can be reviewed according to the dates, markets, staffing, equipment, production requirements, travel, and handoffs involved.",
   },
 ] as const;
 
@@ -151,33 +136,33 @@ export const activationGalleryPreviews = [
 export const activationPlanningRequirements = [
   {
     number: "01",
-    title: "Campaign brief",
+    title: "Share the campaign brief",
     description:
-      "Share the campaign purpose, audience, event format, desired guest action, service role, and any non-negotiable brand requirements.",
+      "Provide the campaign objective, audience, event format, desired guest interaction, service role, and non-negotiable brand requirements.",
   },
   {
     number: "02",
-    title: "Brand assets",
+    title: "Provide approved brand assets",
     description:
-      "Prepare approved logos, brand guidelines, colour references, campaign copy, naming direction, and usage permissions. Final file formats and production specifications are confirmed during planning.",
+      "Share final logos, brand guidelines, colour references, campaign language, naming direction, usage permissions, and production-ready file formats.",
   },
   {
     number: "03",
-    title: "Event operations",
+    title: "Confirm event operations",
     description:
-      "Provide dates, locations, venue contacts, guest estimates, schedules, access windows, indoor or outdoor conditions, and known utility or footprint constraints.",
+      "Provide the dates, locations, venue contacts, guest estimates, schedules, access windows, indoor or outdoor conditions, and known utility or footprint requirements.",
   },
   {
     number: "04",
-    title: "Creative approvals",
+    title: "Approve the creative details",
     description:
-      "Identify the decision-maker and approval path for menus, cups, signage, drink names, cart treatment, and any content-capture requirements.",
+      "Confirm menus, cups, signage, beverage names, cart treatment, presentation details, and any content-capture requirements.",
   },
   {
     number: "05",
-    title: "Production lead time",
+    title: "Allow for production lead time",
     description:
-      "Begin as early as possible when custom production is involved. No universal lead time is promised because scope, approvals, quantities, vendors, and event dates vary.",
+      "Custom production timelines depend on the scope, approvals, quantities, vendors, service format, and event date. Earlier inquiries provide more flexibility.",
   },
 ] as const;
 

@@ -1,0 +1,644 @@
+/* Bridal Shower overview: host notes arranged like a quiet invitation suite. */
+
+.bridal-page > .bridal-host-overview {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(calc(100% - (2 * var(--space-page-inline))), var(--layout-max));
+  margin-inline: auto;
+  padding-block: clamp(5.5rem, 9vw, 9rem);
+  background: var(--surface-chapter-taupe);
+  box-shadow: 0 0 0 100vmax var(--surface-chapter-taupe);
+  clip-path: inset(0 -100vmax);
+  isolation: isolate;
+  gap: 0;
+  overflow: visible;
+}
+
+.bridal-page > .bridal-host-overview::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0 -100vmax;
+  background-image: radial-gradient(rgb(23 22 20 / 5.3%) 0.55px, transparent 0.7px);
+  background-size: 4px 4px;
+  content: "";
+  pointer-events: none;
+}
+
+.bridal-page > .bridal-host-overview > h2,
+.bridal-page .bridal-host-overview-notes {
+  position: relative;
+  z-index: 1;
+}
+
+.bridal-page > .bridal-host-overview > h2 {
+  max-width: 15ch !important;
+  margin: 0 auto clamp(7.5rem, 10vw, 11rem);
+  font-size: var(--type-internal-page-h1);
+  font-weight: 400;
+  letter-spacing: -0.065em;
+  line-height: 0.88;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.bridal-page .bridal-host-overview-notes {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--bridal-rule);
+  border-bottom: 1px solid var(--bridal-rule);
+  align-self: stretch;
+  padding-top: 0;
+}
+
+.bridal-host-overview-notes article {
+  width: auto;
+  padding: clamp(2rem, 4vw, 4rem);
+}
+
+.bridal-host-overview-notes article + article {
+  border-left: 1px solid var(--bridal-rule);
+}
+
+.bridal-host-overview-notes h3 {
+  margin: 0 0 var(--space-3);
+  color: var(--color-luxe-black);
+  font-size: clamp(0.72rem, 0.78vw, 0.82rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.bridal-page > .bridal-host-overview .bridal-host-overview-notes p {
+  max-width: 47ch;
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: clamp(1rem, 1.15vw, 1.15rem);
+  line-height: 1.65;
+}
+
+/* Bridal program: two editorial pairs describing how the gathering unfolds. */
+
+.bridal-page > .bridal-moments {
+  position: relative;
+  isolation: isolate;
+  width: min(calc(100% - (2 * var(--space-page-inline))), var(--layout-max));
+  margin-inline: auto;
+  padding-block: clamp(5.5rem, 9vw, 9rem);
+  background: color-mix(in srgb, var(--color-luxe-ivory) 88%, var(--bridal-chalk));
+  box-shadow: 0 0 0 100vmax
+    color-mix(in srgb, var(--color-luxe-ivory) 88%, var(--bridal-chalk));
+  clip-path: inset(0 -100vmax);
+}
+
+.bridal-moments > header {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--space-5) var(--layout-grid-gap);
+  align-items: end;
+  margin-bottom: clamp(3.5rem, 6vw, 6rem);
+}
+
+.bridal-moments > header .foundation-label {
+  grid-column: 1 / 6;
+  margin: 0;
+  color: var(--color-luxe-gold-ink);
+}
+
+.bridal-moments > header h2 {
+  grid-column: 1 / 8;
+  max-width: 12ch !important;
+  margin: 0;
+}
+
+.bridal-moments > header > p:last-child {
+  grid-column: 8 / 13;
+  max-width: 42ch;
+  margin: 0;
+  padding-top: var(--space-5);
+  border-top: 1px solid color-mix(in srgb, var(--color-luxe-gold) 48%, transparent);
+  color: var(--color-text-secondary);
+  font-size: clamp(1rem, 1.15vw, 1.16rem);
+  line-height: 1.65;
+}
+
+.bridal-moment-band {
+  display: grid;
+  grid-template-columns: minmax(0, 0.44fr) minmax(0, 0.56fr);
+  border-top: 1px solid var(--bridal-rule);
+}
+
+.bridal-moment-band:last-child {
+  border-bottom: 1px solid var(--bridal-rule);
+}
+
+.bridal-moment-band-feature {
+  grid-template-columns: minmax(0, 0.6fr) minmax(0, 0.4fr);
+}
+
+.bridal-moment-band article {
+  min-width: 0;
+  padding: clamp(2.5rem, 5vw, 5rem);
+}
+
+.bridal-moment-band article + article {
+  border-left: 1px solid var(--bridal-rule);
+}
+
+.bridal-moment-band article > p:first-child {
+  margin: 0 0 var(--space-4);
+  color: var(--color-luxe-gold-ink);
+  font-size: clamp(0.72rem, 0.78vw, 0.82rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.bridal-moment-band h3 {
+  max-width: 17ch;
+  margin: 0 0 var(--space-4);
+  font-size: clamp(1.8rem, 3vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.bridal-moment-band article > p:last-child {
+  max-width: 46ch;
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: clamp(1rem, 1.1vw, 1.15rem);
+  line-height: 1.65;
+}
+
+.bridal-moment-feature {
+  position: relative;
+  background: color-mix(in srgb, var(--bridal-rose) 22%, transparent);
+}
+
+.bridal-moment-feature::after {
+  position: absolute;
+  right: clamp(2rem, 4vw, 4rem);
+  bottom: clamp(2rem, 4vw, 4rem);
+  width: clamp(4rem, 8vw, 8rem);
+  height: 1px;
+  background: var(--color-luxe-gold);
+  content: "";
+  pointer-events: none;
+}
+
+.bridal-moment-feature h3 {
+  max-width: 15ch;
+  font-size: clamp(2.2rem, 3.7vw, 4rem);
+}
+
+/* Bridal personalization: three styling notes with invitation-suite hierarchy. */
+
+.bridal-page > .bridal-personalization {
+  position: relative;
+  grid-template-columns: minmax(18rem, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(4rem, 8vw, 9rem);
+  align-items: start;
+}
+
+.bridal-page > .bridal-personalization::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: clamp(4rem, 8vw, 8rem);
+  height: 1px;
+  background: var(--color-luxe-gold);
+  content: "";
+}
+
+.bridal-personalization > header {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vw, 4rem);
+  padding-top: clamp(2.5rem, 5vw, 5rem);
+}
+
+.bridal-personalization > header h2 {
+  max-width: 11ch !important;
+}
+
+.bridal-personalization > header > p {
+  max-width: 36ch;
+}
+
+.bridal-page > .bridal-personalization ol {
+  border-top: 1px solid var(--bridal-rule);
+  border-bottom: 1px solid var(--bridal-rule);
+}
+
+.bridal-page > .bridal-personalization li {
+  grid-template-columns: minmax(12rem, 0.38fr) minmax(0, 0.62fr);
+  grid-template-rows: auto 1fr;
+  gap: var(--space-3) clamp(2rem, 4vw, 4rem);
+  align-items: start;
+  width: 100%;
+  padding-block: clamp(2.25rem, 4vw, 4rem);
+}
+
+.bridal-page > .bridal-personalization li + li {
+  border-top: 1px solid var(--bridal-rule);
+}
+
+.bridal-page > .bridal-personalization li > span {
+  grid-column: 1;
+  grid-row: 1;
+  color: var(--color-luxe-gold-ink);
+  font-size: clamp(0.7rem, 0.76vw, 0.8rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.bridal-page > .bridal-personalization h3 {
+  grid-column: 1;
+  grid-row: 2;
+  max-width: 12ch;
+  margin: 0;
+  font-size: clamp(1.5rem, 2.2vw, 2.3rem);
+  line-height: 1.08;
+}
+
+.bridal-page > .bridal-personalization li > p {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  max-width: 44ch;
+  align-self: center;
+  font-size: clamp(1rem, 1.1vw, 1.15rem);
+  line-height: 1.65;
+}
+
+/* Bridal planning: a host-facing guide rather than an intake checklist. */
+
+.bridal-page > .bridal-planning {
+  position: relative;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(3rem, 6vw, 6rem) var(--layout-grid-gap);
+  align-items: start;
+}
+
+.bridal-page > .bridal-planning > header {
+  grid-column: 1 / -1;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--layout-grid-gap);
+  align-items: end;
+  gap: clamp(2rem, 4vw, 4rem);
+  padding-top: clamp(2rem, 3vw, 3rem);
+  border-top: 1px solid var(--bridal-rule);
+}
+
+.bridal-page > .bridal-planning > header::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: clamp(4rem, 7vw, 7rem);
+  height: 1px;
+  background: var(--color-luxe-gold);
+  content: "";
+}
+
+.bridal-page > .bridal-planning > header h2 {
+  grid-column: 1 / 8;
+  max-width: 12ch !important;
+}
+
+.bridal-page > .bridal-planning > header > p {
+  grid-column: 8 / 13;
+  max-width: 35ch;
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: clamp(1rem, 1.15vw, 1.15rem);
+  line-height: 1.65;
+}
+
+.bridal-page > .bridal-planning ol {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--bridal-rule);
+  border-bottom: 1px solid var(--bridal-rule);
+}
+
+.bridal-page > .bridal-planning li {
+  display: block;
+  align-items: start;
+  width: 100%;
+  padding: clamp(2.25rem, 4vw, 4rem);
+}
+
+.bridal-page > .bridal-planning li + li {
+  border-top: 0;
+}
+
+.bridal-page > .bridal-planning li:nth-child(even) {
+  border-left: 1px solid var(--bridal-rule);
+}
+
+.bridal-page > .bridal-planning li:nth-child(n + 3) {
+  border-top: 1px solid var(--bridal-rule);
+}
+
+.bridal-page > .bridal-planning h3 {
+  max-width: 15ch;
+  margin: 0 0 var(--space-4);
+  color: var(--color-luxe-gold-ink);
+  font-size: clamp(0.72rem, 0.8vw, 0.84rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.bridal-page > .bridal-planning li > p {
+  max-width: 42ch;
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: clamp(1rem, 1.15vw, 1.16rem);
+  line-height: 1.65;
+}
+
+/* Bridal Shower selector: shared service architecture with invitation-suite rhythm. */
+
+.bridal-page > .signature-selector-bridal {
+  position: relative;
+  isolation: isolate;
+  width: min(calc(100% - (2 * var(--space-page-inline))), var(--layout-max));
+  margin-top: 0;
+  margin-inline: auto;
+  padding-block: clamp(5rem, 8vw, 8rem);
+  background: color-mix(in srgb, var(--bridal-chalk) 88%, var(--color-luxe-ivory));
+  box-shadow: 0 0 0 100vmax
+    color-mix(in srgb, var(--bridal-chalk) 88%, var(--color-luxe-ivory));
+  clip-path: inset(0 -100vmax);
+  color: var(--color-luxe-black);
+}
+
+.bridal-page > .signature-selector-bridal::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0 -100vmax;
+  background-image: radial-gradient(rgb(23 22 20 / 4.2%) 0.55px, transparent 0.7px);
+  background-size: 4px 4px;
+  content: "";
+  pointer-events: none;
+}
+
+.bridal-page > .signature-selector-bridal::after {
+  position: absolute;
+  z-index: 0;
+  top: clamp(3rem, 5vw, 5rem);
+  right: clamp(1rem, 6vw, 6rem);
+  width: min(28rem, 30vw);
+  height: clamp(5rem, 9vw, 9rem);
+  border-top: 1px solid color-mix(in srgb, var(--color-luxe-gold) 52%, transparent);
+  border-right: 1px solid color-mix(in srgb, var(--color-luxe-gold) 30%, transparent);
+  content: "";
+  pointer-events: none;
+}
+
+.bridal-page > .signature-selector-bridal > * {
+  position: relative;
+  z-index: 1;
+}
+
+.bridal-page > .signature-selector-bridal .signature-section-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-5);
+  justify-items: center;
+  text-align: center;
+}
+
+.bridal-page > .signature-selector-bridal .signature-section-heading::before {
+  grid-column: 1;
+  align-self: start;
+  width: clamp(4rem, 7vw, 7rem);
+  height: 1px;
+  background: var(--color-luxe-gold);
+  content: "";
+}
+
+.bridal-page > .signature-selector-bridal .signature-section-heading h2 {
+  grid-column: 1;
+  max-width: 13ch !important;
+  margin: 0 auto;
+  color: var(--color-luxe-black);
+  text-align: center;
+}
+
+.bridal-page > .signature-selector-bridal .signature-selector-world {
+  min-height: 0;
+  margin-top: clamp(3.5rem, 6vw, 6rem);
+  border-color: var(--bridal-rule);
+}
+
+.bridal-page > .signature-selector-bridal .signature-selector-choice {
+  padding: clamp(1.25rem, 2.5vw, 2.5rem);
+  border-color: var(--bridal-rule);
+}
+
+.bridal-page > .signature-selector-bridal .signature-selector-choice:nth-of-type(2) {
+  background: color-mix(in srgb, var(--bridal-rose) 18%, transparent);
+}
+
+.bridal-page > .signature-selector-bridal .signature-selector-choice:nth-of-type(3) {
+  background: color-mix(in srgb, var(--bridal-stone) 12%, transparent);
+}
+
+.bridal-page > .signature-selector-bridal .signature-selector-art {
+  aspect-ratio: 4 / 3;
+  border: clamp(0.5rem, 1vw, 0.85rem) solid
+    color-mix(in srgb, var(--color-luxe-ivory) 82%, transparent);
+  background: var(--bridal-chalk);
+}
+
+.bridal-page > .signature-selector-bridal .signature-selector-line {
+  top: 44%;
+  opacity: 0.32;
+  transform: rotate(-2deg);
+}
+
+.bridal-page > .signature-selector-bridal .signature-selector-line::before {
+  top: -5rem;
+  left: 38%;
+  width: 28%;
+  height: 10rem;
+  border-color: color-mix(in srgb, var(--color-luxe-gold) 38%, transparent);
+  border-radius: 0;
+}
+
+.bridal-page > .signature-selector-bridal :is(
+  .signature-selector-label,
+  .signature-selector-copy strong,
+  .signature-selector-tagline,
+  .signature-selector-copy b
+) {
+  color: var(--color-luxe-black);
+}
+
+@media (max-width: 840px) {
+  .bridal-page > .bridal-host-overview {
+    display: flex;
+  }
+
+  .bridal-host-overview-notes article,
+  .bridal-host-overview-notes article:nth-child(2),
+  .bridal-host-overview-notes article:nth-child(3) {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .bridal-page > .bridal-personalization {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+
+  .bridal-page > .bridal-personalization::after {
+    top: 0;
+  }
+
+  .bridal-personalization > header {
+    max-width: 42rem;
+  }
+
+  .bridal-page > .bridal-planning {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+
+  .bridal-page > .bridal-planning > header {
+    max-width: 42rem;
+  }
+
+  .bridal-moments > header {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .bridal-moments > header .foundation-label,
+  .bridal-moments > header h2,
+  .bridal-moments > header > p:last-child {
+    grid-column: 1;
+  }
+
+  .bridal-moments > header > p:last-child {
+    max-width: 42rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .bridal-page .bridal-host-overview-notes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .bridal-host-overview-notes article + article {
+    border-top: 1px solid var(--bridal-rule);
+    border-left: 0;
+  }
+
+  .bridal-page > .bridal-moments {
+    padding-block: var(--space-9);
+  }
+
+  .bridal-moment-band,
+  .bridal-moment-band-feature {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .bridal-moment-band article + article {
+    border-top: 1px solid var(--bridal-rule);
+    border-left: 0;
+  }
+
+  .bridal-moment-band article {
+    padding: clamp(2rem, 8vw, 3rem) 0;
+  }
+
+  .bridal-moment-feature {
+    margin-inline: calc(var(--space-page-inline) * -0.5);
+    padding-inline: calc(var(--space-page-inline) * 0.5) !important;
+  }
+
+  .bridal-page > .bridal-personalization li,
+  .bridal-page > .bridal-personalization li:nth-child(2),
+  .bridal-page > .bridal-personalization li:nth-child(3) {
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .bridal-page > .bridal-personalization li > span,
+  .bridal-page > .bridal-personalization h3,
+  .bridal-page > .bridal-personalization li > p {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .bridal-page > .bridal-personalization h3 {
+    max-width: 16ch;
+  }
+
+  .bridal-page > .bridal-planning li,
+  .bridal-page > .bridal-planning li:nth-child(2),
+  .bridal-page > .bridal-planning li:nth-child(4) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-3);
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .bridal-page > .bridal-planning ol {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .bridal-page > .bridal-planning li:nth-child(even) {
+    border-left: 0;
+  }
+
+  .bridal-page > .bridal-planning li:nth-child(n + 2) {
+    border-top: 1px solid var(--bridal-rule);
+  }
+
+  .bridal-page > .bridal-planning h3,
+  .bridal-page > .bridal-planning li > p {
+    grid-column: 1;
+  }
+
+  .bridal-page > .signature-selector-bridal {
+    padding-block: var(--space-9);
+  }
+
+  .bridal-page > .signature-selector-bridal::after {
+    right: 0;
+    width: 8rem;
+    height: 4rem;
+  }
+
+  .bridal-page > .signature-selector-bridal .signature-section-heading {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .bridal-page > .signature-selector-bridal .signature-section-heading::before {
+    grid-column: 1;
+  }
+
+  .bridal-page > .signature-selector-bridal .signature-section-heading h2 {
+    grid-column: 1;
+    max-width: 10ch !important;
+  }
+
+  .bridal-page > .signature-selector-bridal .signature-selector-art {
+    aspect-ratio: 4 / 3;
+  }
+}

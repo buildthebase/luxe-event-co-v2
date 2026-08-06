@@ -71,15 +71,26 @@ export const sweetCartSectionNavigation: readonly PageSectionNavigationItem[] = 
 
 export const seatingRentalsSectionNavigation: readonly PageSectionNavigationItem[] = [
   { id: "page-overview", label: "Back to top" },
-  { id: "seating-overview-title", label: "The approach" },
+  { id: "seating-overview-title", label: "The experience" },
   { id: "rental-categories", label: "Rental categories" },
   { id: "seating-studies-title", label: "Layout planning" },
   { id: "seating-applications-title", label: "Indoor and outdoor" },
   { id: "seating-operations-title", label: "Operations" },
   { id: "seating-events-title", label: "Event types" },
   { id: "seating-pricing-title", label: "Pricing" },
-  { id: "seating-quote-title", label: "Quote details" },
   { id: "seating-gallery-title", label: "Gallery" },
   { id: "seating-combinations-title", label: "Pair experiences" },
   { id: "seating-faq-title", label: "Questions" },
+] as const;
+
+export const weddingsSectionNavigation: readonly PageSectionNavigationItem[] = [
+  { id: "page-overview", label: "Back to top" },
+  { id: "wedding-overview-title", label: "The wedding experience" },
+  { id: "wedding-day-title", label: "Wedding-day possibilities" },
+  { id: "wedding-experiences", label: "Three experiences" },
+  { id: "wedding-customization-title", label: "Personalization" },
+  { id: "wedding-coordination-title", label: "Planning and logistics" },
+  { id: "wedding-gallery-title", label: "Gallery" },
+  { id: "wedding-faq-title", label: "Questions" },
+  { id: "wedding-inquiry", label: "Plan your wedding" },
 ] as const;

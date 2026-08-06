@@ -1,0 +1,973 @@
+/* Wedding-page display rhythm and personalization treatment. */
+
+.foundation-shell .wedding-page h2 {
+  font-size: var(--wedding-display-heading-size) !important;
+  line-height: 0.9 !important;
+  letter-spacing: -0.075em !important;
+}
+
+/* Central wedding overview: an offset stationery composition, not a split block. */
+.wedding-overview {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--layout-grid-gap);
+  align-items: center;
+  overflow: hidden;
+  padding-block: clamp(5rem, 8vw, 8rem);
+  background: color-mix(in srgb, var(--surface-chapter-taupe) 86%, var(--color-luxe-ivory));
+  box-shadow: 0 0 0 100vmax color-mix(in srgb, var(--surface-chapter-taupe) 86%, var(--color-luxe-ivory));
+  clip-path: inset(0 -100vmax);
+}
+
+.wedding-overview::before {
+  position: absolute;
+  top: clamp(4rem, 7vw, 7rem);
+  right: clamp(0rem, 3vw, 3rem);
+  width: min(31rem, 34vw);
+  aspect-ratio: 1.28;
+  border: 1px solid color-mix(in srgb, var(--color-luxe-gold-ink) 26%, transparent);
+  content: "";
+  pointer-events: none;
+}
+
+.wedding-overview::after {
+  position: absolute;
+  top: clamp(7rem, 12vw, 12rem);
+  right: clamp(4rem, 11vw, 11rem);
+  width: min(24rem, 27vw);
+  height: 1px;
+  background: color-mix(in srgb, var(--color-luxe-gold-ink) 52%, transparent);
+  content: "";
+  pointer-events: none;
+}
+
+.wedding-overview > div:first-child {
+  position: relative;
+  z-index: 1;
+  grid-column: 1 / 7;
+  grid-row: 1;
+  padding: clamp(1rem, 2vw, 2rem) 0 clamp(2rem, 4vw, 4rem);
+  border-top: 1px solid color-mix(in srgb, var(--color-luxe-gold-ink) 40%, transparent);
+}
+
+.wedding-overview > div:first-child::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: clamp(6rem, 13vw, 13rem);
+  height: clamp(3rem, 6vw, 6rem);
+  border-top: 1px solid color-mix(in srgb, var(--color-luxe-gold-ink) 24%, transparent);
+  border-left: 1px solid color-mix(in srgb, var(--color-luxe-gold-ink) 24%, transparent);
+  content: "";
+  pointer-events: none;
+}
+
+.wedding-overview .foundation-label {
+  color: var(--color-luxe-gold-ink);
+}
+
+.wedding-overview h2 {
+  max-width: 11ch;
+  margin-top: var(--space-5);
+  text-wrap: balance;
+}
+
+.wedding-overview > div:last-child {
+  position: relative;
+  z-index: 2;
+  grid-column: 7 / 13;
+  grid-row: 1;
+  width: min(100%, 42rem);
+  align-self: center;
+  justify-self: end;
+  padding: clamp(2rem, 4vw, 4rem);
+  border: 1px solid color-mix(in srgb, var(--color-luxe-gold-ink) 30%, transparent);
+  background: color-mix(in srgb, var(--color-luxe-ivory) 74%, transparent);
+}
+
+.wedding-overview > div:last-child::before {
+  display: block;
+  width: clamp(3.5rem, 6vw, 6rem);
+  height: 1px;
+  margin-bottom: clamp(2rem, 4vw, 4rem);
+  background: var(--color-luxe-gold-ink);
+  content: "";
+}
+
+.wedding-overview > div:last-child p {
+  max-width: 48ch;
+  margin-bottom: var(--space-5);
+}
+
+.wedding-customization {
+  --wedding-customization-surface: color-mix(
+    in srgb,
+    var(--color-luxe-ivory) 84%,
+    var(--color-luxe-taupe)
+  );
+  position: relative;
+  isolation: isolate;
+  padding-block: clamp(5.5rem, 9vw, 9rem);
+  background: var(--wedding-customization-surface);
+  box-shadow: 0 0 0 100vmax var(--wedding-customization-surface);
+  clip-path: inset(0 -100vmax);
+}
+
+.wedding-customization::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0 -100vmax;
+  background-image: radial-gradient(rgb(23 22 20 / 5.3%) 0.55px, transparent 0.7px);
+  background-size: 4px 4px;
+  content: "";
+  pointer-events: none;
+}
+
+.wedding-customization > * {
+  position: relative;
+  z-index: 1;
+}
+
+.wedding-customization > header {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--layout-grid-gap);
+  align-items: end;
+  margin-bottom: clamp(3.5rem, 6vw, 6rem);
+}
+
+.wedding-customization > header .foundation-label {
+  grid-column: 1 / 5;
+  color: var(--color-luxe-gold-ink);
+}
+
+.wedding-customization > header h2 {
+  grid-column: 2 / 10;
+  max-width: 13ch;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.wedding-customization > header::after {
+  grid-column: 10 / 13;
+  width: 100%;
+  height: clamp(3rem, 6vw, 6rem);
+  border-top: 1px solid color-mix(in srgb, var(--color-luxe-gold-ink) 38%, transparent);
+  border-right: 1px solid color-mix(in srgb, var(--color-luxe-gold-ink) 24%, transparent);
+  content: "";
+}
+
+.wedding-customization > div {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 3rem) var(--layout-grid-gap);
+  align-items: start;
+  border-top: 1px solid color-mix(in srgb, var(--color-luxe-gold) 30%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-luxe-gold) 30%, transparent);
+  padding-block: clamp(2rem, 4vw, 4rem);
+}
+
+.wedding-customization article {
+  position: relative;
+  min-height: 0;
+  margin: 0;
+  padding: clamp(2rem, 4vw, 4rem);
+  border: 1px solid color-mix(in srgb, var(--color-luxe-gold) 44%, transparent);
+  background: color-mix(in srgb, var(--color-luxe-ivory) 76%, transparent);
+}
+
+.wedding-customization article::before {
+  position: absolute;
+  top: -1px;
+  left: clamp(2rem, 3vw, 3.25rem);
+  width: clamp(3.5rem, 6vw, 6rem);
+  height: 2px;
+  background: var(--color-luxe-gold);
+  content: "";
+}
+
+.wedding-customization article:nth-child(2n) {
+  margin-top: 0;
+  transform: none;
+}
+
+.wedding-customization article:nth-child(1) {
+  grid-column: 1 / 8;
+  background: color-mix(in srgb, var(--color-luxe-ivory) 86%, transparent);
+}
+
+.wedding-customization article:nth-child(2) {
+  grid-column: 8 / 13;
+  margin-top: clamp(3rem, 6vw, 6rem);
+}
+
+.wedding-customization article:nth-child(3) {
+  grid-column: 2 / 6;
+}
+
+.wedding-customization article:nth-child(4) {
+  grid-column: 6 / 13;
+  margin-top: clamp(1.5rem, 3vw, 3rem);
+  background: color-mix(in srgb, var(--color-luxe-taupe) 34%, var(--color-luxe-ivory));
+}
+
+.wedding-customization article:nth-child(1)::after,
+.wedding-customization article:nth-child(4)::after {
+  position: absolute;
+  inset: var(--space-4);
+  border-right: 1px solid color-mix(in srgb, var(--color-luxe-gold) 24%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-luxe-gold) 24%, transparent);
+  content: "";
+  pointer-events: none;
+}
+
+.wedding-customization article h3 {
+  max-width: 18ch;
+  margin: 0 0 var(--space-4);
+  font-size: clamp(1.8rem, 2.4vw, 2.65rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.wedding-customization article > p {
+  max-width: 43ch;
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: clamp(1rem, 1.1vw, 1.15rem);
+  line-height: 1.65;
+}
+
+.wedding-coordination {
+  padding-block: clamp(5.5rem, 9vw, 9rem);
+}
+
+.wedding-coordination > header {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 2rem) var(--layout-grid-gap);
+  align-items: start;
+  margin-bottom: clamp(4rem, 7vw, 7rem);
+}
+
+.wedding-coordination > header .foundation-label {
+  grid-column: 1 / 5;
+  grid-row: 1;
+  justify-self: start;
+  color: var(--color-luxe-gold-on-dark);
+}
+
+.wedding-coordination > header h2 {
+  grid-column: 1 / 8;
+  grid-row: 2 / 4;
+  max-width: 9ch;
+  margin: 0;
+  color: var(--color-luxe-ivory);
+  text-wrap: balance;
+}
+
+.wedding-coordination > header > p:last-child {
+  grid-column: 8 / 13;
+  grid-row: 2;
+  max-width: 38rem;
+  align-self: end;
+  margin: 0;
+  padding-top: var(--space-5);
+  border-top: 1px solid color-mix(in srgb, var(--color-luxe-gold-on-dark) 62%, transparent);
+  color: var(--surface-dark-copy-muted);
+  font-size: clamp(1rem, 1.1vw, 1.15rem);
+  line-height: 1.65;
+}
+
+.wedding-coordination ol {
+  position: relative;
+  display: grid;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+}
+
+.wedding-coordination ol::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: color-mix(in srgb, var(--color-luxe-gold-on-dark) 11%, transparent);
+  content: "";
+  pointer-events: none;
+}
+
+.wedding-coordination li {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(14rem, 0.78fr) minmax(0, 1.22fr);
+  gap: clamp(2rem, 5vw, 6rem);
+  align-items: start;
+  width: 91%;
+  min-height: 0;
+  margin: 0;
+  padding: clamp(2.5rem, 4.5vw, 4.5rem) clamp(1rem, 2vw, 2rem);
+  border: 0;
+  border-top: 1px solid var(--surface-dark-rule);
+  background: transparent;
+  box-shadow: none;
+}
+
+.wedding-coordination li::before {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: clamp(3rem, 5vw, 5rem);
+  height: 1px;
+  background: var(--color-luxe-gold-on-dark);
+  content: "";
+}
+
+.wedding-coordination li:nth-child(2n) {
+  width: 91%;
+  justify-self: end;
+  border: 0;
+  border-top: 1px solid var(--surface-dark-rule);
+  transform: none;
+}
+
+.wedding-coordination li:nth-child(2n)::before {
+  right: 0;
+  left: auto;
+}
+
+.wedding-coordination li:last-child {
+  border-bottom: 1px solid var(--surface-dark-rule);
+}
+
+.wedding-coordination h3 {
+  max-width: 18ch;
+  margin: 0 0 var(--space-4);
+  color: var(--color-luxe-ivory);
+  font-size: clamp(1.9rem, 2.7vw, 2.9rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.wedding-coordination li > p {
+  max-width: 52rem;
+  margin: 0;
+  padding-left: clamp(1.5rem, 3vw, 3rem);
+  border-left: 1px solid var(--surface-dark-rule);
+  color: var(--surface-dark-copy-muted);
+  font-size: clamp(1rem, 1.1vw, 1.15rem);
+  line-height: 1.65;
+}
+
+.wedding-coordination > header aside {
+  display: grid;
+  grid-column: 8 / 13;
+  grid-row: 3;
+  gap: var(--space-3);
+  align-content: start;
+  margin-top: var(--space-5);
+  padding: var(--space-5) 0 0;
+  border: 0;
+  border-top: 1px solid color-mix(in srgb, var(--color-luxe-gold-on-dark) 62%, transparent);
+  background: transparent;
+}
+
+.wedding-coordination > header aside strong {
+  color: var(--color-luxe-gold-on-dark);
+  font-size: clamp(1.3rem, 2vw, 1.9rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+
+.wedding-coordination > header aside p {
+  max-width: 34rem;
+  margin: 0;
+  color: var(--surface-dark-copy-muted);
+  font-size: clamp(1rem, 1.1vw, 1.15rem);
+  line-height: 1.65;
+}
+
+.wedding-day-note {
+  max-width: none;
+  margin: clamp(2rem, 3vw, 3rem) auto 0;
+  color: var(--color-text-secondary);
+  font-size: clamp(0.92rem, 0.88rem + 0.14vw, 1rem);
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Wedding timeline: framed editorial journey inspired by the supplied reference. */
+.wedding-day > header .foundation-label {
+  display: grid;
+  grid-template-columns: minmax(3rem, 1fr) auto minmax(3rem, 1fr);
+  gap: clamp(1rem, 2vw, 2rem);
+  align-items: center;
+  width: min(100%, 32rem);
+}
+
+.wedding-day > header .foundation-label::before,
+.wedding-day > header .foundation-label::after {
+  height: 1px;
+  background: color-mix(in srgb, var(--color-luxe-gold-ink) 38%, transparent);
+  content: "";
+}
+
+.wedding-day ol {
+  position: relative;
+  overflow: visible;
+  border: 1px solid color-mix(in srgb, var(--color-luxe-gold-ink) 22%, transparent);
+  border-radius: 0.75rem;
+  background: rgb(255 253 249 / 34%);
+}
+
+.wedding-day ol::before {
+  position: absolute;
+  top: clamp(3rem, 5vw, 5rem);
+  bottom: clamp(3rem, 5vw, 5rem);
+  left: -1.45rem;
+  width: 1px;
+  background: color-mix(in srgb, var(--color-luxe-gold-ink) 45%, transparent);
+  content: "";
+}
+
+.wedding-day li {
+  position: relative;
+  display: grid;
+  grid-template-columns: clamp(5.5rem, 9vw, 8rem) minmax(0, 1fr) minmax(9rem, 0.28fr);
+  gap: clamp(1.5rem, 3vw, 3rem);
+  align-items: center;
+  min-height: clamp(12rem, 17vw, 15rem);
+  padding: clamp(1.75rem, 3vw, 3rem);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-luxe-gold-ink) 18%, transparent);
+}
+
+.wedding-day li:last-child {
+  border-bottom: 0;
+}
+
+.wedding-day li::before {
+  position: absolute;
+  top: 50%;
+  left: -1.75rem;
+  width: 0.62rem;
+  aspect-ratio: 1;
+  border: 3px solid var(--surface-warm, #f7f3ed);
+  border-radius: 50%;
+  background: var(--color-luxe-gold-ink);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-luxe-gold-ink) 48%, transparent);
+  content: "";
+  transform: translateY(-50%);
+}
+
+.wedding-day-symbol {
+  display: grid;
+  align-self: stretch;
+  place-items: center;
+  border-right: 1px solid color-mix(in srgb, var(--color-luxe-gold-ink) 18%, transparent);
+  color: color-mix(in srgb, var(--color-luxe-gold-ink) 78%, transparent);
+}
+
+.wedding-day-symbol span {
+  position: relative;
+  display: grid;
+  width: clamp(3.5rem, 5vw, 4.75rem);
+  aspect-ratio: 1;
+  place-items: center;
+}
+
+.wedding-day-symbol span::before,
+.wedding-day-symbol span::after {
+  position: absolute;
+  border-color: currentColor;
+  content: "";
+}
+
+.wedding-day-symbol-01 span::before {
+  top: 40%;
+  left: 42%;
+  width: 2rem;
+  height: 1.45rem;
+  border: 1.5px solid currentColor;
+  border-radius: 0.18rem 0.18rem 0.65rem 0.65rem;
+  transform: translate(-50%, -50%);
+}
+
+.wedding-day-symbol-01 span::after {
+  top: 40%;
+  left: 70%;
+  width: 0.75rem;
+  height: 0.8rem;
+  border: 1.5px solid currentColor;
+  border-left: 0;
+  border-radius: 0 999px 999px 0;
+  transform: translateY(-50%);
+}
+
+.wedding-day-symbol-02 span::before {
+  top: 50%;
+  left: 50%;
+  width: 1.9rem;
+  height: 2.25rem;
+  border: 1.5px solid currentColor;
+  border-radius: 0.2rem 0.2rem 0.7rem 0.7rem;
+  transform: translate(-50%, -50%) rotate(-5deg);
+}
+
+.wedding-day-symbol-02 span::after {
+  top: 16%;
+  left: 58%;
+  width: 1px;
+  height: 2.2rem;
+  background: currentColor;
+  transform: rotate(18deg);
+  transform-origin: bottom;
+}
+
+.wedding-day-symbol-03 span::before {
+  top: 52%;
+  left: 50%;
+  width: 2.6rem;
+  height: 1.35rem;
+  border: 1.5px solid currentColor;
+  border-bottom: 0;
+  border-radius: 3rem 3rem 0 0;
+  transform: translate(-50%, -50%);
+}
+
+.wedding-day-symbol-03 span::after {
+  top: calc(52% + 0.72rem);
+  left: 50%;
+  width: 3rem;
+  height: 1px;
+  background: currentColor;
+  transform: translateX(-50%);
+}
+
+.wedding-day-symbol-04 span::before {
+  top: 50%;
+  left: 50%;
+  width: 2.6rem;
+  aspect-ratio: 1;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0 0.48rem, currentColor 0.5rem 0.56rem),
+    repeating-linear-gradient(90deg, transparent 0 0.48rem, currentColor 0.5rem 0.56rem);
+  opacity: 0.82;
+  transform: translate(-50%, -50%);
+}
+
+.wedding-day-symbol-05 span::before {
+  top: 50%;
+  left: 50%;
+  width: 2.65rem;
+  aspect-ratio: 1;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.wedding-day-symbol-05 span::after {
+  top: 40%;
+  left: 59%;
+  width: 2.45rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #f7f3ed;
+  transform: translate(-50%, -50%);
+}
+
+.wedding-day-symbol-06 span::before {
+  top: 48%;
+  left: 50%;
+  width: 2.5rem;
+  height: 1.25rem;
+  border: 1.5px solid currentColor;
+  border-bottom: 0;
+  border-radius: 3rem 3rem 0 0;
+  transform: translate(-50%, -50%);
+}
+
+.wedding-day-symbol-06 span::after {
+  top: calc(48% + 0.72rem);
+  left: 50%;
+  width: 3.2rem;
+  height: 0.42rem;
+  border-top: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: translateX(-50%);
+}
+
+.wedding-day-copy {
+  width: 100%;
+}
+
+.wedding-day-kicker {
+  display: flex;
+  gap: clamp(0.8rem, 1.5vw, 1.35rem);
+  align-items: baseline;
+  margin-bottom: var(--space-4);
+}
+
+.wedding-day-kicker > span {
+  color: color-mix(in srgb, var(--color-luxe-gold-ink) 58%, transparent);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.wedding-day li .wedding-day-kicker > .wedding-day-phase {
+  margin: 0;
+}
+
+.wedding-day-fit {
+  display: grid;
+  gap: var(--space-3);
+  align-content: center;
+  min-height: 6.5rem;
+  padding-left: clamp(1.25rem, 2.5vw, 2.5rem);
+  border-left: 1px solid color-mix(in srgb, var(--color-luxe-gold-ink) 20%, transparent);
+}
+
+.wedding-day-fit small {
+  color: var(--color-luxe-gold-ink);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.wedding-day-fit small::before {
+  display: inline-block;
+  width: 0.42rem;
+  margin-right: 0.7rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-luxe-gold-ink) 42%, transparent);
+  content: "";
+  vertical-align: 0.08em;
+}
+
+.wedding-day-fit strong {
+  max-width: 12ch;
+  color: var(--color-text-primary, #201e1b);
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.wedding-day-note::before,
+.wedding-day-note::after {
+  display: inline-block;
+  width: clamp(2rem, 6vw, 6rem);
+  height: 1px;
+  margin-inline: clamp(0.75rem, 2vw, 1.5rem);
+  background: color-mix(in srgb, var(--color-luxe-gold-ink) 34%, transparent);
+  content: "";
+  vertical-align: middle;
+}
+
+.wedding-day {
+  position: relative;
+  isolation: isolate;
+}
+
+.wedding-gallery > header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(0.9rem, 1.6vw, 1.5rem);
+  justify-items: center;
+  margin-bottom: clamp(3.5rem, 6vw, 6rem);
+  text-align: center;
+}
+
+.wedding-gallery > header h2 {
+  width: 100%;
+  max-width: 12ch;
+  margin: 0 auto;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.wedding-gallery > a {
+  margin: clamp(6rem, 9vw, 9rem) auto 0;
+  font-size: clamp(0.85rem, 0.78rem + 0.28vw, 1rem);
+}
+
+.wedding-overview > div:last-child p:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 781px) {
+  .wedding-page > .wedding-day {
+    width: min(
+      calc(100% - (2 * clamp(5rem, 14vw, 14rem))),
+      76rem
+    );
+  }
+
+  .wedding-day li {
+    padding-inline: clamp(1rem, 2vw, 2rem);
+  }
+
+  .wedding-gallery-grid {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+
+  .wedding-gallery figure:first-child {
+    width: 86%;
+    align-self: center;
+    justify-self: center;
+  }
+
+  .wedding-gallery figure:first-child > div {
+    min-height: clamp(28rem, 48vw, 42rem);
+  }
+}
+
+@media (max-width: 780px) {
+  .wedding-overview {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-6);
+    padding-block: clamp(4rem, 12vw, 6rem);
+  }
+
+  .wedding-overview::before {
+    top: 2.5rem;
+    right: -3rem;
+    width: 11rem;
+  }
+
+  .wedding-overview::after {
+    top: 5rem;
+    right: 1rem;
+    width: 7rem;
+  }
+
+  .wedding-overview > div:first-child,
+  .wedding-overview > div:last-child {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .wedding-overview > div:first-child {
+    padding-bottom: clamp(2.5rem, 8vw, 4rem);
+  }
+
+  .wedding-overview > div:first-child::after {
+    width: 5rem;
+    height: 2.5rem;
+  }
+
+  .wedding-overview > div:last-child {
+    width: 100%;
+    padding: clamp(1.75rem, 7vw, 2.5rem);
+  }
+
+  .wedding-gallery figure:first-child {
+    width: 100%;
+  }
+
+  .wedding-gallery figure:first-child > div {
+    min-height: min(88vw, 27rem);
+  }
+
+  .wedding-gallery > a {
+    margin-top: clamp(3rem, 8vw, 4.5rem);
+  }
+
+  .wedding-customization {
+    padding-block: clamp(4rem, 12vw, 6rem);
+  }
+
+  .wedding-customization > header {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-5);
+    margin-bottom: clamp(2.75rem, 9vw, 4rem);
+  }
+
+  .wedding-customization > header .foundation-label,
+  .wedding-customization > header h2,
+  .wedding-customization > header::after {
+    grid-column: 1;
+  }
+
+  .wedding-customization > header::after {
+    width: min(42%, 9rem);
+    height: 2.5rem;
+    justify-self: end;
+  }
+
+  .wedding-customization > header h2 {
+    max-width: 10ch;
+  }
+
+  .wedding-customization > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+    padding-bottom: 0;
+  }
+
+  .wedding-customization article,
+  .wedding-customization article:nth-child(1),
+  .wedding-customization article:nth-child(2),
+  .wedding-customization article:nth-child(3),
+  .wedding-customization article:nth-child(4) {
+    grid-column: 1;
+    margin-top: 0;
+    padding: clamp(1.75rem, 7vw, 2.5rem);
+    border: 1px solid color-mix(in srgb, var(--color-luxe-gold) 44%, transparent);
+    transform: none;
+  }
+
+  .wedding-customization article::before {
+    left: clamp(1.75rem, 7vw, 2.5rem);
+  }
+
+  .wedding-customization article h3 {
+    margin-top: 0;
+  }
+
+  .wedding-coordination {
+    padding-block: clamp(4rem, 12vw, 6rem);
+  }
+
+  .wedding-coordination > header {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-5);
+    margin-bottom: clamp(2.75rem, 9vw, 4rem);
+  }
+
+  .wedding-coordination > header .foundation-label {
+    grid-column: 1;
+    grid-row: auto;
+    justify-self: end;
+  }
+
+  .wedding-coordination > header h2 {
+    grid-column: 1;
+    grid-row: auto;
+    max-width: 8ch;
+  }
+
+  .wedding-coordination > header > p:last-child {
+    grid-column: 1;
+    grid-row: auto;
+    width: min(90%, 34rem);
+    justify-self: end;
+    margin: var(--space-4) 0 0;
+  }
+
+  .wedding-coordination ol {
+    display: block;
+  }
+
+  .wedding-coordination ol::before {
+    display: none;
+  }
+
+  .wedding-coordination li,
+  .wedding-coordination li:nth-child(2n) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+    width: 100%;
+    justify-self: stretch;
+    margin-inline: 0;
+    padding: clamp(1.75rem, 7vw, 2.5rem) 0;
+    border: 0;
+    border-top: 1px solid var(--surface-dark-rule);
+    transform: none;
+  }
+
+  .wedding-coordination li::before {
+    left: 0;
+  }
+
+  .wedding-coordination li:nth-child(2n)::before {
+    right: 0;
+    left: auto;
+  }
+
+  .wedding-coordination li:last-child {
+    border-bottom: 1px solid var(--surface-dark-rule);
+  }
+
+  .wedding-coordination h3 {
+    margin-top: 0;
+  }
+
+  .wedding-coordination li > p {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .wedding-coordination > header aside {
+    grid-column: 1;
+    grid-row: auto;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+    width: min(90%, 34rem);
+    justify-self: start;
+    margin-top: var(--space-4);
+  }
+}
+
+@media (max-width: 1050px) {
+  .wedding-day li {
+    grid-template-columns: 4.75rem minmax(0, 1fr) minmax(8rem, 0.25fr);
+    gap: clamp(1.15rem, 2.25vw, 2rem);
+  }
+
+  .wedding-day-fit {
+    padding-left: 1.25rem;
+  }
+}
+
+@media (max-width: 780px) {
+  .wedding-day ol::before,
+  .wedding-day li::before {
+    display: none;
+  }
+
+  .wedding-day li {
+    grid-template-columns: 3.75rem minmax(0, 1fr);
+    gap: 1rem 1.25rem;
+    min-height: 0;
+    padding: clamp(1.5rem, 6vw, 2.25rem) clamp(1.1rem, 5vw, 1.75rem);
+  }
+
+  .wedding-day-symbol {
+    grid-row: 1 / 3;
+  }
+
+  .wedding-day-symbol span {
+    width: 2.75rem;
+    font-size: 1.4rem;
+  }
+
+  .wedding-day-kicker {
+    flex-wrap: wrap;
+    gap: 0.5rem 0.85rem;
+  }
+
+  .wedding-day-fit {
+    grid-column: 2;
+    min-height: 0;
+    padding: 1rem 0 0;
+    border-top: 1px solid color-mix(in srgb, var(--color-luxe-gold-ink) 20%, transparent);
+    border-left: 0;
+  }
+
+  .wedding-day-note::before,
+  .wedding-day-note::after {
+    display: none;
+  }
+}

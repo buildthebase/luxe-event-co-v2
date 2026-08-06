@@ -5,7 +5,6 @@ import {
   rentalEventLinks,
   rentalGalleryPreview,
   rentalOperations,
-  rentalQuoteRequirements,
   rentalServiceAreas,
   seatingRentalFaqs,
 } from "../experiences/seating-rentals-content";
@@ -17,6 +16,7 @@ import {
   divisionServiceIds,
 } from "../schema-builders";
 import { FaqAccordion } from "./faq-accordion";
+import { ExperienceContextSection } from "./experience-context-section";
 import { JsonLd } from "./json-ld";
 import { PageSectionNavigation } from "./page-section-navigation";
 import { PriorityAnswer } from "./priority-answer";
@@ -26,20 +26,6 @@ import { SiteShell } from "./site-shell";
 
 const seatingRentalsPath = "/experiences/seating-rentals";
 const [rentalPricingAnswer, ...rentalContextualFaqs] = seatingRentalFaqs;
-const rentalRequirementGroups = [
-  {
-    title: "Event context",
-    items: rentalQuoteRequirements.slice(0, 3),
-  },
-  {
-    title: "Inventory and layout",
-    items: rentalQuoteRequirements.slice(3, 6),
-  },
-  {
-    title: "Access and service",
-    items: rentalQuoteRequirements.slice(6),
-  },
-];
 const seatingRentalsSchema = createServicePageSchema({
   path: seatingRentalsPath,
   serviceId: divisionServiceIds.seating,
@@ -57,21 +43,22 @@ function SeatingHero() {
   return (
     <header className="seating-hero" id="page-overview">
       <div className="seating-hero-copy">
-        <p className="foundation-eyebrow">Luxe Seating Rentals / Toronto &amp; the GTA</p>
-        <h1 aria-label="Event and seating rentals, shaped around the occasion.">
-          <span>Event and seating</span>
-          <span>rentals, shaped around the occasion.</span>
+        <p className="foundation-eyebrow">EVENT SEATING RENTALS IN TORONTO &amp; THE GTA</p>
+        <h1 aria-label="Event seating rentals, planned around the room.">
+          <span>Event seating rentals,</span>
+          <span>planned around the room.</span>
         </h1>
         <p>
-          Seating and event rentals planned as part of the layout, atmosphere,
-          comfort, and way guests move through the gathering.
+          Seating solutions shaped around the venue, guest count, event flow, comfort,
+          and visual direction for weddings, corporate events, brand activations, and
+          private celebrations.
         </p>
         <div className="seating-hero-actions">
           <QuoteModalTrigger data-event-name="inquiry_start">
-            Discuss Your Rental Requirements <span aria-hidden="true">↗︎</span>
+            PLAN YOUR SEATING RENTALS <span aria-hidden="true">↗︎</span>
           </QuoteModalTrigger>
           <a href="#rental-categories">
-            Review Rental Categories <span aria-hidden="true">↓︎</span>
+            EXPLORE SEATING OPTIONS <span aria-hidden="true">↓︎</span>
           </a>
         </div>
       </div>
@@ -83,17 +70,16 @@ function SeatingHero() {
         <b>Layout / comfort / flow</b>
       </div>
       <div className="coffee-hero-proof-heading">
-        <p className="foundation-label">Confirmed categories and rental planning</p>
         <h2 id="seating-hero-proof-title">
-          The rental plan follows the room, event, and guest flow.
+          Every rental plan is shaped around the venue, guest count, and event flow.
         </h2>
       </div>
       <dl className="coffee-hero-proof" aria-labelledby="seating-hero-proof-title">
-        <div><dt>Six</dt><dd><strong>Rental categories</strong><span>Six confirmed rental categories can be planned together. Final items, quantities, finishes, and availability are resolved for the event.</span></dd></div>
-        <div><dt>Inside + Out</dt><dd><strong>Flexible settings</strong><span>Indoor and outdoor plans respond to venue dimensions, access, surface conditions, weather, and the way guests move through the setting.</span></dd></div>
-        <div><dt>$5M</dt><dd><strong>Liability insurance</strong><span>Luxe maintains $5 million in liability insurance for venue, planner, and procurement requirements.</span></dd></div>
-        <div><dt>Planned</dt><dd><strong>Layout and quantities</strong><span>Selections respond to guest count, floor plan, sightlines, accessibility, service zones, and the intended flow of the event.</span></dd></div>
-        <div><dt>Confirmed</dt><dd><strong>Delivery and access</strong><span>Delivery timing, loading access, placement, setup, teardown, and pickup responsibilities are confirmed in the proposal.</span></dd></div>
+        <div><dt>Six</dt><dd><strong>Rental categories</strong><span>Explore six rental categories, with final selections, quantities, finishes, and availability confirmed for your event.</span></dd></div>
+        <div><dt>Indoor + Outdoor</dt><dd><strong>Flexible settings</strong><span>Suitable rental options can be planned for indoor and outdoor settings, subject to the venue, surface conditions, weather, and item requirements.</span></dd></div>
+        <div><dt>$5M</dt><dd><strong>Liability coverage</strong><span>Luxe carries $5 million in liability coverage to support common venue and planner requirements.</span></dd></div>
+        <div><dt>Guest-Led</dt><dd><strong>Layout planning</strong><span>Quantities and placement are considered around the guest count, floor plan, service areas, and how people move through the space.</span></dd></div>
+        <div><dt>Coordinated</dt><dd><strong>Delivery and setup</strong><span>Delivery windows, loading access, placement, setup, teardown, and pickup details are confirmed before the event.</span></dd></div>
       </dl>
     </header>
   );
@@ -101,22 +87,51 @@ function SeatingHero() {
 
 function SeatingOverview() {
   return (
-    <section className="seating-overview" aria-labelledby="seating-overview-title">
-      <p className="foundation-label">The setting is part of the experience</p>
-      <h2 id="seating-overview-title">
-        Rentals should resolve the room, not simply occupy it.
-      </h2>
-      <div>
-        <p>
-          Luxe Seating Rentals is positioned around design, layout, comfort, and
-          guest experience rather than a catalogue-first selection process.
-        </p>
-        <p>
-          The starting point is the event: who is gathering, how the room will be
-          used, where service happens, and which elements are needed to support it.
-        </p>
-      </div>
-    </section>
+    <ExperienceContextSection
+      id="seating-overview"
+      ariaLabelledBy="seating-overview-title"
+      legacyClassName="seating-overview"
+      title={
+        <>
+          <span>Seating should shape the room.</span>
+          <span>The layout should support the gathering.</span>
+        </>
+      }
+      lead={<>Seating is planned around how guests gather, move through the space, and experience the event.</>}
+      copy={
+        <>
+          <p>
+            Event seating rentals bring the furniture, layout planning, and on-site
+            setup needed to shape a functional and considered gathering. Luxe Seating
+            Rentals provides seating solutions for{" "}
+            <Link href="/events/weddings">weddings</Link>,{" "}
+            <Link href="/events/corporate-events">corporate events</Link>,{" "}
+            <Link href="/events/brand-activations">brand activations</Link>,{" "}
+            <Link href="/events/bridal-showers">bridal showers</Link>,{" "}
+            <Link href="/events/baby-showers">baby showers</Link>,{" "}
+            <Link href="/events/birthdays">birthdays</Link>, and{" "}
+            <Link href="/events/private-events">private celebrations</Link> across
+            Toronto and the GTA.
+          </p>
+          <p>
+            Rather than beginning with a catalogue of individual pieces, each booking
+            begins with the room and how it needs to work. The seating plan is shaped
+            around the guest count, venue, event flow, service areas, visual direction,
+            access, delivery, and setup requirements.
+          </p>
+          <p className="seating-overview-handoff">
+            Luxe Seating Rentals can be booked independently or coordinated with{" "}
+            <Link href="/experiences/coffee-bar">Luxe Coffee Bar</Link> and{" "}
+            <Link href="/experiences/sweet-cart">Luxe Sweet Cart</Link> through one{" "}
+            <Link href="/inquire">Luxe Event Co. inquiry</Link>.
+          </p>
+        </>
+      }
+    >
+      <i />
+      <i />
+      <i />
+    </ExperienceContextSection>
   );
 }
 
@@ -130,7 +145,10 @@ function RentalCategories() {
     >
       <header>
         <p className="foundation-label">Confirmed rental categories</p>
-        <h2 id="seating-inventory-title">Six elements. One spatial conversation.</h2>
+        <h2 id="seating-inventory-title">
+          Six elements.<br />
+          One spatial conversation.
+        </h2>
         <p>
           The categories below are confirmed. Specific pieces, dimensions,
           quantities, finishes, and availability remain dependent on the approved
@@ -156,7 +174,7 @@ function LayoutInspiration() {
     <section className="seating-studies" aria-labelledby="seating-studies-title">
       <header>
         <p className="foundation-label">Styling and layout inspiration</p>
-        <h2 id="seating-studies-title">Begin with how the gathering needs to work.</h2>
+        <h2 id="seating-studies-title">Plan the layout around how guests will gather.</h2>
       </header>
       <div>
         {layoutStudies.map((study) => (
@@ -180,10 +198,10 @@ function RentalOperations() {
     >
       <header>
         <p className="foundation-label">Delivery, setup, and teardown</p>
-        <h2 id="seating-operations-title">The operational scope belongs in the proposal.</h2>
+        <h2 id="seating-operations-title">Delivery, setup, and teardown are confirmed for each event.</h2>
         <p>
-          These services are not described as universally included until Luxe
-          approves the rental logistics policy.
+          The rental proposal clearly outlines the services, timing, access
+          requirements, responsibilities, and applicable fees included with the booking.
         </p>
       </header>
       <div className="seating-operation-grid">
@@ -205,7 +223,7 @@ function IndoorOutdoorApplications() {
       <header>
         <p className="foundation-label">Indoor and outdoor applications</p>
         <h2 id="seating-applications-title">
-          The setting changes the rental plan.
+          Indoor and outdoor events require different rental plans.
         </h2>
       </header>
       <div>
@@ -232,35 +250,12 @@ function IndoorOutdoorApplications() {
   );
 }
 
-function RentalQuote() {
-  return (
-    <section className="seating-quote" aria-labelledby="seating-quote-title">
-      <header>
-        <p className="foundation-label">Prepare the rental conversation</p>
-        <h2 id="seating-quote-title">The useful details come before the quantities.</h2>
-        <p>
-          These inputs allow Luxe to evaluate inventory, logistics, layout, and
-          complementary service requirements without relying on a generic quote.
-        </p>
-      </header>
-      <div className="seating-quote-folio">
-        {rentalRequirementGroups.map((group) => (
-          <article key={group.title}>
-            <h3>{group.title}</h3>
-            <ul>{group.items.map((item) => <li key={item}>{item}</li>)}</ul>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 function RentalEvents() {
   return (
     <section className="seating-events" aria-labelledby="seating-events-title">
       <header>
         <p className="foundation-label">Recommended by occasion</p>
-        <h2 id="seating-events-title">Different events ask different things of the room.</h2>
+        <h2 id="seating-events-title">Every event calls for a different seating and rental plan.</h2>
       </header>
       <div>
         {rentalEventLinks.map((event, index) => (
@@ -281,10 +276,10 @@ function RentalGallery() {
     <section className="seating-gallery" aria-labelledby="seating-gallery-title">
       <header>
         <p className="foundation-label">Rental gallery</p>
-        <h2 id="seating-gallery-title">Show the room, not an isolated product grid.</h2>
+        <h2 id="seating-gallery-title">Event seating and rentals, seen as part of the room.</h2>
         <p>
-          Wide room views, material detail, circulation, and guest use explain
-          what each rental element contributes to the setting.
+          Full-room views, guest flow, and material details show how each selection
+          contributes to the setting as a whole.
         </p>
       </header>
       <div className="seating-gallery-grid" data-asset-status="awaiting-approved-photography">
@@ -324,29 +319,34 @@ function RentalPricing() {
 
 function RentalCombinations() {
   return (
-    <section className="seating-combinations" aria-labelledby="seating-combinations-title">
+    <section
+      className="seating-combinations related-experiences"
+      aria-labelledby="seating-combinations-title"
+    >
       <header>
         <p className="foundation-label">Within the Luxe family</p>
-        <h2 id="seating-combinations-title">The room can support the hospitality within it.</h2>
+        <h2 id="seating-combinations-title">Seating can bring the full event together.</h2>
+        <p>
+          When seating is planned alongside service areas, guest movement, and live
+          experiences, every part of the room can work more naturally together.
+        </p>
       </header>
       <div>
         <Link href="/experiences/coffee-bar">
-          <span>Setting + Coffee</span>
-          <strong>Plan the reception around the café moment.</strong>
+          <strong>Luxe Coffee Bar</strong>
           <p>
-            Consider cocktail tables, guest circulation, seating, and service zones
-            alongside a crafted Coffee Bar experience.
+            Coordinate seating, cocktail tables, and guest flow around the coffee
+            service so the bar feels integrated into the event space.
           </p>
-          <b aria-hidden="true">Explore Luxe Coffee Bar ↗︎</b>
+          <b aria-hidden="true">Explore Coffee Bar ↗︎</b>
         </Link>
         <Link href="/experiences/sweet-cart">
-          <span>Setting + Dessert</span>
-          <strong>Give the live dessert experience room to gather.</strong>
+          <strong>Luxe Sweet Cart</strong>
           <p>
-            Connect tables, seating, tents, linens, or lighting to the placement and
-            guest flow around Luxe Sweet Cart.
+            Plan seating and circulation around the Sweet Cart so guests can gather,
+            queue, and move comfortably through the room.
           </p>
-          <b aria-hidden="true">Explore Luxe Sweet Cart ↗︎</b>
+          <b aria-hidden="true">Explore Sweet Cart ↗︎</b>
         </Link>
       </div>
     </section>
@@ -358,7 +358,7 @@ function RentalFaq() {
     <section className="seating-faq" aria-labelledby="seating-faq-title">
       <header>
         <p className="foundation-label">Rental questions</p>
-        <h2 id="seating-faq-title">What is confirmed, and what the proposal must resolve.</h2>
+        <h2 id="seating-faq-title">What to know before planning your rentals.</h2>
       </header>
       <FaqAccordion items={rentalContextualFaqs} />
       <Link href="/faq">
@@ -382,7 +382,6 @@ export function SeatingRentalsPage() {
         <RentalOperations />
         <RentalEvents />
         <RentalPricing />
-        <RentalQuote />
         <RentalGallery />
         <RentalCombinations />
         <RentalFaq />

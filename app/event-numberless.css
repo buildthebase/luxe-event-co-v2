@@ -15,6 +15,34 @@
   letter-spacing: var(--tracking-heading-lg) !important;
 }
 
+.wedding-page {
+  --wedding-display-heading-size: clamp(4rem, 7.7vw, 8.3rem);
+}
+
+.wedding-page h2 {
+  font-size: var(--wedding-display-heading-size) !important;
+  line-height: 0.9 !important;
+  letter-spacing: -0.075em !important;
+}
+
+@media (max-width: 1100px) {
+  .wedding-page {
+    --wedding-display-heading-size: clamp(3.8rem, 7.7vw, 6.2rem);
+  }
+}
+
+@media (max-width: 780px) {
+  .wedding-page {
+    --wedding-display-heading-size: clamp(3.5rem, 12vw, 5.7rem);
+  }
+}
+
+@media (max-width: 700px) {
+  .wedding-page {
+    --wedding-display-heading-size: clamp(3.05rem, 14.2vw, 5.2rem);
+  }
+}
+
 .faq-accordion-numberless summary {
   grid-template-columns: minmax(0, 1fr) 2rem !important;
 }
@@ -37,6 +65,10 @@
 .birthday-personalization h3,
 .private-experiences h3 {
   margin-top: var(--space-4);
+}
+
+.wedding-customization article h3 {
+  margin-top: 0;
 }
 
 .private-combinations article {
@@ -68,7 +100,7 @@
 
 @media (min-width: 901px) {
   .wedding-day li {
-    grid-template-columns: minmax(10rem, .5fr) minmax(0, 1.5fr);
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .bridal-details li {
@@ -126,5 +158,72 @@
   .birthday-combinations h3,
   .birthday-combinations article > p:last-child {
     grid-column: 1;
+  }
+}
+
+/* Match the Experiences hub event directory across each service page on mobile. */
+@media (max-width: 700px) {
+  :is(.coffee-events, .sweet-events, .seating-events) {
+    padding-block: var(--space-9);
+  }
+
+  :is(.coffee-events, .sweet-events, .seating-events) > header {
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
+  }
+
+  :is(.coffee-events, .sweet-events, .seating-events) > header h2 {
+    max-width: 17ch;
+    font-size: clamp(3rem, 5.5vw, 6rem);
+    line-height: .98;
+    letter-spacing: -.05em;
+  }
+
+  :is(.coffee-events, .sweet-events, .seating-events) > div {
+    border-top: 1px solid color-mix(in srgb, var(--color-luxe-black) 35%, transparent);
+    border-bottom: 0;
+  }
+
+  :is(.coffee-events, .sweet-events, .seating-events) > div a {
+    grid-template-columns: 2.6rem minmax(0, 1fr) 1.5rem;
+    gap: var(--space-3);
+    min-height: 6rem;
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-luxe-black) 25%, transparent);
+    background: transparent;
+    box-shadow: none;
+  }
+
+  :is(.coffee-events, .sweet-events, .seating-events) > div a:last-child {
+    border-bottom: 1px solid color-mix(in srgb, var(--color-luxe-black) 25%, transparent);
+  }
+
+  :is(.coffee-events, .sweet-events, .seating-events) a > span {
+    font-size: .68rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+  }
+
+  :is(.coffee-events, .sweet-events, .seating-events) a > strong {
+    padding-left: 0;
+    font-size: 1.15rem;
+    font-weight: 500;
+    letter-spacing: normal;
+  }
+
+  :is(.coffee-events, .sweet-events, .seating-events) a > strong::before {
+    content: none;
+  }
+
+  :is(.coffee-events, .sweet-events, .seating-events) a > small {
+    font-size: .92rem;
+    line-height: 1.45;
+  }
+
+  :is(.coffee-events, .sweet-events, .seating-events) a:hover,
+  :is(.coffee-events, .sweet-events, .seating-events) a:focus-visible {
+    padding-inline: var(--space-3);
+    background: var(--surface-chapter-taupe);
+    box-shadow: none;
   }
 }

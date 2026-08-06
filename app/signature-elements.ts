@@ -5,6 +5,7 @@ export type SignatureExperience = {
   number: string;
   label: string;
   name: string;
+  tagline?: string;
   description: string;
   href: string;
   image: ResponsiveImageAsset;
@@ -27,7 +28,8 @@ export const signatureExperiences: SignatureExperience[] = [
     number: "01",
     label: "Coffee",
     name: "Luxe Coffee Bar",
-    description: "Crafted pours, warm hospitality, and a café atmosphere shaped around the occasion.",
+    description:
+      "Mobile espresso, matcha, and specialty beverage service for arrivals, cocktail hour, reception, or late-night hospitality.",
     href: "/experiences/coffee-bar",
     image: imageAssets.experiences.coffeeBar,
   },
@@ -36,7 +38,8 @@ export const signatureExperiences: SignatureExperience[] = [
     number: "02",
     label: "Dessert",
     name: "Luxe Sweet Cart",
-    description: "Mini pancakes, waffles, and donuts prepared on-site, finished to order, and served from the cart.",
+    description:
+      "Live dessert preparation and presentation designed to create an interactive guest moment.",
     href: "/experiences/sweet-cart",
     image: imageAssets.experiences.sweetCart,
   },
@@ -45,7 +48,8 @@ export const signatureExperiences: SignatureExperience[] = [
     number: "03",
     label: "Seating",
     name: "Luxe Seating Rentals",
-    description: "Refined structure, elevated materials, and intentional space planning for gatherings of every scale.",
+    description:
+      "Chairs, tables, cocktail tables, tents, linens, and lighting planned around the ceremony, reception, lounge, or outdoor setting.",
     href: "/experiences/seating-rentals",
     image: imageAssets.experiences.seatingRentals,
   },
@@ -213,7 +217,7 @@ export const inquiryContexts: Record<string, InquiryContext> = {
   },
   "seating-rentals": {
     eyebrow: "Shape the room",
-    heading: "Discuss your seating requirements.",
+    heading: "Discuss your seating.",
     description:
       "Share the venue, guest count, event format, desired atmosphere, and the rental elements needed to complete the setting.",
     cta: "Discuss Your Rental Requirements",
@@ -245,9 +249,9 @@ export const inquiryContexts: Record<string, InquiryContext> = {
   },
   "baby-showers": {
     eyebrow: "A beautiful beginning",
-    heading: "Plan a baby shower experience.",
+    heading: "Plan a baby shower with Luxe.",
     description:
-      "Share the setting, guest count, preferred experiences, and the details that should feel personal to the celebration.",
+      "Share the date, venue, estimated guest count, and the coffee, dessert, seating, or rental experiences you are considering.",
     cta: "Plan a Baby Shower",
     href: "/inquire",
   },

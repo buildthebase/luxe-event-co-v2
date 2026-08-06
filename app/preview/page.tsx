@@ -48,7 +48,11 @@ export default function HomePreview() {
         <div className="home-testimonial-placement">
           <HomeTestimonialCarousel />
         </div>
-        <ExperienceSelector id="experience-selector" showDescription={false} />
+        <ExperienceSelector
+          id="experience-selector"
+          heading="Three experiences, each with a clear role."
+          showDescription={false}
+        />
         <HomeUnifiedExperience />
         <HomeEventCategories />
         <CombinedExperienceFeature id="combinations" />

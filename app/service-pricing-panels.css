@@ -1,0 +1,112 @@
+/* Shared pricing composition for Coffee Bar, Sweet Cart, and Seating Rentals. */
+:is(.coffee-operations, .sweet-operations, .seating-pricing) {
+  padding-block: clamp(3rem, 6vw, 5rem);
+  background: var(--surface-chapter-dark);
+  box-shadow: 0 0 0 100vmax var(--surface-chapter-dark);
+  clip-path: inset(0 -100vmax);
+  color: var(--color-luxe-ivory);
+}
+
+/* The PriorityAnswer question becomes the visible section heading. */
+:is(.sweet-operations, .seating-pricing) > header {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  border: 0;
+  white-space: nowrap;
+}
+
+:is(.coffee-operations, .sweet-operations, .seating-pricing)
+  > .priority-answer {
+  padding-top: 0;
+  border-top: 0;
+  border-bottom: 1px solid var(--surface-dark-rule);
+}
+
+:is(.coffee-operations, .sweet-operations, .seating-pricing)
+  .priority-answer
+  > div
+  > p {
+  max-width: 55rem;
+  font-size: var(--type-body);
+  line-height: 1.68;
+}
+
+:is(.coffee-operations, .sweet-operations, .seating-pricing)
+  .priority-answer
+  a {
+  font-size: clamp(0.78rem, 0.72rem + 0.22vw, 0.9rem);
+  letter-spacing: 0.12em;
+}
+
+:is(.coffee-operations, .sweet-operations, .seating-pricing) > aside {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 0;
+}
+
+:is(.coffee-operations, .sweet-operations, .seating-pricing) > aside p {
+  max-width: 52rem;
+  margin: 0;
+  color: var(--surface-dark-copy-muted);
+  font-size: clamp(0.92rem, 0.88rem + 0.14vw, 1rem);
+  line-height: 1.6;
+}
+
+:is(.coffee-operations, .sweet-operations, .seating-pricing) > aside a {
+  flex: none;
+  font-size: clamp(0.74rem, 0.7rem + 0.12vw, 0.82rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+:is(.coffee-operations, .sweet-operations, .seating-pricing)
+  .priority-answer
+  a,
+:is(.coffee-operations, .sweet-operations, .seating-pricing) > aside a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--surface-dark-rule);
+  background: transparent;
+  color: inherit;
+  text-decoration: none;
+  transition:
+    background-color var(--motion-fast) var(--ease-luxe-standard),
+    border-color var(--motion-fast) var(--ease-luxe-standard),
+    color var(--motion-fast) var(--ease-luxe-standard);
+}
+
+:is(.coffee-operations, .sweet-operations, .seating-pricing)
+  .priority-answer
+  a:hover,
+:is(.coffee-operations, .sweet-operations, .seating-pricing)
+  .priority-answer
+  a:focus-visible,
+:is(.coffee-operations, .sweet-operations, .seating-pricing) > aside a:hover,
+:is(.coffee-operations, .sweet-operations, .seating-pricing)
+  > aside
+  a:focus-visible {
+  border-color: var(--color-luxe-gold);
+  background: var(--color-luxe-gold);
+  color: var(--color-luxe-black);
+}
+
+@media (max-width: 700px) {
+  :is(.coffee-operations, .sweet-operations, .seating-pricing) > aside {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

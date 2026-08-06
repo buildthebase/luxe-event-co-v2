@@ -1,17 +1,17 @@
 import Link from "next/link";
 import {
-  bridalShowerCombinations,
   bridalShowerDetails,
-  bridalShowerExperiences,
   bridalShowerFaqs,
   bridalShowerGallery,
+  bridalShowerPlanning,
 } from "../events/bridal-showers-content";
 import { pageMetadata } from "../metadata-config";
 import { createServicePageSchema } from "../schema-builders";
+import { signatureExperiences, type SignatureExperience } from "../signature-elements";
 import { FaqAccordion } from "./faq-accordion";
 import { JsonLd } from "./json-ld";
 import { QuoteModalTrigger } from "./quote-modal-trigger";
-import { ContextualInquiryPanel } from "./signature-elements";
+import { ContextualInquiryPanel, ExperienceSelector } from "./signature-elements";
 import { SiteShell } from "./site-shell";
 
 const bridalShowersPath = "/events/bridal-showers";
@@ -25,14 +25,43 @@ const bridalShowersSchema = createServicePageSchema({
   pageDescription: pageMetadata[bridalShowersPath].description,
 });
 
+const bridalShowerServices: readonly SignatureExperience[] = signatureExperiences.map(
+  (experience) => {
+    if (experience.id === "coffee") {
+      return {
+        ...experience,
+        tagline: "A café-style welcome",
+        description:
+          "Professional baristas prepare espresso classics, signature beverages, matcha, seasonal drinks, and premium non-coffee options for arrivals, conversation, and the main gathering.",
+      };
+    }
+
+    if (experience.id === "dessert") {
+      return {
+        ...experience,
+        tagline: "A live sweet moment",
+        description:
+          "Mini Dutch pancakes, Belgian waffles on a stick, mini donuts, and optional soft serve are prepared on-site as an interactive part of the bridal shower.",
+      };
+    }
+
+    return {
+      ...experience,
+      tagline: "A composed setting",
+      description:
+        "Chairs, tables, cocktail tables, linens, lighting, and selected rental elements can support conversation, gift opening, photographs, dining, and guest flow.",
+    };
+  },
+);
+
 function BridalHero() {
   return (
     <header className="bridal-hero">
       <div className="bridal-hero-copy">
         <p className="foundation-eyebrow">Bridal Showers / Toronto &amp; the GTA</p>
-        <h1 aria-label="Bridal shower experiences with their own point of view.">
-          <span>Bridal shower experiences</span>
-          <span>with their own point of view.</span>
+        <h1 aria-label="Bridal shower coffee, dessert, and event rentals, planned around the celebration.">
+          <span>Bridal shower coffee, dessert,</span>
+          <span>and event rentals, planned around the celebration.</span>
         </h1>
         <p>
           Café-style coffee, matcha, live dessert, and a composed setting can
@@ -40,10 +69,10 @@ function BridalHero() {
         </p>
         <div className="bridal-hero-actions">
           <QuoteModalTrigger data-event-name="inquiry_start">
-            Plan a Bridal Shower <span aria-hidden="true">↗︎</span>
+            PLAN A BRIDAL SHOWER <span aria-hidden="true">↗︎</span>
           </QuoteModalTrigger>
           <a href="#bridal-experiences">
-            Explore the Composition <span aria-hidden="true">↓︎</span>
+            EXPLORE THE EXPERIENCE <span aria-hidden="true">↓︎</span>
           </a>
         </div>
       </div>
@@ -54,9 +83,9 @@ function BridalHero() {
         <i /><i />
       </div>
       <dl className="bridal-hero-proof">
-        <div><dt>Café-style</dt><dd>Coffee, matcha, and specialty drinks</dd></div>
-        <div><dt>Made together</dt><dd>Dessert, rentals, signage, and styling</dd></div>
-        <div><dt>$5 million</dt><dd>Liability insurance</dd></div>
+        <div><dt>One inquiry</dt><dd>COFFEE, DESSERT, AND RENTALS</dd></div>
+        <div><dt>Indoor or outdoor</dt><dd>PLANNED AROUND THE SETTING</dd></div>
+        <div><dt>$5 million</dt><dd>LIABILITY INSURANCE</dd></div>
       </dl>
     </header>
   );
@@ -64,38 +93,87 @@ function BridalHero() {
 
 function BridalOverview() {
   return (
-    <section className="bridal-overview" aria-labelledby="bridal-overview-title">
-      <h2 id="bridal-overview-title">The shower can feel as thoughtful as the celebration ahead.</h2>
-      <div>
-        <p>
-          The experience can begin with the intimacy of a café, move through a
-          live dessert moment, and use seating, tables, linens, lighting, or
-          florals to give the gathering its visual rhythm.
-        </p>
-        <p>
-          Hosts and planners can select one service or coordinate several
-          through Luxe Event Co. Each remains recognizable while its timing,
-          placement, and presentation are planned within the whole room.
-        </p>
+    <section className="bridal-host-overview" aria-labelledby="bridal-overview-title">
+      <h2 id="bridal-overview-title">A bridal shower planned around how guests will gather.</h2>
+      <div className="bridal-host-overview-notes">
+        <article>
+          <h3>Booked independently or together</h3>
+          <p>
+            Coffee Bar, Sweet Cart, and Seating Rentals can each be booked on
+            their own or coordinated within one bridal shower plan.
+          </p>
+        </article>
+        <article>
+          <h3>Planned around the gathering</h3>
+          <p>
+            Coffee and matcha can welcome guests, live dessert can create the
+            central moment, and seating can shape conversation, gifts,
+            photographs, and movement.
+          </p>
+        </article>
+        <article>
+          <h3>Shaped by the setting</h3>
+          <p>
+            The venue, schedule, guest count, and selected experiences guide
+            the final plan.
+          </p>
+        </article>
       </div>
     </section>
   );
 }
 
-function BridalExperiences() {
+function BridalMoments() {
   return (
-    <section className="bridal-experiences" id="bridal-experiences" aria-labelledby="bridal-experiences-title">
-      <header><h2 id="bridal-experiences-title">Four expressions. One composed gathering.</h2></header>
-      <div>
-        {bridalShowerExperiences.map((experience) => (
-          <article className={`bridal-experience-${experience.tone}`} key={experience.number}>
-            <div aria-hidden="true"><i /><i /><i /></div>
-            <p>{experience.label}</p>
-            <h3>{experience.title}</h3>
-            <p>{experience.description}</p>
-            <Link href={experience.href}>Explore {experience.label} <span aria-hidden="true">↗︎</span></Link>
-          </article>
-        ))}
+    <section className="bridal-moments" aria-labelledby="bridal-moments-title">
+      <header>
+        <p className="foundation-label">Where Luxe can fit into the bridal shower</p>
+        <h2 id="bridal-moments-title">
+          A bridal shower can unfold through a few thoughtful moments.
+        </h2>
+        <p>
+          The welcome, main gathering, dessert service, and room details can
+          each play a different role in how guests experience the shower.
+        </p>
+      </header>
+      <div className="bridal-moment-band">
+        <article>
+          <p>Guest arrival</p>
+          <h3>A café-style welcome.</h3>
+          <p>
+            Coffee, matcha, and specialty beverages can greet guests as they
+            arrive and create a natural place to begin gathering.
+          </p>
+        </article>
+        <article>
+          <p>Around the table</p>
+          <h3>Space for conversation and connection.</h3>
+          <p>
+            Seating, tables, linens, and service placement can support
+            conversation, photographs, gifts, and the rhythm of the main
+            gathering.
+          </p>
+        </article>
+      </div>
+      <div className="bridal-moment-band bridal-moment-band-feature">
+        <article className="bridal-moment-feature">
+          <p>The sweet moment</p>
+          <h3>Dessert becomes part of the celebration.</h3>
+          <p>
+            Freshly prepared mini pancakes, waffles on a stick, mini donuts, or
+            optional soft serve can create an interactive focal point for
+            guests.
+          </p>
+        </article>
+        <article>
+          <p>Presentation throughout</p>
+          <h3>The details carry through the room.</h3>
+          <p>
+            Menus, signage, cups, cart presentation, and selected room details
+            can reflect the host’s preferred wording, colours, and visual
+            direction.
+          </p>
+        </article>
       </div>
     </section>
   );
@@ -103,17 +181,22 @@ function BridalExperiences() {
 
 function BridalDetails() {
   return (
-    <section className="bridal-details" aria-labelledby="bridal-details-title">
+    <section
+      className="bridal-details bridal-personalization"
+      aria-labelledby="bridal-details-title"
+    >
       <header>
-        <h2 id="bridal-details-title">The visual language can move through every touchpoint.</h2>
+        <h2 id="bridal-details-title">Carry the bridal shower through the details.</h2>
         <p>
-          Customization remains subject to the selected experience, approved
-          direction, production feasibility, timing, quantities, and final proposal.
+          Menus, signage, dessert presentation, and selected room details can
+          carry the host’s preferred tone, wording, and visual direction
+          through the gathering.
         </p>
       </header>
       <ol>
         {bridalShowerDetails.map((detail) => (
           <li key={detail.number}>
+            <span>{detail.label}</span>
             <h3>{detail.title}</h3>
             <p>{detail.description}</p>
           </li>
@@ -125,21 +208,13 @@ function BridalDetails() {
 
 function BridalCombinations() {
   return (
-    <section className="bridal-combinations" aria-labelledby="bridal-combinations-title">
-      <header>
-        <h2 id="bridal-combinations-title">Build around the way guests will move through the shower.</h2>
-        <p>Planning directions rather than fixed packages.</p>
-      </header>
-      <div>
-        {bridalShowerCombinations.map((combination) => (
-          <article key={combination.number}>
-            <p>{combination.title}</p>
-            <h3>{combination.experiences}</h3>
-            <p>{combination.description}</p>
-          </article>
-        ))}
-      </div>
-    </section>
+    <ExperienceSelector
+      id="bridal-experiences"
+      experiences={bridalShowerServices}
+      heading="Choose one bridal shower experience or coordinate all three."
+      showDescription={false}
+      variant="bridal"
+    />
   );
 }
 
@@ -147,8 +222,11 @@ function BridalGallery() {
   return (
     <section className="bridal-gallery" aria-labelledby="bridal-gallery-title">
       <header>
-        <h2 id="bridal-gallery-title">Details are strongest when seen in the full room.</h2>
-        <p>Dessert, drinks, signage, florals, and seating can be planned as one welcoming composition.</p>
+        <h2 id="bridal-gallery-title">Bridal shower experiences, seen in context.</h2>
+        <p>
+          Coffee, live dessert, signage, seating, and room details shown within
+          the celebrations they were planned for.
+        </p>
       </header>
       <div data-asset-status="awaiting-approved-bridal-shower-assets">
         {bridalShowerGallery.map((item) => (
@@ -159,6 +237,33 @@ function BridalGallery() {
         ))}
       </div>
       <Link href="/gallery">Explore the Luxe Event Gallery <span aria-hidden="true">↗︎</span></Link>
+    </section>
+  );
+}
+
+function BridalPlanning() {
+  return (
+    <section
+      className="bridal-details bridal-planning"
+      aria-labelledby="bridal-planning-title"
+    >
+      <header>
+        <h2 id="bridal-planning-title">
+          What helps the bridal shower take shape.
+        </h2>
+        <p>
+          A few planning details help shape the right experience, setting, and
+          flow for the gathering.
+        </p>
+      </header>
+      <ol>
+        {bridalShowerPlanning.map((item) => (
+          <li key={item.number}>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </li>
+        ))}
+      </ol>
     </section>
   );
 }
@@ -179,10 +284,11 @@ export function BridalShowersPage() {
       <main className="bridal-page">
         <BridalHero />
         <BridalOverview />
-        <BridalExperiences />
-        <BridalDetails />
+        <BridalMoments />
         <BridalCombinations />
+        <BridalDetails />
         <BridalGallery />
+        <BridalPlanning />
         <BridalFaq />
         <ContextualInquiryPanel contextKey="bridal-showers" showEyebrow={false} />
       </main>

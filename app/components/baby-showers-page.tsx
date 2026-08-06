@@ -13,7 +13,11 @@ import { createServicePageSchema } from "../schema-builders";
 import { FaqAccordion } from "./faq-accordion";
 import { JsonLd } from "./json-ld";
 import { QuoteModalTrigger } from "./quote-modal-trigger";
-import { ContextualInquiryPanel } from "./signature-elements";
+import {
+  CombinedExperienceFeature,
+  ContextualInquiryPanel,
+  ExperienceSelector,
+} from "./signature-elements";
 import { SiteShell } from "./site-shell";
 
 const babyShowersPath = "/events/baby-showers";
@@ -32,21 +36,22 @@ function BabyShowerHero() {
     <header className="baby-hero">
       <div className="baby-hero-copy">
         <p className="foundation-eyebrow">Baby Showers / Toronto &amp; the GTA</p>
-        <h1 aria-label="Baby shower experiences, thoughtfully gathered.">
-          <span>Baby shower</span>
-          <span>experiences,</span>
-          <span>thoughtfully gathered.</span>
+        <h1 aria-label="Baby shower coffee, dessert, and event rentals, thoughtfully planned.">
+          <span>Baby shower coffee,</span>
+          <span>dessert, and event rentals,</span>
+          <span>thoughtfully planned.</span>
         </h1>
         <p>
-          Coffee, matcha, freshly prepared dessert, and an intentional setting
-          can create a warm, cohesive celebration for hosts, families, and guests.
+          Mobile coffee bars, matcha, live dessert, seating, and event rentals for
+          baby showers across Toronto and the GTA, shaped around the venue, guest
+          count, and atmosphere of the celebration.
         </p>
         <div className="baby-hero-actions">
           <QuoteModalTrigger data-event-name="inquiry_start">
             Plan a Baby Shower <span aria-hidden="true">↗︎</span>
           </QuoteModalTrigger>
-          <a href="#baby-experiences">
-            Explore the Possibilities <span aria-hidden="true">↓︎</span>
+          <a href="#baby-overview">
+            Explore the Experience <span aria-hidden="true">↓︎</span>
           </a>
         </div>
       </div>
@@ -67,41 +72,40 @@ function BabyShowerHero() {
 
 function BabyShowerOverview() {
   return (
-    <section className="baby-overview" aria-labelledby="baby-overview-title">
-      <h2 id="baby-overview-title">Soft in feeling. Clear in how it comes together.</h2>
-      <div>
+    <section className="baby-overview" id="baby-overview" aria-labelledby="baby-overview-title">
+      <header className="baby-overview-header">
+        <h2 id="baby-overview-title">A baby shower can be shaped in three thoughtful parts.</h2>
         <p>
-          A baby shower may begin with a focused coffee and matcha welcome,
-          centre on an interactive dessert moment, or use rentals to shape the
-          room around conversation, gifts, and photographs.
+          Coffee and matcha can welcome guests, live dessert can create the focal
+          moment, and seating and rentals can shape the room around conversation,
+          gifts, and photographs.
         </p>
-        <p>
-          Each service can be booked independently. When several are selected,
-          Luxe Event Co. considers their timing, placement, presentation, and
-          operational requirements through one inquiry and proposal journey.
-        </p>
-      </div>
-    </section>
-  );
-}
-
-function BabyShowerExperiences() {
-  return (
-    <section className="baby-experiences" id="baby-experiences" aria-labelledby="baby-experiences-title">
-      <header>
-        <h2 id="baby-experiences-title">Three ways to shape the gathering.</h2>
       </header>
-      <div>
-        {babyShowerExperiences.map((experience) => (
-          <article className={`baby-experience-${experience.tone}`} key={experience.number}>
-            <div aria-hidden="true"><i /><i /><i /></div>
-            <Link href={experience.href}>{experience.name}</Link>
-            <h3>{experience.statement}</h3>
-            <p>{experience.description}</p>
-            <small>{experience.detail}</small>
-            <Link href={experience.href}>Explore {experience.name} <span aria-hidden="true">↗︎</span></Link>
-          </article>
-        ))}
+      <div className="baby-overview-parts">
+        <article className="baby-overview-welcome">
+          <p>Welcome</p>
+          <h3>A warm beginning.</h3>
+          <p>
+            Coffee and matcha can greet arriving guests with a calm service moment
+            that feels polished, welcoming, and easy to host.
+          </p>
+        </article>
+        <article className="baby-overview-dessert">
+          <p>Dessert moment</p>
+          <h3>Something guests can gather around.</h3>
+          <p>
+            Freshly prepared dessert can create an interactive centre for the
+            celebration and a memorable moment for family and friends.
+          </p>
+        </article>
+        <article className="baby-overview-setting">
+          <p>The setting</p>
+          <h3>Room for the celebration to unfold.</h3>
+          <p>
+            Seating, tables, linens, and room details can support conversation, gift
+            opening, photographs, and movement through the gathering.
+          </p>
+        </article>
       </div>
     </section>
   );
@@ -111,11 +115,15 @@ function BabyShowerStyling() {
   return (
     <section className="baby-styling" aria-labelledby="baby-styling-title">
       <header>
-        <h2 id="baby-styling-title">Personal details, carried with restraint.</h2>
+        <h2 id="baby-styling-title">Carry the celebration through the details.</h2>
+        <p>
+          Menus, wording, presentation, and room details can reflect the host’s
+          preferred colours, tone, and overall direction.
+        </p>
       </header>
       <div>
-        {babyShowerStyling.map((item) => (
-          <article key={item.number}>
+        {[babyShowerStyling[1], babyShowerStyling[0], babyShowerStyling[2]].map((item) => (
+          <article className={`baby-styling-item-${item.number}`} key={item.number}>
             <h3>{item.title}</h3>
             <p>{item.description}</p>
           </article>
@@ -125,11 +133,23 @@ function BabyShowerStyling() {
   );
 }
 
+function BabyShowerExperiences() {
+  return (
+    <ExperienceSelector
+      description="Coffee, live dessert, and event rentals can each support a different part of the gathering. Choose one experience or coordinate all three around the room and schedule."
+      experiences={babyShowerExperiences}
+      heading="Three Luxe experiences for a thoughtfully hosted baby shower."
+      id="baby-experiences"
+      variant="taupe"
+    />
+  );
+}
+
 function BabyShowerSettings() {
   return (
     <section className="baby-settings" aria-labelledby="baby-settings-title">
       <header>
-        <h2 id="baby-settings-title">At home in an intimate room or under an open sky.</h2>
+        <h2 id="baby-settings-title">Indoor or outdoor, the setting shapes the plan.</h2>
       </header>
       <div>
         {babyShowerSettings.map((setting) => (
@@ -144,35 +164,15 @@ function BabyShowerSettings() {
   );
 }
 
-function BabyShowerCombinations() {
-  return (
-    <section className="baby-combinations" aria-labelledby="baby-combinations-title">
-      <header>
-        <h2 id="baby-combinations-title">Consider how one moment leads into the next.</h2>
-        <p>
-          These are planning directions, not fixed packages. The final
-          combination depends on the event details and confirmed service requirements.
-        </p>
-      </header>
-      <div>
-        {babyShowerCombinations.map((combination) => (
-          <article key={combination.number}>
-            <p>{combination.title}</p>
-            <h3>{combination.experiences}</h3>
-            <p>{combination.description}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 function BabyShowerGallery() {
   return (
     <section className="baby-gallery" aria-labelledby="baby-gallery-title">
       <header>
-        <h2 id="baby-gallery-title">A celebration seen in its details.</h2>
-        <p>Fresh preparation, soft styling, signage, and the surrounding room create a complete guest experience.</p>
+        <h2 id="baby-gallery-title">Baby shower experiences, seen in context.</h2>
+        <p>
+          See how mobile coffee, live dessert, signage, seating, and room details come
+          together within the celebration.
+        </p>
       </header>
       <div className="baby-gallery-grid" data-asset-status="awaiting-approved-baby-shower-assets">
         {babyShowerGallery.map((item) => (
@@ -187,10 +187,27 @@ function BabyShowerGallery() {
   );
 }
 
+function BabyShowerCombinations() {
+  return (
+    <CombinedExperienceFeature
+      combinations={babyShowerCombinations}
+      description="These are planning possibilities rather than fixed packages. The right combination is shaped around the venue, guest count, timing, and atmosphere of the celebration."
+      heading="Ways the experiences can come together."
+      id="baby-combinations"
+    />
+  );
+}
+
 function BabyShowerPlanning() {
   return (
     <section className="baby-planning" aria-labelledby="baby-planning-title">
-      <header><h2 id="baby-planning-title">What helps the plan take shape.</h2></header>
+      <header>
+        <h2 id="baby-planning-title">What to share when planning your baby shower.</h2>
+        <p>
+          A clear event picture helps Luxe recommend the right experiences, service
+          format, and setup requirements.
+        </p>
+      </header>
       <ol>
         {babyShowerPlanning.map((item) => (
           <li key={item.number}>
@@ -206,7 +223,7 @@ function BabyShowerPlanning() {
 function BabyShowerFaq() {
   return (
     <section className="baby-faq" aria-labelledby="baby-faq-title">
-      <header><h2 id="baby-faq-title">Baby shower planning questions.</h2></header>
+      <header><h2 id="baby-faq-title">Baby shower planning questions, answered.</h2></header>
       <FaqAccordion items={babyShowerFaqs} indicatorElement="i" showNumbers={false} />
       <Link href="/faq">Review Luxe Booking FAQs <span aria-hidden="true">↗︎</span></Link>
     </section>

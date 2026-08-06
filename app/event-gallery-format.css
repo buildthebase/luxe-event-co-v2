@@ -1,0 +1,243 @@
+/* Shared wedding-gallery composition for every other event detail page. */
+
+:is(
+  .corporate-gallery,
+  .activation-gallery,
+  .baby-gallery,
+  .bridal-gallery,
+  .birthday-gallery,
+  .private-gallery
+) > header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(1rem, 1.8vw, 1.6rem);
+  justify-items: center;
+  margin-bottom: clamp(3.5rem, 6vw, 6rem);
+  text-align: center;
+}
+
+:is(
+  .corporate-gallery,
+  .activation-gallery,
+  .baby-gallery,
+  .bridal-gallery,
+  .birthday-gallery,
+  .private-gallery
+) > header h2 {
+  width: 100%;
+  max-width: 12ch;
+  margin: 0 auto;
+  text-align: center;
+  text-wrap: balance;
+}
+
+:is(
+  .corporate-gallery,
+  .activation-gallery,
+  .baby-gallery,
+  .bridal-gallery,
+  .birthday-gallery,
+  .private-gallery
+) > header > p:last-child {
+  max-width: 58ch;
+  margin: 0 auto;
+  color: inherit;
+  line-height: 1.65;
+  opacity: 0.68;
+  text-align: center;
+}
+
+:is(
+  .corporate-gallery,
+  .activation-gallery,
+  .baby-gallery,
+  .bridal-gallery,
+  .birthday-gallery,
+  .private-gallery
+) > div[data-asset-status] {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  grid-template-rows: repeat(2, minmax(18rem, 1fr));
+  gap: var(--space-5);
+  margin-bottom: 0;
+}
+
+:is(
+  .corporate-gallery,
+  .activation-gallery,
+  .baby-gallery,
+  .bridal-gallery,
+  .birthday-gallery,
+  .private-gallery
+) figure {
+  margin: 0;
+}
+
+:is(
+  .corporate-gallery,
+  .activation-gallery,
+  .baby-gallery,
+  .bridal-gallery,
+  .birthday-gallery,
+  .private-gallery
+) figure:first-child {
+  grid-row: 1 / 3;
+  width: 86%;
+  align-self: center;
+  justify-self: center;
+}
+
+:is(
+  .corporate-gallery,
+  .activation-gallery,
+  .baby-gallery,
+  .bridal-gallery,
+  .birthday-gallery,
+  .private-gallery
+) figure > div {
+  min-height: 22rem;
+}
+
+:is(
+  .corporate-gallery,
+  .activation-gallery,
+  .baby-gallery,
+  .bridal-gallery,
+  .birthday-gallery,
+  .private-gallery
+) figure:first-child > div {
+  min-height: clamp(28rem, 48vw, 42rem);
+}
+
+:is(
+  .corporate-gallery,
+  .activation-gallery,
+  .baby-gallery,
+  .bridal-gallery,
+  .birthday-gallery,
+  .private-gallery
+) figcaption {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.25rem;
+  justify-items: center;
+  padding-top: var(--space-3);
+  text-align: center;
+}
+
+:is(
+  .corporate-gallery,
+  .activation-gallery,
+  .baby-gallery,
+  .bridal-gallery,
+  .birthday-gallery,
+  .private-gallery
+) figcaption > span {
+  display: none;
+}
+
+:is(
+  .corporate-gallery,
+  .activation-gallery,
+  .baby-gallery,
+  .bridal-gallery,
+  .birthday-gallery,
+  .private-gallery
+) figcaption strong {
+  font-size: clamp(1.2rem, 1.4vw, 1.4rem);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+:is(
+  .corporate-gallery,
+  .activation-gallery,
+  .baby-gallery,
+  .bridal-gallery,
+  .birthday-gallery,
+  .private-gallery
+) figcaption small {
+  color: inherit;
+  font-size: var(--type-body);
+  line-height: 1.5;
+  opacity: 0.68;
+}
+
+:is(
+  .corporate-gallery,
+  .activation-gallery,
+  .baby-gallery,
+  .bridal-gallery,
+  .birthday-gallery,
+  .private-gallery
+) > a:last-child {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: fit-content;
+  margin: clamp(6rem, 9vw, 9rem) auto 0;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid currentColor;
+  color: inherit;
+  font-size: clamp(0.85rem, 0.78rem + 0.28vw, 1rem);
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 780px) {
+  :is(
+    .corporate-gallery,
+    .activation-gallery,
+    .baby-gallery,
+    .bridal-gallery,
+    .birthday-gallery,
+    .private-gallery
+  ) > div[data-asset-status] {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
+    gap: var(--space-7);
+  }
+
+  :is(
+    .corporate-gallery,
+    .activation-gallery,
+    .baby-gallery,
+    .bridal-gallery,
+    .birthday-gallery,
+    .private-gallery
+  ) figure:first-child {
+    grid-row: auto;
+    width: 100%;
+  }
+
+  :is(
+    .corporate-gallery,
+    .activation-gallery,
+    .baby-gallery,
+    .bridal-gallery,
+    .birthday-gallery,
+    .private-gallery
+  ) figure > div,
+  :is(
+    .corporate-gallery,
+    .activation-gallery,
+    .baby-gallery,
+    .bridal-gallery,
+    .birthday-gallery,
+    .private-gallery
+  ) figure:first-child > div {
+    min-height: min(88vw, 27rem);
+  }
+
+  :is(
+    .corporate-gallery,
+    .activation-gallery,
+    .baby-gallery,
+    .bridal-gallery,
+    .birthday-gallery,
+    .private-gallery
+  ) > a:last-child {
+    margin-top: clamp(3rem, 8vw, 4.5rem);
+  }
+}

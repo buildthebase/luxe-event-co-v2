@@ -1,96 +1,102 @@
+import { imageAssets } from "../image-system";
+import type { CombinedExperience, SignatureExperience } from "../signature-elements";
+
 export const babyShowerExperiences = [
   {
+    id: "coffee",
     number: "01",
-    name: "Coffee and matcha",
+    label: "Coffee and matcha",
+    name: "Luxe Coffee Bar",
+    description:
+      "Mobile espresso, matcha, and specialty beverages can create a polished welcome for arrivals, conversation, and time around the table.",
     href: "/experiences/coffee-bar",
-    statement: "A warm welcome for the room.",
-    description:
-      "The Café Cart or Signature Coffee Bar can serve espresso classics, signature drinks, matcha, premium non-coffee beverages, hot and iced selections, and milk alternatives.",
-    detail:
-      "The right format depends on the guest count, venue, service duration, menu, and role the beverage experience should play.",
-    tone: "coffee",
+    image: imageAssets.experiences.coffeeBar,
   },
   {
+    id: "dessert",
     number: "02",
-    name: "Live dessert",
-    href: "/experiences/sweet-cart",
-    statement: "A sweet moment guests can watch take shape.",
+    label: "Live dessert",
+    name: "Luxe Sweet Cart",
     description:
-      "Mini Dutch pancakes, Belgian waffles on a stick, mini donuts, and optional soft serve can be prepared on-site with confirmed sauces and toppings.",
-    detail:
-      "Dessert service creates an interactive focal point while contributing to the visual atmosphere of the shower.",
-    tone: "dessert",
+      "Fresh dessert prepared in the room creates an interactive focal point for guests to gather around and enjoy together.",
+    href: "/experiences/sweet-cart",
+    image: imageAssets.experiences.sweetCart,
   },
   {
+    id: "seating",
     number: "03",
-    name: "Seating and rentals",
-    href: "/experiences/seating-rentals",
-    statement: "Comfort and structure around the celebration.",
+    label: "Seating and rentals",
+    name: "Luxe Seating Rentals",
     description:
-      "Chairs, tables, cocktail tables, tents, linens, and lighting can be planned around dining, conversation, gifts, dessert, and outdoor requirements.",
-    detail:
-      "Inventory, quantities, delivery, setup, teardown, access, and fees are confirmed for the venue and date.",
-    tone: "seating",
+      "Chairs, tables, cocktail tables, tents, linens, and lighting can shape the room around gifts, photographs, conversation, and guest flow.",
+    href: "/experiences/seating-rentals",
+    image: imageAssets.experiences.seatingRentals,
   },
-] as const;
+] satisfies readonly SignatureExperience[];
+
+export const babyShowerCombinations = [
+  {
+    id: "baby-shower-welcome",
+    occasion: "A welcoming start",
+    title: "Coffee Bar + Seating",
+    description:
+      "A considered arrival experience with comfortable places for guests to settle, connect, and begin the celebration.",
+    href: "/inquire",
+    experienceIds: ["coffee", "seating"],
+  },
+  {
+    id: "baby-shower-sweet-moment",
+    occasion: "A shared focal point",
+    title: "Coffee Bar + Sweet Cart",
+    description:
+      "Crafted drinks and fresh dessert create two complementary hospitality moments within the gathering.",
+    href: "/inquire",
+    experienceIds: ["coffee", "dessert"],
+  },
+  {
+    id: "baby-shower-complete",
+    occasion: "The complete gathering",
+    title: "Coffee + Dessert + Rentals",
+    description:
+      "Welcome, sweetness, and the room setting can be coordinated through one baby shower inquiry and one considered plan.",
+    href: "/inquire",
+    experienceIds: ["coffee", "dessert", "seating"],
+  },
+] satisfies readonly CombinedExperience[];
 
 export const babyShowerStyling = [
   {
     number: "01",
-    title: "Menus and drink details",
+    title: "Menus and drinks",
     description:
-      "Signature drinks, matcha, seasonal selections, milk alternatives, and menu displays can be edited around the host’s preferred tone and guest experience.",
+      "Signature beverages, matcha, seasonal selections, milk alternatives, and menu displays can be tailored around the season, guest preferences, and celebration.",
   },
   {
     number: "02",
     title: "Signage and presentation",
     description:
-      "Event signage, custom cups, menu displays, cart details, and dessert presentation can carry approved names, wording, colours, or visual direction.",
+      "Names, wording, cups, menu displays, cart details, and dessert presentation can carry the selected visual direction.",
   },
   {
     number: "03",
-    title: "The setting around service",
+    title: "Seating and room details",
     description:
-      "Rental choices, linens, lighting, cart placement, and guest flow can be planned alongside the coffee or dessert experience rather than as separate afterthoughts.",
+      "Seating, tables, linens, lighting, and service placement can be planned around conversation, gifts, photographs, and guest flow.",
   },
 ] as const;
 
 export const babyShowerSettings = [
   {
     number: "01",
-    title: "Indoor gatherings",
+    title: "Indoor baby showers",
     description:
-      "Home, venue, restaurant, studio, and private-room settings can be reviewed around access, footprint, utilities, guest flow, and the selected experiences.",
+      "Home, venue, restaurant, studio, and private-room celebrations can be planned around access, available space, utilities, guest flow, and venue requirements.",
   },
   {
     number: "02",
-    title: "Outdoor gatherings",
+    title: "Outdoor baby showers",
     description:
-      "Coffee, dessert, tents, seating, tables, linens, and lighting can be planned outdoors when weather planning, ground conditions, access, utilities, and a suitable contingency plan are confirmed.",
-  },
-] as const;
-
-export const babyShowerCombinations = [
-  {
-    number: "01",
-    title: "Welcome and something sweet",
-    experiences: "Café Cart + Sweet Cart",
-    description:
-      "A focused beverage welcome can lead naturally into freshly prepared dessert without making the gathering feel over-programmed.",
-  },
-  {
-    number: "02",
-    title: "A room made for conversation",
-    experiences: "Coffee Bar + Seating and tables",
-    description:
-      "Coffee service and the setting around it can support arrivals, conversation, gifts, photographs, and time spent together.",
-  },
-  {
-    number: "03",
-    title: "The complete shower setting",
-    experiences: "Coffee + Dessert + Rentals",
-    description:
-      "Beverages, live dessert, and selected rental requirements can be coordinated through one Luxe Event Co. inquiry and proposal journey.",
+      "Coffee, dessert, seating, tables, tents, linens, and lighting can be considered for outdoor settings when weather planning, surface conditions, access, utilities, and a suitable contingency plan are confirmed.",
   },
 ] as const;
 
@@ -98,19 +104,19 @@ export const babyShowerGallery = [
   {
     number: "01",
     label: "The welcome",
-    note: "Coffee or matcha service within the arrival setting",
+    note: "Coffee or matcha service within the arrival and gathering setting.",
     tone: "welcome",
   },
   {
     number: "02",
-    label: "The sweet detail",
-    note: "Live dessert preparation, toppings, and presentation",
+    label: "The sweet moment",
+    note: "Fresh dessert preparation and guest interaction.",
     tone: "sweet",
   },
   {
     number: "03",
-    label: "The gathering",
-    note: "Seating, tables, linens, lighting, and guests in context",
+    label: "The room",
+    note: "Seating, tables, linens, signage, and atmosphere in context.",
     tone: "gathering",
   },
 ] as const;
@@ -118,64 +124,73 @@ export const babyShowerGallery = [
 export const babyShowerPlanning = [
   {
     number: "01",
-    title: "The gathering",
+    title: "Event details",
     description:
-      "Share the date, venue, guest estimate, indoor or outdoor setting, schedule, and the atmosphere the host wants to create.",
+      "Share the date, venue, estimated guest count, schedule, and whether the gathering will be indoors or outdoors.",
   },
   {
     number: "02",
-    title: "The experiences",
+    title: "Experience preferences",
     description:
-      "Identify whether coffee, matcha, dessert, rentals, or a combination should support arrivals, the main gathering, dessert, or another part of the shower.",
+      "Identify whether coffee, matcha, live dessert, seating, event rentals, or a coordinated combination should support the celebration.",
   },
   {
     number: "03",
-    title: "Access and operations",
+    title: "Venue and setup needs",
     description:
-      "Luxe reviews venue access, service footprint, power or water needs, delivery, setup, takedown, outdoor conditions, and timing before confirming the plan.",
-  },
-  {
-    number: "04",
-    title: "The personal details",
-    description:
-      "Discuss menus, signage, cups, colours, cart presentation, dessert choices, toppings, linens, lighting, and any approved event wording.",
+      "Provide any available information about access, service footprint, power or water, delivery timing, setup, teardown, and venue requirements.",
   },
 ] as const;
 
 export const babyShowerFaqs = [
   {
-    question: "What services work well for baby showers?",
+    question: "What baby shower services does Luxe provide?",
     answer:
-      "Coffee and matcha work well as a welcome or conversation point, live dessert creates an interactive sweet moment, and chairs, tables, cocktail tables, tents, linens, or lighting can shape the setting. Hosts can choose one service or coordinate several. The right combination depends on the venue, guest count, indoor or outdoor conditions, schedule, and desired atmosphere.",
+      "Luxe provides mobile coffee and matcha service, live dessert preparation, and event rentals including chairs, tables, cocktail tables, tents, linens, and lighting. The right selection depends on the venue, guest count, schedule, and desired atmosphere.",
   },
   {
-    question: "Which desserts are available for baby showers?",
+    question: "Can the Coffee Bar, Sweet Cart, and rentals be booked separately?",
     answer:
-      "Luxe Sweet Cart can prepare mini Dutch pancakes, Belgian waffles on a stick, or mini donuts on-site. Soft serve is an optional enhancement. Dessert choices, sauces, standard toppings, premium toppings, quantities, and service format are confirmed in the proposal.",
+      "Yes. Luxe Coffee Bar, Luxe Sweet Cart, and Luxe Seating Rentals can each be booked independently or coordinated within one baby shower plan.",
   },
   {
-    question: "Can coffee and dessert be booked together?",
+    question: "What desserts can be prepared at a baby shower?",
     answer:
-      "Yes. Coffee Bar and Sweet Cart can be booked together through one Luxe Event Co. inquiry and proposal journey. Their placement, menus, timing, staffing, setup, and service flow are coordinated around the shower.",
+      "Luxe Sweet Cart can prepare mini Dutch pancakes, Belgian waffles on a stick, or mini donuts on-site. Soft serve is an optional enhancement. Dessert choices, sauces, toppings, quantities, and service format are confirmed during planning.",
   },
   {
-    question: "Can seating and rentals be included?",
+    question: "Can drinks, menus, signage, and cups be personalized?",
     answer:
-      "Yes. Chairs, tables, cocktail tables, tents, linens, and lighting can be planned alongside coffee or dessert. Confirmed inventory, quantities, delivery, setup, teardown, pickup, access, and fees depend on the date, venue, and event requirements.",
-  },
-  {
-    question: "Can the menus, cups, and signage be personalized?",
-    answer:
-      "Yes. Signature drinks, menu displays, custom cups, event signage, cart details, dessert presentation, and other visual elements can be discussed. Final possibilities depend on the approved direction, production requirements, timing, and selected experience.",
+      "Yes. Signature beverages, menu displays, cups, signage, cart details, dessert presentation, and selected room details can be discussed. Final possibilities depend on the approved direction, production requirements, timing, and selected experience.",
   },
   {
     question: "Can Luxe support an outdoor baby shower?",
     answer:
-      "Outdoor service can be planned. Luxe reviews weather exposure, ground conditions, shelter, utilities, access, equipment protection, guest comfort, and a suitable contingency plan before confirming the setup.",
+      "Yes. Outdoor service can be considered when weather planning, surface conditions, access, utilities, equipment protection, guest comfort, and a suitable contingency plan are confirmed.",
   },
   {
-    question: "What does Luxe need to prepare a baby shower proposal?",
+    question: "What venue requirements are needed for mobile coffee service?",
     answer:
-      "Share the event date, venue address, guest estimate, indoor or outdoor setting, schedule, selected experiences, service timing, rental needs, access information, and any menu, signage, styling, or customization ideas.",
+      "Requirements depend on the selected coffee format, menu, venue, and whether the event is indoors or outdoors. Luxe confirms the service footprint and any required power or water access during planning.",
+  },
+  {
+    question: "Does Luxe provide delivery, setup, and teardown?",
+    answer:
+      "Setup and takedown are included with confirmed Coffee Bar and Sweet Cart experiences. Rental delivery, setup, teardown, pickup responsibilities, access requirements, and applicable fees are confirmed for the venue and order.",
+  },
+  {
+    question: "Does Luxe serve baby showers outside Toronto?",
+    answer:
+      "Yes. Luxe primarily serves Toronto and the Greater Toronto Area, with select events available throughout Southern Ontario. Travel or delivery fees may apply.",
+  },
+  {
+    question: "How many guests can Luxe serve?",
+    answer:
+      "Luxe Coffee Bar can support events of up to 500 guests, while Luxe Sweet Cart can support events of up to 400 guests. The final service plan also depends on duration, menu complexity, staffing, equipment, venue access, and guest flow.",
+  },
+  {
+    question: "How far in advance should a baby shower be booked?",
+    answer:
+      "Earlier inquiries provide more flexibility, especially for peak dates, personalized details, rentals, or coordinated services. Availability and production timing depend on the event date, selected experiences, staffing, inventory, and venue requirements.",
   },
 ] as const;

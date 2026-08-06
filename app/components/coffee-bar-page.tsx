@@ -14,6 +14,7 @@ import { pageMetadata } from "../metadata-config";
 import { coffeeBarSectionNavigation } from "../page-section-navigation";
 import { createServicePageSchema, divisionServiceIds } from "../schema-builders";
 import { FaqAccordion } from "./faq-accordion";
+import { ExperienceContextSection } from "./experience-context-section";
 import { JsonLd } from "./json-ld";
 import { PageSectionNavigation } from "./page-section-navigation";
 import { PriorityAnswer } from "./priority-answer";
@@ -158,53 +159,53 @@ function CoffeeHero() {
 
 function CoffeeOverview() {
   return (
-    <section className="coffee-overview" aria-labelledby="coffee-overview-title">
-      <header className="coffee-overview-intro">
-        <p className="foundation-label">A café experience, not simply a cart</p>
-        <h2 id="coffee-overview-title">
-          Coffee hospitality, shaped around the event.
-        </h2>
-        <figure className="coffee-overview-media" aria-hidden="true">
-          <span className="coffee-overview-media-label">
-            Coffee service photography
-          </span>
-          <span className="coffee-overview-mark" />
-        </figure>
-      </header>
-      <div className="coffee-overview-copy">
-        <p className="coffee-overview-lead">
-          Coffee is woven into the event as hospitality, atmosphere, and an
-          experience guests can gather around.
-        </p>
-        <p>
-          A mobile coffee bar brings professional café equipment, skilled baristas,
-          and a made-to-order beverage menu directly into the event setting. Luxe
-          Coffee Bar provides mobile coffee catering for{" "}
-          <Link href="/events/weddings">weddings</Link>,{" "}
-          <Link href="/events/corporate-events">corporate events</Link>,{" "}
-          <Link href="/events/brand-activations">brand activations</Link>, bridal
-          showers, baby showers, birthdays, and{" "}
-          <Link href="/events/private-events">private celebrations</Link> across
-          Toronto and the GTA.
-        </p>
-        <p>
-          Each booking is planned around the occasion, guest count, venue, service
-          window, and preferred menu. Drinks are prepared fresh on-site throughout
-          the agreed service period, creating a polished and welcoming experience
-          for guests.
-        </p>
-        <p>
-          Luxe Coffee Bar can be booked independently or coordinated with{" "}
-          <Link href="/experiences/sweet-cart">Luxe Sweet Cart</Link> and{" "}
-          <Link href="/experiences/seating-rentals">Luxe Seating Rentals</Link>
-          {" "}through one{" "}
-          <QuoteModalTrigger className="coffee-overview-inquiry">
-            Luxe Event Co. inquiry
-          </QuoteModalTrigger>
-          .
-        </p>
-      </div>
-    </section>
+    <ExperienceContextSection
+      id="coffee-overview"
+      ariaLabelledBy="coffee-overview-title"
+      legacyClassName="coffee-overview"
+      artClassName="coffee-overview-media"
+      title={
+        <>
+          <span>Coffee hospitality,</span>
+          <span>shaped around the event.</span>
+        </>
+      }
+      lead={<>Coffee is woven into the event as hospitality, atmosphere, and an experience guests can gather around.</>}
+      copy={
+        <>
+          <p>
+            A mobile coffee bar brings professional café equipment, skilled baristas,
+            and a made-to-order beverage menu directly into the event setting. Luxe
+            Coffee Bar provides mobile coffee catering for{" "}
+            <Link href="/events/weddings">weddings</Link>,{" "}
+            <Link href="/events/corporate-events">corporate events</Link>,{" "}
+            <Link href="/events/brand-activations">brand activations</Link>, bridal
+            showers, baby showers, birthdays, and{" "}
+            <Link href="/events/private-events">private celebrations</Link> across
+            Toronto and the GTA.
+          </p>
+          <p>
+            Each booking is planned around the occasion, guest count, venue, service
+            window, and preferred menu. Drinks are prepared fresh on-site throughout
+            the agreed service period, creating a polished and welcoming experience
+            for guests.
+          </p>
+          <p className="coffee-overview-handoff">
+            Luxe Coffee Bar can be booked independently or coordinated with{" "}
+            <Link href="/experiences/sweet-cart">Luxe Sweet Cart</Link> and{" "}
+            <Link href="/experiences/seating-rentals">Luxe Seating Rentals</Link>{" "}
+            through one{" "}
+            <QuoteModalTrigger className="coffee-overview-inquiry">
+              Luxe Event Co. inquiry
+            </QuoteModalTrigger>
+            .
+          </p>
+        </>
+      }
+    >
+      <span className="coffee-overview-media-label">Coffee service photography</span>
+      <span className="coffee-overview-mark" />
+    </ExperienceContextSection>
   );
 }
 
@@ -307,7 +308,10 @@ function CoffeeMenu() {
     >
       <header>
         <p className="foundation-label">The beverage language</p>
-        <h2 id="coffee-menu-title">Classic at the foundation. Personal in expression.</h2>
+        <h2 id="coffee-menu-title">
+          <span>Classic at the foundation.</span>
+          <span>Personal in expression.</span>
+        </h2>
         <p>
           Every menu begins with four espresso classics, then makes room for
           signature drinks, matcha, and a premium non-coffee selection. Hot and iced
@@ -394,7 +398,10 @@ function CoffeeEvents() {
   return (
     <section className="coffee-events" aria-labelledby="coffee-events-title">
       <header>
-        <h2 id="coffee-events-title">Different occasions give the café a different role.</h2>
+        <h2 id="coffee-events-title">
+          <span>Different occasions give the café</span>
+          <span>a different role.</span>
+        </h2>
         <p>
           Mobile coffee catering can suit weddings, office and corporate events,
           conferences, brand activations, showers, birthdays, and private

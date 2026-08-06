@@ -40,27 +40,24 @@ export const bridalShowerExperiences = [
 export const bridalShowerDetails = [
   {
     number: "01",
-    title: "Custom menus",
+    label: "The menu",
+    title: "Menus and drinks",
     description:
-      "Signature beverages, menu wording, dessert choices, and presentation can be edited around the host’s direction, season, and guest experience.",
+      "Signature beverages, matcha, seasonal selections, milk alternatives, and menu displays can be tailored around the season, guest preferences, and celebration.",
   },
   {
     number: "02",
-    title: "Event signage",
+    label: "The presentation",
+    title: "Signage and presentation",
     description:
-      "Custom signage and menu displays can carry approved names, dates, phrases, colours, or visual direction through the service experience.",
+      "Names, dates, wording, cups, menu displays, cart details, and dessert presentation can carry the selected visual direction. Floral accents may be discussed where they form part of the approved presentation scope.",
   },
   {
     number: "03",
-    title: "Floral styling",
+    label: "The room",
+    title: "The room around the service",
     description:
-      "Floral styling can be planned around the cart or service presentation. The final direction, sourcing, installation, timing, and responsibilities are confirmed during planning.",
-  },
-  {
-    number: "04",
-    title: "Room styling",
-    description:
-      "Linens, lighting, rental placement, cart positioning, and guest flow can be reviewed together so the service belongs naturally within the event design.",
+      "Chair styles, tables, linens, lighting, and service placement can be planned around conversation, photographs, gifts, and movement through the room.",
   },
 ] as const;
 
@@ -84,28 +81,55 @@ export const bridalShowerCombinations = [
     title: "The complete setting",
     experiences: "Coffee + Dessert + Seating and rentals",
     description:
-      "Hospitality, sweetness, and selected room requirements can be coordinated through one Luxe Event Co. inquiry and proposal journey.",
+      "Hospitality, sweetness, and selected room requirements support a fully considered setting from arrival through dessert.",
   },
 ] as const;
 
 export const bridalShowerGallery = [
   {
     number: "01",
-    label: "The café table",
-    note: "Beverages, menus, cups, and guest interaction",
+    label: "The café welcome",
+    note: "Coffee and matcha service within the arrival or gathering setting.",
     tone: "table",
   },
   {
     number: "02",
-    label: "The sweet detail",
-    note: "Live preparation, toppings, signage, and styling",
+    label: "The sweet moment",
+    note: "Fresh dessert preparation and guest interaction.",
     tone: "sweet",
   },
   {
     number: "03",
-    label: "The full room",
-    note: "Seating, tables, florals, linens, lighting, and atmosphere",
+    label: "The room",
+    note: "Seating, tables, signage, linens, and atmosphere in context.",
     tone: "room",
+  },
+] as const;
+
+export const bridalShowerPlanning = [
+  {
+    number: "01",
+    title: "The gathering",
+    description:
+      "Share the date, venue, estimated guest count, schedule, and whether the shower will take place indoors or outdoors.",
+  },
+  {
+    number: "02",
+    title: "The experiences",
+    description:
+      "Identify whether coffee, matcha, live dessert, seating, rentals, or a coordinated combination should support the shower.",
+  },
+  {
+    number: "03",
+    title: "The setting",
+    description:
+      "Provide any available details about venue access, service footprint, power or water, delivery timing, setup, teardown, and venue requirements.",
+  },
+  {
+    number: "04",
+    title: "The personal details",
+    description:
+      "Share any preferred colours, wording, menu ideas, signage, presentation details, or rental selections.",
   },
 ] as const;
 

@@ -1,0 +1,352 @@
+/* Shared editorial context section used by Coffee Bar, Sweet Cart, and Seating Rentals. */
+.experience-context {
+  display: grid;
+  grid-template-columns: minmax(20rem, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(4rem, 8vw, 9rem);
+  align-items: start;
+  padding-block: clamp(5.5rem, 8vw, 8rem);
+  color: var(--color-luxe-black);
+}
+
+.experience-context-intro,
+.experience-context-content {
+  min-width: 0;
+  grid-column: auto;
+}
+
+.experience-context-intro {
+  display: flex;
+  flex-direction: column;
+}
+
+.experience-context-intro > .foundation-label {
+  margin: 0 0 clamp(2rem, 4vw, 4rem);
+}
+
+.experience-context h2 {
+  max-width: none;
+  margin: 0;
+  color: var(--color-luxe-black) !important;
+  font-size: clamp(2.45rem, 3.1vw, 3.7rem) !important;
+  font-weight: 400 !important;
+  line-height: 0.96 !important;
+  letter-spacing: -0.055em !important;
+  text-wrap: balance;
+}
+
+.experience-context h2 span {
+  display: block;
+}
+
+.coffee-page .experience-context.coffee-overview h2 {
+  max-width: none !important;
+}
+
+.coffee-page .experience-context.coffee-overview h2 span {
+  white-space: nowrap;
+}
+
+.experience-context h2 span:nth-child(3) {
+  margin-top: 0.45em;
+}
+
+.experience-context-art {
+  position: relative;
+  width: min(100%, 31rem);
+  min-height: clamp(14rem, 19vw, 19rem);
+  margin-top: clamp(3rem, 5vw, 5rem);
+  overflow: hidden;
+}
+
+.experience-context-content {
+  display: grid;
+  align-content: start;
+  padding-left: clamp(2rem, 4vw, 4rem);
+  border-left: 1px solid color-mix(in srgb, var(--color-luxe-gold) 55%, transparent);
+}
+
+.experience-context-lead {
+  max-width: 36ch;
+  margin: 0;
+  color: var(--color-luxe-black) !important;
+  font-size: clamp(1.65rem, 2.1vw, 2.35rem) !important;
+  font-weight: 400;
+  line-height: 1.12 !important;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+.experience-context-rule {
+  width: 100%;
+  height: 1px;
+  margin: clamp(3rem, 5vw, 5rem) 0 clamp(2rem, 3vw, 3rem);
+  background: color-mix(in srgb, var(--color-luxe-black) 20%, transparent);
+}
+
+.experience-context-copy {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 4vw, 4rem);
+  row-gap: 0;
+  color: var(--color-text-muted);
+}
+
+.experience-context-copy p {
+  margin: 0;
+  color: var(--color-text-muted) !important;
+  font-size: clamp(0.98rem, 1.05vw, 1.08rem) !important;
+  line-height: 1.7 !important;
+}
+
+.experience-context-copy > p:nth-child(2),
+.experience-context-copy > p:nth-child(3) {
+  padding-bottom: clamp(2rem, 3vw, 3rem);
+}
+
+.experience-context-copy > p:last-child {
+  grid-column: 1 / -1;
+  margin-top: clamp(1rem, 1.5vw, 1.5rem);
+  padding-top: clamp(1rem, 1.5vw, 1.5rem);
+  border-top: 1px solid color-mix(in srgb, var(--color-luxe-black) 20%, transparent);
+}
+
+.experience-context-copy a {
+  color: var(--color-luxe-black);
+  font-weight: 600;
+  text-decoration-line: underline;
+  text-decoration-color: var(--color-luxe-gold);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.24em;
+}
+
+.signature-selector-footer {
+  margin-top: clamp(2rem, 3vw, 3rem);
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-lead);
+  line-height: 1.5;
+}
+
+.signature-selector-footer a {
+  border-bottom: 1px solid currentColor;
+  color: var(--color-luxe-black);
+}
+
+.signature-selector-dark {
+  position: relative;
+  isolation: isolate;
+  padding-block: clamp(4rem, 6vw, 6rem);
+  background: var(--surface-chapter-dark);
+  box-shadow: 0 0 0 100vmax var(--surface-chapter-dark);
+  clip-path: inset(0 -100vmax);
+  color: var(--color-luxe-ivory);
+}
+
+.signature-selector-dark::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0 -100vmax;
+  background-image: radial-gradient(rgb(248 246 242 / 7%) 0.55px, transparent 0.7px);
+  background-size: 4px 4px;
+  content: "";
+  pointer-events: none;
+}
+
+.signature-selector-dark > * {
+  position: relative;
+  z-index: 1;
+}
+
+.signature-selector-dark .signature-section-heading h2,
+.signature-selector-dark .signature-selector-copy strong {
+  color: var(--color-luxe-ivory);
+}
+
+.signature-selector-dark .signature-selector-label {
+  color: var(--color-luxe-gold-on-dark);
+}
+
+.signature-selector-dark .signature-selector-world {
+  border-color: var(--surface-dark-rule);
+}
+
+.signature-selector-dark .signature-selector-choice {
+  border-color: var(--surface-dark-rule);
+}
+
+.signature-selector-dark .signature-selector-copy > span:nth-of-type(2),
+.signature-selector-dark .signature-selector-footer {
+  color: var(--surface-dark-copy-muted);
+}
+
+.signature-selector-dark .signature-selector-copy b,
+.signature-selector-dark .signature-selector-footer a {
+  color: var(--color-luxe-ivory);
+}
+
+/* Extend the Corporate Events selector directly to the preceding chapter. */
+.corporate-page > #corporate-experiences {
+  margin-top: 0;
+  padding-top: clamp(5rem, 8vw, 8rem);
+}
+
+.signature-selector-taupe {
+  position: relative;
+  isolation: isolate;
+  padding-block: clamp(4rem, 6vw, 6rem);
+  background: var(--surface-chapter-taupe);
+  box-shadow: 0 0 0 100vmax var(--surface-chapter-taupe);
+  clip-path: inset(0 -100vmax);
+  color: var(--color-luxe-black);
+}
+
+.signature-selector-taupe::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0 -100vmax;
+  background-image: radial-gradient(rgb(23 22 20 / 5.3%) 0.55px, transparent 0.7px);
+  background-size: 4px 4px;
+  content: "";
+  pointer-events: none;
+}
+
+.signature-selector-taupe > * {
+  position: relative;
+  z-index: 1;
+}
+
+.signature-selector-taupe .signature-section-heading h2,
+.signature-selector-taupe .signature-selector-label,
+.signature-selector-taupe .signature-selector-copy strong,
+.signature-selector-taupe .signature-selector-copy > span:nth-of-type(2),
+.signature-selector-taupe .signature-selector-copy b,
+.signature-selector-taupe .signature-selector-footer,
+.signature-selector-taupe .signature-selector-footer a {
+  color: var(--color-luxe-black);
+}
+
+.signature-selector-taupe .signature-selector-world,
+.signature-selector-taupe .signature-selector-choice {
+  border-color: color-mix(in srgb, var(--color-luxe-black) 18%, transparent);
+}
+
+/* Preserve each division's surface treatment while sharing the structure. */
+.sweet-page .experience-context,
+.coffee-page .experience-context,
+.seating-page .experience-context {
+  background: transparent;
+  box-shadow: none;
+  clip-path: none;
+}
+
+.seating-page .experience-context,
+.seating-page .experience-context h2,
+.seating-page .experience-context-lead,
+.seating-page .experience-context-copy a {
+  color: var(--surface-dark-copy) !important;
+}
+
+.seating-page .experience-context-copy p {
+  color: var(--surface-dark-copy-muted) !important;
+}
+
+.seating-page .experience-context.seating-overview h2 span {
+  white-space: normal;
+}
+
+.seating-page .experience-context.seating-overview h2 span + span {
+  margin-top: 0.45em;
+}
+
+.seating-page .experience-context.seating-overview .experience-context-rule {
+  background: var(--surface-dark-rule);
+}
+
+.seating-page .experience-context.seating-overview .experience-context-copy > p:last-child {
+  border-top-color: var(--surface-dark-rule);
+}
+
+@media (max-width: 960px) {
+  .experience-context {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .experience-context-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(15rem, 0.7fr);
+    gap: var(--space-7);
+    align-items: end;
+  }
+
+  .experience-context-intro > .foundation-label {
+    grid-column: 1 / -1;
+    margin-bottom: 0;
+  }
+
+  .coffee-page .experience-context.coffee-overview h2 span {
+    white-space: normal;
+  }
+
+  .experience-context-art {
+    margin-top: 0;
+  }
+
+  .experience-context-content {
+    padding-top: var(--space-8);
+    padding-left: 0;
+    border-top: 1px solid color-mix(in srgb, var(--color-luxe-gold) 55%, transparent);
+    border-left: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .experience-context {
+    gap: var(--space-7);
+    padding-block: var(--space-9);
+  }
+
+  .experience-context-intro {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .experience-context h2 {
+    font-size: clamp(2.35rem, 10.5vw, 3.65rem) !important;
+    line-height: 0.97 !important;
+  }
+
+  .experience-context-art {
+    width: 100%;
+    min-height: min(72vw, 18rem);
+    margin-top: var(--space-7);
+  }
+
+  .experience-context-content {
+    padding-top: var(--space-7);
+  }
+
+  .experience-context-lead {
+    max-width: 24ch;
+    font-size: clamp(1.75rem, 7.5vw, 2.4rem) !important;
+  }
+
+  .experience-context-rule {
+    margin-block: var(--space-7) var(--space-6);
+  }
+
+  .experience-context-copy {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .experience-context-copy > p:nth-child(2),
+  .experience-context-copy > p:nth-child(3) {
+    padding-bottom: 0;
+  }
+
+  .experience-context-copy > p:last-child {
+    grid-column: 1;
+    margin-top: var(--space-2);
+    padding-top: var(--space-5);
+  }
+}

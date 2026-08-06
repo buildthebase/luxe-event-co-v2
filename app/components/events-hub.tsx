@@ -56,34 +56,32 @@ export function EventsApproach() {
       className="events-approach surface-chapter surface-chapter-dark"
       aria-labelledby="events-approach-title"
     >
-      <div className="events-approach-copy">
+      <div className="events-approach-intro">
         <p className="foundation-label">The Luxe event-led approach</p>
         <h2 id="events-approach-title">The event comes first.</h2>
-        <p>
-          Luxe does not begin by placing every client into the same package.
-          The occasion, audience, venue, timing, and desired atmosphere
-          determine whether the{" "}
-          <Link href="/experiences/coffee-bar">Coffee Bar</Link>,{" "}
-          <Link href="/experiences/sweet-cart">Sweet Cart</Link>,{" "}
-          <Link href="/experiences/seating-rentals">Seating Rentals</Link>, or
-          a combination makes sense.
-        </p>
-        <p>
-          Each service remains a distinct experience. When more than one is
-          selected for a complete event setup, coffee can shape hospitality,
-          dessert can create a live guest moment, and rentals can support seating,
-          gathering, weather protection, and circulation. They can be coordinated
-          through one parent-brand inquiry and proposal journey without turning
-          them into a fixed package.
-        </p>
-        <p>
-          Guest flow around a coffee or dessert station should leave a clear approach,
-          ordering point, waiting area, and exit without blocking doors, aisles,
-          dining, or programmed activity. Luxe reviews placement against expected
-          arrival patterns, menu, service duration, staffing, utilities, and the
-          venue floor plan before the event.
+        <p className="events-approach-lead">
+          Luxe brings together coffee, dessert, seating, and event rentals
+          according to what the occasion genuinely requires.
         </p>
       </div>
+      <div className="events-approach-body">
+        <p>
+          Each experience can be booked independently or coordinated within one
+          event plan. The venue, guest count, schedule, service needs, and
+          desired atmosphere shape which services are included and how they work
+          together.
+        </p>
+        <p>
+          <Link href="/experiences/coffee-bar">Coffee Bar</Link> can support
+          hospitality and conversation. <Link href="/experiences/sweet-cart">Sweet Cart</Link>{" "}
+          can create a live guest moment. <Link href="/experiences/seating-rentals">Seating Rentals</Link>{" "}
+          can shape comfort, movement, service areas, and the way the room is experienced.
+        </p>
+      </div>
+      <p className="events-approach-closing">
+        One Luxe Event Co. inquiry can coordinate the selected experiences while
+        allowing each service to retain its own purpose and character.
+      </p>
       <ol className="events-approach-principles">
         {eventLedPrinciples.map((principle) => (
           <li key={principle.number}>
@@ -105,10 +103,12 @@ export function EventsDirectory() {
     >
       <header>
         <p className="foundation-label">Explore by occasion</p>
-        <h2 id="events-directory-title">What are you gathering for?</h2>
+        <h2 id="events-directory-title">Plan around the occasion.</h2>
         <p>
-          Choose the event context first. Each pathway leads to more specific
-          applications and inquiry language.
+          Explore how Luxe Coffee Bar, Luxe Sweet Cart, and Luxe Seating Rentals
+          can be planned for weddings, corporate events, brand activations,
+          showers, birthdays, and private celebrations across Toronto and the
+          GTA.
         </p>
       </header>
       <div className="events-directory-list">
@@ -141,10 +141,6 @@ export function EventsGalleryPreview() {
       <header>
         <p className="foundation-label">Featured gallery</p>
         <h2 id="events-gallery-title">See the experience in the room.</h2>
-        <p>
-          Service, presentation, and setting work together differently for each
-          kind of gathering.
-        </p>
       </header>
       <div
         className="events-gallery-grid"

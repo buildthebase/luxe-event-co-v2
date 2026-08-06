@@ -20,63 +20,63 @@ export const eventHubEntries: EventHubEntry[] = [
     number: "01",
     name: "Weddings",
     cue: "The full celebration",
-    statement: "Hospitality woven through the day.",
+    statement: "Hospitality carried through the celebration.",
     summary:
-      "Coffee, live dessert, and an intentional setting can support the ceremony, cocktail hour, reception, or late-night flow without competing with the celebration.",
+      "Coffee, live dessert, seating, and event rentals can be planned around the ceremony, cocktail hour, reception, and late-night service.",
   },
   {
     slug: "corporate-events",
     number: "02",
     name: "Corporate Events",
     cue: "Purposeful hospitality",
-    statement: "Professional in service. Designed around the room and schedule.",
+    statement: "Service shaped around the schedule.",
     summary:
-      "For conferences, office events, appreciation programs, and other business gatherings, Luxe can shape the service around the schedule, audience, and brand environment.",
+      "For conferences, office gatherings, appreciation events, and other business occasions, Luxe can coordinate the experience around the audience, venue, timing, and brand environment.",
   },
   {
     slug: "brand-activations",
     number: "03",
     name: "Brand Activations",
     cue: "The brief, made tangible",
-    statement: "An experience people can see, taste, and remember.",
+    statement: "An experience guests can see, taste, and remember.",
     summary:
-      "Branded beverages, dessert presentation, signage, menus, and event styling can carry campaign details into a guest-facing moment.",
+      "Branded beverages, live dessert, presentation, signage, and event styling can translate campaign details into a guest-facing experience.",
   },
   {
     slug: "baby-showers",
     number: "04",
     name: "Baby Showers",
     cue: "A beautiful beginning",
-    statement: "Soft details with room for people to gather.",
+    statement: "A welcoming setting for family and friends.",
     summary:
-      "Coffee, freshly prepared dessert, and refined rentals can create an inviting setting for hosts, families, and guests.",
+      "Coffee, freshly prepared dessert, seating, and rentals can create a comfortable setting shaped around the host, venue, and guest experience.",
   },
   {
     slug: "bridal-showers",
     number: "05",
     name: "Bridal Showers",
     cue: "Before the next chapter",
-    statement: "A little ceremony of its own.",
+    statement: "A considered setting for the people closest to the couple.",
     summary:
-      "The shower can move from welcome drinks to live dessert and a room designed around conversation, photographs, and the people closest to the couple.",
+      "Welcome drinks, live dessert, seating, and room details can be planned around conversation, photographs, and the flow of the gathering.",
   },
   {
     slug: "birthdays",
     number: "06",
     name: "Birthdays",
     cue: "A milestone, made personal",
-    statement: "Built around the person, not a standard party format.",
+    statement: "Built around the guest of honour.",
     summary:
-      "Menus, dessert choices, presentation, and room details can respond to the guest of honour and the scale of the celebration.",
+      "Menus, dessert selections, presentation, seating, and event details can reflect the person being celebrated and the scale of the occasion.",
   },
   {
     slug: "private-events",
     number: "07",
     name: "Private Events",
     cue: "Gather in your own way",
-    statement: "For occasions that deserve their own atmosphere.",
+    statement: "A complete experience for personal milestones.",
     summary:
-      "Engagements, anniversaries, graduations, holiday gatherings, and other milestones can begin with one Luxe experience or bring several together.",
+      "Engagements, anniversaries, graduations, holiday gatherings, and other celebrations can combine one Luxe experience or bring several together.",
   },
 ];
 
@@ -88,8 +88,8 @@ export const eventLedPrinciples = [
   },
   {
     number: "02",
-    label: "Audience",
-    description: "Consider who is gathering and how hospitality should meet them.",
+    label: "Guests",
+    description: "Consider who is attending and how they will gather, move, and be served.",
   },
   {
     number: "03",

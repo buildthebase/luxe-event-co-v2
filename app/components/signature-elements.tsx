@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import type { ReactNode } from "react";
 import {
   combinedExperiences,
   credibilityOrganizations,
@@ -25,20 +26,29 @@ const experienceSelectorActions: Record<string, string> = {
 
 export function ExperienceSelector({
   experiences = signatureExperiences,
+  footer,
   heading = "Choose where the experience begins.",
   description = "Each experience has its own atmosphere and purpose. Together, they create one cohesive event language.",
   id,
   showDescription = true,
+  variant = "default",
 }: {
   experiences?: readonly SignatureExperience[];
+  footer?: ReactNode;
   heading?: string;
   description?: string;
   id?: string;
   showDescription?: boolean;
+  variant?: "default" | "dark" | "taupe" | "bridal";
 } = {}) {
   return (
     <section
-      className="signature-selector"
+      className={[
+        "signature-selector",
+        variant === "dark" ? "signature-selector-dark" : "",
+        variant === "taupe" ? "signature-selector-taupe" : "",
+        variant === "bridal" ? "signature-selector-bridal" : "",
+      ].filter(Boolean).join(" ")}
       id={id}
       aria-labelledby="signature-selector-title"
     >
@@ -67,6 +77,9 @@ export function ExperienceSelector({
             <span className="signature-selector-copy">
               <span className="signature-selector-label">{experience.label}</span>
               <strong>{experience.name}</strong>
+              {experience.tagline ? (
+                <em className="signature-selector-tagline">{experience.tagline}</em>
+              ) : null}
               <span>{experience.description}</span>
               <b aria-hidden="true">
                 {experienceSelectorActions[experience.id] ?? "Explore"} ↗︎
@@ -75,6 +88,7 @@ export function ExperienceSelector({
           </Link>
         ))}
       </div>
+      {footer ? <div className="signature-selector-footer">{footer}</div> : null}
     </section>
   );
 }
@@ -197,13 +211,22 @@ export function CombinedExperienceFeature({
 export function CredibilityStrip({
   organizations = credibilityOrganizations,
   variant = "default",
+  label,
+  showLabel = true,
 }: {
   organizations?: readonly CredibilityOrganization[];
   variant?: "default" | "hero";
+  label?: string;
+  showLabel?: boolean;
 }) {
   const approvedOrganizations = organizations.filter(
     (organization) => organization.permission === "approved",
   );
+  const resolvedLabel =
+    label ??
+    (variant === "hero"
+      ? "Trusted by"
+      : "Selected organizations Luxe has served");
 
   if (approvedOrganizations.length === 0) {
     return null;
@@ -212,15 +235,14 @@ export function CredibilityStrip({
   return (
     <section
       className={`signature-credibility signature-credibility-${variant}`}
-      aria-labelledby={`signature-credibility-title-${variant}`}
+      aria-label={showLabel ? undefined : resolvedLabel}
+      aria-labelledby={showLabel ? `signature-credibility-title-${variant}` : undefined}
       data-evidence-status="approved-organization-names"
       data-evidence-boundary="no-testimonial-endorsement-or-case-study-inference"
     >
-      <p id={`signature-credibility-title-${variant}`}>
-        {variant === "hero"
-          ? "Trusted by"
-          : "Selected organizations Luxe has served"}
-      </p>
+      {showLabel ? (
+        <p id={`signature-credibility-title-${variant}`}>{resolvedLabel}</p>
+      ) : null}
       <ul>
         {approvedOrganizations.map((organization) => (
           <li

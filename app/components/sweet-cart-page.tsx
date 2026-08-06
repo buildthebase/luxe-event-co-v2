@@ -14,6 +14,7 @@ import { pageMetadata } from "../metadata-config";
 import { sweetCartSectionNavigation } from "../page-section-navigation";
 import { createServicePageSchema, divisionServiceIds } from "../schema-builders";
 import { FaqAccordion } from "./faq-accordion";
+import { ExperienceContextSection } from "./experience-context-section";
 import { JsonLd } from "./json-ld";
 import { PageSectionNavigation } from "./page-section-navigation";
 import { PriorityAnswer } from "./priority-answer";
@@ -116,70 +117,57 @@ function SweetHero() {
 
 function SweetPositioning() {
   return (
-    <section
-      className="sweet-positioning"
-      aria-labelledby="sweet-positioning-title"
+    <ExperienceContextSection
+      id="sweet-positioning"
+      ariaLabelledBy="sweet-positioning-title"
+      legacyClassName="sweet-positioning"
+      title={
+        <>
+          <span>The cart becomes</span>
+          <span>part of the room.</span>
+          <span>Preparation becomes</span>
+          <span>part of the moment.</span>
+        </>
+      }
+      lead={<>Dessert is prepared in view, finished to order, and presented as part of the gathering.</>}
+      copy={
+        <>
+          <p>
+            Dessert-cart catering is a staffed mobile dessert service where mini
+            pancakes, Belgian waffles, mini donuts, and other selected sweets are
+            prepared, finished, and served for guests on-site. Luxe Sweet Cart
+            provides luxury dessert cart catering for{" "}
+            <Link href="/events/weddings">weddings</Link>,{" "}
+            <Link href="/events/corporate-events">corporate events</Link>,{" "}
+            <Link href="/events/brand-activations">brand activations</Link>,
+            bridal showers, baby showers, birthdays, and{" "}
+            <Link href="/events/private-events">private celebrations</Link>{" "}
+            across Toronto and the GTA.
+          </p>
+          <p>
+            Unlike a dessert table, which typically presents pre-arranged sweets
+            for self-service, the cart centres live preparation and attendant-led
+            service. Each booking is planned around the cart style, dessert
+            selection, guest count, venue, service window, footprint, power,
+            access, and styling requirements.
+          </p>
+          <p className="sweet-positioning-handoff">
+            Luxe Sweet Cart can be booked independently or coordinated with{" "}
+            <Link href="/experiences/coffee-bar">Luxe Coffee Bar</Link> and{" "}
+            <Link href="/experiences/seating-rentals">Luxe Seating Rentals</Link>{" "}
+            through one{" "}
+            <QuoteModalTrigger className="sweet-positioning-inquiry">
+              Luxe Event Co. inquiry
+            </QuoteModalTrigger>
+            .
+          </p>
+        </>
+      }
     >
-      <div className="sweet-positioning-intro">
-<h2 id="sweet-positioning-title">
-  <span>The cart becomes</span>
-  <span>part of the room.</span>
-  <span>Preparation becomes</span>
-  <span>part of the moment.</span>
-</h2>
-
-        <div className="sweet-positioning-art" aria-hidden="true">
-          <i />
-          <i />
-          <i />
-        </div>
-      </div>
-
-      <div className="sweet-positioning-content">
-        <p className="sweet-positioning-lead">
-          Dessert is prepared in view, finished to order, and presented as part
-          of the gathering.
-        </p>
-
-        <div className="sweet-positioning-rule" aria-hidden="true" />
-
-<div className="sweet-positioning-copy">
-  <p>
-    Dessert-cart catering is a staffed mobile dessert service where mini
-    pancakes, Belgian waffles, mini donuts, and other selected sweets are
-    prepared, finished, and served for guests on-site. Luxe Sweet Cart
-    provides luxury dessert cart catering for{" "}
-    <Link href="/events/weddings">weddings</Link>,{" "}
-    <Link href="/events/corporate-events">corporate events</Link>,{" "}
-    <Link href="/events/brand-activations">brand activations</Link>,
-    bridal showers, baby showers, birthdays, and{" "}
-    <Link href="/events/private-events">private celebrations</Link>{" "}
-    across Toronto and the GTA.
-  </p>
-
-  <p>
-    Unlike a dessert table, which typically presents pre-arranged sweets
-    for self-service, the cart centres live preparation and
-    attendant-led service. Each booking is planned around the cart
-    style, dessert selection, guest count, venue, service window,
-    footprint, power, access, and styling requirements.
-  </p>
-
-  <p className="sweet-positioning-handoff">
-    Luxe Sweet Cart can be booked independently or coordinated with{" "}
-    <Link href="/experiences/coffee-bar">Luxe Coffee Bar</Link> and{" "}
-    <Link href="/experiences/seating-rentals">
-      Luxe Seating Rentals
-    </Link>{" "}
-    through one{" "}
-    <QuoteModalTrigger className="sweet-positioning-inquiry">
-      Luxe Event Co. inquiry
-    </QuoteModalTrigger>
-    .
-  </p>
-</div>
-      </div>
-    </section>
+      <i />
+      <i />
+      <i />
+    </ExperienceContextSection>
   );
 }
 
@@ -398,21 +386,25 @@ function SweetGallery() {
 
 function SweetCombinations() {
   return (
-    <section className="sweet-combinations" aria-labelledby="sweet-combinations-title">
+    <section
+      className="sweet-combinations related-experiences"
+      aria-labelledby="sweet-combinations-title"
+    >
       <header>
         <p className="foundation-label">Within the Luxe family</p>
-        <h2 id="sweet-combinations-title">Dessert can meet the arrival and the room around it.</h2>
+        <h2 id="sweet-combinations-title">
+          <span>Dessert becomes part of the</span>
+          <span>setting, service, and guest experience.</span>
+        </h2>
       </header>
       <div>
         <Link href="/experiences/coffee-bar">
-          <span>Coffee + Dessert</span>
-          <strong>A café and dessert experience</strong>
+          <strong>Luxe Coffee Bar</strong>
           <p>Pair crafted beverages with live dessert preparation through one coordinated inquiry.</p>
-          <b aria-hidden="true">Explore Luxe Coffee Bar ↗︎</b>
+          <b aria-hidden="true">Explore Coffee Bar ↗︎</b>
         </Link>
         <Link href="/experiences/seating-rentals">
-          <span>Dessert + Setting</span>
-          <strong>A cart styled with the room</strong>
+          <strong>Luxe Seating Rentals</strong>
           <p>Connect the dessert moment with seating, tables, tents, linens, or lighting.</p>
           <b aria-hidden="true">Explore Seating Rentals ↗︎</b>
         </Link>

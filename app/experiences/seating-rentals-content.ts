@@ -5,33 +5,33 @@ export const rentalCategories = [
     id: "chairs",
     number: "01",
     name: "Chairs",
-    role: "Comfort, rhythm, and sightlines",
+    role: "Comfort, proportion, and placement",
     description:
-      "Seating choices shape how guests face the ceremony, move through dinner, and settle into the event. Final styles, quantities, and availability require the approved inventory schedule.",
+      "Chair selections are planned around the ceremony or dining format, guest count, floor plan, and visual direction. Styles, quantities, finishes, and availability are confirmed for the event date.",
   },
   {
     id: "tables",
     number: "02",
     name: "Tables",
-    role: "The working structure of the room",
+    role: "Structure for dining, service, and display",
     description:
-      "Tables support dining, display, service, and conversation. The right format depends on guest count, floor plan, venue dimensions, and the intended event flow.",
+      "Dining, cocktail, display, and service tables are selected according to the guest count, room dimensions, service needs, and event flow. Sizes and quantities are confirmed within the final layout.",
   },
   {
     id: "cocktail-tables",
     number: "03",
     name: "Cocktail Tables",
-    role: "Pause points for social spaces",
+    role: "Natural gathering points",
     description:
-      "Cocktail tables create places to gather without interrupting circulation, making them relevant to receptions, networking events, activations, and transitional moments.",
+      "Cocktail tables create places for guests to gather and connect without interrupting movement through the room. They are well suited to receptions, networking events, brand activations, and transitional moments.",
   },
   {
     id: "tents",
     number: "04",
     name: "Tents",
-    role: "Structure for outdoor gatherings",
+    role: "Shelter planned for the setting",
     description:
-      "Tent requirements are shaped by site access, surface, weather planning, guest count, layout, and local venue conditions. Final specifications require an event-specific review.",
+      "Tent requirements are considered around the guest count, site access, ground conditions, event layout, weather planning, and venue requirements. Final specifications depend on the location and installation needs.",
   },
   {
     id: "linens",
@@ -39,15 +39,15 @@ export const rentalCategories = [
     name: "Linens",
     role: "Colour, texture, and finish",
     description:
-      "Linens can connect tables and service areas to the event palette. Available sizes, materials, colours, and quantities will be published after inventory approval.",
+      "Linens bring cohesion to dining tables, cocktail tables, and service areas. Available sizes, materials, colours, and quantities are confirmed with the final rental selection.",
   },
   {
     id: "lighting",
     number: "06",
     name: "Lighting",
-    role: "Atmosphere after the room changes",
+    role: "Atmosphere, visibility, and focus",
     description:
-      "Lighting helps define mood, visibility, and focal points. Fixture inventory, power needs, installation requirements, and availability remain subject to confirmation.",
+      "Lighting helps shape the mood of the room while supporting visibility, service areas, and key focal points. Fixture options, power access, installation requirements, and availability are confirmed during planning.",
   },
 ] as const;
 
@@ -79,36 +79,24 @@ export const rentalOperations = [
   {
     number: "01",
     title: "Delivery",
-    status: "Scoped to the event",
+    status: "Planned for the venue",
     description:
-      "The approved intake does not yet establish a universal rental-delivery policy. Delivery availability, timing, access requirements, and any applicable fee must be confirmed for the venue and order.",
+      "Delivery availability, timing, loading access, travel requirements, and applicable fees are confirmed for the venue and rental order.",
   },
   {
     number: "02",
     title: "Setup",
-    status: "Scope must be confirmed",
+    status: "Defined within the proposal",
     description:
-      "Setup should be defined by inventory type, quantity, floor plan, venue access, installation needs, and event timing. It is not presented as universally included until the policy is approved.",
+      "Where setup is included, the scope is planned around the rental items, quantities, floor plan, venue access, and event schedule.",
   },
   {
     number: "03",
-    title: "Teardown",
-    status: "Scope must be confirmed",
+    title: "Teardown and pickup",
+    status: "Confirmed before the event",
     description:
-      "Teardown, pickup timing, after-hours access, and venue responsibilities require confirmation in the rental proposal rather than assumption from the website.",
+      "Pickup timing, after-hours access, teardown responsibilities, and venue requirements are confirmed as part of the final rental plan.",
   },
-] as const;
-
-export const rentalQuoteRequirements = [
-  "Event date and venue address",
-  "Event type and guest count",
-  "Indoor or outdoor setting",
-  "Requested rental categories and estimated quantities",
-  "Floor plan, dimensions, or venue layout where available",
-  "Delivery access, loading restrictions, and timing",
-  "Setup and teardown requirements",
-  "Outdoor surface, weather, and tent considerations",
-  "Coffee or dessert experiences being requested",
 ] as const;
 
 export const rentalEventLinks = [
@@ -164,7 +152,7 @@ export const rentalGalleryPreview = [
   },
   {
     number: "03",
-    label: "Material and finishing details",
+    label: "Materials and finishing details",
     note: "Approved inventory photography required",
     tone: "detail",
   },

@@ -3,103 +3,55 @@ export const weddingMoments = [
     number: "01",
     phase: "Before the ceremony",
     title: "A thoughtful welcome.",
+    fitLabel: "Best fit",
+    fit: "Café Cart",
     description:
       "A Café Cart can greet the wedding party or arriving guests with espresso, matcha, and specialty beverages before the ceremony begins.",
-    note: "Best fit is confirmed around arrival flow, venue access, and timing.",
   },
   {
     number: "02",
     phase: "Cocktail hour",
     title: "Coffee becomes part of the transition.",
+    fitLabel: "Best fit",
+    fit: "Signature Coffee Bar",
     description:
       "The Signature Coffee Bar can give guests a polished hospitality point between the ceremony and reception, with hot and iced service shaped around the season.",
-    note: "Menu complexity, guest count, staffing, and service duration shape the plan.",
   },
   {
     number: "03",
     phase: "Reception",
-    title: "A beverage experience within the room.",
+    title: "Hospitality woven into the room.",
+    fitLabel: "Can include",
+    fit: "Coffee Bar",
     description:
       "Espresso classics, signature drinks, matcha, and premium non-coffee beverages can support dinner service, speeches, or the movement into the evening.",
-    note: "Placement is coordinated with the venue, planner, caterer, and reception schedule.",
   },
   {
     number: "04",
     phase: "Dessert",
     title: "A live sweet moment.",
+    fitLabel: "Best fit",
+    fit: "Sweet Cart",
     description:
       "Mini Dutch pancakes, Belgian waffles on a stick, mini donuts, and optional soft serve can be prepared on-site as an interactive part of the celebration.",
-    note: "Dessert selections, sauces, toppings, and presentation are confirmed for the event.",
   },
   {
     number: "05",
     phase: "Late night",
     title: "A second wind, served beautifully.",
+    fitLabel: "Can include",
+    fit: "Coffee Bar or Sweet Cart",
     description:
       "Coffee or freshly prepared dessert can create a late-night pause that feels intentional rather than added on after the reception.",
-    note: "Extended service time and special logistics may affect the final scope.",
   },
   {
     number: "06",
     phase: "The morning after",
     title: "Hospitality can continue.",
+    fitLabel: "Optional",
+    fit: "Coffee Bar",
     description:
       "Where the venue, schedule, and availability allow, a focused coffee experience can be planned for a farewell breakfast or next-day gathering.",
-    note: "Morning-after service is planned as a separate event requirement, not assumed within the wedding-day booking.",
-  },
-] as const;
-
-export const weddingExperienceRoles = [
-  {
-    number: "01",
-    label: "Coffee",
-    name: "Luxe Coffee Bar",
-    href: "/experiences/coffee-bar",
-    statement: "Arrival, transition, reception, or late-night hospitality.",
-    description:
-      "Choose between the intimate Café Cart and the more prominent Signature Coffee Bar based on the room, guest count, and role beverage service should play.",
-  },
-  {
-    number: "02",
-    label: "Dessert",
-    name: "Luxe Sweet Cart",
-    href: "/experiences/sweet-cart",
-    statement: "Fresh preparation and a visual focal point.",
-    description:
-      "A live dessert experience can sit within cocktail hour, reception, or late-night service while contributing to the atmosphere around it.",
-  },
-  {
-    number: "03",
-    label: "Setting",
-    name: "Luxe Seating Rentals",
-    href: "/experiences/seating-rentals",
-    statement: "Comfort, structure, and the shape of the room.",
-    description:
-      "Chairs, tables, cocktail tables, tents, linens, and lighting can be planned around ceremony, reception, lounge, or outdoor requirements.",
-  },
-] as const;
-
-export const weddingCombinations = [
-  {
-    number: "01",
-    title: "A composed cocktail hour",
-    experiences: "Signature Coffee Bar + Sweet Cart",
-    description:
-      "Crafted beverages and live dessert create two complementary guest moments during the transition into the reception.",
-  },
-  {
-    number: "02",
-    title: "Hospitality through the evening",
-    experiences: "Coffee Bar + Late-night dessert",
-    description:
-      "Coffee supports the reception while freshly prepared dessert gives the later hours their own distinct energy.",
-  },
-  {
-    number: "03",
-    title: "The setting and service together",
-    experiences: "Coffee + Dessert + Rentals",
-    description:
-      "The beverage experience, sweet service, and room requirements are brought together around the event plan.",
   },
 ] as const;
 
@@ -108,19 +60,25 @@ export const weddingCustomization = [
     number: "01",
     title: "Drinks and menus",
     description:
-      "Signature beverages, seasonal collections, matcha, premium non-coffee options, milk alternatives, and menu displays can be selected around the season and guest experience.",
+      "Signature beverages, seasonal selections, matcha, premium non-coffee options, milk alternatives, and menu details can be shaped around the season and guest experience.",
   },
   {
     number: "02",
-    title: "Cups and signage",
+    title: "Cups, signage, and wording",
     description:
-      "Custom cups, event signage, and menu displays can carry names, dates, wording, or visual direction approved for the celebration.",
+      "Names, dates, monograms, menu wording, and visual direction can be carried through selected guest-facing details.",
   },
   {
     number: "03",
-    title: "Cart and presentation",
+    title: "Dessert and cart presentation",
     description:
-      "Cart branding, dessert styling, floral direction, pastry-display possibilities, and presentation details can be discussed during discovery.",
+      "Dessert styling, cart details, florals, signage, toppings, and presentation can be discussed during planning.",
+  },
+  {
+    number: "04",
+    title: "Seating and room details",
+    description:
+      "Chair styles, tables, linens, lighting, and other rental selections can be coordinated with the venue and visual direction.",
   },
 ] as const;
 
@@ -129,25 +87,25 @@ export const weddingLogistics = [
     number: "01",
     title: "Planner and venue coordination",
     description:
-      "Luxe can coordinate service timing, access, placement, and event-day requirements with the couple, planner, coordinator, venue, and relevant vendor team.",
+      "Service timing, access, placement, and event-day requirements can be coordinated with the couple, planner, venue, caterer, and relevant vendor team.",
   },
   {
     number: "02",
-    title: "Setup and takedown",
+    title: "Setup, teardown, and pickup",
     description:
-      "Setup and takedown are included for confirmed Coffee Bar and Sweet Cart experiences. Rental delivery, setup, teardown, and pickup responsibilities are defined in the proposal.",
+      "Setup and takedown for Coffee Bar and Sweet Cart are included where confirmed. Rental delivery, setup, teardown, and pickup responsibilities are outlined in the proposal.",
   },
   {
     number: "03",
     title: "Venue requirements",
     description:
-      "Footprint, power, water, access, indoor or outdoor conditions, and timing depend on the selected experiences and venue. Luxe confirms them after reviewing the event details.",
+      "Footprint, power, water, loading access, floor protection, indoor or outdoor conditions, and service timing are confirmed for the selected experiences.",
   },
   {
     number: "04",
     title: "Travel and destination planning",
     description:
-      "Luxe serves Toronto and the GTA and considers select destination weddings throughout Southern Ontario. Applicable travel fees and logistics are confirmed in the proposal.",
+      "Luxe serves Toronto and the GTA and may accommodate select weddings elsewhere in Southern Ontario. Travel requirements and applicable fees are confirmed during planning.",
   },
 ] as const;
 
@@ -155,13 +113,13 @@ export const weddingGalleryPreview = [
   {
     number: "01",
     label: "The welcome",
-    note: "Coffee service within the arrival or cocktail-hour setting",
+    note: "Coffee service within the arrival or cocktail-hour setting.",
     tone: "welcome",
   },
   {
     number: "02",
     label: "The sweet moment",
-    note: "On-site dessert preparation and guest interaction",
+    note: "On-site dessert preparation and guest interaction.",
     tone: "dessert",
   },
   {

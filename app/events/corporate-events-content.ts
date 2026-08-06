@@ -1,57 +1,57 @@
 export const corporateEventApplications = [
   {
     number: "01",
-    title: "Employee appreciation",
+    title: "Employee and team events",
     description:
-      "For employee appreciation, a coffee or matcha bar works well for arrivals, breaks, or an office pop-up, while live dessert can create a more interactive scheduled moment. The right choice follows the workday, team size, space, and time people can step away.",
+      "Coffee, matcha, or live dessert can support employee appreciation, team celebrations, office programming, and scheduled breaks.",
   },
   {
     number: "02",
-    title: "Client appreciation",
+    title: "Client and partner events",
     description:
-      "Hospitality can be shaped around relationship-building, conversation, and the standards clients associate with the host organization.",
+      "Guest-facing hospitality can support presentations, meetings, relationship-building, and the standards clients associate with the organization.",
   },
   {
     number: "03",
     title: "Conferences and trade shows",
     description:
-      "A focused service point can support arrivals, programmed breaks, networking windows, or sustained traffic across a longer agenda.",
+      "Mobile coffee and dessert service can support attendee arrivals, programmed breaks, networking periods, and sustained event traffic.",
   },
   {
     number: "04",
     title: "Office pop-up cafés",
     description:
-      "Bring a complete café experience into the workplace for team programming, office hospitality, or a single-day activation.",
+      "Bring a complete mobile café experience into the workplace for office hospitality, internal programming, or a single-day activation.",
   },
   {
     number: "05",
     title: "Networking events",
     description:
-      "Coffee, dessert, and well-planned gathering areas can help the room feel welcoming without interrupting the purpose of the event.",
+      "Coffee, dessert, cocktail tables, and seating can create natural gathering points while supporting conversation and movement through the event.",
   },
   {
     number: "06",
-    title: "Grand openings",
+    title: "Brand launches and grand openings",
     description:
-      "Branded beverages, live dessert, and presentation details can support an opening-day experience for guests, partners, and teams.",
+      "Guest-facing coffee and dessert experiences can support product launches, openings, campaign moments, and partner events.",
   },
   {
     number: "07",
-    title: "Holiday events",
+    title: "Holiday and appreciation events",
     description:
-      "Seasonal beverage collections and interactive dessert service can add warmth to year-end celebrations and workplace gatherings.",
+      "Seasonal beverages and live dessert can bring warmth and interaction to year-end celebrations and workplace gatherings.",
   },
   {
     number: "08",
-    title: "Real estate and developer events",
+    title: "Real estate and development events",
     description:
-      "Mobile hospitality can support launches, sales-centre events, broker gatherings, resident events, and project milestones.",
+      "Mobile hospitality can support project launches, broker events, sales-centre openings, resident events, and milestone celebrations.",
   },
   {
     number: "09",
-    title: "Institutional and university events",
+    title: "Institutional and campus events",
     description:
-      "Service can be planned around campus programming, staff appreciation, conferences, ceremonies, and community-facing occasions.",
+      "Service can be planned for conferences, ceremonies, staff appreciation, campus programming, and community-facing occasions.",
   },
 ] as const;
 
@@ -93,19 +93,19 @@ export const corporateBrandingOptions = [
     number: "01",
     title: "Custom menus",
     description:
-      "Tailored beverage selections and menu displays can reflect the audience, season, event theme, or approved campaign direction.",
+      "Beverage selections and menu displays can reflect the audience, season, event theme, or approved campaign direction.",
   },
   {
     number: "02",
     title: "Branded cups and signage",
     description:
-      "Company logos, campaign marks, event language, and approved visual details can be carried through cups, signage, and service presentation.",
+      "Company logos, event messaging, campaign graphics, and approved visual details can be carried through cups, signage, menus, and service presentation.",
   },
   {
     number: "03",
     title: "Cart and service styling",
     description:
-      "Cart branding and event styling can help the experience belong within the room while preserving clear, professional service.",
+      "Cart branding, florals, signage, and presentation details can help the experience feel connected to the event environment.",
   },
 ] as const;
 
@@ -113,63 +113,59 @@ export const corporateScaleCapabilities = [
   {
     number: "01",
     title: "Multiple setups",
-    fact: "Up to three coffee setups and up to three dessert setups can be operated simultaneously.",
-    note:
-      "Final availability depends on the date, selected experiences, staffing, equipment, travel, venue access, and service requirements.",
+    description:
+      "Multiple coffee and dessert stations may operate simultaneously when staffing, equipment, venue access, and the event schedule allow.",
   },
   {
     number: "02",
     title: "Multi-day programs",
-    fact: "Multi-day requests require operating confirmation.",
-    note:
-      "The approved information does not establish a universal multi-day model. Dates, schedules, reset or storage needs, staffing, menus, replenishment, site access, and travel must be reviewed before capability is confirmed.",
+    description:
+      "Coffee and dessert service can be planned across multiple event days, with operating hours, replenishment, staffing, storage, and venue requirements confirmed in advance.",
   },
   {
     number: "03",
     title: "Recurring events",
-    fact: "Recurring programs require operating confirmation.",
-    note:
-      "The approved information does not establish a universal recurring-service model. Frequency, dates, quantities, menus, staffing, equipment, storage, branding, and locations must be reviewed before capability is confirmed.",
+    description:
+      "Recurring office and corporate programs can be discussed based on frequency, locations, service format, staffing, and equipment availability.",
   },
   {
     number: "04",
     title: "High-volume service",
-    fact: "Coffee can typically support up to 500 guests and dessert up to 400 guests.",
-    note:
-      "Capacity is planned against service duration, menu complexity, staffing, equipment, guest arrival patterns, and venue logistics.",
+    description:
+      "Larger events are planned around service duration, menu complexity, staffing, equipment, venue logistics, and guest arrival patterns.",
   },
 ] as const;
 
 export const corporatePlanningSteps = [
   {
     number: "01",
-    title: "Define the brief",
+    title: "Share the brief",
     description:
-      "Share the event type, date, location, audience, estimated guest count, schedule, and desired role for hospitality.",
+      "Provide the event type, date, venue, audience, schedule, estimated guest count, and hospitality requirements.",
   },
   {
     number: "02",
-    title: "Shape the service plan",
+    title: "Build the service plan",
     description:
-      "Luxe recommends the Coffee Bar, Sweet Cart, Seating Rentals, or a coordinated combination based on the event requirements.",
+      "Luxe recommends the appropriate service or coordinated combination for the event.",
   },
   {
     number: "03",
     title: "Confirm the operating details",
     description:
-      "Venue access, footprint, power, water, indoor or outdoor conditions, staffing, service duration, delivery, setup, and teardown are reviewed.",
+      "Access, footprint, utilities, staffing, service timing, delivery, setup, and teardown are reviewed.",
   },
   {
     number: "04",
-    title: "Approve the branded details",
+    title: "Approve branded elements",
     description:
-      "Menus, cups, signage, cart presentation, event styling, and production timelines are confirmed before event-day execution.",
+      "Menus, cups, signage, cart presentation, and production timelines are confirmed where applicable.",
   },
   {
     number: "05",
-    title: "Coordinate the handoff",
+    title: "Coordinate service day",
     description:
-      "Luxe can work directly with office teams, agencies, planners, venues, procurement contacts, and other event partners.",
+      "Luxe works with internal teams, agencies, planners, venues, procurement contacts, and relevant event partners.",
   },
 ] as const;
 
@@ -188,8 +184,8 @@ export const corporateGalleryPreviews = [
   },
   {
     number: "03",
-    label: "Branded experience",
-    note: "Approved menus, cups, signage, and event details in context",
+    label: "Guest-facing experience",
+    note: "Service presentation and guest interaction in context",
     tone: "brand",
   },
 ] as const;
@@ -199,11 +195,6 @@ export const corporateFaqs = [
     question: "Which corporate events does Luxe support?",
     answer:
       "Luxe supports employee and client appreciation events, conferences, trade shows, office pop-up cafés, networking events, grand openings, holiday events, real estate and developer events, university and institutional events, product launches, marketing activations, and other corporate hospitality programs.",
-  },
-  {
-    question: "Can a corporate event be branded?",
-    answer:
-      "Yes. Custom-branded cups, signage, menus, cart presentation, event styling, company logos, event themes, and tailored beverage selections can be planned. Final possibilities depend on the approved artwork, production requirements, timeline, and event scope.",
   },
   {
     question: "Can Luxe support multiple setups?",
@@ -218,7 +209,7 @@ export const corporateFaqs = [
   {
     question: "Can Luxe support recurring corporate programs?",
     answer:
-      "A recurring program can be reviewed, but Luxe has not yet approved a universal recurring-service model. Frequency, dates, locations, quantities, menus, staffing, equipment, storage, branding, and venue requirements must be confirmed before Luxe represents the program as available.",
+      "A recurring program can be reviewed, but Luxe has not yet approved a universal recurring-service model. Frequency, dates, locations, quantities, menus, staffing, equipment, storage, and venue requirements must be confirmed before Luxe represents the program as available.",
   },
   {
     question: "What guest capacities can Luxe handle?",
@@ -233,7 +224,7 @@ export const corporateFaqs = [
   {
     question: "How should coffee catering be planned for a corporate event?",
     answer:
-      "Begin with the event purpose, schedule, location, estimated attendance, and the role coffee should play, such as arrivals, a programmed break, networking, or sustained hospitality. Luxe then reviews the menu, service window, guest-arrival pattern, placement, access, utilities, staffing, branding, setup, and teardown with the relevant office, venue, agency, planner, or procurement contacts.",
+      "Begin with the event purpose, schedule, location, estimated attendance, and the role coffee should play, such as arrivals, a programmed break, networking, or sustained hospitality. Luxe then reviews the menu, service window, guest-arrival pattern, placement, access, utilities, staffing, setup, and teardown with the relevant office, venue, agency, planner, or procurement contacts.",
   },
   {
     question: "Which organizations has Luxe served?",

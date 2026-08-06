@@ -1,19 +1,19 @@
 import Link from "next/link";
 import {
-  weddingCombinations,
   weddingCustomization,
-  weddingExperienceRoles,
   weddingFaqs,
   weddingGalleryPreview,
   weddingLogistics,
   weddingMoments,
 } from "../events/weddings-content";
 import { pageMetadata } from "../metadata-config";
+import { weddingsSectionNavigation } from "../page-section-navigation";
 import { createServicePageSchema } from "../schema-builders";
 import { FaqAccordion } from "./faq-accordion";
 import { JsonLd } from "./json-ld";
+import { PageSectionNavigation } from "./page-section-navigation";
 import { QuoteModalTrigger } from "./quote-modal-trigger";
-import { ContextualInquiryPanel } from "./signature-elements";
+import { ContextualInquiryPanel, ExperienceSelector } from "./signature-elements";
 import { SiteShell } from "./site-shell";
 
 const weddingsPath = "/events/weddings";
@@ -30,7 +30,7 @@ const weddingsSchema = createServicePageSchema({
 
 function WeddingHero() {
   return (
-    <header className="wedding-hero">
+    <header className="wedding-hero" id="page-overview">
       <div className="wedding-hero-copy">
         <p className="foundation-eyebrow">Weddings / Toronto &amp; the GTA</p>
         <h1 aria-label="Wedding coffee, dessert, and rentals planned around the big day.">
@@ -106,79 +106,43 @@ function WeddingDay() {
   return (
     <section className="wedding-day" id="wedding-day" aria-labelledby="wedding-day-title">
       <header>
-        <p className="foundation-label">Across the wedding day</p>
+        <p className="foundation-label">Wedding-day possibilities</p>
         <h2 id="wedding-day-title">
-          Six moments.
-          <br />
-          Each with its own rhythm.
+          Where Luxe can fit into the wedding day.
         </h2>
         <p>
-          These are planning possibilities rather than fixed packages. The
-          venue, schedule, guest count, selected experiences, and service
-          requirements determine the final direction.
+          Each wedding follows its own schedule. These are planning
+          possibilities rather than a fixed sequence or package.
         </p>
       </header>
       <ol>
         {weddingMoments.map((moment) => (
           <li key={moment.number}>
-            <p>{moment.phase}</p>
-            <div>
+            <div
+              className={`wedding-day-symbol wedding-day-symbol-${moment.number}`}
+              aria-hidden="true"
+            >
+              <span />
+            </div>
+            <div className="wedding-day-copy">
+              <div className="wedding-day-kicker">
+                <span>{moment.number}</span>
+                <p className="wedding-day-phase">{moment.phase}</p>
+              </div>
               <h3>{moment.title}</h3>
               <p>{moment.description}</p>
-              <small>{moment.note}</small>
             </div>
+            <aside className="wedding-day-fit">
+              <small>{moment.fitLabel}</small>
+              <strong>{moment.fit}</strong>
+            </aside>
           </li>
         ))}
       </ol>
-    </section>
-  );
-}
-
-function WeddingExperiences() {
-  return (
-    <section className="wedding-experiences" aria-labelledby="wedding-experiences-title">
-      <header>
-        <p className="foundation-label">Three distinct roles</p>
-        <h2 id="wedding-experiences-title">
-          Service, sweetness, and the setting around them.
-        </h2>
-      </header>
-      <div>
-        {weddingExperienceRoles.map((experience) => (
-          <Link href={experience.href} key={experience.number}>
-            <span>{experience.label}</span>
-            <strong>{experience.name}</strong>
-            <h3>{experience.statement}</h3>
-            <p>{experience.description}</p>
-            <b>Explore {experience.label} <span aria-hidden="true">↗︎</span></b>
-          </Link>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function WeddingCombinations() {
-  return (
-    <section className="wedding-combinations" aria-labelledby="wedding-combinations-title">
-      <header>
-        <p className="foundation-label">Suggested wedding combinations</p>
-        <h2 id="wedding-combinations-title">Consider the handoff between moments.</h2>
-        <p>
-          Each composition remains customizable and confirmation-dependent. It
-          is not a fixed package or a promise of identical requirements for
-          every venue.
-        </p>
-      </header>
-      <div>
-        {weddingCombinations.map((combination) => (
-          <article key={combination.number}>
-            <p>{combination.title}</p>
-            <h3>{combination.experiences}</h3>
-            <p>{combination.description}</p>
-          </article>
-        ))}
-      </div>
+      <p className="wedding-day-note">
+        * Final placement, timing, staffing, and service duration are confirmed
+        around the wedding schedule and venue requirements.
+      </p>
     </section>
   );
 }
@@ -189,7 +153,7 @@ function WeddingCustomization() {
       <header>
         <p className="foundation-label">Made specific to the celebration</p>
         <h2 id="wedding-customization-title">
-          Personal details can move through the menu and presentation.
+          Carry the wedding details through the experience.
         </h2>
       </header>
       <div>
@@ -213,14 +177,20 @@ function WeddingCoordination() {
       data-section-id="wedding-coordination"
     >
       <header>
-        <p className="foundation-label">Coordination and logistics</p>
+        <p className="foundation-label">Planning and logistics</p>
         <h2 id="wedding-coordination-title">
-          The experience should arrive prepared for the room.
+          What Luxe coordinates before the wedding.
         </h2>
+        <aside>
+          <strong>$5 million liability insurance</strong>
+          <p>
+            Documentation can be provided to planners and venues where required.
+          </p>
+        </aside>
         <p>
-          Luxe reviews the event schedule and operational details before
-          confirming the service plan. No universal footprint, utility, outdoor,
-          or rental-delivery requirement is assumed.
+          Access, timing, placement, utilities, setup, pickup, venue
+          requirements, and travel are reviewed before the event so the
+          confirmed services arrive prepared for the setting.
         </p>
       </header>
       <ol>
@@ -231,14 +201,6 @@ function WeddingCoordination() {
           </li>
         ))}
       </ol>
-      <aside>
-        <strong>$5 million liability insurance</strong>
-        <p>
-          A meaningful layer of assurance for couples, planners, venues, and
-          vendor teams. Documentation can be provided where required during
-          planning.
-        </p>
-      </aside>
     </section>
   );
 }
@@ -248,8 +210,7 @@ function WeddingGallery() {
     <section className="wedding-gallery" aria-labelledby="wedding-gallery-title">
       <header>
         <p className="foundation-label">Wedding gallery</p>
-        <h2 id="wedding-gallery-title">The proof belongs in real celebrations.</h2>
-        <p>Follow the service through the day, from the room and menu to the moments shared with guests.</p>
+        <h2 id="wedding-gallery-title">See the experiences in real weddings.</h2>
       </header>
       <div className="wedding-gallery-grid" data-asset-status="awaiting-approved-photography">
         {weddingGalleryPreview.map((item) => (
@@ -274,7 +235,7 @@ function WeddingFaq() {
     <section className="wedding-faq" aria-labelledby="wedding-faq-title">
       <header>
         <p className="foundation-label">Wedding planning questions</p>
-        <h2 id="wedding-faq-title">Useful answers before the inquiry.</h2>
+        <h2 id="wedding-faq-title">Wedding planning questions, answered.</h2>
       </header>
       <FaqAccordion items={weddingFaqs} showNumbers={false} />
       <Link href="/faq">
@@ -289,16 +250,27 @@ export function WeddingsPage() {
     <SiteShell breadcrumbPath="/events/weddings">
       <main className="wedding-page">
         <JsonLd data={weddingsSchema} />
+        <PageSectionNavigation items={weddingsSectionNavigation} />
         <WeddingHero />
         <WeddingOverview />
         <WeddingDay />
-        <WeddingExperiences />
-        <WeddingCombinations />
+        <ExperienceSelector
+          id="wedding-experiences"
+          footer={
+            <Link href="/inquire">
+              Book one experience independently or coordinate several through
+              one Luxe Event Co. wedding plan.
+            </Link>
+          }
+          heading="Three experiences, each with a clear role."
+          showDescription={false}
+          variant="taupe"
+        />
         <WeddingCustomization />
         <WeddingCoordination />
         <WeddingGallery />
         <WeddingFaq />
-        <ContextualInquiryPanel contextKey="weddings" />
+        <ContextualInquiryPanel id="wedding-inquiry" contextKey="weddings" />
       </main>
     </SiteShell>
   );

@@ -1,0 +1,135 @@
+/* Match every event positioning overview to the Weddings composition. */
+:is(
+    .corporate-overview,
+    .activation-overview,
+    .bridal-overview,
+    .birthday-overview,
+    .private-overview
+  ) {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(24rem, 0.88fr);
+  gap: clamp(4rem, 9vw, 10rem);
+  padding-block: clamp(4rem, 6vw, 6rem);
+  background: var(--surface-chapter-taupe);
+  box-shadow: 0 0 0 100vmax var(--surface-chapter-taupe);
+  clip-path: inset(0 -100vmax);
+  isolation: isolate;
+}
+
+:is(
+    .corporate-overview,
+    .activation-overview,
+    .bridal-overview,
+    .birthday-overview,
+    .private-overview
+  )::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0 -100vmax;
+  background-image: radial-gradient(rgb(23 22 20 / 5.3%) 0.55px, transparent 0.7px);
+  background-size: 4px 4px;
+  content: "";
+  pointer-events: none;
+}
+
+:is(
+    .corporate-overview,
+    .activation-overview,
+    .bridal-overview,
+    .birthday-overview,
+    .private-overview
+  ) h2 {
+  max-width: 15ch;
+  margin: 0;
+  font-size: clamp(3.15rem, 5.8vw, 6.4rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  text-wrap: balance;
+}
+
+.corporate-overview > div:first-child {
+  align-self: center;
+}
+
+:is(
+    .corporate-overview,
+    .activation-overview,
+    .bridal-overview,
+    .birthday-overview,
+    .private-overview
+  ) > div:last-child {
+  align-self: end;
+  padding-top: 0;
+}
+
+:is(
+    .corporate-overview,
+    .activation-overview,
+    .bridal-overview,
+    .birthday-overview,
+    .private-overview
+  ) > div:last-child p {
+  max-width: none;
+  margin: 0 0 var(--space-5);
+  color: var(--color-text-secondary);
+  font-size: clamp(1.05rem, 1.35vw, 1.3rem);
+  line-height: 1.7;
+}
+
+:is(
+    .corporate-overview,
+    .activation-overview,
+    .bridal-overview,
+    .birthday-overview,
+    .private-overview
+  ) > div:last-child p:last-child {
+  margin-bottom: 0;
+}
+
+:is(
+    .corporate-overview,
+    .activation-overview,
+    .bridal-overview,
+    .birthday-overview,
+    .private-overview
+  ) a {
+  border-bottom: 1px solid currentColor;
+  color: var(--color-luxe-gold-ink);
+}
+
+@media (max-width: 780px) {
+  :is(
+      .corporate-overview,
+      .activation-overview,
+      .bridal-overview,
+      .birthday-overview,
+      .private-overview
+    ) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-7);
+  }
+}
+
+@media (max-width: 700px) {
+  :is(
+      .corporate-overview,
+      .activation-overview,
+      .bridal-overview,
+      .birthday-overview,
+      .private-overview
+    ) {
+    padding-block: var(--space-9);
+  }
+
+  :is(
+      .corporate-overview,
+      .activation-overview,
+      .bridal-overview,
+      .birthday-overview,
+      .private-overview
+    ) h2 {
+    font-size: clamp(2.75rem, 13vw, 4.5rem);
+  }
+}

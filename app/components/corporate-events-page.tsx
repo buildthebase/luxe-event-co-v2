@@ -2,7 +2,6 @@ import Link from "next/link";
 import {
   corporateBrandingOptions,
   corporateEventApplications,
-  corporateExperienceRoles,
   corporateFaqs,
   corporateGalleryPreviews,
   corporatePlanningSteps,
@@ -13,7 +12,11 @@ import { createServicePageSchema } from "../schema-builders";
 import { FaqAccordion } from "./faq-accordion";
 import { JsonLd } from "./json-ld";
 import { QuoteModalTrigger } from "./quote-modal-trigger";
-import { ContextualInquiryPanel, CredibilityStrip } from "./signature-elements";
+import {
+  ContextualInquiryPanel,
+  CredibilityStrip,
+  ExperienceSelector,
+} from "./signature-elements";
 import { SiteShell } from "./site-shell";
 
 const corporatePath = "/events/corporate-events";
@@ -22,10 +25,10 @@ const corporateSchema = createServicePageSchema({
   serviceName: "Corporate coffee, dessert, and event rental experiences",
   serviceType: "Corporate coffee catering and event experiences",
   serviceDescription:
-    "Branded coffee, matcha, live dessert, and event rental support for corporate events across Toronto, the GTA, and select Southern Ontario destinations.",
+    "Coffee, matcha, live dessert, and event rental support for corporate events across Toronto, the GTA, and select Southern Ontario destinations.",
   pageName: pageMetadata[corporatePath].title,
   pageDescription:
-    "Plan branded coffee, matcha, live dessert, and rental support for corporate events across Toronto and the GTA.",
+    "Plan coffee, matcha, live dessert, and rental support for corporate events across Toronto and the GTA.",
 });
 
 function CorporateHero() {
@@ -44,10 +47,10 @@ function CorporateHero() {
         </p>
         <div className="corporate-hero-actions">
           <QuoteModalTrigger data-event-name="inquiry_start">
-            Discuss a Corporate Event <span aria-hidden="true">↗︎</span>
+            Plan a Corporate Event <span aria-hidden="true">↗︎</span>
           </QuoteModalTrigger>
           <a href="#corporate-capabilities">
-            Review Capabilities <span aria-hidden="true">↓︎</span>
+            Explore Corporate Capabilities <span aria-hidden="true">↓︎</span>
           </a>
         </div>
       </div>
@@ -92,21 +95,22 @@ function CorporateOverview() {
     <section className="corporate-overview" aria-labelledby="corporate-overview-title">
       <div>
         <h2 id="corporate-overview-title">
-          The guest experience and the run of show have to work together.
+          Corporate hospitality planned around the event.
         </h2>
       </div>
       <div>
         <p>
-          Luxe Event Co. brings together three specialty teams for
-          professional events: <Link href="/experiences/coffee-bar">Luxe Coffee Bar</Link>,{" "}
+          Luxe Event Co. coordinates <Link href="/experiences/coffee-bar">Luxe Coffee Bar</Link>,{" "}
           <Link href="/experiences/sweet-cart">Luxe Sweet Cart</Link>, and{" "}
-          <Link href="/experiences/seating-rentals">Luxe Seating Rentals</Link>.
+          <Link href="/experiences/seating-rentals">Luxe Seating Rentals</Link>{" "}
+          for professional events where guest-facing service must work with the
+          schedule, venue, audience, and brand.
         </p>
         <p>
-          Each can be booked independently or coordinated as one event direction.
-          Service is planned around the audience, schedule, venue, brand
-          requirements, guest count, and operational realities rather than a
-          generic corporate package.
+          Each experience can be booked independently or combined within one
+          coordinated plan. The final scope is shaped around guest count,
+          service duration, staffing, venue access, utilities, setup
+          requirements, and the role each experience needs to play.
         </p>
       </div>
     </section>
@@ -114,6 +118,31 @@ function CorporateOverview() {
 }
 
 function CorporateCapabilities() {
+  const [
+    employeeEvents,
+    clientEvents,
+    conferenceEvents,
+    officePopUps,
+    networkingEvents,
+    brandLaunches,
+    holidayEvents,
+    realEstateEvents,
+    institutionalEvents,
+  ] = corporateEventApplications;
+
+  const panel = (
+    event: (typeof corporateEventApplications)[number],
+    feature = false,
+  ) => (
+    <article
+      className={feature ? "corporate-capability-panel-feature" : undefined}
+      key={event.number}
+    >
+      <h3>{event.title}</h3>
+      <p>{event.description}</p>
+    </article>
+  );
+
   return (
     <section
       className="corporate-capabilities"
@@ -121,69 +150,99 @@ function CorporateCapabilities() {
       aria-labelledby="corporate-capabilities-title"
     >
       <header>
+        <p className="foundation-label">Corporate event types</p>
         <h2 id="corporate-capabilities-title">
-          Different business occasions. One prepared hospitality partner.
+          Corporate event services for different business settings.
         </h2>
       </header>
-      <ol>
-        {corporateEventApplications.map((event) => (
-          <li key={event.number}>
-            <h3>{event.title}</h3>
-            <p>{event.description}</p>
-          </li>
-        ))}
-      </ol>
+      <div className="corporate-capability-groups">
+        <div className="corporate-capability-group">
+          {panel(conferenceEvents, true)}
+          <div className="corporate-capability-stack">
+            {panel(employeeEvents)}
+            {panel(clientEvents)}
+          </div>
+        </div>
+
+        <div className="corporate-capability-group corporate-capability-group-feature-right">
+          <div className="corporate-capability-stack">
+            {panel(officePopUps)}
+            {panel(networkingEvents)}
+          </div>
+          {panel(brandLaunches, true)}
+        </div>
+
+        <div className="corporate-capability-group">
+          {panel(realEstateEvents, true)}
+          <div className="corporate-capability-stack">
+            {panel(holidayEvents)}
+            {panel(institutionalEvents)}
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
 
 function CorporateExperiences() {
   return (
-    <section className="corporate-experiences" aria-labelledby="corporate-experiences-title">
-      <header>
-        <h2 id="corporate-experiences-title">
-          Select one experience, or coordinate the room around all three.
-        </h2>
-      </header>
-      <div>
-        {corporateExperienceRoles.map((experience) => (
-          <article key={experience.number}>
-            <span>{experience.label}</span>
-            <Link href={experience.href}>{experience.name}</Link>
-            <h3>{experience.statement}</h3>
-            <p>{experience.description}</p>
-            <small>{experience.fact}</small>
-            <Link href={experience.href}>
-              Explore {experience.label} <span aria-hidden="true">↗︎</span>
-            </Link>
-          </article>
-        ))}
-      </div>
-    </section>
+    <ExperienceSelector
+      id="corporate-experiences"
+      heading="Choose one corporate event service or coordinate all three."
+      showDescription={false}
+    />
   );
 }
 
 function CorporateBranding() {
+  const customMenus = corporateBrandingOptions.find(
+    (option) => option.title === "Custom menus",
+  )!;
+  const brandedCups = corporateBrandingOptions.find(
+    (option) => option.title === "Branded cups and signage",
+  )!;
+  const cartStyling = corporateBrandingOptions.find(
+    (option) => option.title === "Cart and service styling",
+  )!;
+
+  const brandingPanel = (
+    option: (typeof corporateBrandingOptions)[number],
+    feature = false,
+  ) => (
+    <article
+      key={option.number}
+      className={feature ? "corporate-branding-feature" : undefined}
+    >
+      {feature ? <span aria-hidden="true">BRAND</span> : null}
+      <div>
+        <h3>{option.title}</h3>
+        <p>{option.description}</p>
+      </div>
+    </article>
+  );
+
   return (
     <section className="corporate-branding" aria-labelledby="corporate-branding-title">
       <header>
-        <h2 id="corporate-branding-title">Make the service recognizable as yours.</h2>
+        <div>
+          <p className="foundation-label">Branding and customization</p>
+          <h2 id="corporate-branding-title">Bring your brand into the guest experience.</h2>
+        </div>
         <p>
-          Branding is developed around approved assets, production requirements,
-          and the event timeline. It can be subtle, campaign-led, or fully
-          integrated into the guest-facing service.
+          Approved logos, campaign language, menu selections, cups, signage,
+          and presentation details can be incorporated according to the event
+          scope, lead time, and production requirements.
         </p>
       </header>
-      <div>
-        {corporateBrandingOptions.map((option) => (
-          <article key={option.number}>
-            <h3>{option.title}</h3>
-            <p>{option.description}</p>
-          </article>
-        ))}
+      <div className="corporate-branding-composition">
+        {brandingPanel(brandedCups, true)}
+        <div className="corporate-branding-stack">
+          {brandingPanel(customMenus)}
+          {brandingPanel(cartStyling)}
+        </div>
       </div>
       <Link href="/events/brand-activations">
-        Explore brand activation capabilities <span aria-hidden="true">↗︎</span>
+        Explore Brand Activation Capabilities <span aria-hidden="true">↗︎</span>
       </Link>
     </section>
   );
@@ -193,16 +252,20 @@ function CorporateScale() {
   return (
     <section className="corporate-scale" aria-labelledby="corporate-scale-title">
       <header>
+        <p className="foundation-label">Scale and recurring service</p>
         <h2 id="corporate-scale-title">
-          Built for one important moment, or a program that keeps moving.
+          Built for single events, multi-day programs, and larger guest counts.
         </h2>
+        <p>
+          From one-day activations to ongoing programs, service is planned around
+          the scale, schedule, and operating requirements of the event.
+        </p>
       </header>
       <div>
         {corporateScaleCapabilities.map((capability) => (
           <article key={capability.number}>
             <h3>{capability.title}</h3>
-            <strong>{capability.fact}</strong>
-            <p>{capability.note}</p>
+            <p>{capability.description}</p>
           </article>
         ))}
       </div>
@@ -214,22 +277,21 @@ function CorporateTrust() {
   return (
     <section className="corporate-trust" aria-labelledby="corporate-trust-title">
       <header>
-        <h2 id="corporate-trust-title">Trusted in professional environments.</h2>
-        <p>
-          These organization names are approved for display. Individual event
-          details, outcomes, quotations, and case studies remain subject to
-          separate client approval.
-        </p>
+        <p className="foundation-label">Client trust</p>
+        <h2 id="corporate-trust-title">Trusted by corporate and institutional teams.</h2>
+        <p>Selected organizations Luxe has served.</p>
       </header>
-      <CredibilityStrip variant="hero" />
-      <aside>
-        <strong>$5 million liability insurance</strong>
-        <p>
-          A meaningful layer of assurance for corporate teams, agencies,
-          institutions, venues, procurement contacts, and event partners.
-          Documentation can be provided where required during planning.
-        </p>
-      </aside>
+      <CredibilityStrip
+        variant="hero"
+        label="Selected organizations Luxe has served"
+        showLabel={false}
+      />
+      <p className="corporate-trust-insurance-note">
+        <strong>
+          Certificate of insurance documentation is available where required
+          by venues and corporate event partners.
+        </strong>
+      </p>
     </section>
   );
 }
@@ -238,9 +300,9 @@ function CorporateGallery() {
   return (
     <section className="corporate-gallery" aria-labelledby="corporate-gallery-title">
       <header>
-        <h2 id="corporate-gallery-title">The operational proof should be visible.</h2>
+        <h2 id="corporate-gallery-title">Corporate hospitality, shown in action.</h2>
         <p>
-          Layout, branded details, service flow, and guest interaction show how
+          Layout, service flow, and guest interaction show how
           the experience works beyond the first impression.
         </p>
       </header>
@@ -263,24 +325,39 @@ function CorporateGallery() {
 }
 
 function CorporatePlanning() {
+  const [openingStep, ...supportingSteps] = corporatePlanningSteps;
+
   return (
     <section className="corporate-planning" aria-labelledby="corporate-planning-title">
       <header>
-        <h2 id="corporate-planning-title">
-          A clear route from the event brief to service day.
-        </h2>
+        <div>
+          <p className="foundation-label">Planning process</p>
+          <h2 id="corporate-planning-title">
+            From event brief to service day.
+          </h2>
+        </div>
+        <p>
+          A coordinated process keeps the service, branding, venue requirements,
+          and event-day handoff aligned.
+        </p>
       </header>
       <ol>
-        {corporatePlanningSteps.map((step) => (
+        <li className="corporate-planning-primary">
+          <div>
+            <h3>{openingStep.title}</h3>
+            <p>{openingStep.description}</p>
+            <Link className="corporate-planning-events-link" href="/experiences">
+              Explore Luxe Event Services
+            </Link>
+          </div>
+        </li>
+        {supportingSteps.map((step) => (
           <li key={step.number}>
             <h3>{step.title}</h3>
             <p>{step.description}</p>
           </li>
         ))}
       </ol>
-      <Link className="corporate-planning-events-link" href="/events">
-        Explore every Luxe event pathway <span aria-hidden="true">↗︎</span>
-      </Link>
     </section>
   );
 }
