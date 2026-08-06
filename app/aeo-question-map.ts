@@ -280,7 +280,7 @@ const questionMapPlans: QuestionMapPlan[] = [
     id: "venue-access-and-timing",
     normalizedQueryTopic: "venue access, loading, setup, and teardown planning",
     primaryPage: "/faq",
-    secondarySupportingPage: "/inquire",
+    secondarySupportingPage: "/contact",
     proposedAnswer:
       "Luxe reviews the venue's access window, parking and loading route, elevators, placement, utilities, weather protection, service schedule, teardown rules, and contact handoff before event day. Setup and takedown times are confirmed for the booking because they change with the experience, branding, rentals, travel distance inside the property, and venue restrictions.",
     outstandingEvidence: [
@@ -289,7 +289,7 @@ const questionMapPlans: QuestionMapPlan[] = [
     ],
     internalLinks: [
       {
-        fromPage: "/inquire",
+        fromPage: "/contact",
         toDefinitivePage: "/faq",
         linkPurpose: "Let prospects review venue inputs before completing an inquiry.",
       },
@@ -338,7 +338,7 @@ const questionMapPlans: QuestionMapPlan[] = [
     id: "pricing-minimums-and-scope",
     normalizedQueryTopic: "event service pricing factors, minimums, and quote scope",
     primaryPage: "/faq",
-    secondarySupportingPage: "/inquire",
+    secondarySupportingPage: "/contact",
     proposedAnswer:
       "Pricing depends on the selected experience, guest count, duration, travel, staffing and logistics, rental scope, and approved customization. Luxe prepares a personalized proposal because materially different events should not share one public total. Only confirmed minimums may be stated; other division minimums and fee formulas must not be inferred.",
     outstandingEvidence: [
@@ -347,7 +347,7 @@ const questionMapPlans: QuestionMapPlan[] = [
     ],
     internalLinks: [
       {
-        fromPage: "/inquire",
+        fromPage: "/contact",
         toDefinitivePage: "/faq",
         linkPurpose: "Explain quote variables before the prospect submits details.",
       },
@@ -364,13 +364,13 @@ const questionMapPlans: QuestionMapPlan[] = [
     id: "booking-lead-time-and-availability",
     normalizedQueryTopic: "when to book and how to reserve an event date",
     primaryPage: "/faq",
-    secondarySupportingPage: "/inquire",
+    secondarySupportingPage: "/contact",
     proposedAnswer:
       "Book as early as possible for weddings, peak spring-to-fall dates, holidays, and work involving branding or complex logistics. Availability depends on the date, division, guest count, staffing, travel, and production scope, so there is no universal lead time. A signed contract and the required 30% non-refundable retainer reserve a confirmed date.",
     outstandingEvidence: ["Approved branding lead times if a specific range will be published"],
     internalLinks: [
       {
-        fromPage: "/inquire",
+        fromPage: "/contact",
         toDefinitivePage: "/faq",
         linkPurpose: "Link reservation preparation to the definitive booking policy.",
       },
@@ -402,7 +402,7 @@ const questionMapPlans: QuestionMapPlan[] = [
         linkPurpose: "Keep the Home service-area summary short and link to complete coverage guidance.",
       },
       {
-        fromPage: "/inquire",
+        fromPage: "/contact",
         toDefinitivePage: "/faq",
         linkPurpose: "Link location qualification to the definitive service-area answer.",
       },
@@ -483,7 +483,7 @@ const questionMapPlans: QuestionMapPlan[] = [
         linkPurpose: "Link the shared logistics summary to the definitive rental answer.",
       },
       {
-        fromPage: "/inquire",
+        fromPage: "/contact",
         toDefinitivePage: "/experiences/seating-rentals",
         linkPurpose: "Let prospects review rental responsibilities before inquiry.",
       },
@@ -571,7 +571,7 @@ const questionMapPlans: QuestionMapPlan[] = [
     id: "coordination-and-role-boundaries",
     normalizedQueryTopic: "who coordinates event service, venue, and vendor responsibilities",
     primaryPage: "/faq",
-    secondarySupportingPage: "/inquire",
+    secondarySupportingPage: "/contact",
     proposedAnswer:
       "Luxe can work with the client, planner, venue, agency, office team, procurement contact, and other event partners. The booking should identify who owns access, utilities, weather protection, approvals, schedule changes, placement, rentals, and the event-day contact. A universal responsibility matrix should not be published until Luxe approves its coordination process.",
     outstandingEvidence: [
@@ -581,7 +581,7 @@ const questionMapPlans: QuestionMapPlan[] = [
     ],
     internalLinks: [
       {
-        fromPage: "/inquire",
+        fromPage: "/contact",
         toDefinitivePage: "/faq",
         linkPurpose: "Link inquiry preparation to the shared coordination answer.",
       },
@@ -1625,7 +1625,7 @@ const pricingQuestionMap: AeoQuestionMapRecord[] = [
     question: "Is pricing based on guest count or service duration?",
     normalizedQueryTopic: "guest count versus service duration pricing",
     primaryPage: "/faq",
-    secondarySupportingPage: "/inquire",
+    secondarySupportingPage: "/contact",
     icp: [
       "wedding-clients",
       "corporate-clients",
@@ -1643,7 +1643,7 @@ const pricingQuestionMap: AeoQuestionMapRecord[] = [
     },
     internalLinks: [
       {
-        fromPage: "/inquire",
+        fromPage: "/contact",
         toDefinitivePage: "/faq",
         linkPurpose: "Explain how the two inquiry inputs influence the quote.",
       },
@@ -1743,7 +1743,7 @@ const pricingQuestionMap: AeoQuestionMapRecord[] = [
     question: "Do travel fees apply?",
     normalizedQueryTopic: "event service travel fees",
     primaryPage: "/faq",
-    secondarySupportingPage: "/inquire",
+    secondarySupportingPage: "/contact",
     icp: [
       "wedding-clients",
       "corporate-clients",
@@ -1761,7 +1761,7 @@ const pricingQuestionMap: AeoQuestionMapRecord[] = [
     },
     internalLinks: [
       {
-        fromPage: "/inquire",
+        fromPage: "/contact",
         toDefinitivePage: "/faq",
         linkPurpose: "Link location preparation to the complete travel-fee answer.",
       },
@@ -1829,7 +1829,7 @@ const pricingQuestionMap: AeoQuestionMapRecord[] = [
     question: "What retainer is normally required?",
     normalizedQueryTopic: "event booking retainer requirement",
     primaryPage: "/faq",
-    secondarySupportingPage: "/inquire",
+    secondarySupportingPage: "/contact",
     icp: [
       "wedding-clients",
       "corporate-clients",
@@ -1847,7 +1847,7 @@ const pricingQuestionMap: AeoQuestionMapRecord[] = [
     },
     internalLinks: [
       {
-        fromPage: "/inquire",
+        fromPage: "/contact",
         toDefinitivePage: "/faq",
         linkPurpose: "Link the inquiry handoff to the complete payment-term answer.",
       },

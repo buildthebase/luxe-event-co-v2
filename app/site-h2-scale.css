@@ -1,0 +1,11 @@
+/*
+ * One responsive H2 scale across the site.
+ *
+ * This matches the "Premium Lounge & Event Furniture Rentals" heading. The
+ * deliberately high-specificity :is() keeps legacy page-level !important
+ * declarations from creating different H2 sizes without changing any of the
+ * headings' page-specific color, weight, spacing, or layout treatments.
+ */
+body h2:not(#luxe-sitewide-h2-scale) {
+  font-size: var(--luxe-type-h2) !important;
+}

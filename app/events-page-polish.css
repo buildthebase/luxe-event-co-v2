@@ -1,0 +1,26 @@
+/* Let the Events approach statement use the full desktop content measure. */
+.foundation-shell .events-page .events-approach-intro {
+  max-width: none;
+}
+
+.foundation-shell .events-page .events-approach h2#events-approach-title {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.foundation-shell .events-page .events-gallery {
+  padding-bottom: clamp(2.5rem, 4vw, 4rem);
+}
+
+@media (min-width: 1280px) {
+  .foundation-shell .events-page .events-approach h2#events-approach-title {
+    font-size: clamp(2.2rem, 2.85vw, 2.8rem) !important;
+    white-space: nowrap !important;
+  }
+}
+
+@media (max-width: 1279px) {
+  .foundation-shell .events-page .events-approach h2#events-approach-title {
+    white-space: normal;
+  }
+}

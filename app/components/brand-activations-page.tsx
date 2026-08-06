@@ -39,9 +39,9 @@ function ActivationHero() {
           <span>for Toronto campaigns.</span>
         </h1>
         <p>
-          Coffee, matcha, live dessert, and refined event details designed
-          for agencies, marketers, experiential teams, retail brands, and
-          campaign audiences.
+          Custom branded coffee carts, matcha bars, live dessert stations, and lounge
+          seating designed for marketing agencies, retail pop-ups, PR launches, and
+          experiential campaigns.
         </p>
         <div className="activation-hero-actions">
           <QuoteModalTrigger data-event-name="inquiry_start">
@@ -94,20 +94,27 @@ function ActivationHero() {
 function ActivationOverview() {
   return (
     <section className="activation-overview" aria-labelledby="activation-overview-title">
-      <h2 id="activation-overview-title">
-        A branded experience should do more than display a logo.
-      </h2>
+      <header>
+        <h2 id="activation-overview-title">
+          A branded experience should do more than display a logo
+        </h2>
+        <p>
+          Transform routine beverage service into a shareable, interactive campaign
+          moment.
+        </p>
+      </header>
       <div>
         <p>
-          Luxe creates guest-facing coffee, matcha, and live dessert experiences
-          shaped around the campaign brief, audience, venue, and desired interaction.
+          A branded coffee cart activation turns every cup into a tangible marketing
+          asset. We align custom printed cups, branded cart wraps, bespoke menus, and
+          barista interaction directly with your campaign brief.
         </p>
         <p>
-          The experience can include approved brand assets, tailored menus, cups,
-          signage, cart presentation, and room details. <Link href="/experiences/coffee-bar">Luxe Coffee Bar</Link>,{" "}
+          Incorporate custom menu formulations, branded signage, vinyl cart graphics,
+          and matching lounge rentals. <Link href="/experiences/coffee-bar">Luxe Coffee Bar</Link>,{" "}
           <Link href="/experiences/sweet-cart">Luxe Sweet Cart</Link>, and{" "}
           <Link href="/experiences/seating-rentals">Luxe Seating Rentals</Link> can be
-          booked independently or coordinated within one activation plan.
+          booked individually or packaged into a single activation plan.
         </p>
       </div>
     </section>
@@ -122,10 +129,12 @@ function ActivationBrandSystem() {
       aria-labelledby="activation-system-title"
     >
       <header>
-        <h2 id="activation-system-title">Carry the brand through the guest-facing details.</h2>
+        <h2 id="activation-system-title">
+          Carry your brand through every guest touchpoint
+        </h2>
         <p>
-          Approved brand assets can be applied across the parts of the experience
-          guests see, use, order from, and photograph.
+          Apply approved brand assets across the physical elements your guests see,
+          use, order from, and photograph.
         </p>
       </header>
       <ol>
@@ -146,11 +155,13 @@ function ActivationContexts() {
     <section className="activation-contexts" aria-labelledby="activation-contexts-title">
       <header>
         <h2 id="activation-contexts-title">
-          Brand activation services for launches, retail, trade shows, and campaigns.
+          <span>Brand activation services for launches, retail,</span>
+          <span>trade shows, and campaigns</span>
         </h2>
         <p>
-          Mobile coffee, live dessert, and branded hospitality can be shaped around
-          the audience, environment, and purpose of the campaign.
+          Mobile coffee bars, live dessert carts, and custom branded hospitality
+          tailored to your campaign audience, venue environment, and marketing
+          objectives.
         </p>
       </header>
       <ol>
@@ -169,10 +180,13 @@ function ActivationServices() {
   return (
     <section className="activation-services" aria-labelledby="activation-services-title">
       <header>
-        <h2 id="activation-services-title">Choose the experience that fits the campaign.</h2>
+        <h2 id="activation-services-title">
+          <span>Choose the activation experience</span>
+          <span>that fits your campaign</span>
+        </h2>
         <p>
-          Coffee, live dessert, and event rentals can each create a different
-          kind of guest interaction.
+          Select from mobile espresso bars, live dessert stations, or boutique rental
+          furniture, each offering a distinct guest touchpoint.
         </p>
       </header>
       <div>
@@ -198,11 +212,12 @@ function ActivationScale() {
     <section className="activation-scale" aria-labelledby="activation-scale-title">
       <header>
         <h2 id="activation-scale-title">
-          Built for one-day activations, multi-day campaigns, and multiple locations.
+          <span>Scalable operations for multi-day,</span>
+          <span>multi-location campaigns</span>
         </h2>
         <p>
-          Campaign scope can expand across setups, dates, and locations, with the
-          operating plan confirmed around each brief.
+          Campaign scope can expand across multiple setups, dates, and venues, with a
+          dedicated operational plan built around your brief.
         </p>
       </header>
       <div>
@@ -288,10 +303,10 @@ function ActivationPlanning() {
   return (
     <section className="activation-planning" aria-labelledby="activation-planning-title">
       <header>
-        <h2 id="activation-planning-title">From campaign brief to activation day.</h2>
+        <h2 id="activation-planning-title">From campaign brief to activation day</h2>
         <p>
-          Clear inputs and timely approvals help the branded experience move from concept into
-          production.
+          Clear creative inputs and structured production timelines ensure your branded
+          activation transitions seamlessly from concept to execution.
         </p>
       </header>
       <div className="activation-planning-workflow">
@@ -327,7 +342,10 @@ function ActivationFaq() {
   return (
     <section className="activation-faq" aria-labelledby="activation-faq-title">
       <header>
-        <h2 id="activation-faq-title">Answers before the creative and operational review.</h2>
+        <h2 id="activation-faq-title">
+          <span>Answers before the creative</span>
+          <span>and operational review.</span>
+        </h2>
       </header>
       <FaqAccordion items={activationFaqs} showNumbers={false} />
       <Link href="/faq">

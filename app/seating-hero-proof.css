@@ -186,6 +186,91 @@
   .seating-page .seating-hero > .coffee-hero-proof dd {
     gap: 0.45rem;
   }
+
+  /* Keep Seating Rentals in the same compact two-column proof format as Sweet Cart. */
+  .seating-page .seating-hero > .sweet-hero-proof {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0 !important;
+    padding: 0;
+    overflow: visible;
+    border: 0;
+    border-top: 1px solid var(--color-rule);
+    border-bottom: 1px solid var(--color-rule);
+    background-color: var(--color-luxe-ivory);
+    background-image: radial-gradient(
+      rgb(23 22 20 / 5.3%) 0.55px,
+      transparent 0.7px
+    );
+    background-size: 4px 4px;
+    color: var(--color-luxe-black);
+  }
+
+  .seating-page .seating-hero > .sweet-hero-proof > div,
+  .seating-page .seating-hero > .sweet-hero-proof > div:last-child {
+    display: grid;
+    min-width: 0;
+    min-height: 0;
+    grid-column: auto;
+    align-content: center;
+    justify-items: center;
+    gap: 0.65rem;
+    padding: 1.5rem 0.75rem;
+    border: 0;
+    border-bottom: 1px solid var(--color-rule);
+    background: transparent;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .seating-page
+    .seating-hero
+    > .sweet-hero-proof
+    > div:nth-child(odd):not(:last-child) {
+    border-right: 1px solid var(--color-rule);
+  }
+
+  .seating-page .seating-hero > .sweet-hero-proof > div:last-child {
+    grid-column: 1 / -1;
+    border-right: 0;
+    border-bottom: 0;
+  }
+
+  .seating-page .seating-hero > .sweet-hero-proof dt {
+    display: block;
+    width: 100%;
+    min-height: 0;
+    margin: 0;
+    color: var(--color-luxe-black) !important;
+    font-size: clamp(1.65rem, 7vw, 2rem);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.045em;
+    text-align: center;
+  }
+
+  .seating-page .seating-hero > .sweet-hero-proof dd {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    text-align: center;
+  }
+
+  .seating-page .seating-hero > .sweet-hero-proof dd strong {
+    display: block;
+    width: 100%;
+    min-height: 0;
+    padding: 0;
+    color: var(--color-luxe-black);
+    font-size: clamp(0.62rem, 2.7vw, 0.72rem);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    line-height: 1.4;
+    text-align: center;
+    text-transform: uppercase;
+  }
 }
 
 /* Align the Seating Rentals section introductions with the other service pages. */

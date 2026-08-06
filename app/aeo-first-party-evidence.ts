@@ -121,7 +121,7 @@ export const firstPartyEvidenceInventory = [
   {
     evidence: "Actual booking policies",
     status: "published-confirmed",
-    publishedOn: ["/faq", "/inquire"],
+    publishedOn: ["/faq", "/contact"],
     boundary:
       "The public policy includes the signed-contract requirement, 30% non-refundable retainer, and remaining balance due seven days before the event.",
   },

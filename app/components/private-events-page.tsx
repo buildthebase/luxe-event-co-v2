@@ -24,6 +24,7 @@ const privateEventsSchema = createServicePageSchema({
     "Staffed coffee service, non-coffee beverages, live dessert, signage, and event rentals for private celebrations in Toronto and the Greater Toronto Area.",
   pageName: pageMetadata[privateEventsPath].title,
   pageDescription: pageMetadata[privateEventsPath].description,
+  faqs: privateEventFaqs,
 });
 
 function PrivateEventsHero() {
@@ -31,9 +32,9 @@ function PrivateEventsHero() {
     <header className="private-hero">
       <div className="private-hero-copy">
         <p className="foundation-eyebrow">Private Events / Toronto &amp; the GTA</p>
-        <h1 aria-label="Private event experiences without a standard format.">
-          <span>Private event experiences</span>
-          <span>without a standard format.</span>
+        <h1 aria-label="Private Event Coffee, Dessert & Rentals in Toronto">
+          <span>Private Event Coffee,</span>
+          <span>Dessert &amp; Rentals in Toronto</span>
         </h1>
         <p>
           Coffee, live dessert, signage, and refined rentals for engagements,
@@ -66,7 +67,7 @@ function PrivateEventsHero() {
 function PrivateEventsOverview() {
   return (
     <section className="private-overview" aria-labelledby="private-overview-title">
-      <h2 id="private-overview-title">The occasion leads. The experiences find their place within it.</h2>
+      <h2 id="private-overview-title">Private event experiences for every kind of gathering.</h2>
       <div>
         <p>
           Private events are not a leftover category. They are gatherings whose
@@ -85,14 +86,17 @@ function PrivateEventContexts() {
   return (
     <section className="private-contexts" id="private-occasions" aria-labelledby="private-contexts-title">
       <header>
-        <h2 id="private-contexts-title">Different reasons to gather. No generic private-event package.</h2>
+        <h2 id="private-contexts-title">
+          <span>Private events for engagements, graduations,</span>
+          <span>holidays, and milestones.</span>
+        </h2>
       </header>
       <ol>
         {privateEventContexts.map((context) => (
           <li key={context.number}>
-            <p>{context.title}</p>
-            <h3>{context.statement}</h3>
-            <p>{context.description}</p>
+            <h3 className="private-context-title">{context.title}</h3>
+            <p className="private-context-statement">{context.statement}</p>
+            <p className="private-context-description">{context.description}</p>
           </li>
         ))}
       </ol>
@@ -104,7 +108,10 @@ function PrivateEventExperiences() {
   return (
     <section className="private-experiences" aria-labelledby="private-experiences-title">
       <header>
-        <h2 id="private-experiences-title">Shape what guests taste, notice, and gather around.</h2>
+        <h2 id="private-experiences-title">
+          <span>Coffee bars, live desserts,</span>
+          <span>and rentals for private events.</span>
+        </h2>
       </header>
       <div>
         {privateEventExperiences.map((experience) => (
@@ -126,7 +133,7 @@ function PrivateEventCombinations() {
   return (
     <section className="private-combinations" aria-labelledby="private-combinations-title">
       <header>
-        <h2 id="private-combinations-title">Possible compositions, never fixed packages.</h2>
+        <h2 id="private-combinations-title">Custom private event service combinations.</h2>
         <p>Each direction is refined around the actual occasion and confirmed requirements.</p>
       </header>
       <div>
@@ -146,7 +153,7 @@ function PrivateEventGallery() {
   return (
     <section className="private-gallery" aria-labelledby="private-gallery-title">
       <header>
-        <h2 id="private-gallery-title">Private gatherings, shown in their own context.</h2>
+        <h2 id="private-gallery-title">Private event gallery.</h2>
         <p>Hospitality, dessert, and setting should reflect the scale, mood, and rhythm of the gathering.</p>
       </header>
       <div data-asset-status="awaiting-approved-private-event-assets">
@@ -169,7 +176,7 @@ function PrivateEventPlanning() {
   return (
     <section className="private-planning" aria-labelledby="private-planning-title">
       <header>
-        <h2 id="private-planning-title">What helps us understand the gathering.</h2>
+        <h2 id="private-planning-title">What we need to plan your private event.</h2>
       </header>
       <ol>
         {privateEventPlanningRequirements.map((item) => (
@@ -190,7 +197,7 @@ function PrivateEventPlanning() {
 function PrivateEventFaq() {
   return (
     <section className="private-faq" aria-labelledby="private-faq-title">
-      <header><h2 id="private-faq-title">Private-event planning questions.</h2></header>
+      <header><h2 id="private-faq-title">Private event FAQs.</h2></header>
       <FaqAccordion items={privateEventFaqs} indicatorElement="i" showNumbers={false} />
       <Link href="/faq">Review Luxe Booking FAQs <span aria-hidden="true">↗︎</span></Link>
     </section>

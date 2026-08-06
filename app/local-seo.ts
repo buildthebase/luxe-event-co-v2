@@ -28,7 +28,7 @@ export const localProfileTracking = {
 } as const;
 
 export function createLocalProfileUrl(
-  path: "/" | "/inquire",
+  path: "/" | "/contact",
   content:
     | typeof localProfileTracking.websiteContent
     | typeof localProfileTracking.inquiryContent,
@@ -51,7 +51,7 @@ export const googleBusinessProfilePlan = {
   serviceAreas: approvedBusinessIdentity.primaryServiceAreas,
   websiteLink: createLocalProfileUrl("/", localProfileTracking.websiteContent),
   inquiryLink: createLocalProfileUrl(
-    "/inquire",
+    "/contact",
     localProfileTracking.inquiryContent,
   ),
   fieldsRequiringOwnerVerification: [

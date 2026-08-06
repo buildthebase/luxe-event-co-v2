@@ -35,7 +35,7 @@ export function SiteShell({
         <div className="foundation-footer-identity">
           <span className="foundation-footer-wordmark">{siteConfig.name}</span>
           <span className="foundation-footer-location">{siteConfig.location}</span>
-          <p>Coffee, dessert, and refined event settings—planned as one.</p>
+          <p>Coffee, dessert, and refined event settings, planned as one.</p>
         </div>
         <div className="foundation-footer-group">
           <span className="foundation-footer-label">Contact</span>
@@ -59,7 +59,7 @@ export function SiteShell({
           </nav>
         </div>
         <div className="foundation-footer-actions">
-          <Link className="foundation-footer-cta" href="/inquire">
+          <Link className="foundation-footer-cta" href="/contact">
             Start a conversation <span aria-hidden="true">↗︎</span>
           </Link>
           <InstagramLinks className="foundation-footer-instagram" />

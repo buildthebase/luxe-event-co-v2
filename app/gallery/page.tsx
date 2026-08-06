@@ -56,18 +56,19 @@ function GalleryHero() {
   return (
     <header className="gallery-hero">
       <div className="gallery-hero-copy">
-        <p className="foundation-eyebrow">Gallery / Experience Context</p>
-        <h1 aria-label="Luxe event experiences, explored by the moments they can serve.">
-          <span>Luxe event</span>
-          <span>experiences, explored</span>
-          <span>by the moments they can serve.</span>
+        <p className="foundation-eyebrow">Gallery: Experience Context</p>
+        <h1 aria-label="Toronto event gallery: coffee, dessert, and rental experiences.">
+          <span>Toronto event gallery:</span>
+          <span>coffee, dessert, and</span>
+          <span>rental experiences.</span>
         </h1>
         <p>
-          Explore how coffee, dessert, rentals, and coordinated service can
-          contribute to different event settings and guest moments.
+          See how Luxe mobile coffee bars, live dessert carts, seating rentals,
+          and coordinated service support weddings, corporate events, brand
+          activations, showers, and private celebrations across Toronto and the GTA.
         </p>
         <div className="gallery-hero-actions">
-          <Link href="/inquire" data-event-name="inquiry_start">
+          <Link href="/contact" data-event-name="inquiry_start">
             Start Planning Your Event <span aria-hidden="true">↗︎</span>
           </Link>
         </div>
@@ -85,14 +86,14 @@ function GalleryInquiry() {
   return (
     <section className="gallery-inquiry" aria-labelledby="gallery-inquiry-title">
       <div>
-        <h2 id="gallery-inquiry-title">Imagine the experience in your own room.</h2>
+        <h2 id="gallery-inquiry-title">Plan your Toronto event experience.</h2>
         <p>
           Share the occasion, setting, guest count, and the Luxe experiences you
           are considering. Luxe serves Toronto and the Greater Toronto Area, and
           will begin with the event rather than a fixed package.
         </p>
       </div>
-      <Link href="/inquire" data-event-name="inquiry_start">
+      <Link href="/contact" data-event-name="inquiry_start">
         Start Planning Your Event <span aria-hidden="true">↗︎</span>
       </Link>
     </section>

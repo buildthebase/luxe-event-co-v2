@@ -32,7 +32,7 @@ export const navigationItems: NavigationItem[] = [
   },
   { href: "/gallery", label: "Gallery" },
   { href: "/faq", label: "FAQ" },
-  { href: "/inquire", label: "Plan With Us", emphasis: "inquiry" },
+  { href: "/contact", label: "Contact", emphasis: "inquiry" },
 ];
 
 const homeBreadcrumb = { href: "/", label: "Home" } as const;
@@ -64,7 +64,7 @@ export const breadcrumbItemsByPath: Record<string, readonly BreadcrumbItem[]> = 
   ),
   "/gallery": [homeBreadcrumb, { href: "/gallery", label: "Gallery" }],
   "/faq": [homeBreadcrumb, { href: "/faq", label: "FAQ" }],
-  "/inquire": [homeBreadcrumb, { href: "/inquire", label: "Inquire" }],
+  "/contact": [homeBreadcrumb, { href: "/contact", label: "Contact" }],
 };
 
 export function getBreadcrumbItems(path: string) {

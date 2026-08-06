@@ -14,7 +14,7 @@ export const permanentRoutes = [
   "/events/private-events",
   "/gallery",
   "/faq",
-  "/inquire",
+  "/contact",
 ] as const;
 
 export const responsiveSystem = {

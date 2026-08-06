@@ -1,0 +1,48 @@
+/*
+ * Reduced vertical rhythm for sections whose headings now use the smaller,
+ * canonical H2 scale. Keep this targeted so content-dense sections elsewhere
+ * retain their original breathing room.
+ */
+:root {
+  --luxe-compact-section-space: clamp(3.75rem, 6vw, 6rem);
+}
+
+.foundation-shell .experiences-page .experiences-events,
+.foundation-shell .experiences-page > .signature-combinations,
+.foundation-shell .coffee-page :is(.coffee-inclusions, .coffee-gallery),
+.foundation-shell .events-page :is(.events-approach, .events-gallery),
+.foundation-shell .wedding-page :is(
+    .wedding-overview,
+    .wedding-day,
+    .wedding-coordination,
+    .wedding-gallery
+  ),
+.foundation-shell .corporate-page :is(
+    .corporate-capabilities,
+    .corporate-trust,
+    .corporate-gallery,
+    .corporate-planning,
+    .corporate-faq
+  ),
+.foundation-shell .activation-page :is(
+    .activation-contexts,
+    .activation-system,
+    .activation-services,
+    .activation-scale,
+    .activation-content,
+    .activation-trust,
+    .activation-gallery,
+    .activation-planning
+  ),
+.foundation-shell :is(
+    .baby-page,
+    .bridal-page,
+    .birthday-page,
+    .private-page
+  ) > section:not(.signature-inquiry):not(.signature-credibility) {
+  padding-block: var(--luxe-compact-section-space);
+}
+
+.foundation-shell .wedding-page .wedding-customization {
+  padding-top: var(--luxe-compact-section-space);
+}

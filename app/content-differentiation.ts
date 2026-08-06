@@ -309,7 +309,7 @@ export const pageContentBriefs: PageContentBrief[] = [
     doNotInvent: sharedDoNotInvent,
   },
   {
-    path: "/inquire",
+    path: "/contact",
     purpose: "Collect enough event context for the approved handoff without recreating the future proposal platform.",
     requiredRequirements: ["multi-service-coordination", "travel-service-area", "booking-retainer-policy", "liability-insurance"],
     proofPriority: ["clear qualification expectations", "contact details", "24-hour response expectation"],

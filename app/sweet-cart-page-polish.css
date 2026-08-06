@@ -1,0 +1,106 @@
+/* Compact Sweet Cart section rhythm after the sitewide H2 reduction. */
+.foundation-shell .sweet-page :is(
+    .sweet-desserts,
+    .sweet-customization,
+    .sweet-gallery
+  ) {
+  padding-block: var(--luxe-compact-section-space);
+}
+
+/* Keep the desktop proof statement inside its centered panel. The wide-heading
+ * utility is useful for full-bleed sections, but this hero panel has a finite
+ * measure and should balance its statement across two lines instead of
+ * overflowing the panel. */
+@media (min-width: 961px) {
+  .foundation-shell .sweet-page .sweet-hero-proof-heading h2#sweet-hero-proof-title {
+    width: 100% !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    text-wrap: balance;
+  }
+}
+
+.foundation-shell .sweet-inclusions > header {
+  column-gap: clamp(1.5rem, 3vw, 3rem);
+}
+
+.foundation-shell .sweet-pantry {
+  padding-block: var(--luxe-compact-section-space);
+}
+
+.foundation-shell .sweet-pantry > header {
+  gap: var(--space-3);
+  margin-bottom: clamp(2rem, 3vw, 3rem);
+}
+
+.foundation-shell .sweet-customization > header {
+  grid-template-columns: minmax(10rem, 0.32fr) minmax(0, 1.68fr);
+  margin-bottom: clamp(2.25rem, 3.5vw, 3.5rem);
+}
+
+.foundation-shell .sweet-customization > header h2 {
+  width: 100% !important;
+  max-width: none !important;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.foundation-shell .sweet-customization > header {
+  justify-items: center;
+  text-align: center;
+}
+
+.foundation-shell .sweet-gallery > header h2 {
+  width: 100% !important;
+  max-width: none !important;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.foundation-shell .sweet-events > header {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: center;
+}
+
+.foundation-shell .sweet-events > header h2 {
+  width: 100% !important;
+  max-width: none !important;
+  margin-inline: auto;
+  text-align: center;
+}
+
+@media (min-width: 961px) {
+  .foundation-shell .sweet-customization > header h2 span,
+  .foundation-shell .sweet-events > header h2 span,
+  .foundation-shell .sweet-gallery > header h2 span {
+    display: block;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 960px) {
+  .foundation-shell .sweet-customization > header h2 span,
+  .foundation-shell .sweet-events > header h2 span,
+  .foundation-shell .sweet-gallery > header h2 span {
+    display: inline;
+    white-space: normal;
+  }
+
+  .foundation-shell .sweet-customization > header h2 span + span::before,
+  .foundation-shell .sweet-events > header h2 span + span::before,
+  .foundation-shell .sweet-gallery > header h2 span + span::before {
+    content: " ";
+  }
+}
+
+@media (max-width: 700px) {
+  .foundation-shell .sweet-inclusions > header {
+    gap: var(--space-4);
+  }
+
+  .foundation-shell .sweet-customization > header {
+    grid-template-columns: 1fr;
+  }
+
+}

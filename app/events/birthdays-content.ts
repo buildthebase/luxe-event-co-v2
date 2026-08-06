@@ -6,25 +6,25 @@ export const birthdayContexts = [
     number: "01",
     title: "Milestone birthdays",
     description:
-      "Significant birthdays can be planned around dinner, reception-style gatherings, open-house formats, or full celebrations with hospitality and room details shaped around the occasion.",
+      "Celebrate 30th, 40th, 50th, or 80th birthdays with custom cocktail-style receptions, dinner service additions, or open-house dessert and coffee bars.",
   },
   {
     number: "02",
     title: "Adult celebrations",
     description:
-      "Coffee, matcha, signature drinks, live dessert, seating, and rentals can support daytime gatherings, cocktail-style events, dinners, lounges, and later-evening celebrations.",
+      "Enhance daytime brunches, cocktail parties, private dinners, or late-night dessert hours with handcrafted espresso drinks, matcha, and live treats.",
   },
   {
     number: "03",
     title: "Family birthdays",
     description:
-      "Balanced beverage and dessert options can support multigenerational gatherings where adults, younger guests, and families are celebrating together.",
+      "Serve multigenerational parties with warm dessert stations, specialty espresso for adults, and fun non-caffeinated beverages for younger guests.",
   },
   {
     number: "04",
-    title: "Select children’s birthdays",
+    title: "Select children's birthdays",
     description:
-      "For selected children’s celebrations, non-coffee drinks, live dessert, signage, and rentals can be planned around younger guests and accompanying adults.",
+      "Delight kids and parents alike with live warm mini Dutch pancakes, hot chocolate, customized signage, and comfortable seating layouts.",
   },
 ] as const;
 
@@ -37,7 +37,7 @@ export const birthdayExperiences = [
     image: imageAssets.experiences.coffeeBar,
     href: "/experiences/coffee-bar",
     description:
-      "Professional baristas prepare espresso classics, signature drinks, matcha, seasonal beverages, and premium non-coffee options for arrivals, conversation, dining, or later service.",
+      "Professional baristas craft espresso classics, ceremonial matcha, signature birthday lattes, and premium non-coffee drinks throughout your celebration.",
   },
   {
     id: "dessert",
@@ -47,7 +47,7 @@ export const birthdayExperiences = [
     image: imageAssets.experiences.sweetCart,
     href: "/experiences/sweet-cart",
     description:
-      "Mini Dutch pancakes, Belgian waffles on a stick, mini donuts, and optional soft serve create an interactive dessert experience for the guest of honour and their guests.",
+      "Interactive live dessert catering featuring warm mini Dutch pancakes, Belgian waffle pops, mini donuts, and soft serve made fresh on-site for your guests.",
   },
   {
     id: "seating",
@@ -57,7 +57,7 @@ export const birthdayExperiences = [
     image: imageAssets.experiences.seatingRentals,
     href: "/experiences/seating-rentals",
     description:
-      "Chairs, tables, cocktail tables, tents, linens, and lighting can support dining, standing celebrations, family gatherings, outdoor events, and the flow of the room.",
+      "Boutique seating, high-top cocktail tables, dining setups, linens, tents, and ambient lighting designed to complement your venue space and guest flow.",
   },
 ] satisfies readonly SignatureExperience[];
 
@@ -66,19 +66,19 @@ export const birthdayPersonalization = [
     number: "01",
     title: "Menus and flavours",
     description:
-      "Signature drinks, matcha, seasonal beverages, non-coffee choices, dessert selections, sauces, and toppings can be tailored around the guest of honour and celebration.",
+      "Curate customized drink menus with signature birthday lattes, matcha, syrups, and dessert toppings picked specifically to match the guest of honour's favorite flavors.",
   },
   {
     number: "02",
     title: "Signage and presentation",
     description:
-      "Names, milestone years, wording, cups, menu displays, cart details, and dessert presentation can carry the selected direction.",
+      "Personalize the setup with custom name decals, milestone year signage, branded cup sleeves, menu boards, and color-matched cart details.",
   },
   {
     number: "03",
     title: "Seating and room details",
     description:
-      "Seating, cocktail tables, linens, lighting, service placement, and guest flow can be planned around the venue and scale of the celebration.",
+      "Coordinate seating layouts, high-top cocktail tables, premium linens, and accent lighting tailored to your venue dimensions and guest circulation.",
   },
 ] as const;
 
@@ -88,21 +88,21 @@ export const birthdayCombinations = [
     title: "The milestone café",
     experiences: "Signature Coffee Bar + beverage service",
     description:
-      "A prominent beverage experience can anchor arrivals, dinner, conversation, or a later part of an adult celebration.",
+      "A dedicated specialty beverage station featuring barista-prepared espresso, matcha, and signature birthday lattes to anchor guest arrivals or late-night party hours.",
   },
   {
     number: "02",
     title: "The interactive sweet moment",
     experiences: "Sweet Cart + live dessert service",
     description:
-      "Live preparation creates a guest-facing focal point for family or milestone celebrations.",
+      "A live dessert station serving made-to-order mini Dutch pancakes, waffle pops, or mini donuts that doubles as an engaging visual focal point for all ages.",
   },
   {
     number: "03",
     title: "The complete birthday setting",
     experiences: "Coffee + Dessert + Rentals",
     description:
-      "Beverage service, live dessert, and selected room requirements can be coordinated through one Luxe Event Co. inquiry and proposal journey.",
+      "Our all-inclusive package combining barista coffee, live dessert stations, and lounge or table rentals coordinated through a single seamless inquiry.",
   },
 ] as const;
 
@@ -121,7 +121,7 @@ export const birthdayPlanning = [
   {
     title: "The experiences",
     description:
-      "Identify whether coffee, matcha, live dessert, seating, rentals, or a coordinated combination should support the celebration.",
+      "Let us know if you prefer our mobile espresso bar, ceremonial matcha service, live dessert cart, seating rentals, or an all-inclusive combination.",
   },
   {
     title: "The venue and service needs",
@@ -131,7 +131,7 @@ export const birthdayPlanning = [
   {
     title: "The personal direction",
     description:
-      "Share preferred flavours, colours, wording, milestone details, signage, presentation ideas, or rental selections.",
+      "Tell us about favorite drink flavors, dessert toppings, color schemes, custom signage wording, or specific rental styles you envision.",
   },
 ] as const;
 
@@ -160,5 +160,15 @@ export const birthdayFaqs = [
     question: "Can coffee, dessert, and rentals be combined?",
     answer:
       "Yes. Any one service can be booked independently, and several can be coordinated through one Luxe Event Co. inquiry and proposal journey. Availability, timing, placement, staffing, rental scope, access, and venue requirements must be confirmed.",
+  },
+  {
+    question: "How much does birthday dessert catering cost?",
+    answer:
+      "Birthday dessert catering is quoted around the selected menu, guest count, service duration, staffing, travel, venue access, presentation, and optional enhancements. Share the event details with Luxe Event Co. to receive a proposal shaped around the celebration.",
+  },
+  {
+    question: "Which areas does Luxe serve for birthday events?",
+    answer:
+      "Luxe Event Co. serves birthday events across Toronto and the Greater Toronto Area. Venue access, travel, delivery, setup, and service requirements are confirmed for the specific event location during the proposal process.",
   },
 ] as const;

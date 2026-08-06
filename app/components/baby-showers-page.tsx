@@ -26,7 +26,7 @@ const babyShowersSchema = createServicePageSchema({
   serviceName: "Baby shower coffee, dessert, and rental experiences",
   serviceType: "Baby shower coffee bar, dessert cart, and event rental services",
   serviceDescription:
-    "Coffee, matcha, live dessert, and refined rental experiences for baby showers in Toronto and the Greater Toronto Area.",
+    "Mobile coffee bars, live dessert carts, and refined event rentals for baby showers in Toronto and the Greater Toronto Area.",
   pageName: pageMetadata[babyShowersPath].title,
   pageDescription: pageMetadata[babyShowersPath].description,
 });
@@ -36,15 +36,15 @@ function BabyShowerHero() {
     <header className="baby-hero">
       <div className="baby-hero-copy">
         <p className="foundation-eyebrow">Baby Showers / Toronto &amp; the GTA</p>
-        <h1 aria-label="Baby shower coffee, dessert, and event rentals, thoughtfully planned.">
-          <span>Baby shower coffee,</span>
-          <span>dessert, and event rentals,</span>
-          <span>thoughtfully planned.</span>
+        <h1 aria-label="Baby shower dessert carts, coffee bars, and event rentals in Toronto.">
+          <span>Baby shower dessert carts,</span>
+          <span>coffee bars, and event rentals</span>
+          <span>in Toronto.</span>
         </h1>
         <p>
-          Mobile coffee bars, matcha, live dessert, seating, and event rentals for
-          baby showers across Toronto and the GTA, shaped around the venue, guest
-          count, and atmosphere of the celebration.
+          Specialty espresso bars, iced matcha, live dessert carts, and boutique
+          seating rentals designed to create a warm, memorable celebration for
+          parents-to-be across Toronto and the GTA.
         </p>
         <div className="baby-hero-actions">
           <QuoteModalTrigger data-event-name="inquiry_start">
@@ -74,36 +74,36 @@ function BabyShowerOverview() {
   return (
     <section className="baby-overview" id="baby-overview" aria-labelledby="baby-overview-title">
       <header className="baby-overview-header">
-        <h2 id="baby-overview-title">A baby shower can be shaped in three thoughtful parts.</h2>
+        <h2 id="baby-overview-title">A baby shower shaped in three thoughtful parts</h2>
         <p>
-          Coffee and matcha can welcome guests, live dessert can create the focal
-          moment, and seating and rentals can shape the room around conversation,
-          gifts, and photographs.
+          Welcoming drinks set the tone, live dessert creates an interactive focal
+          point, and boutique rentals organize the space for photos, gifts, and
+          conversation.
         </p>
       </header>
       <div className="baby-overview-parts">
         <article className="baby-overview-welcome">
-          <p>Welcome</p>
+          <p>WELCOME</p>
           <h3>A warm beginning.</h3>
           <p>
-            Coffee and matcha can greet arriving guests with a calm service moment
-            that feels polished, welcoming, and easy to host.
+            Greet arriving family and friends with handcrafted specialty espresso,
+            lavender lattes, and iced matcha for a relaxed, welcoming arrival.
           </p>
         </article>
         <article className="baby-overview-dessert">
           <p>Dessert moment</p>
           <h3>Something guests can gather around.</h3>
           <p>
-            Freshly prepared dessert can create an interactive centre for the
+            Freshly prepared dessert creates an interactive centre for the
             celebration and a memorable moment for family and friends.
           </p>
         </article>
         <article className="baby-overview-setting">
-          <p>The setting</p>
+          <p>THE SETTING</p>
           <h3>Room for the celebration to unfold.</h3>
           <p>
-            Seating, tables, linens, and room details can support conversation, gift
-            opening, photographs, and movement through the gathering.
+            Boutique lounge seating, accent tables, and crisp linens arranged to
+            anchor photo backdrops, gift areas, and comfortable conversation circles.
           </p>
         </article>
       </div>
@@ -115,10 +115,13 @@ function BabyShowerStyling() {
   return (
     <section className="baby-styling" aria-labelledby="baby-styling-title">
       <header>
-        <h2 id="baby-styling-title">Carry the celebration through the details.</h2>
+        <h2 id="baby-styling-title">
+          <span>Carry your baby shower theme</span>
+          <span>through every detail</span>
+        </h2>
         <p>
-          Menus, wording, presentation, and room details can reflect the host’s
-          preferred colours, tone, and overall direction.
+          Personalize menus, custom wording, cart styling, and room layouts to match
+          your color palette and event theme.
         </p>
       </header>
       <div>
@@ -136,10 +139,16 @@ function BabyShowerStyling() {
 function BabyShowerExperiences() {
   return (
     <ExperienceSelector
-      description="Coffee, live dessert, and event rentals can each support a different part of the gathering. Choose one experience or coordinate all three around the room and schedule."
+      description="Choose an individual service or coordinate all three to create a complete hospitality experience tailored to your shower's schedule."
       experiences={babyShowerExperiences}
-      heading="Three Luxe experiences for a thoughtfully hosted baby shower."
+      heading={
+        <>
+          <span>Three Luxe experiences for a</span>
+          <span>thoughtfully hosted baby shower</span>
+        </>
+      }
       id="baby-experiences"
+      useItemHeadings
       variant="taupe"
     />
   );
@@ -191,8 +200,9 @@ function BabyShowerCombinations() {
   return (
     <CombinedExperienceFeature
       combinations={babyShowerCombinations}
-      description="These are planning possibilities rather than fixed packages. The right combination is shaped around the venue, guest count, timing, and atmosphere of the celebration."
-      heading="Ways the experiences can come together."
+      cardTitlesAsHeadings
+      description="Flexible service combinations tailored around your venue, guest count, event schedule, and desired atmosphere."
+      heading="Ways the experiences can come together"
       id="baby-combinations"
     />
   );
@@ -202,10 +212,10 @@ function BabyShowerPlanning() {
   return (
     <section className="baby-planning" aria-labelledby="baby-planning-title">
       <header>
-        <h2 id="baby-planning-title">What to share when planning your baby shower.</h2>
+        <h2 id="baby-planning-title">What to share when planning your baby shower</h2>
         <p>
-          A clear event picture helps Luxe recommend the right experiences, service
-          format, and setup requirements.
+          Sharing key event details helps us tailor the ideal menu, service footprint,
+          and setup schedule for your celebration.
         </p>
       </header>
       <ol>

@@ -85,7 +85,7 @@ export const eventPlanningPathway: readonly EventPlanningStep[] = [
     number: "04",
     title: "Open the conversation.",
     description: "Share the event context Luxe needs to prepare the right next conversation.",
-    href: "/inquire",
+    href: "/contact",
   },
 ];
 
@@ -94,7 +94,8 @@ export const combinedExperiences: CombinedExperience[] = [
     id: "bridal-shower",
     occasion: "Bridal shower",
     title: "Coffee Bar + Sweet Cart",
-    description: "A warm arrival, a live dessert moment, and one unified presentation.",
+    description:
+      "A welcoming espresso arrival paired with an interactive live dessert cart, presented in a seamless aesthetic.",
     href: "/events/bridal-showers",
     experienceIds: ["coffee", "dessert"],
   },
@@ -102,7 +103,8 @@ export const combinedExperiences: CombinedExperience[] = [
     id: "corporate-reception",
     occasion: "Corporate reception",
     title: "Coffee Bar + Seating",
-    description: "Polished hospitality supported by a welcoming room designed for conversation.",
+    description:
+      "Professional barista service supported by high-top tables and lounge seating designed to encourage networking.",
     href: "/events/corporate-events",
     experienceIds: ["coffee", "seating"],
   },
@@ -110,7 +112,8 @@ export const combinedExperiences: CombinedExperience[] = [
     id: "wedding",
     occasion: "Wedding",
     title: "Coffee + Dessert + Rentals",
-    description: "Barista service, dessert prepared in the room, and rentals planned around the wedding setting.",
+    description:
+      "Full-service specialty coffee, fresh-made desserts, and curated seating rentals tailored to your wedding layout and schedule.",
     href: "/events/weddings",
     experienceIds: ["coffee", "dessert", "seating"],
   },
@@ -118,7 +121,8 @@ export const combinedExperiences: CombinedExperience[] = [
     id: "product-launch",
     occasion: "Product launch",
     title: "Branded drinks + Signage",
-    description: "A tactile brand moment carried through the menu, vessels, cart, and presentation.",
+    description:
+      "Custom branded beverage prints, bespoke signage, cart wraps, and tailored cup designs that bring your brand to life.",
     href: "/events/brand-activations",
     experienceIds: ["coffee", "signage"],
   },
@@ -163,7 +167,7 @@ export type InquiryContext = {
   heading: string;
   description: string;
   cta: string;
-  href: "/inquire";
+  href: "/contact";
 };
 
 export const inquiryContexts: Record<string, InquiryContext> = {
@@ -173,7 +177,7 @@ export const inquiryContexts: Record<string, InquiryContext> = {
     description:
       "Share the occasion, location, guest count, and the experiences you are considering. Luxe will use that context to guide the right next conversation.",
     cta: "Plan Your Event",
-    href: "/inquire",
+    href: "/contact",
   },
   default: {
     eyebrow: "Your gathering, thoughtfully shaped",
@@ -181,7 +185,7 @@ export const inquiryContexts: Record<string, InquiryContext> = {
     description:
       "Tell us what you are planning and which details matter most. We will use that context to guide the right next conversation.",
     cta: "Begin your inquiry",
-    href: "/inquire",
+    href: "/contact",
   },
   experiences: {
     eyebrow: "One coordinated point of view",
@@ -189,15 +193,15 @@ export const inquiryContexts: Record<string, InquiryContext> = {
     description:
       "Begin with one service or describe the complete atmosphere. Luxe will take care of the rest.",
     cta: "Plan your Luxe experience",
-    href: "/inquire",
+    href: "/contact",
   },
   events: {
     eyebrow: "Begin with what you are planning",
-    heading: "Find your event experience.",
+    heading: "Plan your special event.",
     description:
       "Share the occasion, location, guest count, timing, and the kind of atmosphere you want to create. Luxe will use that context to guide the right combination of experiences.",
     cta: "Find Your Event Experience",
-    href: "/inquire",
+    href: "/contact",
   },
   "coffee-bar": {
     eyebrow: "Crafted for your event",
@@ -205,7 +209,7 @@ export const inquiryContexts: Record<string, InquiryContext> = {
     description:
       "Share your occasion, guest count, service timing, beverage direction, and any presentation or branding requirements.",
     cta: "Plan Your Coffee Bar",
-    href: "/inquire",
+    href: "/contact",
   },
   "sweet-cart": {
     eyebrow: "Dessert, made part of the moment",
@@ -213,7 +217,7 @@ export const inquiryContexts: Record<string, InquiryContext> = {
     description:
       "Tell us about the occasion, guest count, dessert direction, presentation, and details you would like personalized.",
     cta: "Inquire About a Dessert Experience",
-    href: "/inquire",
+    href: "/contact",
   },
   "seating-rentals": {
     eyebrow: "Shape the room",
@@ -221,7 +225,7 @@ export const inquiryContexts: Record<string, InquiryContext> = {
     description:
       "Share the venue, guest count, event format, desired atmosphere, and the rental elements needed to complete the setting.",
     cta: "Discuss Your Rental Requirements",
-    href: "/inquire",
+    href: "/contact",
   },
   weddings: {
     eyebrow: "Made for the full celebration",
@@ -229,7 +233,7 @@ export const inquiryContexts: Record<string, InquiryContext> = {
     description:
       "Tell us where coffee, dessert, and intentional seating could support the flow, atmosphere, and hospitality of the day.",
     cta: "Begin a wedding inquiry",
-    href: "/inquire",
+    href: "/contact",
   },
   "corporate-events": {
     eyebrow: "Hospitality with purpose",
@@ -237,7 +241,7 @@ export const inquiryContexts: Record<string, InquiryContext> = {
     description:
       "Share the audience, schedule, venue, service needs, and brand requirements so Luxe can prepare a polished event direction.",
     cta: "Discuss a Corporate Event",
-    href: "/inquire",
+    href: "/contact",
   },
   "brand-activations": {
     eyebrow: "Turn the brief into an experience",
@@ -245,7 +249,7 @@ export const inquiryContexts: Record<string, InquiryContext> = {
     description:
       "Tell us about the campaign, audience, timing, service format, and branded details that need to carry through the moment.",
     cta: "Create a Branded Experience",
-    href: "/inquire",
+    href: "/contact",
   },
   "baby-showers": {
     eyebrow: "A beautiful beginning",
@@ -253,7 +257,7 @@ export const inquiryContexts: Record<string, InquiryContext> = {
     description:
       "Share the date, venue, estimated guest count, and the coffee, dessert, seating, or rental experiences you are considering.",
     cta: "Plan a Baby Shower",
-    href: "/inquire",
+    href: "/contact",
   },
   "bridal-showers": {
     eyebrow: "Before the next chapter",
@@ -261,7 +265,7 @@ export const inquiryContexts: Record<string, InquiryContext> = {
     description:
       "Tell us how coffee, dessert, and the setting can come together around the host, guests, and atmosphere.",
     cta: "Plan a Bridal Shower",
-    href: "/inquire",
+    href: "/contact",
   },
   birthdays: {
     eyebrow: "A milestone, made personal",
@@ -269,15 +273,15 @@ export const inquiryContexts: Record<string, InquiryContext> = {
     description:
       "Share the guest count, setting, preferred experiences, and personal details that should shape the celebration.",
     cta: "Plan a Birthday Experience",
-    href: "/inquire",
+    href: "/contact",
   },
   "private-events": {
     eyebrow: "Gather in your own way",
-    heading: "Discuss your private event.",
+    heading: "Plan your private event in Toronto and the GTA.",
     description:
       "Tell us what you are celebrating and how coffee, dessert, or refined rentals could support the occasion.",
     cta: "Discuss Your Event",
-    href: "/inquire",
+    href: "/contact",
   },
 };
 

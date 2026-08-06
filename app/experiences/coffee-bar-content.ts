@@ -4,22 +4,28 @@ export const coffeeFormats = [
   {
     id: "cafe-cart",
     name: entityNames.coffeeExperiences.cafeCart.canonicalName,
+    displayName: "Luxe Café Cart: Compact Espresso Bar",
     shortName: entityNames.coffeeExperiences.cafeCart.contextualName,
-    statement: "An intimate café point, brought into the gathering.",
+    statement: "An intimate mobile café experience designed for boutique gatherings.",
     description:
-      "A focused mobile café setup for occasions that call for warm hospitality without making the service feel oversized for the room.",
-    eventFit: "Intimate gatherings, showers, private celebrations, and focused hospitality moments.",
-    presence: "Compact, personal, and designed to sit naturally within the event.",
+      "Perfect when you want warm, handcrafted barista service without overpowering the layout of the room.",
+    eventFit:
+      "Intimate gatherings, bridal and baby showers, private dinners, and focused hospitality moments.",
+    presence:
+      "Compact, flexible footprint designed to sit naturally within indoor or outdoor event spaces.",
   },
   {
     id: "signature-bar",
     name: entityNames.coffeeExperiences.signatureCoffeeBar.canonicalName,
+    displayName: "Luxe Signature Coffee Bar: Full-Service Event Bar",
     shortName: entityNames.coffeeExperiences.signatureCoffeeBar.contextualName,
-    statement: "A full-service coffee bar with a stronger presence in the room.",
+    statement: "A full-service mobile espresso bar built for scale and visual impact.",
     description:
-      "An expanded bar setup for weddings, corporate events, and activations where beverage service is intended to become a visible part of the room.",
-    eventFit: "Weddings, corporate events, brand activations, and larger-format celebrations.",
-    presence: "Expanded, high-impact, and shaped for a more prominent service moment.",
+      "Designed for weddings, corporate functions, and brand activations where coffee service serves as a focal point for guest interaction.",
+    eventFit:
+      "Weddings, corporate conferences, brand activations, galas, and high-capacity celebrations.",
+    presence:
+      "Statement-making, high-impact bar presence tailored for active guest flow and higher volume.",
   },
 ] as const;
 
@@ -138,19 +144,19 @@ export const coffeeGalleryPreview = [
   {
     number: "01",
     label: "The cart in context",
-    note: "Approved event photography required",
+    note: "Coffee bar presentation shaped around the event setting",
     tone: "cart",
   },
   {
     number: "02",
     label: "Craft in service",
-    note: "Approved barista photography required",
+    note: "Professional baristas preparing beverages on-site",
     tone: "service",
   },
   {
     number: "03",
     label: "The finished drink",
-    note: "Approved beverage photography required",
+    note: "Handcrafted coffee, matcha, and specialty drinks",
     tone: "drink",
   },
 ] as const;
@@ -159,7 +165,7 @@ export const coffeeFaqs = [
   {
     question: "How much does mobile coffee catering cost, and how is it priced?",
     answer:
-      "Mobile coffee catering is priced from the Café Cart or Signature Coffee Bar format, guest count, service duration, location and travel, staffing, menu, equipment, setup requirements, indoor or outdoor conditions, branding, multi-day needs, and the number of service stations. Luxe reviews those event requirements and confirms the selected format and operating scope in the proposal. Guest count and duration both matter, but neither determines the quote by itself, so no single fixed coffee-service total is published.",
+      "Mobile coffee bar pricing is tailored to your event's specific scope. Custom quotes are based on your chosen setup (Café Cart or Signature Coffee Bar), guest count, service duration, venue location, staffing needs, custom menu selections, and branding options.\n\nBecause guest count, venue logistics, and timing all shape the required operational setup, Luxe provides custom proposals rather than flat, one-size-fits-all rates.",
   },
   {
     question: "What is included with a Luxe Coffee Bar booking?",

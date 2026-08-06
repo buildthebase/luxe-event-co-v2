@@ -99,7 +99,46 @@ export const experienceNeedComparison = [
     need: "Carry one atmosphere through the event",
     atmosphere: "Coordinated across hospitality, dessert, and setting",
     experience: "A combined Luxe experience",
-    href: "/inquire",
+    href: "/contact",
+  },
+] as const;
+
+export const experienceHubCombinations: readonly CombinedExperience[] = [
+  {
+    id: "bridal-shower",
+    occasion: "Bridal shower",
+    title: "Mobile Coffee Bar + Sweet Cart",
+    description:
+      "A warm arrival, a live dessert moment, and one unified presentation for pre-wedding celebrations.",
+    href: "/events/bridal-showers",
+    experienceIds: ["coffee", "dessert"],
+  },
+  {
+    id: "corporate-reception",
+    occasion: "Corporate reception",
+    title: "Espresso Bar + Seating Rentals",
+    description:
+      "Polished beverage hospitality supported by welcoming lounge spaces designed for networking and conversation.",
+    href: "/events/corporate-events",
+    experienceIds: ["coffee", "seating"],
+  },
+  {
+    id: "wedding",
+    occasion: "Wedding",
+    title: "Coffee + Dessert Cart + Event Rentals",
+    description:
+      "On-site barista service, interactive dessert stations, and rental layouts planned seamlessly around your wedding venue.",
+    href: "/events/weddings",
+    experienceIds: ["coffee", "dessert", "seating"],
+  },
+  {
+    id: "product-launch",
+    occasion: "Product launch",
+    title: "Branded Drinks + Custom Signage",
+    description:
+      "A tactile brand experience with customized beverage menus, branded cups, and interactive cart displays.",
+    href: "/events/brand-activations",
+    experienceIds: ["coffee", "signage"],
   },
 ] as const;
 
@@ -126,3 +165,4 @@ export const experienceGalleryPreview = [
     tone: "seating",
   },
 ] as const;
+import type { CombinedExperience } from "../signature-elements";

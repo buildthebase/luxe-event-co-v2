@@ -31,7 +31,7 @@ export default function ErrorPage({
       <div>
         <button type="button" onClick={reset}>Try Again</button>
         <Link href="/">Return Home</Link>
-        <Link href="/inquire">Contact Luxe</Link>
+        <Link href="/contact">Contact Luxe</Link>
       </div>
     </main>
   );

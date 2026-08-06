@@ -250,7 +250,7 @@ export const primaryRoutes = [
   ...eventTypes.map(({ slug }) => `/events/${slug}`),
   "/gallery",
   "/faq",
-  "/inquire",
+  "/contact",
 ] as const;
 
 export type ExperienceSlug = (typeof experiences)[number]["slug"];

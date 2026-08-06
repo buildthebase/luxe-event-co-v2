@@ -57,7 +57,7 @@ function FaqHero() {
           customization explained with the detail currently confirmed.
         </p>
         <div className="faq-hub-hero-actions">
-          <Link href="/inquire" data-event-name="inquiry_start">
+          <Link href="/contact" data-event-name="inquiry_start">
             Ask About Your Event <span aria-hidden="true">↗︎</span>
           </Link>
           <a href="#faq-categories">
@@ -139,7 +139,7 @@ function FaqInquiry() {
           <Link href="/experiences/seating-rentals">Seating Rentals</Link>.
         </p>
       </div>
-      <Link href="/inquire" data-event-name="inquiry_start">
+      <Link href="/contact" data-event-name="inquiry_start">
         Ask About Your Event <span aria-hidden="true">↗︎</span>
       </Link>
     </section>

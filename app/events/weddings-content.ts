@@ -1,3 +1,21 @@
+import { signatureExperiences, type SignatureExperience } from "../signature-elements";
+
+const weddingExperienceDescriptions: Record<SignatureExperience["id"], string> = {
+  coffee:
+    "Mobile espresso, matcha, and seasonal specialty drink service designed for guest arrivals, cocktail hour, reception, or late-night energy.",
+  dessert:
+    "Fresh on-site dessert preparation and custom cart styling that creates an engaging, delicious focal point for your guests.",
+  seating:
+    "Curated chairs, tables, cocktail setups, linens, and lounge furniture arranged to elevate your ceremony, reception, or outdoor layout.",
+};
+
+export const weddingExperiences: SignatureExperience[] = signatureExperiences.map(
+  (experience) => ({
+    ...experience,
+    description: weddingExperienceDescriptions[experience.id],
+  }),
+);
+
 export const weddingMoments = [
   {
     number: "01",
@@ -6,7 +24,7 @@ export const weddingMoments = [
     fitLabel: "Best fit",
     fit: "Café Cart",
     description:
-      "A Café Cart can greet the wedding party or arriving guests with espresso, matcha, and specialty beverages before the ceremony begins.",
+      "Greet early-arriving guests and the wedding party with handcrafted espresso, iced matchas, and warm signature drinks as they arrive before the ceremony.",
   },
   {
     number: "02",
@@ -15,7 +33,7 @@ export const weddingMoments = [
     fitLabel: "Best fit",
     fit: "Signature Coffee Bar",
     description:
-      "The Signature Coffee Bar can give guests a polished hospitality point between the ceremony and reception, with hot and iced service shaped around the season.",
+      "Provide guests with a sophisticated hospitality feature between the ceremony and dinner. Tailored with seasonal hot drinks and refreshing iced lattes.",
   },
   {
     number: "03",
@@ -24,7 +42,7 @@ export const weddingMoments = [
     fitLabel: "Can include",
     fit: "Coffee Bar",
     description:
-      "Espresso classics, signature drinks, matcha, and premium non-coffee beverages can support dinner service, speeches, or the movement into the evening.",
+      "Complement dinner service, speeches, and evening dancing with artisanal espresso drinks, herbal teas, and custom non-coffee options.",
   },
   {
     number: "04",
@@ -33,7 +51,7 @@ export const weddingMoments = [
     fitLabel: "Best fit",
     fit: "Sweet Cart",
     description:
-      "Mini Dutch pancakes, Belgian waffles on a stick, mini donuts, and optional soft serve can be prepared on-site as an interactive part of the celebration.",
+      "Interactive live dessert station featuring fresh mini Dutch pancakes, Belgian waffles on a stick, mini donuts, and soft serve prepared fresh in front of your guests.",
   },
   {
     number: "05",
@@ -42,7 +60,7 @@ export const weddingMoments = [
     fitLabel: "Can include",
     fit: "Coffee Bar or Sweet Cart",
     description:
-      "Coffee or freshly prepared dessert can create a late-night pause that feels intentional rather than added on after the reception.",
+      "Re-energize the dance floor with late-night espresso shots or freshly baked warm treats, providing a memorable second-wind hospitality moment.",
   },
   {
     number: "06",
@@ -51,7 +69,7 @@ export const weddingMoments = [
     fitLabel: "Optional",
     fit: "Coffee Bar",
     description:
-      "Where the venue, schedule, and availability allow, a focused coffee experience can be planned for a farewell breakfast or next-day gathering.",
+      "Keep the celebration going during your farewell brunch or day-after gift opening with full-service espresso catering for family and close friends.",
   },
 ] as const;
 
@@ -60,25 +78,25 @@ export const weddingCustomization = [
     number: "01",
     title: "Drinks and menus",
     description:
-      "Signature beverages, seasonal selections, matcha, premium non-coffee options, milk alternatives, and menu details can be shaped around the season and guest experience.",
+      "Tailored signature drinks, seasonal lattes, oat and almond milk alternatives, matcha, and custom menu wording crafted for your taste.",
   },
   {
     number: "02",
     title: "Cups, signage, and wording",
     description:
-      "Names, dates, monograms, menu wording, and visual direction can be carried through selected guest-facing details.",
+      "Add custom wedding monograms, partner names, wedding dates, and custom printed cups or signage frames for a cohesive visual look.",
   },
   {
     number: "03",
     title: "Dessert and cart presentation",
     description:
-      "Dessert styling, cart details, florals, signage, toppings, and presentation can be discussed during planning.",
+      "Coordinate cart finishes, floral arrangements, custom topper displays, and gourmet sauce bars to match your wedding color palette.",
   },
   {
     number: "04",
     title: "Seating and room details",
     description:
-      "Chair styles, tables, linens, lighting, and other rental selections can be coordinated with the venue and visual direction.",
+      "Match chair finishes, cocktail table height, table linens, and lounge arrangements directly to your venue floor plan and aesthetic.",
   },
 ] as const;
 
@@ -87,25 +105,25 @@ export const weddingLogistics = [
     number: "01",
     title: "Planner and venue coordination",
     description:
-      "Service timing, access, placement, and event-day requirements can be coordinated with the couple, planner, venue, caterer, and relevant vendor team.",
+      "We directly align load-in times, floor plans, and service schedules with your wedding planner, venue coordinator, and catering team.",
   },
   {
     number: "02",
     title: "Setup, teardown, and pickup",
     description:
-      "Setup and takedown for Coffee Bar and Sweet Cart are included where confirmed. Rental delivery, setup, teardown, and pickup responsibilities are outlined in the proposal.",
+      "Complete setup and strike included for all coffee bars and sweet carts. Rental delivery and teardown windows are strictly scheduled around venue curfew.",
   },
   {
     number: "03",
     title: "Venue requirements",
     description:
-      "Footprint, power, water, loading access, floor protection, indoor or outdoor conditions, and service timing are confirmed for the selected experiences.",
+      "We verify electrical draw, water needs, loading dock access, floor protection, and weather contingency plans long before wedding day.",
   },
   {
     number: "04",
     title: "Travel and destination planning",
     description:
-      "Luxe serves Toronto and the GTA and may accommodate select weddings elsewhere in Southern Ontario. Travel requirements and applicable fees are confirmed during planning.",
+      "Based in Toronto, Luxe serves the GTA and select destination venues across Southern Ontario, including Muskoka, Niagara, and Prince Edward County.",
   },
 ] as const;
 
@@ -135,6 +153,11 @@ export const weddingFaqs = [
     question: "Can Luxe provide coffee service for weddings?",
     answer:
       "Yes. Luxe Coffee Bar provides professional barista service, espresso classics, signature drinks, matcha and premium non-coffee options, hot and iced service, milk alternatives, serving essentials, setup, and takedown. The Café Cart or Signature Coffee Bar is selected around the wedding format and guest experience.",
+  },
+  {
+    question: "How much does a wedding coffee bar, dessert cart, or rental plan cost?",
+    answer:
+      "Wedding pricing is prepared by quote and depends on the selected experiences, guest count, service duration, menu, customization, rental quantities, venue logistics, and travel. Couples can share their date, venue, estimated guest count, and preferred services to receive a proposal shaped around the wedding.",
   },
   {
     question: "When should coffee be served at a wedding?",

@@ -22,7 +22,7 @@ export const eventHubEntries: EventHubEntry[] = [
     cue: "The full celebration",
     statement: "Hospitality carried through the celebration.",
     summary:
-      "Coffee, live dessert, seating, and event rentals can be planned around the ceremony, cocktail hour, reception, and late-night service.",
+      "Curated mobile coffee, live desserts, and boutique seating rentals designed around your ceremony, cocktail hour, reception, and late-night service.",
   },
   {
     slug: "corporate-events",
@@ -31,7 +31,7 @@ export const eventHubEntries: EventHubEntry[] = [
     cue: "Purposeful hospitality",
     statement: "Service shaped around the schedule.",
     summary:
-      "For conferences, office gatherings, appreciation events, and other business occasions, Luxe can coordinate the experience around the audience, venue, timing, and brand environment.",
+      "For conferences, product launches, and corporate galas, Luxe aligns coffee bars, dessert stations, and seating with your itinerary and brand aesthetic.",
   },
   {
     slug: "brand-activations",
@@ -40,7 +40,7 @@ export const eventHubEntries: EventHubEntry[] = [
     cue: "The brief, made tangible",
     statement: "An experience guests can see, taste, and remember.",
     summary:
-      "Branded beverages, live dessert, presentation, signage, and event styling can translate campaign details into a guest-facing experience.",
+      "Custom branded coffee, live dessert setups, and curated furniture that translate your campaign details into an engaging, shareable guest experience.",
   },
   {
     slug: "baby-showers",
@@ -49,7 +49,7 @@ export const eventHubEntries: EventHubEntry[] = [
     cue: "A beautiful beginning",
     statement: "A welcoming setting for family and friends.",
     summary:
-      "Coffee, freshly prepared dessert, seating, and rentals can create a comfortable setting shaped around the host, venue, and guest experience.",
+      "Specialty drinks, freshly prepared desserts, and relaxed seating options designed to create a warm, memorable afternoon for the parents-to-be.",
   },
   {
     slug: "bridal-showers",
@@ -58,7 +58,7 @@ export const eventHubEntries: EventHubEntry[] = [
     cue: "Before the next chapter",
     statement: "A considered setting for the people closest to the couple.",
     summary:
-      "Welcome drinks, live dessert, seating, and room details can be planned around conversation, photographs, and the flow of the gathering.",
+      "Welcome drinks, live sweet stations, and stylish seating arranged to foster conversation, beautiful photo moments, and effortless gathering.",
   },
   {
     slug: "birthdays",
@@ -67,7 +67,7 @@ export const eventHubEntries: EventHubEntry[] = [
     cue: "A milestone, made personal",
     statement: "Built around the guest of honour.",
     summary:
-      "Menus, dessert selections, presentation, seating, and event details can reflect the person being celebrated and the scale of the occasion.",
+      "Customized espresso menus, interactive dessert carts, and party seating curated to reflect the birthday guest of honor and event scale.",
   },
   {
     slug: "private-events",
@@ -76,7 +76,7 @@ export const eventHubEntries: EventHubEntry[] = [
     cue: "Gather in your own way",
     statement: "A complete experience for personal milestones.",
     summary:
-      "Engagements, anniversaries, graduations, holiday gatherings, and other celebrations can combine one Luxe experience or bring several together.",
+      "Engagements, anniversaries, graduations, and holiday parties brought to life through a single tailored Luxe service or a full-suite experience.",
   },
 ];
 
@@ -84,17 +84,17 @@ export const eventLedPrinciples = [
   {
     number: "01",
     label: "Occasion",
-    description: "Start with what is being celebrated, hosted, launched, or shared.",
+    description: "Start with what is being celebrated, hosted, or launched.",
   },
   {
     number: "02",
     label: "Guests",
-    description: "Consider who is attending and how they will gather, move, and be served.",
+    description: "Consider guest count and how people will gather, mingle, and interact.",
   },
   {
     number: "03",
     label: "Flow",
-    description: "Place each experience where it can support the rhythm of the event.",
+    description: "Position each experience to elevate the natural rhythm of your space.",
   },
 ] as const;
 

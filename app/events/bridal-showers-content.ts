@@ -43,21 +43,21 @@ export const bridalShowerDetails = [
     label: "The menu",
     title: "Menus and drinks",
     description:
-      "Signature beverages, matcha, seasonal selections, milk alternatives, and menu displays can be tailored around the season, guest preferences, and celebration.",
+      "Tailor your drink menu with custom signature lattes, ceremonial matcha, seasonal specials, alternative milks, and personalized menu displays.",
   },
   {
     number: "02",
     label: "The presentation",
     title: "Signage and presentation",
     description:
-      "Names, dates, wording, cups, menu displays, cart details, and dessert presentation can carry the selected visual direction. Floral accents may be discussed where they form part of the approved presentation scope.",
+      "Personalize custom cups, arch signage, and cart wraps with the bride-to-be's name, event date, custom slogans, or floral accents.",
   },
   {
     number: "03",
     label: "The room",
     title: "The room around the service",
     description:
-      "Chair styles, tables, linens, lighting, and service placement can be planned around conversation, photographs, gifts, and movement through the room.",
+      "Coordinate seating styles, dining tables, premium linens, ambient lighting, and bar placement to ensure smooth guest movement and photo-worthy corners.",
   },
 ] as const;
 
@@ -67,21 +67,21 @@ export const bridalShowerCombinations = [
     title: "The café shower",
     experiences: "Café Cart + matcha and specialty drinks",
     description:
-      "A tailored beverage menu creates an intimate café rhythm for arrivals, conversation, and time around the table.",
+      "A custom-curated espresso and matcha menu that creates an intimate, café-style atmosphere for guest arrival and lounge relaxation.",
   },
   {
     number: "02",
     title: "The interactive centrepiece",
     experiences: "Signature Coffee Bar + Sweet Cart",
     description:
-      "Crafted beverages and live dessert form two complementary guest moments while contributing movement and presentation to the room.",
+      "Pair handcrafted beverages with a live dessert station to create two engaging focal points that drive guest interaction.",
   },
   {
     number: "03",
     title: "The complete setting",
     experiences: "Coffee + Dessert + Seating and rentals",
     description:
-      "Hospitality, sweetness, and selected room requirements support a fully considered setting from arrival through dessert.",
+      "Combine espresso service, fresh live desserts, and boutique venue rentals for a seamlessly coordinated, end-to-end shower experience.",
   },
 ] as const;
 
@@ -109,27 +109,27 @@ export const bridalShowerGallery = [
 export const bridalShowerPlanning = [
   {
     number: "01",
-    title: "The gathering",
+    title: "Event details",
     description:
-      "Share the date, venue, estimated guest count, schedule, and whether the shower will take place indoors or outdoors.",
+      "Provide your event date, venue location, estimated guest count, overall timeline, and whether the shower will take place indoors or outdoors.",
   },
   {
     number: "02",
-    title: "The experiences",
+    title: "Experience preferences",
     description:
-      "Identify whether coffee, matcha, live dessert, seating, rentals, or a coordinated combination should support the shower.",
+      "Select whether a mobile coffee bar, ceremonial matcha, live dessert cart, seating rentals, or a coordinated combination suits your vision.",
   },
   {
     number: "03",
-    title: "The setting",
+    title: "Venue and setup needs",
     description:
-      "Provide any available details about venue access, service footprint, power or water, delivery timing, setup, teardown, and venue requirements.",
+      "Share available details on load-in timing, service footprint, power supply, water access, and specific venue vendor guidelines.",
   },
   {
     number: "04",
-    title: "The personal details",
+    title: "Customization and styling",
     description:
-      "Share any preferred colours, wording, menu ideas, signage, presentation details, or rental selections.",
+      "Let us know your preferred color palettes, custom drink names, signage copy, dessert themes, or specific rental styles.",
   },
 ] as const;
 

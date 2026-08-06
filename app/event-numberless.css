@@ -16,7 +16,7 @@
 }
 
 .wedding-page {
-  --wedding-display-heading-size: clamp(4rem, 7.7vw, 8.3rem);
+  --wedding-display-heading-size: var(--luxe-type-h2);
 }
 
 .wedding-page h2 {
@@ -27,19 +27,19 @@
 
 @media (max-width: 1100px) {
   .wedding-page {
-    --wedding-display-heading-size: clamp(3.8rem, 7.7vw, 6.2rem);
+    --wedding-display-heading-size: var(--luxe-type-h2);
   }
 }
 
 @media (max-width: 780px) {
   .wedding-page {
-    --wedding-display-heading-size: clamp(3.5rem, 12vw, 5.7rem);
+    --wedding-display-heading-size: var(--luxe-type-h2);
   }
 }
 
 @media (max-width: 700px) {
   .wedding-page {
-    --wedding-display-heading-size: clamp(3.05rem, 14.2vw, 5.2rem);
+    --wedding-display-heading-size: var(--luxe-type-h2);
   }
 }
 
@@ -111,7 +111,7 @@
   }
 
   .corporate-scale article {
-    grid-template-columns: minmax(12rem, .55fr) minmax(15rem, .9fr) minmax(18rem, 1.25fr);
+    grid-template-columns: minmax(12rem, .55fr) minmax(0, 1.45fr);
   }
 
   .baby-combinations article,
@@ -160,6 +160,10 @@
   }
 }
 
+.corporate-scale article > p {
+  width: 100%;
+}
+
 /* Match the Experiences hub event directory across each service page on mobile. */
 @media (max-width: 700px) {
   :is(.coffee-events, .sweet-events, .seating-events) {
@@ -203,14 +207,15 @@
     letter-spacing: .14em;
   }
 
-  :is(.coffee-events, .sweet-events, .seating-events) a > strong {
+  :is(.coffee-events, .sweet-events, .seating-events) a > :is(strong, h3) {
+    margin: 0;
     padding-left: 0;
     font-size: 1.15rem;
     font-weight: 500;
     letter-spacing: normal;
   }
 
-  :is(.coffee-events, .sweet-events, .seating-events) a > strong::before {
+  :is(.coffee-events, .sweet-events, .seating-events) a > :is(strong, h3)::before {
     content: none;
   }
 

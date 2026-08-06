@@ -5,7 +5,7 @@ export const sweetCartCollections = [
     name: "The Classic Collection",
     character: "Sleek. Timeless. Versatile.",
     description:
-      "A refined cart expression designed to sit quietly within the event styling while the live dessert preparation draws guests in.",
+      "A refined cart design made to integrate naturally into your event decor while live dessert preparation draws guests in.",
   },
   {
     id: "signature",
@@ -23,40 +23,40 @@ export const dessertExperiences = [
     number: "01",
     name: "Mini Dutch Pancakes",
     description:
-      "Mini pancakes served with a choice of sauces and toppings.",
+      "Warm, bite-sized mini pancakes finished live with your selection of gourmet sauces and toppings.",
     decisionFit:
-      "A great option for guests who want to personalize their dessert and enjoy it in an easy bowl-style serving.",
+      "An interactive guest favourite that allows everyone to customize their dessert in an easy, bowl-style serving.",
   },
   {
     id: "waffles",
     number: "02",
     name: "Belgian Waffles on a Stick",
     description:
-      "Belgian waffles finished to order and served in an easy handheld format.",
+      "Crisp Belgian waffles prepared fresh, drizzled to order, and served in a convenient handheld format.",
     decisionFit:
-      "Perfect for cocktail hours, mingling, and events where guests will be moving around the room.",
+      "Ideal for cocktail hours, corporate networking, and celebrations where guests are actively mingling.",
   },
   {
     id: "donuts",
     number: "03",
     name: "Mini Donuts",
     description:
-      "Mini donuts prepared fresh and served straight from the cart.",
+      "Freshly made mini donuts dusted, glazed, and served warm directly from the cart.",
     decisionFit:
-      "A familiar crowd-pleaser that works beautifully on its own or alongside the rest of the event menu.",
+      "A classic crowd-pleaser that pairs effortlessly with our mobile coffee service or stands alone as a feature moment.",
   },
 ] as const;
 
 export const dessertBookingIncludes = [
-  "Choice of Classic or Signature cart",
-  "Fresh desserts prepared on-site",
-  "Premium sauces",
-  "Selection of standard toppings",
-  "Styled cart presentation",
-  "Professional attendants",
-  "Setup and takedown",
-  "Serving supplies",
-  "Elegant menu display",
+  "Choice of Classic or Signature dessert cart",
+  "Desserts prepared fresh on-site",
+  "Drizzled premium Belgian sauces",
+  "Selection of classic toppings included",
+  "Curated cart styling and setup",
+  "Professional attendant service",
+  "Complete venue setup and takedown",
+  "Napkins, bowls, and serving essentials",
+  "Custom menu display and frame",
 ] as const;
 
 export const dessertSauces = [
@@ -96,19 +96,19 @@ export const sweetCustomization = [
     number: "01",
     title: "Choose the dessert direction",
     description:
-      "Select the dessert experience, sauces, standard toppings, premium toppings, and optional soft serve around the event, then confirm a combination that remains practical for preparation and guest choice.",
+      "Select your preferred desserts, gourmet sauces, toppings, and optional soft serve. We will curate a balanced combination that delivers fast, seamless guest service.",
   },
   {
     number: "02",
     title: "Shape the presentation",
     description:
-      "Choose the cart collection and coordinate the menu display, signage, styling, and visual details.",
+      "Select your cart style and coordinate custom menu signage, floral accenting, and visual details to blend naturally into your event layout.",
   },
   {
     number: "03",
     title: "Carry the brand or occasion",
     description:
-      "Custom signage and branding can connect the cart to a wedding aesthetic, celebration theme, or corporate identity.",
+      "Add personalized vinyl decals, branded cups, or custom signage to align the cart setup with your wedding aesthetic, party theme, or corporate brand identity.",
   },
 ] as const;
 
@@ -154,19 +154,19 @@ export const sweetGalleryPreview = [
   {
     number: "01",
     label: "The cart as décor",
-    note: "Approved event photography required",
+    note: "Styled as part of the event setting",
     tone: "cart",
   },
   {
     number: "02",
     label: "Prepared in the moment",
-    note: "Approved preparation photography required",
+    note: "Desserts prepared fresh on-site",
     tone: "preparation",
   },
   {
     number: "03",
     label: "Finished for the guest",
-    note: "Approved dessert photography required",
+    note: "Sauces and toppings selected for each guest",
     tone: "finish",
   },
 ] as const;
@@ -175,12 +175,12 @@ export const sweetCartFaqs = [
   {
     question: "How much does the Luxe Sweet Cart cost?",
     answer:
-      "Sweet Cart service is priced from guest count, selected dessert, cart collection, service duration, staffing, sauces and toppings, optional soft serve, equipment, setup, venue access, indoor or outdoor conditions, travel, branding, multi-day needs, and multiple stations. Luxe reviews those event requirements and confirms the selected service plan and enhancements in the proposal, so no single fixed Sweet Cart total is published.",
+      "Luxe Sweet Cart pricing is tailored to your guest count, selected desserts, cart style, service duration, attendant staffing, venue access, and custom branding requirements. Because every celebration is unique, we review your specific event details and provide a fully transparent, itemized proposal with no hidden fees.",
   },
   {
     question: "Which desserts are available?",
     answer:
-      "Luxe Sweet Cart offers Mini Dutch Pancakes, Belgian Waffles on a Stick, and Mini Donuts. Soft Serve Ice Cream is available as an optional enhancement.",
+      "Luxe Sweet Cart offers Mini Dutch Pancakes, Belgian Waffles on a Stick, and Mini Donuts. A Soft Serve Ice Cream Cart is available as an optional enhancement.",
   },
   {
     question: "Are desserts prepared on-site?",
@@ -218,6 +218,11 @@ export const sweetCartFaqs = [
       "Yes. Sauces, standard toppings, and available premium toppings can be selected around the dessert experience. Requests outside the confirmed menu require review for sourcing, preparation, allergies, service speed, and presentation.",
   },
   {
+    question: "Can dietary restrictions and allergies be accommodated?",
+    answer:
+      "Share dietary restrictions, allergies, and cross-contact concerns before the menu is finalized. Luxe reviews each request against the selected dessert, ingredients, toppings, equipment, preparation process, and event setting. No allergen-free service or accommodation is confirmed until the event requirements have been reviewed.",
+  },
+  {
     question: "Can multiple dessert types be combined?",
     answer:
       "Multiple dessert types can be requested. Because every combination is not defined as a standard inclusion, Luxe confirms the available pairing, equipment, staffing, and service format in the event proposal.",
@@ -225,7 +230,7 @@ export const sweetCartFaqs = [
   {
     question: "Is soft serve available?",
     answer:
-      "Yes. Soft Serve Ice Cream is available as an optional add-on to a Sweet Cart experience.",
+      "Yes. A Soft Serve Ice Cream Cart is available as an optional add-on to a Sweet Cart experience.",
   },
   {
     question: "Can the Sweet Cart setup be branded?",
@@ -241,6 +246,16 @@ export const sweetCartFaqs = [
     question: "Is setup and teardown included?",
     answer:
       "Yes. Setup and takedown are included with the confirmed dessert experience. Exact access and timing requirements are coordinated around the venue and event schedule.",
+  },
+  {
+    question: "How much space and power does the Sweet Cart require?",
+    answer:
+      "Space, power, placement, and access requirements depend on the selected dessert, equipment, cart collection, staffing, and number of stations. Luxe confirms the required footprint and utilities after reviewing the venue and event plan.",
+  },
+  {
+    question: "Can the Sweet Cart operate outdoors?",
+    answer:
+      "Outdoor service can be requested. Luxe reviews the season, weather exposure, ground conditions, power, access, placement, equipment, and venue requirements before confirming whether the planned setup is suitable for the event.",
   },
   {
     question: "Which events are best suited to Luxe Sweet Cart?",

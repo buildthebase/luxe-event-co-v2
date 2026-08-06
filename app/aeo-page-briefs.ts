@@ -79,7 +79,7 @@ export const pageAeoBriefs: PageAeoBrief[] = [
       { href: "/events", purpose: "Choose by occasion." },
       { href: "/gallery", purpose: "Review first-party visual proof." },
       { href: "/faq", purpose: "Move shared operating questions to their owner." },
-      { href: "/inquire", purpose: "Begin a qualified inquiry." },
+      { href: "/contact", purpose: "Begin a qualified inquiry." },
     ],
     recommendedContentFormats: ["concise answer", "decision guide", "proof module"],
     questionsNotToDuplicate: [
@@ -132,7 +132,7 @@ export const pageAeoBriefs: PageAeoBrief[] = [
       { href: "/experiences/sweet-cart", purpose: "Open the complete Sweet Cart answer." },
       { href: "/experiences/seating-rentals", purpose: "Open the complete rental answer." },
       { href: "/events", purpose: "Continue by event type." },
-      { href: "/inquire", purpose: "Request one or more experiences." },
+      { href: "/contact", purpose: "Request one or more experiences." },
     ],
     recommendedContentFormats: ["decision guide", "comparison", "concise answer"],
     questionsNotToDuplicate: [
@@ -181,7 +181,7 @@ export const pageAeoBriefs: PageAeoBrief[] = [
       { href: "/events/corporate-events", purpose: "Apply Coffee Bar to corporate events." },
       { href: "/events/brand-activations", purpose: "Move complete branding workflow to its owner." },
       { href: "/faq", purpose: "Move shared operational requirements to FAQ." },
-      { href: "/inquire", purpose: "Request Coffee Bar." },
+      { href: "/contact", purpose: "Request Coffee Bar." },
     ],
     recommendedContentFormats: ["concise answer", "comparison", "requirements summary", "FAQ"],
     questionsNotToDuplicate: [
@@ -231,7 +231,7 @@ export const pageAeoBriefs: PageAeoBrief[] = [
       { href: "/events/bridal-showers", purpose: "Apply Sweet Cart to bridal showers." },
       { href: "/events/baby-showers", purpose: "Apply Sweet Cart to baby showers." },
       { href: "/faq", purpose: "Move shared policies to FAQ." },
-      { href: "/inquire", purpose: "Request Sweet Cart." },
+      { href: "/contact", purpose: "Request Sweet Cart." },
     ],
     recommendedContentFormats: ["concise answer", "comparison", "requirements summary", "FAQ"],
     questionsNotToDuplicate: [
@@ -280,7 +280,7 @@ export const pageAeoBriefs: PageAeoBrief[] = [
       { href: "/events/corporate-events", purpose: "Apply rentals to corporate events." },
       { href: "/events/private-events", purpose: "Apply rentals to private and outdoor events." },
       { href: "/faq", purpose: "Move shared travel and venue requirements to FAQ." },
-      { href: "/inquire", purpose: "Request a rental quote." },
+      { href: "/contact", purpose: "Request a rental quote." },
     ],
     recommendedContentFormats: ["decision guide", "comparison", "requirements summary", "FAQ"],
     questionsNotToDuplicate: [
@@ -338,7 +338,7 @@ export const pageAeoBriefs: PageAeoBrief[] = [
       { href: "/events/brand-activations", purpose: "Open activation planning." },
       { href: "/events/private-events", purpose: "Open private-event planning." },
       { href: "/experiences", purpose: "Compare divisions." },
-      { href: "/inquire", purpose: "Start from the event context." },
+      { href: "/contact", purpose: "Start from the event context." },
     ],
     recommendedContentFormats: ["decision guide", "concise answer", "comparison"],
     questionsNotToDuplicate: [
@@ -387,7 +387,7 @@ export const pageAeoBriefs: PageAeoBrief[] = [
       { href: "/experiences/seating-rentals", purpose: "Review rental planning." },
       { href: "/gallery", purpose: "Review wedding proof." },
       { href: "/faq", purpose: "Move shared booking and logistics answers." },
-      { href: "/inquire", purpose: "Plan the wedding scope." },
+      { href: "/contact", purpose: "Plan the wedding scope." },
     ],
     recommendedContentFormats: ["planning checklist", "concise answer", "proof module", "FAQ"],
     questionsNotToDuplicate: [
@@ -437,7 +437,7 @@ export const pageAeoBriefs: PageAeoBrief[] = [
       { href: "/experiences/seating-rentals", purpose: "Review corporate rental capability." },
       { href: "/events/brand-activations", purpose: "Move the full branding workflow." },
       { href: "/faq", purpose: "Move shared booking and logistics answers." },
-      { href: "/inquire", purpose: "Submit the corporate brief." },
+      { href: "/contact", purpose: "Submit the corporate brief." },
     ],
     recommendedContentFormats: ["process summary", "requirements summary", "proof module", "FAQ"],
     questionsNotToDuplicate: [
@@ -487,7 +487,7 @@ export const pageAeoBriefs: PageAeoBrief[] = [
       { href: "/experiences/seating-rentals", purpose: "Review setting and rental capability." },
       { href: "/events/corporate-events", purpose: "Review broader corporate applications." },
       { href: "/faq", purpose: "Move shared operations and travel answers." },
-      { href: "/inquire", purpose: "Submit the campaign brief." },
+      { href: "/contact", purpose: "Submit the campaign brief." },
     ],
     recommendedContentFormats: ["process summary", "comparison", "requirements summary", "proof module", "FAQ"],
     questionsNotToDuplicate: [
@@ -538,7 +538,7 @@ export const pageAeoBriefs: PageAeoBrief[] = [
       { href: "/experiences/sweet-cart", purpose: "Review live dessert." },
       { href: "/experiences/seating-rentals", purpose: "Review setting and rentals." },
       { href: "/faq", purpose: "Move shared operating answers." },
-      { href: "/inquire", purpose: "Plan the shower." },
+      { href: "/contact", purpose: "Plan the shower." },
     ],
     recommendedContentFormats: ["decision guide", "planning checklist", "proof module", "FAQ"],
     questionsNotToDuplicate: [
@@ -585,7 +585,7 @@ export const pageAeoBriefs: PageAeoBrief[] = [
       { href: "/experiences/sweet-cart", purpose: "Review dessert formats." },
       { href: "/experiences/seating-rentals", purpose: "Review room and rental planning." },
       { href: "/faq", purpose: "Move shared operating answers." },
-      { href: "/inquire", purpose: "Plan the bridal shower." },
+      { href: "/contact", purpose: "Plan the bridal shower." },
     ],
     recommendedContentFormats: ["comparison", "decision guide", "proof module", "FAQ"],
     questionsNotToDuplicate: [
@@ -632,7 +632,7 @@ export const pageAeoBriefs: PageAeoBrief[] = [
       { href: "/experiences/sweet-cart", purpose: "Review dessert options." },
       { href: "/experiences/seating-rentals", purpose: "Review setting options." },
       { href: "/faq", purpose: "Move shared operating answers." },
-      { href: "/inquire", purpose: "Plan the birthday." },
+      { href: "/contact", purpose: "Plan the birthday." },
     ],
     recommendedContentFormats: ["decision guide", "concise answer", "proof module", "FAQ"],
     questionsNotToDuplicate: [
@@ -680,7 +680,7 @@ export const pageAeoBriefs: PageAeoBrief[] = [
       { href: "/experiences/sweet-cart", purpose: "Review dessert service." },
       { href: "/experiences/seating-rentals", purpose: "Review outdoor and setting decisions." },
       { href: "/faq", purpose: "Move shared operating answers." },
-      { href: "/inquire", purpose: "Describe the private occasion." },
+      { href: "/contact", purpose: "Describe the private occasion." },
     ],
     recommendedContentFormats: ["decision guide", "planning checklist", "proof module", "FAQ"],
     questionsNotToDuplicate: [
@@ -735,7 +735,7 @@ export const pageAeoBriefs: PageAeoBrief[] = [
       { href: "/events/weddings", purpose: "Connect wedding proof." },
       { href: "/events/corporate-events", purpose: "Connect corporate proof." },
       { href: "/events/brand-activations", purpose: "Connect activation proof." },
-      { href: "/inquire", purpose: "Request a related experience." },
+      { href: "/contact", purpose: "Request a related experience." },
     ],
     recommendedContentFormats: ["proof module", "concise answer"],
     questionsNotToDuplicate: [
@@ -788,7 +788,7 @@ export const pageAeoBriefs: PageAeoBrief[] = [
       { href: "/experiences/sweet-cart", purpose: "Move dessert-specific depth." },
       { href: "/experiences/seating-rentals", purpose: "Move rental-specific depth." },
       { href: "/events", purpose: "Move occasion-specific planning." },
-      { href: "/inquire", purpose: "Continue after questions are answered." },
+      { href: "/contact", purpose: "Continue after questions are answered." },
     ],
     recommendedContentFormats: ["FAQ", "concise answer", "requirements summary"],
     questionsNotToDuplicate: [
@@ -809,8 +809,8 @@ export const pageAeoBriefs: PageAeoBrief[] = [
     ],
   },
   {
-    path: "/inquire",
-    pageName: "Inquire",
+    path: "/contact",
+    pageName: "Contact",
     pageRole: "Prepare a qualified prospect to provide the event, venue, service, operational, and branding details needed for a useful proposal.",
     primaryIcps: [
       "wedding-clients",

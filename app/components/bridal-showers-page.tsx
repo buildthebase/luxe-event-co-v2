@@ -1,5 +1,6 @@
 import Link from "next/link";
 import {
+  bridalShowerCombinations,
   bridalShowerDetails,
   bridalShowerFaqs,
   bridalShowerGallery,
@@ -20,9 +21,10 @@ const bridalShowersSchema = createServicePageSchema({
   serviceName: "Bridal shower coffee, dessert, and rental experiences",
   serviceType: "Bridal shower coffee bar, dessert cart, and event rental services",
   serviceDescription:
-    "Caf\u00e9-style coffee, matcha, live dessert, rentals, signage, and styling for bridal showers in Toronto and the Greater Toronto Area.",
+    "Coffee cart, matcha, live dessert, rentals, signage, and styling for bridal showers in Toronto and the Greater Toronto Area.",
   pageName: pageMetadata[bridalShowersPath].title,
   pageDescription: pageMetadata[bridalShowersPath].description,
+  faqs: bridalShowerFaqs,
 });
 
 const bridalShowerServices: readonly SignatureExperience[] = signatureExperiences.map(
@@ -32,7 +34,7 @@ const bridalShowerServices: readonly SignatureExperience[] = signatureExperience
         ...experience,
         tagline: "A café-style welcome",
         description:
-          "Professional baristas prepare espresso classics, signature beverages, matcha, seasonal drinks, and premium non-coffee options for arrivals, conversation, and the main gathering.",
+          "Professional baristas serve espresso classics, signature lattes, ceremonial matcha, and iced specialty drinks to delight guests throughout the celebration.",
       };
     }
 
@@ -41,7 +43,7 @@ const bridalShowerServices: readonly SignatureExperience[] = signatureExperience
         ...experience,
         tagline: "A live sweet moment",
         description:
-          "Mini Dutch pancakes, Belgian waffles on a stick, mini donuts, and optional soft serve are prepared on-site as an interactive part of the bridal shower.",
+          "Fresh mini Dutch pancakes, Belgian waffle pops, mini donuts, and soft serve prepared live on-site to create a sweet interactive highlight.",
       };
     }
 
@@ -49,7 +51,7 @@ const bridalShowerServices: readonly SignatureExperience[] = signatureExperience
       ...experience,
       tagline: "A composed setting",
       description:
-        "Chairs, tables, cocktail tables, linens, lighting, and selected rental elements can support conversation, gift opening, photographs, dining, and guest flow.",
+        "Boutique chairs, high-top cocktail tables, dining setups, custom linens, and ambient lighting designed to style your venue for photos and gift openings.",
     };
   },
 );
@@ -59,13 +61,15 @@ function BridalHero() {
     <header className="bridal-hero">
       <div className="bridal-hero-copy">
         <p className="foundation-eyebrow">Bridal Showers / Toronto &amp; the GTA</p>
-        <h1 aria-label="Bridal shower coffee, dessert, and event rentals, planned around the celebration.">
-          <span>Bridal shower coffee, dessert,</span>
-          <span>and event rentals, planned around the celebration.</span>
+        <h1 aria-label="Bridal shower coffee cart, dessert, and event rentals in Toronto and the GTA.">
+          <span>Bridal shower coffee cart,</span>{" "}
+          <span>dessert, and event rentals</span>{" "}
+          <span>in Toronto and the GTA.</span>
         </h1>
         <p>
-          Café-style coffee, matcha, live dessert, and a composed setting can
-          turn the shower into a visual, guest-centred experience of its own.
+          Elevate your celebration with artisanal espresso, ceremonial matcha,
+          live dessert carts, and boutique seating rentals designed to create a
+          beautiful focal point for the bride-to-be.
         </p>
         <div className="bridal-hero-actions">
           <QuoteModalTrigger data-event-name="inquiry_start">
@@ -94,28 +98,32 @@ function BridalHero() {
 function BridalOverview() {
   return (
     <section className="bridal-host-overview" aria-labelledby="bridal-overview-title">
-      <h2 id="bridal-overview-title">A bridal shower planned around how guests will gather.</h2>
+      <h2 id="bridal-overview-title">
+        Curated beverage service, interactive live desserts, and boutique event
+        rentals designed to match the flow of your celebration.
+      </h2>
       <div className="bridal-host-overview-notes">
         <article>
           <h3>Booked independently or together</h3>
           <p>
-            Coffee Bar, Sweet Cart, and Seating Rentals can each be booked on
-            their own or coordinated within one bridal shower plan.
+            Book the Luxe Coffee Bar, Luxe Sweet Cart, or Luxe Seating Rentals
+            as standalone services, or combine them into a single, seamless
+            booking.
           </p>
         </article>
         <article>
           <h3>Planned around the gathering</h3>
           <p>
-            Coffee and matcha can welcome guests, live dessert can create the
-            central moment, and seating can shape conversation, gifts,
-            photographs, and movement.
+            Welcome arriving guests with signature lattes and iced matcha,
+            highlight the afternoon with a live dessert station, and arrange
+            stylish seating for gift openings and photos.
           </p>
         </article>
         <article>
           <h3>Shaped by the setting</h3>
           <p>
-            The venue, schedule, guest count, and selected experiences guide
-            the final plan.
+            We adapt every detail to your venue layout, guest count, and event
+            schedule to ensure effortless setup and guest flow.
           </p>
         </article>
       </div>
@@ -129,11 +137,13 @@ function BridalMoments() {
       <header>
         <p className="foundation-label">Where Luxe can fit into the bridal shower</p>
         <h2 id="bridal-moments-title">
-          A bridal shower can unfold through a few thoughtful moments.
+          <span>Coffee, dessert, and room details</span>
+          <span>for each bridal shower moment</span>
         </h2>
         <p>
-          The welcome, main gathering, dessert service, and room details can
-          each play a different role in how guests experience the shower.
+          From the initial welcome drink to the live dessert presentation,
+          every detail works together to create an unforgettable experience for
+          the bride-to-be.
         </p>
       </header>
       <div className="bridal-moment-band">
@@ -141,17 +151,17 @@ function BridalMoments() {
           <p>Guest arrival</p>
           <h3>A café-style welcome.</h3>
           <p>
-            Coffee, matcha, and specialty beverages can greet guests as they
-            arrive and create a natural place to begin gathering.
+            Greet arriving guests with handcrafted espresso drinks, iced
+            matchas, and signature lattes for a warm, interactive start to the
+            celebration.
           </p>
         </article>
         <article>
           <p>Around the table</p>
           <h3>Space for conversation and connection.</h3>
           <p>
-            Seating, tables, linens, and service placement can support
-            conversation, photographs, gifts, and the rhythm of the main
-            gathering.
+            Arrange stylish seating, dining tables, and crisp linens to anchor
+            gift openings, photo moments, and comfortable guest conversation.
           </p>
         </article>
       </div>
@@ -160,18 +170,18 @@ function BridalMoments() {
           <p>The sweet moment</p>
           <h3>Dessert becomes part of the celebration.</h3>
           <p>
-            Freshly prepared mini pancakes, waffles on a stick, mini donuts, or
-            optional soft serve can create an interactive focal point for
-            guests.
+            Treat guests to interactive live dessert stations serving warm
+            mini Dutch pancakes, waffle pops, mini donuts, or creamy soft
+            serve.
           </p>
         </article>
         <article>
           <p>Presentation throughout</p>
           <h3>The details carry through the room.</h3>
           <p>
-            Menus, signage, cups, cart presentation, and selected room details
-            can reflect the host’s preferred wording, colours, and visual
-            direction.
+            Customized menu signs, branded drink cups, cart styling, and
+            color-matched accents that coordinate perfectly with your bridal
+            palette.
           </p>
         </article>
       </div>
@@ -186,11 +196,12 @@ function BridalDetails() {
       aria-labelledby="bridal-details-title"
     >
       <header>
-        <h2 id="bridal-details-title">Carry the bridal shower through the details.</h2>
+        <h2 id="bridal-details-title">
+          Bridal shower menus, signage, and styling details
+        </h2>
         <p>
-          Menus, signage, dessert presentation, and selected room details can
-          carry the host’s preferred tone, wording, and visual direction
-          through the gathering.
+          Customized menus, branded signage, dessert styling, and venue accents
+          tailored to match your event theme and colour palette.
         </p>
       </header>
       <ol>
@@ -211,10 +222,44 @@ function BridalCombinations() {
     <ExperienceSelector
       id="bridal-experiences"
       experiences={bridalShowerServices}
-      heading="Choose one bridal shower experience or coordinate all three."
+      heading={
+        <>
+          <span>Bridal shower coffee, dessert,</span>{" "}
+          <span>and rental options.</span>
+        </>
+      }
       showDescription={false}
+      useItemHeadings
       variant="bridal"
     />
+  );
+}
+
+function BridalServiceCombinations() {
+  return (
+    <section
+      className="bridal-details bridal-personalization"
+      aria-labelledby="bridal-combinations-title"
+    >
+      <header>
+        <h2 id="bridal-combinations-title">
+          Bridal shower coffee cart, dessert, and rental combinations
+        </h2>
+        <p>
+          Select a standalone service or bundle coffee, dessert, and venue
+          rentals together in one effortless planning process.
+        </p>
+      </header>
+      <ol>
+        {bridalShowerCombinations.map((combination) => (
+          <li key={combination.number}>
+            <span>{combination.experiences}</span>
+            <h3>{combination.title}</h3>
+            <p>{combination.description}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
   );
 }
 
@@ -222,10 +267,10 @@ function BridalGallery() {
   return (
     <section className="bridal-gallery" aria-labelledby="bridal-gallery-title">
       <header>
-        <h2 id="bridal-gallery-title">Bridal shower experiences, seen in context.</h2>
+        <h2 id="bridal-gallery-title">Bridal shower service moments to plan for.</h2>
         <p>
-          Coffee, live dessert, signage, seating, and room details shown within
-          the celebrations they were planned for.
+          Consider how coffee, live dessert, signage, seating, and room details
+          can support arrivals, guest interaction, and time around the table.
         </p>
       </header>
       <div data-asset-status="awaiting-approved-bridal-shower-assets">
@@ -249,11 +294,12 @@ function BridalPlanning() {
     >
       <header>
         <h2 id="bridal-planning-title">
-          What helps the bridal shower take shape.
+          Planning a bridal shower in Toronto and the GTA
         </h2>
         <p>
-          A few planning details help shape the right experience, setting, and
-          flow for the gathering.
+          Venue logistics, indoor or outdoor settings, guest counts, and setup
+          schedules help us tailor the perfect experience for your Toronto or
+          GTA celebration.
         </p>
       </header>
       <ol>
@@ -271,9 +317,14 @@ function BridalPlanning() {
 function BridalFaq() {
   return (
     <section className="bridal-faq" aria-labelledby="bridal-faq-title">
-      <header><h2 id="bridal-faq-title">For hosts and planners.</h2></header>
+      <header>
+        <h2 id="bridal-faq-title">
+          Bridal shower coffee, dessert, and rental FAQs.
+        </h2>
+      </header>
       <FaqAccordion items={bridalShowerFaqs} indicatorElement="i" showNumbers={false} />
       <Link href="/faq">Review Luxe Booking FAQs <span aria-hidden="true">↗︎</span></Link>
+      <Link href="/contact">Start a Bridal Shower Inquiry <span aria-hidden="true">↗︎</span></Link>
     </section>
   );
 }
@@ -286,6 +337,7 @@ export function BridalShowersPage() {
         <BridalOverview />
         <BridalMoments />
         <BridalCombinations />
+        <BridalServiceCombinations />
         <BridalDetails />
         <BridalGallery />
         <BridalPlanning />

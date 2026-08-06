@@ -22,10 +22,10 @@ export function EventsHero({
           ))}
         </h1>
         <p>
-          Weddings, corporate events, brand activations, showers, birthdays,
-          and private celebrations each ask for something different. Start with
-          what you are planning, then find the Luxe experiences that belong
-          within it.
+          From weddings and corporate functions to brand activations and private
+          celebrations, Luxe curates mobile espresso bars, live dessert carts,
+          and boutique seating rentals tailored specifically to your venue and
+          occasion.
         </p>
         <div className="events-hero-actions">
           <a href="#event-pathways" data-event-name="event_type_select">
@@ -58,7 +58,9 @@ export function EventsApproach() {
     >
       <div className="events-approach-intro">
         <p className="foundation-label">The Luxe event-led approach</p>
-        <h2 id="events-approach-title">The event comes first.</h2>
+        <h2 id="events-approach-title">
+          Coffee, dessert, and event rentals built around your occasion.
+        </h2>
         <p className="events-approach-lead">
           Luxe brings together coffee, dessert, seating, and event rentals
           according to what the occasion genuinely requires.
@@ -72,10 +74,10 @@ export function EventsApproach() {
           together.
         </p>
         <p>
-          <Link href="/experiences/coffee-bar">Coffee Bar</Link> can support
-          hospitality and conversation. <Link href="/experiences/sweet-cart">Sweet Cart</Link>{" "}
-          can create a live guest moment. <Link href="/experiences/seating-rentals">Seating Rentals</Link>{" "}
-          can shape comfort, movement, service areas, and the way the room is experienced.
+          <Link href="/experiences/coffee-bar">Luxe Coffee Bar</Link> enhances
+          hospitality and conversation. <Link href="/experiences/sweet-cart">Luxe Sweet Cart</Link>{" "}
+          delivers an interactive dessert moment. <Link href="/experiences/seating-rentals">Luxe Seating Rentals</Link>{" "}
+          shapes comfort, room layout, and guest movement.
         </p>
       </div>
       <p className="events-approach-closing">
@@ -103,7 +105,7 @@ export function EventsDirectory() {
     >
       <header>
         <p className="foundation-label">Explore by occasion</p>
-        <h2 id="events-directory-title">Plan around the occasion.</h2>
+        <h2 id="events-directory-title">Explore event services by occasion.</h2>
         <p>
           Explore how Luxe Coffee Bar, Luxe Sweet Cart, and Luxe Seating Rentals
           can be planned for weddings, corporate events, brand activations,
@@ -140,7 +142,7 @@ export function EventsGalleryPreview() {
     <section id="gallery" className="events-gallery" aria-labelledby="events-gallery-title">
       <header>
         <p className="foundation-label">Featured gallery</p>
-        <h2 id="events-gallery-title">See the experience in the room.</h2>
+        <h2 id="events-gallery-title">Toronto event experience gallery.</h2>
       </header>
       <div
         className="events-gallery-grid"
@@ -154,7 +156,9 @@ export function EventsGalleryPreview() {
               <i />
             </div>
             <figcaption>
-              <strong>{item.label}</strong>
+              <h3>
+                <strong>{item.label}</strong>
+              </h3>
               <small>{item.context}</small>
             </figcaption>
           </figure>

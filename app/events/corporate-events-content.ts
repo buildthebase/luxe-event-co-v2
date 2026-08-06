@@ -3,55 +3,55 @@ export const corporateEventApplications = [
     number: "01",
     title: "Employee and team events",
     description:
-      "Coffee, matcha, or live dessert can support employee appreciation, team celebrations, office programming, and scheduled breaks.",
+      "Espresso bars, matcha stations, and freshly made desserts tailored for staff appreciation days, team milestones, and workplace celebrations.",
   },
   {
     number: "02",
     title: "Client and partner events",
     description:
-      "Guest-facing hospitality can support presentations, meetings, relationship-building, and the standards clients associate with the organization.",
+      "Elevated coffee and sweet bars designed to support executive meetings, client receptions, and strategic relationship-building.",
   },
   {
     number: "03",
     title: "Conferences and trade shows",
     description:
-      "Mobile coffee and dessert service can support attendee arrivals, programmed breaks, networking periods, and sustained event traffic.",
+      "High-volume coffee bars and live dessert stations to power attendee arrivals, programmed session breaks, and sustained booth traffic.",
   },
   {
     number: "04",
     title: "Office pop-up cafés",
     description:
-      "Bring a complete mobile café experience into the workplace for office hospitality, internal programming, or a single-day activation.",
+      "Transform your office lobby or lunchroom into a full-service café experience for single-day perks or recurring corporate hospitality.",
   },
   {
     number: "05",
     title: "Networking events",
     description:
-      "Coffee, dessert, cocktail tables, and seating can create natural gathering points while supporting conversation and movement through the event.",
+      "Pair espresso service and sweet bites with cocktail tables and lounge seating to encourage natural movement and organic conversation.",
   },
   {
     number: "06",
     title: "Brand launches and grand openings",
     description:
-      "Guest-facing coffee and dessert experiences can support product launches, openings, campaign moments, and partner events.",
+      "Immersive beverage and dessert setups customized with branded cup sleeves, cart decals, and signage for memorable product debuts.",
   },
   {
     number: "07",
     title: "Holiday and appreciation events",
     description:
-      "Seasonal beverages and live dessert can bring warmth and interaction to year-end celebrations and workplace gatherings.",
+      "Seasonal drink menus, peppermint lattes, warm Belgian waffles, and festive dessert carts that bring warmth to year-end celebrations.",
   },
   {
     number: "08",
     title: "Real estate and development events",
     description:
-      "Mobile hospitality can support project launches, broker events, sales-centre openings, resident events, and milestone celebrations.",
+      "Sophisticated pop-up coffee and lounge seating for sales centre grand openings, broker previews, groundbreaking ceremonies, and tenant events.",
   },
   {
     number: "09",
     title: "Institutional and campus events",
     description:
-      "Service can be planned for conferences, ceremonies, staff appreciation, campus programming, and community-facing occasions.",
+      "Scalable coffee and dessert catering tailored for university galas, donor receptions, academic conferences, and alumni gatherings.",
   },
 ] as const;
 
@@ -63,7 +63,7 @@ export const corporateExperienceRoles = [
     href: "/experiences/coffee-bar",
     statement: "A complete café service built around the schedule.",
     description:
-      "Professional baristas serve espresso classics, signature drinks, matcha, premium non-coffee beverages, seasonal menus, hot and iced options, and milk alternatives.",
+      "Professional baristas serving specialty espresso classics, iced matchas, signature seasonal drinks, and premium non-coffee options tailored for fast-paced corporate schedules.",
     fact: "Coffee service can typically support up to 500 guests, subject to the confirmed menu, staffing, duration, venue, and service flow.",
   },
   {
@@ -73,7 +73,7 @@ export const corporateExperienceRoles = [
     href: "/experiences/sweet-cart",
     statement: "Fresh preparation that becomes part of the event.",
     description:
-      "Mini Dutch pancakes, Belgian waffles on a stick, mini donuts, and optional soft serve create an interactive service point for teams and guests.",
+      "Interactive live dessert station serving warm mini Dutch pancakes, Belgian waffles on a stick, mini donuts, and soft serve prepared fresh on-site for your team.",
     fact: "Dessert service can typically support up to 400 guests, subject to the selections, staffing, duration, venue, and preparation requirements.",
   },
   {
@@ -83,7 +83,7 @@ export const corporateExperienceRoles = [
     href: "/experiences/seating-rentals",
     statement: "Rental support for comfort, layout, and flow.",
     description:
-      "Chairs, tables, cocktail tables, tents, linens, and lighting can be planned around networking, dining, presentation, or outdoor requirements.",
+      "High-top cocktail tables, lounge furniture, dining setups, tents, linens, and ambient lighting designed to optimize room layout and guest circulation.",
     fact: "Inventory, quantities, delivery, setup, teardown, access, and fees are confirmed for the event rather than assumed universally.",
   },
 ] as const;
@@ -93,19 +93,19 @@ export const corporateBrandingOptions = [
     number: "01",
     title: "Custom menus",
     description:
-      "Beverage selections and menu displays can reflect the audience, season, event theme, or approved campaign direction.",
+      "Curate bespoke drink names, seasonal signature lattes, and custom menu displays aligned with your event theme or brand guidelines.",
   },
   {
     number: "02",
     title: "Branded cups and signage",
     description:
-      "Company logos, event messaging, campaign graphics, and approved visual details can be carried through cups, signage, menus, and service presentation.",
+      "Feature company logos, campaign slogans, and brand graphics across custom printed espresso cups, acrylic menu stands, and custom cart panels.",
   },
   {
     number: "03",
     title: "Cart and service styling",
     description:
-      "Cart branding, florals, signage, and presentation details can help the experience feel connected to the event environment.",
+      "Customize full cart vinyl wraps, floral accents, matching barista aprons, and display styling to match your brand color palette.",
   },
 ] as const;
 
@@ -114,25 +114,25 @@ export const corporateScaleCapabilities = [
     number: "01",
     title: "Multiple setups",
     description:
-      "Multiple coffee and dessert stations may operate simultaneously when staffing, equipment, venue access, and the event schedule allow.",
+      "Deploy multiple espresso bars and dessert carts simultaneously across your venue to eliminate guest queues during peak break times.",
   },
   {
     number: "02",
     title: "Multi-day programs",
     description:
-      "Coffee and dessert service can be planned across multiple event days, with operating hours, replenishment, staffing, storage, and venue requirements confirmed in advance.",
+      "Seamless multi-day catering with scheduled daily restocking, overnight storage management, and consistent staffing across your entire convention or summit.",
   },
   {
     number: "03",
     title: "Recurring events",
     description:
-      "Recurring office and corporate programs can be discussed based on frequency, locations, service format, staffing, and equipment availability.",
+      "Establish recurring weekly or monthly pop-up café perks for headquarters, regional offices, or ongoing client appreciation days.",
   },
   {
     number: "04",
     title: "High-volume service",
     description:
-      "Larger events are planned around service duration, menu complexity, staffing, equipment, venue logistics, and guest arrival patterns.",
+      "Engineered workflows, dual-group espresso machines, and dedicated barista teams designed to handle heavy guest arrival surges smoothly.",
   },
 ] as const;
 
@@ -141,31 +141,31 @@ export const corporatePlanningSteps = [
     number: "01",
     title: "Share the brief",
     description:
-      "Provide the event type, date, venue, audience, schedule, estimated guest count, and hospitality requirements.",
+      "Submit your event details, location, expected attendance, timeline, and hospitality requirements to kick off your proposal.",
   },
   {
     number: "02",
     title: "Build the service plan",
     description:
-      "Luxe recommends the appropriate service or coordinated combination for the event.",
+      "We design a custom proposal recommending the optimal mix of coffee bars, dessert stations, and lounge rentals for your event.",
   },
   {
     number: "03",
     title: "Confirm the operating details",
     description:
-      "Access, footprint, utilities, staffing, service timing, delivery, setup, and teardown are reviewed.",
+      "Our operations team reviews loading access, electrical draw, floor footprint, and setup or strike windows directly with your venue.",
   },
   {
     number: "04",
     title: "Approve branded elements",
     description:
-      "Menus, cups, signage, cart presentation, and production timelines are confirmed where applicable.",
+      "Finalize custom beverage menus, logo cup proofs, cart vinyl wraps, and signage proofs well in advance of production deadlines.",
   },
   {
     number: "05",
     title: "Coordinate service day",
     description:
-      "Luxe works with internal teams, agencies, planners, venues, procurement contacts, and relevant event partners.",
+      "On-site execution handled seamlessly alongside your event producers, venue coordinators, and procurement contacts.",
   },
 ] as const;
 

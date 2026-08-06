@@ -41,7 +41,8 @@
   --type-display-lg: clamp(3rem, 6.4vw, 7rem);
   --type-internal-page-h1: clamp(2.75rem, 4vw, 3.9rem);
   --type-internal-page-h1-mobile: clamp(1.52rem, 7.65vw, 3rem);
-  --type-heading-lg: clamp(2.25rem, 4.5vw, 4.75rem);
+  --luxe-type-h2: clamp(2.45rem, 3.1vw, 3.7rem);
+  --type-heading-lg: var(--luxe-type-h2);
   --type-heading-md: clamp(1.75rem, 3vw, 3rem);
   --type-heading-sm: clamp(1.35rem, 1.8vw, 1.8rem);
   --type-body-lead: var(--type-body);
@@ -645,6 +646,29 @@
 
 .page-section-navigation-panel nav li.is-active a > i {
   background: var(--color-luxe-gold);
+}
+
+/* Prevent the Experiences section control from covering combination-card actions. */
+@media (max-width: 1800px) {
+  .experiences-page .page-section-navigation-trigger {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0;
+    width: 2.75rem;
+    min-height: 2.75rem;
+    padding: .7rem;
+  }
+
+  .experiences-page .page-section-navigation-trigger > span,
+  .experiences-page .page-section-navigation-trigger > small {
+    display: none;
+  }
+
+  .experiences-page .page-section-navigation-trigger > i {
+    grid-row: 1;
+    grid-column: 1;
+    align-self: center;
+  }
 }
 
 .sweet-combinations-title-break {
@@ -6835,7 +6859,23 @@ a {
  * H1 must remain larger than every H2 at every supported viewport.
  */
 @media (min-width: 761px) {
-  .foundation-shell main:not(.home-page) h2 {
+  .foundation-shell
+    main:not(.home-page)
+    h2:not(.foundation-wide-heading):not(:where(
+      #events-directory-title,
+      #sweet-positioning-title,
+      #sweet-inclusions-title,
+      #coffee-overview-title,
+      #seating-overview-title,
+      #coffee-events-title,
+      #sweet-combinations-title,
+      #coffee-hero-proof-title,
+      #seating-hero-proof-title,
+      #corporate-planning-title,
+      #events-approach-title,
+      #coffee-formats-title,
+      #home-hero-seo-title
+    )) {
     max-width: 20ch !important;
     font-size: clamp(2.25rem, 3vw, 3rem) !important;
     line-height: 1 !important;
@@ -7122,8 +7162,8 @@ a {
   text-transform: uppercase;
 }
 
-.signature-selector-copy strong {
-  margin-top: var(--space-3);
+.signature-selector-heading {
+  margin: var(--space-3) 0 0;
   font-size: var(--type-heading-sm);
   letter-spacing: -.035em;
   line-height: 1.08;
@@ -7222,6 +7262,11 @@ a {
 .signature-combination-main {
   display: grid;
   gap: 5px;
+}
+
+.signature-combination-main h3 {
+  margin: 0;
+  font: inherit;
 }
 
 .signature-combination-main small {
@@ -7954,7 +7999,7 @@ a {
 
 .experiences-booking-proof span {
   color: var(--surface-dark-copy-muted);
-  font-size: 0.78rem;
+  font-size: 1rem;
   line-height: 1.45;
 }
 
@@ -8162,7 +8207,7 @@ a {
   padding: var(--space-3) var(--space-3) var(--space-3) 0;
   border-bottom: 1px solid color-mix(in srgb, var(--color-luxe-black) 22%, transparent);
   color: var(--color-luxe-black);
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .experiences-feature-footer {
@@ -8186,7 +8231,7 @@ a {
 
 .experiences-feature-footer p span {
   color: var(--color-text-muted);
-  font-size: 0.68rem;
+  font-size: 1rem;
   letter-spacing: 0.13em;
   text-transform: uppercase;
 }
@@ -8421,7 +8466,7 @@ a {
 
 .experiences-event-list a > small {
   color: var(--color-text-muted);
-  font-size: 0.92rem;
+  font-size: 1rem;
   line-height: 1.45;
 }
 
@@ -8627,10 +8672,6 @@ a {
   .experiences-hero-copy h1 {
     max-width: none;
     font-size: clamp(1.52rem, 7.65vw, 3rem);
-  }
-
-  .experiences-events header h2 {
-    font-size: clamp(1.7rem, 7.5vw, 2.75rem) !important;
   }
 
   .experiences-events header h2 span {
@@ -12735,6 +12776,14 @@ a {
   text-align: center;
 }
 
+.coffee-seasonal-subtitle {
+  margin: var(--space-3) 0 0;
+  color: var(--color-text-muted);
+  font-size: var(--type-body);
+  line-height: 1.6;
+  text-align: center;
+}
+
 .coffee-seasonal-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -12980,7 +13029,8 @@ a {
 
 :is(.coffee-gallery, .sweet-gallery, .seating-gallery, .wedding-gallery)
   figcaption
-  strong {
+  :is(strong, h3) {
+  margin: 0;
   font-size: clamp(1.2rem, 1.4vw, 1.4rem);
   font-weight: 500;
   line-height: 1.3;
@@ -13088,7 +13138,7 @@ a {
   text-transform: uppercase;
 }
 
-.coffee-related a > strong {
+.coffee-related a > :is(strong, h3) {
   margin-top: var(--space-8);
   font-size: clamp(2rem, 3.5vw, 4rem);
   font-weight: 400;
@@ -15884,12 +15934,12 @@ max-width: 36ch;
 }
 
 .priority-answer header,
-.priority-answer header h3,
+.priority-answer header :is(h2, h3),
 .priority-answer > div > p {
   margin: 0;
 }
 
-.priority-answer header h3 {
+.priority-answer header :is(h2, h3) {
   max-width: 20ch;
   margin-top: var(--space-4);
   font-size: clamp(2rem, 3vw, 3.25rem);
@@ -16087,9 +16137,10 @@ max-width: 36ch;
   text-transform: uppercase;
 }
 
-.seating-combinations a > strong {
+.seating-combinations a > :is(strong, h3) {
   max-width: 16ch;
   margin-top: var(--space-8);
+  margin-bottom: 0;
   font-size: clamp(2.3rem, 4.2vw, 4.7rem);
   font-weight: 400;
   line-height: 1;
@@ -16776,6 +16827,10 @@ max-width: 36ch;
 
 .activation-overview > div {
   padding-top: clamp(2.5rem, 7vw, 7rem);
+}
+
+.activation-overview > header > p {
+  margin-top: var(--space-5);
 }
 
 .activation-overview p {
@@ -19437,15 +19492,16 @@ max-width: 36ch;
   letter-spacing: .15em;
 }
 
-.private-contexts li > p:first-of-type {
+.private-contexts h3.private-context-title {
   margin: var(--space-6) 0 var(--space-4);
   font-size: .76rem;
   font-weight: 700;
   letter-spacing: .1em;
+  line-height: 1.6;
   text-transform: uppercase;
 }
 
-.private-contexts h3 {
+.private-contexts .private-context-statement {
   margin: 0 0 var(--space-5);
   font-size: clamp(1.8rem, 2.7vw, 2.9rem);
   font-weight: 400;
@@ -19453,7 +19509,7 @@ max-width: 36ch;
   line-height: .98;
 }
 
-.private-contexts li > p:last-child { color: rgba(248, 246, 242, .68); line-height: 1.55; }
+.private-contexts .private-context-description { color: rgba(248, 246, 242, .68); line-height: 1.55; }
 
 .private-experiences > div {
   display: grid;
@@ -20025,10 +20081,9 @@ max-width: 36ch;
 
 .birthday-combinations header { display: grid; gap: var(--space-5); align-content: start; }
 .birthday-combinations > div { border-top: 1px solid var(--birthday-rule); }
-.birthday-combinations article { display: grid; grid-template-columns: 3rem minmax(10rem,.55fr) 1fr; gap: var(--space-4); padding-block: var(--space-7); border-bottom: 1px solid var(--birthday-rule); }
-.birthday-combinations article > p:first-of-type { margin: 0; font-size: .76rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-.birthday-combinations h3 { grid-column: 3; margin: 0; font-size: clamp(1.8rem, 3vw, 3.2rem); font-weight: 500; letter-spacing: -.05em; line-height: 1; }
-.birthday-combinations article > p:last-child { grid-column: 3; margin: var(--space-3) 0 0; color: var(--color-text-secondary); line-height: 1.55; }
+.birthday-combinations article { display: grid; grid-template-columns: minmax(0, 1fr); padding-block: var(--space-7); border-bottom: 1px solid var(--birthday-rule); }
+.birthday-combinations h3 { grid-column: 1; margin: 0; font-size: clamp(1.8rem, 3vw, 3.2rem); font-weight: 500; letter-spacing: -.05em; line-height: 1; }
+.birthday-combinations article > p { grid-column: 1; margin: var(--space-3) 0 0; color: var(--color-text-secondary); line-height: 1.55; }
 
 .birthday-gallery {
   width: 100%;
@@ -20257,8 +20312,6 @@ max-width: 36ch;
     padding: var(--space-5);
   }
   .birthday-contexts li + li { border-top: 1px solid var(--birthday-context-rule); }
-  .birthday-combinations article { grid-template-columns: 2.5rem 1fr; }
-  .birthday-combinations article > p:first-of-type, .birthday-combinations h3, .birthday-combinations article > p:last-child { grid-column: 2; }
   .birthday-faq summary { grid-template-columns: 2.25rem 1fr 1.25rem; gap: var(--space-3); }
   .birthday-faq details > p { margin-left: calc(2.25rem + var(--space-3)); }
 }
@@ -22563,7 +22616,7 @@ max-width: 36ch;
     padding-block: var(--space-7);
   }
 
-  .priority-answer header h3 {
+  .priority-answer header :is(h2, h3) {
     max-width: 18ch;
     font-size: clamp(1.7rem, 8vw, 2.4rem);
   }
@@ -22609,23 +22662,23 @@ max-width: 36ch;
   }
 }
 
-/* Final cascade guard: every desktop H2 uses the shared editorial scale. */
+/* Final cascade guard: every desktop H2 uses the canonical site-wide scale. */
 @media (min-width: 761px) {
 .foundation-shell
   main
-  h2:not(#events-directory-title):not(#sweet-positioning-title):not(#sweet-inclusions-title):not(#coffee-overview-title):not(#seating-overview-title):not(#coffee-events-title):not(#sweet-combinations-title):not(#home-hero-seo-title) {
+  h2:not(.foundation-wide-heading):not(#events-directory-title):not(#sweet-positioning-title):not(#sweet-inclusions-title):not(#coffee-overview-title):not(#seating-overview-title):not(#coffee-events-title):not(#sweet-combinations-title):not(#coffee-hero-proof-title):not(#seating-hero-proof-title):not(#corporate-planning-title):not(#events-approach-title):not(#coffee-formats-title):not(#home-hero-seo-title) {
     max-width: 18ch !important;
-    font-size: clamp(2.75rem, 4vw, 4.75rem) !important;
+    font-size: var(--luxe-type-h2) !important;
     line-height: .98 !important;
     letter-spacing: -.055em !important;
   }
 }
 
-/* Keep the keyword-rich hero subheading compact inside the cinematic overlay. */
+/* Keep the keyword-rich hero H2 on the canonical site-wide scale. */
 @media (min-width: 761px) {
   .foundation-shell main h2#home-hero-seo-title {
     max-width: none !important;
-    font-size: clamp(1.25rem, 2vw, 1.8rem) !important;
+    font-size: var(--luxe-type-h2) !important;
     line-height: 1.08 !important;
     letter-spacing: -0.035em !important;
   }
@@ -22634,7 +22687,7 @@ max-width: 36ch;
 /* Keep the Sweet Cart inclusions heading on the same desktop h2 scale. */
 @media (min-width: 761px) {
   .foundation-shell main h2#sweet-inclusions-title {
-    font-size: clamp(2.75rem, 4vw, 4.75rem) !important;
+    font-size: var(--luxe-type-h2) !important;
   }
 }
 
@@ -22993,11 +23046,20 @@ font-size: var(--type-body);;
   text-wrap: balance;
 }
 
-.coffee-menu > header > p:last-child {
+.coffee-menu > header > :is(p:last-child, .coffee-menu-intro) {
   grid-area: intro;
   max-width: 44rem;
+  margin: 0;
   color: var(--color-text-secondary);
   font-size: clamp(1rem, 1.2vw, 1.2rem);
+}
+
+.coffee-menu-intro p {
+  margin: 0;
+}
+
+.coffee-menu-intro p + p {
+  margin-top: var(--space-4);
 }
 
 @media (min-width: 961px) {
@@ -23014,7 +23076,7 @@ font-size: var(--type-body);;
     white-space: nowrap;
   }
 
-  .coffee-menu > header > p:last-child {
+  .coffee-menu > header > :is(p:last-child, .coffee-menu-intro) {
     align-self: end;
   }
 }
@@ -23590,7 +23652,7 @@ font-size: var(--type-body);;
     white-space: nowrap;
   }
 
-  .coffee-menu > header > p:last-child {
+  .coffee-menu > header > :is(p:last-child, .coffee-menu-intro) {
     font-size: 1rem;
   }
 
@@ -25948,15 +26010,16 @@ transparent 0.7px);
   letter-spacing: 0.14em;
 }
 
-:is(.coffee-events, .sweet-events, .seating-events) a > strong {
+:is(.coffee-events, .sweet-events, .seating-events) a > :is(strong, h3) {
   position: relative;
+  margin: 0;
   padding-left: 1.15rem;
   font-size: clamp(1.2rem, 1.4vw, 1.48rem);
   font-weight: 500;
   letter-spacing: -0.025em;
 }
 
-:is(.coffee-events, .sweet-events, .seating-events) a > strong::before {
+:is(.coffee-events, .sweet-events, .seating-events) a > :is(strong, h3)::before {
   position: absolute;
   top: 50%;
   left: 0;

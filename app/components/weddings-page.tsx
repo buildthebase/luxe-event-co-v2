@@ -1,6 +1,7 @@
 import Link from "next/link";
 import {
   weddingCustomization,
+  weddingExperiences,
   weddingFaqs,
   weddingGalleryPreview,
   weddingLogistics,
@@ -26,6 +27,7 @@ const weddingsSchema = createServicePageSchema({
   pageName: pageMetadata[weddingsPath].title,
   pageDescription:
     "Plan coffee service, live dessert, and refined wedding rentals with Luxe Event Co. across Toronto and the GTA.",
+  faqs: weddingFaqs,
 });
 
 function WeddingHero() {
@@ -33,15 +35,15 @@ function WeddingHero() {
     <header className="wedding-hero" id="page-overview">
       <div className="wedding-hero-copy">
         <p className="foundation-eyebrow">Weddings / Toronto &amp; the GTA</p>
-        <h1 aria-label="Wedding coffee, dessert, and rentals planned around the big day.">
-          <span>Wedding coffee,</span>
-          <span>dessert, and rentals</span>
+        <h1 aria-label="Toronto wedding coffee, live dessert, and rentals planned around the big day.">
+          <span>Toronto wedding coffee,</span>
+          <span>live dessert, and rentals</span>
           <span>planned around the big day.</span>
         </h1>
         <p>
-          Mobile coffee service, live dessert, seating, and event rentals
-          coordinated around the venue, schedule, guest flow, and atmosphere
-          of the celebration.
+          Mobile espresso bars, live dessert carts, and curated seating rentals
+          seamlessly coordinated around your venue timeline, guest count, and
+          wedding aesthetic.
         </p>
         <div className="wedding-hero-actions">
           <QuoteModalTrigger data-event-name="inquiry_start">
@@ -81,21 +83,22 @@ function WeddingOverview() {
       <div>
         <p className="foundation-label">The wedding experience</p>
         <h2 id="wedding-overview-title">
-          A coordinated guest experience, tailored to the most special day.
+          Wedding coffee, live dessert, and rentals coordinated as one guest experience.
         </h2>
       </div>
       <div>
         <p>
-          Luxe works with couples, planners, venues, and vendor teams to place
-          each experience where it best supports the wedding.
+          Luxe collaborates directly with couples, wedding planners, venues,
+          and vendor teams to integrate each service smoothly into your wedding
+          timeline.
         </p>
         <p>
           <Link href="/experiences/coffee-bar">Luxe Coffee Bar</Link>,{" "}
           <Link href="/experiences/sweet-cart">Luxe Sweet Cart</Link>, and{" "}
           <Link href="/experiences/seating-rentals">Luxe Seating Rentals</Link>{" "}
-          can be booked independently or coordinated through one inquiry. The
-          venue, schedule, guest count, service requirements, and desired
-          atmosphere shape the final plan.
+          can be booked individually or packaged into a single inquiry. Your
+          venue layout, schedule, guest count, and desired aesthetic determine
+          the final plan.
         </p>
       </div>
     </section>
@@ -108,11 +111,11 @@ function WeddingDay() {
       <header>
         <p className="foundation-label">Wedding-day possibilities</p>
         <h2 id="wedding-day-title">
-          Where Luxe can fit into the wedding day.
+          Where Luxe fits into your wedding schedule
         </h2>
         <p>
-          Each wedding follows its own schedule. These are planning
-          possibilities rather than a fixed sequence or package.
+          Every wedding follows a unique timeline. Discover how our experiences
+          seamlessly integrate into each moment of your celebration.
         </p>
       </header>
       <ol>
@@ -153,8 +156,12 @@ function WeddingCustomization() {
       <header>
         <p className="foundation-label">Made specific to the celebration</p>
         <h2 id="wedding-customization-title">
-          Carry the wedding details through the experience.
+          Personalize your wedding service details
         </h2>
+        <p>
+          Carry your wedding aesthetic through custom signage, drink menus,
+          cart styling, and lounge seating.
+        </p>
       </header>
       <div>
         {weddingCustomization.map((item) => (
@@ -184,7 +191,8 @@ function WeddingCoordination() {
         <aside>
           <strong>$5 million liability insurance</strong>
           <p>
-            Documentation can be provided to planners and venues where required.
+            Certificates of Insurance (COI) provided directly to your venue and
+            planning team upon request.
           </p>
         </aside>
         <p>
@@ -210,7 +218,7 @@ function WeddingGallery() {
     <section className="wedding-gallery" aria-labelledby="wedding-gallery-title">
       <header>
         <p className="foundation-label">Wedding gallery</p>
-        <h2 id="wedding-gallery-title">See the experiences in real weddings.</h2>
+        <h2 id="wedding-gallery-title">Picture the experiences across the wedding day.</h2>
       </header>
       <div className="wedding-gallery-grid" data-asset-status="awaiting-approved-photography">
         {weddingGalleryPreview.map((item) => (
@@ -256,14 +264,16 @@ export function WeddingsPage() {
         <WeddingDay />
         <ExperienceSelector
           id="wedding-experiences"
+          experiences={weddingExperiences}
           footer={
-            <Link href="/inquire">
+            <Link href="/contact">
               Book one experience independently or coordinate several through
               one Luxe Event Co. wedding plan.
             </Link>
           }
           heading="Three experiences, each with a clear role."
           showDescription={false}
+          useItemHeadings
           variant="taupe"
         />
         <WeddingCustomization />

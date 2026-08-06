@@ -24,12 +24,11 @@ import { SiteShell } from "./site-shell";
 
 const coffeePath = "/experiences/coffee-bar";
 const [coffeePricingAnswer, ...coffeeContextualFaqs] = coffeeFaqs;
-const coffeePricingParagraphs = coffeePricingAnswer.answer.match(/[^.!?]+[.!?]+/g) ?? [
-  coffeePricingAnswer.answer,
-];
+const coffeePricingParagraphs = coffeePricingAnswer.answer.split(/\n\n+/);
 const coffeeInclusionGroups = [
   {
-    title: "Service",
+    id: "service",
+    title: "Service & Logistics",
     items: [
       coffeeBookingIncludes[0],
       coffeeBookingIncludes[1],
@@ -38,7 +37,8 @@ const coffeeInclusionGroups = [
     ],
   },
   {
-    title: "Menu",
+    id: "menu",
+    title: "Beverage Menu",
     items: [
       coffeeBookingIncludes[3],
       coffeeBookingIncludes[4],
@@ -47,7 +47,8 @@ const coffeeInclusionGroups = [
     ],
   },
   {
-    title: "Presentation",
+    id: "presentation",
+    title: "Bar Presentation",
     items: [
       coffeeBookingIncludes[7],
       coffeeBookingIncludes[8],
@@ -74,9 +75,9 @@ function CoffeeHero() {
     <header className="coffee-hero" id="page-overview">
       <div className="coffee-hero-copy">
         <p className="foundation-eyebrow">Luxe Coffee Bar / Toronto &amp; the GTA</p>
-        <h1 aria-label="A mobile coffee bar, made for your event.">
-          <span>A mobile coffee bar,</span>
-          <span>made for your event.</span>
+        <h1 aria-label="Mobile coffee bar catering in Toronto &amp; the GTA.">
+          <span>Mobile coffee bar catering</span>
+          <span>in Toronto &amp; the GTA.</span>
         </h1>
         <p>
           A complete mobile café experience shaped around the event, with professional
@@ -167,31 +168,25 @@ function CoffeeOverview() {
       ariaLabelledBy="coffee-overview-title"
       legacyClassName="coffee-overview"
       artClassName="coffee-overview-media"
-      title={
-        <>
-          <span>Coffee hospitality,</span>
-          <span>shaped around the event.</span>
-        </>
-      }
+      title={<>Mobile Espresso &amp; Specialty Beverage Service</>}
       lead={<>Coffee is woven into the event as hospitality, atmosphere, and an experience guests can gather around.</>}
       copy={
         <>
           <p>
-            A mobile coffee bar brings professional café equipment, skilled baristas,
-            and a made-to-order beverage menu directly into the event setting. Luxe
-            Coffee Bar provides mobile coffee catering for{" "}
+            A mobile coffee bar brings commercial espresso equipment, skilled baristas,
+            and a handcrafted beverage menu directly to your venue. Luxe Coffee Bar
+            provides elevated mobile café catering for{" "}
             <Link href="/events/weddings">weddings</Link>,{" "}
             <Link href="/events/corporate-events">corporate events</Link>,{" "}
-            <Link href="/events/brand-activations">brand activations</Link>, bridal
-            showers, baby showers, birthdays, and{" "}
+            <Link href="/events/brand-activations">brand activations</Link>, showers,
+            and{" "}
             <Link href="/events/private-events">private celebrations</Link> across
             Toronto and the GTA.
           </p>
           <p>
-            Each booking is planned around the occasion, guest count, venue, service
-            window, and preferred menu. Drinks are prepared fresh on-site throughout
-            the agreed service period, creating a polished and welcoming experience
-            for guests.
+            Every setup is tailored to your occasion, guest count, venue schedule, and
+            custom menu. Beverages are prepared fresh on-site throughout your service
+            window, creating a seamless, interactive moment for your guests.
           </p>
           <p className="coffee-overview-handoff">
             Luxe Coffee Bar can be booked independently or coordinated with{" "}
@@ -217,7 +212,7 @@ function CoffeeFormats() {
     <section className="coffee-formats" id="coffee-formats" aria-labelledby="coffee-formats-title">
       <header>
         <p className="foundation-label">Two complete expressions</p>
-        <h2 id="coffee-formats-title">Choose the presence coffee should have.</h2>
+        <h2 id="coffee-formats-title">Choose Your Mobile Coffee Experience</h2>
       </header>
       <div className="coffee-format-pair">
         {coffeeFormats.map((format) => (
@@ -227,7 +222,7 @@ function CoffeeFormats() {
               <i />
             </div>
             <div className="coffee-format-copy">
-              <h3>{format.name}</h3>
+              <h3>{format.displayName}</h3>
               <p className="coffee-format-description">
                 {format.statement} {format.description}
               </p>
@@ -242,7 +237,7 @@ function CoffeeFormats() {
                 </div>
                 <div>
                   <dt>Confirmed during inquiry</dt>
-                  <dd>Service duration, footprint, staffing, menu, and venue logistics.</dd>
+                  <dd>Service window, spatial footprint, staffing, menu selection, and venue logistics.</dd>
                 </div>
               </dl>
             </div>
@@ -268,19 +263,15 @@ function CoffeeInclusions() {
     >
       <header>
         <p className="foundation-label">Confirmed inclusions</p>
-        <h2 id="coffee-inclusions-title">
-          <span>Everything needed for a</span>
-          <span>complete coffee service.</span>
-        </h2>
+        <h2 id="coffee-inclusions-title">Complete Mobile Coffee Catering Inclusions</h2>
         <div className="coffee-inclusions-intro">
           <p>
-            Each booking brings together the format, menu, equipment, service, and
-            finishing details required to create a polished guest experience.
+            Everything needed for a complete coffee service.
           </p>
           <p>
-            Signature drinks, iced beverages, premium milk alternatives, and non-coffee
-            options are thoughtfully included within the service rather than presented
-            as a series of individual upgrades.
+            Full barista service, iced drinks, specialty syrups, oat and almond milk
+            alternatives, and matcha options are thoughtfully included, never treated
+            as hidden add-ons.
           </p>
         </div>
       </header>
@@ -288,8 +279,8 @@ function CoffeeInclusions() {
         <p className="coffee-inclusions-list-label">Included with your booking:</p>
         <div className="coffee-inclusions-groups">
           {coffeeInclusionGroups.map((group) => (
-            <article key={group.title} tabIndex={0}>
-              <span className={`coffee-inclusion-icon coffee-inclusion-icon-${group.title.toLowerCase()}`} aria-hidden="true"><i /></span>
+            <article key={group.id} tabIndex={0}>
+              <span className={`coffee-inclusion-icon coffee-inclusion-icon-${group.id}`} aria-hidden="true"><i /></span>
               <h3>{group.title}</h3>
               <ul>
                 {group.items.map((inclusion) => (
@@ -315,34 +306,37 @@ function CoffeeMenu() {
     >
       <header>
         <p className="foundation-label">The beverage language</p>
-        <h2 id="coffee-menu-title">
-          <span>Classic at the foundation.</span>
+        <h2 id="coffee-menu-title">Handcrafted Espresso, Matcha &amp; Beverage Menu</h2>
+        <p className="coffee-menu-tagline">
+          <span>Classic at the foundation.</span>{" "}
           <span>Personal in expression.</span>
-        </h2>
-        <p>
-          Every menu begins with four espresso classics, then makes room for
-          signature drinks, matcha, and a premium non-coffee selection. Hot and iced
-          service and dairy and premium milk alternatives are included.
         </p>
+        <div className="coffee-menu-intro">
+          <p>
+            Every menu begins with four espresso classics, then makes room for
+            signature drinks, matcha, and a premium non-coffee selection. Hot and iced
+            service and dairy and premium milk alternatives are included.
+          </p>
+        </div>
       </header>
       <div className="coffee-menu-core">
         <article data-category="espresso" tabIndex={0}>
           <span className="coffee-menu-icon coffee-menu-icon-bean" aria-hidden="true"><i /></span>
-          <h3>Espresso classics</h3>
+          <h3>Espresso Classics</h3>
           <ul>
             {espressoClassics.map((drink) => <li key={drink}>{drink}</li>)}
           </ul>
         </article>
         <article data-category="signature" tabIndex={0}>
           <span className="coffee-menu-icon coffee-menu-icon-signature" aria-hidden="true"><i /></span>
-          <h3>Signature coffee collection</h3>
+          <h3>Signature Specialty Lattes</h3>
           <ul>
             {signatureCoffeeCollection.map((drink) => <li key={drink}>{drink}</li>)}
           </ul>
         </article>
         <article data-category="matcha" tabIndex={0}>
           <span className="coffee-menu-icon coffee-menu-icon-leaf" aria-hidden="true"><i /></span>
-          <h3>Matcha and non-coffee</h3>
+          <h3>Ceremonial Matcha &amp; Non-Coffee</h3>
           <ul>
             {nonCoffeeCollection.map((drink) => <li key={drink}>{drink}</li>)}
           </ul>
@@ -351,11 +345,8 @@ function CoffeeMenu() {
       <div className="coffee-seasonal">
         <div>
           <p className="foundation-label">Seasonal collections</p>
-<h3>
-  A menu that can move
-  <br />
-  with the calendar.
-</h3>
+          <h3>Seasonal Specialty Drinks</h3>
+          <p className="coffee-seasonal-subtitle">A menu that moves with the calendar.</p>
         </div>
         <div className="coffee-seasonal-grid">
           {seasonalCoffeeCollections.map((collection) => (
@@ -376,12 +367,18 @@ function CoffeeMenu() {
 function CoffeeOperations() {
   return (
     <section
+      id="coffee-pricing"
       className="coffee-operations coffee-operations-compact"
-      aria-label="Coffee service pricing and service area"
+      aria-labelledby="coffee-pricing-section-title"
       data-evidence-status="confirmed-with-event-specific-dependencies"
       data-measurement-section="logistics"
       data-section-id="coffee-service-planning"
     >
+      <header>
+        <h2 id="coffee-pricing-section-title">
+          Mobile Coffee Bar Pricing &amp; Event Logistics
+        </h2>
+      </header>
       <PriorityAnswer
         label="Cost factors"
         question={coffeePricingAnswer.question}
@@ -393,15 +390,22 @@ function CoffeeOperations() {
             ))}
           </>
         }
-        href="/inquire"
+        href="/contact"
         linkLabel="Request a coffee-service proposal"
+        headingId="coffee-pricing-question"
       />
       <aside>
-        <p>
-          Based in Toronto, Luxe serves the GTA and considers select destination
-          events throughout Southern Ontario. Travel fees may apply outside the
-          standard service area.
-        </p>
+        <div>
+          <strong>
+            Serving Toronto, the Greater Toronto Area &amp; Destination Events Across
+            Southern Ontario.
+          </strong>
+          <p>
+            Based in Toronto, Luxe Event Co. provides mobile coffee bar catering across
+            York Region, Peel, Halton, Durham, and select destination venues throughout
+            Southern Ontario.
+          </p>
+        </div>
         <Link href="/faq">Review booking and logistics questions <span aria-hidden="true">↗︎</span></Link>
       </aside>
     </section>
@@ -413,8 +417,8 @@ function CoffeeEvents() {
     <section className="coffee-events" aria-labelledby="coffee-events-title">
       <header>
         <h2 id="coffee-events-title">
-          <span>Different occasions give</span>
-          <span>the café a different role.</span>
+          <span>Mobile coffee catering for</span>
+          <span>weddings, corporate events, and celebrations.</span>
         </h2>
         <p>
           Mobile coffee catering can suit weddings, office and corporate events,
@@ -481,12 +485,12 @@ function CoffeeRelated() {
       </header>
       <div>
         <Link href="/experiences/sweet-cart">
-          <strong>Luxe Sweet Cart</strong>
+          <h3>Luxe Sweet Cart</h3>
           <p>Pair crafted drinks with a live, made-to-order dessert experience.</p>
           <b aria-hidden="true">Explore Sweet Cart ↗︎</b>
         </Link>
         <Link href="/experiences/seating-rentals">
-          <strong>Luxe Seating Rentals</strong>
+          <h3>Luxe Seating Rentals</h3>
           <p>Connect café hospitality with the structure and setting around it.</p>
           <b aria-hidden="true">Explore Seating Rentals ↗︎</b>
         </Link>

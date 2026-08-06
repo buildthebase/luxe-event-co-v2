@@ -1,0 +1,82 @@
+/* Corporate Events desktop heading locks and single-column introductions. */
+.foundation-shell .corporate-page #corporate-experiences
+  .signature-section-heading h2 {
+  max-width: none;
+}
+
+.foundation-shell .corporate-page .corporate-branding > header {
+  grid-template-columns: 1fr;
+}
+
+.foundation-shell .corporate-page .corporate-branding > header > div {
+  width: min(100%, 68rem);
+}
+
+.foundation-shell .corporate-page .corporate-branding h2 {
+  max-width: none;
+}
+
+.foundation-shell .corporate-page .corporate-branding-intro {
+  max-width: 62rem;
+  margin: clamp(1.5rem, 2.5vw, 2.5rem) 0 0;
+  color: var(--color-text-secondary);
+  font-size: var(--type-body);
+  line-height: 1.65;
+}
+
+.foundation-shell .corporate-page .corporate-planning > header {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: clamp(1.5rem, 2.5vw, 2.5rem);
+  text-align: center;
+}
+
+.foundation-shell .corporate-page .corporate-planning > header > div {
+  display: grid;
+  width: 100%;
+  justify-items: center;
+}
+
+.foundation-shell .corporate-page .corporate-planning > header > p:last-child {
+  width: min(100%, 70rem);
+  max-width: none;
+  margin: 0 auto;
+  text-align: center;
+}
+
+@media (min-width: 961px) {
+  .foundation-shell .corporate-page .corporate-planning h2 {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .foundation-shell .corporate-page #corporate-experiences
+    .signature-section-heading h2 span,
+  .foundation-shell .corporate-page .corporate-branding h2 span {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .foundation-shell .corporate-page .corporate-planning h2 {
+    white-space: nowrap !important;
+  }
+}
+
+@media (max-width: 960px) {
+  .foundation-shell .corporate-page #corporate-experiences
+    .signature-section-heading h2 span,
+  .foundation-shell .corporate-page .corporate-branding h2 span {
+    display: inline;
+    white-space: normal;
+  }
+
+  .foundation-shell .corporate-page #corporate-experiences
+    .signature-section-heading h2 span + span::before,
+  .foundation-shell .corporate-page .corporate-branding h2 span + span::before {
+    content: " ";
+  }
+
+  .foundation-shell .corporate-page .corporate-planning h2 {
+    white-space: normal;
+  }
+}

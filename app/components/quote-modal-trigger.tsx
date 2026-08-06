@@ -14,14 +14,9 @@ export function QuoteModalTrigger({
   className,
   "data-event-name": dataEventName = "inquiry_start",
 }: QuoteModalTriggerProps) {
-  const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const titleId = `quote-modal-title-${useId().replace(/:/g, "")}`;
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -32,12 +27,12 @@ export function QuoteModalTrigger({
     } else if (!open && dialog.open) {
       dialog.close();
     }
-  }, [mounted, open]);
+  }, [open]);
 
   return (
     <>
       <a
-        href="/inquire"
+        href="/contact"
         className={className}
         data-event-name={dataEventName}
         aria-haspopup="dialog"
@@ -48,7 +43,7 @@ export function QuoteModalTrigger({
       >
         {children}
       </a>
-      {mounted
+      {open
         ? createPortal(
             <dialog
               className="home-quote-modal"

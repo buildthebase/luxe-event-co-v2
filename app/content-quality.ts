@@ -136,7 +136,7 @@ export const pageQualityEvidence: PageQualityEvidence[] = [
       "Replace qualified deferrals only after Luxe approves the corresponding operational policy.",
   },
   {
-    path: "/inquire",
+    path: "/contact",
     concreteValue:
       "Explains the information Luxe needs, response expectation, service area, minimum context, contact methods, and third-party handoff boundary.",
     firstHandStatus: "supported-by-client-intake",

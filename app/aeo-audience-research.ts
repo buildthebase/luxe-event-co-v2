@@ -120,7 +120,7 @@ export const aeoAudienceProfiles: AeoAudienceProfile[] = [
       "/experiences/seating-rentals",
       "/gallery",
       "/faq",
-      "/inquire",
+      "/contact",
     ],
     placementRule:
       "Answer wedding-flow questions on Weddings, service mechanics on the relevant experience page, shared policies in FAQ, and qualification requirements on Inquire.",
@@ -213,7 +213,7 @@ export const aeoAudienceProfiles: AeoAudienceProfile[] = [
       "/experiences/seating-rentals",
       "/gallery",
       "/faq",
-      "/inquire",
+      "/contact",
     ],
     placementRule:
       "Keep corporate use cases and buyer confidence on Corporate Events; place reusable service specifications on experience pages and shared policy answers in FAQ.",
@@ -301,7 +301,7 @@ export const aeoAudienceProfiles: AeoAudienceProfile[] = [
       "/experiences/seating-rentals",
       "/gallery",
       "/faq",
-      "/inquire",
+      "/contact",
     ],
     placementRule:
       "Keep campaign translation and branding workflow on Brand Activations; avoid repeating full service specifications or generic agency language on every division page.",
@@ -391,7 +391,7 @@ export const aeoAudienceProfiles: AeoAudienceProfile[] = [
       "/experiences/seating-rentals",
       "/gallery",
       "/faq",
-      "/inquire",
+      "/contact",
     ],
     placementRule:
       "Answer occasion selection on the matching event page, mechanics on experience pages, and shared booking policy in FAQ; do not paste one private-event answer block onto four pages.",
@@ -476,7 +476,7 @@ export const aeoAudienceProfiles: AeoAudienceProfile[] = [
       "/events/corporate-events",
       "/events/brand-activations",
       "/faq",
-      "/inquire",
+      "/contact",
     ],
     placementRule:
       "Industry Partners are a decision lens across existing pages, not a new partner landing page. Publish only the coordination detail relevant to the page and link to one shared policy answer where appropriate.",

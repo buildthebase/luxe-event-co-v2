@@ -7,6 +7,7 @@ import {
   standardToppings,
   sweetCartCollections,
   sweetCartFaqs,
+  sweetCustomization,
   sweetEventLinks,
   sweetGalleryPreview,
 } from "../experiences/sweet-cart-content";
@@ -29,16 +30,28 @@ const sweetPricingParagraphs = sweetPricingAnswer.answer.match(/[^.!?]+[.!?]+/g)
 ];
 const sweetInclusionGroups = [
   {
-    title: "Cart & service",
-    items: dessertBookingIncludes.slice(0, 3),
+    title: "Cart & presentation",
+    items: [
+      dessertBookingIncludes[0],
+      dessertBookingIncludes[4],
+      dessertBookingIncludes[8],
+    ],
   },
   {
     title: "Dessert & finishing",
-    items: dessertBookingIncludes.slice(3, 6),
+    items: [
+      dessertBookingIncludes[1],
+      dessertBookingIncludes[2],
+      dessertBookingIncludes[3],
+    ],
   },
   {
-    title: "Presentation",
-    items: dessertBookingIncludes.slice(6),
+    title: "Service & setup",
+    items: [
+      dessertBookingIncludes[5],
+      dessertBookingIncludes[6],
+      dessertBookingIncludes[7],
+    ],
   },
 ];
 const sweetCartSchema = createServicePageSchema({
@@ -59,14 +72,15 @@ function SweetHero() {
     <header className="sweet-hero" id="page-overview">
       <div className="sweet-hero-copy">
         <p className="foundation-eyebrow">Luxe Sweet Cart / Toronto &amp; the GTA</p>
-        <h1 aria-label="A dessert cart experience, made in the moment.">
-          <span>A dessert</span>
-          <span>cart experience,</span>
+        <h1 aria-label="Toronto dessert cart catering, made in the moment.">
+          <span>Toronto dessert</span>
+          <span>cart catering,</span>
           <span>made in the moment.</span>
         </h1>
         <p>
-          A live, made-to-order dessert experience where the cart, preparation, and
-          final presentation become part of the event atmosphere.
+          A live, made-to-order dessert experience where interactive preparation,
+          warm cart styling, and final presentation become a memorable part of your
+          event atmosphere.
         </p>
         <div className="sweet-hero-actions">
           <QuoteModalTrigger data-event-name="inquiry_start">
@@ -89,7 +103,7 @@ function SweetHero() {
   id="sweet-hero-proof-title"
   className="foundation-wide-heading"
 >
-  Planned for the room, timing, and guest flow.
+  Dessert cart capacity and event requirements.
 </h2>
       </div>
 <dl className="sweet-hero-proof" aria-labelledby="sweet-hero-proof-title">
@@ -126,10 +140,8 @@ function SweetPositioning() {
       legacyClassName="sweet-positioning"
       title={
         <>
-          <span>The cart becomes</span>
-          <span>part of the room.</span>
-          <span>Preparation becomes</span>
-          <span>part of the moment.</span>
+          <span>Live dessert cart catering</span>
+          <span>for Toronto and GTA events.</span>
         </>
       }
       lead={<>Dessert is prepared in view, finished to order, and presented as part of your event.</>}
@@ -148,11 +160,11 @@ function SweetPositioning() {
             across Toronto and the GTA.
           </p>
           <p>
-            Unlike a dessert table, which typically presents pre-arranged sweets
-            for self-service, the cart centres live preparation and attendant-led
-            service. Each booking is planned around the cart style, dessert
-            selection, guest count, venue, service window, footprint, power,
-            access, and styling requirements.
+            Unlike a stationary dessert table, which typically presents
+            pre-arranged sweets for self-service, the cart centers on live
+            preparation and attendant-led service. Every booking is planned around
+            cart style, dessert selection, guest count, venue logistics, service
+            window, power, access, and styling details.
           </p>
           <p className="sweet-positioning-handoff">
             Luxe Sweet Cart can be booked independently or coordinated with{" "}
@@ -179,7 +191,7 @@ function SweetCollections() {
     <section className="sweet-collections" aria-labelledby="sweet-collections-title">
       <header>
         <p className="foundation-label">Two cart expressions</p>
-        <h2 id="sweet-collections-title">Choose how the cart belongs in the room.</h2>
+        <h2 id="sweet-collections-title">Choose your dessert cart style.</h2>
       </header>
       <div>
         {sweetCartCollections.map((collection) => (
@@ -212,7 +224,7 @@ function DessertExperiences() {
     >
       <header>
         <p className="foundation-label">Freshly prepared on-site</p>
-        <h2 id="sweet-desserts-title">Three ways to create the live dessert moment.</h2>
+        <h2 id="sweet-desserts-title">Made-to-order dessert cart menu.</h2>
       </header>
       <div className="sweet-dessert-list">
         {dessertExperiences.map((dessert) => (
@@ -228,9 +240,11 @@ function DessertExperiences() {
         <div aria-hidden="true"><i /><i /><i /></div>
         <div className="sweet-soft-serve-copy">
           <p className="foundation-label">Optional enhancement</p>
-          <h3>Soft Serve Ice Cream</h3>
+          <h3>Soft Serve Ice Cream Cart</h3>
           <p>
-            Add soft serve to your Sweet Cart experience when it feels right for the menu and the way your event comes together.
+            Incorporate a premium soft serve ice cream cart into your Sweet Cart menu to
+            create an elevated, nostalgic treat for summer weddings, outdoor
+            activations, and private parties.
           </p>
         </div>
       </aside>
@@ -247,19 +261,20 @@ function SweetInclusions() {
     >
       <header>
         <h2 id="sweet-inclusions-title">
-          <span>A complete service.</span>
-          <span>Setup → Finishing</span>
+          <span>What is included</span>
+          <span>with Luxe Sweet Cart?</span>
         </h2>
 
         <div className="sweet-inclusions-intro">
           <p>
-            Each booking brings together the selected cart, professional attendants,
-            fresh on-site preparation, sauces and standard toppings, serving
-            essentials, menu display, setup, and takedown.
+            Every booking includes your choice of cart, professional attendant
+            service, fresh live preparation, artisanal sauces, classic toppings,
+            luxury menu signage, serving essentials, complete setup, and takedown.
           </p>
           <p>
-            Dessert selection, quantities, service timing, footprint, power, and
-            access are confirmed for the event.
+            Menu selections, guest quantities, service duration, footprint logistics,
+            power, and venue access are verified during the planning stage to
+            guarantee smooth execution.
           </p>
         </div>
       </header>
@@ -296,7 +311,11 @@ function SweetPantry() {
     >
       <header>
         <p className="foundation-label">Sauces and toppings</p>
-        <h2 id="sweet-pantry-title">Every serving, finished your way.</h2>
+        <h2 id="sweet-pantry-title">Dessert cart sauces and toppings.</h2>
+        <p>
+          Customize your menu with gourmet drizzles, fresh fruits, and premium
+          crunches.
+        </p>
       </header>
       <div className="sweet-pantry-grid">
         <article>
@@ -311,6 +330,32 @@ function SweetPantry() {
           <h3>Premium toppings</h3>
           <ul>{premiumToppings.map((item) => <li key={item}>{item}</li>)}</ul>
         </article>
+      </div>
+    </section>
+  );
+}
+
+function SweetCustomization() {
+  return (
+    <section
+      className="sweet-customization"
+      aria-labelledby="sweet-customization-title"
+    >
+      <header>
+        <p className="foundation-label">Personalized for the occasion</p>
+        <h2 className="foundation-wide-heading" id="sweet-customization-title">
+          <span>Customize the dessert menu,</span>
+          <span>cart, and presentation.</span>
+        </h2>
+      </header>
+      <div>
+        {sweetCustomization.map((item) => (
+          <article key={item.number}>
+            <span>{item.number}</span>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </article>
+        ))}
       </div>
     </section>
   );
@@ -331,7 +376,7 @@ function SweetOperations() {
       </header>
       <PriorityAnswer
         label="Cost factors"
-        question={sweetPricingAnswer.question}
+        question="What affects dessert cart pricing?"
         answer={sweetPricingAnswer.answer}
         answerContent={
           <>
@@ -340,7 +385,7 @@ function SweetOperations() {
             ))}
           </>
         }
-        href="/inquire"
+        href="/contact"
         linkLabel="Request a dessert-service proposal"
       />
       <aside>
@@ -359,9 +404,9 @@ function SweetEvents() {
     <section className="sweet-events" aria-labelledby="sweet-events-title">
       <header>
         <p className="foundation-label">Where Sweet Cart belongs</p>
-        <h2 id="sweet-events-title">
-          <span>Desserts worth</span>
-          <span>gathering around.</span>
+        <h2 className="foundation-wide-heading" id="sweet-events-title">
+          <span>Dessert cart catering for weddings,</span>
+          <span>corporate events, and celebrations.</span>
         </h2>
       </header>
       <div>
@@ -381,7 +426,10 @@ function SweetGallery() {
     <section className="sweet-gallery" aria-labelledby="sweet-gallery-title">
       <header>
         <p className="foundation-label">The experience in motion</p>
-        <h2 id="sweet-gallery-title">The cart, the preparation, and the finished detail.</h2>
+        <h2 className="foundation-wide-heading" id="sweet-gallery-title">
+          <span>Live dessert cart preparation</span>
+          <span>and presentation.</span>
+        </h2>
         <p>
           Live preparation, finishing details, styling, and guest interaction are
           the moments that give the dessert experience its character.
@@ -419,12 +467,12 @@ function SweetCombinations() {
       </header>
       <div>
         <Link href="/experiences/coffee-bar">
-          <strong>Luxe Coffee Bar</strong>
+          <h3>Luxe Coffee Bar</h3>
           <p>Pair crafted beverages with live dessert preparation through one coordinated inquiry.</p>
           <b aria-hidden="true">Explore Coffee Bar ↗︎</b>
         </Link>
         <Link href="/experiences/seating-rentals">
-          <strong>Luxe Seating Rentals</strong>
+          <h3>Luxe Seating Rentals</h3>
           <p>Connect the dessert moment with seating, tables, tents, linens, or lighting.</p>
           <b aria-hidden="true">Explore Seating Rentals ↗︎</b>
         </Link>
@@ -438,7 +486,7 @@ function SweetFaq() {
     <section className="sweet-faq" aria-labelledby="sweet-faq-title">
       <header>
         <p className="foundation-label">Sweet Cart questions</p>
-        <h2 id="sweet-faq-title">The menu and service details, answered directly.</h2>
+        <h2 id="sweet-faq-title">Luxe Sweet Cart menu and service FAQs.</h2>
       </header>
       <FaqAccordion items={sweetContextualFaqs} />
       <Link href="/faq">
@@ -460,6 +508,7 @@ export function SweetCartPage() {
         <DessertExperiences />
         <SweetInclusions />
         <SweetPantry />
+        <SweetCustomization />
         <SweetOperations />
         <SweetEvents />
         <SweetGallery />

@@ -41,7 +41,7 @@ const eventLinks: InternalLink[] = eventTypes.map((event) => ({
 
 const sharedConversionLinks: InternalLink[] = [
   { href: "/gallery", anchor: "See the Luxe event gallery", purpose: "proof", required: true },
-  { href: "/inquire", anchor: "Plan an event with Luxe", purpose: "conversion", required: true },
+  { href: "/contact", anchor: "Plan an event with Luxe", purpose: "conversion", required: true },
 ];
 
 export const homeLinkPlan: PageLinkPlan = {
@@ -54,7 +54,7 @@ export const homeLinkPlan: PageLinkPlan = {
     { href: "/events/corporate-events", anchor: "Corporate event experiences", purpose: "context", required: true },
     { href: "/events/brand-activations", anchor: "Brand activation experiences", purpose: "context", required: true },
     { href: "/gallery", anchor: "View the Luxe event gallery", purpose: "proof", required: true },
-    { href: "/inquire", anchor: "Start an event inquiry", purpose: "conversion", required: true },
+    { href: "/contact", anchor: "Start an event inquiry", purpose: "conversion", required: true },
   ],
   minimums: [{ label: "required destinations", count: 10 }],
   anchorRules,
@@ -92,7 +92,7 @@ export const experienceLinkPlans: PageLinkPlan[] = experiences.map((experience) 
       ...relevantEvents,
       { href: "/gallery", anchor: `View ${experience.name} work`, purpose: "proof", required: true },
       { href: "/faq", anchor: `${experience.name} planning questions`, purpose: "context", required: true },
-      { href: "/inquire", anchor: `Inquire about ${experience.name}`, purpose: "conversion", required: true },
+      { href: "/contact", anchor: `Inquire about ${experience.name}`, purpose: "conversion", required: true },
     ],
     minimums: [{ label: "complementary experience destinations", count: 2 }, { label: "relevant event destinations", count: 3 }],
     anchorRules,
@@ -135,7 +135,7 @@ export const eventLinkPlans: PageLinkPlan[] = eventTypes.map((event) => {
       ...(relatedEvent ? [{ href: `/events/${relatedEvent.slug}`, anchor: `Related: ${relatedEvent.name}`, purpose: "context" as const, required: false }] : []),
       { href: "/gallery", anchor: `${event.name} event gallery`, purpose: "proof", required: true },
       { href: "/faq", anchor: "Luxe booking and planning FAQ", purpose: "context", required: true },
-      { href: "/inquire", anchor: `Plan your ${event.name.toLowerCase()} with Luxe`, purpose: "conversion", required: true },
+      { href: "/contact", anchor: `Plan your ${event.name.toLowerCase()} with Luxe`, purpose: "conversion", required: true },
     ],
     minimums: [{ label: "relevant experience destinations", count: relevantExperiences.length }],
     anchorRules,
@@ -147,7 +147,7 @@ export const galleryLinkPlan: PageLinkPlan = {
   links: [
     ...experienceLinks.map((link) => ({ ...link, purpose: "proof" as const, anchor: `${link.anchor} gallery` })),
     ...eventLinks.slice(0, 7).map((link) => ({ ...link, purpose: "proof" as const, anchor: `${link.anchor} event gallery` })),
-    { href: "/inquire", anchor: "Inquire about a Luxe event experience", purpose: "conversion", required: true },
+    { href: "/contact", anchor: "Inquire about a Luxe event experience", purpose: "conversion", required: true },
   ],
   minimums: [{ label: "associated experience or event destinations per meaningful image group", count: 1 }],
   anchorRules,
@@ -158,14 +158,14 @@ export const faqLinkPlan: PageLinkPlan = {
   links: [
     ...experienceLinks.map((link) => ({ ...link, purpose: "context" as const, anchor: `${link.anchor} details` })),
     ...eventLinks.slice(0, 7).map((link) => ({ ...link, purpose: "context" as const, anchor: `${link.anchor} planning` })),
-    { href: "/inquire", anchor: "Prepare your Luxe inquiry", purpose: "conversion", required: true },
+    { href: "/contact", anchor: "Prepare your Luxe inquiry", purpose: "conversion", required: true },
   ],
   minimums: [{ label: "relevant destination from each service or event answer", count: 1 }],
   anchorRules,
 };
 
-export const inquireLinkPlan: PageLinkPlan = {
-  path: "/inquire",
+export const contactLinkPlan: PageLinkPlan = {
+  path: "/contact",
   links: [
     { href: "/experiences", anchor: "Choose a Luxe experience", purpose: "context", required: true },
     { href: "/events", anchor: "Choose an event application", purpose: "context", required: true },
@@ -186,7 +186,7 @@ export const pageLinkPlans: PageLinkPlan[] = [
   ...eventLinkPlans,
   galleryLinkPlan,
   faqLinkPlan,
-  inquireLinkPlan,
+  contactLinkPlan,
 ];
 
 export const internalLinkingRules = [

@@ -53,7 +53,7 @@ export const privateEventContexts = [
 export const privateEventExperiences = [
   {
     number: "01",
-    name: "Coffee and non-coffee possibilities",
+    name: "Mobile coffee bar and non-coffee drinks",
     href: "/experiences/coffee-bar",
     description:
       "Espresso classics, two signature coffee drinks, matcha, tea, chai, hot chocolate, hot and iced service, milk alternatives, seasonal collections, and custom menu possibilities.",
@@ -62,7 +62,7 @@ export const privateEventExperiences = [
   },
   {
     number: "02",
-    name: "Live dessert possibilities",
+    name: "Live dessert carts",
     href: "/experiences/sweet-cart",
     description:
       "Mini Dutch pancakes, Belgian waffles on a stick, or mini donuts prepared on-site with premium sauces, standard toppings, available premium toppings, and optional soft serve.",
@@ -71,7 +71,7 @@ export const privateEventExperiences = [
   },
   {
     number: "03",
-    name: "Rental possibilities",
+    name: "Event seating and rentals",
     href: "/experiences/seating-rentals",
     description:
       "Chairs, tables, cocktail tables, tents, linens, and lighting can support the comfort, layout, atmosphere, and flow of private indoor or outdoor gatherings.",

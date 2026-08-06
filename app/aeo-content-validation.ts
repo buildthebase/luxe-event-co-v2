@@ -139,7 +139,7 @@ export const clientConfirmationRequirements = [
     topic: "Venue coordination",
     confirmationNeeded:
       "Approved coordination workflow, responsibility ownership, escalation path, and venue handoff process.",
-    affectedPages: ["/faq", "/inquire", "/events/weddings"],
+    affectedPages: ["/faq", "/contact", "/events/weddings"],
     currentPublicTreatment:
       "The planning inputs are described without promising an unconfirmed workflow.",
   },
@@ -171,7 +171,7 @@ export const clientConfirmationRequirements = [
     topic: "Travel and destination events",
     confirmationNeeded:
       "Distance thresholds, fee method, service minimums, accommodation rules, and destination-event limits.",
-    affectedPages: ["/faq", "/inquire"],
+    affectedPages: ["/faq", "/contact"],
     currentPublicTreatment:
       "Southern Ontario availability is qualified and no fee formula is invented.",
   },

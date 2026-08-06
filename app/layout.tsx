@@ -17,6 +17,15 @@ import "./wedding-page-polish.css";
 import "./bridal-page-polish.css";
 import "./event-gallery-format.css";
 import "./event-overview-format.css";
+import "./site-h2-scale.css";
+import "./home-page-polish.css";
+import "./section-spacing-polish.css";
+import "./coffee-page-hierarchy-polish.css";
+import "./sweet-cart-page-polish.css";
+import "./seating-rentals-page-polish.css";
+import "./events-page-polish.css";
+import "./corporate-page-polish.css";
+import "./event-detail-heading-polish.css";
 import { siteConfig } from "./site-config";
 
 const siteUrl = siteConfig.url;

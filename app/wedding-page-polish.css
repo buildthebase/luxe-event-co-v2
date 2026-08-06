@@ -149,6 +149,15 @@
   text-wrap: balance;
 }
 
+.wedding-customization > header > p:not(.foundation-label) {
+  grid-column: 2 / 10;
+  max-width: 52ch;
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  line-height: 1.6;
+}
+
 .wedding-customization > header::after {
   grid-column: 10 / 13;
   width: 100%;
@@ -796,6 +805,7 @@
 
   .wedding-customization > header .foundation-label,
   .wedding-customization > header h2,
+  .wedding-customization > header > p:not(.foundation-label),
   .wedding-customization > header::after {
     grid-column: 1;
   }

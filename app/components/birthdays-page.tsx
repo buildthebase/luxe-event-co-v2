@@ -19,12 +19,13 @@ import { SiteShell } from "./site-shell";
 const birthdaysPath = "/events/birthdays";
 const birthdaysSchema = createServicePageSchema({
   path: birthdaysPath,
-  serviceName: "Birthday coffee, dessert, and rental experiences",
-  serviceType: "Birthday coffee bar, dessert cart, and event rental services",
+  serviceName: "Birthday dessert catering, coffee bar, and rental experiences",
+  serviceType: "Birthday dessert catering, mobile coffee bar, and event rental services",
   serviceDescription:
-    "Staffed coffee service, non-coffee beverages, live dessert, seating, and event rentals for birthdays in Toronto and the Greater Toronto Area.",
+    "Live dessert catering, staffed coffee and matcha service, seating, and event rentals for birthdays in Toronto and the Greater Toronto Area.",
   pageName: pageMetadata[birthdaysPath].title,
   pageDescription: pageMetadata[birthdaysPath].description,
+  faqs: birthdayFaqs,
 });
 
 function BirthdayHero() {
@@ -32,15 +33,15 @@ function BirthdayHero() {
     <header className="birthday-hero">
       <div className="birthday-hero-copy">
         <p className="foundation-eyebrow">Birthdays / Toronto &amp; the GTA</p>
-        <h1 aria-label="Birthday coffee, live dessert, and event rentals, planned around the milestone.">
-          <span>Birthday coffee, live</span>
-          <span>dessert, and event</span>
-          <span>rentals, planned</span>
-          <span>around the milestone.</span>
+        <h1 aria-label="Birthday dessert catering, coffee bars, and rentals in Toronto">
+          <span>Birthday dessert catering,</span>
+          <span>coffee bars, and rentals</span>
+          <span>in Toronto</span>
         </h1>
         <p>
-          Coffee, matcha, live dessert, seating, and event rentals for adult,
-          milestone, family, and selected children’s celebrations.
+          Interactive live dessert carts, mobile espresso bars, matcha, and boutique
+          seating rentals designed for adult milestones, family gatherings, and
+          private birthday celebrations across Toronto and the GTA.
         </p>
         <div className="birthday-hero-actions">
           <QuoteModalTrigger data-event-name="inquiry_start">
@@ -66,7 +67,7 @@ function BirthdayOverview() {
   return (
     <section className="birthday-overview" aria-labelledby="birthday-overview-title">
       <h2 id="birthday-overview-title">
-        A birthday planned around the person, not a{" "}
+        Birthday catering planned around the person, not a{" "}
         <span className="birthday-overview-title-tail">standard format.</span>
       </h2>
 
@@ -74,24 +75,24 @@ function BirthdayOverview() {
         <article>
           <h3>Built around the person</h3>
           <p>
-            The guest of honour, age group, audience, and desired atmosphere
-            guide the direction of the celebration.
+            We tailor the entire service to reflect the guest of honour&apos;s tastes,
+            age milestone, guest list, and preferred party aesthetic.
           </p>
         </article>
 
         <article>
           <h3>One experience or several</h3>
           <p>
-            Luxe Coffee Bar, Luxe Sweet Cart, and Luxe Seating Rentals can be
-            booked independently or coordinated within one birthday plan.
+            Choose the Luxe Coffee Bar, Luxe Sweet Cart, or Luxe Seating Rentals
+            individually, or bundle them into a single coordinated booking.
           </p>
         </article>
 
         <article>
           <h3>Shaped by the occasion</h3>
           <p>
-            The venue, schedule, guest count, service requirements, and selected
-            experiences determine the final plan.
+            We align setup schedules, venue dimensions, guest flow, and power
+            requirements to ensure smooth execution on event day.
           </p>
         </article>
       </div>
@@ -102,7 +103,12 @@ function BirthdayOverview() {
 function BirthdayContexts() {
   return (
     <section className="birthday-contexts" id="birthday-contexts" aria-labelledby="birthday-contexts-title">
-      <header><h2 id="birthday-contexts-title">Birthday experiences for different ages and occasions.</h2></header>
+      <header>
+        <h2 id="birthday-contexts-title">
+          <span>Birthday catering for different</span>
+          <span>ages and occasions</span>
+        </h2>
+      </header>
       <ol>
         {birthdayContexts.map((context) => (
           <li key={context.number}>
@@ -120,8 +126,14 @@ function BirthdayExperiences() {
     <ExperienceSelector
       id="birthday-experiences"
       experiences={birthdayExperiences}
-      heading="Choose one birthday experience or coordinate all three."
+      heading={
+        <>
+          <span>Birthday coffee bars, live dessert carts,</span>
+          <span>and event rental options.</span>
+        </>
+      }
       showDescription={false}
+      useItemHeadings
       variant="birthday"
     />
   );
@@ -131,10 +143,10 @@ function BirthdayPersonalization() {
   return (
     <section className="birthday-personalization" aria-labelledby="birthday-personalization-title">
       <header>
-        <h2 id="birthday-personalization-title">Let the milestone shape the details.</h2>
+        <h2 id="birthday-personalization-title">Personalized birthday menus, signage, and room details</h2>
         <p>
-          Menus, signage, presentation, and room details can reflect the person
-          being celebrated without overwhelming the gathering.
+          Tailor drink menus, custom cart signage, and event styling elements to
+          reflect the guest of honour.
         </p>
       </header>
       <div>
@@ -151,12 +163,12 @@ function BirthdayCombinations() {
   return (
     <section className="birthday-combinations" aria-labelledby="birthday-combinations-title">
       <header>
-        <h2 id="birthday-combinations-title">Compose the experience around the milestone.</h2>
-        <p>Planning directions rather than fixed packages.</p>
+        <h2 id="birthday-combinations-title">Birthday service combinations built around the milestone</h2>
+        <p>Flexible service pairings designed around your event layout, guest flow, and milestone timing.</p>
       </header>
       <div>
         {birthdayCombinations.map((item) => (
-          <article key={item.number}><p>{item.title}</p><h3>{item.experiences}</h3><p>{item.description}</p>
+          <article key={item.number}><h3>{item.title}: {item.experiences}</h3><p>{item.description}</p>
           </article>
         ))}
       </div>

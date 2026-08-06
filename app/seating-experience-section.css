@@ -173,6 +173,49 @@
   color: var(--color-luxe-black) !important;
 }
 
+.seating-page .seating-inventory > header .seating-inventory-subtitle {
+  margin: var(--space-5) 0 0;
+  color: var(--color-text-muted);
+  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+  line-height: 1.5;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.seating-page .seating-studies > header {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: center;
+}
+
+.seating-page .seating-studies > header h2 {
+  width: min(100%, 64rem);
+  max-width: none;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.seating-page .seating-applications > header {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: center;
+}
+
+.seating-page .seating-applications > header h2 {
+  width: min(100%, 64rem);
+  max-width: none;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.seating-page .seating-applications > header .seating-applications-subtitle {
+  margin: var(--space-5) 0 0;
+  color: var(--color-text-muted);
+  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+  line-height: 1.5;
+  text-align: center;
+}
+
 /* Center the operational section's editorial introduction like the other
    centered section headers on the experience pages. */
 .seating-page .seating-operations > header {
@@ -189,10 +232,267 @@
   text-wrap: balance;
 }
 
+.seating-page .seating-operations > header .seating-operations-subtitle {
+  width: min(100%, 64rem);
+  margin: clamp(1.5rem, 2.5vw, 2.5rem) auto 0;
+  color: var(--surface-dark-copy-muted);
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  line-height: 1.5;
+  text-align: center;
+}
+
 .seating-page .seating-operations > header > p:last-child {
   width: min(100%, 64rem);
   margin: clamp(1.5rem, 2.5vw, 2.5rem) auto 0;
   text-align: center;
+}
+
+/* A compact, number-led logistics sequence with deliberate responsive states. */
+.seating-page .seating-operations {
+  padding-block: clamp(5rem, 8vw, 8rem);
+}
+
+.seating-page .seating-operations > header {
+  position: relative;
+  max-width: 76rem;
+  margin: 0 auto clamp(3rem, 5vw, 5rem);
+  padding-bottom: clamp(2rem, 3vw, 3rem);
+}
+
+.seating-page .seating-operations > header::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: min(100%, 34rem);
+  height: 1px;
+  margin-inline: auto;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-luxe-gold-on-dark) 50%,
+    transparent
+  );
+  content: "";
+  opacity: 0.65;
+}
+
+.seating-page .seating-operations .foundation-label {
+  color: var(--color-luxe-gold-on-dark);
+}
+
+.seating-page .seating-operations > header h2 {
+  max-width: 14ch;
+  font-size: clamp(3rem, 5vw, 5.8rem);
+  line-height: 0.94;
+  letter-spacing: -0.06em;
+}
+
+.seating-page .seating-operations > header .seating-operations-subtitle {
+  max-width: 46rem;
+  margin-top: clamp(1.25rem, 2vw, 1.8rem);
+  color: var(--color-luxe-ivory);
+  font-size: clamp(1.1rem, 1.35vw, 1.3rem);
+  line-height: 1.45;
+  text-wrap: balance;
+}
+
+.seating-page .seating-operations > header > p:last-child {
+  max-width: 48rem;
+  margin-top: 0.85rem;
+  color: var(--surface-dark-copy-muted);
+  font-size: clamp(0.95rem, 0.35vw + 0.88rem, 1.05rem);
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+.seating-page .seating-operation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.85rem, 1.5vw, 1.4rem);
+  border: 0;
+}
+
+.seating-page .seating-operation-grid article {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: clamp(21rem, 29vw, 26rem);
+  flex-direction: column;
+  padding: clamp(1.6rem, 2.4vw, 2.5rem);
+  overflow: hidden;
+  border: 1px solid rgb(222 194 151 / 28%);
+  background:
+    linear-gradient(145deg, rgb(255 255 255 / 5%), transparent 52%),
+    rgb(248 246 242 / 2.2%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 6%),
+    0 1.1rem 2.8rem rgb(0 0 0 / 12%);
+  isolation: isolate;
+}
+
+.seating-page .seating-operation-grid article:nth-child(2) {
+  background:
+    linear-gradient(145deg, rgb(222 194 151 / 8%), transparent 54%),
+    rgb(248 246 242 / 3.5%);
+}
+
+.seating-page .seating-operation-grid article::before {
+  position: absolute;
+  top: 0;
+  left: clamp(1.6rem, 2.4vw, 2.5rem);
+  width: clamp(3.5rem, 5vw, 5.5rem);
+  height: 2px;
+  background: var(--color-luxe-gold-on-dark);
+  content: "";
+}
+
+.seating-page .seating-operation-grid article::after {
+  position: absolute;
+  right: -3.5rem;
+  bottom: -4.5rem;
+  z-index: -1;
+  width: clamp(10rem, 15vw, 15rem);
+  aspect-ratio: 1;
+  border: 1px solid rgb(222 194 151 / 14%);
+  border-radius: 50%;
+  content: "";
+}
+
+.seating-page .seating-operation-grid article:nth-child(2)::after {
+  right: -4rem;
+  bottom: -5.5rem;
+  border-radius: 0;
+  transform: rotate(28deg);
+}
+
+.seating-page .seating-operation-grid article:nth-child(3)::after {
+  right: -1.5rem;
+  bottom: -6.5rem;
+  width: clamp(12rem, 18vw, 18rem);
+}
+
+.seating-page .seating-operation-number {
+  display: inline-grid;
+  width: 3.1rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgb(222 194 151 / 48%);
+  border-radius: 50%;
+  color: var(--color-luxe-gold-on-dark);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+.seating-page .seating-operation-grid h3 {
+  max-width: 10ch;
+  margin: clamp(2.5rem, 4vw, 4rem) 0 var(--space-5);
+  font-size: clamp(2.3rem, 3.3vw, 3.75rem);
+  line-height: 0.96;
+  text-wrap: balance;
+}
+
+.seating-page .seating-operation-grid article strong {
+  display: block;
+  width: fit-content;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid rgb(222 194 151 / 35%);
+  color: var(--color-luxe-gold-on-dark);
+  font-size: 0.69rem;
+  line-height: 1.45;
+}
+
+.seating-page .seating-operation-grid article p {
+  max-width: 36ch;
+  margin: var(--space-5) 0 0;
+  color: rgb(248 246 242 / 78%);
+  font-size: clamp(0.94rem, 0.3vw + 0.88rem, 1.02rem);
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+@media (max-width: 1040px) and (min-width: 701px) {
+  .seating-page .seating-operation-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .seating-page .seating-operation-grid article {
+    min-height: 21rem;
+  }
+
+  .seating-page .seating-operation-grid article:last-child {
+    grid-column: 1 / -1;
+    min-height: 18rem;
+  }
+
+  .seating-page .seating-operation-grid article:last-child h3,
+  .seating-page .seating-operation-grid article:last-child p {
+    max-width: 30rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .seating-page .seating-operations {
+    padding-block: clamp(4rem, 15vw, 5.5rem);
+  }
+
+  .seating-page .seating-operations > header {
+    margin-bottom: var(--space-7);
+    padding-bottom: var(--space-6);
+  }
+
+  .seating-page .seating-operations > header h2 {
+    max-width: 11ch;
+    font-size: clamp(2.55rem, 12vw, 4rem);
+    line-height: 0.95;
+  }
+
+  .seating-page .seating-operations > header .seating-operations-subtitle {
+    max-width: 30ch;
+    margin-top: var(--space-5);
+    font-size: 1.05rem;
+  }
+
+  .seating-page .seating-operations > header > p:last-child {
+    max-width: 34ch;
+    margin-top: var(--space-3);
+    font-size: 0.94rem;
+    line-height: 1.6;
+  }
+
+  .seating-page .seating-operation-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .seating-page .seating-operation-grid article,
+  .seating-page .seating-operation-grid article:last-child {
+    grid-column: auto;
+    min-height: 0;
+    padding: clamp(1.4rem, 6vw, 1.8rem);
+    border: 1px solid rgb(222 194 151 / 28%);
+  }
+
+  .seating-page .seating-operation-grid article::before {
+    left: clamp(1.4rem, 6vw, 1.8rem);
+  }
+
+  .seating-page .seating-operation-number {
+    width: 2.75rem;
+  }
+
+  .seating-page .seating-operation-grid h3 {
+    max-width: 12ch;
+    margin: var(--space-7) 0 var(--space-4);
+    font-size: clamp(2.2rem, 10vw, 3.2rem);
+  }
+
+  .seating-page .seating-operation-grid article p {
+    max-width: 35rem;
+    margin-top: var(--space-4);
+    font-size: 0.95rem;
+  }
 }
 
 .seating-page .seating-combinations > header > p:last-child {

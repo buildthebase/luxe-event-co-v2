@@ -8,7 +8,7 @@
 }
 
 /* The PriorityAnswer question becomes the visible section heading. */
-:is(.sweet-operations, .seating-pricing) > header {
+:is(.coffee-operations, .sweet-operations, .seating-pricing) > header {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -30,11 +30,25 @@
 
 :is(.coffee-operations, .sweet-operations, .seating-pricing)
   .priority-answer
+  > div {
+  padding-top: clamp(1.5rem, 2.75vw, 2.75rem);
+}
+
+:is(.coffee-operations, .sweet-operations, .seating-pricing)
+  .priority-answer
   > div
   > p {
   max-width: 55rem;
   font-size: var(--type-body);
   line-height: 1.68;
+}
+
+:is(.coffee-operations, .sweet-operations, .seating-pricing)
+  .priority-answer
+  > div
+  > p
+  + p {
+  margin-top: var(--space-5);
 }
 
 :is(.coffee-operations, .sweet-operations, .seating-pricing)
@@ -59,6 +73,18 @@
   color: var(--surface-dark-copy-muted);
   font-size: clamp(0.92rem, 0.88rem + 0.14vw, 1rem);
   line-height: 1.6;
+}
+
+:is(.coffee-operations, .sweet-operations, .seating-pricing) > aside > div {
+  display: grid;
+  gap: var(--space-3);
+}
+
+:is(.coffee-operations, .sweet-operations, .seating-pricing) > aside > div > strong {
+  max-width: 52rem;
+  font-size: clamp(1rem, 0.94rem + 0.22vw, 1.15rem);
+  font-weight: 600;
+  line-height: 1.45;
 }
 
 :is(.coffee-operations, .sweet-operations, .seating-pricing) > aside a {
@@ -105,6 +131,12 @@
 }
 
 @media (max-width: 700px) {
+  :is(.coffee-operations, .sweet-operations, .seating-pricing)
+    .priority-answer
+    > div {
+    padding-top: var(--space-3);
+  }
+
   :is(.coffee-operations, .sweet-operations, .seating-pricing) > aside {
     align-items: flex-start;
     flex-direction: column;

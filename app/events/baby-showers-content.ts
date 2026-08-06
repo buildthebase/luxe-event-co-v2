@@ -5,30 +5,30 @@ export const babyShowerExperiences = [
   {
     id: "coffee",
     number: "01",
-    label: "Coffee and matcha",
+    label: "COFFEE AND MATCHA",
     name: "Luxe Coffee Bar",
     description:
-      "Mobile espresso, matcha, and specialty beverages can create a polished welcome for arrivals, conversation, and time around the table.",
+      "Professional mobile espresso bars serving custom lattes, ceremonial matcha, and specialty iced drinks to greet guests upon arrival.",
     href: "/experiences/coffee-bar",
     image: imageAssets.experiences.coffeeBar,
   },
   {
     id: "dessert",
     number: "02",
-    label: "Live dessert",
+    label: "LIVE DESSERT",
     name: "Luxe Sweet Cart",
     description:
-      "Fresh dessert prepared in the room creates an interactive focal point for guests to gather around and enjoy together.",
+      "Interactive live dessert carts serving warm mini Dutch pancakes, Belgian waffle pops, and sweet treats prepared fresh on-site.",
     href: "/experiences/sweet-cart",
     image: imageAssets.experiences.sweetCart,
   },
   {
     id: "seating",
     number: "03",
-    label: "Seating and rentals",
+    label: "SEATING AND RENTALS",
     name: "Luxe Seating Rentals",
     description:
-      "Chairs, tables, cocktail tables, tents, linens, and lighting can shape the room around gifts, photographs, conversation, and guest flow.",
+      "Boutique chairs, dining tables, lounge furniture, linens, and ambient lighting designed to organize the venue layout.",
     href: "/experiences/seating-rentals",
     image: imageAssets.experiences.seatingRentals,
   },
@@ -37,29 +37,29 @@ export const babyShowerExperiences = [
 export const babyShowerCombinations = [
   {
     id: "baby-shower-welcome",
-    occasion: "A welcoming start",
+    occasion: "A WELCOMING START",
     title: "Coffee Bar + Seating",
     description:
-      "A considered arrival experience with comfortable places for guests to settle, connect, and begin the celebration.",
-    href: "/inquire",
+      "A warm arrival experience pairing handcrafted espresso drinks and iced matchas with comfortable lounge seating for guests to connect and settle in.",
+    href: "/contact",
     experienceIds: ["coffee", "seating"],
   },
   {
     id: "baby-shower-sweet-moment",
-    occasion: "A shared focal point",
+    occasion: "A SHARED FOCAL POINT",
     title: "Coffee Bar + Sweet Cart",
     description:
-      "Crafted drinks and fresh dessert create two complementary hospitality moments within the gathering.",
-    href: "/inquire",
+      "Barista-brewed specialty coffee paired with interactive live dessert service to create two distinct, complementary tasting focal points.",
+    href: "/contact",
     experienceIds: ["coffee", "dessert"],
   },
   {
     id: "baby-shower-complete",
-    occasion: "The complete gathering",
+    occasion: "THE COMPLETE GATHERING",
     title: "Coffee + Dessert + Rentals",
     description:
-      "Welcome, sweetness, and the room setting can be coordinated through one baby shower inquiry and one considered plan.",
-    href: "/inquire",
+      "Full-service event hospitality bringing specialty coffee, live dessert carts, and complete venue seating together through a single coordinated plan.",
+    href: "/contact",
     experienceIds: ["coffee", "dessert", "seating"],
   },
 ] satisfies readonly CombinedExperience[];
@@ -69,19 +69,19 @@ export const babyShowerStyling = [
     number: "01",
     title: "Menus and drinks",
     description:
-      "Signature beverages, matcha, seasonal selections, milk alternatives, and menu displays can be tailored around the season, guest preferences, and celebration.",
+      "Tailored signature lattes, ceremonial matcha, seasonal drink options, dairy-free alternatives, and custom menu displays curated for your guests.",
   },
   {
     number: "02",
     title: "Signage and presentation",
     description:
-      "Names, wording, cups, menu displays, cart details, and dessert presentation can carry the selected visual direction.",
+      "Display the parents-to-be names, custom baby shower monograms, branded cups, acrylic signage, and cart floral accents to tie the room together.",
   },
   {
     number: "03",
     title: "Seating and room details",
     description:
-      "Seating, tables, linens, lighting, and service placement can be planned around conversation, gifts, photographs, and guest flow.",
+      "Arrange tables, lounge seating, linens, and lighting around key focus points like photo backdrops, gift stations, and game areas.",
   },
 ] as const;
 
@@ -90,13 +90,13 @@ export const babyShowerSettings = [
     number: "01",
     title: "Indoor baby showers",
     description:
-      "Home, venue, restaurant, studio, and private-room celebrations can be planned around access, available space, utilities, guest flow, and venue requirements.",
+      "Seamless setups for home living rooms, private dining spaces, photo studios, and event venues tailored around doorway clearances, electrical access, and smooth guest circulation.",
   },
   {
     number: "02",
     title: "Outdoor baby showers",
     description:
-      "Coffee, dessert, seating, tables, tents, linens, and lighting can be considered for outdoor settings when weather planning, surface conditions, access, utilities, and a suitable contingency plan are confirmed.",
+      "Complete outdoor hospitality including espresso bars, live dessert carts, pop-up tents, tables, and ambient lighting planned with weather contingencies and level surface requirements in mind.",
   },
 ] as const;
 
@@ -126,19 +126,19 @@ export const babyShowerPlanning = [
     number: "01",
     title: "Event details",
     description:
-      "Share the date, venue, estimated guest count, schedule, and whether the gathering will be indoors or outdoors.",
+      "Provide your event date, venue location, estimated guest count, overall timeline, and whether the shower takes place indoors or outdoors.",
   },
   {
     number: "02",
     title: "Experience preferences",
     description:
-      "Identify whether coffee, matcha, live dessert, seating, event rentals, or a coordinated combination should support the celebration.",
+      "Let us know if you prefer a mobile espresso bar, ceremonial matcha service, live dessert carts, seating rentals, or a coordinated bundle.",
   },
   {
     number: "03",
     title: "Venue and setup needs",
     description:
-      "Provide any available information about access, service footprint, power or water, delivery timing, setup, teardown, and venue requirements.",
+      "Share any details regarding room access, available floor space, electrical access, vendor load-in timing, and venue rules.",
   },
 ] as const;
 

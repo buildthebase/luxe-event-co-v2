@@ -74,7 +74,10 @@ export function HomeUnifiedExperience() {
     <section id="unified-experience" className="home-unified" aria-labelledby="home-unified-title">
       <div className="home-unified-heading">
         <p className="foundation-label">The unified Luxe experience</p>
-        <h2 id="home-unified-title">Begin with one. Consider the whole occasion.</h2>
+        <h2 id="home-unified-title">
+          <span>Begin with one.</span>{" "}
+          <span>Consider the whole occasion.</span>
+        </h2>
       </div>
       <div className="home-unified-copy">
         <ul className="home-unified-event-list">
@@ -111,12 +114,9 @@ export function HomeEventCategories() {
   return (
     <section id="event-types" className="home-events" aria-labelledby="home-events-title">
       <header className="home-section-intro home-section-intro-single">
-        <div>
-          <h2 id="home-events-title">
-            <span className="home-events-title-line">Event Catering &amp; Rental Services</span>{" "}
-            <span className="home-events-title-line">for Every Occasion</span>
-          </h2>
-        </div>
+        <h2 id="home-events-title">
+          Event Catering &amp; Rental Services for Every Occasion
+        </h2>
       </header>
       <div className="home-event-groups">
         {homeEventImageGroups.map((group, groupIndex) => (

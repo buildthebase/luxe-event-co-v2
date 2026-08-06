@@ -1,0 +1,97 @@
+/* Desktop-only editorial line locks for event-detail page headings. */
+.foundation-shell :is(
+    #activation-contexts-title,
+    #activation-services-title,
+    #activation-scale-title,
+    #activation-faq-title,
+    #baby-styling-title,
+    #bridal-moments-title,
+    #birthday-contexts-title,
+    #private-contexts-title,
+    #private-experiences-title
+  ),
+.foundation-shell :is(
+    #baby-experiences,
+    #birthday-experiences
+  ) .signature-section-heading h2 {
+  max-width: none !important;
+}
+
+.foundation-shell .activation-page .activation-faq {
+  padding-top: clamp(2.5rem, 4vw, 4rem);
+}
+
+.foundation-shell .bridal-page > .signature-selector-bridal
+  .signature-section-heading h2 {
+  width: 100%;
+  max-width: none !important;
+  justify-self: stretch;
+  text-align: center;
+}
+
+.foundation-shell .bridal-page .bridal-faq {
+  border-top: 0;
+}
+
+@media (min-width: 961px) {
+  .foundation-shell :is(
+      #activation-contexts-title,
+      #activation-services-title,
+      #activation-scale-title,
+      #activation-faq-title,
+      #baby-styling-title,
+      #bridal-moments-title,
+      #birthday-contexts-title,
+      #private-contexts-title,
+      #private-experiences-title
+    ) span,
+  .foundation-shell :is(
+      #baby-experiences,
+      #birthday-experiences,
+      #bridal-experiences
+    ) .signature-section-heading h2 span {
+    display: block;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 960px) {
+  .foundation-shell :is(
+      #activation-contexts-title,
+      #activation-services-title,
+      #activation-scale-title,
+      #activation-faq-title,
+      #baby-styling-title,
+      #bridal-moments-title,
+      #birthday-contexts-title,
+      #private-contexts-title,
+      #private-experiences-title
+    ) span,
+  .foundation-shell :is(
+      #baby-experiences,
+      #birthday-experiences,
+      #bridal-experiences
+    ) .signature-section-heading h2 span {
+    display: inline;
+    white-space: normal;
+  }
+
+  .foundation-shell :is(
+      #activation-contexts-title,
+      #activation-services-title,
+      #activation-scale-title,
+      #activation-faq-title,
+      #baby-styling-title,
+      #bridal-moments-title,
+      #birthday-contexts-title,
+      #private-contexts-title,
+      #private-experiences-title
+    ) span + span::before,
+  .foundation-shell :is(
+      #baby-experiences,
+      #birthday-experiences,
+      #bridal-experiences
+    ) .signature-section-heading h2 span + span::before {
+    content: " ";
+  }
+}

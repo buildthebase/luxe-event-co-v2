@@ -50,7 +50,7 @@ export const galleryGroups: readonly GalleryGroup[] = [
   {
     id: "wedding-coffee-hospitality",
     number: "01",
-    title: "Coffee through the wedding day",
+    title: "Wedding coffee bar experiences",
     context: "Luxe Coffee Bar / Weddings",
     description:
       "Coffee service can support arrivals, cocktail hour, the reception, or a late-night moment, with the cart, menu, drinks, and signage shaped around the stage of the day.",
@@ -87,7 +87,7 @@ export const galleryGroups: readonly GalleryGroup[] = [
   {
     id: "branded-corporate-hospitality",
     number: "02",
-    title: "A brand guests can taste",
+    title: "Corporate coffee bars and brand activations",
     context: "Coffee Bar / Corporate / Brand Activations",
     description:
       "Branded cups, cart treatment, tailored menus, and guest service can carry a campaign into a hospitality experience guests can see and taste.",
@@ -123,7 +123,7 @@ export const galleryGroups: readonly GalleryGroup[] = [
   {
     id: "shower-dessert-experience",
     number: "03",
-    title: "Dessert as part of the setting",
+    title: "Sweet cart experiences for baby and bridal showers",
     context: "Luxe Sweet Cart / Baby & Bridal Showers",
     description:
       "Live preparation, sauces, toppings, signage, and coordinated styling allow the dessert cart to become part of the shower setting.",
@@ -160,7 +160,7 @@ export const galleryGroups: readonly GalleryGroup[] = [
   {
     id: "milestone-dessert-moment",
     number: "04",
-    title: "A milestone with its own flavour",
+    title: "Birthday and private event dessert carts",
     context: "Luxe Sweet Cart / Birthdays & Private Events",
     description:
       "Personalized dessert choices and milestone signage give the guest-facing service a character specific to the celebration.",
@@ -186,7 +186,7 @@ export const galleryGroups: readonly GalleryGroup[] = [
   {
     id: "wedding-room-composition",
     number: "05",
-    title: "The room before guests arrive",
+    title: "Wedding seating and event rentals",
     context: "Luxe Seating Rentals / Weddings",
     description:
       "Chairs, tables, linens, lighting, and layout work together to shape the completed environment at a truthful, room-wide scale.",
@@ -222,7 +222,7 @@ export const galleryGroups: readonly GalleryGroup[] = [
   {
     id: "corporate-room-support",
     number: "06",
-    title: "A room designed for the exchange",
+    title: "Corporate event seating and reception rentals",
     context: "Seating Rentals / Corporate Events",
     description:
       "Reception layouts, cocktail tables, seating, and lighting can support conversation, circulation, and the intended flow of a corporate gathering.",
@@ -248,7 +248,7 @@ export const galleryGroups: readonly GalleryGroup[] = [
   {
     id: "complete-private-gathering",
     number: "07",
-    title: "One occasion, several Luxe experiences",
+    title: "Coffee, dessert, and rentals for private events",
     context: "Coffee / Dessert / Seating / Private Events",
     description:
       "Hospitality, dessert, signage, and the surrounding room can be coordinated as one composition while each Luxe experience keeps its own role.",

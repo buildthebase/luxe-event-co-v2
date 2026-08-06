@@ -4,76 +4,76 @@ export const rentalCategories = [
   {
     id: "chairs",
     number: "01",
-    name: "Event & Wedding Chair Rentals",
+    name: "Event and wedding chair rentals",
     role: "Comfort, proportion, and placement",
     description:
-      "We match our chair rentals to your ceremony or dining style, guest count, and visual vibe. Whether you need sleek dining chairs or ceremony seating, we double-check styles, quantities, finishes, and date availability before locking anything in.",
+      "Selected for ceremonies, reception dining, and lounge setups. Chair styles, quantities, finishes, and date availability are tailored to your guest count and design vision.",
   },
   {
     id: "tables",
     number: "02",
-    name: "Dining & Service Table Rentals",
+    name: "Dining and service table rentals",
     role: "The foundation for dining, service, and display",
     description:
-      "From seated wedding dinners to buffet stations, we help you pick table rentals that fit your room dimensions and service flow. Every table size, shape, and quantity is confirmed right inside your custom event layout.",
+      "Proportioned to fit your venue dimensions and floor plan. Available in custom shapes and sizes for seated dinners, grazing tables, bar stations, and feature displays.",
   },
   {
     id: "cocktail-tables",
     number: "03",
-    name: "Cocktail & High-Top Table Rentals",
+    name: "Cocktail and high-top table rentals",
     role: "Natural gathering points",
     description:
-      "High-top and cocktail table rentals give your guests a comfortable spot to connect without blocking the flow of the room. They are perfect additions for party receptions, corporate networking, brand activations, and transitional moments.",
+      "Dynamic high-top rentals designed to encourage guest mingling and smooth room flow. Ideal for cocktail receptions, corporate networking, and brand activations.",
   },
   {
     id: "tents",
     number: "04",
-    name: "Outdoor Event Tent Rentals",
+    name: "Outdoor event tent rentals",
     role: "Shelter tailored to your setting",
     description:
-      "We plan tent rentals around your total guest count, site access, ground terrain, and weather backup plans. Every frame or sailcloth tent specification is customized to fit your venue and specific installation needs in [Your City/Region].",
+      "Sleek outdoor tenting options engineered for backyard celebrations, lawn weddings, and outdoor corporate events. Customized for site access, footprint, and weather contingency plans across Toronto and the GTA.",
   },
   {
     id: "linens",
     number: "05",
-    name: "Event Linen & Fabric Rentals",
+    name: "Event linen and fabric rentals",
     role: "Color, texture, and finish",
     description:
-      "Our event linen rentals pull the whole look together across dining tables, cocktail spots, and service bars. We confirm all sizes, fabrics, colors, and quantities as we finalize your total rental package.",
+      "High-end table linens, runners, and napkins that unify your color palette across dining tables, high-tops, and bar setups. Available in premium textures and custom finishes.",
   },
   {
     id: "lighting",
     number: "06",
-    name: "Venue & Event Lighting Setup",
+    name: "Venue and event lighting setup",
     role: "Atmosphere, visibility, and focus",
     description:
-      "The right event lighting sets the mood while making sure key focal points and service areas stay visible. We walk through fixture options, venue power needs, and installation requirements during early planning.",
+      "Ambient and accent lighting installations designed to highlight key focal points, seating lounges, and feature setups while setting the evening atmosphere.",
   },
 ] as const;
 
 export const layoutStudies = [
   {
     number: "01",
-    title: "Ceremony Layout & Seating Design",
-    lead: "A great ceremony setup lets everyone focus on the moment.",
+    title: "Ceremony layout and seating design",
+    lead: "A thoughtful ceremony setup keeps full attention on the moment.",
     description:
-      "We keep aisle widths comfortable, chair lines crisp, and sightlines clear for every guest. Plus, we account for accessibility and build in a smooth pathway so guests can transition easily from the 'I do' to the party.",
+      "We calculate aisle widths, chair spacing, and speaker sightlines while ensuring smooth guest access and transitions into reception spaces.",
     tone: "ceremony",
   },
   {
     number: "02",
-    title: "Reception Flow & Floor Planning",
-    lead: "The room should feel just as comfortable when every seat is filled.",
+    title: "Reception flow and floor planning",
+    lead: "Your reception layout should feel spacious even at full capacity.",
     description:
-      "We balance table placement with service paths, speech viewing, and the dance floor. That way, your guests can dine, circulate, and celebrate without ever feeling cramped.",
+      "We balance table positioning with catering service paths, focal stage views, and dance floor access so guests dine and mingle effortlessly.",
     tone: "reception",
   },
   {
     number: "03",
-    title: "Cocktail Hour & Social Space Layouts",
-    lead: "Cocktail hours and mixers need space to breathe.",
+    title: "Cocktail hour and social-space layouts",
+    lead: "Social spaces and cocktail hours require intuitive room flow.",
     description:
-      "By mixing in high-top tables and keeping main pathways open, we help guide natural movement for arrivals, networking, brand displays, and casual mingling.",
+      "Strategic placement of high-top tables, bar zones, and lounge seating encourages natural movement for guest arrivals and networking.",
     tone: "social",
   },
 ] as const;
@@ -84,21 +84,21 @@ export const rentalOperations = [
     title: "Delivery",
     status: "Planned for the venue",
     description:
-      "Delivery availability, timing, loading access, travel requirements, and applicable fees are confirmed for the venue and rental order.",
+      "Timed delivery scheduled around your venue loading dock access, event timeline, and order scope. All travel requirements and scheduling are confirmed in your rental proposal.",
   },
   {
     number: "02",
     title: "Setup",
     status: "Defined within the proposal",
     description:
-      "Where setup is included, the scope is planned around the rental items, quantities, floor plan, venue access, and event schedule.",
+      "On-site placement executed according to your approved floor plan. Our crew handles complete furniture arrangement to ensure your layout is event-ready on time.",
   },
   {
     number: "03",
     title: "Teardown and pickup",
     status: "Confirmed before the event",
     description:
-      "Pickup timing, after-hours access, teardown responsibilities, and venue requirements are confirmed as part of the final rental plan.",
+      "Efficient post-event load-out scheduled around venue curfew. Pickup timing, after-hours access, and teardown responsibilities are fully verified ahead of time.",
   },
 ] as const;
 
@@ -144,19 +144,19 @@ export const rentalGalleryPreview = [
   {
     number: "01",
     label: "The room before guests arrive",
-    note: "Approved room-transformation photography required",
+    note: "A room-wide view of seating, circulation, and service zones.",
     tone: "room",
   },
   {
     number: "02",
     label: "The layout in use",
-    note: "Approved event photography required",
+    note: "A guest-ready layout showing how the setting functions in use.",
     tone: "layout",
   },
   {
     number: "03",
     label: "Materials and finishing details",
-    note: "Approved inventory photography required",
+    note: "A closer view of the finishes and details that complete the setting.",
     tone: "detail",
   },
 ] as const;
@@ -171,7 +171,7 @@ export const seatingRentalFaqs = [
   {
     question: "How are chairs and tables priced?",
     answer:
-      "Chairs and tables are priced from the confirmed item, quantity, event date, location, rental period, availability, delivery access, placement or setup requirements, teardown and pickup responsibilities, labour, and any outdoor or installation conditions. Luxe does not publish one per-item amount without a current inventory and logistics policy; the proposal must identify the selected inventory and every applicable service responsibility.",
+      "Seating and table rental pricing is determined by your selected items, quantities, event date, venue location, delivery access, and setup scope. To ensure complete clarity, every Luxe proposal provides transparent, itemized pricing that accounts for all inventory and on-site logistics with no hidden fees.",
   },
   {
     question: "What is included with an event-rental service?",

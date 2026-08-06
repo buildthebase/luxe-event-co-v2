@@ -21,7 +21,7 @@ type ServicePageSchemaInput = {
   pageName: string;
   pageDescription: string;
   areaServed?: AreaServedDefinition[];
-  faqs?: FaqDefinition[];
+  faqs?: readonly FaqDefinition[];
 };
 
 export const organizationId = `${siteConfig.url}/#organization`;

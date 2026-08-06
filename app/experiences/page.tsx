@@ -18,6 +18,7 @@ import { createPageMetadata, pageMetadata } from "../metadata-config";
 import { experiencesSectionNavigation } from "../page-section-navigation";
 import { createCollectionPageSchema } from "../schema-builders";
 import { experiences } from "../site-config";
+import { experienceHubCombinations } from "./content";
 
 export const metadata = createPageMetadata("/experiences");
 
@@ -44,7 +45,13 @@ export default function ExperiencesPage() {
         <ExperiencesBookingClarity />
         <ExperienceFeatures />
         <ExperienceNeedComparison />
-        <CombinedExperienceFeature id="combinations" />
+        <CombinedExperienceFeature
+          id="combinations"
+          heading="Curated Event Packages & Combinations"
+          description="The right combination of mobile coffee, live dessert, and seating rentals is tailored around your event, setting, and guest experience across Toronto and the GTA."
+          combinations={experienceHubCombinations}
+          cardTitlesAsHeadings
+        />
         <ExperiencesEventTypes />
         <ExperiencesGalleryPreview />
         <EventPlanningPathway id="planning-journey" showDescription={false} />

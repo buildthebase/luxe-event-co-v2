@@ -36,12 +36,23 @@ export default function EventsPage() {
       <main className="events-page">
         <JsonLd data={eventsSchema} />
         <PageSectionNavigation items={eventsSectionNavigation} />
-        <EventsHero titleLines={["Event experiences,", "shaped by the occasion."]} />
+        <EventsHero
+          titleLines={["Toronto event experiences,", "tailored for every occasion."]}
+        />
         <EventsApproach />
         <EventsDirectory />
-        <CombinedExperienceFeature id="combinations" />
+        <CombinedExperienceFeature
+          id="combinations"
+          heading="Combine coffee, dessert, and event rentals."
+          description="Elevate your event by pairing services. We seamlessly blend mobile espresso bars, live dessert carts, and seating rentals to match your venue, timeline, and guest flow."
+          cardTitlesAsHeadings
+        />
         <EventsGalleryPreview />
-        <EventPlanningPathway id="planning-journey" showDescription={false} />
+        <EventPlanningPathway
+          id="planning-journey"
+          heading="How event planning with Luxe works"
+          showDescription={false}
+        />
         <ContextualInquiryPanel id="event-planning" contextKey="events" />
       </main>
     </SiteShell>

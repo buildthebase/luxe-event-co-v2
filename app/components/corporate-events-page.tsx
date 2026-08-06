@@ -2,6 +2,7 @@ import Link from "next/link";
 import {
   corporateBrandingOptions,
   corporateEventApplications,
+  corporateExperienceRoles,
   corporateFaqs,
   corporateGalleryPreviews,
   corporatePlanningSteps,
@@ -9,6 +10,7 @@ import {
 } from "../events/corporate-events-content";
 import { pageMetadata } from "../metadata-config";
 import { createServicePageSchema } from "../schema-builders";
+import { signatureExperiences } from "../signature-elements";
 import { FaqAccordion } from "./faq-accordion";
 import { JsonLd } from "./json-ld";
 import { QuoteModalTrigger } from "./quote-modal-trigger";
@@ -29,21 +31,31 @@ const corporateSchema = createServicePageSchema({
   pageName: pageMetadata[corporatePath].title,
   pageDescription:
     "Plan coffee, matcha, live dessert, and rental support for corporate events across Toronto and the GTA.",
+  faqs: corporateFaqs,
 });
+
+const corporateExperiences = corporateExperienceRoles.map((role, index) => ({
+  ...signatureExperiences[index],
+  label: role.label,
+  name: role.name,
+  tagline: role.statement,
+  description: role.description,
+}));
 
 function CorporateHero() {
   return (
     <header className="corporate-hero">
       <div className="corporate-hero-copy">
         <p className="foundation-eyebrow">Corporate Events / Toronto &amp; the GTA</p>
-        <h1 aria-label="Corporate coffee and event experiences, ready for business.">
-          <span>Corporate coffee</span>
+        <h1 aria-label="Corporate coffee catering and event experiences, ready for business.">
+          <span>Corporate coffee catering</span>
           <span>and event experiences,</span>
           <span>ready for business.</span>
         </h1>
         <p>
-          Polished coffee, matcha, live dessert, and event support for teams,
-          clients, conferences, workplaces, institutions, and brand environments.
+          Polished mobile coffee bars, matcha stations, live desserts, and seating
+          rentals tailored for corporate conferences, workplace activations,
+          client appreciation events, and trade shows.
         </p>
         <div className="corporate-hero-actions">
           <QuoteModalTrigger data-event-name="inquiry_start">
@@ -95,22 +107,22 @@ function CorporateOverview() {
     <section className="corporate-overview" aria-labelledby="corporate-overview-title">
       <div>
         <h2 id="corporate-overview-title">
-          Corporate hospitality planned around the event.
+          Corporate hospitality across Toronto and the GTA, planned around the event.
         </h2>
       </div>
       <div>
         <p>
-          Luxe Event Co. coordinates <Link href="/experiences/coffee-bar">Luxe Coffee Bar</Link>,{" "}
-          <Link href="/experiences/sweet-cart">Luxe Sweet Cart</Link>, and{" "}
-          <Link href="/experiences/seating-rentals">Luxe Seating Rentals</Link>{" "}
-          for professional events where guest-facing service must work with the
-          schedule, venue, audience, and brand.
+          Luxe Event Co. coordinates{" "}
+          <Link href="/experiences/coffee-bar">high-volume coffee bars</Link>,{" "}
+          <Link href="/experiences/sweet-cart">dessert stations</Link>, and{" "}
+          <Link href="/experiences/seating-rentals">event seating</Link> for
+          corporate functions where on-time service, brand presentation, and
+          smooth guest flow are critical.
         </p>
         <p>
-          Each experience can be booked independently or combined within one
-          coordinated plan. The final scope is shaped around guest count,
-          service duration, staffing, venue access, utilities, setup
-          requirements, and the role each experience needs to play.
+          Book our services individually or package them into a single proposal.
+          We adapt each activation to your itinerary, venue access rules,
+          electrical specifications, and custom branding requirements.
         </p>
       </div>
     </section>
@@ -152,7 +164,7 @@ function CorporateCapabilities() {
       <header>
         <p className="foundation-label">Corporate event types</p>
         <h2 id="corporate-capabilities-title">
-          Corporate event services for different business settings.
+          Corporate event services for every business setting
         </h2>
       </header>
       <div className="corporate-capability-groups">
@@ -187,9 +199,16 @@ function CorporateCapabilities() {
 function CorporateExperiences() {
   return (
     <ExperienceSelector
+      experiences={corporateExperiences}
       id="corporate-experiences"
-      heading="Choose one corporate event service or coordinate all three."
+      heading={
+        <>
+          <span>Choose one corporate event service</span>
+          <span>or coordinate all three.</span>
+        </>
+      }
       showDescription={false}
+      useItemHeadings
     />
   );
 }
@@ -226,13 +245,15 @@ function CorporateBranding() {
       <header>
         <div>
           <p className="foundation-label">Branding and customization</p>
-          <h2 id="corporate-branding-title">Bring your brand into the guest experience.</h2>
+          <h2 id="corporate-branding-title">
+            <span>Seamless custom branding</span>
+            <span>for corporate activations</span>
+          </h2>
+          <p className="corporate-branding-intro">
+            Incorporate corporate logos, campaign messaging, custom cup prints,
+            signage, and brand colors across every touchpoint.
+          </p>
         </div>
-        <p>
-          Approved logos, campaign language, menu selections, cups, signage,
-          and presentation details can be incorporated according to the event
-          scope, lead time, and production requirements.
-        </p>
       </header>
       <div className="corporate-branding-composition">
         {brandingPanel(brandedCups, true)}
@@ -254,11 +275,12 @@ function CorporateScale() {
       <header>
         <p className="foundation-label">Scale and recurring service</p>
         <h2 id="corporate-scale-title">
-          Built for single events, multi-day programs, and larger guest counts.
+          Scale planning for single events and complex corporate programs.
         </h2>
         <p>
-          From one-day activations to ongoing programs, service is planned around
-          the scale, schedule, and operating requirements of the event.
+          From single-day activations to multi-day conferences and recurring
+          corporate programs, we scale our operations around your itinerary,
+          staffing needs, and venue guidelines.
         </p>
       </header>
       <div>
@@ -333,12 +355,12 @@ function CorporatePlanning() {
         <div>
           <p className="foundation-label">Planning process</p>
           <h2 id="corporate-planning-title">
-            From event brief to service day.
+            From event brief to service day
           </h2>
         </div>
         <p>
-          A coordinated process keeps the service, branding, venue requirements,
-          and event-day handoff aligned.
+          Our streamlined 5-step process ensures clear vendor communication,
+          custom branding alignment, and flawless execution on site.
         </p>
       </header>
       <ol>

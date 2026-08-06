@@ -102,8 +102,14 @@ export const searchIntents: SearchIntent[] = [
   {
     path: "/gallery",
     page: "Gallery",
-    primary: "Luxe Event Co. event gallery",
-    supporting: ["Coffee", "Dessert", "Weddings", "Corporate", "Rentals"],
+    primary: "Toronto event gallery",
+    supporting: [
+      "Mobile coffee bar",
+      "Live dessert cart",
+      "Weddings",
+      "Corporate events",
+      "Event rentals",
+    ],
     status: "strategic-draft",
   },
   {
@@ -114,10 +120,10 @@ export const searchIntents: SearchIntent[] = [
     status: "strategic-draft",
   },
   {
-    path: "/inquire",
-    page: "Inquire",
-    primary: "Event experience inquiry",
-    supporting: ["Coffee inquiry", "Dessert inquiry", "Rental inquiry"],
+    path: "/contact",
+    page: "Contact",
+    primary: "Contact Luxe Event Co.",
+    supporting: ["Toronto event inquiry", "Coffee bar inquiry", "Dessert cart inquiry", "Event rental inquiry"],
     status: "strategic-draft",
   },
 ];

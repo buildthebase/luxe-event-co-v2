@@ -31,14 +31,16 @@ export function ExperienceSelector({
   description = "Each experience has its own atmosphere and purpose. Together, they create one cohesive event language.",
   id,
   showDescription = true,
+  useItemHeadings = false,
   variant = "default",
 }: {
   experiences?: readonly SignatureExperience[];
   footer?: ReactNode;
-  heading?: string;
+  heading?: ReactNode;
   description?: string;
   id?: string;
   showDescription?: boolean;
+  useItemHeadings?: boolean;
   variant?: "default" | "dark" | "taupe" | "bridal" | "birthday";
 } = {}) {
   return (
@@ -53,7 +55,12 @@ export function ExperienceSelector({
       id={id}
       aria-labelledby="signature-selector-title"
     >
-      <header className="signature-section-heading">
+      <header
+        className={[
+          "signature-section-heading",
+          showDescription ? "" : "signature-section-heading-standalone",
+        ].filter(Boolean).join(" ")}
+      >
         <h2 id="signature-selector-title">{heading}</h2>
         {showDescription ? (
           <p>{description}</p>
@@ -75,9 +82,13 @@ export function ExperienceSelector({
                 fill
               />
             </span>
-            <span className="signature-selector-copy">
+            <div className="signature-selector-copy">
               <span className="signature-selector-label">{experience.label}</span>
-              <strong>{experience.name}</strong>
+              {useItemHeadings ? (
+                <h3 className="signature-selector-heading">{experience.name}</h3>
+              ) : (
+                <strong className="signature-selector-heading">{experience.name}</strong>
+              )}
               {experience.tagline ? (
                 <em className="signature-selector-tagline">{experience.tagline}</em>
               ) : null}
@@ -85,7 +96,7 @@ export function ExperienceSelector({
               <b aria-hidden="true">
                 {experienceSelectorActions[experience.id] ?? "Explore"} ↗︎
               </b>
-            </span>
+            </div>
           </Link>
         ))}
       </div>
@@ -176,11 +187,13 @@ export function CombinedExperienceFeature({
   combinations = combinedExperiences,
   heading = "More than one way to shape the room.",
   description = "The right combination of coffee, dessert, and seating is shaped around the occasion, the setting, and the way guests will experience it.",
+  cardTitlesAsHeadings = false,
 }: {
   id?: string;
   combinations?: readonly CombinedExperience[];
   heading?: string;
   description?: string;
+  cardTitlesAsHeadings?: boolean;
 } = {}) {
   return (
     <section id={id} className="signature-combinations" aria-labelledby="signature-combinations-title">
@@ -191,11 +204,17 @@ export function CombinedExperienceFeature({
       <div className="signature-combinations-list">
         {combinations.map((combination) => (
           <Link href={combination.href} key={combination.id}>
-            <span className="signature-combination-main">
+            <div className="signature-combination-main">
               <small>{combination.occasion}</small>
-              <strong>{combination.title}</strong>
+              {cardTitlesAsHeadings ? (
+                <h3>
+                  <strong>{combination.title}</strong>
+                </h3>
+              ) : (
+                <strong>{combination.title}</strong>
+              )}
               <span>{combination.description}</span>
-            </span>
+            </div>
             <span className="signature-combination-orbit" aria-hidden="true">
               {combination.experienceIds.map((experienceId) => (
                 <i className={`signature-node-${experienceId}`} key={experienceId} />

@@ -139,7 +139,7 @@ export const priorityPageIntentReview: readonly ContentOwnershipRecord[] = [
     competingIntentReview: "clear",
   },
   {
-    path: "/inquire",
+    path: "/contact",
     primaryIntent: "Prepare and submit a qualified event inquiry.",
     owns: ["Inquiry inputs", "Proposal handoff", "Public contact paths"],
     supports: ["Links to unresolved policies", "Links to service and event selection"],

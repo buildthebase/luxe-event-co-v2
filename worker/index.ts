@@ -91,7 +91,7 @@ function internalServerErrorResponse(): Response {
       <p>500 / Page temporarily unavailable</p>
       <h1>This page could not be loaded just now.</h1>
       <p>Please try again shortly, return to Luxe Event Co., or contact us about your event.</p>
-      <p><a href="/">Return Home</a> <a href="/inquire">Contact Luxe</a></p>
+      <p><a href="/">Return Home</a> <a href="/contact">Contact Luxe</a></p>
     </main>
   </body>
 </html>`,

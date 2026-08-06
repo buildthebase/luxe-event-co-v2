@@ -3,25 +3,25 @@ export const activationBrandTouchpoints = [
     number: "01",
     title: "Branded cups and vessels",
     description:
-      "Approved logos, campaign marks, names, or event language can be carried through selected cups and guest-facing service items.",
+      "Feature campaign logos, brand marks, and event slogans across custom printed espresso cups, cold drink vessels, and sleeves.",
   },
   {
     number: "02",
     title: "Menus, signage, and drink names",
     description:
-      "Menu displays, service signage, beverage names, and campaign wording can reinforce the message while remaining clear and functional.",
+      "Tailor beverage titles and acrylic menu signage to reflect campaign themes while keeping ordering seamless and functional.",
   },
   {
     number: "03",
     title: "Colour and visual alignment",
     description:
-      "Approved colour references can inform menus, signage, presentation, and selected styling elements without compromising contrast, legibility, or service requirements.",
+      "Match brand hex codes across signage, napkins, display accents, and florals without sacrificing menu contrast or service speed.",
   },
   {
     number: "04",
     title: "Cart branding and presentation",
     description:
-      "Coffee Bar and Sweet Cart presentation can be visually aligned with the campaign through approved cart treatments, signage, florals, and styling details.",
+      "Transform mobile carts into focal points using custom vinyl cart wraps, branded decals, custom floral arrangements, and styled barista attire.",
   },
 ] as const;
 
@@ -30,64 +30,64 @@ export const activationContexts = [
     number: "01",
     title: "Product launches",
     description:
-      "Create a guest-facing hospitality experience that supports the product story, launch schedule, and invited audience.",
+      "Create an engaging hospitality focal point that aligns with your product narrative, launch timeline, and VIP guest list.",
   },
   {
     number: "02",
     title: "Retail activations",
     description:
-      "Bring branded coffee, matcha, or live dessert into stores, shopping environments, pop-ups, and retail programming.",
+      "Integrate branded espresso bars, iced matchas, or live sweet carts directly into storefronts, pop-ups, and shopping environments to boost foot traffic.",
   },
   {
     number: "03",
     title: "Grand openings",
     description:
-      "Mark an opening with a service experience designed for customers, partners, media, internal teams, and invited guests.",
+      "Celebrate new location launches with memorable beverage and dessert catering designed for media, influencers, key partners, and early customers.",
   },
   {
     number: "04",
     title: "Trade shows",
     description:
-      "Use mobile coffee or dessert service to create a natural reason for attendees to pause, engage, and return to the booth or activation space.",
+      "Drive continuous booth traffic and extend attendee dwell time with high-volume mobile espresso service and interactive dessert stations.",
   },
   {
     number: "05",
     title: "Conferences",
     description:
-      "Coordinate service around arrivals, programmed breaks, networking periods, sponsor moments, and sustained event traffic.",
+      "Keep attendees energized throughout keynote arrivals, break periods, and networking sessions with scalable, high-speed barista service.",
   },
   {
     number: "06",
     title: "Campaign events",
     description:
-      "Translate campaign language and visual direction into a tangible guest interaction for customers, creators, media, partners, or community audiences.",
+      "Bring digital and visual campaign elements to life through custom branded cups, tailored menu names, and branded cart wraps built for social sharing.",
   },
 ] as const;
 
 export const activationServiceMedia = [
   {
     number: "01",
-    name: "Coffee and matcha",
+    name: "Coffee and Matcha",
     href: "/experiences/coffee-bar",
-    statement: "A drink can become the campaign’s most held object.",
+    statement: "Branded coffee and matcha service guests can hold and share.",
     description:
-      "Espresso classics, signature beverages, matcha, seasonal menus, hot and iced service, and premium non-coffee choices can be tailored to the brief.",
+      "Artisanal espresso, ceremonial matcha, seasonal iced drinks, and custom branded cups crafted to encourage guest social sharing and direct engagement.",
   },
   {
     number: "02",
-    name: "Live dessert",
+    name: "Live Dessert",
     href: "/experiences/sweet-cart",
-    statement: "Preparation creates interaction, movement, and a natural focal point.",
+    statement: "Interactive branded dessert service prepared in the moment.",
     description:
-      "Mini Dutch pancakes, Belgian waffles on a stick, mini donuts, and optional soft serve can support branded presentation and guest participation.",
+      "Fresh-made mini Dutch pancakes, Belgian waffles on a stick, mini donuts, and soft serve prepared live to drive guest interaction and foot traffic.",
   },
   {
     number: "03",
-    name: "Rentals and styling",
+    name: "Rentals and Styling",
     href: "/experiences/seating-rentals",
-    statement: "The setting can extend the visual system beyond the service cart.",
+    statement: "Activation rentals and event styling that extend the visual system.",
     description:
-      "Chairs, tables, cocktail tables, tents, linens, lighting, and selected styling requirements can be planned around the activation environment.",
+      "Boutique seating, high-top cocktail tables, custom linens, and curated decor designed to extend your brand identity across the entire venue space.",
   },
 ] as const;
 
@@ -96,19 +96,19 @@ export const activationScaleCapabilities = [
     number: "01",
     title: "Multiple branded setups",
     description:
-      "Up to three Coffee Bar setups and three Sweet Cart setups may operate simultaneously, subject to date availability, staffing, equipment, venue access, travel, and the confirmed service plan.",
+      "Deploy up to three Coffee Bars and three Sweet Carts simultaneously across your venue space, subject to scheduling, staffing, and venue requirements.",
   },
   {
     number: "02",
     title: "Multi-day campaigns",
     description:
-      "Coffee and dessert service can be planned across multiple campaign days, with schedules, staffing, replenishment, storage, branding materials, venue requirements, and travel confirmed in advance.",
+      "Sustain multi-day pop-ups seamlessly. We manage daily restocking, overnight equipment storage, staffing schedules, and fresh ingredient replenishment.",
   },
   {
     number: "03",
     title: "Multiple-location campaigns",
     description:
-      "Campaigns involving more than one location can be reviewed according to the dates, markets, staffing, equipment, production requirements, travel, and handoffs involved.",
+      "Activate across multiple GTA venues or regional markets with synchronized logistics, brand consistency, and dedicated field production management.",
   },
 ] as const;
 
@@ -138,7 +138,7 @@ export const activationPlanningRequirements = [
     number: "01",
     title: "Share the campaign brief",
     description:
-      "Provide the campaign objective, audience, event format, desired guest interaction, service role, and non-negotiable brand requirements.",
+      "Outline your campaign goals, target audience, event layout, expected guest throughput, and key brand guidelines.",
   },
   {
     number: "02",
@@ -150,19 +150,19 @@ export const activationPlanningRequirements = [
     number: "03",
     title: "Confirm event operations",
     description:
-      "Provide the dates, locations, venue contacts, guest estimates, schedules, access windows, indoor or outdoor conditions, and known utility or footprint requirements.",
+      "Finalize activation dates, venue contact details, load-in timing, electrical access, and spatial footprints.",
   },
   {
     number: "04",
     title: "Approve the creative details",
     description:
-      "Confirm menus, cups, signage, beverage names, cart treatment, presentation details, and any content-capture requirements.",
+      "Review and sign off on print proofs for custom cups, menu signage, cart wraps, and beverage styling.",
   },
   {
     number: "05",
     title: "Allow for production lead time",
     description:
-      "Custom production timelines depend on the scope, approvals, quantities, vendors, service format, and event date. Earlier inquiries provide more flexibility.",
+      "Provide sufficient notice for custom branding production, specialty sourcing, and material fabrication prior to launch day.",
   },
 ] as const;
 

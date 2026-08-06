@@ -54,5 +54,5 @@ export const hierarchyPrimaryCtas = {
   "/events/private-events": "Discuss Your Event",
   "/gallery": "Start Planning Your Event",
   "/faq": "Ask About Your Event",
-  "/inquire": "Begin Your Inquiry",
+  "/contact": "Contact Luxe Event Co.",
 } as const;

@@ -163,9 +163,9 @@ const blueprintDesigns: Phase2PageBlueprint[] = [
     dependencies: ["Final pricing basis and minimums", "Final power, water, weather, outdoor, staffing, travel, delivery, retainer, and payment policies"],
   },
   {
-    path: "/inquire",
+    path: "/contact",
     archetype: "contact",
-    hierarchy: ["Inquiry hero", "What visitors can inquire about", "Information to prepare", "Service-area and minimum guidance", "What happens next", "Third-party handoff", "Phone and email", "FAQ and privacy context"],
+    hierarchy: ["Contact hero", "What visitors can request", "Information to prepare", "Service-area and minimum guidance", "What happens next", "Contact handoff", "Phone and email", "FAQ and privacy context"],
     surfaceSequence: ["canvas", "narrative", "emphasis", "canvas"],
     desktopComposition: "A preparation-led editorial flow keeps the third-party handoff distinct from the website's responsibilities.",
     mobileComposition: "Preparation details, fallback contacts, and the handoff remain visible in one logical focus order.",
@@ -191,6 +191,5 @@ export const criticalTemplateDesigns = [
   { template: "Event detail", routes: ["/events/weddings", "/events/corporate-events", "/events/brand-activations", "/events/baby-showers", "/events/bridal-showers", "/events/birthdays", "/events/private-events"], desktop: "occasion-specific application story", mobile: "occasion-led planning sequence" },
   { template: "Gallery", routes: ["/gallery"], desktop: "filtered visual evidence groups", mobile: "touch filter rail and full-width stories" },
   { template: "FAQ", routes: ["/faq"], desktop: "category-led disclosures", mobile: "full-width native disclosures" },
-  { template: "Contact", routes: ["/inquire"], desktop: "qualification and handoff", mobile: "single logical preparation flow" },
+  { template: "Contact", routes: ["/contact"], desktop: "qualification and handoff", mobile: "single logical preparation flow" },
 ] as const;
-

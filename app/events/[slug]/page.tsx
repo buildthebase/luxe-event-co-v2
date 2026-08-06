@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { BabyShowersPage } from "../../components/baby-showers-page";
 import { BrandActivationsPage } from "../../components/brand-activations-page";
 import { BridalShowersPage } from "../../components/bridal-showers-page";
@@ -21,6 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function EventPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  if (slug === "wedding") permanentRedirect("/events/weddings");
   if (!getEventType(slug)) notFound();
   if (slug === "weddings") return <WeddingsPage />;
   if (slug === "corporate-events") return <CorporateEventsPage />;

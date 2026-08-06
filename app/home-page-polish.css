@@ -1,0 +1,105 @@
+/* Homepage hierarchy and vertical-rhythm refinements. */
+.home-page {
+  --home-compact-section-space: clamp(3rem, 5vw, 5rem);
+  --home-compact-content-gap: clamp(2rem, 3vw, 3rem);
+}
+
+/* Keep the cinematic hero expressive without letting the H1 dominate it. */
+.foundation-shell .home-page .home-hero-copy h1,
+.foundation-shell .home-page .home-cinematic-copy h1 {
+  font-size: clamp(3.25rem, 5.6vw, 6rem);
+}
+
+/* Keep the SEO-rich hero heading compact enough to preserve the imagery. */
+.foundation-shell .home-page .home-cinematic-description h2#home-hero-seo-title {
+  font-size: clamp(2.15rem, 2.65vw, 3.15rem) !important;
+}
+
+/* Tighten the parent-brand introduction. */
+.foundation-shell .home-page .home-positioning {
+  padding-block: var(--home-compact-section-space);
+}
+
+/* Give each sentence an intentional line in the unified-experience heading. */
+.foundation-shell .home-page .home-unified h2 > span {
+  display: block;
+}
+
+/* The planning notes should read as regular-weight guidance. */
+.foundation-shell .home-page .home-unified-notes li,
+.foundation-shell .home-page .home-unified-notes li > span {
+  font-weight: 400;
+}
+
+/* Reduce the perceived top and bottom space around these editorial chapters. */
+.foundation-shell .home-page > .signature-combinations {
+  margin-top: var(--home-compact-section-space);
+  padding-block: var(--home-compact-section-space);
+}
+
+.foundation-shell .home-page :is(.home-imagery, .home-working),
+.foundation-shell .home-page .home-imagery + .home-trust,
+.foundation-shell .home-page .home-working + .signature-pathway {
+  margin-top: var(--home-compact-section-space);
+}
+
+.foundation-shell .home-page :is(.home-imagery-grid, .home-working-layout) {
+  margin-top: var(--home-compact-content-gap);
+}
+
+/* Center the event-services heading and keep it on one desktop line. */
+@media (min-width: 961px) {
+  .foundation-shell .home-page .home-trust > header {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 7fr);
+    column-gap: clamp(2rem, 5vw, 5rem);
+  }
+
+  .foundation-shell .home-page .home-trust > header > h2 {
+    width: 100%;
+    max-width: none;
+  }
+
+  .foundation-shell .home-page .home-trust > header > p:last-child {
+    width: 100%;
+    max-width: 64ch;
+    justify-self: start;
+    text-wrap: pretty;
+  }
+
+  .foundation-shell .home-page .home-events .home-section-intro-single {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  .foundation-shell .home-page #home-events-title {
+    box-sizing: border-box;
+    width: auto;
+    min-width: 100%;
+    max-width: 100% !important;
+    margin-inline: auto;
+    text-align: center;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 950px) {
+  .foundation-shell .home-page .home-hero-copy h1,
+  .foundation-shell .home-page .home-cinematic-copy h1 {
+    font-size: clamp(3rem, 7vw, 4.75rem);
+  }
+}
+
+@media (max-width: 700px) {
+  .foundation-shell .home-page .home-hero-copy h1,
+  .foundation-shell .home-page .home-cinematic-copy h1 {
+    font-size: clamp(2.6rem, 12vw, 3.75rem);
+  }
+}
+
+@media (max-width: 430px) {
+  .foundation-shell .home-page .home-hero-copy h1,
+  .foundation-shell .home-page .home-cinematic-copy h1 {
+    font-size: clamp(2.4rem, 12vw, 3.25rem);
+  }
+}
