@@ -11,14 +11,14 @@ type PageMetadataDefinition = {
 
 export const pageMetadata = {
   "/": {
-    title: "Luxury Event Experiences in Toronto | Luxe Event Co.",
+    title: "Luxe Event Co. | Mobile Coffee Bar, Live Desserts & Event Rentals Toronto",
     description:
-      "Discover how Luxe Event Co. combines mobile coffee, live dessert, and refined rentals for weddings, corporate events, and celebrations across Toronto and the GTA.",
+      "Luxe Event Co. provides mobile coffee bars, live dessert experiences, and wedding & event seating rentals across Toronto and the GTA. Elevate your wedding, corporate event, or brand activation.",
   },
   "/experiences": {
-    title: "Coffee, Dessert & Seating Experiences | Luxe Event Co.",
+    title: "Coffee, Dessert & Event Rentals Toronto | Luxe Event Co.",
     description:
-      "Compare Luxe Coffee Bar, Luxe Sweet Cart, and Luxe Seating Rentals, then choose one experience or coordinate all three for an event in Toronto and the GTA.",
+      "Compare mobile coffee bars, live dessert carts, seating and event rentals for weddings, corporate events and celebrations across Toronto and the GTA.",
   },
   "/experiences/coffee-bar": {
     title: "Mobile Coffee Bar in Toronto | Luxe Coffee Bar",

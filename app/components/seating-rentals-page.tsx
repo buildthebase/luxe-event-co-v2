@@ -232,7 +232,6 @@ function IndoorOutdoorApplications() {
         <article>
           <span>Interior</span>
           <h3>Indoor Venue Planning &amp; Site Logistics</h3>
-          <p className="seating-application-subcopy">Work with the room that already exists.</p>
           <p>
             <strong>We want your indoor setup to feel effortless.</strong> That is
             why we check the practical stuff early on, including room measurements,
@@ -244,7 +243,6 @@ function IndoorOutdoorApplications() {
         <article>
           <span>Exterior</span>
           <h3>Outdoor Event Planning &amp; Weather Contingency</h3>
-          <p className="seating-application-subcopy">Build around conditions that can change.</p>
           <p>
             <strong>Planning an outdoor event takes a little extra love.</strong> We
             look at everything! From the surface your chairs sit on to delivery

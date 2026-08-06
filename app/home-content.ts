@@ -21,12 +21,12 @@ export const homeEventImageGroups = [
     id: "personal-gatherings",
     eventSlugs: ["weddings", "private-events"],
     tone: "dessert",
-    label: "Personal celebrations",
-    context: "Weddings and private events shaped around meaningful moments, guest hospitality, and the overall setting.",
+    label: "Weddings & Private Celebrations",
+    context: "Wedding coffee bar service, dessert cart rentals, and event seating shaped around meaningful moments and guest hospitality.",
     image: {
       id: "home-personal-gatherings",
       src: "/images/home/personal-celebrations.webp",
-      alt: "A white coffee cart prepared for a personal celebration beneath greenery",
+      alt: "White Luxe mobile coffee cart prepared beneath greenery for a Toronto wedding or private celebration",
       width: 1220,
       height: 1340,
       sizes:
@@ -39,12 +39,12 @@ export const homeEventImageGroups = [
     id: "professional-gatherings",
     eventSlugs: ["corporate-events", "brand-activations"],
     tone: "coffee",
-    label: "Professional occasions",
-    context: "Corporate events and brand activations designed around presentation and purposeful hospitality.",
+    label: "Corporate Events & Brand Activations",
+    context: "Professional mobile espresso bars, custom-branded beverage cups, and refined event spaces for corporate teams, clients, and brand launches.",
     image: {
       id: "home-professional-gatherings",
       src: "/images/home/professional-occasions.webp",
-      alt: "Guests gathered in a bright reception space with lounge seating and floral tables",
+      alt: "Guests gathered around lounge seating and floral tables at a bright Toronto corporate event reception",
       width: 788,
       height: 874,
       sizes:
@@ -139,7 +139,7 @@ export const homeImageSlots = [
     image: {
       id: "home-occasion-in-context",
       src: "/images/home/work-in-context.webp",
-      alt: "A Luxe coffee bar arranged with branded cups and pastries in an arched room",
+      alt: "Luxe mobile coffee bar with branded cups and pastries arranged in an arched Toronto event space",
       width: 2400,
       height: 1351,
       sizes: "(max-width: 700px) calc(100vw - 40px), 88vw",
@@ -157,7 +157,7 @@ export const homeWorkingImage = {
   image: {
     id: "home-cohesive-service",
     src: "/images/home/working-with-luxe.webp",
-    alt: "A rabbit character presenting a personalized iced drink at a themed event",
+    alt: "Rabbit mascot presenting a personalized iced drink at a themed Toronto brand event",
     width: 768,
     height: 1064,
     sizes:

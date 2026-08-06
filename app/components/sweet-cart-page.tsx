@@ -411,11 +411,8 @@ function SweetCombinations() {
       <header>
         <p className="foundation-label">Within the Luxe family</p>
         <h2 id="sweet-combinations-title">
-          <span className="sweet-combinations-title-desktop">
-            Bring dessert, coffee, and seating together.
-          </span>
-          <span className="sweet-combinations-title-mobile">
-            Bring coffee, dessert,<br />
+          <span className="sweet-combinations-title">
+            Bring coffee, dessert,<br className="sweet-combinations-title-break" />
             and seating together.
           </span>
         </h2>

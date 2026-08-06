@@ -3,6 +3,7 @@ export type ExperienceHubFeature = {
   number: string;
   eyebrow: string;
   name: string;
+  searchDescriptor: string;
   statement: string;
   description: string;
   details: readonly string[];
@@ -18,6 +19,7 @@ export const experienceHubFeatures: readonly ExperienceHubFeature[] = [
     number: "01",
     eyebrow: "Craft and hospitality",
     name: "Luxe Coffee Bar",
+    searchDescriptor: "Mobile Coffee Service for Events",
     statement: "Create a warm arrival",
     description:
       "Luxe Coffee Bar brings professional barista service, handcrafted beverages, and a refined café atmosphere into weddings, corporate gatherings, activations, and private celebrations.",
@@ -37,6 +39,7 @@ export const experienceHubFeatures: readonly ExperienceHubFeature[] = [
     number: "02",
     eyebrow: "Live preparation and presentation",
     name: "Luxe Sweet Cart",
+    searchDescriptor: "Live Dessert Cart Experiences",
     statement: "Build a live guest moment",
     description:
       "Luxe Sweet Cart pairs made-to-order desserts with interactive service and carts designed to become part of the event décor.",
@@ -56,6 +59,7 @@ export const experienceHubFeatures: readonly ExperienceHubFeature[] = [
     number: "03",
     eyebrow: "Structure and atmosphere",
     name: "Luxe Seating Rentals",
+    searchDescriptor: "Event Seating and Rentals",
     statement: "Define the room and its flow",
     description:
       "Luxe Seating Rentals considers how guests arrive, gather, dine, and move through the event, with rental elements selected around the room rather than presented as an inventory catalogue.",

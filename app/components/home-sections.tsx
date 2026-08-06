@@ -112,7 +112,10 @@ export function HomeEventCategories() {
     <section id="event-types" className="home-events" aria-labelledby="home-events-title">
       <header className="home-section-intro home-section-intro-single">
         <div>
-          <h2 id="home-events-title">Different gatherings ask for different details.</h2>
+          <h2 id="home-events-title">
+            <span className="home-events-title-line">Event Catering &amp; Rental Services</span>{" "}
+            <span className="home-events-title-line">for Every Occasion</span>
+          </h2>
         </div>
       </header>
       <div className="home-event-groups">
@@ -156,7 +159,10 @@ export function HomeSelectedImagery() {
     <section id="contextual-imagery" className="home-imagery" aria-labelledby="home-imagery-title">
       <header className="home-section-intro">
         <div>
-          <h2 id="home-imagery-title">The work should be seen in context.</h2>
+          <h2 id="home-imagery-title">
+            <span className="home-imagery-title-line">Mobile Coffee, Live Dessert</span>{" "}
+            <span className="home-imagery-title-line">&amp; Event Rentals in Context.</span>
+          </h2>
         </div>
       </header>
       <div className="home-imagery-grid">

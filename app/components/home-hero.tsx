@@ -293,13 +293,18 @@ export function HomeHero() {
               </span>
             ))}
           </h1>
-          <p
+          <div
             className={`home-cinematic-description${finalState ? " is-visible" : ""}`}
             aria-hidden={finalState ? undefined : "true"}
           >
-            Mobile coffee, live dessert, and event rentals brought together through
-            one thoughtfully composed planning journey.
-          </p>
+            <h2 className="foundation-wide-heading" id="home-hero-seo-title">
+              Mobile Coffee Bar, Live Dessert Carts &amp; Event Rentals in Toronto &amp; the GTA
+            </h2>
+            <p>
+              Mobile coffee, live dessert, and intentional seating rentals brought
+              together through one thoughtfully composed planning journey.
+            </p>
+          </div>
         </div>
 
         <div

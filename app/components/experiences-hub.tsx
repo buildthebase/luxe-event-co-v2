@@ -19,15 +19,16 @@ export function ExperiencesHero({
         <h1 aria-label={titleLines.join(" ")}>
           {titleLines.map((line) => (
             <span aria-hidden="true" key={line}>
-              {line}
+              {line}{" "}
             </span>
           ))}
         </h1>
         <p>
-          Luxe Coffee Bar, Luxe Sweet Cart, and Luxe Seating Rentals are three
-          independent experiences within Luxe Event Co. Each has its own role,
-          atmosphere, and expertise, with the option to bring them together for one
-          event.
+          Luxe Event Co. provides mobile coffee bars, live dessert carts, seating,
+          and event rentals for weddings, corporate events, brand activations, and
+          private celebrations across Toronto and the GTA. Book Luxe Coffee Bar,
+          Luxe Sweet Cart, or Luxe Seating Rentals independently, or coordinate all
+          three through one team.
         </p>
         <div className="experiences-hero-actions">
           <a href="#experience-coffee" data-event-name="experience_select">
@@ -90,6 +91,31 @@ export function ExperiencesBookingClarity() {
           </dd>
         </div>
       </dl>
+      <ul
+        className="experiences-booking-proof"
+        aria-label="Luxe Event Co. operational credentials"
+      >
+        <li>
+          <strong>$5 million{" "}</strong>
+          <span>liability insurance</span>
+        </li>
+        <li>
+          <strong>Up to 500{" "}</strong>
+          <span>coffee-service guests</span>
+        </li>
+        <li>
+          <strong>Up to 400{" "}</strong>
+          <span>dessert-service guests</span>
+        </li>
+        <li>
+          <strong>Three{" "}</strong>
+          <span>simultaneous coffee and dessert setups</span>
+        </li>
+        <li>
+          <strong>Southern Ontario{" "}</strong>
+          <span>select destination events</span>
+        </li>
+      </ul>
       <aside
         className="experiences-booking-shared"
         aria-label="Shared booking and pricing guidance"
@@ -119,8 +145,10 @@ function ExperienceFeature({ feature }: { feature: ExperienceHubFeature }) {
       </div>
       <div className="experiences-feature-copy">
         <p className="foundation-label">{feature.eyebrow}</p>
-        <h2>{feature.statement}</h2>
-        <h3>{feature.name}</h3>
+        <h2>
+          {feature.name}: {feature.searchDescriptor}
+        </h2>
+        <h3>{feature.statement}</h3>
         <p>{feature.description}</p>
         <ul>
           {feature.details.map((detail) => (

@@ -647,8 +647,8 @@
   background: var(--color-luxe-gold);
 }
 
-.sweet-combinations-title-mobile {
-  display: none;
+.sweet-combinations-title-break {
+  display: block;
 }
 
 @media (max-width: 700px) {
@@ -7926,6 +7926,38 @@ a {
   line-height: 1.65;
 }
 
+.experiences-booking-proof {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1px;
+  margin: var(--space-6) 0 0;
+  padding: 1px;
+  list-style: none;
+  background: rgb(255 255 255 / 18%);
+}
+
+.experiences-booking-proof li {
+  display: grid;
+  align-content: start;
+  gap: var(--space-1);
+  min-width: 0;
+  padding: var(--space-4);
+  background: var(--surface-chapter-dark);
+}
+
+.experiences-booking-proof strong {
+  color: var(--color-luxe-gold);
+  font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.experiences-booking-proof span {
+  color: var(--surface-dark-copy-muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
 .experiences-booking-answer p {
   margin: 0;
 }
@@ -8675,6 +8707,14 @@ a {
 
   .experiences-booking-clarity dt {
     min-height: 0;
+  }
+
+  .experiences-booking-proof {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .experiences-booking-proof li:last-child {
+    grid-column: 1 / -1;
   }
 
   .experiences-booking-shared {
@@ -11177,6 +11217,20 @@ a {
     transform 700ms var(--ease-luxe-out);
 }
 
+.home-cinematic-description h2 {
+  margin: 0;
+  color: var(--color-luxe-black);
+  font-size: clamp(1.25rem, 2vw, 1.8rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.home-cinematic-description p {
+  margin: var(--space-2) 0 0;
+}
+
 .home-cinematic-description.is-visible {
   visibility: visible;
   opacity: 1;
@@ -11475,6 +11529,10 @@ a {
     bottom: 10.2rem;
     left: var(--space-4);
     width: auto;
+  }
+
+  .home-cinematic-description h2 {
+    font-size: clamp(1.05rem, 5vw, 1.35rem);
   }
 }
 
@@ -22555,11 +22613,21 @@ max-width: 36ch;
 @media (min-width: 761px) {
 .foundation-shell
   main
-  h2:not(#events-directory-title):not(#sweet-positioning-title):not(#sweet-inclusions-title):not(#coffee-overview-title):not(#seating-overview-title):not(#coffee-events-title):not(#sweet-combinations-title) {
+  h2:not(#events-directory-title):not(#sweet-positioning-title):not(#sweet-inclusions-title):not(#coffee-overview-title):not(#seating-overview-title):not(#coffee-events-title):not(#sweet-combinations-title):not(#home-hero-seo-title) {
     max-width: 18ch !important;
     font-size: clamp(2.75rem, 4vw, 4.75rem) !important;
     line-height: .98 !important;
     letter-spacing: -.055em !important;
+  }
+}
+
+/* Keep the keyword-rich hero subheading compact inside the cinematic overlay. */
+@media (min-width: 761px) {
+  .foundation-shell main h2#home-hero-seo-title {
+    max-width: none !important;
+    font-size: clamp(1.25rem, 2vw, 1.8rem) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.035em !important;
   }
 }
 
@@ -23934,6 +24002,28 @@ transparent 0.7px
   grid-template-columns: minmax(11rem, 0.45fr) minmax(0, 1.1fr) minmax(18rem, 0.75fr);
 }
 
+.sweet-combinations > header {
+  justify-items: center;
+  text-align: center;
+}
+
+.sweet-combinations > header h2 {
+  width: fit-content;
+  max-width: 100%;
+  text-align: center;
+}
+
+.sweet-combinations-title {
+  display: block;
+  white-space: nowrap;
+}
+
+@media (min-width: 961px) {
+  .sweet-combinations > header {
+    grid-template-columns: 1fr;
+  }
+}
+
 .sweet-desserts > header {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -24172,7 +24262,7 @@ color: var(--color-luxe-black);
   align-self: end;
   max-width: 42rem;
   margin: 0;
-  color: var(--surface-dark-copy-muted);
+  color: var(--color-luxe-black);
   font-size: clamp(0.98rem, 1.08vw, 1.1rem);
   line-height: 1.7;
 }
@@ -24705,13 +24795,8 @@ background: color-mix(
     white-space: nowrap;
   }
 
-  .sweet-combinations-title-desktop {
-    display: none;
-  }
-
-  .sweet-combinations-title-mobile {
-    display: block;
-    white-space: nowrap;
+  .sweet-combinations > header h2 {
+    font-size: clamp(2.15rem, 9vw, 3.25rem);
   }
 }
 
@@ -25050,16 +25135,6 @@ transparent 0.7px);
 
 .seating-applications article:last-child {
   background: rgb(215 207 195 / 24%);
-}
-
-.seating-applications .seating-application-subcopy {
-  max-width: 22ch;
-  margin: calc(-1 * var(--space-3)) 0 var(--space-5);
-  color: var(--color-luxe-black);
-  font-size: clamp(1.15rem, 1.7vw, 1.65rem);
-  line-height: 1.1;
-  letter-spacing: -0.035em;
-  text-wrap: balance;
 }
 
 .seating-operation-grid {
@@ -26088,4 +26163,18 @@ transparent 0.7px);
     grid-column: 1 !important;
   }
 
+}
+
+/* Keep the homepage SEO headings on two intentional tablet and desktop lines. */
+@media (min-width: 701px) {
+  .foundation-shell main h2#home-events-title,
+  .foundation-shell main h2#home-imagery-title {
+    max-width: none !important;
+  }
+
+  #home-events-title .home-events-title-line,
+  #home-imagery-title .home-imagery-title-line {
+    display: block;
+    white-space: nowrap;
+  }
 }
