@@ -2,8 +2,10 @@
 
 .bridal-page > .bridal-host-overview {
   position: relative;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.6fr);
+  column-gap: 8%;
+  align-items: start;
   width: min(calc(100% - (2 * var(--space-page-inline))), var(--layout-max));
   margin-inline: auto;
   padding-block: clamp(5.5rem, 9vw, 9rem);
@@ -11,7 +13,6 @@
   box-shadow: 0 0 0 100vmax var(--surface-chapter-taupe);
   clip-path: inset(0 -100vmax);
   isolation: isolate;
-  gap: 0;
   overflow: visible;
 }
 
@@ -33,33 +34,39 @@
 
 .bridal-page > .bridal-host-overview > h2 {
   max-width: 15ch !important;
-  margin: 0 auto clamp(7.5rem, 10vw, 11rem);
+  margin: 0;
   font-size: var(--type-internal-page-h1);
   font-weight: 400;
   letter-spacing: -0.065em;
   line-height: 0.88;
-  text-align: center;
+  text-align: left;
   text-wrap: balance;
 }
 
 .bridal-page .bridal-host-overview-notes {
+  grid-column: 2;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 0;
-  border-top: 1px solid var(--bridal-rule);
-  border-bottom: 1px solid var(--bridal-rule);
   align-self: stretch;
-  padding-top: 0;
 }
 
 .bridal-host-overview-notes article {
   width: auto;
-  padding: clamp(2rem, 4vw, 4rem);
+  padding-block: clamp(1.5rem, 2.5vw, 2.5rem);
+}
+
+.bridal-host-overview-notes article:first-child {
+  padding-top: 0;
+}
+
+.bridal-host-overview-notes article:last-child {
+  padding-bottom: 0;
 }
 
 .bridal-host-overview-notes article + article {
-  border-left: 1px solid var(--bridal-rule);
+  border-top: 1px solid var(--bridal-rule);
 }
 
 .bridal-host-overview-notes h3 {
@@ -69,7 +76,7 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   line-height: 1.35;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .bridal-page > .bridal-host-overview .bridal-host-overview-notes p {
@@ -490,7 +497,12 @@
 
 @media (max-width: 840px) {
   .bridal-page > .bridal-host-overview {
-    display: flex;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: clamp(3rem, 6vw, 5rem);
+  }
+
+  .bridal-page > .bridal-host-overview .bridal-host-overview-notes {
+    grid-column: 1;
   }
 
   .bridal-host-overview-notes article,

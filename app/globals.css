@@ -19581,7 +19581,7 @@ max-width: 36ch;
   overflow: hidden;
 }
 
-.birthday-page > :where(.birthday-hero, .birthday-overview, .birthday-contexts, .birthday-experiences, .birthday-personalization, .birthday-combinations, .birthday-gallery, .birthday-faq, .signature-inquiry) {
+.birthday-page > :where(.birthday-hero, .birthday-overview, .birthday-contexts, .signature-selector, .birthday-personalization, .birthday-combinations, .birthday-gallery, .birthday-planning, .birthday-faq, .signature-inquiry) {
   width: min(calc(100% - (2 * var(--space-page-inline))), var(--layout-max));
   margin-inline: auto;
 }
@@ -19709,7 +19709,7 @@ max-width: 36ch;
 .birthday-hero-proof dt { font-size: clamp(1rem, 1.4vw, 1.3rem); font-weight: 600; }
 .birthday-hero-proof dd { margin: 0; color: var(--color-text-secondary); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
 
-.birthday-overview, .birthday-contexts, .birthday-experiences, .birthday-personalization, .birthday-combinations, .birthday-gallery, .birthday-faq {
+.birthday-overview, .birthday-contexts, .birthday-personalization, .birthday-combinations, .birthday-gallery, .birthday-planning, .birthday-faq {
   padding-block: clamp(5.5rem, 10vw, 10rem);
 }
 
@@ -19721,7 +19721,7 @@ max-width: 36ch;
   border-top: 1px solid var(--birthday-rule);
 }
 
-.birthday-overview h2, .birthday-contexts h2, .birthday-experiences h2, .birthday-personalization h2, .birthday-combinations h2, .birthday-gallery h2, .birthday-faq h2 {
+.birthday-overview h2, .birthday-contexts h2, .birthday-personalization h2, .birthday-combinations h2, .birthday-gallery h2, .birthday-planning h2, .birthday-faq h2 {
   max-width: 15ch;
   margin: 0;
   font-size: var(--type-internal-page-h1);
@@ -19762,24 +19762,9 @@ max-width: 36ch;
 }
 
 .birthday-contexts li + li { border-left: 1px solid rgba(248,246,242,.25); }
-.birthday-contexts li > span, .birthday-experiences article > span, .birthday-personalization article > span, .birthday-combinations article > span { color: var(--color-luxe-gold-ink); font-size: .75rem; font-weight: 700; letter-spacing: .15em; }
-.birthday-contexts li > p:first-of-type { margin: var(--space-7) 0 var(--space-4); font-size: .76rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-.birthday-contexts h3 { margin: 0 0 var(--space-5); font-size: clamp(2rem, 3vw, 3.2rem); font-weight: 400; letter-spacing: -.055em; line-height: .98; }
+.birthday-contexts li > span, .birthday-personalization article > span, .birthday-combinations article > span { color: var(--color-luxe-gold-ink); font-size: .75rem; font-weight: 700; letter-spacing: .15em; }
+.birthday-contexts h3 { margin: var(--space-7) 0 var(--space-5); font-size: clamp(2rem, 3vw, 3.2rem); font-weight: 400; letter-spacing: -.055em; line-height: .98; }
 .birthday-contexts li > p:last-child { color: rgba(248,246,242,.68); line-height: 1.55; }
-
-.birthday-experiences > div {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin-top: clamp(3rem, 7vw, 6rem);
-  border-block: 1px solid var(--birthday-rule);
-}
-
-.birthday-experiences article { min-height: 33rem; padding: var(--space-6); }
-.birthday-experiences article + article { border-left: 1px solid var(--birthday-rule); }
-.birthday-experiences h3, .birthday-personalization h3 { margin: var(--space-7) 0 var(--space-4); font-size: clamp(1.8rem, 2.8vw, 3rem); font-weight: 500; letter-spacing: -.05em; line-height: 1; }
-.birthday-experiences article > p { color: var(--color-text-secondary); line-height: 1.55; }
-.birthday-experiences small { display: block; margin-top: var(--space-4); color: var(--color-text-secondary); line-height: 1.5; }
-.birthday-experiences article > a { display: inline-flex; gap: var(--space-3); margin-top: var(--space-5); border-bottom: 1px solid currentColor; padding-bottom: .3rem; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 
 .birthday-personalization {
   width: 100%;
@@ -19789,6 +19774,7 @@ max-width: 36ch;
 }
 
 .birthday-personalization > header, .birthday-personalization > div { width: min(100%, var(--layout-max)); margin-inline: auto; }
+.birthday-personalization > header > p { max-width: 54ch; margin: var(--space-5) 0 0; color: var(--color-text-secondary); }
 .birthday-personalization > div { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: clamp(3rem, 7vw, 6rem); border-block: 1px solid var(--birthday-rule); }
 .birthday-personalization article { min-height: 23rem; padding: var(--space-6); }
 .birthday-personalization article + article { border-left: 1px solid var(--birthday-rule); }
@@ -19835,7 +19821,42 @@ max-width: 36ch;
 .birthday-gallery figcaption small { color: rgba(248,246,242,.62); }
 .birthday-gallery > a, .birthday-faq > a { display: flex; justify-content: space-between; margin-top: var(--space-7); border-bottom: 1px solid currentColor; padding-bottom: var(--space-3); font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 
-.birthday-faq { border-top: 1px solid var(--birthday-rule); }
+.birthday-planning ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: clamp(3rem, 6vw, 6rem) 0 0;
+  padding: 0;
+  border-block: 1px solid var(--birthday-rule);
+  list-style: none;
+}
+
+.birthday-planning li {
+  padding: clamp(2rem, 4vw, 4rem);
+}
+
+.birthday-planning li:nth-child(even) {
+  border-left: 1px solid var(--birthday-rule);
+}
+
+.birthday-planning li:nth-child(n + 3) {
+  border-top: 1px solid var(--birthday-rule);
+}
+
+.birthday-planning h3 {
+  margin: 0 0 var(--space-4);
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -.04em;
+  line-height: 1.08;
+}
+
+.birthday-planning li p {
+  max-width: 48ch;
+  margin: 0;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
 .birthday-faq > div { margin-top: clamp(3rem,7vw,6rem); border-top: 1px solid var(--birthday-rule); }
 .birthday-faq details { border-bottom: 1px solid var(--birthday-rule); }
 .birthday-faq summary { display: grid; grid-template-columns: 3rem 1fr 2rem; gap: var(--space-4); align-items: center; padding-block: var(--space-5); cursor: pointer; font-size: clamp(1.05rem,1.5vw,1.35rem); font-weight: 600; list-style: none; }
@@ -19854,8 +19875,8 @@ max-width: 36ch;
   .birthday-hero, .birthday-overview, .birthday-combinations { grid-template-columns: 1fr; }
   .birthday-hero { min-height: 0; }
   .birthday-hero-art { min-height: 31rem; }
-  .birthday-experiences > div, .birthday-personalization > div, .birthday-gallery > div { grid-template-columns: 1fr; }
-  .birthday-experiences article + article, .birthday-personalization article + article { border-top: 1px solid var(--birthday-rule); border-left: 0; }
+  .birthday-personalization > div, .birthday-gallery > div { grid-template-columns: 1fr; }
+  .birthday-personalization article + article { border-top: 1px solid var(--birthday-rule); border-left: 0; }
   .birthday-gallery > header { grid-template-columns: 1fr; }
 }
 
@@ -19867,13 +19888,16 @@ max-width: 36ch;
   .birthday-hero-art strong { font-size: clamp(7rem,32vw,10rem); }
   .birthday-hero-proof { grid-template-columns: 1fr; }
   .birthday-hero-proof > div + div { border-top: 1px solid var(--birthday-rule); border-left: 0; }
-  .birthday-overview, .birthday-contexts, .birthday-experiences, .birthday-personalization, .birthday-combinations, .birthday-gallery, .birthday-faq { padding-block: var(--space-9); }
-  .birthday-overview h2, .birthday-contexts h2, .birthday-experiences h2, .birthday-personalization h2, .birthday-combinations h2, .birthday-gallery h2, .birthday-faq h2 { font-size: var(--type-internal-page-h1-mobile); }
+  .birthday-overview, .birthday-contexts, .birthday-personalization, .birthday-combinations, .birthday-gallery, .birthday-planning, .birthday-faq { padding-block: var(--space-9); }
+  .birthday-overview h2, .birthday-contexts h2, .birthday-personalization h2, .birthday-combinations h2, .birthday-gallery h2, .birthday-planning h2, .birthday-faq h2 { font-size: var(--type-internal-page-h1-mobile); }
   .birthday-contexts ol { grid-template-columns: 1fr; }
   .birthday-contexts li, .birthday-contexts li:nth-child(3), .birthday-contexts li:nth-child(4) { min-height: 23rem; border-left: 0; }
   .birthday-contexts li + li { border-top: 1px solid rgba(248,246,242,.25); }
   .birthday-combinations article { grid-template-columns: 2.5rem 1fr; }
   .birthday-combinations article > p:first-of-type, .birthday-combinations h3, .birthday-combinations article > p:last-child { grid-column: 2; }
+  .birthday-planning ol { grid-template-columns: 1fr; }
+  .birthday-planning li:nth-child(even) { border-left: 0; }
+  .birthday-planning li:nth-child(n + 2) { border-top: 1px solid var(--birthday-rule); }
   .birthday-faq summary { grid-template-columns: 2.25rem 1fr 1.25rem; gap: var(--space-3); }
   .birthday-faq details > p { margin-left: calc(2.25rem + var(--space-3)); }
 }

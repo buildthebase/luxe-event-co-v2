@@ -1,82 +1,84 @@
+import { imageAssets } from "../image-system";
+import type { SignatureExperience } from "../signature-elements";
+
 export const birthdayContexts = [
   {
     number: "01",
     title: "Milestone birthdays",
-    statement: "Give the year its own atmosphere.",
     description:
-      "Significant birthdays can be shaped around a dinner, reception, open-house format, or full celebration with hospitality and room details planned together.",
+      "Significant birthdays can be planned around dinner, reception-style gatherings, open-house formats, or full celebrations with hospitality and room details shaped around the occasion.",
   },
   {
     number: "02",
     title: "Adult celebrations",
-    statement: "Designed beyond the standard party formula.",
     description:
-      "Coffee, matcha, signature drinks, live dessert, and a composed setting can support cocktail-style gatherings, dinners, lounges, and late-evening celebrations.",
+      "Coffee, matcha, signature drinks, live dessert, seating, and rentals can support daytime gatherings, cocktail-style events, dinners, lounges, and later-evening celebrations.",
   },
   {
     number: "03",
-    title: "Family events",
-    statement: "Something personal for every generation.",
+    title: "Family birthdays",
     description:
-      "A balanced beverage and dessert direction can create clear choices for adults, younger guests, and families gathering around the same milestone.",
+      "Balanced beverage and dessert options can support multigenerational gatherings where adults, younger guests, and families are celebrating together.",
   },
   {
     number: "04",
-    title: "Children’s events",
-    statement: "Playful details, held to the Luxe standard.",
+    title: "Select children’s birthdays",
     description:
-      "Where the event aligns with Luxe’s presentation-led service, non-coffee beverages, live dessert, toppings, signage, and selected rentals can be planned around younger guests without reframing the brand as a children’s-party service.",
+      "For selected children’s celebrations, non-coffee drinks, live dessert, and rentals can be planned around younger guests and accompanying adults.",
   },
 ] as const;
 
-export const birthdayExperienceMenu = [
+export const birthdayExperiences = [
   {
+    id: "coffee",
     number: "01",
-    name: "Coffee and non-coffee menus",
+    label: "Coffee, matcha, and specialty beverages",
+    name: "Luxe Coffee Bar",
+    image: imageAssets.experiences.coffeeBar,
     href: "/experiences/coffee-bar",
     description:
-      "Espresso classics, two signature coffee drinks, matcha, tea, chai, hot chocolate, hot and iced service, milk alternatives, seasonal collections, and event-specific menu possibilities.",
-    note:
-      "The Café Cart or Signature Coffee Bar is selected around the venue, guest count, service duration, and intended role in the celebration.",
+      "Professional baristas prepare espresso classics, signature drinks, matcha, seasonal beverages, and premium non-coffee options for arrivals, conversation, dining, or later service.",
   },
   {
+    id: "dessert",
     number: "02",
-    name: "Live dessert",
+    label: "Live dessert prepared on-site",
+    name: "Luxe Sweet Cart",
+    image: imageAssets.experiences.sweetCart,
     href: "/experiences/sweet-cart",
     description:
-      "Mini Dutch pancakes, Belgian waffles on a stick, or mini donuts prepared on-site with premium sauces, standard toppings, available premium toppings, and optional soft serve.",
-    note:
-      "Final selections, quantities, combinations, staffing, and service format are confirmed in the proposal.",
+      "Mini Dutch pancakes, Belgian waffles on a stick, mini donuts, and optional soft serve create an interactive dessert experience for the guest of honour and their guests.",
   },
   {
+    id: "seating",
     number: "03",
-    name: "Rentals and the room",
+    label: "Seating and event rentals",
+    name: "Luxe Seating Rentals",
+    image: imageAssets.experiences.seatingRentals,
     href: "/experiences/seating-rentals",
     description:
-      "Chairs, tables, cocktail tables, tents, linens, and lighting can support milestone dinners, standing celebrations, family gatherings, and outdoor events.",
-    note:
-      "Inventory, quantities, delivery, setup, teardown, access, and fees require event-specific confirmation.",
+      "Chairs, tables, cocktail tables, tents, linens, and lighting can support dining, standing celebrations, family gatherings, outdoor events, and the flow of the room.",
   },
-] as const;
+] satisfies readonly SignatureExperience[];
 
 export const birthdayPersonalization = [
   {
     number: "01",
-    title: "A menu with personality",
+    title: "Menus and flavours",
     description:
-      "Signature drinks, seasonal beverages, non-coffee choices, dessert selections, sauces, and toppings can respond to the guest of honour and the celebration format.",
+      "Signature drinks, matcha, seasonal beverages, non-coffee choices, dessert selections, sauces, and toppings can be tailored around the guest of honour and celebration.",
   },
   {
     number: "02",
-    title: "Custom signage",
+    title: "Signage and presentation",
     description:
-      "Approved names, milestone years, phrases, colours, menu language, and event details can be planned across signage, cups, menu displays, and cart presentation.",
+      "Names, milestone years, wording, cups, menu displays, cart details, and dessert presentation can carry the selected direction.",
   },
   {
     number: "03",
-    title: "A setting that fits the scale",
+    title: "Seating and room details",
     description:
-      "Seating, tables, cocktail-height moments, tents, linens, lighting, cart placement, and guest flow can be reviewed around the room rather than selected in isolation.",
+      "Seating, cocktail tables, linens, lighting, service placement, and guest flow can be planned around the venue and scale of the celebration.",
   },
 ] as const;
 
@@ -84,16 +86,16 @@ export const birthdayCombinations = [
   {
     number: "01",
     title: "The milestone café",
-    experiences: "Signature Coffee Bar + personalized menu",
+    experiences: "Signature Coffee Bar + beverage service",
     description:
       "A prominent beverage experience can anchor arrivals, dinner, conversation, or a later part of an adult celebration.",
   },
   {
     number: "02",
     title: "The interactive sweet moment",
-    experiences: "Sweet Cart + custom signage",
+    experiences: "Sweet Cart + live dessert service",
     description:
-      "Live preparation, selected toppings, and event-specific presentation create a guest-facing focal point for family or milestone celebrations.",
+      "Live preparation creates a guest-facing focal point for family or milestone celebrations.",
   },
   {
     number: "03",
@@ -105,9 +107,32 @@ export const birthdayCombinations = [
 ] as const;
 
 export const birthdayGallery = [
-  { number: "01", label: "The arrival", note: "Coffee, matcha, menus, and guest hospitality", tone: "arrival" },
-  { number: "02", label: "The centrepiece", note: "Live dessert, signage, toppings, and interaction", tone: "centre" },
-  { number: "03", label: "The room in use", note: "Rental layout, lighting, and celebration atmosphere", tone: "room" },
+  { number: "01", label: "The arrival", note: "Coffee, matcha, menus, and guest hospitality.", tone: "arrival" },
+  { number: "02", label: "The sweet moment", note: "Live dessert, signage, toppings, and guest interaction.", tone: "centre" },
+  { number: "03", label: "The room", note: "Seating, tables, lighting, and celebration atmosphere.", tone: "room" },
+] as const;
+
+export const birthdayPlanning = [
+  {
+    title: "The occasion",
+    description:
+      "Share the date, venue, age or milestone being celebrated, estimated guest count, schedule, and event format.",
+  },
+  {
+    title: "The experiences",
+    description:
+      "Identify whether coffee, matcha, live dessert, seating, rentals, or a coordinated combination should support the celebration.",
+  },
+  {
+    title: "The venue and service needs",
+    description:
+      "Provide available information about access, footprint, power or water, delivery timing, setup, teardown, and venue requirements.",
+  },
+  {
+    title: "The personal direction",
+    description:
+      "Share preferred flavours, colours, wording, milestone details, signage, presentation ideas, or rental selections.",
+  },
 ] as const;
 
 export const birthdayFaqs = [
@@ -119,7 +144,7 @@ export const birthdayFaqs = [
   {
     question: "Does Luxe provide service for children’s birthdays?",
     answer:
-      "Children’s events can be planned where the occasion fits Luxe’s staffed, presentation-led service. Non-coffee beverages, live dessert, toppings, signage, and selected rentals can be planned around the age group, venue, guest count, and host’s expectations.",
+      "Children’s events can be planned where the occasion fits Luxe’s staffed, presentation-led service. Non-coffee beverages, live dessert, and selected rentals can be planned around the age group, venue, guest count, and host’s expectations.",
   },
   {
     question: "Which non-coffee beverages are available?",
@@ -135,15 +160,5 @@ export const birthdayFaqs = [
     question: "Can coffee, dessert, and rentals be combined?",
     answer:
       "Yes. Any one service can be booked independently, and several can be coordinated through one Luxe Event Co. inquiry and proposal journey. Availability, timing, placement, staffing, rental scope, access, and venue requirements must be confirmed.",
-  },
-  {
-    question: "Can birthday signage and menus be customized?",
-    answer:
-      "Yes. Signature drinks, menu displays, custom cups, event signage, milestone wording, cart details, dessert presentation, and other visual elements can be discussed. Final possibilities depend on the approved direction, timing, production requirements, and selected experiences.",
-  },
-  {
-    question: "What information is needed to plan a birthday experience?",
-    answer:
-      "Share the date, venue, guest estimate, age or milestone context, indoor or outdoor setting, schedule, selected experiences, dietary or menu considerations, rental needs, access details, and any signage or personalization direction.",
   },
 ] as const;

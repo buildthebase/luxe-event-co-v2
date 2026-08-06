@@ -229,6 +229,62 @@
   border-color: color-mix(in srgb, var(--color-luxe-black) 18%, transparent);
 }
 
+.signature-selector-birthday {
+  position: relative;
+  isolation: isolate;
+  padding-block: clamp(4rem, 6vw, 6rem);
+  background: var(--color-luxe-ivory);
+  box-shadow: 0 0 0 100vmax var(--color-luxe-ivory);
+  clip-path: inset(0 -100vmax);
+  color: var(--color-luxe-black);
+}
+
+.signature-selector-birthday::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0 -100vmax;
+  background-image: radial-gradient(rgb(23 22 20 / 4.2%) 0.55px, transparent 0.7px);
+  background-size: 4px 4px;
+  content: "";
+  pointer-events: none;
+}
+
+.signature-selector-birthday > * {
+  position: relative;
+  z-index: 1;
+}
+
+.signature-selector-birthday .signature-section-heading h2,
+.signature-selector-birthday .signature-selector-copy strong {
+  color: var(--color-luxe-black);
+}
+
+.signature-selector-birthday .signature-selector-label,
+.signature-selector-birthday .signature-selector-copy b {
+  color: var(--birthday-red);
+}
+
+.signature-selector-birthday .signature-selector-world,
+.signature-selector-birthday .signature-selector-choice {
+  border-color: var(--birthday-rule);
+}
+
+.signature-selector-birthday .signature-selector-line {
+  background: var(--birthday-amber);
+}
+
+.signature-selector-birthday .signature-selector-line::before {
+  border-color: color-mix(in srgb, var(--birthday-red) 45%, transparent);
+}
+
+.signature-selector-birthday .signature-selector-choice:nth-child(2) {
+  background: color-mix(in srgb, var(--birthday-amber) 12%, transparent);
+}
+
+.signature-selector-birthday .signature-selector-choice:nth-child(3) {
+  background: color-mix(in srgb, var(--birthday-blue) 10%, transparent);
+}
+
 /* Preserve each division's surface treatment while sharing the structure. */
 .sweet-page .experience-context,
 .coffee-page .experience-context,

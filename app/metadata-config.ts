@@ -68,7 +68,7 @@ export const pageMetadata = {
   "/events/birthdays": {
     title: "Birthday Dessert & Coffee Experiences | Luxe Event Co.",
     description:
-      "Plan a personalized Toronto or GTA birthday with coffee, non-coffee drinks, live dessert, custom signage, and rentals for milestone or family celebrations.",
+      "Plan a Toronto or GTA birthday with coffee, matcha, live dessert, seating, and event rentals for milestone, adult, family, or selected children’s celebrations.",
   },
   "/events/private-events": {
     title: "Private Event Coffee, Dessert & Rentals | Luxe Event Co.",

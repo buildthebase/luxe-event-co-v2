@@ -39,7 +39,7 @@ export function ExperienceSelector({
   description?: string;
   id?: string;
   showDescription?: boolean;
-  variant?: "default" | "dark" | "taupe" | "bridal";
+  variant?: "default" | "dark" | "taupe" | "bridal" | "birthday";
 } = {}) {
   return (
     <section
@@ -48,6 +48,7 @@ export function ExperienceSelector({
         variant === "dark" ? "signature-selector-dark" : "",
         variant === "taupe" ? "signature-selector-taupe" : "",
         variant === "bridal" ? "signature-selector-bridal" : "",
+        variant === "birthday" ? "signature-selector-birthday" : "",
       ].filter(Boolean).join(" ")}
       id={id}
       aria-labelledby="signature-selector-title"

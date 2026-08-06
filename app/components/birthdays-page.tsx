@@ -2,17 +2,18 @@ import Link from "next/link";
 import {
   birthdayCombinations,
   birthdayContexts,
-  birthdayExperienceMenu,
+  birthdayExperiences,
   birthdayFaqs,
   birthdayGallery,
   birthdayPersonalization,
+  birthdayPlanning,
 } from "../events/birthdays-content";
 import { pageMetadata } from "../metadata-config";
 import { createServicePageSchema } from "../schema-builders";
 import { FaqAccordion } from "./faq-accordion";
 import { JsonLd } from "./json-ld";
 import { QuoteModalTrigger } from "./quote-modal-trigger";
-import { ContextualInquiryPanel } from "./signature-elements";
+import { ContextualInquiryPanel, ExperienceSelector } from "./signature-elements";
 import { SiteShell } from "./site-shell";
 
 const birthdaysPath = "/events/birthdays";
@@ -21,7 +22,7 @@ const birthdaysSchema = createServicePageSchema({
   serviceName: "Birthday coffee, dessert, and rental experiences",
   serviceType: "Birthday coffee bar, dessert cart, and event rental services",
   serviceDescription:
-    "Staffed coffee service, non-coffee beverages, live dessert, signage, and event rentals for birthdays in Toronto and the Greater Toronto Area.",
+    "Staffed coffee service, non-coffee beverages, live dessert, seating, and event rentals for birthdays in Toronto and the Greater Toronto Area.",
   pageName: pageMetadata[birthdaysPath].title,
   pageDescription: pageMetadata[birthdaysPath].description,
 });
@@ -31,20 +32,21 @@ function BirthdayHero() {
     <header className="birthday-hero">
       <div className="birthday-hero-copy">
         <p className="foundation-eyebrow">Birthdays / Toronto &amp; the GTA</p>
-        <h1 aria-label="Birthday dessert and coffee, made for the milestone.">
-          <span>Birthday dessert</span>
-          <span>and coffee, made</span>
-          <span>for the milestone.</span>
+        <h1 aria-label="Birthday coffee, live dessert, and event rentals, planned around the milestone.">
+          <span>Birthday coffee, live</span>
+          <span>dessert, and event</span>
+          <span>rentals, planned</span>
+          <span>around the milestone.</span>
         </h1>
         <p>
-          Personalized drinks, live dessert, custom signage, and a personalized
-          setting for adult, milestone, family, and selected children’s celebrations.
+          Coffee, matcha, live dessert, seating, and event rentals for adult,
+          milestone, family, and selected children’s celebrations.
         </p>
         <div className="birthday-hero-actions">
           <QuoteModalTrigger data-event-name="inquiry_start">
-            Plan a Birthday Experience <span aria-hidden="true">↗︎</span>
+            PLAN A BIRTHDAY EXPERIENCE <span aria-hidden="true">↗︎</span>
           </QuoteModalTrigger>
-          <a href="#birthday-contexts">Explore the Occasion <span aria-hidden="true">↓︎</span></a>
+          <a href="#birthday-contexts">EXPLORE THE OCCASION <span aria-hidden="true">↓︎</span></a>
         </div>
       </div>
       <div className="birthday-hero-art" aria-hidden="true">
@@ -52,8 +54,8 @@ function BirthdayHero() {
         <span>One person.<br />Their point of view.</span>
       </div>
       <dl className="birthday-hero-proof">
-        <div><dt>Milestone-led</dt><dd>Built around the guest of honour</dd></div>
-        <div><dt>One or several</dt><dd>Coffee, dessert, and rentals</dd></div>
+        <div><dt>One inquiry</dt><dd>COFFEE, DESSERT, AND RENTALS</dd></div>
+        <div><dt>Milestone-led</dt><dd>PLANNED AROUND THE GUEST OF HONOUR</dd></div>
         <div><dt>$5 million</dt><dd>Liability insurance</dd></div>
       </dl>
     </header>
@@ -63,15 +65,20 @@ function BirthdayHero() {
 function BirthdayOverview() {
   return (
     <section className="birthday-overview" aria-labelledby="birthday-overview-title">
-      <h2 id="birthday-overview-title">Not a standard party format. A celebration with a point of view.</h2>
+      <h2 id="birthday-overview-title">A birthday planned around the person, not a standard format.</h2>
       <div>
         <p>
-          The birthday can be intimate or expansive, daytime or late evening,
-          centred on a meal, a room in motion, or a guest-facing hospitality moment.
+          Luxe Coffee Bar, Luxe Sweet Cart, and Luxe Seating Rentals can each be
+          booked independently or coordinated within one birthday plan.
         </p>
         <p>
-          Luxe begins with the person, audience, venue, and flow before deciding
-          where coffee, non-coffee drinks, live dessert, signage, or rentals belong.
+          Coffee and matcha can welcome guests, live dessert can create the
+          central moment, and seating and rentals can support dining,
+          conversation, photographs, and movement through the room.
+        </p>
+        <p>
+          The guest of honour, age group, venue, schedule, guest count, and
+          desired atmosphere shape the final plan.
         </p>
       </div>
     </section>
@@ -81,12 +88,11 @@ function BirthdayOverview() {
 function BirthdayContexts() {
   return (
     <section className="birthday-contexts" id="birthday-contexts" aria-labelledby="birthday-contexts-title">
-      <header><h2 id="birthday-contexts-title">Different ages. Different rooms. Different energy.</h2></header>
+      <header><h2 id="birthday-contexts-title">Birthday experiences for different ages and occasions.</h2></header>
       <ol>
         {birthdayContexts.map((context) => (
           <li key={context.number}>
-            <p>{context.title}</p>
-            <h3>{context.statement}</h3>
+            <h3>{context.title}</h3>
             <p>{context.description}</p>
           </li>
         ))}
@@ -97,26 +103,26 @@ function BirthdayContexts() {
 
 function BirthdayExperiences() {
   return (
-    <section className="birthday-experiences" aria-labelledby="birthday-experiences-title">
-      <header><h2 id="birthday-experiences-title">Choose what guests will taste, hold, and gather around.</h2></header>
-      <div>
-        {birthdayExperienceMenu.map((experience) => (
-          <article key={experience.number}>
-            <h3>{experience.name}</h3>
-            <p>{experience.description}</p>
-            <small>{experience.note}</small>
-            <Link href={experience.href}>Explore {experience.name} <span aria-hidden="true">↗︎</span></Link>
-          </article>
-        ))}
-      </div>
-    </section>
+    <ExperienceSelector
+      id="birthday-experiences"
+      experiences={birthdayExperiences}
+      heading="Choose one birthday experience or coordinate all three."
+      showDescription={false}
+      variant="birthday"
+    />
   );
 }
 
 function BirthdayPersonalization() {
   return (
     <section className="birthday-personalization" aria-labelledby="birthday-personalization-title">
-      <header><h2 id="birthday-personalization-title">Make the details recognizable.</h2></header>
+      <header>
+        <h2 id="birthday-personalization-title">Let the milestone shape the details.</h2>
+        <p>
+          Menus, signage, presentation, and room details can reflect the person
+          being celebrated without overwhelming the gathering.
+        </p>
+      </header>
       <div>
         {birthdayPersonalization.map((item) => (
           <article key={item.number}><h3>{item.title}</h3><p>{item.description}</p>
@@ -148,8 +154,8 @@ function BirthdayGallery() {
   return (
     <section className="birthday-gallery" aria-labelledby="birthday-gallery-title">
       <header>
-        <h2 id="birthday-gallery-title">The milestone, seen in context.</h2>
-        <p>Personalized flavours, presentation, and the room around the service give the milestone its own character.</p>
+        <h2 id="birthday-gallery-title">Birthday experiences, seen in context.</h2>
+        <p>Coffee, live dessert, signage, seating, and room details shown within the celebrations they were planned for.</p>
       </header>
       <div data-asset-status="awaiting-approved-birthday-assets">
         {birthdayGallery.map((item) => (
@@ -160,6 +166,24 @@ function BirthdayGallery() {
         ))}
       </div>
       <Link href="/gallery">Explore the Luxe Event Gallery <span aria-hidden="true">↗︎</span></Link>
+    </section>
+  );
+}
+
+function BirthdayPlanning() {
+  return (
+    <section className="birthday-planning" aria-labelledby="birthday-planning-title">
+      <header>
+        <h2 id="birthday-planning-title">What to share when planning a birthday with Luxe.</h2>
+      </header>
+      <ol>
+        {birthdayPlanning.map((item) => (
+          <li key={item.title}>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </li>
+        ))}
+      </ol>
     </section>
   );
 }
@@ -185,6 +209,7 @@ export function BirthdaysPage() {
         <BirthdayPersonalization />
         <BirthdayCombinations />
         <BirthdayGallery />
+        <BirthdayPlanning />
         <BirthdayFaq />
         <ContextualInquiryPanel contextKey="birthdays" showEyebrow={false} />
       </main>
