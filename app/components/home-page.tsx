@@ -29,7 +29,7 @@ import {
 const homeSignatureExperiences: readonly SignatureExperience[] = [
   {
     ...signatureExperiences[0],
-    name: "Luxe Coffee Bar | Mobile Espresso & Specialty Beverage Service",
+    name: "Luxe Coffee Bar: Mobile Espresso & Specialty Beverage Service",
     description:
       "Mobile espresso, matcha, and specialty beverage service for weddings, corporate arrivals, cocktail hours, and late-night hospitality across Toronto.",
     image: {
@@ -39,7 +39,7 @@ const homeSignatureExperiences: readonly SignatureExperience[] = [
   },
   {
     ...signatureExperiences[1],
-    name: "Luxe Sweet Cart | Live Interactive Dessert Station",
+    name: "Luxe Sweet Cart: Live Interactive Dessert Station",
     description:
       "Live dessert preparation and interactive sweet cart experiences designed to create memorable moments for your guests.",
     image: {
@@ -49,7 +49,7 @@ const homeSignatureExperiences: readonly SignatureExperience[] = [
   },
   {
     ...signatureExperiences[2],
-    name: "Luxe Seating Rentals | Wedding & Event Furniture Rentals",
+    name: "Luxe Seating Rentals: Wedding & Event Furniture Rentals",
     description:
       "High-quality chair rentals, dining tables, cocktail tables, event tents, linens, and venue lighting planned around your ceremony, reception, lounge, or outdoor setting.",
     image: {

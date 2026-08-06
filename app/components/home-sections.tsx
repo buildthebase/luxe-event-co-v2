@@ -159,10 +159,7 @@ export function HomeSelectedImagery() {
     <section id="contextual-imagery" className="home-imagery" aria-labelledby="home-imagery-title">
       <header className="home-section-intro">
         <div>
-          <h2 id="home-imagery-title">
-            <span className="home-imagery-title-line">Mobile Coffee, Live Dessert</span>{" "}
-            <span className="home-imagery-title-line">&amp; Event Rentals in Context.</span>
-          </h2>
+          <h2 id="home-imagery-title">See the hype for yourself</h2>
         </div>
       </header>
       <div className="home-imagery-grid">

@@ -8630,7 +8630,7 @@ a {
   }
 
   .experiences-events header h2 {
-    font-size: clamp(2rem, 9vw, 3.25rem) !important;
+    font-size: clamp(1.7rem, 7.5vw, 2.75rem) !important;
   }
 
   .experiences-events header h2 span {
@@ -26167,13 +26167,11 @@ transparent 0.7px);
 
 /* Keep the homepage SEO headings on two intentional tablet and desktop lines. */
 @media (min-width: 701px) {
-  .foundation-shell main h2#home-events-title,
-  .foundation-shell main h2#home-imagery-title {
+  .foundation-shell main h2#home-events-title {
     max-width: none !important;
   }
 
-  #home-events-title .home-events-title-line,
-  #home-imagery-title .home-imagery-title-line {
+  #home-events-title .home-events-title-line {
     display: block;
     white-space: nowrap;
   }
