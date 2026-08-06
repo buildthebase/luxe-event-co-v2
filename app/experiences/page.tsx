@@ -39,7 +39,7 @@ export default function ExperiencesPage() {
         <JsonLd data={experiencesSchema} />
         <PageSectionNavigation items={experiencesSectionNavigation} />
         <ExperiencesHero
-          titleLines={["Coffee, dessert,", "and seating.", "Distinct by design."]}
+          titleLines={["Coffee, dessert,", "and seating."]}
         />
         <ExperiencesBookingClarity />
         <ExperienceFeatures />

@@ -24,6 +24,9 @@ import { SiteShell } from "./site-shell";
 
 const coffeePath = "/experiences/coffee-bar";
 const [coffeePricingAnswer, ...coffeeContextualFaqs] = coffeeFaqs;
+const coffeePricingParagraphs = coffeePricingAnswer.answer.match(/[^.!?]+[.!?]+/g) ?? [
+  coffeePricingAnswer.answer,
+];
 const coffeeInclusionGroups = [
   {
     title: "Service",
@@ -71,9 +74,9 @@ function CoffeeHero() {
     <header className="coffee-hero" id="page-overview">
       <div className="coffee-hero-copy">
         <p className="foundation-eyebrow">Luxe Coffee Bar / Toronto &amp; the GTA</p>
-        <h1 aria-label="A mobile coffee bar, made for the gathering.">
+        <h1 aria-label="A mobile coffee bar, made for your event.">
           <span>A mobile coffee bar,</span>
-          <span>made for the gathering.</span>
+          <span>made for your event.</span>
         </h1>
         <p>
           A complete mobile café experience shaped around the event, with professional
@@ -269,13 +272,17 @@ function CoffeeInclusions() {
           <span>Everything needed for a</span>
           <span>complete coffee service.</span>
         </h2>
-        <p>
-          Each booking brings together the format, menu, equipment, service, and
-          finishing details required to create a polished guest experience. Signature
-          drinks, iced beverages, premium milk alternatives, and non-coffee options
-          are thoughtfully included within the service rather than presented as a
-          series of individual upgrades.
-        </p>
+        <div className="coffee-inclusions-intro">
+          <p>
+            Each booking brings together the format, menu, equipment, service, and
+            finishing details required to create a polished guest experience.
+          </p>
+          <p>
+            Signature drinks, iced beverages, premium milk alternatives, and non-coffee
+            options are thoughtfully included within the service rather than presented
+            as a series of individual upgrades.
+          </p>
+        </div>
       </header>
       <div className="coffee-inclusions-folio">
         <p className="coffee-inclusions-list-label">Included with your booking:</p>
@@ -379,6 +386,13 @@ function CoffeeOperations() {
         label="Cost factors"
         question={coffeePricingAnswer.question}
         answer={coffeePricingAnswer.answer}
+        answerContent={
+          <>
+            {coffeePricingParagraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph.trim()}</p>
+            ))}
+          </>
+        }
         href="/inquire"
         linkLabel="Request a coffee-service proposal"
       />
@@ -399,8 +413,8 @@ function CoffeeEvents() {
     <section className="coffee-events" aria-labelledby="coffee-events-title">
       <header>
         <h2 id="coffee-events-title">
-          <span>Different occasions give the café</span>
-          <span>a different role.</span>
+          <span>Different occasions give</span>
+          <span>the café a different role.</span>
         </h2>
         <p>
           Mobile coffee catering can suit weddings, office and corporate events,

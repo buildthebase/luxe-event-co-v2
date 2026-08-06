@@ -386,6 +386,12 @@
     font-size: clamp(1.75rem, 7.5vw, 2.4rem) !important;
   }
 
+  .seating-page .experience-context.seating-overview .experience-context-lead {
+    width: 100%;
+    max-width: none;
+    text-align: center;
+  }
+
   .experience-context-rule {
     margin-block: var(--space-7) var(--space-6);
   }
@@ -397,6 +403,11 @@
 
   .experience-context-copy > p:nth-child(2),
   .experience-context-copy > p:nth-child(3) {
+    padding-bottom: 0;
+  }
+
+  .seating-page .experience-context.seating-overview .experience-context-copy > p:nth-child(2) {
+    margin-bottom: var(--space-5);
     padding-bottom: 0;
   }
 

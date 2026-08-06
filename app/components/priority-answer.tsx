@@ -1,15 +1,18 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 
 export function PriorityAnswer({
   label,
   question,
   answer,
+  answerContent,
   href,
   linkLabel,
 }: {
   label: string;
   question: string;
   answer: string;
+  answerContent?: ReactNode;
   href: string;
   linkLabel: string;
 }) {
@@ -23,7 +26,7 @@ export function PriorityAnswer({
           <h3>{question}</h3>
         </header>
         <div>
-          <p>{answer}</p>
+          {answerContent ?? <p>{answer}</p>}
           <Link href={href} data-event-name="inquiry_start">
             {linkLabel} <span aria-hidden="true">↗︎</span>
           </Link>

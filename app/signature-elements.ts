@@ -187,7 +187,7 @@ export const inquiryContexts: Record<string, InquiryContext> = {
     eyebrow: "One coordinated point of view",
     heading: "Bring the experiences together.",
     description:
-      "Begin with one service or describe the complete atmosphere. Luxe will help connect the presentation, hospitality, and setting.",
+      "Begin with one service or describe the complete atmosphere. Luxe will take care of the rest.",
     cta: "Plan your Luxe experience",
     href: "/inquire",
   },

@@ -647,6 +647,10 @@
   background: var(--color-luxe-gold);
 }
 
+.sweet-combinations-title-mobile {
+  display: none;
+}
+
 @media (max-width: 700px) {
   [data-page-section-anchor] {
     scroll-margin-top: 6.25rem;
@@ -8352,6 +8356,10 @@ a {
   letter-spacing: -0.05em;
 }
 
+.experiences-events header h2 span {
+  display: inline;
+}
+
 .experiences-event-list {
   border-top: 1px solid color-mix(in srgb, var(--color-luxe-black) 35%, transparent);
 }
@@ -8547,6 +8555,10 @@ a {
     max-width: 17ch;
   }
 
+  .experiences-events header h2 span {
+    display: block;
+  }
+
   .experiences-feature {
     gap: var(--space-7);
   }
@@ -8583,6 +8595,14 @@ a {
   .experiences-hero-copy h1 {
     max-width: none;
     font-size: clamp(1.52rem, 7.65vw, 3rem);
+  }
+
+  .experiences-events header h2 {
+    font-size: clamp(2rem, 9vw, 3.25rem) !important;
+  }
+
+  .experiences-events header h2 span {
+    white-space: nowrap;
   }
 
   .experiences-hero .foundation-eyebrow {
@@ -12519,6 +12539,21 @@ a {
   line-height: 1.7;
 }
 
+.coffee-inclusions > header > .coffee-inclusions-intro {
+  grid-area: auto;
+}
+
+.coffee-inclusions-intro p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: clamp(1rem, 1.15vw, 1.16rem);
+  line-height: 1.7;
+}
+
+.coffee-inclusions-intro p + p {
+  margin-top: var(--space-5);
+}
+
 .coffee-inclusions-list-label {
   margin: 0;
   padding: var(--space-5) var(--coffee-inclusions-inset);
@@ -13342,11 +13377,27 @@ a {
   }
 
   .coffee-hero-proof dd {
-    align-items: center;
+    align-items: flex-start;
+  }
+
+  .coffee-hero-proof dt,
+  .coffee-hero-proof dd strong,
+  .coffee-hero-proof dd span {
+    text-align: left;
+  }
+
+  .coffee-hero-proof dt {
+    font-size: clamp(1.45rem, 6vw, 2rem);
   }
 
   .coffee-hero-proof dd strong {
-    text-align: center;
+    font-size: 0.78rem;
+  }
+
+  .coffee-hero-proof dd span {
+    max-width: none;
+    font-size: 0.96rem;
+    line-height: 1.58;
   }
 
   .coffee-hero-proof > div:last-child {
@@ -13455,6 +13506,10 @@ a {
 
   .coffee-format-copy dl > div {
     grid-template-columns: 1fr;
+  }
+
+  .coffee-format-cafe-cart .coffee-format-copy dl > div:last-child {
+    border-bottom: 0;
   }
 
   .coffee-format-copy dt {
@@ -19572,7 +19627,7 @@ max-width: 36ch;
   .private-faq details > p { margin-left: calc(2.25rem + var(--space-3)); }
 }
 
-/* Birthdays: bold numeric rhythm without reducing the page to children's-party language. */
+/* Birthdays: editorial rhythm without reducing the page to children's-party language. */
 .birthday-page {
   --birthday-amber: #c79d62;
   --birthday-red: #a94d3e;
@@ -19714,14 +19769,31 @@ max-width: 36ch;
 }
 
 .birthday-overview {
+  --birthday-overview-note-padding: clamp(1.5rem, 2.4vw, 2.5rem);
+  position: relative;
+  isolation: isolate;
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(18rem, .75fr);
-  gap: clamp(3rem, 10vw, 11rem);
-  align-items: end;
+  grid-template-columns: minmax(0, 42fr) minmax(0, 50fr);
+  column-gap: 8%;
+  align-items: start;
   border-top: 1px solid var(--birthday-rule);
+  padding-block: clamp(var(--space-8), 6vw, var(--space-9));
+  background: var(--surface-chapter-taupe);
+  box-shadow: 0 0 0 100vmax var(--surface-chapter-taupe);
+  clip-path: inset(0 -100vmax);
 }
 
-.birthday-overview h2, .birthday-contexts h2, .birthday-personalization h2, .birthday-combinations h2, .birthday-gallery h2, .birthday-planning h2, .birthday-faq h2 {
+.birthday-overview::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0 -100vmax;
+  background-image: radial-gradient(rgb(23 22 20 / 5.3%) .55px, transparent .7px);
+  background-size: 4px 4px;
+  content: "";
+  pointer-events: none;
+}
+
+.birthday-contexts h2, .birthday-personalization h2, .birthday-combinations h2, .birthday-gallery h2, .birthday-planning h2, .birthday-faq h2 {
   max-width: 15ch;
   margin: 0;
   font-size: var(--type-internal-page-h1);
@@ -19731,10 +19803,54 @@ max-width: 36ch;
   text-wrap: balance;
 }
 
-.birthday-overview > div { display: grid; gap: var(--space-5); }
-.birthday-overview p, .birthday-combinations header > p, .birthday-gallery header > p { margin: 0; color: var(--color-text-secondary); font-size: clamp(1.05rem, 1.35vw, 1.3rem); line-height: 1.6; }
+.birthday-overview h2 {
+  max-width: 13.5ch;
+  margin: 0;
+  padding-top: var(--birthday-overview-note-padding);
+  font-size: var(--type-internal-page-h1);
+  font-weight: 400;
+  letter-spacing: -.065em;
+  line-height: .88;
+  text-wrap: balance;
+}
+
+.birthday-overview-title-tail {
+  white-space: nowrap;
+}
+
+.birthday-overview-notes {
+  display: grid;
+  align-content: start;
+}
+
+.birthday-overview-notes article {
+  padding-block: var(--birthday-overview-note-padding);
+}
+
+.birthday-overview-notes article + article {
+  border-top: 1px solid var(--birthday-rule);
+}
+
+.birthday-overview-notes h3 {
+  margin: 0 0 var(--space-3);
+  font-size: clamp(1.25rem, 1.65vw, 1.7rem);
+  font-weight: 500;
+  letter-spacing: -.035em;
+  line-height: 1.08;
+}
+
+.birthday-overview-notes p {
+  max-width: 54ch;
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: clamp(1.05rem, 1.35vw, 1.3rem);
+  line-height: 1.6;
+}
+
+.birthday-combinations header > p, .birthday-gallery header > p { margin: 0; color: var(--color-text-secondary); font-size: clamp(1.05rem, 1.35vw, 1.3rem); line-height: 1.6; }
 
 .birthday-contexts {
+  --birthday-context-rule: color-mix(in srgb, var(--color-luxe-ivory) 25%, transparent);
   width: 100%;
   max-width: none;
   padding-inline: var(--space-page-inline);
@@ -19749,22 +19865,79 @@ max-width: 36ch;
 
 .birthday-contexts ol {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  grid-template-columns: repeat(100, minmax(0, 1fr));
   margin-top: clamp(3rem, 7vw, 6rem);
   padding: 0;
-  border-block: 1px solid rgba(248,246,242,.25);
+  border: 1px solid var(--birthday-context-rule);
   list-style: none;
 }
 
 .birthday-contexts li {
-  min-height: 33rem;
-  padding: var(--space-5);
+  min-width: 0;
+  padding: var(--space-7);
 }
 
-.birthday-contexts li + li { border-left: 1px solid rgba(248,246,242,.25); }
+.birthday-contexts li:nth-child(1) {
+  grid-column: 1 / 59;
+  grid-row: 1;
+  border-right: 1px solid var(--birthday-context-rule);
+  border-bottom: 1px solid var(--birthday-context-rule);
+  background: color-mix(in srgb, var(--birthday-blue) 6%, var(--color-luxe-black));
+}
+
+.birthday-contexts li:nth-child(2) {
+  grid-column: 59 / 101;
+  grid-row: 1;
+  border-bottom: 1px solid var(--birthday-context-rule);
+}
+
+.birthday-contexts li:nth-child(3) {
+  grid-column: 1 / 43;
+  grid-row: 2;
+  border-right: 1px solid var(--birthday-context-rule);
+}
+
+.birthday-contexts li:nth-child(4) {
+  grid-column: 43 / 101;
+  grid-row: 2;
+}
+
 .birthday-contexts li > span, .birthday-personalization article > span, .birthday-combinations article > span { color: var(--color-luxe-gold-ink); font-size: .75rem; font-weight: 700; letter-spacing: .15em; }
-.birthday-contexts h3 { margin: var(--space-7) 0 var(--space-5); font-size: clamp(2rem, 3vw, 3.2rem); font-weight: 400; letter-spacing: -.055em; line-height: .98; }
-.birthday-contexts li > p:last-child { color: rgba(248,246,242,.68); line-height: 1.55; }
+
+.birthday-contexts h3 {
+  margin: 0 0 var(--space-5);
+  font-size: clamp(1.55rem, 2vw, 2.15rem);
+  font-weight: 400;
+  letter-spacing: -.045em;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+.birthday-contexts h3::before {
+  display: block;
+  width: var(--space-7);
+  margin-bottom: var(--space-5);
+  border-top: 1px solid color-mix(in srgb, var(--birthday-blue) 68%, var(--color-luxe-ivory));
+  content: "";
+}
+
+.birthday-contexts li:first-child h3 {
+  font-size: clamp(1.9rem, 2.5vw, 2.65rem);
+}
+
+.birthday-contexts li:first-child h3::before {
+  width: var(--space-8);
+}
+
+.birthday-contexts li > p:last-child {
+  max-width: 46ch;
+  margin: 0;
+  color: rgba(248,246,242,.68);
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  line-height: 1.65;
+  text-wrap: pretty;
+}
 
 .birthday-personalization {
   width: 100%;
@@ -19774,11 +19947,17 @@ max-width: 36ch;
 }
 
 .birthday-personalization > header, .birthday-personalization > div { width: min(100%, var(--layout-max)); margin-inline: auto; }
-.birthday-personalization > header > p { max-width: 54ch; margin: var(--space-5) 0 0; color: var(--color-text-secondary); }
-.birthday-personalization > div { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: clamp(3rem, 7vw, 6rem); border-block: 1px solid var(--birthday-rule); }
-.birthday-personalization article { min-height: 23rem; padding: var(--space-6); }
-.birthday-personalization article + article { border-left: 1px solid var(--birthday-rule); }
-.birthday-personalization article p { color: var(--color-text-secondary); line-height: 1.55; }
+.birthday-personalization > header { display: grid; grid-template-columns: minmax(0, 42fr) minmax(0, 50fr); column-gap: 8%; align-items: start; }
+.birthday-personalization > header > p { max-width: 54ch; margin: 0; color: var(--color-text-secondary); font-size: clamp(1rem, 1.15vw, 1.125rem); line-height: 1.65; text-wrap: pretty; }
+.birthday-personalization > div { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto; margin-top: clamp(3rem, 7vw, 6rem); border: 1px solid var(--birthday-rule); }
+.birthday-personalization article { min-width: 0; padding: var(--space-6); }
+.birthday-personalization article:first-child { grid-column: 1 / -1; border-bottom: 1px solid var(--birthday-rule); background: color-mix(in srgb, var(--birthday-blue) 6%, var(--surface-chapter-taupe)); }
+.birthday-personalization article:nth-child(2) { border-right: 1px solid var(--birthday-rule); }
+.birthday-personalization h3 { margin: 0 0 var(--space-5); font-size: clamp(1.5rem, 2vw, 2.15rem); font-weight: 400; letter-spacing: -.045em; line-height: 1.05; text-wrap: balance; }
+.birthday-personalization h3::before { display: block; width: var(--space-6); margin-bottom: var(--space-5); border-top: 1px solid color-mix(in srgb, var(--birthday-blue) 68%, var(--color-luxe-black)); content: ""; }
+.birthday-personalization article:first-child h3 { font-size: clamp(1.8rem, 2.5vw, 2.65rem); }
+.birthday-personalization article:first-child h3::before { width: var(--space-7); }
+.birthday-personalization article p { max-width: 54ch; margin: 0; color: var(--color-text-secondary); font-size: clamp(1rem, 1.15vw, 1.125rem); line-height: 1.65; text-wrap: pretty; }
 
 .birthday-combinations {
   display: grid;
@@ -19821,40 +20000,93 @@ max-width: 36ch;
 .birthday-gallery figcaption small { color: rgba(248,246,242,.62); }
 .birthday-gallery > a, .birthday-faq > a { display: flex; justify-content: space-between; margin-top: var(--space-7); border-bottom: 1px solid currentColor; padding-bottom: var(--space-3); font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 
+.birthday-planning {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 38fr) minmax(0, 56fr);
+  column-gap: 6%;
+  align-items: start;
+}
+
+.birthday-planning > header {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-content: start;
+  gap: var(--space-5);
+}
+
+.birthday-planning > header::before {
+  position: absolute;
+  z-index: -1;
+  top: 1.5rem;
+  left: -.75rem;
+  width: min(82%, 19rem);
+  height: 72%;
+  border: 1px solid color-mix(in srgb, var(--birthday-blue) 28%, transparent);
+  border-right: 0;
+  content: "";
+  opacity: .7;
+  pointer-events: none;
+  transform: rotate(-4deg);
+}
+
+.birthday-page .birthday-planning > header h2 {
+  position: relative;
+  z-index: 1;
+  width: 23rem;
+  max-width: 23rem;
+}
+
+.birthday-planning > header > p {
+  position: relative;
+  z-index: 1;
+  max-width: 44ch;
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
 .birthday-planning ol {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin: clamp(3rem, 6vw, 6rem) 0 0;
+  grid-template-columns: minmax(0, 34fr) minmax(0, 66fr);
+  margin: 0;
   padding: 0;
   border-block: 1px solid var(--birthday-rule);
   list-style: none;
 }
 
 .birthday-planning li {
-  padding: clamp(2rem, 4vw, 4rem);
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 34fr) minmax(0, 66fr);
+  column-gap: 0;
+  padding-block: var(--space-5);
 }
 
-.birthday-planning li:nth-child(even) {
-  border-left: 1px solid var(--birthday-rule);
-}
-
-.birthday-planning li:nth-child(n + 3) {
+.birthday-planning li + li {
   border-top: 1px solid var(--birthday-rule);
 }
 
 .birthday-planning h3 {
-  margin: 0 0 var(--space-4);
-  font-size: clamp(1.35rem, 2vw, 2rem);
+  margin: 0;
+  padding-right: var(--space-5);
+  font-size: clamp(1.25rem, 1.6vw, 1.7rem);
   font-weight: 500;
   letter-spacing: -.04em;
   line-height: 1.08;
+  text-wrap: balance;
 }
 
 .birthday-planning li p {
-  max-width: 48ch;
+  max-width: 54ch;
   margin: 0;
   color: var(--color-text-secondary);
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
   line-height: 1.6;
+  text-wrap: pretty;
 }
 
 .birthday-faq > div { margin-top: clamp(3rem,7vw,6rem); border-top: 1px solid var(--birthday-rule); }
@@ -19865,17 +20097,63 @@ max-width: 36ch;
 .birthday-faq details[open] summary i { transform: rotate(45deg); }
 .birthday-faq details > p { max-width: 55rem; margin: 0 0 var(--space-5) calc(3rem + var(--space-4)); color: var(--color-text-secondary); line-height: 1.6; }
 
-@media (max-width: 1000px) {
-  .birthday-contexts ol { grid-template-columns: repeat(2,1fr); }
-  .birthday-contexts li:nth-child(3) { border-top: 1px solid rgba(248,246,242,.25); border-left: 0; }
-  .birthday-contexts li:nth-child(4) { border-top: 1px solid rgba(248,246,242,.25); }
+@media (min-width: 701px) and (max-width: 1100px) {
+  .birthday-overview {
+    --birthday-overview-note-padding: clamp(1.25rem, 2vw, 1.75rem);
+    grid-template-columns: minmax(0, 44fr) minmax(0, 56fr);
+    column-gap: 6%;
+  }
+
+  .birthday-overview h2 {
+    max-width: 14ch;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 1100px) {
+  .birthday-planning {
+    grid-template-columns: minmax(0, 40fr) minmax(0, 54fr);
+  }
+
+  .birthday-planning h2 {
+    font-size: clamp(2.5rem, 3.5vw, var(--type-internal-page-h1));
+  }
+
+  .birthday-planning li {
+    padding-block: var(--space-4);
+  }
+
+  .birthday-personalization article {
+    padding: var(--space-5);
+  }
+
+  .birthday-contexts li {
+    padding: var(--space-6);
+  }
+
+  .birthday-contexts li:nth-child(1) {
+    grid-column: 1 / 55;
+  }
+
+  .birthday-contexts li:nth-child(2) {
+    grid-column: 55 / 101;
+  }
+
+  .birthday-contexts li:nth-child(3) {
+    grid-column: 1 / 47;
+  }
+
+  .birthday-contexts li:nth-child(4) {
+    grid-column: 47 / 101;
+  }
 }
 
 @media (max-width: 840px) {
-  .birthday-hero, .birthday-overview, .birthday-combinations { grid-template-columns: 1fr; }
+  .birthday-hero, .birthday-combinations { grid-template-columns: 1fr; }
   .birthday-hero { min-height: 0; }
   .birthday-hero-art { min-height: 31rem; }
   .birthday-personalization > div, .birthday-gallery > div { grid-template-columns: 1fr; }
+  .birthday-personalization article:first-child { border-bottom: 0; }
+  .birthday-personalization article:nth-child(2) { border-right: 0; }
   .birthday-personalization article + article { border-top: 1px solid var(--birthday-rule); border-left: 0; }
   .birthday-gallery > header { grid-template-columns: 1fr; }
 }
@@ -19888,16 +20166,41 @@ max-width: 36ch;
   .birthday-hero-art strong { font-size: clamp(7rem,32vw,10rem); }
   .birthday-hero-proof { grid-template-columns: 1fr; }
   .birthday-hero-proof > div + div { border-top: 1px solid var(--birthday-rule); border-left: 0; }
+  .birthday-overview {
+    --birthday-overview-note-padding: var(--space-5);
+    grid-template-columns: minmax(0, 1fr);
+    column-gap: 0;
+    row-gap: var(--space-7);
+  }
+  .birthday-overview h2 { padding-top: 0; }
   .birthday-overview, .birthday-contexts, .birthday-personalization, .birthday-combinations, .birthday-gallery, .birthday-planning, .birthday-faq { padding-block: var(--space-9); }
   .birthday-overview h2, .birthday-contexts h2, .birthday-personalization h2, .birthday-combinations h2, .birthday-gallery h2, .birthday-planning h2, .birthday-faq h2 { font-size: var(--type-internal-page-h1-mobile); }
-  .birthday-contexts ol { grid-template-columns: 1fr; }
-  .birthday-contexts li, .birthday-contexts li:nth-child(3), .birthday-contexts li:nth-child(4) { min-height: 23rem; border-left: 0; }
-  .birthday-contexts li + li { border-top: 1px solid rgba(248,246,242,.25); }
+  .birthday-personalization > header { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-5); }
+  .birthday-personalization > header > p { margin: 0; }
+  .birthday-personalization > div { grid-template-rows: none; }
+  .birthday-personalization article { padding: var(--space-5); }
+  .birthday-planning { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-7); }
+  .birthday-planning > header::before { top: .75rem; left: -.35rem; width: min(72%, 13rem); height: 58%; transform: rotate(-2deg); }
+  .birthday-page .birthday-planning > header h2 { width: auto; max-width: 17ch; }
+  .birthday-planning > header > p { max-width: 44ch; }
+  .birthday-planning ol { grid-template-columns: minmax(0, 1fr); }
+  .birthday-planning li { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-3); padding-block: var(--space-5); }
+  .birthday-planning h3 { padding-right: 0; }
+  .birthday-contexts ol { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
+  .birthday-contexts li,
+  .birthday-contexts li:nth-child(1),
+  .birthday-contexts li:nth-child(2),
+  .birthday-contexts li:nth-child(3),
+  .birthday-contexts li:nth-child(4) {
+    grid-column: auto;
+    grid-row: auto;
+    border-right: 0;
+    border-bottom: 0;
+    padding: var(--space-5);
+  }
+  .birthday-contexts li + li { border-top: 1px solid var(--birthday-context-rule); }
   .birthday-combinations article { grid-template-columns: 2.5rem 1fr; }
   .birthday-combinations article > p:first-of-type, .birthday-combinations h3, .birthday-combinations article > p:last-child { grid-column: 2; }
-  .birthday-planning ol { grid-template-columns: 1fr; }
-  .birthday-planning li:nth-child(even) { border-left: 0; }
-  .birthday-planning li:nth-child(n + 2) { border-top: 1px solid var(--birthday-rule); }
   .birthday-faq summary { grid-template-columns: 2.25rem 1fr 1.25rem; gap: var(--space-3); }
   .birthday-faq details > p { margin-left: calc(2.25rem + var(--space-3)); }
 }
@@ -22653,8 +22956,8 @@ font-size: var(--type-body);;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1px;
   padding: 1px;
-  border: 1px solid color-mix(in srgb, var(--color-luxe-gold) 72%, transparent);
-  background: color-mix(in srgb, var(--color-luxe-gold) 38%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-luxe-black) 50%, transparent);
+  background: color-mix(in srgb, var(--color-luxe-black) 50%, transparent);
  box-shadow: none;
   color: var(--color-luxe-black);
   animation: coffee-folio-reveal 700ms var(--ease-luxe-out) both;
@@ -23197,7 +23500,7 @@ font-size: var(--type-body);;
   }
 
   .coffee-menu {
-    padding-block: 4.5rem;
+    padding-block: var(--space-9);
   }
 
   .coffee-menu > header {
@@ -23211,7 +23514,12 @@ font-size: var(--type-body);;
   }
 
   .coffee-menu > header h2 {
-    font-size: clamp(2.8rem, 13vw, 4.5rem);
+    font-size: clamp(1.8rem, 7vw, 4.5rem);
+  }
+
+  .coffee-menu > header h2 span {
+    display: block;
+    white-space: nowrap;
   }
 
   .coffee-menu > header > p:last-child {
@@ -23813,7 +24121,7 @@ transparent 0.7px
     minmax(0, 1.05fr)
     minmax(24rem, 0.95fr);
   gap: clamp(3rem, 7vw, 7rem);
-  align-items: start;
+  align-items: stretch;
   margin: 0;
   padding:
     clamp(3.5rem, 5vw, 5rem)
@@ -23838,7 +24146,8 @@ transparent 0.7px
 }
 
 .sweet-inclusions > header h2,
-.sweet-inclusions > header > p {
+.sweet-inclusions > header > p,
+.sweet-inclusions > header > .sweet-inclusions-intro {
   position: relative;
   z-index: 1;
 }
@@ -23853,12 +24162,27 @@ color: var(--color-luxe-black);
   letter-spacing: -0.055em;
 }
 
-.sweet-inclusions > header > p {
+.sweet-inclusions > header h2 span {
+  display: block;
+  white-space: nowrap;
+}
+
+.sweet-inclusions > header > p,
+.sweet-inclusions > header > .sweet-inclusions-intro {
+  align-self: end;
   max-width: 42rem;
   margin: 0;
   color: var(--surface-dark-copy-muted);
   font-size: clamp(0.98rem, 1.08vw, 1.1rem);
   line-height: 1.7;
+}
+
+.sweet-inclusions-intro p {
+  margin: 0;
+}
+
+.sweet-inclusions-intro p + p {
+  margin-top: var(--space-4);
 }
 
 .sweet-inclusion-panel {
@@ -23918,18 +24242,18 @@ background: color-mix(
 
 .sweet-inclusion-folio article:first-child {
   background: transparent;
-  box-shadow: inset 0 0.28rem 0 var(--sweet-cocoa);
+  box-shadow: inset 0 0.28rem 0 rgb(31 31 29 / 22%);
 }
 
 .sweet-inclusion-folio article:nth-child(2) {
   background: transparent;
-  box-shadow: inset 0 0.28rem 0 var(--sweet-berry);
+  box-shadow: inset 0 0.28rem 0 rgb(31 31 29 / 22%);
 }
 
 .sweet-inclusion-folio article:last-child {
   border-right: 0;
   background: transparent;
-  box-shadow: inset 0 0.28rem 0 var(--color-luxe-gold);
+  box-shadow: inset 0 0.28rem 0 rgb(31 31 29 / 22%);
 }
 
 /* Cart and service mark */
@@ -24090,16 +24414,16 @@ background: color-mix(
 
 
 .sweet-pantry-grid article:first-child {
-  box-shadow: inset 0 0.32rem 0 var(--sweet-cocoa);
+  box-shadow: inset 0 0.32rem 0 rgb(31 31 29 / 22%);
 }
 
 .sweet-pantry-grid article:nth-child(2) {
   background: transparent;
-  box-shadow: inset 0 0.32rem 0 var(--color-luxe-gold);
+  box-shadow: inset 0 0.32rem 0 rgb(31 31 29 / 22%);
 }
 
 .sweet-pantry-grid article:last-child {
-  box-shadow: inset 0 0.32rem 0 var(--sweet-berry);
+  box-shadow: inset 0 0.32rem 0 rgb(31 31 29 / 22%);
 }
 
 .sweet-pantry-grid h3 {
@@ -24129,6 +24453,12 @@ background: color-mix(
 
 .sweet-faq summary {
   font-size: 1.08rem;
+}
+
+@media (min-width: 701px) {
+  .sweet-pantry {
+    padding-top: clamp(4.5rem, 6vw, 6rem);
+  }
 }
 
 @media (max-width: 1120px) {
@@ -24326,6 +24656,65 @@ background: color-mix(
 }
 }
 
+@media (max-width: 700px) {
+  .sweet-collections .sweet-collection-copy > p strong {
+    display: block;
+    margin-bottom: var(--space-2);
+  }
+
+  .sweet-inclusions > header {
+    align-items: start;
+    padding: var(--space-6) 0 var(--space-5);
+  }
+
+  .sweet-inclusions > header h2 {
+    max-width: none;
+    font-size: clamp(2.2rem, 10vw, 4rem);
+  }
+
+  .sweet-inclusions > header > .sweet-inclusions-intro {
+    align-self: start;
+    max-width: none;
+    font-size: 1rem;
+  }
+
+  .sweet-inclusions-intro p + p {
+    margin-top: var(--space-3);
+  }
+
+  .sweet-pantry-grid h3 {
+    margin: var(--space-3) 0 var(--space-3);
+  }
+
+  .sweet-operations .priority-answer > div > p + p {
+    margin-top: var(--space-4);
+  }
+
+  .sweet-events > header {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .sweet-events > header h2 {
+    max-width: none;
+    font-size: clamp(2.2rem, 10vw, 4.5rem);
+  }
+
+  .sweet-events > header h2 span {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .sweet-combinations-title-desktop {
+    display: none;
+  }
+
+  .sweet-combinations-title-mobile {
+    display: block;
+    white-space: nowrap;
+  }
+}
+
 
 /* Seating Rentals editorial rehaul: spatial planning presented as a Luxe folio. */
 .seating-page {
@@ -24477,7 +24866,7 @@ transparent 0.7px);
 
 .seating-hero-proof dt {
   color: var(--color-luxe-gold-ink);
-  font-size: clamp(2rem, 3vw, 3.5rem);
+  font-size: clamp(2.35rem, 3.25vw, 3.8rem);
   font-weight: 400;
   line-height: 1;
   letter-spacing: -0.045em;
@@ -24661,6 +25050,16 @@ transparent 0.7px);
 
 .seating-applications article:last-child {
   background: rgb(215 207 195 / 24%);
+}
+
+.seating-applications .seating-application-subcopy {
+  max-width: 22ch;
+  margin: calc(-1 * var(--space-3)) 0 var(--space-5);
+  color: var(--color-luxe-black);
+  font-size: clamp(1.15rem, 1.7vw, 1.65rem);
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
 }
 
 .seating-operation-grid {
@@ -25093,7 +25492,7 @@ transparent 0.7px);
     width: 100%;
     min-height: 4.2rem;
     color: var(--color-luxe-gold) !important;
-    font-size: clamp(2.15rem, 2.65vw, 3rem);
+    font-size: clamp(2.35rem, 2.9vw, 3.35rem);
     font-weight: 400;
     line-height: 1;
     letter-spacing: -0.045em;
@@ -25609,6 +26008,40 @@ transparent 0.7px);
   width: min(100%, 64rem);
   margin: clamp(1.5rem, 2.5vw, 2.5rem) auto 0;
   text-align: center;
+}
+
+.coffee-inclusions > header > .coffee-inclusions-intro {
+  width: min(100%, 64rem);
+  margin: clamp(1.5rem, 2.5vw, 2.5rem) auto 0;
+  text-align: center;
+}
+
+.coffee-inclusions > header > .coffee-inclusions-intro p {
+  color: var(--color-text-muted);
+  font-size: var(--type-body);
+  line-height: 1.68;
+}
+
+@media (max-width: 700px) {
+  .coffee-operations .priority-answer > div > p + p {
+    margin-top: var(--space-4);
+  }
+
+  .coffee-events > header h2#coffee-events-title {
+    font-size: clamp(1.8rem, 7vw, 3.4rem);
+    line-height: 0.98;
+  }
+
+  .coffee-events > header h2#coffee-events-title span {
+    white-space: nowrap;
+  }
+
+  .coffee-events > header > p:last-child {
+    width: 100%;
+    max-width: 36rem;
+    padding-inline: var(--space-2);
+    box-sizing: border-box;
+  }
 }
 
 /* Final guard: the shared Coffee Bar experience section must not inherit the

@@ -255,6 +255,7 @@
     max-width: none;
     font-size: clamp(2.35rem, 10.5vw, 3.65rem) !important;
     line-height: 0.97 !important;
+    text-align: center;
   }
 
   .coffee-overview-media {
@@ -268,6 +269,7 @@
     grid-template-columns: 1fr;
     gap: 0;
     padding-top: var(--space-7);
+    border-top: 0;
   }
 
   .coffee-overview-copy .coffee-overview-lead {
@@ -276,6 +278,7 @@
   }
 
   .coffee-overview-copy::before {
+    display: none;
     margin-block: var(--space-7) var(--space-6);
   }
 

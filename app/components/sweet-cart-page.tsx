@@ -24,6 +24,9 @@ import { SiteShell } from "./site-shell";
 
 const sweetCartPath = "/experiences/sweet-cart";
 const [sweetPricingAnswer, ...sweetContextualFaqs] = sweetCartFaqs;
+const sweetPricingParagraphs = sweetPricingAnswer.answer.match(/[^.!?]+[.!?]+/g) ?? [
+  sweetPricingAnswer.answer,
+];
 const sweetInclusionGroups = [
   {
     title: "Cart & service",
@@ -129,7 +132,7 @@ function SweetPositioning() {
           <span>part of the moment.</span>
         </>
       }
-      lead={<>Dessert is prepared in view, finished to order, and presented as part of the gathering.</>}
+      lead={<>Dessert is prepared in view, finished to order, and presented as part of your event.</>}
       copy={
         <>
           <p>
@@ -244,16 +247,21 @@ function SweetInclusions() {
     >
       <header>
         <h2 id="sweet-inclusions-title">
-          A complete dessert service, from setup through finishing.
+          <span>A complete service.</span>
+          <span>Setup → Finishing</span>
         </h2>
 
-        <p>
-          Each booking brings together the selected cart, professional
-          attendants, fresh on-site preparation, sauces and standard toppings,
-          serving essentials, menu display, setup, and takedown. Dessert
-          selection, quantities, service timing, footprint, power, and access
-          are confirmed for the event.
-        </p>
+        <div className="sweet-inclusions-intro">
+          <p>
+            Each booking brings together the selected cart, professional attendants,
+            fresh on-site preparation, sauces and standard toppings, serving
+            essentials, menu display, setup, and takedown.
+          </p>
+          <p>
+            Dessert selection, quantities, service timing, footprint, power, and
+            access are confirmed for the event.
+          </p>
+        </div>
       </header>
 
       <div className="sweet-inclusion-panel">
@@ -319,12 +327,19 @@ function SweetOperations() {
     >
       <header>
         <p className="foundation-label">Pricing and service area</p>
-        <h2 id="sweet-operations-title">How is a Sweet Cart experience priced?</h2>
+        <h2 id="sweet-operations-title">How much does the Luxe Sweet Cart cost?</h2>
       </header>
       <PriorityAnswer
         label="Cost factors"
         question={sweetPricingAnswer.question}
         answer={sweetPricingAnswer.answer}
+        answerContent={
+          <>
+            {sweetPricingParagraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph.trim()}</p>
+            ))}
+          </>
+        }
         href="/inquire"
         linkLabel="Request a dessert-service proposal"
       />
@@ -344,7 +359,10 @@ function SweetEvents() {
     <section className="sweet-events" aria-labelledby="sweet-events-title">
       <header>
         <p className="foundation-label">Where Sweet Cart belongs</p>
-        <h2 id="sweet-events-title">Made for events where guests should gather around the moment.</h2>
+        <h2 id="sweet-events-title">
+          <span>Desserts worth</span>
+          <span>gathering around.</span>
+        </h2>
       </header>
       <div>
         {sweetEventLinks.map((event, index) => (
@@ -393,8 +411,13 @@ function SweetCombinations() {
       <header>
         <p className="foundation-label">Within the Luxe family</p>
         <h2 id="sweet-combinations-title">
-          <span>Dessert becomes part of the</span>
-          <span>setting, service, and guest experience.</span>
+          <span className="sweet-combinations-title-desktop">
+            Bring dessert, coffee, and seating together.
+          </span>
+          <span className="sweet-combinations-title-mobile">
+            Bring coffee, dessert,<br />
+            and seating together.
+          </span>
         </h2>
       </header>
       <div>

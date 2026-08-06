@@ -75,8 +75,8 @@ function SeatingHero() {
         </h2>
       </div>
       <dl className="coffee-hero-proof" aria-labelledby="seating-hero-proof-title">
-        <div><dt>Six</dt><dd><strong>Rental categories</strong><span>Explore six rental categories, with final selections, quantities, finishes, and availability confirmed for your event.</span></dd></div>
-        <div><dt>Indoor + Outdoor</dt><dd><strong>Flexible settings</strong><span>Suitable rental options can be planned for indoor and outdoor settings, subject to the venue, surface conditions, weather, and item requirements.</span></dd></div>
+        <div><dt>6</dt><dd><strong>Rental categories</strong><span>Explore six rental categories, with final selections, quantities, finishes, and availability confirmed for your event.</span></dd></div>
+        <div><dt>Indoor+Outdoor</dt><dd><strong>Flexible settings</strong><span>Suitable rental options can be planned for indoor and outdoor settings, subject to the venue, surface conditions, weather, and item requirements.</span></dd></div>
         <div><dt>$5M</dt><dd><strong>Liability coverage</strong><span>Luxe carries $5 million in liability coverage to support common venue and planner requirements.</span></dd></div>
         <div><dt>Guest-Led</dt><dd><strong>Layout planning</strong><span>Quantities and placement are considered around the guest count, floor plan, service areas, and how people move through the space.</span></dd></div>
         <div><dt>Coordinated</dt><dd><strong>Delivery and setup</strong><span>Delivery windows, loading access, placement, setup, teardown, and pickup details are confirmed before the event.</span></dd></div>
@@ -174,14 +174,16 @@ function LayoutInspiration() {
     <section className="seating-studies" aria-labelledby="seating-studies-title">
       <header>
         <p className="foundation-label">Styling and layout inspiration</p>
-        <h2 id="seating-studies-title">Plan the layout around how guests will gather.</h2>
+        <h2 id="seating-studies-title">Seating planned for comfort and connection.</h2>
       </header>
       <div>
         {layoutStudies.map((study) => (
           <article className={`seating-study-${study.tone}`} key={study.number}>
             <div aria-hidden="true"><i /><i /><i /><i /></div>
             <h3>{study.title}</h3>
-            <p>{study.description}</p>
+            <p>
+              <strong>{study.lead}</strong> {study.description}
+            </p>
           </article>
         ))}
       </div>
@@ -223,26 +225,32 @@ function IndoorOutdoorApplications() {
       <header>
         <p className="foundation-label">Indoor and outdoor applications</p>
         <h2 id="seating-applications-title">
-          Indoor and outdoor events require different rental plans.
+          Every setting calls for a different approach.
         </h2>
       </header>
       <div>
         <article>
           <span>Interior</span>
-          <h3>Work with the room that already exists.</h3>
+          <h3>Indoor Venue Planning &amp; Site Logistics</h3>
+          <p className="seating-application-subcopy">Work with the room that already exists.</p>
           <p>
-            Indoor planning considers room dimensions, entrances, elevators, loading
-            access, floor protection, fire routes, accessibility, service zones, and
-            the venue schedule.
+            <strong>We want your indoor setup to feel effortless.</strong> That is
+            why we check the practical stuff early on, including room measurements,
+            doorways, elevators, and loading zones. We will also coordinate around
+            floor safety, fire routes, accessibility needs, and your venue&apos;s strict
+            schedule.
           </p>
         </article>
         <article>
           <span>Exterior</span>
-          <h3>Build around conditions that can change.</h3>
+          <h3>Outdoor Event Planning &amp; Weather Contingency</h3>
+          <p className="seating-application-subcopy">Build around conditions that can change.</p>
           <p>
-            Outdoor planning requires review of surface, access, weather, wind, tent
-            suitability, utilities, venue rules, and an appropriate contingency plan.
-            Outdoor use is never confirmed from category alone.
+            <strong>Planning an outdoor event takes a little extra love.</strong> We
+            look at everything! From the surface your chairs sit on to delivery
+            access, wind levels, tent compatibility, venue rules, and a weather backup
+            plan. Because every space is unique, we review these details with you
+            before confirming any outdoor setup.
           </p>
         </article>
       </div>

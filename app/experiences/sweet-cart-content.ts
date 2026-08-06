@@ -173,7 +173,7 @@ export const sweetGalleryPreview = [
 
 export const sweetCartFaqs = [
   {
-    question: "How much does Sweet Cart service cost?",
+    question: "How much does the Luxe Sweet Cart cost?",
     answer:
       "Sweet Cart service is priced from guest count, selected dessert, cart collection, service duration, staffing, sauces and toppings, optional soft serve, equipment, setup, venue access, indoor or outdoor conditions, travel, branding, multi-day needs, and multiple stations. Luxe reviews those event requirements and confirms the selected service plan and enhancements in the proposal, so no single fixed Sweet Cart total is published.",
   },

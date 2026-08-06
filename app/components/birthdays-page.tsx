@@ -65,21 +65,35 @@ function BirthdayHero() {
 function BirthdayOverview() {
   return (
     <section className="birthday-overview" aria-labelledby="birthday-overview-title">
-      <h2 id="birthday-overview-title">A birthday planned around the person, not a standard format.</h2>
-      <div>
-        <p>
-          Luxe Coffee Bar, Luxe Sweet Cart, and Luxe Seating Rentals can each be
-          booked independently or coordinated within one birthday plan.
-        </p>
-        <p>
-          Coffee and matcha can welcome guests, live dessert can create the
-          central moment, and seating and rentals can support dining,
-          conversation, photographs, and movement through the room.
-        </p>
-        <p>
-          The guest of honour, age group, venue, schedule, guest count, and
-          desired atmosphere shape the final plan.
-        </p>
+      <h2 id="birthday-overview-title">
+        A birthday planned around the person, not a{" "}
+        <span className="birthday-overview-title-tail">standard format.</span>
+      </h2>
+
+      <div className="birthday-overview-notes">
+        <article>
+          <h3>Built around the person</h3>
+          <p>
+            The guest of honour, age group, audience, and desired atmosphere
+            guide the direction of the celebration.
+          </p>
+        </article>
+
+        <article>
+          <h3>One experience or several</h3>
+          <p>
+            Luxe Coffee Bar, Luxe Sweet Cart, and Luxe Seating Rentals can be
+            booked independently or coordinated within one birthday plan.
+          </p>
+        </article>
+
+        <article>
+          <h3>Shaped by the occasion</h3>
+          <p>
+            The venue, schedule, guest count, service requirements, and selected
+            experiences determine the final plan.
+          </p>
+        </article>
       </div>
     </section>
   );
@@ -175,6 +189,10 @@ function BirthdayPlanning() {
     <section className="birthday-planning" aria-labelledby="birthday-planning-title">
       <header>
         <h2 id="birthday-planning-title">What to share when planning a birthday with Luxe.</h2>
+        <p>
+          A few clear details help shape the service, setting, and experience
+          around the person being celebrated.
+        </p>
       </header>
       <ol>
         {birthdayPlanning.map((item) => (

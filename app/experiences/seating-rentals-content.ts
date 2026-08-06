@@ -4,73 +4,76 @@ export const rentalCategories = [
   {
     id: "chairs",
     number: "01",
-    name: "Chairs",
+    name: "Event & Wedding Chair Rentals",
     role: "Comfort, proportion, and placement",
     description:
-      "Chair selections are planned around the ceremony or dining format, guest count, floor plan, and visual direction. Styles, quantities, finishes, and availability are confirmed for the event date.",
+      "We match our chair rentals to your ceremony or dining style, guest count, and visual vibe. Whether you need sleek dining chairs or ceremony seating, we double-check styles, quantities, finishes, and date availability before locking anything in.",
   },
   {
     id: "tables",
     number: "02",
-    name: "Tables",
-    role: "Structure for dining, service, and display",
+    name: "Dining & Service Table Rentals",
+    role: "The foundation for dining, service, and display",
     description:
-      "Dining, cocktail, display, and service tables are selected according to the guest count, room dimensions, service needs, and event flow. Sizes and quantities are confirmed within the final layout.",
+      "From seated wedding dinners to buffet stations, we help you pick table rentals that fit your room dimensions and service flow. Every table size, shape, and quantity is confirmed right inside your custom event layout.",
   },
   {
     id: "cocktail-tables",
     number: "03",
-    name: "Cocktail Tables",
+    name: "Cocktail & High-Top Table Rentals",
     role: "Natural gathering points",
     description:
-      "Cocktail tables create places for guests to gather and connect without interrupting movement through the room. They are well suited to receptions, networking events, brand activations, and transitional moments.",
+      "High-top and cocktail table rentals give your guests a comfortable spot to connect without blocking the flow of the room. They are perfect additions for party receptions, corporate networking, brand activations, and transitional moments.",
   },
   {
     id: "tents",
     number: "04",
-    name: "Tents",
-    role: "Shelter planned for the setting",
+    name: "Outdoor Event Tent Rentals",
+    role: "Shelter tailored to your setting",
     description:
-      "Tent requirements are considered around the guest count, site access, ground conditions, event layout, weather planning, and venue requirements. Final specifications depend on the location and installation needs.",
+      "We plan tent rentals around your total guest count, site access, ground terrain, and weather backup plans. Every frame or sailcloth tent specification is customized to fit your venue and specific installation needs in [Your City/Region].",
   },
   {
     id: "linens",
     number: "05",
-    name: "Linens",
-    role: "Colour, texture, and finish",
+    name: "Event Linen & Fabric Rentals",
+    role: "Color, texture, and finish",
     description:
-      "Linens bring cohesion to dining tables, cocktail tables, and service areas. Available sizes, materials, colours, and quantities are confirmed with the final rental selection.",
+      "Our event linen rentals pull the whole look together across dining tables, cocktail spots, and service bars. We confirm all sizes, fabrics, colors, and quantities as we finalize your total rental package.",
   },
   {
     id: "lighting",
     number: "06",
-    name: "Lighting",
+    name: "Venue & Event Lighting Setup",
     role: "Atmosphere, visibility, and focus",
     description:
-      "Lighting helps shape the mood of the room while supporting visibility, service areas, and key focal points. Fixture options, power access, installation requirements, and availability are confirmed during planning.",
+      "The right event lighting sets the mood while making sure key focal points and service areas stay visible. We walk through fixture options, venue power needs, and installation requirements during early planning.",
   },
 ] as const;
 
 export const layoutStudies = [
   {
     number: "01",
-    title: "Ceremony geometry",
+    title: "Ceremony Layout & Seating Design",
+    lead: "A great ceremony setup lets everyone focus on the moment.",
     description:
-      "Consider aisle width, chair alignment, sightlines, accessibility, and the transition from ceremony to the next part of the event.",
+      "We keep aisle widths comfortable, chair lines crisp, and sightlines clear for every guest. Plus, we account for accessibility and build in a smooth pathway so guests can transition easily from the 'I do' to the party.",
     tone: "ceremony",
   },
   {
     number: "02",
-    title: "Reception flow",
+    title: "Reception Flow & Floor Planning",
+    lead: "The room should feel just as comfortable when every seat is filled.",
     description:
-      "Balance dining, service, speeches, entertainment, and circulation so the room remains composed when every seat is occupied.",
+      "We balance table placement with service paths, speech viewing, and the dance floor. That way, your guests can dine, circulate, and celebrate without ever feeling cramped.",
     tone: "reception",
   },
   {
     number: "03",
-    title: "Standing social rhythm",
+    title: "Cocktail Hour & Social Space Layouts",
+    lead: "Cocktail hours and mixers need space to breathe.",
     description:
-      "Use cocktail-height moments and open pathways to support arrivals, networking, brand activations, and informal guest movement.",
+      "By mixing in high-top tables and keeping main pathways open, we help guide natural movement for arrivals, networking, brand displays, and casual mingling.",
     tone: "social",
   },
 ] as const;

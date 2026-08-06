@@ -190,7 +190,7 @@ export function ExperiencesEventTypes() {
       <header>
         <p className="foundation-label">Explore by occasion</p>
         <h2 id="experiences-events-title">
-          Different events ask the experiences to play different roles.
+          <span>Different occasion.</span> <span>Different experience.</span>
         </h2>
       </header>
       <div className="experiences-event-list">

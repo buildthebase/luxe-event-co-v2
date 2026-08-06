@@ -24,7 +24,7 @@ export const birthdayContexts = [
     number: "04",
     title: "Select children’s birthdays",
     description:
-      "For selected children’s celebrations, non-coffee drinks, live dessert, and rentals can be planned around younger guests and accompanying adults.",
+      "For selected children’s celebrations, non-coffee drinks, live dessert, signage, and rentals can be planned around younger guests and accompanying adults.",
   },
 ] as const;
 

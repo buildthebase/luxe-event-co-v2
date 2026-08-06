@@ -3,7 +3,6 @@
     .corporate-overview,
     .activation-overview,
     .bridal-overview,
-    .birthday-overview,
     .private-overview
   ) {
   position: relative;
@@ -21,7 +20,6 @@
     .corporate-overview,
     .activation-overview,
     .bridal-overview,
-    .birthday-overview,
     .private-overview
   )::before {
   position: absolute;
@@ -37,7 +35,6 @@
     .corporate-overview,
     .activation-overview,
     .bridal-overview,
-    .birthday-overview,
     .private-overview
   ) h2 {
   max-width: 15ch;
@@ -57,7 +54,6 @@
     .corporate-overview,
     .activation-overview,
     .bridal-overview,
-    .birthday-overview,
     .private-overview
   ) > div:last-child {
   align-self: end;
@@ -68,7 +64,6 @@
     .corporate-overview,
     .activation-overview,
     .bridal-overview,
-    .birthday-overview,
     .private-overview
   ) > div:last-child p {
   max-width: none;
@@ -82,7 +77,6 @@
     .corporate-overview,
     .activation-overview,
     .bridal-overview,
-    .birthday-overview,
     .private-overview
   ) > div:last-child p:last-child {
   margin-bottom: 0;
@@ -92,7 +86,6 @@
     .corporate-overview,
     .activation-overview,
     .bridal-overview,
-    .birthday-overview,
     .private-overview
   ) a {
   border-bottom: 1px solid currentColor;
@@ -104,7 +97,6 @@
       .corporate-overview,
       .activation-overview,
       .bridal-overview,
-      .birthday-overview,
       .private-overview
     ) {
     grid-template-columns: minmax(0, 1fr);
@@ -117,7 +109,6 @@
       .corporate-overview,
       .activation-overview,
       .bridal-overview,
-      .birthday-overview,
       .private-overview
     ) {
     padding-block: var(--space-9);
@@ -127,7 +118,6 @@
       .corporate-overview,
       .activation-overview,
       .bridal-overview,
-      .birthday-overview,
       .private-overview
     ) h2 {
     font-size: clamp(2.75rem, 13vw, 4.5rem);
