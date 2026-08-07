@@ -1,1 +1,120 @@
-[]
+[
+  {
+    "id": "bridal-shower-planning-checklist-before-booking-vendors-screenshot-2026-08-06-at-12-42-14-am-6a6c86a9",
+    "originalFilename": "Screenshot 2026-08-06 at 12.42.14 AM.png",
+    "sourceWidth": 1788,
+    "sourceHeight": 1118,
+    "alt": "Testing",
+    "decorative": false,
+    "focalPoint": {
+      "x": 0.5,
+      "y": 0.5
+    },
+    "derivatives": [
+      {
+        "src": "/images/blog/bridal-shower-planning-checklist-before-booking-vendors/bridal-shower-planning-checklist-before-booking-vendors-screenshot-2026-08-06-at-12-42-14-am-6a6c86a9-480.webp",
+        "width": 480,
+        "height": 300,
+        "format": "webp"
+      },
+      {
+        "src": "/images/blog/bridal-shower-planning-checklist-before-booking-vendors/bridal-shower-planning-checklist-before-booking-vendors-screenshot-2026-08-06-at-12-42-14-am-6a6c86a9-768.webp",
+        "width": 768,
+        "height": 480,
+        "format": "webp"
+      },
+      {
+        "src": "/images/blog/bridal-shower-planning-checklist-before-booking-vendors/bridal-shower-planning-checklist-before-booking-vendors-screenshot-2026-08-06-at-12-42-14-am-6a6c86a9-1200.webp",
+        "width": 1200,
+        "height": 750,
+        "format": "webp"
+      },
+      {
+        "src": "/images/blog/bridal-shower-planning-checklist-before-booking-vendors/bridal-shower-planning-checklist-before-booking-vendors-screenshot-2026-08-06-at-12-42-14-am-6a6c86a9-1600.webp",
+        "width": 1600,
+        "height": 1000,
+        "format": "webp"
+      }
+    ],
+    "hero": {
+      "id": "bridal-shower-planning-checklist-before-booking-vendors-screenshot-2026-08-06-at-12-42-14-am-6a6c86a9",
+      "src": "/images/blog/bridal-shower-planning-checklist-before-booking-vendors/bridal-shower-planning-checklist-before-booking-vendors-screenshot-2026-08-06-at-12-42-14-am-6a6c86a9-1600.webp",
+      "alt": "Testing",
+      "width": 1600,
+      "height": 1000,
+      "sizes": "(max-width: 700px) 100vw, 100vw",
+      "status": "approved",
+      "format": "webp"
+    },
+    "social": {
+      "id": "bridal-shower-planning-checklist-before-booking-vendors-screenshot-2026-08-06-at-12-42-14-am-6a6c86a9-social",
+      "src": "/images/blog/bridal-shower-planning-checklist-before-booking-vendors/bridal-shower-planning-checklist-before-booking-vendors-screenshot-2026-08-06-at-12-42-14-am-6a6c86a9-social.webp",
+      "alt": "Testing",
+      "width": 1200,
+      "height": 630,
+      "sizes": "1200px",
+      "status": "approved",
+      "format": "webp"
+    },
+    "createdAt": "2026-08-07T17:06:37.852Z"
+  },
+  {
+    "id": "wedding-coffee-catering-toronto-gta-screenshot-2026-08-06-at-12-30-06-am-a3bc9bdd",
+    "originalFilename": "Screenshot 2026-08-06 at 12.30.06 AM.png",
+    "sourceWidth": 2052,
+    "sourceHeight": 1146,
+    "alt": "",
+    "decorative": true,
+    "focalPoint": {
+      "x": 0.5,
+      "y": 0.5
+    },
+    "derivatives": [
+      {
+        "src": "/images/blog/wedding-coffee-catering-toronto-gta/wedding-coffee-catering-toronto-gta-screenshot-2026-08-06-at-12-30-06-am-a3bc9bdd-480.webp",
+        "width": 480,
+        "height": 268,
+        "format": "webp"
+      },
+      {
+        "src": "/images/blog/wedding-coffee-catering-toronto-gta/wedding-coffee-catering-toronto-gta-screenshot-2026-08-06-at-12-30-06-am-a3bc9bdd-768.webp",
+        "width": 768,
+        "height": 429,
+        "format": "webp"
+      },
+      {
+        "src": "/images/blog/wedding-coffee-catering-toronto-gta/wedding-coffee-catering-toronto-gta-screenshot-2026-08-06-at-12-30-06-am-a3bc9bdd-1200.webp",
+        "width": 1200,
+        "height": 670,
+        "format": "webp"
+      },
+      {
+        "src": "/images/blog/wedding-coffee-catering-toronto-gta/wedding-coffee-catering-toronto-gta-screenshot-2026-08-06-at-12-30-06-am-a3bc9bdd-1600.webp",
+        "width": 1600,
+        "height": 894,
+        "format": "webp"
+      }
+    ],
+    "hero": {
+      "id": "wedding-coffee-catering-toronto-gta-screenshot-2026-08-06-at-12-30-06-am-a3bc9bdd",
+      "src": "/images/blog/wedding-coffee-catering-toronto-gta/wedding-coffee-catering-toronto-gta-screenshot-2026-08-06-at-12-30-06-am-a3bc9bdd-1600.webp",
+      "alt": "",
+      "width": 1600,
+      "height": 894,
+      "sizes": "(max-width: 700px) 100vw, 100vw",
+      "status": "approved",
+      "format": "webp"
+    },
+    "social": {
+      "id": "wedding-coffee-catering-toronto-gta-screenshot-2026-08-06-at-12-30-06-am-a3bc9bdd-social",
+      "src": "/images/blog/wedding-coffee-catering-toronto-gta/wedding-coffee-catering-toronto-gta-screenshot-2026-08-06-at-12-30-06-am-a3bc9bdd-social.webp",
+      "alt": "",
+      "width": 1200,
+      "height": 630,
+      "sizes": "1200px",
+      "status": "approved",
+      "format": "webp"
+    },
+    "createdAt": "2026-08-07T17:24:46.874Z"
+  }
+]

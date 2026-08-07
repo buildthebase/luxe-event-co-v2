@@ -1,6 +1,7 @@
 import http from "node:http";
 import { createReadStream } from "node:fs";
 import { access, copyFile, mkdir, readFile, readdir, rename, stat, writeFile } from "node:fs/promises";
+import { spawn } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import crypto from "node:crypto";
@@ -9,13 +10,20 @@ import { Codex } from "@openai/codex-sdk";
 import {
   buildLinkGraph,
   createEmptyArticle,
+  parseInlineInternalLinks,
   routeFromPageFile,
   validateArticle,
 } from "./core.mjs";
+import {
+  collectPublicPaths,
+  extractPublicPageRecords,
+  publicSnapshotRecords,
+} from "./public-knowledge.mjs";
 
 const CMS_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(CMS_DIR, "..");
 const STATIC_DIR = path.join(CMS_DIR, "public");
+const BLOG_MEDIA_PUBLIC_DIR = path.join(ROOT, "public", "images", "blog");
 const BLOG_DIR = path.join(ROOT, "content", "blog");
 const FILES = {
   published: path.join(BLOG_DIR, "published", "articles.json"),
@@ -29,12 +37,42 @@ const FILES = {
   media: path.join(BLOG_DIR, "media", "manifest.json"),
   originals: path.join(BLOG_DIR, "media", "originals"),
   jobs: path.join(BLOG_DIR, "studio", "jobs.json"),
+  calendar: path.join(BLOG_DIR, "calendar", "items.json"),
+  calendarConfig: path.join(BLOG_DIR, "calendar", "config.json"),
+  calendarProposals: path.join(BLOG_DIR, "calendar", "proposals.json"),
+  helpSessions: path.join(BLOG_DIR, ".local", "help-sessions.json"),
   settings: path.join(CMS_DIR, "settings.json"),
   runtime: path.join(CMS_DIR, ".runtime"),
 };
 
 const MUTATION_TOKEN = crypto.randomBytes(32).toString("hex");
 const allowedOrigins = new Set();
+const activeCodexRuns = new Map();
+let managedSiteProcess = null;
+let managedSiteUrl = null;
+let siteStartupPromise = null;
+
+function beginCodexRun(requestId, timeoutMs) {
+  const id = String(requestId || crypto.randomUUID());
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(new Error(`Codex exceeded the ${Math.round(timeoutMs / 1000)}-second CMS limit.`)), timeoutMs);
+  activeCodexRuns.set(id, controller);
+  return {
+    id,
+    signal: controller.signal,
+    finish() {
+      clearTimeout(timeout);
+      activeCodexRuns.delete(id);
+    },
+  };
+}
+
+function cancelCodexRun(requestId) {
+  const controller = activeCodexRuns.get(String(requestId || ""));
+  if (!controller) return false;
+  controller.abort(new Error("Cancelled from the CMS."));
+  return true;
+}
 
 async function readJson(file, fallback) {
   try {
@@ -74,7 +112,15 @@ async function listFiles(directory, predicate, output = []) {
 
 async function knownSitePaths() {
   const pages = await listFiles(path.join(ROOT, "app"), (file) => /\/page\.(tsx|ts|jsx|js)$/.test(file));
-  return pages.map((file) => routeFromPageFile(ROOT, file)).filter(Boolean);
+  const [metadataSource, published] = await Promise.all([
+    readFile(path.join(ROOT, "app", "metadata-config.ts"), "utf8"),
+    readJson(FILES.published, []),
+  ]);
+  return collectPublicPaths({
+    metadataSource,
+    staticPaths: pages.map((file) => routeFromPageFile(ROOT, file)).filter(Boolean),
+    publishedSlugs: published.map((article) => article.slug),
+  });
 }
 
 async function loadCollections() {
@@ -88,13 +134,17 @@ async function loadCollections() {
 }
 
 async function buildState() {
-  const [collections, voice, knowledge, snapshot, media, jobs, settings, paths] = await Promise.all([
+  const [collections, voice, knowledge, snapshot, media, jobs, calendar, calendarConfig, calendarProposals, helpSessions, settings, paths] = await Promise.all([
     loadCollections(),
     readJson(FILES.voice, {}),
     readJson(FILES.knowledge, []),
     readJson(FILES.snapshot, { schemaVersion: 1, generatedAt: null, records: [] }),
     readJson(FILES.media, []),
     readJson(FILES.jobs, []),
+    readJson(FILES.calendar, []),
+    readJson(FILES.calendarConfig, defaultCalendarConfig()),
+    readJson(FILES.calendarProposals, []),
+    readJson(FILES.helpSessions, []),
     readJson(FILES.settings, {}),
     knownSitePaths(),
   ]);
@@ -103,7 +153,30 @@ async function buildState() {
     article.slug,
     validateArticle(article, collections.all, { voice, knownPaths: paths, graph }),
   ]));
-  return { ...collections, voice, knowledge, snapshot, media, jobs, settings, knownPaths: paths, graph, issues };
+  return { ...collections, voice, knowledge, snapshot, media, jobs, calendar, calendarConfig, calendarProposals, helpSessions, settings, knownPaths: paths, graph, issues };
+}
+
+function defaultCalendarConfig() {
+  return {
+    schemaVersion: 1,
+    cadencePerMonth: 2,
+    preferredWeekdays: ["Tuesday", "Thursday"],
+    planningLeadDays: 21,
+    defaultCategory: "Event Planning",
+    statuses: ["idea", "planned", "brief", "draft", "review", "scheduled", "published", "paused"],
+    categoryTargets: {
+      "Coffee Catering": 1,
+      "Dessert Catering": 1,
+      "Event Rentals": 1,
+      Weddings: 1,
+      "Corporate Events": 1,
+      "Brand Activations": 1,
+      "Private Events": 1,
+      "Event Planning": 1
+    },
+    blackoutDates: [],
+    campaignPeriods: []
+  };
 }
 
 function json(res, status, value) {
@@ -211,40 +284,25 @@ async function lifecycle(slug, action, options = {}) {
   throw Object.assign(new Error("Unknown lifecycle action."), { status: 400 });
 }
 
-function extractWebsiteStrings(source, sourcePath) {
+async function scanKnowledge(settings) {
+  const [routes, publicSiteUrl] = await Promise.all([
+    knownSitePaths(),
+    resolvePublicSiteUrl(settings),
+  ]);
   const records = [];
-  const pattern = /["'`]([^"'`\n]{40,600})["'`]/g;
-  for (const match of source.matchAll(pattern)) {
-    const text = match[1].replace(/\\n/g, " ").replace(/\s+/g, " ").trim();
-    if (!text.includes(" ") || /^(https?:|[.#/]|[a-z-]+:)/i.test(text)) continue;
-    const id = crypto.createHash("sha256").update(`${sourcePath}:${text}`).digest("hex").slice(0, 16);
-    records.push({
-      id: `site-${id}`,
-      topic: path.basename(sourcePath).replace(/\.[^.]+$/, ""),
-      category: "Website content",
-      text,
-      applicablePages: [],
-      applicableServices: [],
-      source: sourcePath,
-      sourceUrl: null,
-      verificationStatus: "verified",
-      effectiveDate: null,
-      reviewDate: null,
-      usage: "publishable",
-      supersedes: [],
-      conflictsWith: [],
-    });
+  const failures = [];
+  for (let offset = 0; offset < routes.length; offset += 4) {
+    await Promise.all(routes.slice(offset, offset + 4).map(async (route) => {
+      try {
+        const response = await fetch(`${publicSiteUrl}${route}`, { signal: AbortSignal.timeout(12_000) });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        records.push(...extractPublicPageRecords(await response.text(), route));
+      } catch (error) {
+        failures.push({ route, error: String(error?.message || error) });
+      }
+    }));
   }
-  return records;
-}
-
-async function scanKnowledge() {
-  const files = await listFiles(path.join(ROOT, "app"), (file) => /\.(tsx|ts)$/.test(file) && !file.includes("aeo-query-research"));
-  const records = [];
-  for (const file of files) {
-    const relative = path.relative(ROOT, file).replaceAll(path.sep, "/");
-    records.push(...extractWebsiteStrings(await readFile(file, "utf8"), relative));
-  }
+  if (!records.length) throw Object.assign(new Error("No rendered public content could be read. The approved snapshot was not changed."), { status: 503, details: failures });
   const unique = [...new Map(records.map((record) => [record.text.toLowerCase(), record])).values()];
   const prior = await readJson(FILES.snapshot, { records: [] });
   const oldById = new Map((prior.records || []).map((record) => [record.id, record]));
@@ -257,8 +315,16 @@ async function scanKnowledge() {
     conflicts: (await readJson(FILES.knowledge, [])).filter((record) => (record.conflictsWith || []).length),
   };
   await mkdir(FILES.runtime, { recursive: true });
-  await atomicWriteJson(path.join(FILES.runtime, "knowledge-scan.json"), { schemaVersion: 1, generatedAt: new Date().toISOString(), records: unique }, { revision: false });
-  return diff;
+  const candidate = {
+    schemaVersion: 2,
+    sourcePolicy: "public-rendered-content-only",
+    generatedAt: new Date().toISOString(),
+    routes,
+    failures,
+    records: unique,
+  };
+  await atomicWriteJson(path.join(FILES.runtime, "knowledge-scan.json"), candidate, { revision: false });
+  return { ...diff, routesScanned: routes.length - failures.length, routeFailures: failures };
 }
 
 async function approveKnowledgeScan() {
@@ -334,6 +400,64 @@ async function publicSiteIsAvailable(url) {
   }
 }
 
+function localPreviewPorts(configured) {
+  const ports = [];
+  try {
+    const url = new URL(configured);
+    if (["127.0.0.1", "localhost"].includes(url.hostname) && url.port) ports.push(Number(url.port));
+  } catch {}
+  return [...new Set([...ports, 3000, 3001, 3002, 3003, 3004, 3005])].filter((port) => Number.isInteger(port));
+}
+
+function wait(milliseconds) {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
+}
+
+async function startManagedSitePreview(configured) {
+  if (managedSiteUrl && await publicSiteIsAvailable(managedSiteUrl)) return managedSiteUrl;
+  if (siteStartupPromise) return siteStartupPromise;
+  siteStartupPromise = (async () => {
+    const failures = [];
+    for (const port of localPreviewPorts(configured)) {
+      const url = `http://127.0.0.1:${port}`;
+      if (await publicSiteIsAvailable(url)) return url;
+      let output = "";
+      const command = process.platform === "win32" ? "npm.cmd" : "npm";
+      const child = spawn(command, ["run", "dev", "--", "--host", "127.0.0.1", "--port", String(port)], {
+        cwd: ROOT,
+        env: { ...process.env, WRANGLER_LOG_PATH: ".wrangler/wrangler.log" },
+        stdio: ["ignore", "pipe", "pipe"],
+      });
+      managedSiteProcess = child;
+      child.stdout.on("data", (chunk) => { output = `${output}${chunk}`.slice(-6000); });
+      child.stderr.on("data", (chunk) => { output = `${output}${chunk}`.slice(-6000); });
+      let exited = false;
+      child.once("exit", () => { exited = true; });
+      for (let attempt = 0; attempt < 100; attempt += 1) {
+        if (await publicSiteIsAvailable(url)) {
+          managedSiteUrl = url;
+          process.stdout.write(`Luxe preview renderer: ${url}\n`);
+          return url;
+        }
+        if (exited) break;
+        await wait(250);
+      }
+      if (!exited) child.kill("SIGTERM");
+      if (managedSiteProcess === child) managedSiteProcess = null;
+      failures.push(output.trim().split("\n").slice(-4).join(" "));
+    }
+    throw Object.assign(new Error("The CMS could not start the Luxe preview renderer automatically. Restart the CMS, then try Preview again."), {
+      status: 503,
+      details: failures.filter(Boolean),
+    });
+  })();
+  try {
+    return await siteStartupPromise;
+  } finally {
+    siteStartupPromise = null;
+  }
+}
+
 async function resolvePublicSiteUrl(settings) {
   const configured = String(settings.publicSiteUrl || "").replace(/\/$/, "");
   const candidates = [...new Set([
@@ -344,18 +468,95 @@ async function resolvePublicSiteUrl(settings) {
   for (const candidate of candidates) {
     if (await publicSiteIsAvailable(candidate)) return candidate;
   }
-  throw Object.assign(new Error("Start the Luxe website development server before opening an exact article preview, or update the Public site URL in Settings."), { status: 409 });
+  return startManagedSitePreview(configured);
 }
 
-function selectKnowledge(prompt, records, snapshot) {
+function accessibleKnowledgeRecords(records, snapshot) {
+  const manual = (records || []).filter((record) => record.usage !== "prohibited");
+  return [...manual, ...publicSnapshotRecords(snapshot)];
+}
+
+function routeAffinity(record, terms) {
+  const pages = record.applicablePages || [];
+  const joined = pages.join(" ").toLowerCase();
+  let score = 0;
+  if (terms.has("coffee") && joined.includes("coffee-bar")) score += 5;
+  if ((terms.has("sweet") || terms.has("dessert")) && joined.includes("sweet-cart")) score += 5;
+  if ((terms.has("seating") || terms.has("rental") || terms.has("rentals")) && joined.includes("seating-rentals")) score += 5;
+  for (const event of ["weddings", "corporate-events", "brand-activations", "baby-showers", "bridal-showers", "birthdays", "private-events"]) {
+    if ([...terms].some((term) => event.includes(term)) && joined.includes(event)) score += 4;
+  }
+  if (joined === "/faq") score += 1;
+  return score;
+}
+
+function selectKnowledge(prompt, records, snapshot, limit = 64) {
   const terms = new Set(String(prompt).toLowerCase().match(/[a-z]{4,}/g) || []);
-  const candidates = [...records, ...(snapshot.records || [])].filter((record) => record.usage !== "prohibited");
+  const candidates = accessibleKnowledgeRecords(records, snapshot);
   return candidates
-    .map((record) => ({ record, score: [...terms].filter((term) => `${record.topic} ${record.category} ${record.text}`.toLowerCase().includes(term)).length }))
+    .map((record) => ({
+      record,
+      score: [...terms].filter((term) => `${record.topic} ${record.category} ${record.text} ${(record.applicablePages || []).join(" ")}`.toLowerCase().includes(term)).length + routeAffinity(record, terms),
+    }))
     .filter(({ score }) => score > 0)
     .sort((left, right) => right.score - left.score)
-    .slice(0, 40)
+    .slice(0, limit)
     .map(({ record }) => record);
+}
+
+function isApprovedPublishableRecord(record) {
+  if (!record || record.usage !== "publishable" || record.verificationStatus !== "verified") return false;
+  if ((record.conflictsWith || []).length) return false;
+  return !record.reviewDate || Date.parse(record.reviewDate) >= Date.now();
+}
+
+function relevantApprovedKnowledge(state, query, article) {
+  const allRecords = accessibleKnowledgeRecords(state.knowledge, state.snapshot);
+  const byId = new Map(allRecords.map((record) => [record.id, record]));
+  const referenced = (article?.claims || []).flatMap((claim) => claim.sourceIds || []).map((id) => byId.get(id)).filter(Boolean);
+  const matched = selectKnowledge(query, state.knowledge, state.snapshot);
+  const seen = new Set();
+  return [...matched, ...referenced].filter((record) => {
+    if (!isApprovedPublishableRecord(record) || seen.has(record.id)) return false;
+    seen.add(record.id);
+    return true;
+  }).slice(0, 48);
+}
+
+function articleKnowledgeQuery(article, prompt) {
+  return [
+    prompt,
+    article?.title,
+    article?.category,
+    ...(article?.claims || []).map((claim) => claim.text),
+    ...(article?.content || []).flatMap((block) => [block.title, block.text, ...(block.content || []).map((part) => part.text), ...(block.items || []).flat().map((part) => part.text)]),
+  ].filter(Boolean).join(" ");
+}
+
+function validateRepairEvidence(proposal, state, article, suppliedSources) {
+  const approvedById = new Map(accessibleKnowledgeRecords(state.knowledge, state.snapshot).filter(isApprovedPublishableRecord).map((record) => [record.id, record]));
+  const suppliedIds = new Set(suppliedSources.map((record) => record.id));
+  for (const evidence of proposal.evidence || []) {
+    if (!suppliedIds.has(evidence.sourceId) || !approvedById.has(evidence.sourceId)) {
+      throw Object.assign(new Error(`The repair cited unavailable or unapproved evidence: ${evidence.sourceId}. No proposal was saved.`), { status: 422 });
+    }
+  }
+  if (proposal.kind !== "article-update") return;
+  const claimsOperation = proposal.operations.find((operation) => operation.field === "claims");
+  if (!claimsOperation) return;
+  const proposedClaims = parseArticleOperationValue(claimsOperation);
+  const existingById = new Map((article?.claims || []).map((claim) => [claim.id, claim]));
+  for (const claim of proposedClaims.filter((candidate) => candidate.status === "grounded")) {
+    const prior = existingById.get(claim.id);
+    const changed = !prior || prior.text !== claim.text || prior.status !== claim.status || JSON.stringify(prior.sourceIds || []) !== JSON.stringify(claim.sourceIds || []);
+    if (!changed) continue;
+    if (!claim.sourceIds?.length) throw Object.assign(new Error(`The repair marked “${claim.text}” grounded without evidence. No proposal was saved.`), { status: 422 });
+    for (const sourceId of claim.sourceIds) {
+      if (!suppliedIds.has(sourceId) || !approvedById.has(sourceId)) {
+        throw Object.assign(new Error(`The repair tried to ground “${claim.text}” with unavailable evidence ${sourceId}. No proposal was saved.`), { status: 422 });
+      }
+    }
+  }
 }
 
 const briefSchema = {
@@ -364,9 +565,10 @@ const briefSchema = {
     angle: { type: "string" }, audience: { type: "string" }, searchIntent: { type: "string" }, category: { type: "string" },
     workingTitle: { type: "string" }, sourceIds: { type: "array", items: { type: "string" } },
     proposedInternalLinks: { type: "array", items: { type: "string" } }, conflicts: { type: "array", items: { type: "string" } },
+    qualifications: { type: "array", items: { type: "string" } },
     missingInformation: { type: "array", items: { type: "string" } },
   },
-  required: ["angle", "audience", "searchIntent", "category", "workingTitle", "sourceIds", "proposedInternalLinks", "conflicts", "missingInformation"], additionalProperties: false,
+  required: ["angle", "audience", "searchIntent", "category", "workingTitle", "sourceIds", "proposedInternalLinks", "conflicts", "qualifications", "missingInformation"], additionalProperties: false,
 };
 
 const outlineSchema = {
@@ -391,6 +593,84 @@ const draftSchema = {
     claims: { type: "array", items: { type: "object", properties: { id: { type: "string" }, text: { type: "string" }, status: { type: "string", enum: ["grounded", "editorial", "inferred", "unverified"] }, sourceIds: { type: "array", items: { type: "string" } }, note: { type: "string" } }, required: ["id", "text", "status", "sourceIds", "note"], additionalProperties: false } },
   },
   required: ["slug", "title", "seoTitle", "description", "excerpt", "category", "blocks", "relatedArticleSlugs", "claims"], additionalProperties: false,
+};
+
+const helpSchema = {
+  type: "object",
+  properties: {
+    answer: { type: "string" },
+    steps: { type: "array", items: { type: "string" } },
+    references: { type: "array", items: { type: "string" } },
+    caution: { type: "string" },
+  },
+  required: ["answer", "steps", "references", "caution"],
+  additionalProperties: false,
+};
+
+const helpRepairSchema = {
+  type: "object",
+  properties: {
+    kind: { type: "string", enum: ["article-update", "file-patch", "manual-only"] },
+    title: { type: "string" },
+    summary: { type: "string" },
+    risk: { type: "string", enum: ["low", "medium", "high"] },
+    operations: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          field: { type: "string", enum: ["title", "slug", "seoTitle", "description", "excerpt", "category", "publishDate", "content", "relatedArticleSlugs", "claims"] },
+          value: { type: "string" },
+          reason: { type: "string" },
+        },
+        required: ["field", "value", "reason"],
+        additionalProperties: false,
+      },
+    },
+    files: { type: "array", items: { type: "string" } },
+    unifiedDiff: { type: "string" },
+    validationPlan: { type: "array", items: { type: "string" } },
+    limitations: { type: "array", items: { type: "string" } },
+    evidence: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: { sourceId: { type: "string" }, support: { type: "string" } },
+        required: ["sourceId", "support"],
+        additionalProperties: false,
+      },
+    },
+  },
+  required: ["kind", "title", "summary", "risk", "operations", "files", "unifiedDiff", "validationPlan", "limitations", "evidence"],
+  additionalProperties: false,
+};
+
+const calendarProposalSchema = {
+  type: "object",
+  properties: {
+    summary: { type: "string" },
+    items: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          title: { type: "string" },
+          targetDate: { type: "string" },
+          category: { type: "string" },
+          contentPillar: { type: "string" },
+          audience: { type: "string" },
+          searchIntent: { type: "string" },
+          rationale: { type: "string" },
+          proposedInternalLinks: { type: "array", items: { type: "string" } },
+          risks: { type: "array", items: { type: "string" } },
+        },
+        required: ["title", "targetDate", "category", "contentPillar", "audience", "searchIntent", "rationale", "proposedInternalLinks", "risks"],
+        additionalProperties: false,
+      },
+    },
+  },
+  required: ["summary", "items"],
+  additionalProperties: false,
 };
 
 function sanitizedCodexEnv() {
@@ -429,6 +709,376 @@ function isUsageError(error) {
   return /usage|limit|credit|quota|allowance|rate.?limit/i.test(String(error?.message || error));
 }
 
+async function assertCodexAvailable(state) {
+  if (!state.settings.includedUsageOnly) throw Object.assign(new Error("This CMS is configured for included Codex usage only."), { status: 412 });
+  if (!state.settings.paidCreditsDisabledAcknowledged) throw Object.assign(new Error("Confirm in Settings that account-level paid credits and auto top-up are disabled before using Codex features."), { status: 412 });
+}
+
+function compactHelpContext(state, payload, relevantSources = []) {
+  const article = state.all.find((candidate) => candidate.slug === payload.articleSlug);
+  return {
+    currentView: payload.currentView || "help",
+    currentArticle: article ? {
+      slug: article.slug,
+      title: article.title,
+      status: article.status,
+      category: article.category,
+      issues: state.issues[article.slug] || [],
+      links: state.graph[article.slug] || null,
+      claims: article.claims || [],
+      content: article.content || [],
+    } : null,
+    relevantApprovedSources: relevantSources,
+    reportedError: payload.error || null,
+    cmsFacts: {
+      localOnly: true,
+      storage: "Versioned JSON files under content/blog",
+      publishing: "Manual only; Codex cannot publish, commit, push, or deploy",
+      preview: "Token-gated, noindex, and served through the real Luxe article template",
+      lifecycle: "Draft, Published, Archived, Trash",
+      includedUsageOnly: state.settings.includedUsageOnly === true,
+    },
+    calendar: {
+      itemCount: state.calendar.length,
+      cadencePerMonth: state.calendarConfig.cadencePerMonth,
+      nextItems: state.calendar.filter((item) => item.targetDate).sort((a, b) => a.targetDate.localeCompare(b.targetDate)).slice(0, 8),
+    },
+  };
+}
+
+async function runHelpAssistant(payload) {
+  const state = await buildState();
+  await assertCodexAvailable(state);
+  const question = String(payload.question || "").trim();
+  if (!question) throw Object.assign(new Error("Ask a question about the CMS, Blog, Article Studio, SEO, or an error."), { status: 422 });
+  const sessions = state.helpSessions;
+  let session = sessions.find((candidate) => candidate.id === payload.sessionId);
+  if (!session) {
+    session = { id: crypto.randomUUID(), threadId: null, title: question.slice(0, 72), createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), usage: mapUsage(null), messages: [] };
+    sessions.push(session);
+  }
+  const codex = new Codex({ env: sanitizedCodexEnv() });
+  const helpOptions = { ...codexOptions(state.settings), modelReasoningEffort: state.settings.helpReasoningEffort || "low" };
+  const thread = session.threadId ? codex.resumeThread(session.threadId, helpOptions) : codex.startThread(helpOptions);
+  const activeRun = beginCodexRun(payload.requestId, 45_000);
+  const article = state.all.find((candidate) => candidate.slug === payload.articleSlug);
+  const relevantSources = relevantApprovedKnowledge(state, articleKnowledgeQuery(article, question), article);
+  const context = compactHelpContext(state, payload, relevantSources);
+  const prompt = `You are the private help assistant inside the local Luxe Journal CMS. Answer questions about this CMS, its Blog, Article Studio, content lifecycle, SEO/AEO, validation, previews, links, media, and content calendar. Explain errors in plain language and give precise next steps. Use only the supplied context and established CMS facts. Never claim to have changed files or settings. Never suggest publishing, deploying, buying credits, or enabling paid fallback. When information is insufficient, say exactly what is missing.
+
+SOURCE AND CLAIM RULES:
+- Treat relevantApprovedSources as the authoritative, verified, publishable source set for this answer.
+- For a claim-status error, inspect those sources before concluding that evidence is missing or recommending deletion.
+- Prefer a truthful grounded rewrite with exact source IDs when approved evidence supports the underlying point.
+- Never state that the approved sources fail to support a fact when a supplied source supports it.
+- Distinguish a missing claim-to-source assignment from a genuine absence of approved evidence.
+- Include the IDs of material sources you relied on in references.
+
+QUESTION:
+${question}
+
+CURRENT CONTEXT:
+${JSON.stringify(context)}
+
+RECENT CONVERSATION:
+${JSON.stringify(session.messages.slice(-8))}`;
+  try {
+    const result = await thread.run(prompt, { outputSchema: helpSchema, signal: activeRun.signal });
+    const response = JSON.parse(result.finalResponse);
+    session.threadId = thread.id;
+    session.updatedAt = new Date().toISOString();
+    session.usage = addUsage(session.usage, mapUsage(result.usage));
+    session.messages.push({ role: "user", text: question, createdAt: new Date().toISOString() });
+    session.messages.push({ role: "assistant", ...response, createdAt: new Date().toISOString() });
+    await atomicWriteJson(FILES.helpSessions, sessions);
+    return { sessionId: session.id, threadId: session.threadId, usage: session.usage, response };
+  } catch (error) {
+    if (activeRun.signal.aborted) throw Object.assign(new Error(activeRun.signal.reason?.message || "CMS Help was cancelled."), { status: 408 });
+    if (isUsageError(error)) throw Object.assign(new Error("Codex included usage is unavailable. Your help conversation remains saved."), { status: 429 });
+    throw Object.assign(new Error(`CMS Help could not respond: ${error?.message || error}`), { status: 502 });
+  } finally {
+    activeRun.finish();
+  }
+}
+
+function findHelpSession(sessions, sessionId) {
+  const session = sessions.find((candidate) => candidate.id === sessionId);
+  if (!session) throw Object.assign(new Error("Help conversation not found."), { status: 404 });
+  return session;
+}
+
+async function requestHelpRepair(payload) {
+  const state = await buildState();
+  await assertCodexAvailable(state);
+  const session = findHelpSession(state.helpSessions, payload.sessionId);
+  const existing = (session.proposals || []).find((candidate) => candidate.id === payload.proposalId) || null;
+  const article = state.all.find((candidate) => candidate.slug === (payload.articleSlug || session.articleSlug));
+  const feedback = String(payload.feedback || "").trim();
+  const codex = new Codex({ env: sanitizedCodexEnv() });
+  const helpOptions = { ...codexOptions(state.settings), modelReasoningEffort: state.settings.helpReasoningEffort || "low" };
+  const thread = session.threadId ? codex.resumeThread(session.threadId, helpOptions) : codex.startThread(helpOptions);
+  const activeRun = beginCodexRun(payload.requestId, 55_000);
+  const relevantSources = relevantApprovedKnowledge(
+    state,
+    articleKnowledgeQuery(article, `${feedback} ${session.messages.slice(-10).map((message) => message.text || message.answer || "").join(" ")}`),
+    article,
+  );
+  const prompt = `Prepare a precise, reviewable repair proposal for the local Luxe Journal CMS. You have read-only access and must not claim to apply anything. Prefer an article-update when the issue can be solved by changing the selected article. Use a file-patch only for a genuine CMS or website code defect. Use manual-only when a safe automated fix cannot be proven from the supplied context.
+
+ARTICLE-UPDATE RULES:
+- Return only the fields that must change.
+- For content, relatedArticleSlugs, and claims, encode the complete replacement value as a valid JSON string.
+- Never change publication status or publish an article.
+- Preserve copy and structure unrelated to the diagnosed issue.
+- For a claim-status blocker, inspect APPROVED PUBLISHABLE SOURCES before deciding that support is missing.
+- Prefer grounding or accurately rewriting a claim with approved source IDs over deleting useful content.
+- Delete a factual statement only when no supplied approved source supports a truthful version of it.
+- Never introduce or retain a negative statement about what sources do not establish when a supplied source contradicts it.
+- Put every approved source used by the repair in evidence, with its exact sourceId and a concise description of its support.
+- Any claim changed to grounded must cite one or more source IDs supplied below.
+
+FILE-PATCH RULES:
+- Return a standard unified diff with a/ and b/ paths.
+- Only propose files under cms/, app/, scripts/, or tests/.
+- Do not touch secrets, environment files, Git configuration, dependencies, lockfiles, published content, media, or generated files.
+- No file deletion, rename, binary patch, shell command, commit, push, deployment, or network access.
+
+CURRENT VIEW: ${payload.currentView || "unknown"}
+SELECTED ARTICLE: ${JSON.stringify(article || null)}
+ARTICLE ISSUES: ${JSON.stringify(article ? state.issues[article.slug] || [] : [])}
+APPROVED PUBLISHABLE SOURCES: ${JSON.stringify(relevantSources)}
+RECENT HELP CONVERSATION: ${JSON.stringify(session.messages.slice(-10))}
+EXISTING PROPOSAL TO REVISE: ${JSON.stringify(existing)}
+USER FEEDBACK: ${feedback || "None — create the first proposal."}
+KNOWN SITE PATHS: ${JSON.stringify(state.knownPaths)}
+
+Return a concise proposal that a nontechnical editor can accept, decline, or send back with feedback.`;
+  try {
+    const result = await thread.run(prompt, { outputSchema: helpRepairSchema, signal: activeRun.signal });
+    const generated = JSON.parse(result.finalResponse);
+    validateRepairEvidence(generated, state, article, relevantSources);
+    const proposal = {
+      id: existing?.id || crypto.randomUUID(),
+      revision: (existing?.revision || 0) + 1,
+      status: "pending",
+      createdAt: existing?.createdAt || new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      articleSlug: article?.slug || null,
+      evidenceContextVersion: 1,
+      feedbackHistory: [...(existing?.feedbackHistory || []), ...(feedback ? [{ text: feedback, createdAt: new Date().toISOString() }] : [])],
+      ...generated,
+    };
+    session.threadId = thread.id;
+    session.articleSlug = article?.slug || session.articleSlug || null;
+    session.updatedAt = new Date().toISOString();
+    session.usage = addUsage(session.usage, mapUsage(result.usage));
+    session.proposals ||= [];
+    const index = session.proposals.findIndex((candidate) => candidate.id === proposal.id);
+    if (index >= 0) session.proposals[index] = proposal;
+    else session.proposals.push(proposal);
+    session.messages.push({ role: "assistant", answer: `I prepared “${proposal.title}” for your review. Nothing has been changed yet.`, steps: [], references: proposal.files, caution: proposal.risk === "high" ? "This proposal is high risk and requires careful review." : "Review every proposed change before accepting.", createdAt: new Date().toISOString(), proposalId: proposal.id });
+    await atomicWriteJson(FILES.helpSessions, state.helpSessions);
+    return { sessionId: session.id, proposal, usage: session.usage };
+  } catch (error) {
+    if (activeRun.signal.aborted) throw Object.assign(new Error(activeRun.signal.reason?.message || "Repair generation was cancelled."), { status: 408 });
+    if (isUsageError(error)) throw Object.assign(new Error("Codex included usage is unavailable. No repair proposal was created."), { status: 429 });
+    throw Object.assign(new Error(`CMS Help could not prepare the repair: ${error?.message || error}`), { status: 502 });
+  } finally {
+    activeRun.finish();
+  }
+}
+
+function parseArticleOperationValue(operation) {
+  if (["content", "relatedArticleSlugs", "claims"].includes(operation.field)) {
+    try {
+      const parsed = JSON.parse(operation.value);
+      if (!Array.isArray(parsed)) throw new Error("Expected an array.");
+      return parsed;
+    } catch (error) {
+      throw Object.assign(new Error(`The proposed ${operation.field} change is not valid JSON: ${error.message}`), { status: 422 });
+    }
+  }
+  return String(operation.value);
+}
+
+function allowedRepairFiles(diff) {
+  if (!diff.trim()) throw Object.assign(new Error("The proposed file patch is empty."), { status: 422 });
+  if (/GIT binary patch|deleted file mode|rename from|rename to|^\+\+\+ \/dev\/null/m.test(diff)) {
+    throw Object.assign(new Error("Repair patches cannot contain binary changes, renames, or file deletions."), { status: 422 });
+  }
+  const files = [...diff.matchAll(/^\+\+\+ (?:b\/)?(.+)$/gm)].map((match) => match[1].trim());
+  if (!files.length) throw Object.assign(new Error("The repair patch does not identify any files."), { status: 422 });
+  const allowedRoots = ["cms/", "app/", "scripts/", "tests/"];
+  for (const file of files) {
+    if (file.startsWith("/") || file.includes("..") || !allowedRoots.some((root) => file.startsWith(root)) || /(^|\/)(\.env|\.git|node_modules|dist|\.next|\.vinext)(\/|$)/.test(file)) {
+      throw Object.assign(new Error(`The repair patch is not allowed to change ${file}.`), { status: 422 });
+    }
+  }
+  return [...new Set(files)];
+}
+
+function runLocalProcess(command, args, { input = "", timeoutMs = 120_000 } = {}) {
+  return new Promise((resolve, reject) => {
+    const child = spawn(command, args, { cwd: ROOT, env: sanitizedCodexEnv(), stdio: ["pipe", "pipe", "pipe"] });
+    let stdout = "";
+    let stderr = "";
+    const timeout = setTimeout(() => child.kill("SIGTERM"), timeoutMs);
+    child.stdout.on("data", (chunk) => { stdout += chunk; });
+    child.stderr.on("data", (chunk) => { stderr += chunk; });
+    child.on("error", reject);
+    child.on("close", (code) => { clearTimeout(timeout); resolve({ code, stdout, stderr }); });
+    child.stdin.end(input);
+  });
+}
+
+async function applyHelpRepair(payload) {
+  const state = await buildState();
+  const session = findHelpSession(state.helpSessions, payload.sessionId);
+  const proposal = (session.proposals || []).find((candidate) => candidate.id === payload.proposalId);
+  if (!proposal) throw Object.assign(new Error("Repair proposal not found."), { status: 404 });
+  if (proposal.status !== "pending") throw Object.assign(new Error(`This proposal is already ${proposal.status}.`), { status: 409 });
+  if (payload.decision === "decline") {
+    proposal.status = "declined";
+    proposal.decidedAt = new Date().toISOString();
+    await atomicWriteJson(FILES.helpSessions, state.helpSessions);
+    return { proposal, applied: false };
+  }
+  if (payload.decision !== "accept") throw Object.assign(new Error("Choose accept or decline."), { status: 422 });
+
+  let result;
+  if (proposal.kind === "article-update") {
+    const article = state.all.find((candidate) => candidate.slug === proposal.articleSlug);
+    if (!article) throw Object.assign(new Error("The article targeted by this proposal no longer exists."), { status: 409 });
+    if (proposal.evidenceContextVersion !== 1) {
+      throw Object.assign(new Error("This proposal was created before source-aware repairs were enabled. Revise or regenerate it so the CMS can verify its evidence before acceptance."), { status: 409 });
+    }
+    const currentlyApprovedSources = accessibleKnowledgeRecords(state.knowledge, state.snapshot).filter(isApprovedPublishableRecord);
+    validateRepairEvidence(proposal, state, article, currentlyApprovedSources);
+    const updated = { ...article, originalSlug: article.slug };
+    for (const operation of proposal.operations) updated[operation.field] = parseArticleOperationValue(operation);
+    const saved = await saveArticle(updated);
+    result = { article: saved.article, issues: saved.issues };
+  } else if (proposal.kind === "file-patch") {
+    const files = allowedRepairFiles(proposal.unifiedDiff);
+    const check = await runLocalProcess("git", ["apply", "--check", "--whitespace=error-all", "-"], { input: proposal.unifiedDiff });
+    if (check.code !== 0) throw Object.assign(new Error(`The proposed patch no longer applies cleanly: ${check.stderr || check.stdout}`), { status: 409 });
+    const revisionDir = path.join(FILES.revisions, "help-repairs", proposal.id, `revision-${proposal.revision}`);
+    await mkdir(revisionDir, { recursive: true });
+    await atomicWriteJson(path.join(revisionDir, "proposal.json"), proposal, { revision: false });
+    const applied = await runLocalProcess("git", ["apply", "--whitespace=error-all", "-"], { input: proposal.unifiedDiff });
+    if (applied.code !== 0) throw Object.assign(new Error(`The repair could not be applied: ${applied.stderr || applied.stdout}`), { status: 409 });
+    const validation = await runLocalProcess("npm", ["run", "lint"], { timeoutMs: 180_000 });
+    if (validation.code !== 0) {
+      const rolledBack = await runLocalProcess("git", ["apply", "--reverse", "-"], { input: proposal.unifiedDiff });
+      throw Object.assign(new Error(`The repair failed validation and was ${rolledBack.code === 0 ? "rolled back" : "left unapplied for manual recovery"}. ${validation.stderr || validation.stdout}`), { status: 422 });
+    }
+    result = { files, validation: "npm run lint passed" };
+  } else {
+    throw Object.assign(new Error("This proposal is guidance-only and cannot be applied automatically."), { status: 422 });
+  }
+
+  proposal.status = "accepted";
+  proposal.decidedAt = new Date().toISOString();
+  proposal.result = result;
+  session.messages.push({ role: "assistant", answer: `The approved repair “${proposal.title}” was applied successfully.`, steps: [], references: proposal.files, caution: "Review the affected screen before continuing with publication.", createdAt: new Date().toISOString() });
+  await atomicWriteJson(FILES.helpSessions, state.helpSessions);
+  return { proposal, applied: true, result };
+}
+
+function normalizeCalendarItem(item, existing = {}) {
+  const now = new Date().toISOString();
+  const status = String(item.status || existing.status || "idea");
+  const targetDate = String(item.targetDate || "");
+  if (targetDate) {
+    const parsed = new Date(`${targetDate}T00:00:00Z`);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(targetDate) || Number.isNaN(parsed.valueOf()) || parsed.toISOString().slice(0, 10) !== targetDate) {
+      throw Object.assign(new Error("Calendar dates must be valid and use YYYY-MM-DD."), { status: 422 });
+    }
+  }
+  return {
+    id: item.id || existing.id || crypto.randomUUID(),
+    title: String(item.title || existing.title || "Untitled idea").trim(),
+    status,
+    targetDate,
+    category: String(item.category || existing.category || "Event Planning").trim(),
+    contentPillar: String(item.contentPillar || existing.contentPillar || "").trim(),
+    audience: String(item.audience || existing.audience || "").trim(),
+    searchIntent: String(item.searchIntent || existing.searchIntent || "").trim(),
+    campaign: String(item.campaign || existing.campaign || "").trim(),
+    articleSlug: String(item.articleSlug || existing.articleSlug || "").trim(),
+    notes: String(item.notes || existing.notes || "").trim(),
+    proposedInternalLinks: Array.isArray(item.proposedInternalLinks) ? item.proposedInternalLinks : (existing.proposedInternalLinks || []),
+    createdAt: existing.createdAt || now,
+    updatedAt: now,
+  };
+}
+
+async function saveCalendarItem(payload) {
+  const items = await readJson(FILES.calendar, []);
+  const index = items.findIndex((item) => item.id === payload.item?.id);
+  const item = normalizeCalendarItem(payload.item || {}, index >= 0 ? items[index] : {});
+  if (!item.title) throw Object.assign(new Error("Calendar item title is required."), { status: 422 });
+  if (index >= 0) items[index] = item;
+  else items.push(item);
+  await atomicWriteJson(FILES.calendar, items);
+  return item;
+}
+
+async function deleteCalendarItem(id) {
+  const items = await readJson(FILES.calendar, []);
+  const next = items.filter((item) => item.id !== id);
+  if (next.length === items.length) throw Object.assign(new Error("Calendar item not found."), { status: 404 });
+  await atomicWriteJson(FILES.calendar, next);
+  return { deleted: id };
+}
+
+async function runCalendarProposal(payload) {
+  const state = await buildState();
+  await assertCodexAvailable(state);
+  const promptText = String(payload.prompt || "").trim();
+  if (!promptText) throw Object.assign(new Error("Describe the calendar plan you want."), { status: 422 });
+  const codex = new Codex({ env: sanitizedCodexEnv() });
+  const thread = codex.startThread(codexOptions(state.settings));
+  const context = {
+    request: promptText,
+    startDate: payload.startDate || new Date().toISOString().slice(0, 10),
+    existingCalendar: state.calendar,
+    configuration: state.calendarConfig,
+    publishedArticles: state.published.map(({ slug, title, category, publishDate }) => ({ slug, title, category, publishDate })),
+    drafts: state.drafts.map(({ slug, title, category }) => ({ slug, title, category })),
+    knownPaths: state.knownPaths,
+    approvedKnowledgeTopics: [...new Set(accessibleKnowledgeRecords(state.knowledge, state.snapshot).map((record) => record.topic))].slice(0, 80),
+  };
+  try {
+    const result = await thread.run(`Create a practical editorial content-calendar proposal for Luxe Event Co. Use the requested cadence and avoid duplicating existing articles or calendar items. Dates must be YYYY-MM-DD, avoid blackout dates, and prefer configured weekdays. Every idea must have a specific rationale, search intent, content pillar, and only valid proposed internal links. This is a proposal only, not publication.\n\nCONTEXT:\n${JSON.stringify(context)}`, { outputSchema: calendarProposalSchema });
+    const parsed = JSON.parse(result.finalResponse);
+    const proposals = state.calendarProposals;
+    const proposal = { id: crypto.randomUUID(), prompt: promptText, createdAt: new Date().toISOString(), threadId: thread.id, usage: mapUsage(result.usage), status: "pending", ...parsed };
+    proposals.push(proposal);
+    await atomicWriteJson(FILES.calendarProposals, proposals);
+    return proposal;
+  } catch (error) {
+    if (isUsageError(error)) throw Object.assign(new Error("Codex included usage is unavailable. No calendar changes were made."), { status: 429 });
+    throw Object.assign(new Error(`Calendar planning failed: ${error?.message || error}`), { status: 502 });
+  }
+}
+
+async function approveCalendarProposal(id) {
+  const proposals = await readJson(FILES.calendarProposals, []);
+  const proposal = proposals.find((candidate) => candidate.id === id);
+  if (!proposal) throw Object.assign(new Error("Calendar proposal not found."), { status: 404 });
+  if (proposal.status === "approved") return proposal;
+  const items = await readJson(FILES.calendar, []);
+  const config = await readJson(FILES.calendarConfig, defaultCalendarConfig());
+  const blocked = proposal.items.filter((item) => (config.blackoutDates || []).includes(item.targetDate));
+  if (blocked.length) throw Object.assign(new Error(`The proposal includes ${blocked.length} blackout date${blocked.length === 1 ? "" : "s"}. Adjust the proposal or calendar preferences before approval.`), { status: 422, details: blocked });
+  for (const candidate of proposal.items) items.push(normalizeCalendarItem({ ...candidate, status: "planned", notes: candidate.rationale }));
+  proposal.status = "approved";
+  proposal.approvedAt = new Date().toISOString();
+  await Promise.all([atomicWriteJson(FILES.calendar, items), atomicWriteJson(FILES.calendarProposals, proposals)]);
+  return proposal;
+}
+
 async function runCodexStage(stage, payload) {
   const state = await buildState();
   if (!state.settings.includedUsageOnly) throw Object.assign(new Error("This CMS is configured for included Codex usage only."), { status: 412 });
@@ -443,7 +1093,8 @@ async function runCodexStage(stage, payload) {
   let prompt;
 
   if (stage === "brief") {
-    const sources = selectKnowledge(payload.prompt, state.knowledge, state.snapshot);
+    const retrievalQuery = [payload.prompt, ...Object.values(payload.inputs || {})].filter(Boolean).join(" ");
+    const sources = selectKnowledge(retrievalQuery, state.knowledge, state.snapshot);
     job = {
       id: crypto.randomUUID(), status: "running", stage: "brief", prompt: payload.prompt,
       inputs: payload.inputs || {}, sources, threadId: null, model: state.settings.model || "Codex account default",
@@ -452,7 +1103,30 @@ async function runCodexStage(stage, payload) {
     jobs.push(job);
     thread = codex.startThread(codexOptions(state.settings));
     schema = briefSchema;
-    prompt = `You are the grounded editorial planner for Luxe Event Co. Use only the supplied approved sources and voice rules. Do not invent facts. Identify missing or conflicting information explicitly. Return the requested structured brief.\n\nARTICLE REQUEST:\n${payload.prompt}\n\nOPTIONAL INPUTS:\n${JSON.stringify(payload.inputs || {})}\n\nBRAND VOICE:\n${JSON.stringify(state.voice)}\n\nAPPROVED SOURCES:\n${JSON.stringify(sources)}\n\nKNOWN SITE PATHS:\n${JSON.stringify(state.knownPaths)}`;
+    prompt = `You are the grounded editorial planner for Luxe Event Co. Use only the supplied approved sources and voice rules. Do not invent facts. Return the requested structured brief.
+
+CLASSIFICATION RULES:
+- A conflict is only a direct contradiction between the request and an approved source. Do not label a supported limit, event-specific condition, or careful qualification as a conflict.
+- Put supported conditions such as “up to” capacities and event-specific availability in qualifications.
+- Missing information must be limited to facts genuinely necessary for this article's proposed angle. Do not produce an exhaustive list of every operational detail Luxe has not published.
+- A geography supplied as audience context is not automatically a service-coverage claim. Only flag it if the proposed article would assert unsupported coverage.
+- Treat KNOWN SITE PATHS as authoritative proof that those public routes exist.
+- Re-check the entire supplied source pack before claiming information is absent.
+
+ARTICLE REQUEST:
+${payload.prompt}
+
+OPTIONAL INPUTS:
+${JSON.stringify(payload.inputs || {})}
+
+BRAND VOICE:
+${JSON.stringify(state.voice)}
+
+APPROVED SOURCES:
+${JSON.stringify(sources)}
+
+KNOWN SITE PATHS:
+${JSON.stringify(state.knownPaths)}`;
   } else {
     job = jobs.find((candidate) => candidate.id === payload.jobId);
     if (!job) throw Object.assign(new Error("Studio job not found."), { status: 404 });
@@ -464,7 +1138,32 @@ async function runCodexStage(stage, payload) {
       prompt = `Create a grounded article outline from the approved brief below. Use only its cited source IDs. Include a clear purpose for every section, a Quick Answer, and Key Takeaways. Do not draft the article yet.\n\nAPPROVED BRIEF:\n${JSON.stringify(job.brief)}\n\nSOURCES:\n${JSON.stringify(job.sources)}\n\nVOICE:\n${JSON.stringify(state.voice)}`;
     } else {
       schema = draftSchema;
-      prompt = `Draft the complete Luxe Journal article from the approved brief and outline. Use only supplied sources. Every material factual claim must appear in claims with source IDs; unsupported material must be marked unverified, never disguised as fact. Use measured Canadian English and obey excluded language. Internal links must use only known paths. Return structured blocks.\n\nBRIEF:\n${JSON.stringify(job.brief)}\n\nOUTLINE:\n${JSON.stringify(job.outline)}\n\nSOURCES:\n${JSON.stringify(job.sources)}\n\nVOICE:\n${JSON.stringify(state.voice)}\n\nKNOWN PATHS:\n${JSON.stringify(state.knownPaths)}`;
+      prompt = `Draft the complete Luxe Journal article from the approved brief and outline. Use only supplied sources. Every material factual claim in the public-facing blocks must appear in claims with source IDs. Use measured Canadian English and obey excluded language. Internal links must use only known paths. Return structured blocks.
+
+GROUNDING RULES:
+- Re-check the complete supplied source set before marking a point unsupported.
+- Only records marked verified and publishable may ground factual public copy.
+- Claims must inventory material assertions actually present in the article body; do not create claim records merely to repeat a brief's missing-information list.
+- Do not turn information gaps into public statements such as “the approved sources do not establish” or “the supplied material does not confirm.”
+- If an unsupported detail is not necessary, omit it. If readers genuinely need to verify an event-specific variable, use non-factual editorial guidance such as “Confirm pricing and venue requirements for your event,” and mark that guidance editorial.
+- Never make a negative statement about what the sources do not establish when any supplied source supports a truthful positive or conditional version.
+- Use inferred or unverified only for genuinely necessary draft content that requires human resolution before publication; never disguise it as fact.
+- When adding an internal link inside block text, use [descriptive anchor text](/known-path). The CMS converts that notation into structured link data; never display a bare route as editorial copy.
+
+BRIEF:
+${JSON.stringify(job.brief)}
+
+OUTLINE:
+${JSON.stringify(job.outline)}
+
+SOURCES:
+${JSON.stringify(job.sources)}
+
+VOICE:
+${JSON.stringify(state.voice)}
+
+KNOWN PATHS:
+${JSON.stringify(state.knownPaths)}`;
     }
   }
 
@@ -497,7 +1196,7 @@ async function runCodexStage(stage, payload) {
 
 function generatedDraftToArticle(result, job, voice) {
   const now = new Date().toISOString();
-  const toParts = (text) => [{ text }];
+  const toParts = (text) => parseInlineInternalLinks(text);
   const content = result.blocks.map((block) => {
     if (block.kind === "paragraph") return { type: "paragraph", content: toParts(block.text) };
     if (block.kind === "heading-2" || block.kind === "heading-3") return { type: "heading", id: block.id || safeFilename(block.title || block.text), level: block.kind === "heading-2" ? 2 : 3, text: block.title || block.text };
@@ -515,13 +1214,51 @@ function generatedDraftToArticle(result, job, voice) {
   };
 }
 
-async function approveStudioStage(jobId, stage) {
+function normalizeStudioReview(stage, value) {
+  if (stage === "brief") {
+    const requiredStrings = ["angle", "audience", "searchIntent", "category", "workingTitle"];
+    for (const field of requiredStrings) if (!String(value?.[field] || "").trim()) throw Object.assign(new Error(`Brief ${field} is required.`), { status: 422 });
+    return {
+      ...Object.fromEntries(requiredStrings.map((field) => [field, String(value[field]).trim()])),
+      sourceIds: [...new Set((value.sourceIds || []).map(String).map((item) => item.trim()).filter(Boolean))],
+      proposedInternalLinks: [...new Set((value.proposedInternalLinks || []).map(String).map((item) => item.trim()).filter(Boolean))],
+      conflicts: (value.conflicts || []).map(String).map((item) => item.trim()).filter(Boolean),
+      qualifications: (value.qualifications || []).map(String).map((item) => item.trim()).filter(Boolean),
+      missingInformation: (value.missingInformation || []).map(String).map((item) => item.trim()).filter(Boolean),
+    };
+  }
+  if (stage === "outline") {
+    if (!String(value?.title || "").trim()) throw Object.assign(new Error("Outline title is required."), { status: 422 });
+    if (!Array.isArray(value?.sections) || !value.sections.length) throw Object.assign(new Error("Add at least one article section."), { status: 422 });
+    return {
+      title: String(value.title).trim(),
+      quickAnswerPurpose: String(value.quickAnswerPurpose || "").trim(),
+      takeawaysPurpose: String(value.takeawaysPurpose || "").trim(),
+      sections: value.sections.map((section, index) => {
+        if (!String(section.heading || "").trim()) throw Object.assign(new Error(`Section ${index + 1} needs a heading.`), { status: 422 });
+        return {
+          heading: String(section.heading).trim(),
+          purpose: String(section.purpose || "").trim(),
+          sourceIds: [...new Set((section.sourceIds || []).map(String).map((item) => item.trim()).filter(Boolean))],
+        };
+      }),
+    };
+  }
+  throw Object.assign(new Error("Only brief and outline reviews can be updated."), { status: 400 });
+}
+
+async function approveStudioStage(jobId, stage, value) {
   const jobs = await readJson(FILES.jobs, []);
   const job = jobs.find((candidate) => candidate.id === jobId);
   if (!job) throw Object.assign(new Error("Studio job not found."), { status: 404 });
   const now = new Date().toISOString();
-  if (stage === "brief") job.briefApprovedAt = now;
-  else if (stage === "outline") job.outlineApprovedAt = now;
+  if (stage === "brief") {
+    if (value) job.brief = normalizeStudioReview("brief", value);
+    job.briefApprovedAt = now;
+  } else if (stage === "outline") {
+    if (value) job.outline = normalizeStudioReview("outline", value);
+    job.outlineApprovedAt = now;
+  }
   else throw Object.assign(new Error("Only brief and outline stages can be approved."), { status: 400 });
   job.updatedAt = now;
   await atomicWriteJson(FILES.jobs, jobs);
@@ -539,6 +1276,43 @@ async function serveStatic(req, res, pathname) {
     const contentType = extension === ".html" ? "text/html; charset=utf-8" : extension === ".css" ? "text/css; charset=utf-8" : extension === ".js" ? "text/javascript; charset=utf-8" : "application/octet-stream";
     res.writeHead(200, { "content-type": contentType, "cache-control": "no-store", "x-content-type-options": "nosniff" });
     createReadStream(file).pipe(res);
+    return true;
+  } catch (error) {
+    if (error?.code === "ENOENT") return false;
+    throw error;
+  }
+}
+
+async function serveBlogMedia(req, res, pathname) {
+  if (!pathname.startsWith("/images/blog/") || !["GET", "HEAD"].includes(req.method || "")) return false;
+  let relative;
+  try {
+    relative = decodeURIComponent(pathname.slice("/images/blog/".length));
+  } catch {
+    return false;
+  }
+  const file = path.resolve(BLOG_MEDIA_PUBLIC_DIR, relative);
+  if (file !== BLOG_MEDIA_PUBLIC_DIR && !file.startsWith(`${BLOG_MEDIA_PUBLIC_DIR}${path.sep}`)) return false;
+  try {
+    const info = await stat(file);
+    if (!info.isFile()) return false;
+    const contentTypes = {
+      ".avif": "image/avif",
+      ".jpeg": "image/jpeg",
+      ".jpg": "image/jpeg",
+      ".png": "image/png",
+      ".webp": "image/webp",
+    };
+    const contentType = contentTypes[path.extname(file).toLowerCase()];
+    if (!contentType) return false;
+    res.writeHead(200, {
+      "content-type": contentType,
+      "content-length": info.size,
+      "cache-control": "no-store",
+      "x-content-type-options": "nosniff",
+    });
+    if (req.method === "HEAD") res.end();
+    else createReadStream(file).pipe(res);
     return true;
   } catch (error) {
     if (error?.code === "ENOENT") return false;
@@ -587,7 +1361,7 @@ async function handler(req, res) {
       return json(res, 200, { url: `${publicSiteUrl}/preview/${runtimePort}/${token}/${encodeURIComponent(article.slug)}`, expiresInMinutes: 30 });
     }
     if (url.pathname === "/api/media" && req.method === "POST") return json(res, 200, await ingestMedia(req, url));
-    if (url.pathname === "/api/knowledge/scan" && req.method === "POST") return json(res, 200, await scanKnowledge());
+    if (url.pathname === "/api/knowledge/scan" && req.method === "POST") return json(res, 200, await scanKnowledge(settings));
     if (url.pathname === "/api/knowledge/approve" && req.method === "POST") return json(res, 200, await approveKnowledgeScan());
     if (url.pathname === "/api/knowledge/save" && req.method === "POST") {
       const { records } = await readJsonBody(req);
@@ -605,14 +1379,34 @@ async function handler(req, res) {
       await atomicWriteJson(FILES.settings, next);
       return json(res, 200, next);
     }
+    if (url.pathname === "/api/codex/cancel" && req.method === "POST") {
+      const { requestId } = await readJsonBody(req);
+      return json(res, 200, { cancelled: cancelCodexRun(requestId) });
+    }
+    if (url.pathname === "/api/help/ask" && req.method === "POST") return json(res, 200, await runHelpAssistant(await readJsonBody(req)));
+    if (url.pathname === "/api/help/repair" && req.method === "POST") return json(res, 200, await requestHelpRepair(await readJsonBody(req)));
+    if (url.pathname === "/api/help/repair/decision" && req.method === "POST") return json(res, 200, await applyHelpRepair(await readJsonBody(req)));
+    if (url.pathname === "/api/calendar/item" && req.method === "POST") return json(res, 200, await saveCalendarItem(await readJsonBody(req)));
+    if (url.pathname === "/api/calendar/delete" && req.method === "POST") return json(res, 200, await deleteCalendarItem((await readJsonBody(req)).id));
+    if (url.pathname === "/api/calendar/config" && req.method === "POST") {
+      const { config } = await readJsonBody(req);
+      const next = { ...defaultCalendarConfig(), ...config, schemaVersion: 1 };
+      for (const date of next.blackoutDates || []) normalizeCalendarItem({ title: "Blackout", targetDate: date });
+      if (!Array.isArray(next.statuses) || !next.statuses.length) throw Object.assign(new Error("Add at least one calendar workflow status."), { status: 422 });
+      await atomicWriteJson(FILES.calendarConfig, next);
+      return json(res, 200, next);
+    }
+    if (url.pathname === "/api/calendar/propose" && req.method === "POST") return json(res, 200, await runCalendarProposal(await readJsonBody(req)));
+    if (url.pathname === "/api/calendar/approve" && req.method === "POST") return json(res, 200, await approveCalendarProposal((await readJsonBody(req)).id));
     if (url.pathname === "/api/studio/brief" && req.method === "POST") return json(res, 200, await runCodexStage("brief", await readJsonBody(req)));
     if (url.pathname === "/api/studio/outline" && req.method === "POST") return json(res, 200, await runCodexStage("outline", await readJsonBody(req)));
     if (url.pathname === "/api/studio/draft" && req.method === "POST") return json(res, 200, await runCodexStage("draft", await readJsonBody(req)));
     if (url.pathname === "/api/studio/approve" && req.method === "POST") {
       const body = await readJsonBody(req);
-      return json(res, 200, await approveStudioStage(body.jobId, body.stage));
+      return json(res, 200, await approveStudioStage(body.jobId, body.stage, body.value));
     }
     if (url.pathname.startsWith("/api/")) return errorResponse(res, 404, "API route not found.");
+    if (await serveBlogMedia(req, res, url.pathname)) return;
     if (await serveStatic(req, res, url.pathname)) return;
     errorResponse(res, 404, "Not found.");
   } catch (error) {
@@ -629,3 +1423,11 @@ server.listen(runtimePort, "127.0.0.1", () => {
     process.stdout.write("Article Studio is locked until paid-credit auto top-up is confirmed disabled in Settings.\n");
   }
 });
+
+function stopLocalServers() {
+  if (managedSiteProcess && !managedSiteProcess.killed) managedSiteProcess.kill("SIGTERM");
+  server.close();
+}
+
+process.once("SIGINT", stopLocalServers);
+process.once("SIGTERM", stopLocalServers);

@@ -7,6 +7,20 @@ export function flattenTextParts(parts = []) {
   return parts.map((part) => part?.text || "").join(" ").trim();
 }
 
+export function parseInlineInternalLinks(value = "") {
+  const text = String(value);
+  const parts = [];
+  const pattern = /\[([^\]\n]+)\]\((\/(?!\/)[^)\s]+)\)/g;
+  let cursor = 0;
+  for (const match of text.matchAll(pattern)) {
+    if (match.index > cursor) parts.push({ text: text.slice(cursor, match.index) });
+    parts.push({ text: match[1], href: match[2] });
+    cursor = match.index + match[0].length;
+  }
+  if (cursor < text.length) parts.push({ text: text.slice(cursor) });
+  return parts.length ? parts : [{ text }];
+}
+
 export function flattenArticle(article) {
   const blocks = Array.isArray(article?.content) ? article.content : [];
   const body = blocks.flatMap((block) => {
@@ -110,6 +124,13 @@ export function validateArticle(article, allArticles, { voice = {}, knownPaths =
       if (next?.type === "paragraph" && flattenTextParts(next.content).split(/\s+/).length > 95) {
         issues.push(issue("warning", "concise-answer", `The answer after “${block.text}” could be more concise.`));
       }
+    }
+    const textParts = [
+      ...(["paragraph", "callout", "quick-answer"].includes(block.type) ? (block.content || []) : []),
+      ...(["list", "key-takeaways"].includes(block.type) ? (block.items || []).flat() : []),
+    ];
+    if (textParts.some((part) => /\[[^\]\n]+\]\(\/(?!\/)[^)\s]+\)/.test(part?.text || ""))) {
+      issues.push(issue("error", "inline-link-syntax", `Block ${index + 1} contains a raw Markdown internal link. Convert it to a structured article link before publishing.`));
     }
   }
   if (!(article?.content || []).some((block) => block.type === "quick-answer")) issues.push(issue("warning", "quick-answer", "Consider adding a Quick Answer block."));

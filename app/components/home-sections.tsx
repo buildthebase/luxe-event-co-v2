@@ -52,17 +52,33 @@ export function HomePositioning() {
   return (
     <section id="luxe-family" className="home-positioning" aria-labelledby="home-positioning-title">
       <h2 id="home-positioning-title">
-        Coffee, dessert, and seating, together for your event.
+        <span>One Luxe vision.</span>
+        <span>Infinite ways to celebrate.</span>
       </h2>
       <div>
-        <p className="home-positioning-parent">
-          <strong>Luxe Event Co.</strong>
-          <span>is the parent company behind:</span>
+        <p className="home-positioning-intro">
+          Coffee, dessert, and rentals are brought to life by one team, giving you
+          one point of contact to shape the experience from start to finish.
         </p>
         <ul className="home-positioning-services">
-          <li><Link href="#experience-selector-coffee">Luxe Coffee Bar</Link></li>
-          <li><Link href="#experience-selector-dessert">Luxe Sweet Cart</Link></li>
-          <li><Link href="#experience-selector-seating">Luxe Seating Rentals</Link></li>
+          <li>
+            <Link href="#experience-selector-coffee">
+              <strong>Luxe Coffee Bar</strong>
+              <span>Handcrafted espresso &amp; signature sips</span>
+            </Link>
+          </li>
+          <li>
+            <Link href="#experience-selector-dessert">
+              <strong>Luxe Sweet Cart</strong>
+              <span>Live desserts &amp; personalized indulgences</span>
+            </Link>
+          </li>
+          <li>
+            <Link href="#experience-selector-seating">
+              <strong>Luxe Seating Rentals</strong>
+              <span>Refined seating &amp; event rentals</span>
+            </Link>
+          </li>
         </ul>
       </div>
     </section>

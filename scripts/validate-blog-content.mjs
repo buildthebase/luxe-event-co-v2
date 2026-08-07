@@ -2,6 +2,7 @@ import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { buildLinkGraph, routeFromPageFile, validateArticle } from "../cms/core.mjs";
+import { collectPublicPaths } from "../cms/public-knowledge.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const readJson = async (file, fallback = []) => {
@@ -18,15 +19,20 @@ const collect = async (directory, output = []) => {
 };
 
 const base = path.join(ROOT, "content", "blog");
-const [published, drafts, archived, voice, pageFiles] = await Promise.all([
+const [published, drafts, archived, voice, pageFiles, metadataSource] = await Promise.all([
   readJson(path.join(base, "published", "articles.json")),
   readJson(path.join(base, "drafts", "articles.json")),
   readJson(path.join(base, "archived", "articles.json")),
   readJson(path.join(base, "voice.json"), {}),
   collect(path.join(ROOT, "app")),
+  readFile(path.join(ROOT, "app", "metadata-config.ts"), "utf8"),
 ]);
 const all = [...published, ...drafts, ...archived];
-const knownPaths = pageFiles.map((file) => routeFromPageFile(ROOT, file)).filter(Boolean);
+const knownPaths = collectPublicPaths({
+  metadataSource,
+  staticPaths: pageFiles.map((file) => routeFromPageFile(ROOT, file)).filter(Boolean),
+  publishedSlugs: published.map((article) => article.slug),
+});
 const graph = buildLinkGraph(all, knownPaths);
 const results = all.map((article) => ({ article, issues: validateArticle(article, all, { voice, knownPaths, graph }) }));
 const blockers = results.flatMap(({ article, issues }) => article.status === "published" ? issues.filter((entry) => entry.severity === "error").map((entry) => `${article.slug}: ${entry.message}`) : []);

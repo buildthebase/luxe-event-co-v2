@@ -130,9 +130,8 @@
 
 .blog-featured > article > a {
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(17rem, .7fr);
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: end;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
 }
 
 .blog-featured figure,
@@ -183,7 +182,12 @@
 }
 
 .blog-featured > article > a > div {
-  padding-bottom: clamp(.5rem, 2vw, 2rem);
+  order: -1;
+  width: 100%;
+  max-width: 70rem;
+  margin-inline: auto;
+  padding-bottom: 0;
+  text-align: center;
 }
 
 .blog-story-meta {
@@ -191,6 +195,10 @@
   flex-wrap: wrap;
   gap: .4rem 1rem;
   align-items: baseline;
+}
+
+.blog-featured .blog-story-meta {
+  justify-content: center;
 }
 
 .blog-story-meta span {
@@ -207,7 +215,9 @@
 }
 
 .blog-featured h2 {
-  margin: 1.15rem 0 1rem;
+  width: 100%;
+  max-width: 100%;
+  margin: 1.15rem auto 1rem;
   font-size: clamp(2.25rem, 4.5vw, 4.8rem);
   font-weight: 500;
   letter-spacing: -.075em;
@@ -221,6 +231,11 @@
   margin: 0;
   color: var(--blog-muted);
   line-height: 1.6;
+}
+
+.blog-featured > article > a > div > p {
+  max-width: 48rem;
+  margin-inline: auto;
 }
 
 .blog-featured strong {
@@ -580,13 +595,14 @@
 
 .blog-article-hero h1 {
   grid-column: 1 / -1;
-  max-width: 14ch;
+  width: 100%;
+  max-width: 20ch;
   margin: 0 0 1.75rem;
-  font-size: clamp(3.2rem, 7vw, 7.25rem);
+  font-size: clamp(2.75rem, 4.4vw, 4.75rem);
   font-weight: 500;
-  letter-spacing: -.085em;
-  line-height: .88;
-  text-wrap: balance;
+  letter-spacing: -.065em;
+  line-height: .98;
+  text-wrap: pretty;
 }
 
 .blog-article-hero > div > p:nth-of-type(2) {
@@ -639,13 +655,9 @@
 }
 
 .blog-article-body :where(h2, h3) {
+  width: 100%;
   max-width: 100%;
   overflow-wrap: anywhere;
-}
-
-.blog-article-body p span + span::before,
-.blog-article-body li span + span::before {
-  content: " ";
 }
 
 .blog-article-body a {
@@ -661,12 +673,12 @@
   font-weight: 500;
   letter-spacing: -.06em;
   line-height: 1;
-  text-wrap: balance;
+  text-wrap: pretty;
 }
 
 .blog-article-body h2 {
   margin: 4.5rem 0 1.25rem;
-  font-size: var(--type-heading-lg);
+  font-size: clamp(1.9rem, 2.35vw, 2.75rem);
 }
 
 .blog-article-body h3 {
@@ -677,7 +689,13 @@
 .blog-article-body :where(ul, ol) {
   display: grid;
   gap: .75rem;
-  padding-left: 1.4rem;
+  margin: 1.5rem 0 2rem;
+  padding-left: 1.6rem;
+  list-style: disc;
+}
+
+.blog-article-body li::marker {
+  color: var(--gold-text);
 }
 
 .blog-article-body blockquote,
@@ -859,7 +877,8 @@
   }
 
   .blog-featured > article > a > div {
-    max-width: 44rem;
+    width: 100%;
+    max-width: 70rem;
     padding-bottom: 0;
   }
 
@@ -996,7 +1015,8 @@
   }
 
   .blog-article-hero h1 {
-    font-size: clamp(2.8rem, 13.5vw, 4.25rem);
+    max-width: 100%;
+    font-size: clamp(2.25rem, 10vw, 3.25rem);
   }
 
   .blog-article-hero > div > div {

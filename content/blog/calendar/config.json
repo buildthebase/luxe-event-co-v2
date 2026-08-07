@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "cadencePerMonth": 2,
+  "preferredWeekdays": ["Tuesday", "Thursday"],
+  "planningLeadDays": 21,
+  "defaultCategory": "Event Planning",
+  "statuses": ["idea", "planned", "brief", "draft", "review", "scheduled", "published", "paused"],
+  "categoryTargets": {
+    "Coffee Catering": 1,
+    "Dessert Catering": 1,
+    "Event Rentals": 1,
+    "Weddings": 1,
+    "Corporate Events": 1,
+    "Brand Activations": 1,
+    "Private Events": 1,
+    "Event Planning": 1
+  },
+  "blackoutDates": [],
+  "campaignPeriods": []
+}

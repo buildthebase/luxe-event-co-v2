@@ -44,5 +44,6 @@ next-env.d.ts
 # local-only Luxe Blog CMS state
 /content/blog/.trash/
 /content/blog/.revisions/
+/content/blog/.local/
 /content/blog/media/originals/
 /cms/.runtime/

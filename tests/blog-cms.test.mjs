@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { buildLinkGraph, createEmptyArticle, searchArticles, validateArticle } from "../cms/core.mjs";
+import { buildLinkGraph, createEmptyArticle, parseInlineInternalLinks, searchArticles, validateArticle } from "../cms/core.mjs";
 
 function article(overrides = {}) {
   return {
@@ -53,4 +53,20 @@ test("CMS search includes body text", () => {
   const first = article({ slug: "coffee-guide", content: [{ type: "paragraph", content: [{ text: "Ceremonial matcha service" }] }] });
   const second = article({ slug: "seating-guide", content: [{ type: "paragraph", content: [{ text: "Lounge seating layouts" }] }] });
   assert.deepEqual(searchArticles([first, second], "matcha").map((entry) => entry.slug), ["coffee-guide"]);
+});
+
+test("generated Markdown-style internal links become structured article links", () => {
+  assert.deepEqual(parseInlineInternalLinks("Explore [Luxe Coffee Bar](/experiences/coffee-bar) today."), [
+    { text: "Explore " },
+    { text: "Luxe Coffee Bar", href: "/experiences/coffee-bar" },
+    { text: " today." },
+  ]);
+});
+
+test("raw Markdown internal links block publication", () => {
+  const candidate = article({
+    content: [{ type: "paragraph", content: [{ text: "Explore [Luxe Coffee Bar](/experiences/coffee-bar)." }] }],
+  });
+  const issues = validateArticle(candidate, [candidate], { knownPaths: ["/experiences/coffee-bar"] });
+  assert.ok(issues.some((entry) => entry.code === "inline-link-syntax" && entry.severity === "error"));
 });

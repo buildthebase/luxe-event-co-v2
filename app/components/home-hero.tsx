@@ -298,11 +298,12 @@ export function HomeHero() {
             aria-hidden={finalState ? undefined : "true"}
           >
             <h2 className="foundation-wide-heading" id="home-hero-seo-title">
-              Mobile Coffee Bar, Live Dessert Carts &amp; Event Rentals in Toronto &amp; the GTA
+              Luxury hospitality, elegantly composed with mobile coffee bars,
+              live dessert carts &amp; event rentals across Toronto &amp; Southern Ontario.
             </h2>
             <p>
-              Mobile coffee, live dessert, and intentional seating rentals brought
-              together through one thoughtfully composed planning journey.
+              Coffee, dessert, and intentional seating brought together through one
+              thoughtfully coordinated event experience.
             </p>
           </div>
         </div>
@@ -334,6 +335,21 @@ export function HomeHero() {
       </div>
 
       <CredibilityStrip variant="hero" />
+
+      <dl
+        className="home-hero-proof-points"
+        aria-label="Luxe Event Co. experience and liability coverage"
+        data-evidence-status="client-supplied"
+      >
+        <div>
+          <dt>500+</dt>
+          <dd>Events served</dd>
+        </div>
+        <div>
+          <dt>$5M</dt>
+          <dd>Liability coverage</dd>
+        </div>
+      </dl>
 
       <dialog
         className="home-quote-modal"

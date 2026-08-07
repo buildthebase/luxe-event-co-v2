@@ -6432,7 +6432,7 @@ a {
 }
 
 @media (min-width: 761px) {
-  .foundation-shell main h2:not(.foundation-wide-heading) {
+  .foundation-shell main:not(.blog-index-page):not(.blog-article-page) h2:not(.foundation-wide-heading) {
     max-width: 18ch;
     font-size: clamp(2.75rem, 4vw, 4.75rem);
     line-height: 0.98;
@@ -6888,7 +6888,7 @@ a {
  */
 @media (min-width: 761px) {
   .foundation-shell
-    main:not(.home-page)
+    main:not(.home-page):not(.blog-index-page):not(.blog-article-page)
     h2:not(.foundation-wide-heading):not(:where(
       #events-directory-title,
       #sweet-positioning-title,
@@ -6941,7 +6941,7 @@ a {
     letter-spacing: -.06em !important;
   }
 
-  .foundation-shell main:not(.home-page) h2 {
+  .foundation-shell main:not(.home-page):not(.blog-index-page):not(.blog-article-page) h2 {
     max-width: 21ch !important;
     font-size: clamp(1.75rem, 8vw, 2.125rem) !important;
     line-height: 1.04 !important;
@@ -9521,6 +9521,10 @@ body .foundation-shell main:is(
   max-width: 16ch;
 }
 
+.home-positioning h2 > span {
+  display: block;
+}
+
 .home-positioning > div {
   display: grid;
   gap: var(--space-5);
@@ -9538,33 +9542,12 @@ body .foundation-shell main:is(
   line-height: 1.6;
 }
 
-.home-positioning-parent {
-  display: flex;
-  gap: 0.6rem;
-  align-items: baseline;
-  color: var(--color-luxe-gold-ink) !important;
-  font-size: clamp(1.25rem, 1.7vw, 1.55rem);
-  font-weight: 700;
-  letter-spacing: -0.015em;
-  line-height: 1.2;
-  white-space: nowrap;
-}
-
-.home-positioning-parent strong {
-  color: inherit;
-  font: inherit;
-}
-
-.home-positioning-parent span {
-  color: inherit;
-  font: inherit;
-}
-
-@media (max-width: 700px) {
-  .home-positioning-parent {
-    gap: 0.4rem;
-    font-size: clamp(0.85rem, 3.6vw, 1rem);
-  }
+.home-positioning-intro {
+  max-width: 42ch !important;
+  color: var(--color-luxe-black) !important;
+  font-size: clamp(1.1rem, 1.45vw, 1.3rem);
+  line-height: 1.5 !important;
+  text-wrap: pretty;
 }
 
 .home-imagery .home-section-intro {
@@ -9598,19 +9581,37 @@ body .foundation-shell main:is(
 }
 
 .home-positioning-services a {
-  display: flex;
-  min-height: 3.25rem;
-  align-items: center;
-  justify-content: space-between;
-  font-size: .82rem;
+  position: relative;
+  display: grid;
+  min-height: 5.5rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.45rem 1rem;
+  align-content: center;
+  padding: 1.05rem 2rem 1.05rem 0;
+}
+
+.home-positioning-services strong {
+  font-size: clamp(1rem, 1.25vw, 1.25rem);
   font-weight: 650;
-  letter-spacing: .1em;
+  letter-spacing: .085em;
+  line-height: 1.25;
   text-transform: uppercase;
 }
 
+.home-positioning-services span {
+  grid-column: 1;
+  color: var(--color-text-secondary);
+  font-size: clamp(1.05rem, 1.45vw, 1.3rem);
+  line-height: 1.35;
+}
+
 .home-positioning-services a::after {
+  position: absolute;
+  top: 50%;
+  right: 0;
   color: var(--gold-text);
   content: "↓︎";
+  transform: translateY(-50%);
 }
 
 .home-positioning-services a:hover,
@@ -11319,7 +11320,7 @@ body .foundation-shell main:is(
   position: absolute;
   bottom: clamp(6.6rem, 16%, 8.5rem);
   left: clamp(1.25rem, 3vw, 3rem);
-  width: min(48rem, calc(100% - 2.5rem));
+  width: min(66rem, calc(100% - 2.5rem));
   margin: 0;
   padding: 0.65rem 0.8rem;
   background: rgb(248 246 242 / 90%);
@@ -11415,6 +11416,46 @@ body .foundation-shell main:is(
 
 .home-cinematic-hero > .signature-credibility {
   grid-column: 1;
+}
+
+.home-hero-proof-points {
+  display: grid;
+  grid-column: 1;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: clamp(1rem, 2vw, 1.75rem) 0 0;
+  border-block: 1px solid color-mix(in srgb, var(--color-luxe-black) 24%, transparent);
+  padding-block: clamp(1.75rem, 3vw, 2.75rem);
+}
+
+.home-hero-proof-points > div {
+  display: grid;
+  gap: 0.5rem;
+  align-content: center;
+  justify-items: center;
+  padding-inline: clamp(1.5rem, 4vw, 4rem);
+  text-align: center;
+}
+
+.home-hero-proof-points > div:first-child {
+  border-right: 1px solid color-mix(in srgb, var(--color-luxe-black) 20%, transparent);
+}
+
+.home-hero-proof-points dt {
+  margin: 0;
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 500;
+  letter-spacing: -0.065em;
+  line-height: 0.9;
+}
+
+.home-hero-proof-points dd {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  line-height: 1.35;
+  text-transform: uppercase;
 }
 
 @media (max-width: 950px) {
@@ -11597,6 +11638,27 @@ body .foundation-shell main:is(
 
   .home-cinematic-hero > .signature-credibility {
     order: 2;
+  }
+
+  .home-hero-proof-points {
+    order: 3;
+    grid-template-columns: 1fr;
+    margin-top: var(--space-4);
+    padding-block: 0;
+  }
+
+  .home-hero-proof-points > div {
+    min-height: 9rem;
+    padding: var(--space-6) 0;
+  }
+
+  .home-hero-proof-points > div:first-child {
+    border-right: 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-luxe-black) 20%, transparent);
+  }
+
+  .home-hero-proof-points dt {
+    font-size: clamp(3rem, 15vw, 4.5rem);
   }
 
   .home-cinematic-panel-coffee .home-cinematic-placeholder::before,
@@ -22656,22 +22718,12 @@ max-width: 36ch;
 /* Final cascade guard: every desktop H2 uses the canonical site-wide scale. */
 @media (min-width: 761px) {
 .foundation-shell
-  main
+  main:not(.blog-index-page):not(.blog-article-page)
   h2:not(.foundation-wide-heading):not(#events-directory-title):not(#sweet-positioning-title):not(#sweet-inclusions-title):not(#coffee-overview-title):not(#seating-overview-title):not(#coffee-events-title):not(#sweet-combinations-title):not(#coffee-hero-proof-title):not(#seating-hero-proof-title):not(#corporate-planning-title):not(#events-approach-title):not(#coffee-formats-title):not(#home-hero-seo-title) {
     max-width: 18ch !important;
     font-size: var(--luxe-type-h2) !important;
     line-height: .98 !important;
     letter-spacing: -.055em !important;
-  }
-}
-
-/* Keep the keyword-rich hero H2 on the canonical site-wide scale. */
-@media (min-width: 761px) {
-  .foundation-shell main h2#home-hero-seo-title {
-    max-width: none !important;
-    font-size: var(--luxe-type-h2) !important;
-    line-height: 1.08 !important;
-    letter-spacing: -0.035em !important;
   }
 }
 

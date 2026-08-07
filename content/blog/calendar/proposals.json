@@ -1,0 +1,134 @@
+[
+  {
+    "id": "d0dfe97c-d7bd-42cd-bb62-770813b7e9dc",
+    "prompt": "plan the next 3 months around weddings, brand activations, and bridal showers",
+    "createdAt": "2026-08-07T16:11:35.920Z",
+    "threadId": "019fdcfd-f9d3-7e02-9a5f-97bbd667197f",
+    "usage": {
+      "inputTokens": 12813,
+      "cachedInputTokens": 0,
+      "outputTokens": 1785,
+      "reasoningOutputTokens": 508
+    },
+    "status": "approved",
+    "summary": "Six-item editorial proposal for 2026-08 through 2026-10 at two articles per month. All dates fall on preferred Tuesdays or Thursdays, avoid the supplied published and draft topics, respect a 21-day lead from the 2026-08-01 planning start, and use only confirmed internal-link paths. This is a proposal only; nothing is scheduled or published.",
+    "items": [
+      {
+        "title": "Bridal Shower Planning Checklist: What to Decide Before Booking Vendors",
+        "targetDate": "2026-08-25",
+        "category": "Event Planning",
+        "contentPillar": "Bridal showers",
+        "audience": "Hosts, maids of honour, family members, and couples planning a bridal shower in Toronto or the GTA",
+        "searchIntent": "Informational and commercial investigation: users want a practical planning sequence before contacting venues and vendors.",
+        "rationale": "A decision-first checklist addresses an early planning need while naturally preparing qualified prospects to submit a complete inquiry. It introduces bridal-shower coverage without overlapping the existing proposal-request article because it focuses on event decisions, responsibilities, and timing rather than information required for a quote.",
+        "proposedInternalLinks": [
+          "/events",
+          "/experiences",
+          "/faq",
+          "/inquire"
+        ],
+        "risks": [
+          "Could become a generic checklist unless examples reflect Luxe Event Co.’s actual services and planning process.",
+          "Avoid promising vendor availability, package inclusions, or planning services that are not confirmed."
+        ]
+      },
+      {
+        "title": "How to Plan a Wedding Cocktail Hour That Keeps Guests Comfortable and Engaged",
+        "targetDate": "2026-08-27",
+        "category": "Weddings",
+        "contentPillar": "Wedding guest experience",
+        "audience": "Engaged couples and wedding planners designing a Toronto or GTA wedding reception",
+        "searchIntent": "Informational and commercial investigation: users are comparing cocktail-hour layouts, refreshments, seating, and guest-experience options.",
+        "rationale": "Cocktail hour is a distinct planning moment with strong relevance to hospitality and rentals. The angle avoids duplicating the published wedding-timeline article and the draft about wedding coffee catering by concentrating on comfort, pacing, movement, and engagement before dinner.",
+        "proposedInternalLinks": [
+          "/events",
+          "/experiences",
+          "/gallery",
+          "/inquire"
+        ],
+        "risks": [
+          "Guest-flow advice could overlap with the existing event-rentals article; keep the focus specifically on the wedding cocktail-hour experience.",
+          "Venue-specific restrictions vary, so recommendations should be framed as planning considerations rather than universal rules."
+        ]
+      },
+      {
+        "title": "Brand Activation Planning Timeline: From Creative Concept to Event Day",
+        "targetDate": "2026-09-08",
+        "category": "Brand Activations",
+        "contentPillar": "Brand activation production",
+        "audience": "Brand managers, experiential marketers, agencies, and event producers planning activations in Toronto or the GTA",
+        "searchIntent": "Informational and commercial investigation: users want to understand activation milestones, lead times, approvals, and production dependencies.",
+        "rationale": "A milestone-based timeline can attract decision-makers early enough to influence scope and execution. It complements the existing branded-hospitality article without repeating its argument, shifting attention to briefing, creative approvals, logistics, testing, staffing, and event-day readiness.",
+        "proposedInternalLinks": [
+          "/events",
+          "/experiences",
+          "/gallery",
+          "/inquire"
+        ],
+        "risks": [
+          "Lead-time guidance may vary substantially by activation scale and venue.",
+          "The article should distinguish Luxe Event Co.’s responsibilities from those of agencies, fabricators, venues, and client teams."
+        ]
+      },
+      {
+        "title": "Wedding Reception Lounge Seating: How Much Is Enough and Where Should It Go?",
+        "targetDate": "2026-09-24",
+        "category": "Weddings",
+        "contentPillar": "Wedding seating and rentals",
+        "audience": "Couples and wedding planners evaluating lounge seating for receptions in Toronto or the GTA",
+        "searchIntent": "Informational and commercial investigation: users want practical guidance on lounge quantity, placement, accessibility, and guest use.",
+        "rationale": "This specific, high-consideration question supports rental discovery while remaining distinct from the broad published article about rentals and guest flow. It also avoids the existing wedding coffee content by focusing on seating decisions and reception comfort.",
+        "proposedInternalLinks": [
+          "/events",
+          "/experiences",
+          "/gallery",
+          "/faq",
+          "/inquire"
+        ],
+        "risks": [
+          "Avoid unsupported formulas for seat counts; present flexible ranges or decision factors that can be validated by the team.",
+          "Accessibility guidance should be reviewed carefully and should not imply that lounge seating replaces accessible dining arrangements."
+        ]
+      },
+      {
+        "title": "How to Plan a Bridal Shower Around a Theme Without Making It Feel Overdone",
+        "targetDate": "2026-10-06",
+        "category": "Private Events",
+        "contentPillar": "Bridal shower design",
+        "audience": "Bridal-shower hosts seeking a cohesive but polished celebration aesthetic",
+        "searchIntent": "Inspirational and commercial investigation: users want theme, décor, menu, and experience ideas that feel coordinated rather than excessive.",
+        "rationale": "This mid-funnel design article addresses a common host concern and showcases Luxe Event Co.’s ability to create cohesive experiences. It is clearly differentiated from the earlier checklist by focusing on translating one concept into selective visual and hospitality details.",
+        "proposedInternalLinks": [
+          "/events",
+          "/experiences",
+          "/gallery",
+          "/inquire"
+        ],
+        "risks": [
+          "Trend-heavy examples can date quickly; emphasize adaptable design principles.",
+          "Use original event examples or approved imagery to avoid presenting unverified concepts as completed Luxe Event Co. work."
+        ]
+      },
+      {
+        "title": "How to Make a Brand Activation More Shareable Without Slowing Down the Guest Experience",
+        "targetDate": "2026-10-22",
+        "category": "Brand Activations",
+        "contentPillar": "Interactive brand experiences",
+        "audience": "Marketing teams and agencies planning social-friendly experiential events in Toronto or the GTA",
+        "searchIntent": "Informational and commercial investigation: users want ways to encourage content creation while maintaining throughput and a positive attendee experience.",
+        "rationale": "The topic targets a concrete activation challenge: balancing participation, branded moments, queues, and organic sharing. It expands beyond the published branded-hospitality overview and the proposed production timeline by focusing on interaction design and operational flow.",
+        "proposedInternalLinks": [
+          "/events",
+          "/experiences",
+          "/gallery",
+          "/inquire"
+        ],
+        "risks": [
+          "Avoid guaranteeing social reach, engagement, or user-generated content.",
+          "Recommendations about data capture, contests, or attendee photography must account for consent, privacy, and platform rules."
+        ]
+      }
+    ],
+    "approvedAt": "2026-08-07T16:11:53.645Z"
+  }
+]

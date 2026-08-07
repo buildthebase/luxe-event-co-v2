@@ -12,7 +12,7 @@
 
 /* Keep the SEO-rich hero heading compact enough to preserve the imagery. */
 .foundation-shell .home-page .home-cinematic-description h2#home-hero-seo-title {
-  font-size: clamp(2.15rem, 2.65vw, 3.15rem) !important;
+  font-size: clamp(1.45rem, 1.8vw, 2.15rem) !important;
 }
 
 /* Tighten the parent-brand introduction. */

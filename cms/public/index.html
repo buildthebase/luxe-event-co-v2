@@ -27,6 +27,8 @@
         <button class="nav-button" data-view="knowledge">Knowledge</button>
         <button class="nav-button" data-view="voice">Brand voice</button>
         <button class="nav-button" data-view="studio">Article Studio</button>
+        <button class="nav-button" data-view="calendar">Content calendar</button>
+        <button class="nav-button" data-view="help">CMS help</button>
         <button class="nav-button" data-view="settings">Settings</button>
       </nav>
       <main id="workspace" tabindex="-1">
@@ -39,12 +41,29 @@
         <strong id="studio-activity-title">Working on your article</strong>
         <p id="studio-activity-detail">Codex is preparing the next checkpoint.</p>
       </div>
-      <span class="studio-activity-time" id="studio-activity-time">0:00</span>
+      <div class="studio-activity-status">
+        <span class="studio-activity-time" id="studio-activity-time">0:00</span>
+        <button class="studio-activity-cancel" id="studio-activity-cancel" type="button" data-action="cancel-current">Cancel</button>
+      </div>
       <div class="studio-progress-track" role="progressbar" aria-label="Article Studio progress" aria-valuetext="Work in progress">
         <span class="studio-progress-bar"></span>
       </div>
       <small>Please leave this window open. The next action will unlock automatically.</small>
     </section>
+    <aside class="help-drawer" id="help-drawer" role="dialog" aria-modal="false" aria-labelledby="help-drawer-title" hidden>
+      <header class="help-drawer-header">
+        <div><span>Local guidance</span><strong id="help-drawer-title">CMS Help</strong></div>
+        <div class="help-drawer-controls"><button type="button" data-action="help-open-history" aria-label="Open help conversation history">History</button><button type="button" data-action="help-new" aria-label="Start a new help conversation">New</button><button type="button" data-action="help-drawer-close" aria-label="Close CMS Help">×</button></div>
+      </header>
+      <div class="help-drawer-context" id="help-drawer-context">Preparing current context…</div>
+      <div class="help-drawer-messages" id="help-drawer-messages" aria-live="polite"></div>
+      <form class="help-drawer-composer" id="help-drawer-form">
+        <label for="help-drawer-question">Ask about the CMS, Blog, or an error</label>
+        <textarea id="help-drawer-question" rows="3" placeholder="What does this error mean?"></textarea>
+        <button class="button primary" type="submit" data-action="help-ask-drawer">Ask CMS Help</button>
+      </form>
+    </aside>
+    <button class="help-launcher" type="button" data-action="help-drawer-open" aria-controls="help-drawer" aria-expanded="false" aria-label="Open CMS Help"><span>?</span> CMS Help</button>
     <div id="toast" role="status" aria-live="polite"></div>
     <script type="module" src="/app.js"></script>
   </body>
