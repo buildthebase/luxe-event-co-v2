@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Fragment } from "react";
+import { QuoteModalTrigger } from "./quote-modal-trigger";
 import { ResponsiveImage } from "./responsive-image";
 import {
   featuredHomeEvents,
@@ -117,11 +118,6 @@ export function HomeUnifiedExperience() {
           </li>
         </ul>
       </div>
-      <ol className="home-unified-notes">
-        <li><span>01</span>Book an experience independently.</li>
-        <li><span>02</span>Combine complementary services.</li>
-        <li><span>03</span>Personalize the presentation and flow.</li>
-      </ol>
     </section>
   );
 }
@@ -166,6 +162,10 @@ export function HomeEventCategories() {
       <Link href="/events" className="home-text-link">
         Explore every event pathway
       </Link>
+      <div className="home-events-planning-cta">
+        <strong>Personalize your celebration.</strong>
+        <QuoteModalTrigger><span>Plan Your Event ↗︎</span></QuoteModalTrigger>
+      </div>
     </section>
   );
 }

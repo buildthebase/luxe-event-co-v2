@@ -336,21 +336,6 @@ export function HomeHero() {
 
       <CredibilityStrip variant="hero" />
 
-      <dl
-        className="home-hero-proof-points"
-        aria-label="Luxe Event Co. experience and liability coverage"
-        data-evidence-status="client-supplied"
-      >
-        <div>
-          <dt>500+</dt>
-          <dd>Events served</dd>
-        </div>
-        <div>
-          <dt>$5M</dt>
-          <dd>Liability coverage</dd>
-        </div>
-      </dl>
-
       <dialog
         className="home-quote-modal"
         ref={quoteDialog}

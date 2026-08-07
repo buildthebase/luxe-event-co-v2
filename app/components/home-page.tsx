@@ -16,6 +16,7 @@ import {
 } from "./signature-elements";
 import { JsonLd } from "./json-ld";
 import { PageSectionNavigation } from "./page-section-navigation";
+import { QuoteModalTrigger } from "./quote-modal-trigger";
 import { SiteShell } from "./site-shell";
 import { homeSectionNavigation } from "../page-section-navigation";
 import { pageMetadata } from "../metadata-config";
@@ -77,6 +78,20 @@ export function HomePage() {
         <JsonLd data={homePageSchema} />
         <PageSectionNavigation items={homeSectionNavigation} />
         <HomeHero />
+        <dl
+          className="home-hero-proof-points"
+          aria-label="Luxe Event Co. experience and liability coverage"
+          data-evidence-status="client-supplied"
+        >
+          <div>
+            <dt>500+</dt>
+            <dd>Events served</dd>
+          </div>
+          <div>
+            <dt>$5M</dt>
+            <dd>Liability coverage</dd>
+          </div>
+        </dl>
         <HomePositioning />
         <div className="home-testimonial-placement">
           <HomeTestimonialCarousel />
@@ -87,9 +102,17 @@ export function HomePage() {
           heading="Our Core Event Experiences"
           showDescription={false}
         />
+        <CombinedExperienceFeature
+          id="combinations"
+          footer={(
+            <>
+              <strong>Book one or multiple experiences.</strong>
+              <QuoteModalTrigger><span>Get a Quote ↗︎</span></QuoteModalTrigger>
+            </>
+          )}
+        />
         <HomeUnifiedExperience />
         <HomeEventCategories />
-        <CombinedExperienceFeature id="combinations" />
         <HomeSelectedImagery />
         <HomeTrust />
         <HomeWorkingExperience />

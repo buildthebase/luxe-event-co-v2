@@ -25,16 +25,89 @@
   display: block;
 }
 
-/* The planning notes should read as regular-weight guidance. */
-.foundation-shell .home-page .home-unified-notes li,
-.foundation-shell .home-page .home-unified-notes li > span {
-  font-weight: 400;
-}
-
 /* Reduce the perceived top and bottom space around these editorial chapters. */
 .foundation-shell .home-page > .signature-combinations {
   margin-top: var(--home-compact-section-space);
   padding-block: var(--home-compact-section-space);
+}
+
+.foundation-shell .home-page .signature-combinations-footer {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-5);
+  padding-top: clamp(2.5rem, 5vw, 5rem);
+  border-top: 1px solid var(--color-rule);
+  text-align: center;
+}
+
+.foundation-shell .home-page .signature-combinations-footer strong {
+  font-size: clamp(1.8rem, 3.5vw, 3.75rem);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.foundation-shell .home-page .signature-combinations-footer a {
+  display: inline-flex;
+  align-items: flex-start;
+  flex: none;
+  border-bottom: 0 !important;
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.foundation-shell .home-page .signature-combinations-footer a > span {
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.25em;
+}
+
+.foundation-shell .home-page > .signature-combinations + .home-unified {
+  margin-top: 0;
+}
+
+.foundation-shell .home-page .home-events-planning-cta {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-5);
+  margin-top: clamp(2.5rem, 5vw, 5rem);
+  padding: clamp(2rem, 4vw, 4rem);
+  background-color: var(--surface-chapter-soft);
+  background-image: radial-gradient(
+    rgb(23 22 20 / 7%) 0.55px,
+    transparent 0.7px
+  );
+  background-size: 4px 4px;
+  text-align: center;
+}
+
+.foundation-shell .home-page .home-events-planning-cta strong {
+  font-size: clamp(1.8rem, 3.5vw, 3.75rem);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.foundation-shell .home-page .home-events-planning-cta a {
+  display: inline-flex;
+  align-items: flex-start;
+  flex: none;
+  border-bottom: 0 !important;
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.foundation-shell .home-page .home-events-planning-cta a > span {
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.25em;
 }
 
 .foundation-shell .home-page :is(.home-imagery, .home-working),
@@ -105,6 +178,17 @@
   .foundation-shell .home-page > .signature-combinations
     .signature-combinations-intro {
     padding-bottom: 0;
+  }
+
+  .foundation-shell .home-page .signature-combinations-footer {
+    align-items: center;
+    gap: var(--space-5);
+  }
+
+  .foundation-shell .home-page .home-events-planning-cta {
+    align-items: center;
+    gap: var(--space-5);
+    padding: var(--space-7) var(--space-6);
   }
 
   .foundation-shell .home-page .home-hero-copy h1,

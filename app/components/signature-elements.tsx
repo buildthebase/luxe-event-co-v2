@@ -203,6 +203,7 @@ export function CombinedExperienceFeature({
   heading = "More than one way to shape the room.",
   description = "The right combination of coffee, dessert, and seating is shaped around the occasion, the setting, and the way guests will experience it.",
   cardTitlesAsHeadings = false,
+  footer,
   showGridSurface = false,
 }: {
   id?: string;
@@ -210,6 +211,7 @@ export function CombinedExperienceFeature({
   heading?: string;
   description?: string;
   cardTitlesAsHeadings?: boolean;
+  footer?: ReactNode;
   showGridSurface?: boolean;
 } = {}) {
   return (
@@ -246,6 +248,7 @@ export function CombinedExperienceFeature({
           </Link>
         ))}
       </div>
+      {footer ? <div className="signature-combinations-footer">{footer}</div> : null}
     </section>
   );
 }
