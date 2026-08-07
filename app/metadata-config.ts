@@ -135,7 +135,9 @@ export function createPageMetadata(path: PagePath): Metadata {
 export function createArticleMetadata(article: BlogArticle): Metadata {
   const path = `/blog/${article.slug}`;
   const approvedHero =
-    article.heroImage?.status === "approved" && article.heroImage.src
+    article.socialImage?.status === "approved" && article.socialImage.src
+      ? article.socialImage
+      : article.heroImage?.status === "approved" && article.heroImage.src
       ? article.heroImage
       : defaultSocialImageAsset;
   const approvedHeroSrc = approvedHero.src ?? defaultSocialImageAsset.src;

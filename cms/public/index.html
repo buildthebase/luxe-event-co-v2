@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Luxe Journal CMS</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="cms-identity">
+        <div class="wordmark" aria-label="Luxe Event Co.">
+          <strong>Luxe</strong>
+          <small>Event Co.</small>
+        </div>
+        <div class="cms-title"><span>The Luxe Journal</span><small>Editorial workspace</small></div>
+      </div>
+      <div class="local-state"><i></i> Local only · 127.0.0.1</div>
+    </header>
+    <div class="app-shell">
+      <nav class="sidebar" aria-label="CMS sections">
+        <button class="nav-button active" data-view="articles">Articles</button>
+        <button class="nav-button" data-view="editor">Editor</button>
+        <button class="nav-button" data-view="links">Links</button>
+        <button class="nav-button" data-view="media">Media</button>
+        <button class="nav-button" data-view="knowledge">Knowledge</button>
+        <button class="nav-button" data-view="voice">Brand voice</button>
+        <button class="nav-button" data-view="studio">Article Studio</button>
+        <button class="nav-button" data-view="settings">Settings</button>
+      </nav>
+      <main id="workspace" tabindex="-1">
+        <section class="loading"><p>Preparing the Luxe Journal workspace…</p></section>
+      </main>
+    </div>
+    <section class="studio-activity" id="studio-activity" role="status" aria-live="polite" aria-atomic="true" hidden>
+      <div class="studio-activity-copy">
+        <span id="studio-activity-eyebrow">Article Studio</span>
+        <strong id="studio-activity-title">Working on your article</strong>
+        <p id="studio-activity-detail">Codex is preparing the next checkpoint.</p>
+      </div>
+      <span class="studio-activity-time" id="studio-activity-time">0:00</span>
+      <div class="studio-progress-track" role="progressbar" aria-label="Article Studio progress" aria-valuetext="Work in progress">
+        <span class="studio-progress-bar"></span>
+      </div>
+      <small>Please leave this window open. The next action will unlock automatically.</small>
+    </section>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

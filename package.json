@@ -7,6 +7,9 @@
   },
   "scripts": {
     "dev": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext dev",
+    "cms": "node cms/server.mjs",
+    "cms:check": "node scripts/validate-blog-content.mjs",
+    "prebuild": "npm run cms:check",
     "build": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext build",
     "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
     "indexnow:submit": "node scripts/submit-indexnow.mjs",
@@ -14,9 +17,11 @@
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next"
   },
   "dependencies": {
+    "@openai/codex-sdk": "^0.147.0",
     "next": "16.2.6",
     "react": "19.2.6",
-    "react-dom": "19.2.6"
+    "react-dom": "19.2.6",
+    "sharp": "^0.35.3"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "1.37.1",

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "host": "127.0.0.1",
+  "port": 4317,
+  "publicSiteUrl": "http://127.0.0.1:3000",
+  "includedUsageOnly": true,
+  "paidCreditsDisabledAcknowledged": true,
+  "model": null,
+  "reasoningEffort": "medium"
+}

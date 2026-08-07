@@ -7132,10 +7132,32 @@ a {
   }
 }
 
-/* Shared mobile H1 scale for the seven event-detail heroes. The additional
- * page scope intentionally outranks legacy page-specific mobile overrides. */
+/* Shared H1 scale for the events hub and all seven event-detail heroes. */
+body .foundation-shell main:is(
+    .events-page,
+    .wedding-page,
+    .corporate-page,
+    .activation-page,
+    .baby-page,
+    .bridal-page,
+    .birthday-page,
+    .private-page
+  ):not(.home-page):not(.blog-index-page):not(.blog-article-page) :is(
+    .events-hero-copy,
+    .wedding-hero-copy,
+    .corporate-hero-copy,
+    .activation-hero-copy,
+    .baby-hero-copy,
+    .bridal-hero-copy,
+    .birthday-hero-copy,
+    .private-hero-copy
+  ) h1 {
+  font-size: clamp(2.2825rem, 3.32vw, 3.237rem) !important;
+}
+
 @media (max-width: 700px) {
   body .foundation-shell main:is(
+      .events-page,
       .wedding-page,
       .corporate-page,
       .activation-page,
@@ -7143,7 +7165,8 @@ a {
       .bridal-page,
       .birthday-page,
       .private-page
-    ) :is(
+    ):not(.home-page):not(.blog-index-page):not(.blog-article-page) :is(
+      .events-hero-copy,
       .wedding-hero-copy,
       .corporate-hero-copy,
       .activation-hero-copy,
@@ -7152,7 +7175,7 @@ a {
       .birthday-hero-copy,
       .private-hero-copy
     ) h1 {
-    font-size: clamp(1.5rem, 6.75vw, 2.4rem) !important;
+    font-size: clamp(2.075rem, 8.9225vw, 2.38625rem) !important;
   }
 }
 

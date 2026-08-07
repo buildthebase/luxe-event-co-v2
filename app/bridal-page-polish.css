@@ -1,16 +1,5 @@
 /* Bridal Shower overview: host notes arranged like a quiet invitation suite. */
 
-.foundation-shell main.bridal-page .bridal-hero-copy h1 {
-  font-size: clamp(2.4rem, 3.2vw, 2.9rem) !important;
-  line-height: 0.96;
-}
-
-.foundation-shell .bridal-hero-copy h1 span {
-  display: block;
-  max-width: 100%;
-  white-space: nowrap;
-}
-
 .bridal-page > .bridal-host-overview {
   position: relative;
   display: grid;
@@ -617,16 +606,6 @@
   }
 
   .bridal-page > .signature-selector-bridal .signature-section-heading h2 span {
-    display: block;
-    white-space: nowrap;
-  }
-
-  .foundation-shell main.bridal-page .bridal-hero-copy h1 {
-    font-size: clamp(1.1rem, 6vw, 2.45rem) !important;
-    line-height: 1;
-  }
-
-  .foundation-shell .bridal-hero-copy h1 span {
     display: block;
     white-space: nowrap;
   }

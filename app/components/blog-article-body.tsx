@@ -94,6 +94,28 @@ export function BlogArticleBody({
           );
         }
 
+        if (block.type === "quick-answer") {
+          return (
+            <aside className="blog-article-callout blog-article-quick-answer" key={`quick-answer-${index}`}>
+              <strong>{block.title || "Quick answer"}</strong>
+              <p><ArticleText content={block.content} /></p>
+            </aside>
+          );
+        }
+
+        if (block.type === "key-takeaways") {
+          return (
+            <aside className="blog-article-callout blog-article-key-takeaways" key={`key-takeaways-${index}`}>
+              <strong>{block.title || "Key takeaways"}</strong>
+              <ul>
+                {block.items.map((item, itemIndex) => (
+                  <li key={`takeaway-${itemIndex}`}><ArticleText content={item} /></li>
+                ))}
+              </ul>
+            </aside>
+          );
+        }
+
         return (
           <aside className="blog-article-callout" key={`callout-${index}`}>
             {block.title ? <strong>{block.title}</strong> : null}
