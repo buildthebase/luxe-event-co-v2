@@ -79,7 +79,8 @@ function WeddingHero() {
 
 function WeddingOverview() {
   return (
-    <section className="wedding-overview" aria-labelledby="wedding-overview-title">
+    <section className="wedding-overview luxe-grid-section" aria-labelledby="wedding-overview-title">
+      <span className="luxe-section-grid" aria-hidden="true" />
       <div>
         <p className="foundation-label">The wedding experience</p>
         <h2 id="wedding-overview-title">

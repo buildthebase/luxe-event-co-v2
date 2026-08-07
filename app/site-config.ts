@@ -250,6 +250,7 @@ export const primaryRoutes = [
   ...eventTypes.map(({ slug }) => `/events/${slug}`),
   "/gallery",
   "/faq",
+  "/blog",
   "/contact",
 ] as const;
 

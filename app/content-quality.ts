@@ -130,7 +130,7 @@ export const pageQualityEvidence: PageQualityEvidence[] = [
   {
     path: "/faq",
     concreteValue:
-      "Answers 26 booking, travel, setup, menu, rental, and customization questions from the same records used by visible content and schema.",
+      "Consolidates shared-policy, service, and event-planning questions from the same records used by the visible detail pages and FAQ schema.",
     firstHandStatus: "supported-by-client-intake",
     evidenceGate:
       "Replace qualified deferrals only after Luxe approves the corresponding operational policy.",

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FaqAccordion } from "../components/faq-accordion";
 import { JsonLd } from "../components/json-ld";
+import { PageSectionNavigation } from "../components/page-section-navigation";
 import { SiteShell } from "../components/site-shell";
 import { createPageMetadata, pageMetadata } from "../metadata-config";
 import {
@@ -13,6 +14,14 @@ import { siteConfig } from "../site-config";
 import { allFaqItems, faqCategories } from "./faq-content";
 
 const faqUrl = `${siteConfig.url}/faq`;
+
+const faqSectionNavigation = [
+  { id: "faq-page-overview", label: "Back to top" },
+  ...faqCategories.map((category) => ({
+    id: category.id,
+    label: category.title,
+  })),
+] as const;
 
 export const metadata = createPageMetadata("/faq");
 
@@ -44,7 +53,7 @@ const faqSchema = {
 
 function FaqHero() {
   return (
-    <header className="faq-hub-hero">
+    <header className="faq-hub-hero" id="faq-page-overview">
       <div className="faq-hub-hero-copy">
         <p className="foundation-eyebrow">FAQ / Before You Inquire</p>
         <h1 aria-label="Event planning and booking answers, before the proposal begins.">
@@ -71,11 +80,6 @@ function FaqHero() {
         <span>A</span>
         <strong>Useful before<br />the quote.</strong>
       </div>
-      <dl className="faq-hub-proof">
-        <div><dt>{allFaqItems.length} answers</dt><dd>Grouped by planning concern</dd></div>
-        <div><dt>One source</dt><dd>Visible copy and schema stay aligned</dd></div>
-        <div><dt>$5 million</dt><dd>Liability insurance</dd></div>
-      </dl>
     </header>
   );
 }
@@ -83,7 +87,6 @@ function FaqHero() {
 function FaqCategoryNav() {
   return (
     <nav className="faq-hub-nav" aria-label="FAQ categories" id="faq-categories">
-      <p>Choose a planning area</p>
       <ol>
         {faqCategories.map((category) => (
           <li key={category.id}>
@@ -150,6 +153,10 @@ export default function FAQPage() {
   return (
     <SiteShell breadcrumbPath="/faq">
       <main className="faq-hub-page">
+        <PageSectionNavigation
+          items={faqSectionNavigation}
+          revealAfterId="faq-categories"
+        />
         <FaqHero />
         <FaqCategoryNav />
         <div className="faq-hub-categories">

@@ -1,0 +1,104 @@
+/* Birthday headings use natural wrapping inside a centered editorial measure. */
+.foundation-shell .birthday-page > #birthday-experiences {
+  margin-top: 0;
+}
+
+.foundation-shell .birthday-page .birthday-contexts > header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  text-align: center;
+}
+
+.foundation-shell .birthday-page #birthday-contexts-title {
+  width: min(100%, 22ch);
+  max-width: none;
+  margin-inline: auto;
+  text-align: center;
+  text-wrap: wrap;
+}
+
+.foundation-shell .birthday-page #birthday-experiences
+  .signature-section-heading h2 {
+  width: min(100%, 26ch);
+  max-width: none;
+  margin-inline: auto;
+  text-align: center;
+  text-wrap: wrap;
+}
+
+.foundation-shell .birthday-page .birthday-personalization > header > p {
+  align-self: end;
+}
+
+/* Keep the combinations introduction and options in one balanced chapter. */
+.foundation-shell .birthday-page .birthday-combinations {
+  display: block;
+}
+
+.foundation-shell .birthday-page .birthday-combinations > header {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(20rem, 0.8fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: end;
+  margin-bottom: clamp(3rem, 5vw, 5rem);
+}
+
+.foundation-shell .birthday-page .birthday-combinations > header h2 {
+  width: 100%;
+  max-width: none;
+}
+
+.foundation-shell .birthday-page .birthday-combinations > header > p {
+  width: 100%;
+  max-width: 48ch;
+  justify-self: end;
+}
+
+.foundation-shell .birthday-page .birthday-combinations > div {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--birthday-rule);
+  border-bottom: 1px solid var(--birthday-rule);
+}
+
+.foundation-shell .birthday-page .birthday-combinations article {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: clamp(2rem, 3vw, 3.25rem);
+  border-bottom: 0;
+}
+
+.foundation-shell .birthday-page .birthday-combinations article + article {
+  border-left: 1px solid var(--birthday-rule);
+}
+
+.foundation-shell .birthday-page .birthday-combinations article > p {
+  width: 100%;
+  max-width: none;
+  margin-top: clamp(1rem, 1.5vw, 1.5rem);
+  line-height: 1.65;
+}
+
+@media (max-width: 840px) {
+  .foundation-shell .birthday-page .birthday-combinations > header {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+    margin-bottom: 3rem;
+  }
+
+  .foundation-shell .birthday-page .birthday-combinations > header > p {
+    justify-self: start;
+  }
+
+  .foundation-shell .birthday-page .birthday-combinations > div {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .foundation-shell .birthday-page .birthday-combinations article + article {
+    border-top: 1px solid var(--birthday-rule);
+    border-left: 0;
+  }
+}

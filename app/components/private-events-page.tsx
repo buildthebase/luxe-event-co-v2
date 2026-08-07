@@ -8,9 +8,11 @@ import {
   privateEventPlanningRequirements,
 } from "../events/private-events-content";
 import { pageMetadata } from "../metadata-config";
+import { privateEventsSectionNavigation } from "../page-section-navigation";
 import { createServicePageSchema } from "../schema-builders";
 import { FaqAccordion } from "./faq-accordion";
 import { JsonLd } from "./json-ld";
+import { PageSectionNavigation } from "./page-section-navigation";
 import { QuoteModalTrigger } from "./quote-modal-trigger";
 import { ContextualInquiryPanel, ExperienceSelector } from "./signature-elements";
 import { SiteShell } from "./site-shell";
@@ -29,7 +31,7 @@ const privateEventsSchema = createServicePageSchema({
 
 function PrivateEventsHero() {
   return (
-    <header className="private-hero">
+    <header className="private-hero" id="page-overview">
       <div className="private-hero-copy">
         <p className="foundation-eyebrow">Private Events / Toronto &amp; the GTA</p>
         <h1 aria-label="Private Event Coffee, Dessert & Rentals in Toronto">
@@ -109,7 +111,6 @@ function PrivateEventContexts() {
       <ol>
         {privateEventContexts.map((context) => (
           <li key={context.number}>
-            <p className="private-context-eyebrow">{context.statement}</p>
             <h3 className="private-context-title">{context.title}</h3>
             <p className="private-context-description">{context.description}</p>
           </li>
@@ -219,6 +220,7 @@ export function PrivateEventsPage() {
   return (
     <SiteShell breadcrumbPath="/events/private-events">
       <main className="private-page">
+        <PageSectionNavigation items={privateEventsSectionNavigation} />
         <PrivateEventsHero />
         <PrivateEventsOverview />
         <PrivateEventContexts />

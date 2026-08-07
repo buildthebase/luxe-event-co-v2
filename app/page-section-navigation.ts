@@ -96,3 +96,77 @@ export const weddingsSectionNavigation: readonly PageSectionNavigationItem[] = [
   { id: "wedding-faq-title", label: "Questions" },
   { id: "wedding-inquiry", label: "Plan your wedding" },
 ] as const;
+
+export const corporateEventsSectionNavigation: readonly PageSectionNavigationItem[] = [
+  { id: "page-overview", label: "Back to top" },
+  { id: "corporate-overview-title", label: "The event experience" },
+  { id: "corporate-capabilities-title", label: "Capabilities" },
+  { id: "corporate-experiences", label: "Three experiences" },
+  { id: "corporate-branding-title", label: "Branding" },
+  { id: "corporate-scale-title", label: "Scale and logistics" },
+  { id: "corporate-trust-title", label: "Trusted by teams" },
+  { id: "corporate-gallery-title", label: "Gallery" },
+  { id: "corporate-planning-title", label: "Planning process" },
+  { id: "corporate-faq-title", label: "Questions" },
+] as const;
+
+export const brandActivationsSectionNavigation: readonly PageSectionNavigationItem[] = [
+  { id: "page-overview", label: "Back to top" },
+  { id: "activation-overview-title", label: "The activation" },
+  { id: "activation-contexts-title", label: "Activation formats" },
+  { id: "activation-system-title", label: "Brand system" },
+  { id: "activation-services-title", label: "Experiences" },
+  { id: "activation-scale-title", label: "Scale and logistics" },
+  { id: "activation-content-title", label: "Content moments" },
+  { id: "activation-trust-title", label: "Trusted by teams" },
+  { id: "activation-gallery-title", label: "Gallery" },
+  { id: "activation-planning-title", label: "Planning process" },
+  { id: "activation-faq-title", label: "Questions" },
+] as const;
+
+export const babyShowersSectionNavigation: readonly PageSectionNavigationItem[] = [
+  { id: "page-overview", label: "Back to top" },
+  { id: "baby-overview-title", label: "The shower experience" },
+  { id: "baby-experiences", label: "Three experiences" },
+  { id: "baby-styling-title", label: "Styling" },
+  { id: "baby-settings-title", label: "Indoor and outdoor" },
+  { id: "baby-combinations", label: "Experience combinations" },
+  { id: "baby-gallery-title", label: "Gallery" },
+  { id: "baby-planning-title", label: "Planning checklist" },
+  { id: "baby-faq-title", label: "Questions" },
+] as const;
+
+export const bridalShowersSectionNavigation: readonly PageSectionNavigationItem[] = [
+  { id: "page-overview", label: "Back to top" },
+  { id: "bridal-overview-title", label: "The shower experience" },
+  { id: "bridal-moments-title", label: "Event moments" },
+  { id: "bridal-experiences", label: "Three experiences" },
+  { id: "bridal-combinations-title", label: "Experience combinations" },
+  { id: "bridal-details-title", label: "Personal details" },
+  { id: "bridal-gallery-title", label: "Gallery" },
+  { id: "bridal-planning-title", label: "Planning checklist" },
+  { id: "bridal-faq-title", label: "Questions" },
+] as const;
+
+export const birthdaysSectionNavigation: readonly PageSectionNavigationItem[] = [
+  { id: "page-overview", label: "Back to top" },
+  { id: "birthday-overview-title", label: "The birthday experience" },
+  { id: "birthday-contexts-title", label: "Birthday formats" },
+  { id: "birthday-experiences", label: "Three experiences" },
+  { id: "birthday-personalization-title", label: "Personalization" },
+  { id: "birthday-combinations-title", label: "Experience combinations" },
+  { id: "birthday-gallery-title", label: "Gallery" },
+  { id: "birthday-planning-title", label: "Planning checklist" },
+  { id: "birthday-faq-title", label: "Questions" },
+] as const;
+
+export const privateEventsSectionNavigation: readonly PageSectionNavigationItem[] = [
+  { id: "page-overview", label: "Back to top" },
+  { id: "private-overview-title", label: "The event experience" },
+  { id: "private-contexts-title", label: "Occasions" },
+  { id: "private-experiences", label: "Three experiences" },
+  { id: "private-personalization-title", label: "Personalization" },
+  { id: "private-gallery-title", label: "Gallery" },
+  { id: "private-planning-title", label: "Planning checklist" },
+  { id: "private-faq-title", label: "Questions" },
+] as const;

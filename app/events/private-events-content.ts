@@ -5,42 +5,36 @@ export const privateEventContexts = [
   {
     number: "01",
     title: "Engagement parties",
-    statement: "Set the tone before the next chapter",
     description:
       "Coffee, matcha, live dessert, signage, and selected rentals can support an intimate toast, cocktail-style gathering, dinner, or open-house celebration.",
   },
   {
     number: "02",
     title: "Anniversaries",
-    statement: "Honour the story without repeating the past",
     description:
       "A personalized menu, guest-facing dessert moment, or refined room setting can reflect the couple, the milestone, and the way they want to gather.",
   },
   {
     number: "03",
     title: "Graduations",
-    statement: "Mark the achievement in their language",
     description:
       "Coffee and non-coffee drinks, live dessert, custom signage, and flexible gathering spaces can suit daytime receptions, family dinners, and larger celebrations.",
   },
   {
     number: "04",
     title: "Religious and cultural celebrations",
-    statement: "Begin with the occasion and its requirements",
     description:
       "Luxe can discuss beverage, dessert, presentation, dietary, timing, venue, and setup needs with the host, planner, or venue before confirming an appropriate service direction.",
   },
   {
     number: "05",
     title: "Holiday gatherings",
-    statement: "Seasonal hospitality with a clear point of view",
     description:
       "Seasonal beverage collections, coffee, matcha, live dessert, and selected room elements can support private holiday parties and indoor winter gatherings.",
   },
   {
     number: "06",
     title: "Family celebrations / Other milestone events",
-    statement: "One gathering, shared across generations",
     description:
       "Retirements, reunions, accomplishments, welcome-home gatherings, and other personal occasions can begin with this atmosphere and guest experience rather than a predefined package.",
   },

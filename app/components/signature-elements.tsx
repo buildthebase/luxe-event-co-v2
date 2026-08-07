@@ -203,15 +203,22 @@ export function CombinedExperienceFeature({
   heading = "More than one way to shape the room.",
   description = "The right combination of coffee, dessert, and seating is shaped around the occasion, the setting, and the way guests will experience it.",
   cardTitlesAsHeadings = false,
+  showGridSurface = false,
 }: {
   id?: string;
   combinations?: readonly CombinedExperience[];
   heading?: string;
   description?: string;
   cardTitlesAsHeadings?: boolean;
+  showGridSurface?: boolean;
 } = {}) {
   return (
-    <section id={id} className="signature-combinations" aria-labelledby="signature-combinations-title">
+    <section
+      id={id}
+      className={`signature-combinations${showGridSurface ? " luxe-grid-section" : ""}`}
+      aria-labelledby="signature-combinations-title"
+    >
+      {showGridSurface ? <span className="luxe-section-grid" aria-hidden="true" /> : null}
       <div className="signature-combinations-intro">
         <h2 id="signature-combinations-title">{heading}</h2>
         <p>{description}</p>

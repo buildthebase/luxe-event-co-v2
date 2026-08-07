@@ -189,6 +189,7 @@
     .faq-hub-page,
     .inquire-page
   ) article h3,
+.foundation-shell .birthday-page .birthday-contexts h3,
 .foundation-shell :is(.inquire-brief, .inquire-after) h3 {
   font-size: var(--luxe-type-feature-heading) !important;
   font-weight: 500 !important;
@@ -213,6 +214,7 @@
     .faq-hub-page,
     .inquire-page
   ) article p,
+.foundation-shell .birthday-page .birthday-contexts li > p:last-child,
 .foundation-shell :is(
     .experiences-page,
     .events-page,

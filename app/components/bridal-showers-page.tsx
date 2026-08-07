@@ -7,10 +7,12 @@ import {
   bridalShowerPlanning,
 } from "../events/bridal-showers-content";
 import { pageMetadata } from "../metadata-config";
+import { bridalShowersSectionNavigation } from "../page-section-navigation";
 import { createServicePageSchema } from "../schema-builders";
 import { signatureExperiences, type SignatureExperience } from "../signature-elements";
 import { FaqAccordion } from "./faq-accordion";
 import { JsonLd } from "./json-ld";
+import { PageSectionNavigation } from "./page-section-navigation";
 import { QuoteModalTrigger } from "./quote-modal-trigger";
 import { ContextualInquiryPanel, ExperienceSelector } from "./signature-elements";
 import { SiteShell } from "./site-shell";
@@ -58,7 +60,7 @@ const bridalShowerServices: readonly SignatureExperience[] = signatureExperience
 
 function BridalHero() {
   return (
-    <header className="bridal-hero">
+    <header className="bridal-hero" id="page-overview">
       <div className="bridal-hero-copy">
         <p className="foundation-eyebrow">Bridal Showers / Toronto &amp; the GTA</p>
         <h1 aria-label="Bridal shower coffee cart, dessert, and event rentals in Toronto and the GTA.">
@@ -133,7 +135,8 @@ function BridalOverview() {
 
 function BridalMoments() {
   return (
-    <section className="bridal-moments" aria-labelledby="bridal-moments-title">
+    <section className="bridal-moments luxe-grid-section" aria-labelledby="bridal-moments-title">
+      <span className="luxe-section-grid" aria-hidden="true" />
       <header>
         <p className="foundation-label">Where Luxe can fit into the bridal shower</p>
         <h2 id="bridal-moments-title">
@@ -264,7 +267,11 @@ function BridalServiceCombinations() {
 
 function BridalGallery() {
   return (
-    <section className="bridal-gallery" aria-labelledby="bridal-gallery-title">
+    <section
+      className="bridal-gallery luxe-grid-section luxe-grid-section-dark"
+      aria-labelledby="bridal-gallery-title"
+    >
+      <span className="luxe-section-grid" aria-hidden="true" />
       <header>
         <h2 id="bridal-gallery-title">Bridal shower service moments to plan for.</h2>
         <p>
@@ -333,6 +340,7 @@ export function BridalShowersPage() {
   return (
     <SiteShell breadcrumbPath="/events/bridal-showers">
       <main className="bridal-page">
+        <PageSectionNavigation items={bridalShowersSectionNavigation} />
         <BridalHero />
         <BridalOverview />
         <BridalMoments />

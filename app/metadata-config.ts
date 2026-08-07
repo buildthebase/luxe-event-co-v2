@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { BlogArticle } from "./blog/content";
 import { siteConfig } from "./site-config";
 import { getRouteSocialCard } from "./social-card-config";
 
@@ -85,6 +86,11 @@ export const pageMetadata = {
     description:
       "Get clear answers about Luxe Event Co. pricing factors, booking terms, travel, setup, venue requirements, and cross-service customization before you inquire.",
   },
+  "/blog": {
+    title: "Event Planning Blog Toronto | Luxe Event Co.",
+    description:
+      "Planning guidance for mobile coffee catering, live dessert, event rentals, weddings, corporate events, brand activations, and private celebrations across Toronto and the GTA.",
+  },
   "/contact": {
     title: "Contact Luxe Event Co.: Toronto Event Services",
     description:
@@ -122,6 +128,58 @@ export function createPageMetadata(path: PagePath): Metadata {
       title: definition.title,
       description: definition.description,
       images: [socialCard.src],
+    },
+  };
+}
+
+export function createArticleMetadata(article: BlogArticle): Metadata {
+  const path = `/blog/${article.slug}`;
+  const approvedHero =
+    article.heroImage?.status === "approved" && article.heroImage.src
+      ? article.heroImage
+      : defaultSocialImageAsset;
+  const approvedHeroSrc = approvedHero.src ?? defaultSocialImageAsset.src;
+  const socialImage = {
+    url: approvedHeroSrc,
+    width: approvedHero.width,
+    height: approvedHero.height,
+    alt: article.heroAlt || approvedHero.alt,
+  };
+  const wasModified = article.modifiedDate !== article.publishDate;
+
+  return {
+    title: article.seoTitle,
+    description: article.description,
+    alternates: { canonical: path },
+    authors: [{ name: article.author.name, url: article.author.url }],
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    },
+    openGraph: {
+      title: article.seoTitle,
+      description: article.description,
+      url: path,
+      siteName: siteConfig.name,
+      locale: siteConfig.openGraphLocale,
+      type: "article",
+      publishedTime: article.publishDate,
+      ...(wasModified ? { modifiedTime: article.modifiedDate } : {}),
+      authors: [article.author.name],
+      images: [socialImage],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.seoTitle,
+      description: article.description,
+      images: [approvedHeroSrc],
     },
   };
 }

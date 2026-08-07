@@ -9,9 +9,11 @@ import {
   activationServiceMedia,
 } from "../events/brand-activations-content";
 import { pageMetadata } from "../metadata-config";
+import { brandActivationsSectionNavigation } from "../page-section-navigation";
 import { createServicePageSchema } from "../schema-builders";
 import { FaqAccordion } from "./faq-accordion";
 import { JsonLd } from "./json-ld";
+import { PageSectionNavigation } from "./page-section-navigation";
 import { QuoteModalTrigger } from "./quote-modal-trigger";
 import { ContextualInquiryPanel, CredibilityStrip } from "./signature-elements";
 import { SiteShell } from "./site-shell";
@@ -30,7 +32,7 @@ const activationSchema = createServicePageSchema({
 
 function ActivationHero() {
   return (
-    <header className="activation-hero">
+    <header className="activation-hero" id="page-overview">
       <div className="activation-hero-copy">
         <p className="foundation-eyebrow">Brand Activations / Toronto &amp; the GTA</p>
         <h1 aria-label="Branded coffee cart and dessert activations for Toronto campaigns.">
@@ -178,7 +180,8 @@ function ActivationContexts() {
 
 function ActivationServices() {
   return (
-    <section className="activation-services" aria-labelledby="activation-services-title">
+    <section className="activation-services luxe-grid-section" aria-labelledby="activation-services-title">
+      <span className="luxe-section-grid" aria-hidden="true" />
       <header>
         <h2 id="activation-services-title">
           <span>Choose the activation experience</span>
@@ -270,7 +273,8 @@ function ActivationTrust() {
 
 function ActivationGallery() {
   return (
-    <section className="activation-gallery" aria-labelledby="activation-gallery-title">
+    <section className="activation-gallery luxe-grid-section" aria-labelledby="activation-gallery-title">
+      <span className="luxe-section-grid" aria-hidden="true" />
       <header>
         <h2 id="activation-gallery-title">Brand activations, seen in context.</h2>
         <p>
@@ -360,6 +364,7 @@ export function BrandActivationsPage() {
     <SiteShell breadcrumbPath="/events/brand-activations">
       <main className="activation-page">
         <JsonLd data={activationSchema} />
+        <PageSectionNavigation items={brandActivationsSectionNavigation} />
         <ActivationHero />
         <ActivationOverview />
         <ActivationContexts />

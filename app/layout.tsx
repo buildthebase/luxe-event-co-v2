@@ -27,7 +27,9 @@ import "./seating-rentals-page-polish.css";
 import "./events-page-polish.css";
 import "./corporate-page-polish.css";
 import "./event-detail-heading-polish.css";
+import "./birthday-page-polish.css";
 import "./private-events-page-polish.css";
+import "./blog.css";
 import { siteConfig } from "./site-config";
 
 const siteUrl = siteConfig.url;

@@ -64,6 +64,14 @@ export function SiteShell({
           </Link>
           <InstagramLinks className="foundation-footer-instagram" />
         </div>
+        <div className="foundation-footer-bottom">
+          <p>
+            Designed and built by{" "}
+            <a href="https://buildthebase.io" target="_blank" rel="noreferrer">
+              buildthebase.io
+            </a>
+          </p>
+        </div>
       </footer>
     </div>
   );

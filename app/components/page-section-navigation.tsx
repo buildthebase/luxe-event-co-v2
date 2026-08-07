@@ -11,8 +11,10 @@ import type { PageSectionNavigationItem } from "../page-section-navigation";
 
 export function PageSectionNavigation({
   items,
+  revealAfterId,
 }: {
   items: readonly PageSectionNavigationItem[];
+  revealAfterId?: string;
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isPastTop, setIsPastTop] = useState(false);
@@ -29,7 +31,14 @@ export function PageSectionNavigation({
     targets.forEach((target) => target.setAttribute("data-page-section-anchor", ""));
 
     function updateActiveSection() {
-      setIsPastTop(window.scrollY > 80);
+      const revealTarget = revealAfterId
+        ? document.getElementById(revealAfterId)
+        : null;
+      setIsPastTop(
+        revealTarget
+          ? revealTarget.getBoundingClientRect().bottom <= 96
+          : window.scrollY > 80,
+      );
       const readingLine = window.innerHeight * 0.34;
       const current =
         [...targets]
@@ -64,7 +73,7 @@ export function PageSectionNavigation({
       window.removeEventListener("resize", scheduleUpdate);
       targets.forEach((target) => target.removeAttribute("data-page-section-anchor"));
     };
-  }, [items]);
+  }, [items, revealAfterId]);
 
   useEffect(() => {
     if (!isOpen) {
@@ -119,11 +128,13 @@ export function PageSectionNavigation({
     setActiveId(item.id);
     closeNavigation();
     window.history.replaceState(null, "", `#${item.id}`);
-    target.scrollIntoView({
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-        ? "auto"
-        : "smooth",
-      block: "start",
+    window.requestAnimationFrame(() => {
+      target.scrollIntoView({
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? "auto"
+          : "smooth",
+        block: "start",
+      });
     });
   }
 

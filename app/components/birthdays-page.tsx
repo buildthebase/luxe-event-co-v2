@@ -9,9 +9,11 @@ import {
   birthdayPlanning,
 } from "../events/birthdays-content";
 import { pageMetadata } from "../metadata-config";
+import { birthdaysSectionNavigation } from "../page-section-navigation";
 import { createServicePageSchema } from "../schema-builders";
 import { FaqAccordion } from "./faq-accordion";
 import { JsonLd } from "./json-ld";
+import { PageSectionNavigation } from "./page-section-navigation";
 import { QuoteModalTrigger } from "./quote-modal-trigger";
 import { ContextualInquiryPanel, ExperienceSelector } from "./signature-elements";
 import { SiteShell } from "./site-shell";
@@ -30,7 +32,7 @@ const birthdaysSchema = createServicePageSchema({
 
 function BirthdayHero() {
   return (
-    <header className="birthday-hero">
+    <header className="birthday-hero" id="page-overview">
       <div className="birthday-hero-copy">
         <p className="foundation-eyebrow">Birthdays / Toronto &amp; the GTA</p>
         <h1 aria-label="Birthday dessert catering, coffee bars, and rentals in Toronto">
@@ -102,11 +104,15 @@ function BirthdayOverview() {
 
 function BirthdayContexts() {
   return (
-    <section className="birthday-contexts" id="birthday-contexts" aria-labelledby="birthday-contexts-title">
+    <section
+      className="birthday-contexts luxe-grid-section luxe-grid-section-dark"
+      id="birthday-contexts"
+      aria-labelledby="birthday-contexts-title"
+    >
+      <span className="luxe-section-grid" aria-hidden="true" />
       <header>
-        <h2 id="birthday-contexts-title">
-          <span>Birthday catering for different</span>
-          <span>ages and occasions</span>
+        <h2 className="foundation-wide-heading" id="birthday-contexts-title">
+          Birthday catering for different ages and occasions
         </h2>
       </header>
       <ol>
@@ -126,12 +132,8 @@ function BirthdayExperiences() {
     <ExperienceSelector
       id="birthday-experiences"
       experiences={birthdayExperiences}
-      heading={
-        <>
-          <span>Birthday coffee bars, live dessert carts,</span>
-          <span>and event rental options.</span>
-        </>
-      }
+      heading="Birthday coffee bars, live dessert carts, and event rental options."
+      headingClassName="foundation-wide-heading"
       showDescription={false}
       useItemHeadings
       variant="birthday"
@@ -141,7 +143,11 @@ function BirthdayExperiences() {
 
 function BirthdayPersonalization() {
   return (
-    <section className="birthday-personalization" aria-labelledby="birthday-personalization-title">
+    <section
+      className="birthday-personalization luxe-grid-section"
+      aria-labelledby="birthday-personalization-title"
+    >
+      <span className="luxe-section-grid" aria-hidden="true" />
       <header>
         <h2 id="birthday-personalization-title">Personalized birthday menus, signage, and room details</h2>
         <p>
@@ -163,7 +169,7 @@ function BirthdayCombinations() {
   return (
     <section className="birthday-combinations" aria-labelledby="birthday-combinations-title">
       <header>
-        <h2 id="birthday-combinations-title">Birthday service combinations built around the milestone</h2>
+        <h2 className="foundation-wide-heading" id="birthday-combinations-title">Birthday service combinations built around the milestone</h2>
         <p>Flexible service pairings designed around your event layout, guest flow, and milestone timing.</p>
       </header>
       <div>
@@ -178,7 +184,11 @@ function BirthdayCombinations() {
 
 function BirthdayGallery() {
   return (
-    <section className="birthday-gallery" aria-labelledby="birthday-gallery-title">
+    <section
+      className="birthday-gallery luxe-grid-section luxe-grid-section-dark"
+      aria-labelledby="birthday-gallery-title"
+    >
+      <span className="luxe-section-grid" aria-hidden="true" />
       <header>
         <h2 id="birthday-gallery-title">Birthday experiences, seen in context.</h2>
         <p>Coffee, live dessert, signage, seating, and room details shown within the celebrations they were planned for.</p>
@@ -232,6 +242,7 @@ export function BirthdaysPage() {
   return (
     <SiteShell breadcrumbPath="/events/birthdays">
       <main className="birthday-page">
+        <PageSectionNavigation items={birthdaysSectionNavigation} />
         <BirthdayHero />
         <BirthdayOverview />
         <BirthdayContexts />

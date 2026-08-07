@@ -1,7 +1,11 @@
-/* Corporate Events desktop heading locks and single-column introductions. */
+/* Corporate Events natural heading measure and single-column introductions. */
 .foundation-shell .corporate-page #corporate-experiences
   .signature-section-heading h2 {
+  width: min(100%, 25ch);
   max-width: none;
+  margin-inline: auto;
+  text-align: center;
+  text-wrap: wrap;
 }
 
 .foundation-shell .corporate-page .corporate-branding > header {
@@ -50,8 +54,6 @@
     max-width: none !important;
   }
 
-  .foundation-shell .corporate-page #corporate-experiences
-    .signature-section-heading h2 span,
   .foundation-shell .corporate-page .corporate-branding h2 span {
     display: block;
     white-space: nowrap;
@@ -63,15 +65,11 @@
 }
 
 @media (max-width: 960px) {
-  .foundation-shell .corporate-page #corporate-experiences
-    .signature-section-heading h2 span,
   .foundation-shell .corporate-page .corporate-branding h2 span {
     display: inline;
     white-space: normal;
   }
 
-  .foundation-shell .corporate-page #corporate-experiences
-    .signature-section-heading h2 span + span::before,
   .foundation-shell .corporate-page .corporate-branding h2 span + span::before {
     content: " ";
   }

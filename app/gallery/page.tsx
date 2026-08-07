@@ -56,9 +56,8 @@ function GalleryHero() {
   return (
     <header className="gallery-hero">
       <div className="gallery-hero-copy">
-        <p className="foundation-eyebrow">Gallery: Experience Context</p>
-        <h1 aria-label="Toronto event gallery: coffee, dessert, and rental experiences.">
-          <span>Toronto event gallery:</span>
+        <h1 aria-label="Luxe event gallery: coffee, dessert, and rental experiences.">
+          <span>Luxe event gallery:</span>
           <span>coffee, dessert, and</span>
           <span>rental experiences.</span>
         </h1>

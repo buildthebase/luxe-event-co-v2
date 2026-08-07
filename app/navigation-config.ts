@@ -31,6 +31,7 @@ export const navigationItems: NavigationItem[] = [
     })),
   },
   { href: "/gallery", label: "Gallery" },
+  { href: "/blog", label: "Blog" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact", emphasis: "inquiry" },
 ];
@@ -38,6 +39,7 @@ export const navigationItems: NavigationItem[] = [
 const homeBreadcrumb = { href: "/", label: "Home" } as const;
 const experiencesBreadcrumb = { href: "/experiences", label: "Experiences" } as const;
 const eventsBreadcrumb = { href: "/events", label: "Events" } as const;
+const blogBreadcrumb = { href: "/blog", label: "Blog" } as const;
 
 export const breadcrumbItemsByPath: Record<string, readonly BreadcrumbItem[]> = {
   "/experiences": [homeBreadcrumb, experiencesBreadcrumb],
@@ -64,6 +66,7 @@ export const breadcrumbItemsByPath: Record<string, readonly BreadcrumbItem[]> = 
   ),
   "/gallery": [homeBreadcrumb, { href: "/gallery", label: "Gallery" }],
   "/faq": [homeBreadcrumb, { href: "/faq", label: "FAQ" }],
+  "/blog": [homeBreadcrumb, blogBreadcrumb],
   "/contact": [homeBreadcrumb, { href: "/contact", label: "Contact" }],
 };
 

@@ -18,7 +18,7 @@ export type FaqCategory = {
   items: readonly FaqItem[];
 };
 
-export const faqCategories: readonly FaqCategory[] = [
+const sharedFaqCategories: readonly FaqCategory[] = [
   {
     id: "general-booking",
     number: "01",
@@ -235,6 +235,143 @@ export const faqCategories: readonly FaqCategory[] = [
   },
 ] as const;
 
+type PublishedFaqItem = {
+  question: string;
+  answer: string;
+};
+
+type PublishedFaqSource = {
+  id: string;
+  title: string;
+  description: string;
+  href: string;
+  linkLabel: string;
+  items: readonly PublishedFaqItem[];
+};
+
+const sweetCartPricingVariant: PublishedFaqItem = {
+  question: "What affects dessert cart pricing?",
+  answer: sweetCartFaqs[0].answer,
+};
+
+const seatingPricingVariant: PublishedFaqItem = {
+  question: "How are event seating and table rentals priced?",
+  answer: seatingRentalFaqs[0].answer,
+};
+
+const publishedFaqSources: readonly PublishedFaqSource[] = [
+  {
+    id: "coffee-bar",
+    title: "Luxe Coffee Bar",
+    description: "Formats, menus, inclusions, capacity, staffing, utilities, and travel.",
+    href: "/experiences/coffee-bar",
+    linkLabel: "Explore Luxe Coffee Bar",
+    items: coffeeFaqs,
+  },
+  {
+    id: "sweet-cart",
+    title: "Luxe Sweet Cart",
+    description: "Pricing, desserts, toppings, service format, capacity, setup, and outdoor planning.",
+    href: "/experiences/sweet-cart",
+    linkLabel: "Explore Luxe Sweet Cart",
+    items: [...sweetCartFaqs, sweetCartPricingVariant],
+  },
+  {
+    id: "seating-rentals",
+    title: "Luxe Seating Rentals",
+    description: "Inventory scope, pricing, delivery, setup, styling, service area, and outdoor use.",
+    href: "/experiences/seating-rentals",
+    linkLabel: "Explore Luxe Seating Rentals",
+    items: [...seatingRentalFaqs, seatingPricingVariant],
+  },
+  {
+    id: "weddings",
+    title: "Weddings",
+    description: "Wedding timing, service combinations, customization, pricing, booking, and coordination.",
+    href: "/events/weddings",
+    linkLabel: "Explore Luxe weddings",
+    items: weddingFaqs,
+  },
+  {
+    id: "corporate-events",
+    title: "Corporate Events",
+    description: "Event fit, multiple setups, recurring programs, capacity, combinations, and planning.",
+    href: "/events/corporate-events",
+    linkLabel: "Explore corporate events",
+    items: corporateFaqs,
+  },
+  {
+    id: "brand-activations",
+    title: "Brand Activations",
+    description: "Branding scope, creative assets, campaign menus, agency coordination, and production timing.",
+    href: "/events/brand-activations",
+    linkLabel: "Explore brand activations",
+    items: activationFaqs,
+  },
+  {
+    id: "bridal-showers",
+    title: "Bridal Showers",
+    description: "Coffee, matcha, desserts, rentals, personalization, styling boundaries, and vendor coordination.",
+    href: "/events/bridal-showers",
+    linkLabel: "Explore bridal showers",
+    items: bridalShowerFaqs,
+  },
+  {
+    id: "baby-showers",
+    title: "Baby Showers",
+    description: "Available services, personalization, outdoor planning, venue needs, capacity, and booking timing.",
+    href: "/events/baby-showers",
+    linkLabel: "Explore baby showers",
+    items: babyShowerFaqs,
+  },
+  {
+    id: "birthdays",
+    title: "Birthdays",
+    description: "Adult, milestone, family, and select children’s celebrations, menus, desserts, pricing, and travel.",
+    href: "/events/birthdays",
+    linkLabel: "Explore birthday events",
+    items: birthdayFaqs,
+  },
+  {
+    id: "private-events",
+    title: "Private Events",
+    description: "Occasion fit, independent or combined services, personalization, cultural events, rentals, and travel.",
+    href: "/events/private-events",
+    linkLabel: "Explore private events",
+    items: privateEventFaqs,
+  },
+] as const;
+
+const publishedFaqCategories: readonly FaqCategory[] = publishedFaqSources.map(
+  (source, sourceIndex) => ({
+    id: source.id,
+    number: String(sharedFaqCategories.length + sourceIndex + 1).padStart(2, "0"),
+    title: source.title,
+    description: source.description,
+    items: source.items.map((item, itemIndex) => ({
+      id: `${source.id}-${String(itemIndex + 1).padStart(2, "0")}`,
+      question: item.question,
+      answer: item.answer,
+      links: [{ href: source.href, label: source.linkLabel }],
+    })),
+  }),
+);
+
+export const faqCategories: readonly FaqCategory[] = [
+  ...sharedFaqCategories,
+  ...publishedFaqCategories,
+];
+
 export const allFaqItems = faqCategories.flatMap((category) =>
   category.items.map((item) => ({ ...item, category })),
 );
+import { babyShowerFaqs } from "../events/baby-showers-content";
+import { birthdayFaqs } from "../events/birthdays-content";
+import { activationFaqs } from "../events/brand-activations-content";
+import { bridalShowerFaqs } from "../events/bridal-showers-content";
+import { corporateFaqs } from "../events/corporate-events-content";
+import { privateEventFaqs } from "../events/private-events-content";
+import { weddingFaqs } from "../events/weddings-content";
+import { coffeeFaqs } from "../experiences/coffee-bar-content";
+import { seatingRentalFaqs } from "../experiences/seating-rentals-content";
+import { sweetCartFaqs } from "../experiences/sweet-cart-content";

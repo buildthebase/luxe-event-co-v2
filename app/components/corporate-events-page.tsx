@@ -9,10 +9,12 @@ import {
   corporateScaleCapabilities,
 } from "../events/corporate-events-content";
 import { pageMetadata } from "../metadata-config";
+import { corporateEventsSectionNavigation } from "../page-section-navigation";
 import { createServicePageSchema } from "../schema-builders";
 import { signatureExperiences } from "../signature-elements";
 import { FaqAccordion } from "./faq-accordion";
 import { JsonLd } from "./json-ld";
+import { PageSectionNavigation } from "./page-section-navigation";
 import { QuoteModalTrigger } from "./quote-modal-trigger";
 import {
   ContextualInquiryPanel,
@@ -44,7 +46,7 @@ const corporateExperiences = corporateExperienceRoles.map((role, index) => ({
 
 function CorporateHero() {
   return (
-    <header className="corporate-hero">
+    <header className="corporate-hero" id="page-overview">
       <div className="corporate-hero-copy">
         <p className="foundation-eyebrow">Corporate Events / Toronto &amp; the GTA</p>
         <h1 aria-label="Corporate coffee catering and event experiences, ready for business.">
@@ -201,12 +203,8 @@ function CorporateExperiences() {
     <ExperienceSelector
       experiences={corporateExperiences}
       id="corporate-experiences"
-      heading={
-        <>
-          <span>Choose one corporate event service</span>
-          <span>or coordinate all three.</span>
-        </>
-      }
+      heading="Choose one corporate event service or coordinate all three."
+      headingClassName="foundation-wide-heading"
       showDescription={false}
       useItemHeadings
     />
@@ -350,7 +348,8 @@ function CorporatePlanning() {
   const [openingStep, ...supportingSteps] = corporatePlanningSteps;
 
   return (
-    <section className="corporate-planning" aria-labelledby="corporate-planning-title">
+    <section className="corporate-planning luxe-grid-section" aria-labelledby="corporate-planning-title">
+      <span className="luxe-section-grid" aria-hidden="true" />
       <header>
         <div>
           <p className="foundation-label">Planning process</p>
@@ -400,6 +399,7 @@ export function CorporateEventsPage() {
     <SiteShell breadcrumbPath="/events/corporate-events">
       <main className="corporate-page">
         <JsonLd data={corporateSchema} />
+        <PageSectionNavigation items={corporateEventsSectionNavigation} />
         <CorporateHero />
         <CorporateOverview />
         <CorporateCapabilities />

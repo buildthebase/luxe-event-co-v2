@@ -6,12 +6,10 @@
     #activation-faq-title,
     #baby-styling-title,
     #bridal-moments-title,
-    #birthday-contexts-title,
     #private-contexts-title
   ),
 .foundation-shell :is(
-    #baby-experiences,
-    #birthday-experiences
+    #baby-experiences
   ) .signature-section-heading h2 {
   max-width: none !important;
 }
@@ -40,12 +38,10 @@
       #activation-faq-title,
       #baby-styling-title,
       #bridal-moments-title,
-      #birthday-contexts-title,
       #private-contexts-title
     ) span,
   .foundation-shell :is(
       #baby-experiences,
-      #birthday-experiences,
       #bridal-experiences
     ) .signature-section-heading h2 span {
     display: block;
@@ -61,12 +57,10 @@
       #activation-faq-title,
       #baby-styling-title,
       #bridal-moments-title,
-      #birthday-contexts-title,
       #private-contexts-title
     ) span,
   .foundation-shell :is(
       #baby-experiences,
-      #birthday-experiences,
       #bridal-experiences
     ) .signature-section-heading h2 span {
     display: inline;
@@ -80,12 +74,10 @@
       #activation-faq-title,
       #baby-styling-title,
       #bridal-moments-title,
-      #birthday-contexts-title,
       #private-contexts-title
     ) span + span::before,
   .foundation-shell :is(
       #baby-experiences,
-      #birthday-experiences,
       #bridal-experiences
     ) .signature-section-heading h2 span + span::before {
     content: " ";

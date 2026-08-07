@@ -1,4 +1,5 @@
 import { getBreadcrumbItems } from "./navigation-config";
+import type { BlogArticle } from "./blog/content";
 import { approvedBusinessIdentity } from "./local-seo";
 import { experiences, siteConfig } from "./site-config";
 
@@ -218,12 +219,14 @@ export function createCollectionPageSchema({
   pageDescription,
   collectionName,
   items,
+  collectionType = "CollectionPage",
 }: {
   path: string;
   pageName: string;
   pageDescription: string;
   collectionName: string;
   items: readonly { name: string; path: string }[];
+  collectionType?: "CollectionPage" | "Blog";
 }) {
   const pageUrl = absoluteUrl(path);
   const webpageId = pageEntityId(path, "webpage");
@@ -233,7 +236,10 @@ export function createCollectionPageSchema({
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": ["CollectionPage", "WebPage"],
+        "@type":
+          collectionType === "Blog"
+            ? ["Blog", "CollectionPage"]
+            : ["CollectionPage", "WebPage"],
         "@id": webpageId,
         url: pageUrl,
         name: pageName,
@@ -257,6 +263,94 @@ export function createCollectionPageSchema({
         })),
       },
       createBreadcrumbSchema(path),
+    ],
+  };
+}
+
+export function createArticlePageSchema({
+  article,
+  path,
+}: {
+  article: BlogArticle;
+  path: string;
+}) {
+  const pageUrl = absoluteUrl(path);
+  const webpageId = pageEntityId(path, "webpage");
+  const articleId = pageEntityId(path, "article");
+  const imageAsset = article.heroImage?.src ? article.heroImage : null;
+  const imageId = `${articleId}-image`;
+  const imageUrl = imageAsset ? absoluteUrl(imageAsset.src ?? "") : null;
+  const logoAsset = siteConfig.brandAssets.organizationLogo;
+  const logoUrl = absoluteUrl(logoAsset.src);
+  const wasModified = article.modifiedDate !== article.publishDate;
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": articleId,
+        url: pageUrl,
+        headline: article.title,
+        description: article.description,
+        datePublished: article.publishDate,
+        ...(wasModified ? { dateModified: article.modifiedDate } : {}),
+        mainEntityOfPage: { "@id": webpageId },
+        author: {
+          "@type": article.author.type,
+          name: article.author.name,
+          ...(article.author.url ? { url: article.author.url } : {}),
+        },
+        publisher: {
+          "@type": "Organization",
+          "@id": organizationId,
+          name: siteConfig.name,
+          url: siteConfig.url,
+          logo: {
+            "@type": "ImageObject",
+            "@id": organizationLogoId,
+            url: logoUrl,
+            width: logoAsset.width,
+            height: logoAsset.height,
+          },
+        },
+        ...(imageAsset && imageUrl
+          ? {
+              image: {
+                "@type": "ImageObject",
+                "@id": imageId,
+                url: imageUrl,
+                width: imageAsset.width,
+                height: imageAsset.height,
+                caption: article.heroAlt,
+              },
+            }
+          : {}),
+        articleSection: article.category,
+        inLanguage: siteConfig.language,
+      },
+      {
+        "@type": "WebPage",
+        "@id": webpageId,
+        url: pageUrl,
+        name: article.seoTitle,
+        description: article.description,
+        isPartOf: { "@id": websiteId },
+        about: { "@id": organizationId },
+        breadcrumb: { "@id": pageEntityId(path, "breadcrumb") },
+        mainEntity: { "@id": articleId },
+        ...(imageAsset ? { primaryImageOfPage: { "@id": imageId } } : {}),
+        inLanguage: siteConfig.language,
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": pageEntityId(path, "breadcrumb"),
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+          { "@type": "ListItem", position: 2, name: "Blog", item: absoluteUrl("/blog") },
+          { "@type": "ListItem", position: 3, name: article.title, item: pageUrl },
+        ],
+      },
     ],
   };
 }

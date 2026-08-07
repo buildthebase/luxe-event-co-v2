@@ -9,9 +9,11 @@ import {
   babyShowerStyling,
 } from "../events/baby-showers-content";
 import { pageMetadata } from "../metadata-config";
+import { babyShowersSectionNavigation } from "../page-section-navigation";
 import { createServicePageSchema } from "../schema-builders";
 import { FaqAccordion } from "./faq-accordion";
 import { JsonLd } from "./json-ld";
+import { PageSectionNavigation } from "./page-section-navigation";
 import { QuoteModalTrigger } from "./quote-modal-trigger";
 import {
   CombinedExperienceFeature,
@@ -33,7 +35,7 @@ const babyShowersSchema = createServicePageSchema({
 
 function BabyShowerHero() {
   return (
-    <header className="baby-hero">
+    <header className="baby-hero" id="page-overview">
       <div className="baby-hero-copy">
         <p className="foundation-eyebrow">Baby Showers / Toronto &amp; the GTA</p>
         <h1 aria-label="Baby shower dessert carts, coffee bars, and event rentals in Toronto.">
@@ -72,7 +74,8 @@ function BabyShowerHero() {
 
 function BabyShowerOverview() {
   return (
-    <section className="baby-overview" id="baby-overview" aria-labelledby="baby-overview-title">
+    <section className="baby-overview luxe-grid-section" id="baby-overview" aria-labelledby="baby-overview-title">
+      <span className="luxe-section-grid" aria-hidden="true" />
       <header className="baby-overview-header">
         <h2 id="baby-overview-title">A baby shower shaped in three thoughtful parts</h2>
         <p>
@@ -156,7 +159,8 @@ function BabyShowerExperiences() {
 
 function BabyShowerSettings() {
   return (
-    <section className="baby-settings" aria-labelledby="baby-settings-title">
+    <section className="baby-settings luxe-grid-section" aria-labelledby="baby-settings-title">
+      <span className="luxe-section-grid" aria-hidden="true" />
       <header>
         <h2 id="baby-settings-title">Indoor or outdoor, the setting shapes the plan.</h2>
       </header>
@@ -175,7 +179,8 @@ function BabyShowerSettings() {
 
 function BabyShowerGallery() {
   return (
-    <section className="baby-gallery" aria-labelledby="baby-gallery-title">
+    <section className="baby-gallery luxe-grid-section" aria-labelledby="baby-gallery-title">
+      <span className="luxe-section-grid" aria-hidden="true" />
       <header>
         <h2 id="baby-gallery-title">Baby shower experiences, seen in context.</h2>
         <p>
@@ -204,13 +209,15 @@ function BabyShowerCombinations() {
       description="Flexible service combinations tailored around your venue, guest count, event schedule, and desired atmosphere."
       heading="Ways the experiences can come together"
       id="baby-combinations"
+      showGridSurface
     />
   );
 }
 
 function BabyShowerPlanning() {
   return (
-    <section className="baby-planning" aria-labelledby="baby-planning-title">
+    <section className="baby-planning luxe-grid-section" aria-labelledby="baby-planning-title">
+      <span className="luxe-section-grid" aria-hidden="true" />
       <header>
         <h2 id="baby-planning-title">What to share when planning your baby shower</h2>
         <p>
@@ -232,7 +239,8 @@ function BabyShowerPlanning() {
 
 function BabyShowerFaq() {
   return (
-    <section className="baby-faq" aria-labelledby="baby-faq-title">
+    <section className="baby-faq luxe-grid-section" aria-labelledby="baby-faq-title">
+      <span className="luxe-section-grid" aria-hidden="true" />
       <header><h2 id="baby-faq-title">Baby shower planning questions, answered.</h2></header>
       <FaqAccordion items={babyShowerFaqs} indicatorElement="i" showNumbers={false} />
       <Link href="/faq">Review Luxe Booking FAQs <span aria-hidden="true">↗︎</span></Link>
@@ -244,6 +252,7 @@ export function BabyShowersPage() {
   return (
     <SiteShell breadcrumbPath="/events/baby-showers">
       <main className="baby-page">
+        <PageSectionNavigation items={babyShowersSectionNavigation} />
         <BabyShowerHero />
         <BabyShowerOverview />
         <BabyShowerExperiences />

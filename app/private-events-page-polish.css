@@ -75,9 +75,20 @@
   margin-inline: auto;
 }
 
+.foundation-shell .private-page .private-contexts > header {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(20rem, 0.55fr);
+  gap: 64px;
+  align-items: end;
+}
+
+.foundation-shell .private-page .private-contexts > header h2 {
+  max-width: none;
+}
+
 .foundation-shell .private-page .private-contexts > header > p {
   max-width: 58ch;
-  margin-top: 24px;
+  margin: 0;
   font-size: var(--type-body);
   line-height: 1.65;
 }
@@ -92,9 +103,32 @@
 .foundation-shell .private-page .private-contexts li:nth-child(5),
 .foundation-shell .private-page .private-contexts li:nth-child(6) {
   grid-column: auto;
+  position: relative;
+  display: flex;
   min-height: 320px;
+  min-width: 0;
+  flex-direction: column;
   padding: var(--private-card-padding);
   border: 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgb(248 246 242 / 2.8%), transparent 58%);
+}
+
+.foundation-shell .private-page .private-contexts li:nth-child(2),
+.foundation-shell .private-page .private-contexts li:nth-child(5) {
+  background: linear-gradient(135deg, rgb(200 169 126 / 7%), transparent 62%);
+}
+
+.foundation-shell .private-page .private-contexts li::after {
+  position: absolute;
+  right: -52px;
+  bottom: -52px;
+  width: 112px;
+  aspect-ratio: 1;
+  border: 1px solid rgb(200 169 126 / 16%);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
 }
 
 .foundation-shell .private-page .private-contexts li + li {
@@ -110,15 +144,22 @@
 }
 
 .foundation-shell .private-page .private-contexts h3.private-context-title {
-  margin-bottom: 24px;
-  font-size: clamp(1.375rem, 1.8vw, 1.75rem);
-  line-height: 1.12;
+  width: 100%;
+  max-width: none;
+  margin: auto 0 24px;
+  color: var(--private-paper);
+  font-size: clamp(1.625rem, 2.1vw, 2rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+  text-wrap: balance;
 }
 
 .foundation-shell .private-page .private-contexts .private-context-description {
   max-width: 48ch;
   font-size: var(--type-body);
   line-height: 1.65;
+  color: rgb(248 246 242 / 72%);
 }
 
 /* The exact shared ExperienceSelector structure, with Private Events copy and a taupe accent. */
@@ -302,6 +343,16 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .foundation-shell .private-page .private-contexts > header {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+    align-items: start;
+  }
+
+  .foundation-shell .private-page .private-contexts > header > p {
+    max-width: 62ch;
+  }
+
   .foundation-shell .private-page .private-contexts li:nth-child(4) {
     border-left: 1px solid rgb(248 246 242 / 25%);
   }
@@ -328,6 +379,12 @@
 }
 
 @media (max-width: 780px) {
+  .foundation-shell .private-page > #private-experiences
+    .signature-selector-copy > span:nth-of-type(2) {
+    width: 100%;
+    max-width: none;
+  }
+
   .foundation-shell .private-page .private-overview {
     grid-template-columns: minmax(0, 1fr);
     gap: 40px;
@@ -376,8 +433,13 @@
     border-left: 0;
   }
 
+  .foundation-shell .private-page .private-contexts h3.private-context-title {
+    margin-top: 48px;
+  }
+
   .foundation-shell .private-page .private-contexts li + li {
     border-top: 1px solid rgb(248 246 242 / 25%);
+    border-left: 0;
   }
 
   .foundation-shell .private-page .private-planning > ol {

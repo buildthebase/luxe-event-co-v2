@@ -68,7 +68,7 @@ export function GalleryCollection() {
     <>
       <section className="gallery-filter-panel" aria-labelledby="gallery-filter-title">
         <div>
-          <h2 id="gallery-filter-title">Explore Toronto event experiences by service or occasion.</h2>
+          <h2 id="gallery-filter-title">Explore Luxe experiences by service or occasion.</h2>
           <p role="status" aria-live="polite" aria-atomic="true">
             Showing {visibleGroups.length} {visibleGroups.length === 1 ? "group" : "groups"}.
           </p>
