@@ -1,3 +1,6 @@
+import { imageAssets } from "../image-system";
+import type { SignatureExperience } from "../signature-elements";
+
 export const privateEventContexts = [
   {
     number: "01",
@@ -45,62 +48,55 @@ export const privateEventContexts = [
 
 export const privateEventExperiences = [
   {
+    id: "coffee",
     number: "01",
-    name: "Mobile coffee bar and non-coffee drinks",
+    label: "Mobile coffee bar and non-coffee drinks",
+    name: "Luxe Coffee Bar",
+    image: imageAssets.experiences.coffeeBar,
     href: "/experiences/coffee-bar",
     description:
-      "Full-service mobile espresso bar featuring classic coffee drinks, custom signature lattes, ceremonial matcha, teas, hot chocolate, dairy alternatives, and seasonal menu items served hot or iced.",
-    note:
-      "Select between our versatile Café Cart or full Signature Coffee Bar based on your venue size, guest count, and party schedule.",
+      "Full-service mobile espresso bar featuring classic coffee drinks, custom signature lattes, ceremonial matcha, teas, hot chocolate, dairy alternatives, and seasonal menu items served hot or iced. Select between our versatile Café Cart or full Signature Coffee Bar based on your venue size, guest count, and party schedule.",
   },
   {
+    id: "dessert",
     number: "02",
-    name: "Live dessert carts",
+    label: "Live dessert carts",
+    name: "Luxe Sweet Cart",
+    image: imageAssets.experiences.sweetCart,
     href: "/experiences/sweet-cart",
     description:
-      "Interactive live dessert catering featuring warm mini Dutch pancakes, Belgian waffle pops, and mini donuts made fresh on-site with premium sauces and toppings.",
-    note:
-      "Menu selections, station setup, toppings bar, and staffing levels are customized in your tailored event proposal.",
+      "Interactive live dessert catering featuring warm mini Dutch pancakes, Belgian waffle pops, and mini donuts made fresh on-site with premium sauces and toppings. Menu selections, station setup, toppings bar, and staffing levels are customized in your tailored event proposal.",
   },
   {
+    id: "seating",
     number: "03",
-    name: "Event seating and rentals",
+    label: "Event seating and rentals",
+    name: "Luxe Seating Rentals",
+    image: imageAssets.experiences.seatingRentals,
     href: "/experiences/seating-rentals",
     description:
-      "Boutique seating, high-top cocktail tables, dining setups, linens, tents, and ambient lighting designed to elevate the flow and comfort of your indoor or outdoor venue.",
-    note:
-      "Rental inventory, delivery logistics, load-in timing, and full setup/teardown services are detailed during planning.",
+      "Boutique seating, high-top cocktail tables, dining setups, linens, tents, and ambient lighting designed to elevate the flow and comfort of your indoor or outdoor venue. Rental inventory, delivery logistics, load-in timing, and full setup/teardown services are detailed during planning.",
   },
-] as const;
+] satisfies readonly SignatureExperience[];
 
-export const privateEventCombinations = [
+export const privateEventPersonalization = [
   {
     number: "01",
-    occasion: "Engagement or anniversary reception",
-    experiences: "Signature Coffee Bar + personalized menu",
+    title: "Menus and drinks",
     description:
-      "A full-service mobile barista setup featuring custom drink menus, signature lattes, and ceremonial matcha to anchor arrivals, toasts, and late-night guest hospitality.",
+      "Signature beverages, seasonal menus, custom cups, and menu displays can be discussed around the occasion and the confirmed experiences.",
   },
   {
     number: "02",
-    occasion: "Graduation or family celebration",
-    experiences: "Sweet Cart + custom signage",
+    title: "Signage and presentation",
     description:
-      "An interactive live dessert station serving warm mini Dutch pancakes, waffle pops, or mini donuts with branded cart signage created for all ages.",
+      "Event signage, cart details, dessert presentation, and selected visual elements can be tailored to the gathering and its production timeline.",
   },
   {
     number: "03",
-    occasion: "Holiday or outdoor gathering",
-    experiences: "Coffee + selected rentals",
+    title: "Seating and room details",
     description:
-      "Warm seasonal beverage catering combined with boutique seating, cocktail tables, heaters, or tents coordinated specifically for indoor or outdoor guest comfort.",
-  },
-  {
-    number: "04",
-    occasion: "A complete milestone setting",
-    experiences: "Coffee + Dessert + Rentals",
-    description:
-      "Our all-inclusive package uniting barista beverage catering, live sweet carts, and custom venue rentals managed effortlessly through a single proposal.",
+      "Boutique seating, high-top cocktail tables, dining setups, linens, tents, and ambient lighting can be planned around the venue, guest flow, and comfort.",
   },
 ] as const;
 

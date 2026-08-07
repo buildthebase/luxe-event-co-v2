@@ -7,8 +7,7 @@
     #baby-styling-title,
     #bridal-moments-title,
     #birthday-contexts-title,
-    #private-contexts-title,
-    #private-experiences-title
+    #private-contexts-title
   ),
 .foundation-shell :is(
     #baby-experiences,
@@ -42,8 +41,7 @@
       #baby-styling-title,
       #bridal-moments-title,
       #birthday-contexts-title,
-      #private-contexts-title,
-      #private-experiences-title
+      #private-contexts-title
     ) span,
   .foundation-shell :is(
       #baby-experiences,
@@ -64,8 +62,7 @@
       #baby-styling-title,
       #bridal-moments-title,
       #birthday-contexts-title,
-      #private-contexts-title,
-      #private-experiences-title
+      #private-contexts-title
     ) span,
   .foundation-shell :is(
       #baby-experiences,
@@ -84,8 +81,7 @@
       #baby-styling-title,
       #bridal-moments-title,
       #birthday-contexts-title,
-      #private-contexts-title,
-      #private-experiences-title
+      #private-contexts-title
     ) span + span::before,
   .foundation-shell :is(
       #baby-experiences,

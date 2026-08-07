@@ -1,10 +1,10 @@
 import Link from "next/link";
 import {
-  privateEventCombinations,
   privateEventContexts,
   privateEventExperiences,
   privateEventFaqs,
   privateEventGallery,
+  privateEventPersonalization,
   privateEventPlanningRequirements,
 } from "../events/private-events-content";
 import { pageMetadata } from "../metadata-config";
@@ -12,7 +12,7 @@ import { createServicePageSchema } from "../schema-builders";
 import { FaqAccordion } from "./faq-accordion";
 import { JsonLd } from "./json-ld";
 import { QuoteModalTrigger } from "./quote-modal-trigger";
-import { ContextualInquiryPanel } from "./signature-elements";
+import { ContextualInquiryPanel, ExperienceSelector } from "./signature-elements";
 import { SiteShell } from "./site-shell";
 
 const privateEventsPath = "/events/private-events";
@@ -121,45 +121,33 @@ function PrivateEventContexts() {
 
 function PrivateEventExperiences() {
   return (
-    <section className="private-experiences" aria-labelledby="private-experiences-title">
-      <header>
-        <h2 id="private-experiences-title">
+    <ExperienceSelector
+      description="Explore our core service pillars tailored for private celebrations across Toronto and the GTA."
+      experiences={privateEventExperiences}
+      heading={
+        <>
           <span>Coffee bars, live desserts,</span>
           <span>and rentals for private events</span>
-        </h2>
-        <p>
-          Explore our core service pillars tailored for private celebrations
-          across Toronto and the GTA.
-        </p>
-      </header>
-      <div>
-        {privateEventExperiences.map((experience) => (
-          <article key={experience.number}>
-            <h3>{experience.name}</h3>
-            <p>{experience.description}</p>
-            <small>{experience.note}</small>
-            <Link href={experience.href}>
-              Explore {experience.name} <span aria-hidden="true">↗︎</span>
-            </Link>
-          </article>
-        ))}
-      </div>
-    </section>
+        </>
+      }
+      headingClassName="foundation-wide-heading"
+      id="private-experiences"
+      useItemHeadings
+      variant="taupe"
+    />
   );
 }
 
-function PrivateEventCombinations() {
+function PrivateEventPersonalization() {
   return (
-    <section className="private-combinations" aria-labelledby="private-combinations-title">
+    <section className="private-personalization" aria-labelledby="private-personalization-title">
       <header>
-        <h2 id="private-combinations-title">Custom private event service combinations</h2>
-        <p>Curated service combinations designed around your event format, timeline, and guest preferences.</p>
+        <h2 id="private-personalization-title">Make the occasion distinctly its own.</h2>
       </header>
       <div>
-        {privateEventCombinations.map((item) => (
+        {privateEventPersonalization.map((item) => (
           <article key={item.number}>
-            <p>{item.occasion}</p>
-            <h3>{item.experiences}</h3>
+            <h3>{item.title}</h3>
             <p>{item.description}</p>
           </article>
         ))}
@@ -172,8 +160,8 @@ function PrivateEventGallery() {
   return (
     <section className="private-gallery" aria-labelledby="private-gallery-title">
       <header>
-        <h2 id="private-gallery-title">Private event gallery.</h2>
-        <p>Hospitality, dessert, and setting should reflect the scale, mood, and rhythm of the gathering.</p>
+        <h2 id="private-gallery-title">Private event experiences, seen in context.</h2>
+        <p>Coffee, live dessert, signage, seating, and room details shown within the gatherings they were planned for.</p>
       </header>
       <div data-asset-status="awaiting-approved-private-event-assets">
         {privateEventGallery.map((item) => (
@@ -195,7 +183,7 @@ function PrivateEventPlanning() {
   return (
     <section className="private-planning" aria-labelledby="private-planning-title">
       <header>
-        <h2 id="private-planning-title">What we need to plan your private event</h2>
+        <h2 id="private-planning-title">What to share when planning a private event.</h2>
         <p>
           Sharing a few preliminary event details helps us design a personalized
           proposal tailored to your vision and venue setup.
@@ -235,7 +223,7 @@ export function PrivateEventsPage() {
         <PrivateEventsOverview />
         <PrivateEventContexts />
         <PrivateEventExperiences />
-        <PrivateEventCombinations />
+        <PrivateEventPersonalization />
         <PrivateEventGallery />
         <PrivateEventPlanning />
         <PrivateEventFaq />

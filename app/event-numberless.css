@@ -62,21 +62,12 @@
 .baby-styling h3,
 .baby-planning h3,
 .birthday-personalization h3,
-.private-experiences h3 {
+.private-personalization h3 {
   margin-top: var(--space-4);
 }
 
 .wedding-customization article h3 {
   margin-top: 0;
-}
-
-.private-combinations article {
-  grid-template-columns: 1fr;
-}
-
-.private-combinations article > p,
-.private-combinations h3 {
-  grid-column: 1;
 }
 
 .wedding-gallery figcaption,

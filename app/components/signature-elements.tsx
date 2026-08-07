@@ -28,6 +28,7 @@ export function ExperienceSelector({
   experiences = signatureExperiences,
   footer,
   heading = "Choose where the experience begins.",
+  headingClassName,
   description = "Each experience has its own atmosphere and purpose. Together, they create one cohesive event language.",
   id,
   showDescription = true,
@@ -37,6 +38,7 @@ export function ExperienceSelector({
   experiences?: readonly SignatureExperience[];
   footer?: ReactNode;
   heading?: ReactNode;
+  headingClassName?: string;
   description?: string;
   id?: string;
   showDescription?: boolean;
@@ -61,7 +63,7 @@ export function ExperienceSelector({
           showDescription ? "" : "signature-section-heading-standalone",
         ].filter(Boolean).join(" ")}
       >
-        <h2 id="signature-selector-title">{heading}</h2>
+        <h2 className={headingClassName} id="signature-selector-title">{heading}</h2>
         {showDescription ? (
           <p>{description}</p>
         ) : null}
