@@ -24,3 +24,15 @@
     white-space: normal;
   }
 }
+
+@media (max-width: 700px) {
+  .foundation-shell .events-page .events-approach-principles li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-2);
+    align-items: start;
+  }
+
+  .foundation-shell .events-page .events-approach-principles p {
+    grid-column: 1;
+  }
+}

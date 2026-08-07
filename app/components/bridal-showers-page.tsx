@@ -207,7 +207,6 @@ function BridalDetails() {
       <ol>
         {bridalShowerDetails.map((detail) => (
           <li key={detail.number}>
-            <span>{detail.label}</span>
             <h3>{detail.title}</h3>
             <p>{detail.description}</p>
           </li>
@@ -294,7 +293,8 @@ function BridalPlanning() {
     >
       <header>
         <h2 id="bridal-planning-title">
-          Planning a bridal shower in Toronto and the GTA
+          <span>Planning a bridal shower</span>{" "}
+          <span>in Toronto and the GTA</span>
         </h2>
         <p>
           Venue logistics, indoor or outdoor settings, guest counts, and setup

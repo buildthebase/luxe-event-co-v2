@@ -61,3 +61,9 @@
     content: " ";
   }
 }
+
+@media (max-width: 700px) {
+  .foundation-shell .seating-page .seating-overview-content {
+    border-top: 0;
+  }
+}

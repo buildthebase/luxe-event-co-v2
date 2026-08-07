@@ -1,0 +1,40 @@
+/* Experiences hub mobile composition refinements. */
+@media (max-width: 700px) {
+  .foundation-shell .experiences-page
+    .experiences-feature-copy h2:not(#luxe-sitewide-h2-scale) {
+    font-size: var(--type-heading-sm) !important;
+  }
+
+  .foundation-shell .experiences-page .experiences-hero-seating-name {
+    display: block;
+  }
+
+  .foundation-shell .experiences-page .experiences-booking-proof > li:nth-child(1) {
+    order: 1;
+  }
+
+  .foundation-shell .experiences-page .experiences-booking-proof > li:nth-child(4) {
+    order: 2;
+  }
+
+  .foundation-shell .experiences-page .experiences-booking-proof > li:nth-child(3) {
+    order: 3;
+  }
+
+  .foundation-shell .experiences-page .experiences-booking-proof > li:nth-child(2) {
+    order: 4;
+  }
+
+  .foundation-shell .experiences-page .experiences-booking-proof > li:nth-child(5) {
+    order: 5;
+  }
+
+  .foundation-shell .experiences-page > .signature-combinations {
+    gap: var(--space-6);
+  }
+
+  .foundation-shell .experiences-page > .signature-combinations
+    .signature-combinations-intro {
+    padding-bottom: 0;
+  }
+}

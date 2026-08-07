@@ -68,37 +68,50 @@ export function ExperienceSelector({
       </header>
       <div className="signature-selector-world">
         <div className="signature-selector-line" aria-hidden="true" />
-        {experiences.map((experience) => (
-          <Link
-            className={`signature-selector-choice signature-selector-${experience.id}`}
-            href={experience.href}
-            id={`experience-selector-${experience.id}`}
-            key={experience.id}
-          >
-            <span className="signature-selector-art">
-              <ResponsiveImage
-                asset={experience.image}
-                className="signature-selector-image"
-                fill
-              />
-            </span>
-            <div className="signature-selector-copy">
-              <span className="signature-selector-label">{experience.label}</span>
-              {useItemHeadings ? (
-                <h3 className="signature-selector-heading">{experience.name}</h3>
-              ) : (
-                <strong className="signature-selector-heading">{experience.name}</strong>
-              )}
-              {experience.tagline ? (
-                <em className="signature-selector-tagline">{experience.tagline}</em>
-              ) : null}
-              <span>{experience.description}</span>
-              <b aria-hidden="true">
-                {experienceSelectorActions[experience.id] ?? "Explore"} ↗︎
-              </b>
-            </div>
-          </Link>
-        ))}
+        {experiences.map((experience) => {
+          const heading = experience.headingLead && experience.headingDetail ? (
+            <>
+              <span className="signature-selector-heading-lead">
+                {experience.headingLead}
+              </span>{" "}
+              <span className="signature-selector-heading-detail">
+                {experience.headingDetail}
+              </span>
+            </>
+          ) : experience.name;
+
+          return (
+            <Link
+              className={`signature-selector-choice signature-selector-${experience.id}`}
+              href={experience.href}
+              id={`experience-selector-${experience.id}`}
+              key={experience.id}
+            >
+              <span className="signature-selector-art">
+                <ResponsiveImage
+                  asset={experience.image}
+                  className="signature-selector-image"
+                  fill
+                />
+              </span>
+              <div className="signature-selector-copy">
+                <span className="signature-selector-label">{experience.label}</span>
+                {useItemHeadings ? (
+                  <h3 className="signature-selector-heading">{heading}</h3>
+                ) : (
+                  <strong className="signature-selector-heading">{heading}</strong>
+                )}
+                {experience.tagline ? (
+                  <em className="signature-selector-tagline">{experience.tagline}</em>
+                ) : null}
+                <span>{experience.description}</span>
+                <b aria-hidden="true">
+                  {experienceSelectorActions[experience.id] ?? "Explore"} ↗︎
+                </b>
+              </div>
+            </Link>
+          );
+        })}
       </div>
       {footer ? <div className="signature-selector-footer">{footer}</div> : null}
     </section>

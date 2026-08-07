@@ -9,9 +9,16 @@ const weddingExperienceDescriptions: Record<SignatureExperience["id"], string> =
     "Curated chairs, tables, cocktail setups, linens, and lounge furniture arranged to elevate your ceremony, reception, or outdoor layout.",
 };
 
+const weddingExperienceLabels: Record<SignatureExperience["id"], string> = {
+  coffee: "A café-style welcome",
+  dessert: "A live sweet moment",
+  seating: "A composed setting",
+};
+
 export const weddingExperiences: SignatureExperience[] = signatureExperiences.map(
   (experience) => ({
     ...experience,
+    label: weddingExperienceLabels[experience.id],
     description: weddingExperienceDescriptions[experience.id],
   }),
 );

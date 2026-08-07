@@ -27,8 +27,10 @@ export function ExperiencesHero({
           Luxe Event Co. provides mobile coffee bars, live dessert carts, seating,
           and event rentals for weddings, corporate events, brand activations, and
           private celebrations across Toronto and the GTA. Book Luxe Coffee Bar,
-          Luxe Sweet Cart, or Luxe Seating Rentals independently, or coordinate all
-          three through one team.
+          Luxe Sweet Cart, or <span className="experiences-hero-seating-name">
+            Luxe Seating Rentals
+          </span>{" "}
+          independently, or coordinate all three through one team.
         </p>
         <div className="experiences-hero-actions">
           <a href="#experience-coffee" data-event-name="experience_select">

@@ -296,6 +296,15 @@
   line-height: 1.65;
 }
 
+.bridal-page > .bridal-personalization[aria-labelledby="bridal-details-title"] h3,
+.bridal-page > .bridal-personalization[aria-labelledby="bridal-details-title"] li > p {
+  grid-row: 1;
+}
+
+.bridal-page > .bridal-personalization[aria-labelledby="bridal-details-title"] h3 {
+  align-self: center;
+}
+
 /* Bridal planning: a host-facing guide rather than an intake checklist. */
 
 .bridal-page > .bridal-planning {
@@ -369,14 +378,15 @@
 }
 
 .bridal-page > .bridal-planning h3 {
-  max-width: 15ch;
+  max-width: none;
   margin: 0 0 var(--space-4);
   color: var(--color-luxe-gold-ink);
-  font-size: clamp(0.72rem, 0.8vw, 0.84rem);
+  font-size: clamp(0.9rem, 1vw, 1rem);
   font-weight: 600;
   letter-spacing: 0.14em;
   line-height: 1.4;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .bridal-page > .bridal-planning li > p {
@@ -573,6 +583,34 @@
 }
 
 @media (max-width: 700px) {
+  .bridal-page > .bridal-personalization[aria-labelledby="bridal-combinations-title"]
+    li:nth-child(2) h3 {
+    max-width: none;
+    white-space: nowrap;
+  }
+
+  .bridal-page > .bridal-planning > header {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--space-5);
+    align-items: start;
+  }
+
+  .bridal-page > .bridal-planning > header h2 {
+    grid-column: 1;
+    max-width: none !important;
+    font-size: clamp(1.75rem, 7.4vw, 2.35rem) !important;
+  }
+
+  .bridal-page > .bridal-planning > header h2 span {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .bridal-page > .bridal-planning > header > p {
+    grid-column: 1;
+    max-width: 36ch;
+  }
+
   .bridal-page > .signature-selector-bridal .signature-section-heading h2 {
     max-width: none !important;
     font-size: clamp(1.05rem, 6vw, 2.1rem) !important;

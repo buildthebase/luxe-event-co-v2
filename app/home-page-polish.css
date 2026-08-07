@@ -91,6 +91,22 @@
 }
 
 @media (max-width: 700px) {
+  .foundation-shell .home-page > .signature-selector
+    .signature-selector-heading-lead,
+  .foundation-shell .home-page > .signature-selector
+    .signature-selector-heading-detail {
+    display: block;
+  }
+
+  .foundation-shell .home-page > .signature-combinations {
+    gap: var(--space-6);
+  }
+
+  .foundation-shell .home-page > .signature-combinations
+    .signature-combinations-intro {
+    padding-bottom: 0;
+  }
+
   .foundation-shell .home-page .home-hero-copy h1,
   .foundation-shell .home-page .home-cinematic-copy h1 {
     font-size: clamp(2.6rem, 12vw, 3.75rem);

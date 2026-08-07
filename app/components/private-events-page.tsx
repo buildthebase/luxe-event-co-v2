@@ -37,9 +37,9 @@ function PrivateEventsHero() {
           <span>Dessert &amp; Rentals in Toronto</span>
         </h1>
         <p>
-          Coffee, live dessert, signage, and refined rentals for engagements,
-          anniversaries, graduations, holidays, family gatherings, and milestones
-          that deserve their own direction.
+          Elevate engagements, anniversaries, graduations, holiday parties, and
+          intimate gatherings with custom mobile coffee bars, live dessert
+          stations, and boutique rentals tailored to your vision.
         </p>
         <div className="private-hero-actions">
           <QuoteModalTrigger data-event-name="inquiry_start">
@@ -56,9 +56,18 @@ function PrivateEventsHero() {
         <span>One occasion.<br />Its own composition.</span>
       </div>
       <dl className="private-hero-proof">
-        <div><dt>One or several</dt><dd>Book experiences independently or together</dd></div>
-        <div><dt>Personalized</dt><dd>Menus, signage, presentation, and setting</dd></div>
-        <div><dt>$5 million</dt><dd>Liability insurance</dd></div>
+        <div>
+          <dt>One or several</dt>
+          <dd>Book coffee bars, live dessert carts, or seating rentals individually or seamlessly bundled.</dd>
+        </div>
+        <div>
+          <dt>Personalized</dt>
+          <dd>Tailor custom drink menus, branded cart decals, signage, and seating layouts to your theme.</dd>
+        </div>
+        <div>
+          <dt>$5 million</dt>
+          <dd>Full commercial liability coverage for complete peace of mind at any venue.</dd>
+        </div>
       </dl>
     </header>
   );
@@ -67,15 +76,17 @@ function PrivateEventsHero() {
 function PrivateEventsOverview() {
   return (
     <section className="private-overview" aria-labelledby="private-overview-title">
-      <h2 id="private-overview-title">Private event experiences for every kind of gathering.</h2>
+      <h2 id="private-overview-title">Private event experiences for every kind of gathering</h2>
       <div>
         <p>
-          Private events are not a leftover category. They are gatherings whose
-          meaning, audience, schedule, and setting call for a more individual plan.
+          Every private celebration carries its own unique energy, guest flow,
+          and timing. We design our hospitality around how you want your guests
+          to feel from the moment they arrive.
         </p>
         <p>
-          Luxe begins with how guests should arrive, interact, taste, and gather,
-          then determines whether coffee, dessert, rentals, or a combination belongs.
+          From morning engagement brunches to late-night anniversary dessert
+          bars, we align our espresso catering, live sweets, and seating rentals
+          to perfectly match your event format.
         </p>
       </div>
     </section>
@@ -88,14 +99,18 @@ function PrivateEventContexts() {
       <header>
         <h2 id="private-contexts-title">
           <span>Private events for engagements, graduations,</span>
-          <span>holidays, and milestones.</span>
+          <span>holidays, and milestones</span>
         </h2>
+        <p>
+          From intimate family celebrations to major cultural gatherings, we
+          customize our service flow to match your occasion.
+        </p>
       </header>
       <ol>
         {privateEventContexts.map((context) => (
           <li key={context.number}>
+            <p className="private-context-eyebrow">{context.statement}</p>
             <h3 className="private-context-title">{context.title}</h3>
-            <p className="private-context-statement">{context.statement}</p>
             <p className="private-context-description">{context.description}</p>
           </li>
         ))}
@@ -110,8 +125,12 @@ function PrivateEventExperiences() {
       <header>
         <h2 id="private-experiences-title">
           <span>Coffee bars, live desserts,</span>
-          <span>and rentals for private events.</span>
+          <span>and rentals for private events</span>
         </h2>
+        <p>
+          Explore our core service pillars tailored for private celebrations
+          across Toronto and the GTA.
+        </p>
       </header>
       <div>
         {privateEventExperiences.map((experience) => (
@@ -133,8 +152,8 @@ function PrivateEventCombinations() {
   return (
     <section className="private-combinations" aria-labelledby="private-combinations-title">
       <header>
-        <h2 id="private-combinations-title">Custom private event service combinations.</h2>
-        <p>Each direction is refined around the actual occasion and confirmed requirements.</p>
+        <h2 id="private-combinations-title">Custom private event service combinations</h2>
+        <p>Curated service combinations designed around your event format, timeline, and guest preferences.</p>
       </header>
       <div>
         {privateEventCombinations.map((item) => (
@@ -176,7 +195,11 @@ function PrivateEventPlanning() {
   return (
     <section className="private-planning" aria-labelledby="private-planning-title">
       <header>
-        <h2 id="private-planning-title">What we need to plan your private event.</h2>
+        <h2 id="private-planning-title">What we need to plan your private event</h2>
+        <p>
+          Sharing a few preliminary event details helps us design a personalized
+          proposal tailored to your vision and venue setup.
+        </p>
       </header>
       <ol>
         {privateEventPlanningRequirements.map((item) => (
@@ -187,8 +210,8 @@ function PrivateEventPlanning() {
         ))}
       </ol>
       <p>
-        A signed contract and 30% non-refundable retainer secure the booking.
-        Availability is not guaranteed until both are received.
+        <strong>Booking Policy:</strong> A signed contract and a 30% non-refundable
+        deposit secure your event date. Dates remain open until both are received.
       </p>
     </section>
   );

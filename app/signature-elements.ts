@@ -5,6 +5,8 @@ export type SignatureExperience = {
   number: string;
   label: string;
   name: string;
+  headingLead?: string;
+  headingDetail?: string;
   tagline?: string;
   description: string;
   href: string;

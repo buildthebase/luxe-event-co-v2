@@ -368,9 +368,6 @@ function CorporatePlanning() {
           <div>
             <h3>{openingStep.title}</h3>
             <p>{openingStep.description}</p>
-            <Link className="corporate-planning-events-link" href="/experiences">
-              Explore Luxe Event Services
-            </Link>
           </div>
         </li>
         {supportingSteps.map((step) => (

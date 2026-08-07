@@ -2,51 +2,44 @@ export const privateEventContexts = [
   {
     number: "01",
     title: "Engagement parties",
-    statement: "Set the tone before the next chapter.",
+    statement: "Set the tone before the next chapter",
     description:
       "Coffee, matcha, live dessert, signage, and selected rentals can support an intimate toast, cocktail-style gathering, dinner, or open-house celebration.",
   },
   {
     number: "02",
     title: "Anniversaries",
-    statement: "Honour the history without repeating the past.",
+    statement: "Honour the story without repeating the past",
     description:
       "A personalized menu, guest-facing dessert moment, or refined room setting can reflect the couple, the milestone, and the way they want to gather.",
   },
   {
     number: "03",
     title: "Graduations",
-    statement: "Mark the achievement in their language.",
+    statement: "Mark the achievement in their language",
     description:
       "Coffee and non-coffee drinks, live dessert, custom signage, and flexible gathering spaces can suit daytime receptions, family dinners, and larger celebrations.",
   },
   {
     number: "04",
     title: "Religious and cultural celebrations",
-    statement: "Begin with the occasion and its requirements.",
+    statement: "Begin with the occasion and its requirements",
     description:
       "Luxe can discuss beverage, dessert, presentation, dietary, timing, venue, and setup needs with the host, planner, or venue before confirming an appropriate service direction.",
   },
   {
     number: "05",
     title: "Holiday gatherings",
-    statement: "Seasonal hospitality with a clear point of view.",
+    statement: "Seasonal hospitality with a clear point of view",
     description:
       "Seasonal beverage collections, coffee, matcha, live dessert, and selected room elements can support private holiday parties and indoor winter gatherings.",
   },
   {
     number: "06",
-    title: "Family celebrations",
-    statement: "One gathering, shaped across generations.",
+    title: "Family celebrations / Other milestone events",
+    statement: "One gathering, shared across generations",
     description:
-      "A balanced beverage and dessert direction can create thoughtful choices for adults, younger guests, and family members sharing the same room.",
-  },
-  {
-    number: "07",
-    title: "Other milestone events",
-    statement: "Not every meaningful event needs a category.",
-    description:
-      "Retirements, reunions, accomplishments, welcome-home gatherings, and other personal occasions can begin with the atmosphere and guest experience rather than a predefined package.",
+      "Retirements, reunions, accomplishments, welcome-home gatherings, and other personal occasions can begin with this atmosphere and guest experience rather than a predefined package.",
   },
 ] as const;
 
@@ -56,27 +49,27 @@ export const privateEventExperiences = [
     name: "Mobile coffee bar and non-coffee drinks",
     href: "/experiences/coffee-bar",
     description:
-      "Espresso classics, two signature coffee drinks, matcha, tea, chai, hot chocolate, hot and iced service, milk alternatives, seasonal collections, and custom menu possibilities.",
+      "Full-service mobile espresso bar featuring classic coffee drinks, custom signature lattes, ceremonial matcha, teas, hot chocolate, dairy alternatives, and seasonal menu items served hot or iced.",
     note:
-      "The Café Cart or Signature Coffee Bar is selected around the venue, guest count, duration, service role, and confirmed event requirements.",
+      "Select between our versatile Café Cart or full Signature Coffee Bar based on your venue size, guest count, and party schedule.",
   },
   {
     number: "02",
     name: "Live dessert carts",
     href: "/experiences/sweet-cart",
     description:
-      "Mini Dutch pancakes, Belgian waffles on a stick, or mini donuts prepared on-site with premium sauces, standard toppings, available premium toppings, and optional soft serve.",
+      "Interactive live dessert catering featuring warm mini Dutch pancakes, Belgian waffle pops, and mini donuts made fresh on-site with premium sauces and toppings.",
     note:
-      "Dessert selection, quantities, combinations, staffing, and final presentation are confirmed through the event proposal.",
+      "Menu selections, station setup, toppings bar, and staffing levels are customized in your tailored event proposal.",
   },
   {
     number: "03",
     name: "Event seating and rentals",
     href: "/experiences/seating-rentals",
     description:
-      "Chairs, tables, cocktail tables, tents, linens, and lighting can support the comfort, layout, atmosphere, and flow of private indoor or outdoor gatherings.",
+      "Boutique seating, high-top cocktail tables, dining setups, linens, tents, and ambient lighting designed to elevate the flow and comfort of your indoor or outdoor venue.",
     note:
-      "Inventory, quantities, delivery, setup, teardown, access, labour, and fees remain event-specific and require confirmation.",
+      "Rental inventory, delivery logistics, load-in timing, and full setup/teardown services are detailed during planning.",
   },
 ] as const;
 
@@ -86,28 +79,28 @@ export const privateEventCombinations = [
     occasion: "Engagement or anniversary reception",
     experiences: "Signature Coffee Bar + personalized menu",
     description:
-      "A prominent café experience can support arrivals, conversation, a toast, dinner, or a later hospitality moment.",
+      "A full-service mobile barista setup featuring custom drink menus, signature lattes, and ceremonial matcha to anchor arrivals, toasts, and late-night guest hospitality.",
   },
   {
     number: "02",
     occasion: "Graduation or family celebration",
     experiences: "Sweet Cart + custom signage",
     description:
-      "Live preparation and event-specific presentation create an interactive focal point that works across generations.",
+      "An interactive live dessert station serving warm mini Dutch pancakes, waffle pops, or mini donuts with branded cart signage created for all ages.",
   },
   {
     number: "03",
     occasion: "Holiday or outdoor gathering",
     experiences: "Coffee + selected rentals",
     description:
-      "Seasonal beverages and the room requirements can be reviewed together around weather, access, service timing, and guest flow.",
+      "Warm seasonal beverage catering combined with boutique seating, cocktail tables, heaters, or tents coordinated specifically for indoor or outdoor guest comfort.",
   },
   {
     number: "04",
     occasion: "A complete milestone setting",
     experiences: "Coffee + Dessert + Rentals",
     description:
-      "All three experiences can be coordinated through one Luxe Event Co. inquiry while retaining their distinct roles within the occasion.",
+      "Our all-inclusive package uniting barista beverage catering, live sweet carts, and custom venue rentals managed effortlessly through a single proposal.",
   },
 ] as const;
 
@@ -116,25 +109,25 @@ export const privateEventPlanningRequirements = [
     number: "01",
     title: "The occasion and atmosphere",
     description:
-      "Share what is being marked, how formal or relaxed the gathering should feel, and which details should be personal to the host or guests.",
+      "Tell us about the celebration, desired vibe, formality level, and personal touches you want incorporated into the guest experience.",
   },
   {
     number: "02",
     title: "Date, venue, and attendance",
     description:
-      "Provide the event date, location, estimated guest count, indoor or outdoor setting, service schedule, and any planner or venue contacts.",
+      "Provide your event date, venue location, estimated guest count, indoor or outdoor setting, timeline, and lead planner contact information.",
   },
   {
     number: "03",
     title: "The experiences in consideration",
     description:
-      "Identify coffee, non-coffee beverages, dessert, rentals, signage, menu customization, dietary considerations, and other presentation priorities.",
+      "Select your desired services including espresso bar, matcha, live dessert carts, rentals, custom signage, and any dietary preferences.",
   },
   {
     number: "04",
     title: "Access and operating conditions",
     description:
-      "Venue access, setup windows, service placement, power or water access, weather planning, rental logistics, and teardown requirements are confirmed before final scope.",
+      "Share venue access times, setup placement, power availability, weather backup plans, and load-out requirements to ensure smooth execution.",
   },
 ] as const;
 

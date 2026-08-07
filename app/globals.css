@@ -7102,6 +7102,30 @@ a {
   }
 }
 
+/* Shared mobile H1 scale for the seven event-detail heroes. The additional
+ * page scope intentionally outranks legacy page-specific mobile overrides. */
+@media (max-width: 700px) {
+  body .foundation-shell main:is(
+      .wedding-page,
+      .corporate-page,
+      .activation-page,
+      .baby-page,
+      .bridal-page,
+      .birthday-page,
+      .private-page
+    ) :is(
+      .wedding-hero-copy,
+      .corporate-hero-copy,
+      .activation-hero-copy,
+      .baby-hero-copy,
+      .bridal-hero-copy,
+      .birthday-hero-copy,
+      .private-hero-copy
+    ) h1 {
+    font-size: clamp(1.35rem, 6vw, 2rem) !important;
+  }
+}
+
 .signature-selector-number {
   color: var(--gold-text);
   font-size: var(--type-label);
@@ -19461,6 +19485,14 @@ max-width: 36ch;
   margin-inline: auto;
 }
 
+.private-contexts > header > p {
+  max-width: 58ch;
+  margin: var(--space-5) 0 0;
+  color: rgba(248, 246, 242, .68);
+  font-size: clamp(1.05rem, 1.35vw, 1.3rem);
+  line-height: 1.6;
+}
+
 .private-contexts ol {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -19472,16 +19504,15 @@ max-width: 36ch;
 
 .private-contexts li {
   grid-column: span 4;
-  min-height: 27rem;
+  min-height: 22rem;
   padding: var(--space-5);
   border-bottom: 1px solid rgba(248, 246, 242, .25);
 }
 
 .private-contexts li + li { border-left: 1px solid rgba(248, 246, 242, .25); }
-.private-contexts li:nth-child(4) { grid-column: 2 / span 4; border-left: 0; }
-.private-contexts li:nth-child(7) { grid-column: 5 / span 4; border-bottom: 0; }
-.private-contexts li:nth-child(5),
-.private-contexts li:nth-child(6) { border-bottom: 0; }
+.private-contexts li:nth-child(4) { grid-column: 2 / span 5; border-left: 0; }
+.private-contexts li:nth-child(5) { grid-column: 7 / span 5; }
+.private-contexts li:nth-child(6) { grid-column: 3 / span 8; border-bottom: 0; border-left: 0; }
 .private-contexts li > span,
 .private-experiences article > span,
 .private-combinations article > span,
@@ -19492,24 +19523,39 @@ max-width: 36ch;
   letter-spacing: .15em;
 }
 
-.private-contexts h3.private-context-title {
-  margin: var(--space-6) 0 var(--space-4);
-  font-size: .76rem;
-  font-weight: 700;
-  letter-spacing: .1em;
-  line-height: 1.6;
+.private-contexts .private-context-eyebrow {
+  margin: 0 0 var(--space-4);
+  color: var(--color-luxe-gold-ink);
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  line-height: 1.5;
   text-transform: uppercase;
 }
 
-.private-contexts .private-context-statement {
+.private-contexts h3.private-context-title {
   margin: 0 0 var(--space-5);
-  font-size: clamp(1.8rem, 2.7vw, 2.9rem);
+  font-size: clamp(1.25rem, 1.5vw, 1.5rem);
   font-weight: 400;
-  letter-spacing: -.055em;
-  line-height: .98;
+  letter-spacing: -.035em;
+  line-height: 1.15;
 }
 
-.private-contexts .private-context-description { color: rgba(248, 246, 242, .68); line-height: 1.55; }
+.private-contexts .private-context-description {
+  max-width: 48ch;
+  margin: 0;
+  color: rgba(248, 246, 242, .68);
+  font-size: clamp(.875rem, 1vw, .9375rem);
+  line-height: 1.55;
+}
+
+.private-experiences > header > p {
+  max-width: 58ch;
+  margin: var(--space-5) 0 0;
+  color: var(--color-text-secondary);
+  font-size: clamp(1.05rem, 1.35vw, 1.3rem);
+  line-height: 1.6;
+}
 
 .private-experiences > div {
   display: grid;
@@ -19637,6 +19683,14 @@ max-width: 36ch;
   text-transform: uppercase;
 }
 
+.private-planning > header > p {
+  max-width: 58ch;
+  margin: var(--space-5) 0 0;
+  color: var(--color-text-secondary);
+  font-size: clamp(1.05rem, 1.35vw, 1.3rem);
+  line-height: 1.6;
+}
+
 .private-planning > ol {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -19674,13 +19728,13 @@ max-width: 36ch;
 .private-faq details > p { max-width: 55rem; margin: 0 0 var(--space-5) calc(3rem + var(--space-4)); color: var(--color-text-secondary); line-height: 1.6; }
 
 @media (max-width: 1000px) {
-  .private-contexts li { grid-column: span 6; }
+  .private-contexts li,
   .private-contexts li:nth-child(4),
-  .private-contexts li:nth-child(7) { grid-column: span 6; }
+  .private-contexts li:nth-child(5),
+  .private-contexts li:nth-child(6) { grid-column: span 6; }
   .private-contexts li:nth-child(odd) { border-left: 0; }
   .private-contexts li:nth-child(5),
-  .private-contexts li:nth-child(6) { border-bottom: 1px solid rgba(248, 246, 242, .25); }
-  .private-contexts li:nth-child(7) { border-bottom: 0; }
+  .private-contexts li:nth-child(6) { border-bottom: 0; }
   .private-planning > ol { grid-template-columns: repeat(2, 1fr); }
   .private-planning li:nth-child(3) { border-top: 1px solid var(--private-rule); border-left: 0; }
   .private-planning li:nth-child(4) { border-top: 1px solid var(--private-rule); }
@@ -19727,7 +19781,8 @@ max-width: 36ch;
   .private-contexts ol { grid-template-columns: 1fr; }
   .private-contexts li,
   .private-contexts li:nth-child(4),
-  .private-contexts li:nth-child(7) { grid-column: auto; min-height: 22rem; border-left: 0; }
+  .private-contexts li:nth-child(5),
+  .private-contexts li:nth-child(6) { grid-column: auto; min-height: 18rem; border-left: 0; }
   .private-contexts li + li { border-top: 1px solid rgba(248, 246, 242, .25); }
   .private-combinations > div { grid-template-columns: 1fr; }
   .private-combinations article:nth-child(even) { border-left: 0; }
@@ -20021,10 +20076,10 @@ max-width: 36ch;
 
 .birthday-contexts h3 {
   margin: 0 0 var(--space-5);
-  font-size: clamp(1.55rem, 2vw, 2.15rem);
+  font-size: clamp(1.25rem, 1.5vw, 1.5rem);
   font-weight: 400;
-  letter-spacing: -.045em;
-  line-height: 1.05;
+  letter-spacing: -.035em;
+  line-height: 1.15;
   text-wrap: balance;
 }
 
@@ -20037,7 +20092,7 @@ max-width: 36ch;
 }
 
 .birthday-contexts li:first-child h3 {
-  font-size: clamp(1.9rem, 2.5vw, 2.65rem);
+  font-size: clamp(1.25rem, 1.5vw, 1.5rem);
 }
 
 .birthday-contexts li:first-child h3::before {
@@ -20048,8 +20103,8 @@ max-width: 36ch;
   max-width: 46ch;
   margin: 0;
   color: rgba(248,246,242,.68);
-  font-size: clamp(1rem, 1.15vw, 1.125rem);
-  line-height: 1.65;
+  font-size: clamp(.875rem, 1vw, .9375rem);
+  line-height: 1.55;
   text-wrap: pretty;
 }
 
