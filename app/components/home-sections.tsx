@@ -58,8 +58,10 @@ export function HomePositioning() {
       </h2>
       <div>
         <p className="home-positioning-intro">
-          Coffee, dessert, and rentals are brought to life by one team, giving you
-          one point of contact to shape the experience from start to finish.
+          Led by Luxe’s signature mobile coffee bar, coffee, dessert, and rentals
+          come together through one team and one point of contact. Luxe serves
+          Toronto, the GTA, and Southern Ontario, with capacity for multiple
+          simultaneous event setups.
         </p>
         <ul className="home-positioning-services">
           <li>
@@ -100,20 +102,23 @@ export function HomeUnifiedExperience() {
         <ul className="home-unified-event-list">
           <li>
             <span className="home-unified-event-mark home-unified-event-mark-private" aria-hidden="true" />
-            <p>For a wedding, espresso may carry cocktail hour into the evening.</p>
+            <p>
+              For a wedding, a mobile coffee bar or espresso cart can carry cocktail
+              hour into the evening.
+            </p>
           </li>
           <li>
             <span className="home-unified-event-mark home-unified-event-mark-corporate" aria-hidden="true" />
             <p>
-              A corporate gathering may pair branded drinks with seating designed
-              for conversation.
+              For a corporate gathering, coffee catering can pair branded drinks
+              with seating designed for conversation.
             </p>
           </li>
           <li>
             <span className="home-unified-event-mark home-unified-event-mark-wedding" aria-hidden="true" />
             <p>
-              A private celebration may bring live dessert service into the setting
-              itself.
+              For a private celebration, a live dessert cart can come together with
+              event rentals to shape the setting itself.
             </p>
           </li>
         </ul>
@@ -183,7 +188,7 @@ export function HomeSelectedImagery() {
           <HomeEditorialImage compact slot={slot} key={slot.id} />
         ))}
       </div>
-      <Link href="/gallery" className="home-text-link">
+      <Link href="/gallery" className="home-text-link home-gallery-link">
         Visit the Luxe event gallery <span aria-hidden="true">↗︎</span>
       </Link>
     </section>

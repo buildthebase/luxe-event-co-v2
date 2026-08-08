@@ -8,6 +8,8 @@ import {
   HomeWorkingExperience,
 } from "./home-sections";
 import { HomeHero } from "./home-hero";
+import { HomeEditorialReview } from "./home-editorial-review";
+import { HomeReviewLauncher } from "./home-review-launcher";
 import {
   CombinedExperienceFeature,
   ContextualInquiryPanel,
@@ -21,7 +23,6 @@ import { SiteShell } from "./site-shell";
 import { homeSectionNavigation } from "../page-section-navigation";
 import { pageMetadata } from "../metadata-config";
 import { createHomePageSchema } from "../schema-builders";
-import { HomeTestimonialCarousel } from "./home-testimonial-carousel";
 import {
   signatureExperiences,
   type SignatureExperience,
@@ -84,23 +85,29 @@ export function HomePage() {
           data-evidence-status="client-supplied"
         >
           <div>
-            <dt>500+</dt>
-            <dd>Events served</dd>
-          </div>
-          <div>
             <dt>$5M</dt>
             <dd>Liability coverage</dd>
           </div>
+          <div>
+            <dt>500+</dt>
+            <dd>Events served</dd>
+          </div>
         </dl>
         <HomePositioning />
-        <div className="home-testimonial-placement">
-          <HomeTestimonialCarousel />
-        </div>
+        <HomeReviewLauncher />
         <ExperienceSelector
           id="experience-selector"
           experiences={homeSignatureExperiences}
           heading="Our Core Event Experiences"
           showDescription={false}
+        />
+        <HomeEditorialReview
+          id="review-coffee"
+          context="Luxe Coffee Bar"
+          quote="The coffee bar became a natural gathering point—thoughtful drinks, warm service, and a polished experience guests returned to throughout the evening."
+          links={[
+            { href: "/experiences/coffee-bar", label: "Explore Coffee Bar" },
+          ]}
         />
         <CombinedExperienceFeature
           id="combinations"
@@ -112,9 +119,27 @@ export function HomePage() {
           )}
         />
         <HomeUnifiedExperience />
+        <HomeEditorialReview
+          id="review-coffee-dessert"
+          context="Coffee Bar + Sweet Cart"
+          quote="The coffee and live dessert service felt like one complete experience, carrying guests naturally from the first sip to the final indulgence."
+          links={[
+            { href: "/experiences/coffee-bar", label: "Explore Coffee Bar" },
+            { href: "/experiences/sweet-cart", label: "Explore Sweet Cart" },
+          ]}
+        />
         <HomeEventCategories />
         <HomeSelectedImagery />
         <HomeTrust />
+        <HomeEditorialReview
+          id="review-coffee-seating"
+          context="Coffee Bar + Seating Rentals"
+          quote="Coffee service and intentional seating worked beautifully together, giving guests a comfortable place to connect, settle in, and stay awhile."
+          links={[
+            { href: "/experiences/coffee-bar", label: "Explore Coffee Bar" },
+            { href: "/experiences/seating-rentals", label: "Explore Seating Rentals" },
+          ]}
+        />
         <HomeWorkingExperience />
         <EventPlanningPathway id="planning-journey" showDescription={false} />
         <HomeServiceArea />

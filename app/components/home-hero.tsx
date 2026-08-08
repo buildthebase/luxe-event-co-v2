@@ -298,7 +298,7 @@ export function HomeHero() {
             aria-hidden={finalState ? undefined : "true"}
           >
             <h2 className="foundation-wide-heading" id="home-hero-seo-title">
-              Luxury hospitality, elegantly composed with mobile coffee bars,
+              Luxury event planning, elegantly composed with mobile coffee bars,
               live dessert carts &amp; event rentals across Toronto &amp; Southern Ontario.
             </h2>
             <p>

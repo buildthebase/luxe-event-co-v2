@@ -25,6 +25,282 @@
   display: block;
 }
 
+.foundation-shell .home-page #home-reviews-title {
+  letter-spacing: var(--tracking-heading-lg) !important;
+}
+
+.foundation-shell .home-page > .home-review-launcher {
+  margin-top: var(--home-compact-section-space);
+}
+
+@media (min-width: 961px) {
+  .foundation-shell .home-page .home-unified {
+    align-items: center;
+  }
+
+  .foundation-shell .home-page .home-unified-copy {
+    align-self: center;
+  }
+
+  .foundation-shell .home-page > .home-review-launcher {
+    width: min(calc(100% - (2 * var(--space-page-inline))), 48rem);
+  }
+
+  .foundation-shell .home-page .home-review-launcher-button {
+    grid-template-columns: auto auto auto auto;
+    justify-content: center;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    padding: 1.25rem 1.75rem;
+  }
+}
+
+.foundation-shell .home-page .home-review-launcher-button {
+  display: grid;
+  width: 100%;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  gap: clamp(1rem, 2.5vw, 2rem);
+  align-items: center;
+  border: 1px solid color-mix(in srgb, var(--color-luxe-black) 22%, transparent);
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  background: var(--color-luxe-ivory);
+  color: var(--color-luxe-black);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color var(--motion-fast) var(--ease-luxe-standard),
+    background-color var(--motion-fast) var(--ease-luxe-standard);
+}
+
+.foundation-shell .home-page .home-review-launcher-button:hover,
+.foundation-shell .home-page .home-review-launcher-button:focus-visible {
+  border-color: var(--color-luxe-gold-ink);
+  background: var(--surface-chapter-soft);
+}
+
+.foundation-shell .home-page .home-review-google-icon {
+  display: grid;
+  width: clamp(2.5rem, 4vw, 3.5rem);
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  background: conic-gradient(
+    from -45deg,
+    #4285f4 0 25%,
+    #34a853 25% 45%,
+    #fbbc05 45% 66%,
+    #ea4335 66% 82%,
+    #4285f4 82% 100%
+  );
+  background-clip: text;
+  color: transparent;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.foundation-shell .home-page .home-review-launcher-copy {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.foundation-shell .home-page .home-review-launcher-copy > strong {
+  font-size: clamp(1.15rem, 1.8vw, 1.55rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.foundation-shell .home-page .home-review-launcher-copy > span,
+.foundation-shell .home-page .home-review-dialog-inner > p,
+.foundation-shell .home-page .home-review-dialog-inner > small {
+  color: var(--color-text-secondary);
+  font-size: clamp(0.68rem, 0.8vw, 0.78rem);
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.foundation-shell .home-page .home-review-rating {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 0.65rem;
+  align-items: center;
+}
+
+.foundation-shell .home-page .home-review-rating > strong {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+}
+
+.foundation-shell .home-page .home-review-rating > span {
+  color: #f9ab00;
+  font-size: clamp(0.85rem, 1.2vw, 1.05rem);
+  letter-spacing: 0.08em;
+}
+
+.foundation-shell .home-page .home-review-launcher-arrow {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+.home-review-dialog {
+  width: min(calc(100% - 2rem), 42rem);
+  max-height: min(90svh, 46rem);
+  overflow: auto;
+  border: 1px solid color-mix(in srgb, var(--color-luxe-gold) 58%, var(--color-rule));
+  padding: 0;
+  background: var(--color-luxe-ivory);
+  color: var(--color-luxe-black);
+}
+
+.home-review-dialog::backdrop {
+  background: rgb(23 22 20 / 68%);
+  backdrop-filter: blur(4px);
+}
+
+.home-review-dialog-inner {
+  position: relative;
+  display: grid;
+  padding: clamp(2rem, 6vw, 4rem);
+  background-image: radial-gradient(
+    rgb(23 22 20 / 5.3%) 0.55px,
+    transparent 0.7px
+  );
+  background-size: 4px 4px;
+}
+
+.home-review-dialog-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: grid;
+  width: 2.75rem;
+  min-height: 2.75rem;
+  place-items: center;
+  border: 1px solid var(--color-rule);
+  background: transparent;
+  color: inherit;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.home-review-dialog-inner > p {
+  margin: var(--space-4) 0 0;
+}
+
+.home-review-dialog-inner > h2 {
+  max-width: 10ch;
+  margin: var(--space-4) 0 0;
+  font-size: clamp(2.4rem, 7vw, 4.5rem) !important;
+  font-weight: 500;
+  letter-spacing: var(--tracking-heading-lg);
+  line-height: 0.95;
+}
+
+.home-review-dialog-options {
+  display: grid;
+  margin-top: var(--space-7);
+  border-top: 1px solid var(--color-luxe-black);
+}
+
+.home-review-dialog-options > a {
+  display: flex;
+  min-height: 4.5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  border-bottom: 1px solid var(--color-rule);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 600;
+}
+
+.home-review-dialog-options > a:hover,
+.home-review-dialog-options > a:focus-visible {
+  color: var(--gold-text);
+}
+
+.home-review-dialog-inner > small {
+  margin-top: var(--space-6);
+}
+
+.foundation-shell .home-page > .home-editorial-review {
+  display: grid;
+  grid-template-columns: minmax(10rem, 0.35fr) minmax(0, 1fr);
+  gap: clamp(2rem, 7vw, 7rem);
+  align-items: start;
+  scroll-margin-top: 7rem;
+  margin-top: var(--home-compact-section-space);
+  padding-block: clamp(2.5rem, 5vw, 5rem);
+}
+
+.foundation-shell .home-page > :is(
+    #review-coffee-dessert,
+    #review-coffee-seating
+  ) {
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.foundation-shell .home-page .home-editorial-review > header {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.foundation-shell .home-page .home-editorial-review > header > span {
+  color: var(--gold-text);
+  font-size: clamp(0.65rem, 0.75vw, 0.76rem);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.foundation-shell .home-page .home-editorial-review > header > strong {
+  width: max-content;
+  max-width: 100%;
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  font-weight: 600;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.foundation-shell .home-page .home-editorial-review > blockquote {
+  margin: 0;
+}
+
+.foundation-shell .home-page .home-editorial-review > blockquote > p {
+  max-width: 31ch;
+  margin: 0;
+  font-size: clamp(1.8rem, 3.6vw, 3.75rem);
+  font-weight: 500;
+  letter-spacing: var(--tracking-heading-lg);
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.foundation-shell .home-page .home-editorial-review > nav {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-6);
+}
+
+.foundation-shell .home-page .home-editorial-review > nav a {
+  display: inline-flex;
+  align-items: flex-start;
+  border-bottom: 0 !important;
+  font-size: clamp(0.7rem, 0.85vw, 0.82rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.foundation-shell .home-page .home-editorial-review > nav a > span {
+  display: inline-flex;
+  gap: 0.45rem;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.25em;
+}
+
+.foundation-shell .home-page .home-editorial-review > nav a b {
+  font: inherit;
+}
+
 /* Reduce the perceived top and bottom space around these editorial chapters. */
 .foundation-shell .home-page > .signature-combinations {
   margin-top: var(--home-compact-section-space);
@@ -110,6 +386,13 @@
   padding-bottom: 0.25em;
 }
 
+@media (min-width: 961px) {
+  .foundation-shell .home-page .home-events-planning-cta {
+    width: min(100%, 62rem);
+    margin-inline: auto;
+  }
+}
+
 .foundation-shell .home-page :is(.home-imagery, .home-working),
 .foundation-shell .home-page .home-imagery + .home-trust,
 .foundation-shell .home-page .home-working + .signature-pathway {
@@ -183,12 +466,52 @@
   .foundation-shell .home-page .signature-combinations-footer {
     align-items: center;
     gap: var(--space-5);
+    border-top: 0;
   }
 
   .foundation-shell .home-page .home-events-planning-cta {
     align-items: center;
     gap: var(--space-5);
     padding: var(--space-7) var(--space-6);
+  }
+
+  .foundation-shell .home-page .home-text-link {
+    gap: var(--space-2);
+    padding-bottom: 0.25rem;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.09em;
+  }
+
+  .foundation-shell .home-page .home-gallery-link,
+  .foundation-shell .home-page .home-gallery-link > span {
+    font-size: 0.68rem !important;
+  }
+
+  .foundation-shell .home-page .home-review-launcher-button {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: var(--space-4);
+  }
+
+  .foundation-shell .home-page .home-review-rating {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .foundation-shell .home-page .home-review-launcher-arrow {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+  }
+
+  .foundation-shell .home-page > .home-editorial-review {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    padding-block: var(--space-8);
+  }
+
+  .foundation-shell .home-page .home-editorial-review > nav {
+    grid-column: 1;
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .foundation-shell .home-page .home-hero-copy h1,
